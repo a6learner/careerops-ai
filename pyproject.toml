@@ -1,0 +1,75 @@
+[project]
+name = "careerops-ai"
+version = "0.1.0"
+description = "Evidence-first internship application tracker with an asynchronous LLM pipeline."
+requires-python = ">=3.11"
+dependencies = [
+    "asyncpg>=0.29.0",
+    "fastapi>=0.115.0",
+    "pydantic-settings>=2.4.0",
+    "sqlalchemy[asyncio]>=2.0.0",
+    "uvicorn[standard]>=0.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27.0",
+    "import-linter>=2.0",
+    "mypy>=1.11.0",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.6.0",
+]
+worker = [
+    "dramatiq[redis]>=1.17.0",
+]
+
+[build-system]
+requires = ["setuptools>=72.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+packages = ["careerops"]
+
+[tool.importlinter]
+root_package = "careerops"
+
+[[tool.importlinter.contracts]]
+name = "API layer must not be imported by service or repository code"
+type = "forbidden"
+source_modules = [
+    "careerops.services",
+    "careerops.repositories",
+]
+forbidden_modules = [
+    "careerops.api",
+]
+
+[[tool.importlinter.contracts]]
+name = "Repository layer must not depend on service layer"
+type = "forbidden"
+source_modules = [
+    "careerops.repositories",
+]
+forbidden_modules = [
+    "careerops.services",
+]
