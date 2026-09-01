@@ -22,13 +22,17 @@ The API service will never call the LLM directly. Model calls belong in the work
 
 ## Local Setup
 
-Create a virtual environment, install dependencies, then run the API:
+Create a project-local virtual environment:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -e ".[dev,worker]"
-uvicorn careerops.main:create_app --factory --reload
+.\.venv\Scripts\python -m pip install -e ".[dev,worker]"
+```
+
+Run the API through the virtual environment:
+
+```powershell
+.\.venv\Scripts\uvicorn careerops.main:create_app --factory --reload
 ```
 
 Start local infrastructure:
@@ -37,14 +41,22 @@ Start local infrastructure:
 docker compose up -d postgres redis
 ```
 
+Apply database migrations:
+
+```powershell
+.\.venv\Scripts\alembic upgrade head
+```
+
 Useful checks:
 
 ```powershell
-pytest
-mypy
-ruff check .
-lint-imports
+.\.venv\Scripts\python -m pytest
+.\.venv\Scripts\python -m mypy
+.\.venv\Scripts\ruff check .
+.\.venv\Scripts\lint-imports
 ```
+
+Using the explicit `.venv` paths keeps project dependencies out of the global Python or Anaconda environment.
 
 ## API Surface
 

@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Evidence-first internship application tracker with an asynchronous LLM pipeline."
 requires-python = ">=3.11"
 dependencies = [
+    "alembic>=1.13.0",
     "asyncpg>=0.29.0",
     "fastapi>=0.115.0",
     "pydantic-settings>=2.4.0",

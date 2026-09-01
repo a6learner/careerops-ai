@@ -83,3 +83,5 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 ## Current Documents
 
 - [0001 Project Skeleton](0001-project-skeleton.md)
+- [0002 Database Migrations And The Users Table](0002-database-migrations.md)
+- [0003 Local Environment Isolation](0003-local-environment-isolation.md)
