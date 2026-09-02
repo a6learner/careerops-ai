@@ -60,3 +60,4 @@ What future condition would justify reopening this decision?
 - `ADR-002-backend-first-skeleton.md`: backend-first skeleton before AI workflow implementation.
 - `ADR-003-database-migrations-and-users.md`: Alembic migrations and the first `users` table.
 - `ADR-004-password-hashing.md`: Argon2id password hashing behind a local security boundary.
+- `ADR-005-registration-layering.md`: registration through API, service, and repository layers.

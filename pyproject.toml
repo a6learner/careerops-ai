@@ -37,6 +37,9 @@ where = ["src"]
 addopts = "-q"
 pythonpath = ["src"]
 testpaths = ["tests"]
+markers = [
+    "integration: tests that require local infrastructure such as PostgreSQL",
+]
 
 [tool.ruff]
 line-length = 100

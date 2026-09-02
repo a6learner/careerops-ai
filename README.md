@@ -62,6 +62,7 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 
 - `GET /healthz` checks whether the API process is alive.
 - `GET /readyz` checks whether required dependencies are reachable.
+- `POST /api/v1/auth/register` creates a user with a hashed password.
 
 Business endpoints will be added in small milestones: auth, experiences, jobs, async parse runs, async analysis runs, action items, and dashboard summary.
 

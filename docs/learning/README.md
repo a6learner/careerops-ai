@@ -87,3 +87,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0003 Local Environment Isolation](0003-local-environment-isolation.md)
 - [0004 Password Hashing](0004-password-hashing.md)
 - [0005 Line Endings](0005-line-endings.md)
+- [0006 Registration API](0006-register-api.md)
