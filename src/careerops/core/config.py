@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://careerops:careerops@localhost:5432/careerops"
     redis_url: str = "redis://localhost:6379/0"
     log_level: str = "INFO"
+    jwt_secret: str = "change-me-in-local-development-secret-32-bytes-minimum"
+    access_token_expire_minutes: int = 30
 
 
 @lru_cache

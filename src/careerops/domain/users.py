@@ -8,3 +8,10 @@ class UserAccount:
     id: UUID
     email: str
     created_at: datetime
+
+
+@dataclass(frozen=True)
+class UserCredentials:
+    id: UUID
+    email: str
+    password_hash: str

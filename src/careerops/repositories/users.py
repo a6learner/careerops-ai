@@ -1,9 +1,10 @@
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.db.models import User
 from careerops.domain.errors import DuplicateEmailError
-from careerops.domain.users import UserAccount
+from careerops.domain.users import UserAccount, UserCredentials
 
 
 class UserRepository:
@@ -21,6 +22,13 @@ class UserRepository:
             raise DuplicateEmailError(email) from exc
 
         return UserAccount(id=user.id, email=user.email, created_at=user.created_at)
+
+    async def get_credentials_by_email(self, email: str) -> UserCredentials | None:
+        result = await self._session.execute(select(User).where(User.email == email))
+        user = result.scalar_one_or_none()
+        if user is None:
+            return None
+        return UserCredentials(id=user.id, email=user.email, password_hash=user.password_hash)
 
     async def commit(self) -> None:
         await self._session.commit()

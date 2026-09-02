@@ -1,10 +1,11 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from uuid import uuid4
 
 import pytest
 
-from careerops.domain.users import UserAccount
+from careerops.domain.users import UserAccount, UserCredentials
 from careerops.security.passwords import PasswordHasher
+from careerops.security.tokens import TokenIssuer
 from careerops.services.auth import AuthService
 
 
@@ -17,14 +18,28 @@ class InMemoryUserCreator:
         self.created_password_hash = password_hash
         return UserAccount(id=uuid4(), email=email, created_at=datetime.now(UTC))
 
+    async def get_credentials_by_email(self, email: str) -> UserCredentials | None:
+        return None
+
     async def commit(self) -> None:
         self.committed = True
+
+
+def build_service(users: InMemoryUserCreator) -> AuthService:
+    return AuthService(
+        users,
+        PasswordHasher.recommended(),
+        TokenIssuer(
+            secret="test-secret-with-at-least-32-bytes",
+            expires_after=timedelta(minutes=30),
+        ),
+    )
 
 
 @pytest.mark.asyncio
 async def test_register_user_hashes_password_before_persisting() -> None:
     users = InMemoryUserCreator()
-    service = AuthService(users, PasswordHasher.recommended())
+    service = build_service(users)
 
     user = await service.register_user("student@example.com", "correct horse battery staple")
 
@@ -40,7 +55,7 @@ async def test_register_user_hashes_password_before_persisting() -> None:
 @pytest.mark.asyncio
 async def test_register_user_commits_created_user() -> None:
     users = InMemoryUserCreator()
-    service = AuthService(users, PasswordHasher.recommended())
+    service = build_service(users)
 
     await service.register_user("student@example.com", "correct horse battery staple")
 

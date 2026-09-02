@@ -29,6 +29,14 @@ async def test_register_user_persists_to_postgres_and_rejects_duplicate_email() 
                 "/api/v1/auth/register",
                 json={"email": email.upper(), "password": "strong-password"},
             )
+            login = await client.post(
+                "/api/v1/auth/login",
+                json={"email": email.upper(), "password": "strong-password"},
+            )
+            failed_login = await client.post(
+                "/api/v1/auth/login",
+                json={"email": email, "password": "wrong-password"},
+            )
 
     assert created.status_code == 201
     assert created.json()["email"] == email
@@ -36,3 +44,10 @@ async def test_register_user_persists_to_postgres_and_rejects_duplicate_email() 
 
     assert duplicate.status_code == 409
     assert duplicate.json()["error"]["code"] == "EMAIL_ALREADY_REGISTERED"
+
+    assert login.status_code == 200
+    assert login.json()["token_type"] == "bearer"
+    assert login.json()["access_token"]
+
+    assert failed_login.status_code == 401
+    assert failed_login.json()["error"]["code"] == "INVALID_CREDENTIALS"

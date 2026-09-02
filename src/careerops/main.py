@@ -15,7 +15,7 @@ from careerops.core.logging import configure_logging
 from careerops.core.request_id import RequestIdMiddleware
 from careerops.db.health import DatabaseReadinessChecker
 from careerops.db.session import create_session_factory
-from careerops.domain.errors import DuplicateEmailError
+from careerops.domain.errors import DuplicateEmailError, InvalidCredentialsError
 
 
 @asynccontextmanager
@@ -50,6 +50,24 @@ def create_app() -> FastAPI:
         )
         return JSONResponse(
             status_code=HTTPStatus.CONFLICT,
+            content=payload.model_dump(mode="json"),
+        )
+
+    @app.exception_handler(InvalidCredentialsError)
+    async def invalid_credentials_handler(
+        request: Request,
+        exc: InvalidCredentialsError,
+    ) -> JSONResponse:
+        request_id = cast(str, getattr(request.state, "request_id", "unknown"))
+        payload = ErrorResponse(
+            error=ErrorDetail(
+                code=ErrorCode.INVALID_CREDENTIALS,
+                message="Invalid email or password.",
+                request_id=request_id,
+            )
+        )
+        return JSONResponse(
+            status_code=HTTPStatus.UNAUTHORIZED,
             content=payload.model_dump(mode="json"),
         )
 
