@@ -37,6 +37,15 @@ async def test_register_user_persists_to_postgres_and_rejects_duplicate_email() 
                 "/api/v1/auth/login",
                 json={"email": email, "password": "wrong-password"},
             )
+            me = await client.get(
+                "/api/v1/auth/me",
+                headers={"Authorization": f"Bearer {login.json()['access_token']}"},
+            )
+            missing_token = await client.get("/api/v1/auth/me")
+            malformed_token = await client.get(
+                "/api/v1/auth/me",
+                headers={"Authorization": "Basic not-a-bearer-token"},
+            )
 
     assert created.status_code == 201
     assert created.json()["email"] == email
@@ -48,6 +57,16 @@ async def test_register_user_persists_to_postgres_and_rejects_duplicate_email() 
     assert login.status_code == 200
     assert login.json()["token_type"] == "bearer"
     assert login.json()["access_token"]
+
+    assert me.status_code == 200
+    assert me.json()["email"] == email
+    assert "password_hash" not in me.json()
+
+    assert missing_token.status_code == 401
+    assert missing_token.json()["error"]["code"] == "TOKEN_MISSING"
+
+    assert malformed_token.status_code == 401
+    assert malformed_token.json()["error"]["code"] == "TOKEN_INVALID"
 
     assert failed_login.status_code == 401
     assert failed_login.json()["error"]["code"] == "INVALID_CREDENTIALS"

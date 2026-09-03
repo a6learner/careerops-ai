@@ -15,7 +15,13 @@ from careerops.core.logging import configure_logging
 from careerops.core.request_id import RequestIdMiddleware
 from careerops.db.health import DatabaseReadinessChecker
 from careerops.db.session import create_session_factory
-from careerops.domain.errors import DuplicateEmailError, InvalidCredentialsError
+from careerops.domain.errors import (
+    DuplicateEmailError,
+    ExpiredTokenError,
+    InvalidCredentialsError,
+    InvalidTokenError,
+    MissingTokenError,
+)
 
 
 @asynccontextmanager
@@ -71,6 +77,30 @@ def create_app() -> FastAPI:
             content=payload.model_dump(mode="json"),
         )
 
+    @app.exception_handler(MissingTokenError)
+    async def missing_token_handler(request: Request, exc: MissingTokenError) -> JSONResponse:
+        return auth_error_response(
+            request=request,
+            code=ErrorCode.TOKEN_MISSING,
+            message="Missing bearer token.",
+        )
+
+    @app.exception_handler(InvalidTokenError)
+    async def invalid_token_handler(request: Request, exc: InvalidTokenError) -> JSONResponse:
+        return auth_error_response(
+            request=request,
+            code=ErrorCode.TOKEN_INVALID,
+            message="Invalid bearer token.",
+        )
+
+    @app.exception_handler(ExpiredTokenError)
+    async def expired_token_handler(request: Request, exc: ExpiredTokenError) -> JSONResponse:
+        return auth_error_response(
+            request=request,
+            code=ErrorCode.TOKEN_EXPIRED,
+            message="Expired bearer token.",
+        )
+
     @app.exception_handler(Exception)
     async def unhandled_error_handler(request: Request, exc: Exception) -> JSONResponse:
         request_id = cast(str, getattr(request.state, "request_id", "unknown"))
@@ -87,3 +117,18 @@ def create_app() -> FastAPI:
         )
 
     return app
+
+
+def auth_error_response(request: Request, code: ErrorCode, message: str) -> JSONResponse:
+    request_id = cast(str, getattr(request.state, "request_id", "unknown"))
+    payload = ErrorResponse(
+        error=ErrorDetail(
+            code=code,
+            message=message,
+            request_id=request_id,
+        )
+    )
+    return JSONResponse(
+        status_code=HTTPStatus.UNAUTHORIZED,
+        content=payload.model_dump(mode="json"),
+    )

@@ -62,3 +62,4 @@ What future condition would justify reopening this decision?
 - `ADR-004-password-hashing.md`: Argon2id password hashing behind a local security boundary.
 - `ADR-005-registration-layering.md`: registration through API, service, and repository layers.
 - `ADR-006-access-token-auth.md`: signed JWT access tokens for login.
+- `ADR-007-current-user-dependency.md`: reusable current-user dependency for protected endpoints.

@@ -5,8 +5,10 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from careerops.api.dependencies import get_current_user
 from careerops.core.config import Settings, get_settings
 from careerops.db.session import get_session
+from careerops.domain.users import UserAccount
 from careerops.repositories.users import UserRepository
 from careerops.schemas.auth import (
     AccessTokenResponse,
@@ -15,7 +17,7 @@ from careerops.schemas.auth import (
     RegisterUserRequest,
 )
 from careerops.security.passwords import PasswordHasher
-from careerops.security.tokens import TokenIssuer
+from careerops.security.tokens import TokenIssuer, TokenVerifier
 from careerops.services.auth import AuthService
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
@@ -47,9 +49,25 @@ async def login_user(
     return AccessTokenResponse(access_token=token.value, token_type=token.token_type)
 
 
+@router.get("/me", response_model=RegisteredUserResponse)
+async def get_me(
+    current_user: Annotated[UserAccount, Depends(get_current_user)],
+) -> RegisteredUserResponse:
+    return RegisteredUserResponse(
+        id=current_user.id,
+        email=current_user.email,
+        created_at=current_user.created_at,
+    )
+
+
 def build_auth_service(session: AsyncSession, settings: Settings) -> AuthService:
     token_issuer = TokenIssuer(
         secret=settings.jwt_secret,
         expires_after=timedelta(minutes=settings.access_token_expire_minutes),
     )
-    return AuthService(UserRepository(session), PasswordHasher.recommended(), token_issuer)
+    return AuthService(
+        UserRepository(session),
+        PasswordHasher.recommended(),
+        token_issuer,
+        TokenVerifier(secret=settings.jwt_secret),
+    )

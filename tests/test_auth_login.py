@@ -1,12 +1,12 @@
 from datetime import UTC, datetime, timedelta
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 
 from careerops.domain.errors import InvalidCredentialsError
 from careerops.domain.users import UserAccount, UserCredentials
 from careerops.security.passwords import PasswordHasher
-from careerops.security.tokens import TokenIssuer
+from careerops.security.tokens import TokenIssuer, TokenVerifier
 from careerops.services.auth import AuthService
 
 
@@ -25,6 +25,9 @@ class InMemoryUsers:
             return None
         return self.credentials
 
+    async def get_account_by_id(self, user_id: UUID) -> UserAccount | None:
+        return None
+
     async def commit(self) -> None:
         self.committed = True
 
@@ -37,6 +40,7 @@ def build_service(users: InMemoryUsers) -> AuthService:
             secret="test-secret-with-at-least-32-bytes",
             expires_after=timedelta(minutes=30),
         ),
+        TokenVerifier(secret="test-secret-with-at-least-32-bytes"),
     )
 
 

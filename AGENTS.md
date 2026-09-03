@@ -148,6 +148,30 @@ After each task, provide:
 - What the author should understand.
 - A short Knowledge Check when the task introduced important engineering concepts.
 
+## Long-Running Thread Hygiene
+
+Treat chat as a temporary workspace, not the source of truth. Durable project
+memory must live in repository files and Git history.
+
+Proactively suggest starting a fresh development thread when a major module or
+milestone is complete, when the conversation has become long enough that old
+plans and completed work are easy to confuse, or before switching to a new theme
+such as auth, experiences, jobs, workers, LLM integration, evidence matching,
+frontend, deployment, or interview prep.
+
+Before suggesting a fresh thread, make sure important context has been saved in
+the appropriate place:
+
+- Design decisions in `docs/decisions/`.
+- Learning notes in `docs/learning/`.
+- Real measurements in `docs/metrics/`.
+- Run and setup instructions in `README.md`.
+- Code history in clear Git commits.
+
+When a fresh thread starts, first read `AGENTS.md`, `docs/PROJECT_CONTEXT.md`,
+`docs/decisions/`, `docs/learning/`, and `README.md`, then summarize current
+project state and recommend the next step before changing code.
+
 ## Understanding Levels
 
 The author does not need to memorize every generated line. The author must be able to explain the important engineering behavior.

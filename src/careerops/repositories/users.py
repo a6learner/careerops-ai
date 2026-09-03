@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -29,6 +31,12 @@ class UserRepository:
         if user is None:
             return None
         return UserCredentials(id=user.id, email=user.email, password_hash=user.password_hash)
+
+    async def get_account_by_id(self, user_id: UUID) -> UserAccount | None:
+        user = await self._session.get(User, user_id)
+        if user is None:
+            return None
+        return UserAccount(id=user.id, email=user.email, created_at=user.created_at)
 
     async def commit(self) -> None:
         await self._session.commit()

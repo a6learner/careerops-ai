@@ -89,3 +89,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0005 Line Endings](0005-line-endings.md)
 - [0006 Registration API](0006-register-api.md)
 - [0007 Login And Access Tokens](0007-login-and-access-tokens.md)
+- [0008 Current User Dependency](0008-current-user-dependency.md)

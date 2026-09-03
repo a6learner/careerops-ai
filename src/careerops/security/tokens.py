@@ -4,6 +4,8 @@ from uuid import UUID
 
 import jwt
 
+from careerops.domain.errors import ExpiredTokenError, InvalidTokenError
+
 
 @dataclass(frozen=True)
 class AccessToken:
@@ -25,3 +27,21 @@ class TokenIssuer:
             "exp": now + self.expires_after,
         }
         return AccessToken(value=jwt.encode(payload, self.secret, algorithm=self.algorithm))
+
+
+@dataclass(frozen=True)
+class TokenVerifier:
+    secret: str
+    algorithm: str = "HS256"
+
+    def verify_access_token(self, token: str) -> UUID:
+        try:
+            payload = jwt.decode(token, self.secret, algorithms=[self.algorithm])
+            subject = payload.get("sub")
+            if not isinstance(subject, str):
+                raise InvalidTokenError()
+            return UUID(subject)
+        except jwt.ExpiredSignatureError as exc:
+            raise ExpiredTokenError() from exc
+        except (jwt.InvalidTokenError, ValueError) as exc:
+            raise InvalidTokenError() from exc
