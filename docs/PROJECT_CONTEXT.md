@@ -72,6 +72,7 @@ If schedule pressure appears, cut scope before cutting tests, deployment, or evi
 ## Source Material
 
 - Detailed MVP scope: `docs/CareerOps AI MVP 产品范围与 Non-goals.md`
+- User stories and use cases: `docs/product/user-stories-and-use-cases.md`
 - Programming language research: `docs/52 条 2027 届实习 JD 语言要求调研.md`
 - Decision records: `docs/decisions/`
 - Learning notes: `docs/learning/`

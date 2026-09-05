@@ -1,13 +1,17 @@
+import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from http import HTTPStatus
 from typing import cast
 
 from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from careerops.api.auth import router as auth_router
+from careerops.api.experiences import router as experiences_router
+from careerops.api.jobs import router as jobs_router
 from careerops.api.routes import router
 from careerops.core.config import Settings, get_settings
 from careerops.core.errors import ErrorCode, ErrorDetail, ErrorResponse
@@ -17,11 +21,19 @@ from careerops.db.health import DatabaseReadinessChecker
 from careerops.db.session import create_session_factory
 from careerops.domain.errors import (
     DuplicateEmailError,
+    ExperienceNotFoundError,
+    ExperienceVersionConflictError,
     ExpiredTokenError,
     InvalidCredentialsError,
+    InvalidCursorError,
     InvalidTokenError,
+    JobNotFoundError,
+    JobVersionConflictError,
+    MissingIfMatchHeaderError,
     MissingTokenError,
 )
+
+logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
@@ -43,20 +55,16 @@ def create_app() -> FastAPI:
     app.add_middleware(RequestIdMiddleware)
     app.include_router(router)
     app.include_router(auth_router)
+    app.include_router(experiences_router)
+    app.include_router(jobs_router)
 
     @app.exception_handler(DuplicateEmailError)
     async def duplicate_email_handler(request: Request, exc: DuplicateEmailError) -> JSONResponse:
-        request_id = cast(str, getattr(request.state, "request_id", "unknown"))
-        payload = ErrorResponse(
-            error=ErrorDetail(
-                code=ErrorCode.EMAIL_ALREADY_REGISTERED,
-                message="Email is already registered.",
-                request_id=request_id,
-            )
-        )
-        return JSONResponse(
+        return error_response(
+            request=request,
             status_code=HTTPStatus.CONFLICT,
-            content=payload.model_dump(mode="json"),
+            code=ErrorCode.EMAIL_ALREADY_REGISTERED,
+            message="Email is already registered.",
         )
 
     @app.exception_handler(InvalidCredentialsError)
@@ -64,17 +72,11 @@ def create_app() -> FastAPI:
         request: Request,
         exc: InvalidCredentialsError,
     ) -> JSONResponse:
-        request_id = cast(str, getattr(request.state, "request_id", "unknown"))
-        payload = ErrorResponse(
-            error=ErrorDetail(
-                code=ErrorCode.INVALID_CREDENTIALS,
-                message="Invalid email or password.",
-                request_id=request_id,
-            )
-        )
-        return JSONResponse(
+        return error_response(
+            request=request,
             status_code=HTTPStatus.UNAUTHORIZED,
-            content=payload.model_dump(mode="json"),
+            code=ErrorCode.INVALID_CREDENTIALS,
+            message="Invalid email or password.",
         )
 
     @app.exception_handler(MissingTokenError)
@@ -101,34 +103,143 @@ def create_app() -> FastAPI:
             message="Expired bearer token.",
         )
 
+    @app.exception_handler(ExperienceNotFoundError)
+    async def experience_not_found_handler(
+        request: Request,
+        exc: ExperienceNotFoundError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.EXPERIENCE_NOT_FOUND,
+            message="Experience was not found.",
+        )
+
+    @app.exception_handler(ExperienceVersionConflictError)
+    async def experience_version_conflict_handler(
+        request: Request,
+        exc: ExperienceVersionConflictError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.EXPERIENCE_VERSION_CONFLICT,
+            message="Experience version conflict.",
+        )
+
+    @app.exception_handler(MissingIfMatchHeaderError)
+    async def missing_if_match_handler(
+        request: Request,
+        exc: MissingIfMatchHeaderError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.PRECONDITION_REQUIRED,
+            code=ErrorCode.IF_MATCH_REQUIRED,
+            message="If-Match header is required.",
+        )
+
+    @app.exception_handler(JobNotFoundError)
+    async def job_not_found_handler(request: Request, exc: JobNotFoundError) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.JOB_NOT_FOUND,
+            message="Job was not found.",
+        )
+
+    @app.exception_handler(JobVersionConflictError)
+    async def job_version_conflict_handler(
+        request: Request,
+        exc: JobVersionConflictError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.JOB_VERSION_CONFLICT,
+            message="Job version conflict.",
+        )
+
+    @app.exception_handler(InvalidCursorError)
+    async def invalid_cursor_handler(request: Request, exc: InvalidCursorError) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.UNPROCESSABLE_ENTITY,
+            code=ErrorCode.INVALID_CURSOR,
+            message="Invalid pagination cursor.",
+        )
+
+    @app.exception_handler(RequestValidationError)
+    async def request_validation_handler(
+        request: Request,
+        exc: RequestValidationError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.UNPROCESSABLE_ENTITY,
+            code=ErrorCode.VALIDATION_ERROR,
+            message="Request validation failed.",
+            details={"errors": validation_error_details(exc)},
+        )
+
     @app.exception_handler(Exception)
     async def unhandled_error_handler(request: Request, exc: Exception) -> JSONResponse:
-        request_id = cast(str, getattr(request.state, "request_id", "unknown"))
-        payload = ErrorResponse(
-            error=ErrorDetail(
-                code=ErrorCode.DEPENDENCY_UNAVAILABLE,
-                message=HTTPStatus.INTERNAL_SERVER_ERROR.phrase,
-                request_id=request_id,
-            )
+        logger.exception(
+            "Unhandled error request_id=%s path=%s exception_type=%s",
+            getattr(request.state, "request_id", "unknown"),
+            request.url.path,
+            type(exc).__name__,
         )
-        return JSONResponse(
+        return error_response(
+            request=request,
             status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
-            content=payload.model_dump(mode="json"),
+            code=ErrorCode.INTERNAL_ERROR,
+            message=HTTPStatus.INTERNAL_SERVER_ERROR.phrase,
         )
 
     return app
 
 
 def auth_error_response(request: Request, code: ErrorCode, message: str) -> JSONResponse:
+    return error_response(
+        request=request,
+        status_code=HTTPStatus.UNAUTHORIZED,
+        code=code,
+        message=message,
+    )
+
+
+def error_response(
+    request: Request,
+    status_code: int,
+    code: ErrorCode,
+    message: str,
+    details: dict[str, object] | None = None,
+) -> JSONResponse:
     request_id = cast(str, getattr(request.state, "request_id", "unknown"))
     payload = ErrorResponse(
         error=ErrorDetail(
             code=code,
             message=message,
+            details=details or {},
             request_id=request_id,
         )
     )
     return JSONResponse(
-        status_code=HTTPStatus.UNAUTHORIZED,
+        status_code=status_code,
         content=payload.model_dump(mode="json"),
     )
+
+
+def validation_error_details(exc: RequestValidationError) -> list[dict[str, str]]:
+    details: list[dict[str, str]] = []
+    for error in exc.errors():
+        location = ".".join(str(part) for part in error["loc"])
+        details.append(
+            {
+                "location": location,
+                "message": str(error["msg"]),
+                "type": str(error["type"]),
+            }
+        )
+    return details

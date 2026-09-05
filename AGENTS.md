@@ -94,6 +94,22 @@ These requirements are not optional:
 7. Write comments only for why something non-obvious exists, not for what the next line does.
 8. Do not add abstraction for future possibilities unless there is a real second implementation or a testing boundary. The LLM adapter is an intentional exception.
 
+## Coding Judgment
+
+Use the local `karpathy-guidelines` skill when writing, reviewing, or refactoring
+code. Apply these working rules:
+
+1. Think before coding: state assumptions, name ambiguity, and ask before choices
+   that affect product semantics, data ownership, authorization, or public API
+   contracts.
+2. Keep the solution simple: implement the smallest behavior that satisfies the
+   current user story or failure mode. Avoid speculative configurability and
+   abstractions without a second use.
+3. Make surgical changes: touch only files tied to the task, match existing
+   style, and do not refactor unrelated code.
+4. Let verification drive the work: define the behavior to prove, add or update
+   focused tests, and run the relevant quality gates before calling a task done.
+
 ## Product Guardrails
 
 MVP serves one user type: a CS student applying to SWE / backend / AI internships.

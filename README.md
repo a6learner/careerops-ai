@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository is at the project skeleton stage. The first milestone creates a small FastAPI service with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, and CI scaffolding.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences CRUD, and user-owned Jobs CRUD with status filtering and cursor pagination.
 
 ## Architecture Direction
 
@@ -65,8 +65,18 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `POST /api/v1/auth/register` creates a user with a hashed password.
 - `POST /api/v1/auth/login` verifies credentials and returns a bearer access token.
 - `GET /api/v1/auth/me` returns the current user for a valid bearer access token.
+- `GET /api/v1/experiences` lists the current user's active experiences.
+- `POST /api/v1/experiences` creates an experience owned by the current user.
+- `GET /api/v1/experiences/{id}` returns one owned active experience.
+- `PATCH /api/v1/experiences/{id}` updates one owned active experience with `If-Match` optimistic locking.
+- `DELETE /api/v1/experiences/{id}` soft-deletes one owned active experience.
+- `GET /api/v1/jobs` lists the current user's active jobs with optional status filtering and cursor pagination.
+- `POST /api/v1/jobs` creates a target job description owned by the current user.
+- `GET /api/v1/jobs/{id}` returns one owned active job.
+- `PATCH /api/v1/jobs/{id}` updates one owned active job with `If-Match` optimistic locking.
+- `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
 
-Business endpoints will be added in small milestones: auth, experiences, jobs, async parse runs, async analysis runs, action items, and dashboard summary.
+Remaining business endpoints will be added in small milestones: async parse runs, async analysis runs, action items, and dashboard summary.
 
 ## Key Decisions
 

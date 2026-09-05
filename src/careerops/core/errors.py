@@ -1,20 +1,29 @@
 from enum import StrEnum
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ErrorCode(StrEnum):
     DEPENDENCY_UNAVAILABLE = "DEPENDENCY_UNAVAILABLE"
     EMAIL_ALREADY_REGISTERED = "EMAIL_ALREADY_REGISTERED"
+    EXPERIENCE_NOT_FOUND = "EXPERIENCE_NOT_FOUND"
+    EXPERIENCE_VERSION_CONFLICT = "EXPERIENCE_VERSION_CONFLICT"
+    IF_MATCH_REQUIRED = "IF_MATCH_REQUIRED"
+    INTERNAL_ERROR = "INTERNAL_ERROR"
+    INVALID_CURSOR = "INVALID_CURSOR"
     INVALID_CREDENTIALS = "INVALID_CREDENTIALS"
+    JOB_NOT_FOUND = "JOB_NOT_FOUND"
+    JOB_VERSION_CONFLICT = "JOB_VERSION_CONFLICT"
     TOKEN_EXPIRED = "TOKEN_EXPIRED"
     TOKEN_INVALID = "TOKEN_INVALID"
     TOKEN_MISSING = "TOKEN_MISSING"
+    VALIDATION_ERROR = "VALIDATION_ERROR"
 
 
 class ErrorDetail(BaseModel):
     code: ErrorCode
     message: str
+    details: dict[str, object] = Field(default_factory=dict)
     request_id: str
 
 

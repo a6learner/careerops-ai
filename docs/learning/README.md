@@ -90,3 +90,5 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0006 Registration API](0006-register-api.md)
 - [0007 Login And Access Tokens](0007-login-and-access-tokens.md)
 - [0008 Current User Dependency](0008-current-user-dependency.md)
+- [0009 Experiences CRUD And Object-Level Authorization](0009-experiences-crud-and-authorization.md)
+- [0010 Jobs CRUD And Cursor Pagination](0010-jobs-crud-and-pagination.md)

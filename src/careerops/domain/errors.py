@@ -22,3 +22,35 @@ class InvalidTokenError(Exception):
 class ExpiredTokenError(Exception):
     def __init__(self) -> None:
         super().__init__("Expired bearer token.")
+
+
+class ExperienceNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Experience was not found.")
+
+
+class ExperienceVersionConflictError(Exception):
+    def __init__(self, current_version: int) -> None:
+        super().__init__("Experience version conflict.")
+        self.current_version = current_version
+
+
+class MissingIfMatchHeaderError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Missing If-Match header.")
+
+
+class JobNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Job was not found.")
+
+
+class JobVersionConflictError(Exception):
+    def __init__(self, current_version: int) -> None:
+        super().__init__("Job version conflict.")
+        self.current_version = current_version
+
+
+class InvalidCursorError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Invalid pagination cursor.")
