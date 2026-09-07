@@ -4,11 +4,16 @@ from time import perf_counter
 from typing import Protocol
 from uuid import UUID
 
-from careerops.domain.errors import JobNotFoundError, ParseRunNotFoundError
+from careerops.domain.errors import (
+    IdempotencyKeyConflictError,
+    JobNotFoundError,
+    ParseRunNotFoundError,
+)
 from careerops.domain.jobs import JobRecord
 from careerops.domain.parse_runs import (
     PARSE_PROMPT_VERSION,
     ParsedRequirement,
+    ParseRunCreationResult,
     ParseRunRecord,
     RequirementCategory,
 )
@@ -22,6 +27,7 @@ class ParseRunStore(Protocol):
     async def get_parse_run_by_idempotency_key(
         self,
         user_id: UUID,
+        job_id: UUID,
         idempotency_key: str,
     ) -> ParseRunRecord | None: ...
 
@@ -32,7 +38,7 @@ class ParseRunStore(Protocol):
         parse_run_id: UUID,
     ) -> ParseRunRecord | None: ...
 
-    async def create_succeeded_parse_run(
+    async def create_or_get_succeeded_parse_run(
         self,
         user_id: UUID,
         job: JobRecord,
@@ -40,7 +46,7 @@ class ParseRunStore(Protocol):
         input_fingerprint: str,
         requirements: tuple[ParsedRequirement, ...],
         latency_ms: int,
-    ) -> ParseRunRecord: ...
+    ) -> ParseRunCreationResult: ...
 
     async def commit(self) -> None: ...
 
@@ -56,30 +62,35 @@ class ParseRunService:
         job_id: UUID,
         idempotency_key: str,
     ) -> ParseRunRecord:
-        existing = await self._parse_runs.get_parse_run_by_idempotency_key(
-            user_id=user_id,
-            idempotency_key=idempotency_key,
-        )
-        if existing is not None:
-            return existing
-
         job = await self._jobs.get_job(user_id, job_id)
         if job is None:
             raise JobNotFoundError()
 
+        input_fingerprint = compute_parse_input_fingerprint(job)
+        existing = await self._parse_runs.get_parse_run_by_idempotency_key(
+            user_id=user_id,
+            job_id=job_id,
+            idempotency_key=idempotency_key,
+        )
+        if existing is not None:
+            ensure_matching_idempotency_input(existing, input_fingerprint)
+            return existing
+
         started = perf_counter()
         requirements = parse_requirements_deterministically(job.raw_description)
         latency_ms = int((perf_counter() - started) * 1000)
-        run = await self._parse_runs.create_succeeded_parse_run(
+        creation = await self._parse_runs.create_or_get_succeeded_parse_run(
             user_id=user_id,
             job=job,
             idempotency_key=idempotency_key,
-            input_fingerprint=compute_parse_input_fingerprint(job),
+            input_fingerprint=input_fingerprint,
             requirements=requirements,
             latency_ms=latency_ms,
         )
-        await self._parse_runs.commit()
-        return run
+        ensure_matching_idempotency_input(creation.run, input_fingerprint)
+        if creation.created:
+            await self._parse_runs.commit()
+        return creation.run
 
     async def get_parse_run(
         self,
@@ -99,6 +110,11 @@ class ParseRunService:
         if run is None:
             raise ParseRunNotFoundError()
         return run
+
+
+def ensure_matching_idempotency_input(run: ParseRunRecord, input_fingerprint: str) -> None:
+    if run.input_fingerprint != input_fingerprint:
+        raise IdempotencyKeyConflictError()
 
 
 def compute_parse_input_fingerprint(job: JobRecord) -> str:

@@ -62,3 +62,9 @@ class ParseRunRecord:
     finished_at: datetime | None
     created_at: datetime
     requirements: tuple[JobRequirementRecord, ...]
+
+
+@dataclass(frozen=True)
+class ParseRunCreationResult:
+    run: ParseRunRecord
+    created: bool

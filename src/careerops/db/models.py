@@ -186,7 +186,13 @@ class ParseRun(Base):
             "output_tokens IS NULL OR output_tokens >= 0",
             name="ck_parse_runs_output_tokens",
         ),
-        Index("uq_parse_runs_user_idempotency", "user_id", "idempotency_key", unique=True),
+        Index(
+            "uq_parse_runs_user_job_idempotency",
+            "user_id",
+            "job_id",
+            "idempotency_key",
+            unique=True,
+        ),
         Index("idx_parse_runs_user_job_created", "user_id", "job_id", text("created_at DESC")),
     )
 

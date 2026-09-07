@@ -75,7 +75,7 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `GET /api/v1/jobs/{id}` returns one owned active job.
 - `PATCH /api/v1/jobs/{id}` updates one owned active job with `If-Match` optimistic locking.
 - `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
-- `POST /api/v1/jobs/{id}/parse-runs` creates or reuses an idempotent parse run for one owned active job.
+- `POST /api/v1/jobs/{id}/parse-runs` creates or reuses an idempotent parse run for one owned active job; a key can be replayed only while that job's parse input is unchanged.
 - `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
 
 Remaining business endpoints will be added in small milestones: worker-backed parse execution, async analysis runs, action items, and dashboard summary.

@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, Header
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.api.dependencies import get_current_user
-from careerops.api.preconditions import parse_idempotency_key
+from careerops.api.preconditions import MAX_IDEMPOTENCY_KEY_LENGTH, parse_idempotency_key
 from careerops.db.session import get_session
 from careerops.domain.parse_runs import JobRequirementRecord, ParseRunRecord
 from careerops.domain.users import UserAccount
@@ -23,7 +23,10 @@ async def submit_parse_run(
     job_id: UUID,
     current_user: Annotated[UserAccount, Depends(get_current_user)],
     session: Annotated[AsyncSession, Depends(get_session)],
-    idempotency_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
+    idempotency_key: Annotated[
+        str | None,
+        Header(alias="Idempotency-Key", max_length=MAX_IDEMPOTENCY_KEY_LENGTH),
+    ] = None,
 ) -> ParseRunResponse:
     service = build_parse_run_service(session)
     run = await service.submit_parse_run(

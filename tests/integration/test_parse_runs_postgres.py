@@ -1,3 +1,4 @@
+import asyncio
 import os
 from uuid import uuid4
 
@@ -50,6 +51,48 @@ async def test_parse_runs_are_idempotent_and_authorized() -> None:
                 f"/api/v1/jobs/{job_id}/parse-runs",
                 headers={**auth_header(first_token), "Idempotency-Key": "parse-key"},
             )
+            concurrent_first, concurrent_second = await asyncio.gather(
+                client.post(
+                    f"/api/v1/jobs/{job_id}/parse-runs",
+                    headers={
+                        **auth_header(first_token),
+                        "Idempotency-Key": "concurrent-key",
+                    },
+                ),
+                client.post(
+                    f"/api/v1/jobs/{job_id}/parse-runs",
+                    headers={
+                        **auth_header(first_token),
+                        "Idempotency-Key": "concurrent-key",
+                    },
+                ),
+            )
+            second_job = await client.post(
+                "/api/v1/jobs",
+                headers=auth_header(first_token),
+                json={
+                    "company": "Example",
+                    "title": "Platform Intern",
+                    "raw_description": "SQL experience required.",
+                },
+            )
+            scoped_to_second_job = await client.post(
+                f"/api/v1/jobs/{second_job.json()['id']}/parse-runs",
+                headers={**auth_header(first_token), "Idempotency-Key": "parse-key"},
+            )
+            updated_job = await client.patch(
+                f"/api/v1/jobs/{job_id}",
+                headers={**auth_header(first_token), "If-Match": "1"},
+                json={"raw_description": "Go experience required."},
+            )
+            conflicting_replay = await client.post(
+                f"/api/v1/jobs/{job_id}/parse-runs",
+                headers={**auth_header(first_token), "Idempotency-Key": "parse-key"},
+            )
+            oversized_key = await client.post(
+                f"/api/v1/jobs/{job_id}/parse-runs",
+                headers={**auth_header(first_token), "Idempotency-Key": "x" * 256},
+            )
             fetched = await client.get(
                 f"/api/v1/jobs/{job_id}/parse-runs/{submitted.json()['id']}",
                 headers=auth_header(first_token),
@@ -76,6 +119,23 @@ async def test_parse_runs_are_idempotent_and_authorized() -> None:
     assert repeated.status_code == 202
     assert repeated.json()["id"] == submitted.json()["id"]
     assert repeated.json()["requirements"] == submitted.json()["requirements"]
+
+    assert concurrent_first.status_code == 202
+    assert concurrent_second.status_code == 202
+    assert concurrent_first.json()["id"] == concurrent_second.json()["id"]
+    assert concurrent_first.json()["requirements"] == concurrent_second.json()["requirements"]
+
+    assert second_job.status_code == 201
+    assert scoped_to_second_job.status_code == 202
+    assert scoped_to_second_job.json()["job_id"] == second_job.json()["id"]
+    assert scoped_to_second_job.json()["id"] != submitted.json()["id"]
+
+    assert updated_job.status_code == 200
+    assert conflicting_replay.status_code == 409
+    assert conflicting_replay.json()["error"]["code"] == "IDEMPOTENCY_KEY_CONFLICT"
+
+    assert oversized_key.status_code == 422
+    assert oversized_key.json()["error"]["code"] == "VALIDATION_ERROR"
 
     assert fetched.status_code == 200
     assert fetched.json()["id"] == submitted.json()["id"]

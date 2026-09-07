@@ -1,5 +1,7 @@
 from careerops.domain.errors import MissingIdempotencyKeyError, MissingIfMatchHeaderError
 
+MAX_IDEMPOTENCY_KEY_LENGTH = 255
+
 
 def parse_if_match(value: str | None) -> int:
     if value is None:

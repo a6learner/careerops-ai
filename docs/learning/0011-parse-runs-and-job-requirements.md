@@ -25,6 +25,11 @@ just a hidden helper function.
 ## Failure Modes It Prevents
 
 - Repeated submit clicks creating duplicate parse runs.
+- Concurrent requests passing an application-level existence check and racing
+  to insert duplicate runs.
+- Reusing a key after the job input changes and silently returning stale output.
+- A key used for one job causing a nested endpoint for another job to return the
+  wrong run.
 - Users reading parse runs for jobs they do not own.
 - Parsed requirements being stored without a link back to the raw JD text.
 - Future analysis runs depending on unstructured raw text instead of stable
@@ -64,7 +69,14 @@ separate resource identity. It does not mean the API route should block on an
 unreliable external model call.
 
 Level 1: Idempotency protects users and the backend when the same submit action
-is repeated. The same user and same `Idempotency-Key` return the same parse run.
+is repeated. The same user, job, key, and input fingerprint return the same
+parse run. If the job input changed, the old key returns a conflict rather than
+stale output.
+
+Level 1: An application-level "check then insert" is not sufficient under
+concurrency. PostgreSQL's unique index is the final invariant, while
+`INSERT ... ON CONFLICT DO NOTHING` lets competing requests converge on the
+winning row without breaking the transaction.
 
 Level 1: Source spans connect each structured requirement back to raw JD text.
 This is the first anti-hallucination layer for parsing.
@@ -84,3 +96,6 @@ authorization filters and future run list queries.
 4. Why is a deterministic fake parser better than a real LLM for CI tests?
 5. What must change in the next worker milestone while preserving the API
    contract?
+6. Why can two requests both observe "no existing run" before either inserts?
+7. Why should a changed input fingerprint return 409 instead of the old result?
+8. Why is the idempotency key scoped to a job as well as a user?

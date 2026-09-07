@@ -61,6 +61,11 @@ class MissingIdempotencyKeyError(Exception):
         super().__init__("Missing Idempotency-Key header.")
 
 
+class IdempotencyKeyConflictError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Idempotency key was already used with different input.")
+
+
 class ParseRunNotFoundError(Exception):
     def __init__(self) -> None:
         super().__init__("Parse run was not found.")

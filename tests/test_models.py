@@ -107,6 +107,15 @@ def test_parse_runs_table_metadata_matches_migration_contract() -> None:
     assert not parse_runs.columns["input_fingerprint"].nullable
     assert not parse_runs.columns["model_name"].nullable
     assert not parse_runs.columns["prompt_version"].nullable
+    idempotency_index = next(
+        index for index in parse_runs.indexes if index.name == "uq_parse_runs_user_job_idempotency"
+    )
+    assert idempotency_index.unique
+    assert [column.name for column in idempotency_index.columns] == [
+        "user_id",
+        "job_id",
+        "idempotency_key",
+    ]
 
 
 def test_job_requirements_table_metadata_matches_migration_contract() -> None:

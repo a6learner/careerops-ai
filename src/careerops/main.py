@@ -25,6 +25,7 @@ from careerops.domain.errors import (
     ExperienceNotFoundError,
     ExperienceVersionConflictError,
     ExpiredTokenError,
+    IdempotencyKeyConflictError,
     InvalidCredentialsError,
     InvalidCursorError,
     InvalidTokenError,
@@ -186,6 +187,18 @@ def create_app() -> FastAPI:
             status_code=HTTPStatus.PRECONDITION_REQUIRED,
             code=ErrorCode.IDEMPOTENCY_KEY_REQUIRED,
             message="Idempotency-Key header is required.",
+        )
+
+    @app.exception_handler(IdempotencyKeyConflictError)
+    async def idempotency_key_conflict_handler(
+        request: Request,
+        exc: IdempotencyKeyConflictError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.IDEMPOTENCY_KEY_CONFLICT,
+            message="Idempotency key was already used with different input.",
         )
 
     @app.exception_handler(InvalidCursorError)
