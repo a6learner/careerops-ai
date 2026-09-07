@@ -159,6 +159,9 @@ Development alignment:
 - source span validation
 - retry and failure states
 
+Implementation status: first backend resource slice complete with deterministic
+fake parsing; worker-backed LLM execution remains future work.
+
 ### US-005: Match Requirements To Evidence
 
 As a candidate, I want each job requirement matched to my real experiences so

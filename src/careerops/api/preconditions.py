@@ -1,4 +1,4 @@
-from careerops.domain.errors import MissingIfMatchHeaderError
+from careerops.domain.errors import MissingIdempotencyKeyError, MissingIfMatchHeaderError
 
 
 def parse_if_match(value: str | None) -> int:
@@ -11,3 +11,12 @@ def parse_if_match(value: str | None) -> int:
     if version < 1:
         raise MissingIfMatchHeaderError()
     return version
+
+
+def parse_idempotency_key(value: str | None) -> str:
+    if value is None:
+        raise MissingIdempotencyKeyError()
+    normalized = value.strip()
+    if normalized == "":
+        raise MissingIdempotencyKeyError()
+    return normalized

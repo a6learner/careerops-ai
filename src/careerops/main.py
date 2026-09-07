@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from careerops.api.auth import router as auth_router
 from careerops.api.experiences import router as experiences_router
 from careerops.api.jobs import router as jobs_router
+from careerops.api.parse_runs import router as parse_runs_router
 from careerops.api.routes import router
 from careerops.core.config import Settings, get_settings
 from careerops.core.errors import ErrorCode, ErrorDetail, ErrorResponse
@@ -29,8 +30,10 @@ from careerops.domain.errors import (
     InvalidTokenError,
     JobNotFoundError,
     JobVersionConflictError,
+    MissingIdempotencyKeyError,
     MissingIfMatchHeaderError,
     MissingTokenError,
+    ParseRunNotFoundError,
 )
 
 logger = logging.getLogger(__name__)
@@ -57,6 +60,7 @@ def create_app() -> FastAPI:
     app.include_router(auth_router)
     app.include_router(experiences_router)
     app.include_router(jobs_router)
+    app.include_router(parse_runs_router)
 
     @app.exception_handler(DuplicateEmailError)
     async def duplicate_email_handler(request: Request, exc: DuplicateEmailError) -> JSONResponse:
@@ -158,6 +162,30 @@ def create_app() -> FastAPI:
             status_code=HTTPStatus.CONFLICT,
             code=ErrorCode.JOB_VERSION_CONFLICT,
             message="Job version conflict.",
+        )
+
+    @app.exception_handler(ParseRunNotFoundError)
+    async def parse_run_not_found_handler(
+        request: Request,
+        exc: ParseRunNotFoundError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.PARSE_RUN_NOT_FOUND,
+            message="Parse run was not found.",
+        )
+
+    @app.exception_handler(MissingIdempotencyKeyError)
+    async def missing_idempotency_key_handler(
+        request: Request,
+        exc: MissingIdempotencyKeyError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.PRECONDITION_REQUIRED,
+            code=ErrorCode.IDEMPOTENCY_KEY_REQUIRED,
+            message="Idempotency-Key header is required.",
         )
 
     @app.exception_handler(InvalidCursorError)

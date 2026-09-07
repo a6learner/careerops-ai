@@ -1,4 +1,4 @@
-from careerops.db.models import Base, Experience, Job, User
+from careerops.db.models import Base, Experience, Job, JobRequirement, ParseRun, User
 
 
 def test_users_table_metadata_matches_initial_migration_contract() -> None:
@@ -75,3 +75,59 @@ def test_jobs_table_metadata_matches_migration_contract() -> None:
     assert not jobs.columns["status"].nullable
     assert not jobs.columns["version"].nullable
     assert jobs.columns["deleted_at"].nullable
+
+
+def test_parse_runs_table_metadata_matches_migration_contract() -> None:
+    parse_runs = Base.metadata.tables["parse_runs"]
+
+    assert ParseRun.__tablename__ == "parse_runs"
+    assert set(parse_runs.columns.keys()) == {
+        "id",
+        "user_id",
+        "job_id",
+        "status",
+        "idempotency_key",
+        "input_fingerprint",
+        "model_name",
+        "prompt_version",
+        "attempt",
+        "error_code",
+        "latency_ms",
+        "input_tokens",
+        "output_tokens",
+        "started_at",
+        "finished_at",
+        "created_at",
+    }
+    assert parse_runs.columns["id"].primary_key
+    assert not parse_runs.columns["user_id"].nullable
+    assert not parse_runs.columns["job_id"].nullable
+    assert not parse_runs.columns["status"].nullable
+    assert not parse_runs.columns["idempotency_key"].nullable
+    assert not parse_runs.columns["input_fingerprint"].nullable
+    assert not parse_runs.columns["model_name"].nullable
+    assert not parse_runs.columns["prompt_version"].nullable
+
+
+def test_job_requirements_table_metadata_matches_migration_contract() -> None:
+    requirements = Base.metadata.tables["job_requirements"]
+
+    assert JobRequirement.__tablename__ == "job_requirements"
+    assert set(requirements.columns.keys()) == {
+        "id",
+        "job_id",
+        "parse_run_id",
+        "category",
+        "text",
+        "skill_normalized",
+        "source_span_start",
+        "source_span_end",
+    }
+    assert requirements.columns["id"].primary_key
+    assert not requirements.columns["job_id"].nullable
+    assert not requirements.columns["parse_run_id"].nullable
+    assert not requirements.columns["category"].nullable
+    assert not requirements.columns["text"].nullable
+    assert requirements.columns["skill_normalized"].nullable
+    assert requirements.columns["source_span_start"].nullable
+    assert requirements.columns["source_span_end"].nullable

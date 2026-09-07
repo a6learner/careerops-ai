@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences CRUD, and user-owned Jobs CRUD with status filtering and cursor pagination.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences CRUD, user-owned Jobs CRUD with status filtering and cursor pagination, and the first idempotent parse-run resource for turning saved JDs into structured requirements.
 
 ## Architecture Direction
 
@@ -75,8 +75,10 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `GET /api/v1/jobs/{id}` returns one owned active job.
 - `PATCH /api/v1/jobs/{id}` updates one owned active job with `If-Match` optimistic locking.
 - `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
+- `POST /api/v1/jobs/{id}/parse-runs` creates or reuses an idempotent parse run for one owned active job.
+- `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
 
-Remaining business endpoints will be added in small milestones: async parse runs, async analysis runs, action items, and dashboard summary.
+Remaining business endpoints will be added in small milestones: worker-backed parse execution, async analysis runs, action items, and dashboard summary.
 
 ## Key Decisions
 

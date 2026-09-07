@@ -65,3 +65,4 @@ What future condition would justify reopening this decision?
 - `ADR-007-current-user-dependency.md`: reusable current-user dependency for protected endpoints.
 - `ADR-008-experiences-crud-and-authorization.md`: experiences CRUD with object-level authorization, soft deletion, optimistic locking, and pgvector storage.
 - `ADR-009-jobs-resource-and-pagination.md`: jobs CRUD with object-level authorization, soft deletion, optimistic locking, status filtering, and cursor pagination.
+- `ADR-010-parse-runs-and-job-requirements.md`: parse run resources and structured job requirements with idempotent submission and source spans.

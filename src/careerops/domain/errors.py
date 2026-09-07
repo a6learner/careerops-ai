@@ -54,3 +54,13 @@ class JobVersionConflictError(Exception):
 class InvalidCursorError(Exception):
     def __init__(self) -> None:
         super().__init__("Invalid pagination cursor.")
+
+
+class MissingIdempotencyKeyError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Missing Idempotency-Key header.")
+
+
+class ParseRunNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Parse run was not found.")
