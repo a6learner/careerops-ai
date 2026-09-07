@@ -69,9 +69,9 @@ tested before adding the real worker and LLM adapter.
 The MVP flow now reaches "save job description -> submit parse run -> review
 structured requirements."
 
-The current implementation completes parse runs immediately with a fake parser.
-The next worker milestone should preserve the API contract while moving parsing
-execution behind a real queue and LLM adapter.
+The initial implementation completed parse runs immediately with a fake parser.
+ADR-011 preserves the resource contract while moving execution behind a
+Dramatiq/Redis worker and parser adapter.
 
 `parse_runs.user_id` is redundant with `jobs.user_id` by design. It keeps
 authorization queries simple and gives future run lists a direct owner column.
@@ -99,6 +99,6 @@ infrastructure for the resource boundary.
 
 ## Revisit If
 
-Revisit when implementing the worker-backed parser, adding retry states,
-introducing prompt/model versioning beyond `parse-v1`, or enforcing stronger
-programmatic validation of source spans from real model output.
+Worker execution and programmatic source-span validation were added in ADR-011.
+Revisit when adding bounded provider retries or prompt/model versioning beyond
+`parse-v1`.

@@ -1,6 +1,4 @@
 import hashlib
-import re
-from time import perf_counter
 from typing import Protocol
 from uuid import UUID
 
@@ -12,10 +10,9 @@ from careerops.domain.errors import (
 from careerops.domain.jobs import JobRecord
 from careerops.domain.parse_runs import (
     PARSE_PROMPT_VERSION,
-    ParsedRequirement,
     ParseRunCreationResult,
     ParseRunRecord,
-    RequirementCategory,
+    ParseRunStatus,
 )
 
 
@@ -38,23 +35,31 @@ class ParseRunStore(Protocol):
         parse_run_id: UUID,
     ) -> ParseRunRecord | None: ...
 
-    async def create_or_get_succeeded_parse_run(
+    async def create_or_get_queued_parse_run(
         self,
         user_id: UUID,
         job: JobRecord,
         idempotency_key: str,
         input_fingerprint: str,
-        requirements: tuple[ParsedRequirement, ...],
-        latency_ms: int,
     ) -> ParseRunCreationResult: ...
 
     async def commit(self) -> None: ...
 
 
+class ParseRunDispatcher(Protocol):
+    async def dispatch(self, parse_run_id: UUID) -> None: ...
+
+
 class ParseRunService:
-    def __init__(self, jobs: JobReader, parse_runs: ParseRunStore) -> None:
+    def __init__(
+        self,
+        jobs: JobReader,
+        parse_runs: ParseRunStore,
+        dispatcher: ParseRunDispatcher,
+    ) -> None:
         self._jobs = jobs
         self._parse_runs = parse_runs
+        self._dispatcher = dispatcher
 
     async def submit_parse_run(
         self,
@@ -74,22 +79,21 @@ class ParseRunService:
         )
         if existing is not None:
             ensure_matching_idempotency_input(existing, input_fingerprint)
+            if existing.status == ParseRunStatus.QUEUED:
+                await self._dispatcher.dispatch(existing.id)
             return existing
 
-        started = perf_counter()
-        requirements = parse_requirements_deterministically(job.raw_description)
-        latency_ms = int((perf_counter() - started) * 1000)
-        creation = await self._parse_runs.create_or_get_succeeded_parse_run(
+        creation = await self._parse_runs.create_or_get_queued_parse_run(
             user_id=user_id,
             job=job,
             idempotency_key=idempotency_key,
             input_fingerprint=input_fingerprint,
-            requirements=requirements,
-            latency_ms=latency_ms,
         )
         ensure_matching_idempotency_input(creation.run, input_fingerprint)
         if creation.created:
             await self._parse_runs.commit()
+        if creation.run.status == ParseRunStatus.QUEUED:
+            await self._dispatcher.dispatch(creation.run.id)
         return creation.run
 
     async def get_parse_run(
@@ -120,67 +124,3 @@ def ensure_matching_idempotency_input(run: ParseRunRecord, input_fingerprint: st
 def compute_parse_input_fingerprint(job: JobRecord) -> str:
     raw = f"{job.id}:{job.version}:{job.description_hash}:{PARSE_PROMPT_VERSION}"
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
-
-
-def parse_requirements_deterministically(raw_description: str) -> tuple[ParsedRequirement, ...]:
-    requirements: list[ParsedRequirement] = []
-    for match in re.finditer(r"[^.\n;•-][^.\n;]*", raw_description):
-        text = " ".join(match.group(0).split())
-        if len(text) < 4:
-            continue
-        requirements.append(
-            ParsedRequirement(
-                category=classify_requirement(text),
-                text=text,
-                skill_normalized=extract_skill(text),
-                source_span_start=match.start(),
-                source_span_end=match.end(),
-            )
-        )
-    if requirements:
-        return tuple(requirements)
-    stripped = raw_description.strip()
-    if stripped == "":
-        return ()
-    start = raw_description.index(stripped)
-    return (
-        ParsedRequirement(
-            category=RequirementCategory.RESPONSIBILITY,
-            text=stripped,
-            skill_normalized=extract_skill(stripped),
-            source_span_start=start,
-            source_span_end=start + len(stripped),
-        ),
-    )
-
-
-def classify_requirement(text: str) -> RequirementCategory:
-    lowered = text.lower()
-    if any(word in lowered for word in ("degree", "student", "bachelor", "master")):
-        return RequirementCategory.EDUCATION
-    if any(word in lowered for word in ("nice to have", "preferred", "plus", "bonus")):
-        return RequirementCategory.NICE_TO_HAVE
-    if any(word in lowered for word in ("required", "must", "experience", "proficient")):
-        return RequirementCategory.MUST_HAVE
-    return RequirementCategory.RESPONSIBILITY
-
-
-def extract_skill(text: str) -> str | None:
-    lowered = text.lower()
-    known_skills = (
-        "python",
-        "fastapi",
-        "postgresql",
-        "redis",
-        "sql",
-        "docker",
-        "kubernetes",
-        "aws",
-        "java",
-        "typescript",
-        "react",
-    )
-    for skill in known_skills:
-        if skill in lowered:
-            return skill
-    return None

@@ -159,8 +159,9 @@ Development alignment:
 - source span validation
 - retry and failure states
 
-Implementation status: first backend resource slice complete with deterministic
-fake parsing; worker-backed LLM execution remains future work.
+Implementation status: the backend resource and worker execution slices are
+complete with deterministic fake parsing. A real LLM adapter and bounded
+provider retry policy remain future work.
 
 ### US-005: Match Requirements To Evidence
 

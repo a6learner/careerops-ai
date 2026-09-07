@@ -22,6 +22,11 @@ class RequirementCategory(StrEnum):
     EDUCATION = "education"
 
 
+class ParseRunErrorCode(StrEnum):
+    PARSER_FAILED = "PARSER_FAILED"
+    PARSER_OUTPUT_INVALID = "PARSER_OUTPUT_INVALID"
+
+
 @dataclass(frozen=True)
 class ParsedRequirement:
     category: RequirementCategory
@@ -62,6 +67,20 @@ class ParseRunRecord:
     finished_at: datetime | None
     created_at: datetime
     requirements: tuple[JobRequirementRecord, ...]
+
+
+@dataclass(frozen=True)
+class ParseRunWorkItem:
+    id: UUID
+    input_text: str
+
+
+@dataclass(frozen=True)
+class ParserOutput:
+    model_name: str
+    requirements: tuple[ParsedRequirement, ...]
+    input_tokens: int | None = None
+    output_tokens: int | None = None
 
 
 @dataclass(frozen=True)

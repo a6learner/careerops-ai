@@ -69,3 +69,18 @@ class IdempotencyKeyConflictError(Exception):
 class ParseRunNotFoundError(Exception):
     def __init__(self) -> None:
         super().__init__("Parse run was not found.")
+
+
+class ParseRunDispatchError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Parse run queue is unavailable.")
+
+
+class RequirementParserError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Requirement parser failed.")
+
+
+class ParserOutputValidationError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Requirement parser returned invalid output.")

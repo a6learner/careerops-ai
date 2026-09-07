@@ -25,5 +25,17 @@ services:
       timeout: 3s
       retries: 10
 
+  worker:
+    build: .
+    command: ["dramatiq", "careerops.workers.tasks", "--processes", "1", "--threads", "4"]
+    environment:
+      CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:careerops@postgres:5432/careerops
+      CAREEROPS_REDIS_URL: redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
 volumes:
   postgres-data:

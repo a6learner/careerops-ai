@@ -34,8 +34,10 @@ from careerops.domain.errors import (
     MissingIdempotencyKeyError,
     MissingIfMatchHeaderError,
     MissingTokenError,
+    ParseRunDispatchError,
     ParseRunNotFoundError,
 )
+from careerops.workers.dispatcher import DramatiqParseRunDispatcher
 
 logger = logging.getLogger(__name__)
 
@@ -56,6 +58,7 @@ def create_app() -> FastAPI:
 
     app = FastAPI(title="CareerOps AI", version="0.1.0", lifespan=lifespan)
     app.state.settings = settings
+    app.state.parse_run_dispatcher = DramatiqParseRunDispatcher()
     app.add_middleware(RequestIdMiddleware)
     app.include_router(router)
     app.include_router(auth_router)
@@ -199,6 +202,18 @@ def create_app() -> FastAPI:
             status_code=HTTPStatus.CONFLICT,
             code=ErrorCode.IDEMPOTENCY_KEY_CONFLICT,
             message="Idempotency key was already used with different input.",
+        )
+
+    @app.exception_handler(ParseRunDispatchError)
+    async def parse_run_dispatch_error_handler(
+        request: Request,
+        exc: ParseRunDispatchError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            code=ErrorCode.DEPENDENCY_UNAVAILABLE,
+            message="Parse run queue is unavailable; retry with the same idempotency key.",
         )
 
     @app.exception_handler(InvalidCursorError)

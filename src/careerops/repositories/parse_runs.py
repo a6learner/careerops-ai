@@ -1,7 +1,7 @@
 from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -13,8 +13,10 @@ from careerops.domain.parse_runs import (
     JobRequirementRecord,
     ParsedRequirement,
     ParseRunCreationResult,
+    ParseRunErrorCode,
     ParseRunRecord,
     ParseRunStatus,
+    ParseRunWorkItem,
     RequirementCategory,
 )
 
@@ -59,16 +61,13 @@ class ParseRunRepository:
             return None
         return await self._to_record(parse_run)
 
-    async def create_or_get_succeeded_parse_run(
+    async def create_or_get_queued_parse_run(
         self,
         user_id: UUID,
         job: JobRecord,
         idempotency_key: str,
         input_fingerprint: str,
-        requirements: tuple[ParsedRequirement, ...],
-        latency_ms: int,
     ) -> ParseRunCreationResult:
-        now = datetime.now(UTC)
         parse_run_id = uuid4()
         result = await self._session.execute(
             insert(ParseRun)
@@ -76,15 +75,13 @@ class ParseRunRepository:
                 id=parse_run_id,
                 user_id=user_id,
                 job_id=job.id,
-                status=ParseRunStatus.SUCCEEDED.value,
+                status=ParseRunStatus.QUEUED.value,
                 idempotency_key=idempotency_key,
                 input_fingerprint=input_fingerprint,
+                input_text=job.raw_description,
                 model_name=FAKE_PARSE_MODEL_NAME,
                 prompt_version=PARSE_PROMPT_VERSION,
                 attempt=1,
-                latency_ms=latency_ms,
-                started_at=now,
-                finished_at=now,
             )
             .on_conflict_do_nothing(
                 index_elements=[ParseRun.user_id, ParseRun.job_id, ParseRun.idempotency_key]
@@ -102,20 +99,6 @@ class ParseRunRepository:
                 raise RuntimeError("Idempotency conflict did not resolve to an existing parse run.")
             return ParseRunCreationResult(run=existing, created=False)
 
-        for requirement in requirements:
-            self._session.add(
-                JobRequirement(
-                    job_id=job.id,
-                    parse_run_id=parse_run_id,
-                    category=requirement.category.value,
-                    text=requirement.text,
-                    skill_normalized=requirement.skill_normalized,
-                    source_span_start=requirement.source_span_start,
-                    source_span_end=requirement.source_span_end,
-                )
-            )
-
-        await self._session.flush()
         created = await self.get_parse_run(
             user_id=user_id,
             job_id=job.id,
@@ -124,6 +107,129 @@ class ParseRunRepository:
         if created is None:
             raise RuntimeError("Inserted parse run could not be loaded.")
         return ParseRunCreationResult(run=created, created=True)
+
+    async def claim_parse_run(self, parse_run_id: UUID) -> ParseRunWorkItem | None:
+        result = await self._session.execute(
+            update(ParseRun)
+            .where(
+                ParseRun.id == parse_run_id,
+                ParseRun.status == ParseRunStatus.QUEUED.value,
+            )
+            .values(
+                status=ParseRunStatus.RUNNING.value,
+                started_at=datetime.now(UTC),
+            )
+            .returning(ParseRun.id, ParseRun.input_text)
+        )
+        row = result.one_or_none()
+        if row is None:
+            return None
+        return ParseRunWorkItem(id=row.id, input_text=row.input_text)
+
+    async def complete_parse_run(
+        self,
+        parse_run_id: UUID,
+        model_name: str,
+        requirements: tuple[ParsedRequirement, ...],
+        latency_ms: int,
+        input_tokens: int | None,
+        output_tokens: int | None,
+    ) -> bool:
+        result = await self._session.execute(
+            update(ParseRun)
+            .where(
+                ParseRun.id == parse_run_id,
+                ParseRun.status == ParseRunStatus.RUNNING.value,
+            )
+            .values(
+                status=ParseRunStatus.SUCCEEDED.value,
+                model_name=model_name,
+                error_code=None,
+                latency_ms=latency_ms,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                finished_at=datetime.now(UTC),
+            )
+            .returning(ParseRun.job_id)
+        )
+        job_id = result.scalar_one_or_none()
+        if job_id is None:
+            return False
+        for requirement in requirements:
+            self._session.add(
+                JobRequirement(
+                    job_id=job_id,
+                    parse_run_id=parse_run_id,
+                    category=requirement.category.value,
+                    text=requirement.text,
+                    skill_normalized=requirement.skill_normalized,
+                    source_span_start=requirement.source_span_start,
+                    source_span_end=requirement.source_span_end,
+                )
+            )
+        await self._session.flush()
+        return True
+
+    async def fail_parse_run(
+        self,
+        parse_run_id: UUID,
+        error_code: ParseRunErrorCode,
+        latency_ms: int,
+    ) -> bool:
+        result = await self._session.execute(
+            update(ParseRun)
+            .where(
+                ParseRun.id == parse_run_id,
+                ParseRun.status == ParseRunStatus.RUNNING.value,
+            )
+            .values(
+                status=ParseRunStatus.FAILED.value,
+                error_code=error_code.value,
+                latency_ms=latency_ms,
+                finished_at=datetime.now(UTC),
+            )
+            .returning(ParseRun.id)
+        )
+        return result.scalar_one_or_none() is not None
+
+    async def requeue_stale_parse_runs(
+        self,
+        stale_before: datetime,
+        limit: int,
+    ) -> list[UUID]:
+        stale_ids = (
+            select(ParseRun.id)
+            .where(
+                ParseRun.status == ParseRunStatus.RUNNING.value,
+                ParseRun.started_at < stale_before,
+            )
+            .order_by(ParseRun.started_at.asc(), ParseRun.id.asc())
+            .limit(limit)
+            .with_for_update(skip_locked=True)
+        )
+        result = await self._session.execute(
+            update(ParseRun)
+            .where(ParseRun.id.in_(stale_ids))
+            .values(
+                status=ParseRunStatus.QUEUED.value,
+                attempt=ParseRun.attempt + 1,
+                error_code=None,
+                latency_ms=None,
+                started_at=None,
+                finished_at=None,
+            )
+            .returning(ParseRun.id)
+        )
+        return list(result.scalars().all())
+
+    async def list_queued_parse_run_ids(self, limit: int) -> list[UUID]:
+        result = await self._session.execute(
+            select(ParseRun.id)
+            .where(ParseRun.status == ParseRunStatus.QUEUED.value)
+            .order_by(ParseRun.created_at.asc(), ParseRun.id.asc())
+            .limit(limit)
+        )
+        return list(result.scalars().all())
 
     async def commit(self) -> None:
         await self._session.commit()

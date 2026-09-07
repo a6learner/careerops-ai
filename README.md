@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences CRUD, user-owned Jobs CRUD with status filtering and cursor pagination, and the first idempotent parse-run resource for turning saved JDs into structured requirements.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into structured requirements.
 
 ## Architecture Direction
 
@@ -41,6 +41,18 @@ Start local infrastructure:
 docker compose up -d postgres redis
 ```
 
+Run the worker in a separate terminal:
+
+```powershell
+.\.venv\Scripts\dramatiq careerops.workers.tasks --processes 1 --threads 4
+```
+
+Recover queued work and stale running work from PostgreSQL:
+
+```powershell
+.\.venv\Scripts\python -m careerops.workers.recovery
+```
+
 Apply database migrations:
 
 ```powershell
@@ -75,14 +87,14 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `GET /api/v1/jobs/{id}` returns one owned active job.
 - `PATCH /api/v1/jobs/{id}` updates one owned active job with `If-Match` optimistic locking.
 - `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
-- `POST /api/v1/jobs/{id}/parse-runs` creates or reuses an idempotent parse run for one owned active job; a key can be replayed only while that job's parse input is unchanged.
+- `POST /api/v1/jobs/{id}/parse-runs` creates or reuses a queued idempotent parse run for one owned active job; a key can be replayed only while that job's parse input is unchanged.
 - `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
 
-Remaining business endpoints will be added in small milestones: worker-backed parse execution, async analysis runs, action items, and dashboard summary.
+Remaining business endpoints will be added in small milestones: evidence-backed analysis runs, action items, and dashboard summary.
 
 ## Key Decisions
 
 - Python is used with strict typing discipline because the project targets backend systems plus LLM governance, not a language showcase.
 - PostgreSQL is the only source of truth. Redis may be cleared and rebuilt.
-- Dramatiq is the planned worker queue because its Redis integration is small and direct for this project size; the queue choice can still be revisited before the async milestone.
+- Dramatiq is the worker queue because its Redis integration is small and direct for this project size. PostgreSQL remains the durable task source and can rebuild queued delivery.
 - Database constraints will enforce core invariants, especially the rule that positive evidence matches cannot be stored without real evidence.

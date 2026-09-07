@@ -186,6 +186,18 @@ class ParseRun(Base):
             "output_tokens IS NULL OR output_tokens >= 0",
             name="ck_parse_runs_output_tokens",
         ),
+        CheckConstraint(
+            "(status = 'queued' AND started_at IS NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'running' AND started_at IS NOT NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'succeeded' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'failed' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NOT NULL) OR "
+            "(status = 'cancelled' AND finished_at IS NOT NULL)",
+            name="ck_parse_runs_lifecycle",
+        ),
         Index(
             "uq_parse_runs_user_job_idempotency",
             "user_id",
@@ -210,6 +222,7 @@ class ParseRun(Base):
     status: Mapped[str] = mapped_column(Text, nullable=False)
     idempotency_key: Mapped[str] = mapped_column(Text, nullable=False)
     input_fingerprint: Mapped[str] = mapped_column(Text, nullable=False)
+    input_text: Mapped[str] = mapped_column(Text, nullable=False)
     model_name: Mapped[str] = mapped_column(Text, nullable=False)
     prompt_version: Mapped[str] = mapped_column(Text, nullable=False)
     attempt: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")

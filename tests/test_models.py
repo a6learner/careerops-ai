@@ -88,6 +88,7 @@ def test_parse_runs_table_metadata_matches_migration_contract() -> None:
         "status",
         "idempotency_key",
         "input_fingerprint",
+        "input_text",
         "model_name",
         "prompt_version",
         "attempt",
@@ -105,6 +106,7 @@ def test_parse_runs_table_metadata_matches_migration_contract() -> None:
     assert not parse_runs.columns["status"].nullable
     assert not parse_runs.columns["idempotency_key"].nullable
     assert not parse_runs.columns["input_fingerprint"].nullable
+    assert not parse_runs.columns["input_text"].nullable
     assert not parse_runs.columns["model_name"].nullable
     assert not parse_runs.columns["prompt_version"].nullable
     idempotency_index = next(
@@ -116,6 +118,8 @@ def test_parse_runs_table_metadata_matches_migration_contract() -> None:
         "job_id",
         "idempotency_key",
     ]
+    constraint_names = {constraint.name for constraint in parse_runs.constraints}
+    assert "ck_parse_runs_lifecycle" in constraint_names
 
 
 def test_job_requirements_table_metadata_matches_migration_contract() -> None:

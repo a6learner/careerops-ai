@@ -9,9 +9,9 @@ This step added the first structured job-description analysis resource:
 - `POST /api/v1/jobs/{job_id}/parse-runs`
 - `GET /api/v1/jobs/{job_id}/parse-runs/{parse_run_id}`
 
-The POST endpoint requires `Idempotency-Key` and returns `202 Accepted`. The
-current implementation uses a deterministic local fake parser instead of a real
-LLM or worker.
+The POST endpoint requires `Idempotency-Key` and returns `202 Accepted`. This
+note describes the original deterministic resource slice. Learning note 0012
+continues the design with worker-backed execution and a fake parser adapter.
 
 ## Why It Exists
 
@@ -81,9 +81,8 @@ winning row without breaking the transaction.
 Level 1: Source spans connect each structured requirement back to raw JD text.
 This is the first anti-hallucination layer for parsing.
 
-Level 2: The current fake parser is deterministic. It exists to make API,
-database, and authorization behavior testable before the real worker and LLM
-adapter are introduced.
+Level 2: The fake parser is deterministic. It began as a resource-boundary test
+and now runs behind the worker adapter described in learning note 0012.
 
 Level 2: `parse_runs.user_id` is redundant with `jobs.user_id`, but useful for
 authorization filters and future run list queries.

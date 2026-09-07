@@ -93,3 +93,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0009 Experiences CRUD And Object-Level Authorization](0009-experiences-crud-and-authorization.md)
 - [0010 Jobs CRUD And Cursor Pagination](0010-jobs-crud-and-pagination.md)
 - [0011 Parse Runs And Job Requirements](0011-parse-runs-and-job-requirements.md)
+- [0012 Worker-Backed Parse Execution](0012-worker-backed-parse-execution.md)
