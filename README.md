@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into structured requirements.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into grounded structured requirements through a fake or Groq adapter.
 
 ## Architecture Direction
 
@@ -47,6 +47,12 @@ Run the worker in a separate terminal:
 .\.venv\Scripts\dramatiq careerops.workers.tasks --processes 1 --threads 4
 ```
 
+The checked-in `.env.example` defaults to the deterministic `fake` provider.
+To run Groq locally, copy the example to the ignored `.env`, set
+`CAREEROPS_LLM_PROVIDER=groq`, and add `CAREEROPS_LLM_API_KEY`. Never commit the
+key. Automated tests remain fake or mock-backed unless the live-test flag is
+explicitly enabled.
+
 Recover queued work and stale running work from PostgreSQL:
 
 ```powershell
@@ -66,6 +72,14 @@ Useful checks:
 .\.venv\Scripts\python -m mypy
 .\.venv\Scripts\ruff check .
 .\.venv\Scripts\lint-imports
+```
+
+Run the small real-provider compatibility test intentionally:
+
+```powershell
+$env:CAREEROPS_RUN_LLM_INTEGRATION='1'
+.\.venv\Scripts\python -m pytest tests/integration/test_groq_live.py -s
+Remove-Item Env:CAREEROPS_RUN_LLM_INTEGRATION
 ```
 
 Using the explicit `.venv` paths keeps project dependencies out of the global Python or Anaconda environment.

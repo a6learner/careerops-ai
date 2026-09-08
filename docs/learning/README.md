@@ -94,3 +94,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0010 Jobs CRUD And Cursor Pagination](0010-jobs-crud-and-pagination.md)
 - [0011 Parse Runs And Job Requirements](0011-parse-runs-and-job-requirements.md)
 - [0012 Worker-Backed Parse Execution](0012-worker-backed-parse-execution.md)
+- [0013 Groq Structured Requirement Parser](0013-groq-structured-parser.md)

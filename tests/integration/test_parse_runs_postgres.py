@@ -7,6 +7,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import update
 
+from careerops.adapters.fake_requirement_parser import FakeRequirementParser
 from careerops.api.parse_runs import get_parse_run_dispatcher
 from careerops.db.models import ParseRun
 from careerops.domain.errors import ParseRunDispatchError
@@ -182,8 +183,14 @@ async def test_parse_runs_are_idempotent_and_authorized() -> None:
                 headers=auth_header(first_token),
             )
             worker_results = await asyncio.gather(
-                execute_parse_run_async(UUID(submitted.json()["id"])),
-                execute_parse_run_async(UUID(submitted.json()["id"])),
+                execute_parse_run_async(
+                    UUID(submitted.json()["id"]),
+                    FakeRequirementParser(),
+                ),
+                execute_parse_run_async(
+                    UUID(submitted.json()["id"]),
+                    FakeRequirementParser(),
+                ),
             )
             fetched = await client.get(
                 f"/api/v1/jobs/{job_id}/parse-runs/{submitted.json()['id']}",

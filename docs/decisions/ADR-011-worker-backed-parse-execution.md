@@ -26,8 +26,8 @@ snapshot instead of the current Job row, so its source spans and input
 fingerprint describe the exact submitted input.
 
 The worker uses a `RequirementParser` protocol. CI and local tests use a
-deterministic fake adapter with no network access or cost. A real provider is a
-future adapter and does not change the execution service contract.
+deterministic fake adapter with no network access or cost. ADR-012 adds Groq as
+the first real implementation without changing the execution service contract.
 
 Worker state transitions use conditional PostgreSQL updates:
 
