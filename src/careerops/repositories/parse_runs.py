@@ -173,6 +173,7 @@ class ParseRunRepository:
     async def fail_parse_run(
         self,
         parse_run_id: UUID,
+        model_name: str,
         error_code: ParseRunErrorCode,
         latency_ms: int,
     ) -> bool:
@@ -184,6 +185,7 @@ class ParseRunRepository:
             )
             .values(
                 status=ParseRunStatus.FAILED.value,
+                model_name=model_name,
                 error_code=error_code.value,
                 latency_ms=latency_ms,
                 finished_at=datetime.now(UTC),

@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into grounded structured requirements through a fake or Groq adapter.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI.
 
 ## Architecture Direction
 
@@ -80,6 +80,16 @@ Run the small real-provider compatibility test intentionally:
 $env:CAREEROPS_RUN_LLM_INTEGRATION='1'
 .\.venv\Scripts\python -m pytest tests/integration/test_groq_live.py -s
 Remove-Item Env:CAREEROPS_RUN_LLM_INTEGRATION
+```
+
+Run the labeled development-set evaluation intentionally, always choosing a new
+output filename so historical evidence remains intact:
+
+```powershell
+.\.venv\Scripts\python -m careerops.evaluation.run_requirement_parser `
+  --dataset evals/job_requirements_v1.json `
+  --output docs/metrics/YYYY-MM-DD-groq-requirement-eval.json `
+  --git-revision <commit-or-working-tree-label>
 ```
 
 Using the explicit `.venv` paths keeps project dependencies out of the global Python or Anaconda environment.

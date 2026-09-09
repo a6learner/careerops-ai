@@ -100,5 +100,5 @@ infrastructure for the resource boundary.
 ## Revisit If
 
 Worker execution and programmatic source-span validation were added in ADR-011.
-Revisit when adding bounded provider retries or prompt/model versioning beyond
-`parse-v1`.
+ADR-012 added bounded provider retries, and the first measured evaluation moved
+new submissions to `parse-v2` candidate-ID grounding.

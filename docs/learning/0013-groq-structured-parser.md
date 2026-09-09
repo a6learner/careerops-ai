@@ -4,8 +4,9 @@
 
 The worker can now select either the deterministic fake parser or a real Groq
 parser. Groq receives an immutable JD snapshot and returns strict structured
-requirements. The adapter turns exact source quotes into character spans and
-captures provider-reported token usage.
+requirements. The adapter segments the JD into source candidates, asks the model
+to select candidate IDs, restores exact character spans, and captures
+provider-reported token usage.
 
 ## Why It Exists
 
@@ -22,8 +23,8 @@ depend on a changing model, network access, quota, or money.
 - A missing API key failing only after a task has already started.
 - Retrying permanent authentication or request-shape errors.
 - Unlimited retries consuming quota after a provider outage.
-- Persisting model text that cannot be found in the submitted JD.
-- Trusting model-generated character offsets.
+- Persisting a model-selected candidate that does not exist in the submitted JD.
+- Trusting model-generated character offsets or copied Unicode text.
 - Accidentally committing a local API key.
 
 ## How To Verify It
@@ -65,9 +66,9 @@ Level 2: `SecretStr` reduces accidental display but does not replace environment
 isolation. The API key remains outside Git and should be available only to the
 worker in deployment.
 
-Level 2: The model returns exact quotes rather than offsets. The adapter finds
-the quote in the original Python string, resolves repeated occurrences, and lets
-the execution service validate the resulting span again.
+Level 2: The model selects source candidate IDs rather than returning offsets or
+copied quotes. The adapter restores the original Python text and span, then lets
+the execution service validate that span again.
 
 ## Knowledge Check
 

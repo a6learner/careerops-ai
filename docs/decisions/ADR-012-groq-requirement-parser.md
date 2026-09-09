@@ -25,11 +25,11 @@ IDs; only the worker constructs and calls the configured parser.
 Selecting `groq` requires `CAREEROPS_LLM_API_KEY`; the key stays in the ignored
 `.env` file and is passed only to the worker container in local Compose.
 
-The request uses strict JSON Schema. The provider returns each category, an
-exact contiguous quote from the JD, and an optional normalized skill. Application
-code locates distinct occurrences of those quotes and calculates source spans.
-The existing execution validator then independently verifies every span before
-requirements can be persisted.
+The request uses strict JSON Schema. Application code first segments the JD into
+source candidates with stable integer IDs and spans. The provider returns a
+candidate ID, category, and optional normalized skill. Application code restores
+the exact source text and span by ID. The existing execution validator then
+independently verifies every span before requirements can be persisted.
 
 Each call has a 30-second timeout and at most two attempts by default. Only
 network failures, HTTP 429, and selected HTTP 5xx responses are retried. HTTP
@@ -48,8 +48,9 @@ quality or cost claim.
   Groq already exposes the OpenAI-compatible boundary selected for portability.
 - Groq SDK: rejected for now because direct `httpx` needs one existing runtime
   dependency and keeps provider response validation explicit.
-- Model-generated character offsets: rejected because exact quotes plus
-  programmatic span resolution are easier to validate and explain.
+- Model-generated character offsets or copied quotes: rejected because
+  candidate IDs preserve exact Unicode source text and make span resolution
+  deterministic.
 - Retry every failure: rejected because authentication, schema, and grounding
   failures do not become correct through blind retries and can waste quota.
 
@@ -59,10 +60,9 @@ Provider selection is configuration-only at the worker boundary. Switching to
 another OpenAI-compatible endpoint will still require compatibility tests, but
 not a change to the execution service contract.
 
-Strict schema compliance does not prove semantic correctness. Exact-quote
-grounding and the existing programmatic validator remain necessary. Repeated
-identical quotes are assigned to distinct source occurrences; an unquoted model
-claim fails the run with `PARSER_OUTPUT_INVALID`.
+Strict schema compliance does not prove semantic correctness. Candidate-ID
+grounding and the existing programmatic validator remain necessary. An unknown
+or duplicate candidate ID fails the run with `PARSER_OUTPUT_INVALID`.
 
 The free-tier rate limit can reject large or bursty workloads. The MVP uses the
 fake for automated tests and explicitly enabled, small synthetic inputs for live
@@ -70,8 +70,8 @@ verification.
 
 ## Verification Or Evidence
 
-- Mock-transport tests cover strict schema requests, grounded spans, repeated
-  quotes, transient retry, permanent HTTP failure, and unsupported claims.
+- Mock-transport tests cover strict schema requests, candidate-ID spans,
+  repeated source text, transient retry, permanent HTTP failure, and unknown IDs.
 - Factory tests prove fake-by-default behavior and fail-fast Groq key handling.
 - An explicitly enabled live adapter test and a real worker E2E both succeeded.
 - Raw measured token and latency evidence is saved in

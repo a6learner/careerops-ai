@@ -12,6 +12,9 @@ from careerops.domain.parse_runs import (
 
 
 class RequirementParser(Protocol):
+    @property
+    def model_name(self) -> str: ...
+
     async def parse(self, input_text: str) -> ParserOutput: ...
 
 
@@ -31,6 +34,7 @@ class ParseRunExecutionStore(Protocol):
     async def fail_parse_run(
         self,
         parse_run_id: UUID,
+        model_name: str,
         error_code: ParseRunErrorCode,
         latency_ms: int,
     ) -> bool: ...
@@ -86,7 +90,12 @@ class ParseRunExecutionService:
         error_code: ParseRunErrorCode,
         latency_ms: int,
     ) -> None:
-        failed = await self._store.fail_parse_run(parse_run_id, error_code, latency_ms)
+        failed = await self._store.fail_parse_run(
+            parse_run_id,
+            self._parser.model_name,
+            error_code,
+            latency_ms,
+        )
         if failed:
             await self._store.commit()
 

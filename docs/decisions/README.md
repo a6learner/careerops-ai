@@ -67,4 +67,5 @@ What future condition would justify reopening this decision?
 - `ADR-009-jobs-resource-and-pagination.md`: jobs CRUD with object-level authorization, soft deletion, optimistic locking, status filtering, and cursor pagination.
 - `ADR-010-parse-runs-and-job-requirements.md`: parse run resources and structured job requirements with idempotent submission and source spans.
 - `ADR-011-worker-backed-parse-execution.md`: asynchronous parse execution with Dramatiq, PostgreSQL state transitions, input snapshots, and recovery.
-- `ADR-012-groq-requirement-parser.md`: Groq structured output behind the worker parser boundary with bounded transient retries and exact-quote grounding.
+- `ADR-012-groq-requirement-parser.md`: Groq structured output behind the worker parser boundary with bounded transient retries and candidate-ID grounding.
+- `ADR-013-requirement-parser-evaluation.md`: versioned labeled datasets, separated quality metrics, immutable raw evidence, and development-versus-holdout discipline.

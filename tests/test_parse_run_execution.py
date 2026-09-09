@@ -21,6 +21,7 @@ class InMemoryExecutionStore:
         self.commits = 0
         self.completed_requirements: tuple[ParsedRequirement, ...] = ()
         self.failed_with: ParseRunErrorCode | None = None
+        self.failed_model_name: str | None = None
 
     async def claim_parse_run(self, parse_run_id: UUID) -> ParseRunWorkItem | None:
         if self.claimed or parse_run_id != self.work_item.id:
@@ -45,11 +46,13 @@ class InMemoryExecutionStore:
     async def fail_parse_run(
         self,
         parse_run_id: UUID,
+        model_name: str,
         error_code: ParseRunErrorCode,
         latency_ms: int,
     ) -> bool:
         if parse_run_id != self.work_item.id:
             return False
+        self.failed_model_name = model_name
         self.failed_with = error_code
         return True
 
@@ -58,11 +61,19 @@ class InMemoryExecutionStore:
 
 
 class FailingParser:
+    @property
+    def model_name(self) -> str:
+        return "failing-parser"
+
     async def parse(self, input_text: str) -> ParserOutput:
         raise RequirementParserError()
 
 
 class InvalidParser:
+    @property
+    def model_name(self) -> str:
+        return "invalid-parser"
+
     async def parse(self, input_text: str) -> ParserOutput:
         return ParserOutput(
             model_name="invalid-parser",
@@ -101,6 +112,7 @@ async def test_execution_records_provider_failure() -> None:
 
     assert executed
     assert store.failed_with == ParseRunErrorCode.PARSER_FAILED
+    assert store.failed_model_name == "failing-parser"
     assert store.commits == 2
 
 

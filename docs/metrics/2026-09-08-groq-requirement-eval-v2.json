@@ -1,0 +1,589 @@
+{
+  "created_at": "2026-09-09T06:44:50.550144Z",
+  "git_revision": "452c268-plus-working-tree-parse-v2",
+  "dataset_name": "careerops-synthetic-job-requirements",
+  "dataset_version": 1,
+  "dataset_sha256": "fb941a7fcc04e023c575759ed9d07b603d0ec33f2eee93dd3eb3f45a36ff5dcd",
+  "provider": "groq",
+  "configured_model": "openai/gpt-oss-20b",
+  "summary": {
+    "case_count": 12,
+    "completed_case_count": 12,
+    "provider_failure_count": 0,
+    "grounding_failure_count": 0,
+    "expected_requirement_count": 31,
+    "predicted_requirement_count": 31,
+    "text_match_count": 31,
+    "exact_match_count": 30,
+    "extraction_precision": 1.0,
+    "extraction_recall": 1.0,
+    "extraction_f1": 1.0,
+    "exact_requirement_precision": 0.967741935483871,
+    "exact_requirement_recall": 0.967741935483871,
+    "exact_requirement_f1": 0.967741935483871,
+    "category_accuracy_on_text_matches": 0.967741935483871,
+    "skill_accuracy_on_text_matches": 1.0,
+    "exact_case_match_rate": 0.9166666666666666,
+    "total_input_tokens": 5686,
+    "total_output_tokens": 1781,
+    "mean_latency_ms": 643.5833333333334
+  },
+  "cases": [
+    {
+      "case_id": "basic-backend",
+      "description": "Mandatory skill, preferred skill, and responsibility.",
+      "expected": [
+        {
+          "text": "Candidates must have Python experience.",
+          "category": "must_have",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "Experience with PostgreSQL is preferred.",
+          "category": "nice_to_have",
+          "skill_normalized": "postgresql"
+        },
+        {
+          "text": "You will build reliable REST APIs.",
+          "category": "responsibility",
+          "skill_normalized": "rest api"
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Candidates must have Python experience.",
+          "category": "must_have",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "Experience with PostgreSQL is preferred.",
+          "category": "nice_to_have",
+          "skill_normalized": "postgresql"
+        },
+        {
+          "text": "You will build reliable REST APIs.",
+          "category": "responsibility",
+          "skill_normalized": "rest api"
+        }
+      ],
+      "expected_count": 3,
+      "predicted_count": 3,
+      "text_matches": 3,
+      "exact_matches": 3,
+      "category_correct": 3,
+      "skill_correct": 3,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 482,
+      "output_tokens": 179,
+      "latency_ms": 926
+    },
+    {
+      "case_id": "student-eligibility",
+      "description": "Education and graduation-window requirements.",
+      "expected": [
+        {
+          "text": "Applicants must be currently enrolled in a bachelor's degree program in computer science.",
+          "category": "education",
+          "skill_normalized": null
+        },
+        {
+          "text": "Students graduating between December 2027 and June 2028 are eligible.",
+          "category": "education",
+          "skill_normalized": null
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Applicants must be currently enrolled in a bachelor's degree program in computer science.",
+          "category": "education",
+          "skill_normalized": null
+        },
+        {
+          "text": "Students graduating between December 2027 and June 2028 are eligible.",
+          "category": "education",
+          "skill_normalized": null
+        }
+      ],
+      "expected_count": 2,
+      "predicted_count": 2,
+      "text_matches": 2,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 2,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 459,
+      "output_tokens": 152,
+      "latency_ms": 501
+    },
+    {
+      "case_id": "bullet-list",
+      "description": "Requirements expressed as newline-delimited bullets.",
+      "expected": [
+        {
+          "text": "Build FastAPI services.",
+          "category": "responsibility",
+          "skill_normalized": "fastapi"
+        },
+        {
+          "text": "Monitor production systems.",
+          "category": "responsibility",
+          "skill_normalized": null
+        },
+        {
+          "text": "Docker experience is required.",
+          "category": "must_have",
+          "skill_normalized": "docker"
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Build FastAPI services.",
+          "category": "responsibility",
+          "skill_normalized": "fastapi"
+        },
+        {
+          "text": "Monitor production systems.",
+          "category": "responsibility",
+          "skill_normalized": null
+        },
+        {
+          "text": "Docker experience is required.",
+          "category": "must_have",
+          "skill_normalized": "docker"
+        }
+      ],
+      "expected_count": 3,
+      "predicted_count": 3,
+      "text_matches": 3,
+      "exact_matches": 3,
+      "category_correct": 3,
+      "skill_correct": 3,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 484,
+      "output_tokens": 172,
+      "latency_ms": 670
+    },
+    {
+      "case_id": "required-and-preferred",
+      "description": "Required experience, preferred cloud skill, and collaboration duty.",
+      "expected": [
+        {
+          "text": "Three years of Java experience is required.",
+          "category": "must_have",
+          "skill_normalized": "java"
+        },
+        {
+          "text": "AWS experience is a plus.",
+          "category": "nice_to_have",
+          "skill_normalized": "aws"
+        },
+        {
+          "text": "Work with product teams to ship features.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Three years of Java experience is required.",
+          "category": "must_have",
+          "skill_normalized": "java"
+        },
+        {
+          "text": "AWS experience is a plus.",
+          "category": "nice_to_have",
+          "skill_normalized": "aws"
+        },
+        {
+          "text": "Work with product teams to ship features.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "expected_count": 3,
+      "predicted_count": 3,
+      "text_matches": 3,
+      "exact_matches": 3,
+      "category_correct": 3,
+      "skill_correct": 3,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 464,
+      "output_tokens": 146,
+      "latency_ms": 688
+    },
+    {
+      "case_id": "negated-skill",
+      "description": "A negated skill must not become a positive requirement.",
+      "expected": [
+        {
+          "text": "Candidates must understand SQL.",
+          "category": "must_have",
+          "skill_normalized": "sql"
+        },
+        {
+          "text": "Maintain backend services.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Candidates must understand SQL.",
+          "category": "must_have",
+          "skill_normalized": "sql"
+        },
+        {
+          "text": "Maintain backend services.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "expected_count": 2,
+      "predicted_count": 2,
+      "text_matches": 2,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 2,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 458,
+      "output_tokens": 127,
+      "latency_ms": 433
+    },
+    {
+      "case_id": "prompt-injection-text",
+      "description": "Instruction-like text inside the JD must remain untrusted data.",
+      "expected": [
+        {
+          "text": "Candidates must know Redis.",
+          "category": "must_have",
+          "skill_normalized": "redis"
+        },
+        {
+          "text": "Review pull requests.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Candidates must know Redis.",
+          "category": "must_have",
+          "skill_normalized": "redis"
+        },
+        {
+          "text": "Review pull requests.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "expected_count": 2,
+      "predicted_count": 2,
+      "text_matches": 2,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 2,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 469,
+      "output_tokens": 126,
+      "latency_ms": 464
+    },
+    {
+      "case_id": "chinese-description",
+      "description": "Unicode grounding and Chinese requirement categories.",
+      "expected": [
+        {
+          "text": "你需要熟悉 Python。",
+          "category": "must_have",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "熟悉 Docker 更佳。",
+          "category": "nice_to_have",
+          "skill_normalized": "docker"
+        },
+        {
+          "text": "负责维护后端 API。",
+          "category": "responsibility",
+          "skill_normalized": "api"
+        }
+      ],
+      "predicted": [
+        {
+          "text": "你需要熟悉 Python。",
+          "category": "must_have",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "熟悉 Docker 更佳。",
+          "category": "must_have",
+          "skill_normalized": "docker"
+        },
+        {
+          "text": "负责维护后端 API。",
+          "category": "responsibility",
+          "skill_normalized": "api"
+        }
+      ],
+      "expected_count": 3,
+      "predicted_count": 3,
+      "text_matches": 3,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 3,
+      "exact_case_match": false,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 509,
+      "output_tokens": 147,
+      "latency_ms": 770
+    },
+    {
+      "case_id": "multiline-semicolon",
+      "description": "Whitespace, semicolons, and a mandatory database skill.",
+      "expected": [
+        {
+          "text": "design database schemas;",
+          "category": "responsibility",
+          "skill_normalized": null
+        },
+        {
+          "text": "write automated tests.",
+          "category": "responsibility",
+          "skill_normalized": null
+        },
+        {
+          "text": "PostgreSQL knowledge is mandatory.",
+          "category": "must_have",
+          "skill_normalized": "postgresql"
+        }
+      ],
+      "predicted": [
+        {
+          "text": "design database schemas;",
+          "category": "responsibility",
+          "skill_normalized": null
+        },
+        {
+          "text": "write automated tests.",
+          "category": "responsibility",
+          "skill_normalized": null
+        },
+        {
+          "text": "PostgreSQL knowledge is mandatory.",
+          "category": "must_have",
+          "skill_normalized": "postgresql"
+        }
+      ],
+      "expected_count": 3,
+      "predicted_count": 3,
+      "text_matches": 3,
+      "exact_matches": 3,
+      "category_correct": 3,
+      "skill_correct": 3,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 475,
+      "output_tokens": 147,
+      "latency_ms": 702
+    },
+    {
+      "case_id": "non-requirement-noise",
+      "description": "Location and benefits should not be treated as candidate requirements.",
+      "expected": [
+        {
+          "text": "You must be authorized to work in the United States.",
+          "category": "must_have",
+          "skill_normalized": null
+        },
+        {
+          "text": "Build internal developer tools.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "predicted": [
+        {
+          "text": "You must be authorized to work in the United States.",
+          "category": "must_have",
+          "skill_normalized": null
+        },
+        {
+          "text": "Build internal developer tools.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "expected_count": 2,
+      "predicted_count": 2,
+      "text_matches": 2,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 2,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 482,
+      "output_tokens": 111,
+      "latency_ms": 643
+    },
+    {
+      "case_id": "compound-responsibility",
+      "description": "Compound duty plus a preferred cache technology.",
+      "expected": [
+        {
+          "text": "Develop and test Python services, and collaborate with SRE teams.",
+          "category": "responsibility",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "Familiarity with Redis or another cache is preferred.",
+          "category": "nice_to_have",
+          "skill_normalized": "redis"
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Develop and test Python services, and collaborate with SRE teams.",
+          "category": "responsibility",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "Familiarity with Redis or another cache is preferred.",
+          "category": "nice_to_have",
+          "skill_normalized": "redis"
+        }
+      ],
+      "expected_count": 2,
+      "predicted_count": 2,
+      "text_matches": 2,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 2,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 454,
+      "output_tokens": 145,
+      "latency_ms": 530
+    },
+    {
+      "case_id": "education-and-frontend",
+      "description": "Education, two mandatory skills, and mentoring responsibility.",
+      "expected": [
+        {
+          "text": "A bachelor's degree or equivalent practical experience is required.",
+          "category": "education",
+          "skill_normalized": null
+        },
+        {
+          "text": "TypeScript proficiency is required.",
+          "category": "must_have",
+          "skill_normalized": "typescript"
+        },
+        {
+          "text": "React experience is required.",
+          "category": "must_have",
+          "skill_normalized": "react"
+        },
+        {
+          "text": "Mentor junior developers.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "predicted": [
+        {
+          "text": "A bachelor's degree or equivalent practical experience is required.",
+          "category": "education",
+          "skill_normalized": null
+        },
+        {
+          "text": "TypeScript proficiency is required.",
+          "category": "must_have",
+          "skill_normalized": "typescript"
+        },
+        {
+          "text": "React experience is required.",
+          "category": "must_have",
+          "skill_normalized": "react"
+        },
+        {
+          "text": "Mentor junior developers.",
+          "category": "responsibility",
+          "skill_normalized": null
+        }
+      ],
+      "expected_count": 4,
+      "predicted_count": 4,
+      "text_matches": 4,
+      "exact_matches": 4,
+      "category_correct": 4,
+      "skill_correct": 4,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 480,
+      "output_tokens": 183,
+      "latency_ms": 689
+    },
+    {
+      "case_id": "repeated-skill-negation",
+      "description": "Repeated skill mention with a negated experience requirement.",
+      "expected": [
+        {
+          "text": "Python is required for this role.",
+          "category": "must_have",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "Create ETL pipelines.",
+          "category": "responsibility",
+          "skill_normalized": "etl"
+        }
+      ],
+      "predicted": [
+        {
+          "text": "Python is required for this role.",
+          "category": "must_have",
+          "skill_normalized": "python"
+        },
+        {
+          "text": "Create ETL pipelines.",
+          "category": "responsibility",
+          "skill_normalized": "etl"
+        }
+      ],
+      "expected_count": 2,
+      "predicted_count": 2,
+      "text_matches": 2,
+      "exact_matches": 2,
+      "category_correct": 2,
+      "skill_correct": 2,
+      "exact_case_match": true,
+      "error_type": null,
+      "model_name": "openai/gpt-oss-20b",
+      "input_tokens": 470,
+      "output_tokens": 146,
+      "latency_ms": 707
+    }
+  ],
+  "limitations": [
+    "Small synthetic dataset; results do not establish production accuracy.",
+    "Exact-quote scoring penalizes semantically equivalent paraphrases.",
+    "Provider behavior can change even when the model identifier stays constant.",
+    "Provider billing charge was not measured."
+  ]
+}

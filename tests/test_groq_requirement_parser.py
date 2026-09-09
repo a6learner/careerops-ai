@@ -3,7 +3,10 @@ import json
 import httpx
 import pytest
 
-from careerops.adapters.groq_requirement_parser import GroqRequirementParser
+from careerops.adapters.groq_requirement_parser import (
+    GroqRequirementParser,
+    extract_source_candidates,
+)
 from careerops.domain.errors import ParserOutputValidationError, RequirementParserError
 from careerops.domain.parse_runs import RequirementCategory
 
@@ -37,6 +40,20 @@ def successful_response(request: httpx.Request, content: str) -> httpx.Response:
     )
 
 
+def test_source_candidates_preserve_bullets_and_unicode_spans() -> None:
+    input_text = "Responsibilities:\n- Build APIs.\n你需要熟悉 Python。"
+
+    candidates = extract_source_candidates(input_text)
+
+    assert [item.text for item in candidates] == [
+        "Responsibilities:",
+        "Build APIs.",
+        "你需要熟悉 Python。",
+    ]
+    for candidate in candidates:
+        assert input_text[candidate.source_span_start : candidate.source_span_end] == candidate.text
+
+
 @pytest.mark.asyncio
 async def test_groq_parser_requests_strict_schema_and_builds_grounded_spans() -> None:
     def handle(request: httpx.Request) -> httpx.Response:
@@ -45,6 +62,11 @@ async def test_groq_parser_requests_strict_schema_and_builds_grounded_spans() ->
         assert request.headers["Authorization"] == "Bearer test-key"
         assert body["response_format"]["json_schema"]["strict"] is True
         assert "source_span_start" not in json.dumps(body["response_format"])
+        supplied = json.loads(body["messages"][1]["content"])["candidates"]
+        assert [item["text"] for item in supplied] == [
+            "Python experience required.",
+            "Preferred Redis.",
+        ]
         return successful_response(
             request,
             json.dumps(
@@ -52,12 +74,12 @@ async def test_groq_parser_requests_strict_schema_and_builds_grounded_spans() ->
                     "requirements": [
                         {
                             "category": "must_have",
-                            "text": "Python experience required.",
+                            "candidate_id": 0,
                             "skill_normalized": " Python ",
                         },
                         {
                             "category": "nice_to_have",
-                            "text": "Preferred Redis.",
+                            "candidate_id": 1,
                             "skill_normalized": "redis",
                         },
                     ]
@@ -90,7 +112,7 @@ async def test_groq_parser_retries_transient_failure_once() -> None:
             return httpx.Response(503, request=request)
         return successful_response(
             request,
-            '{"requirements":[{"category":"must_have","text":"Python required.",'
+            '{"requirements":[{"category":"must_have","candidate_id":0,'
             '"skill_normalized":"python"}]}',
         )
 
@@ -111,7 +133,7 @@ async def test_groq_parser_retries_transport_failure_once() -> None:
             raise httpx.ConnectError("connection failed", request=request)
         return successful_response(
             request,
-            '{"requirements":[{"category":"must_have","text":"Python required.",'
+            '{"requirements":[{"category":"must_have","candidate_id":0,'
             '"skill_normalized":"python"}]}',
         )
 
@@ -137,11 +159,11 @@ async def test_groq_parser_does_not_retry_permanent_http_failure() -> None:
 
 
 @pytest.mark.asyncio
-async def test_groq_parser_rejects_requirement_not_quoted_from_input() -> None:
+async def test_groq_parser_rejects_unknown_candidate_id() -> None:
     def handle(request: httpx.Request) -> httpx.Response:
         return successful_response(
             request,
-            '{"requirements":[{"category":"must_have","text":"Java required.",'
+            '{"requirements":[{"category":"must_have","candidate_id":99,'
             '"skill_normalized":"java"}]}',
         )
 
@@ -155,9 +177,9 @@ async def test_groq_parser_uses_distinct_spans_for_repeated_text() -> None:
         return successful_response(
             request,
             '{"requirements":['
-            '{"category":"must_have","text":"Python required.",'
+            '{"category":"must_have","candidate_id":0,'
             '"skill_normalized":"python"},'
-            '{"category":"must_have","text":"Python required.",'
+            '{"category":"must_have","candidate_id":1,'
             '"skill_normalized":"python"}]}',
         )
 

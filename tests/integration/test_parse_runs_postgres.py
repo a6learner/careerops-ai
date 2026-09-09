@@ -35,6 +35,10 @@ class FailingDispatcher:
 
 
 class InvalidParser:
+    @property
+    def model_name(self) -> str:
+        return "invalid-parser"
+
     async def parse(self, input_text: str) -> ParserOutput:
         return ParserOutput(
             model_name="invalid-parser",
@@ -209,7 +213,7 @@ async def test_parse_runs_are_idempotent_and_authorized() -> None:
     assert submitted.status_code == 202
     assert submitted.json()["status"] == "queued"
     assert submitted.json()["model_name"] == "local-fake-parser"
-    assert submitted.json()["prompt_version"] == "parse-v1"
+    assert submitted.json()["prompt_version"] == "parse-v2"
     assert submitted.json()["requirements"] == []
 
     assert repeated.status_code == 202
@@ -241,6 +245,7 @@ async def test_parse_runs_are_idempotent_and_authorized() -> None:
     assert invalid_executed
     assert failed_run.status_code == 200
     assert failed_run.json()["status"] == "failed"
+    assert failed_run.json()["model_name"] == "invalid-parser"
     assert failed_run.json()["error_code"] == "PARSER_OUTPUT_INVALID"
 
     assert recovery_result.requeued >= 1

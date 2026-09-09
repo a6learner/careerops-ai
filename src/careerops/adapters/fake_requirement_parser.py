@@ -9,6 +9,10 @@ from careerops.domain.parse_runs import (
 
 
 class FakeRequirementParser:
+    @property
+    def model_name(self) -> str:
+        return FAKE_PARSE_MODEL_NAME
+
     async def parse(self, input_text: str) -> ParserOutput:
         return ParserOutput(
             model_name=FAKE_PARSE_MODEL_NAME,

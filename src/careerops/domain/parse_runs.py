@@ -4,7 +4,7 @@ from enum import StrEnum
 from uuid import UUID
 
 FAKE_PARSE_MODEL_NAME = "local-fake-parser"
-PARSE_PROMPT_VERSION = "parse-v1"
+PARSE_PROMPT_VERSION = "parse-v2"
 
 
 class ParseRunStatus(StrEnum):
