@@ -211,3 +211,5 @@ def test_evidence_matches_table_metadata_enforces_grounding_contract() -> None:
     constraint_names = {constraint.name for constraint in evidence_matches.constraints}
     assert "ck_evidence_matches_grounded_verdict" in constraint_names
     assert "ck_evidence_matches_confidence" in constraint_names
+    indexes = {index.name: index for index in evidence_matches.indexes}
+    assert indexes["uq_evidence_matches_run_requirement"].unique

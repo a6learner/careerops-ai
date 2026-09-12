@@ -3,8 +3,11 @@ from uuid import uuid4
 import pytest
 from redis.exceptions import ConnectionError
 
-from careerops.domain.errors import ParseRunDispatchError
-from careerops.workers.dispatcher import DramatiqParseRunDispatcher
+from careerops.domain.errors import AnalysisRunDispatchError, ParseRunDispatchError
+from careerops.workers.dispatcher import (
+    DramatiqAnalysisRunDispatcher,
+    DramatiqParseRunDispatcher,
+)
 
 
 class RecordingActor:
@@ -33,3 +36,19 @@ async def test_dispatcher_sends_only_the_parse_run_id() -> None:
 async def test_dispatcher_converts_redis_failure_to_domain_error() -> None:
     with pytest.raises(ParseRunDispatchError):
         await DramatiqParseRunDispatcher(RecordingActor(fail=True)).dispatch(uuid4())
+
+
+@pytest.mark.asyncio
+async def test_analysis_dispatcher_sends_only_the_analysis_run_id() -> None:
+    actor = RecordingActor()
+    analysis_run_id = uuid4()
+
+    await DramatiqAnalysisRunDispatcher(actor).dispatch(analysis_run_id)
+
+    assert actor.sent == [str(analysis_run_id)]
+
+
+@pytest.mark.asyncio
+async def test_analysis_dispatcher_converts_redis_failure_to_domain_error() -> None:
+    with pytest.raises(AnalysisRunDispatchError):
+        await DramatiqAnalysisRunDispatcher(RecordingActor(fail=True)).dispatch(uuid4())

@@ -322,13 +322,6 @@ class AnalysisRun(Base):
             name="ck_analysis_runs_output_tokens",
         ),
         Index(
-            "uq_analysis_runs_active_input",
-            "job_id",
-            "input_fingerprint",
-            unique=True,
-            postgresql_where=text("status IN ('queued', 'running')"),
-        ),
-        Index(
             "uq_analysis_runs_user_job_idempotency",
             "user_id",
             "job_id",
@@ -396,7 +389,12 @@ class EvidenceMatch(Base):
             "AND experience_version IS NULL AND quote IS NULL AND NOT quote_valid)",
             name="ck_evidence_matches_grounded_verdict",
         ),
-        Index("idx_evidence_matches_run_requirement", "analysis_run_id", "requirement_id"),
+        Index(
+            "uq_evidence_matches_run_requirement",
+            "analysis_run_id",
+            "requirement_id",
+            unique=True,
+        ),
     )
 
     id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)

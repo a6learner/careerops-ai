@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. The evidence-matching persistence foundation now validates owned candidate experiences and source quotes, downgrades invalid positive claims, and uses database constraints plus atomic result writes. Retrieval, matching-worker dispatch, and analysis endpoints remain the next development slices.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs now provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Embedding generation, pgvector retrieval, and a real evidence matcher remain later quality-focused slices.
 
 ## Architecture Direction
 
@@ -57,6 +57,7 @@ Recover queued work and stale running work from PostgreSQL:
 
 ```powershell
 .\.venv\Scripts\python -m careerops.workers.recovery
+.\.venv\Scripts\python -m careerops.workers.analysis_recovery
 ```
 
 Apply database migrations:
@@ -113,8 +114,10 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
 - `POST /api/v1/jobs/{id}/parse-runs` creates or reuses a queued idempotent parse run for one owned active job; a key can be replayed only while that job's parse input is unchanged.
 - `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
+- `POST /api/v1/jobs/{id}/analysis-runs` creates or reuses a queued idempotent Analysis Run for an explicit successful Parse Run and the current active experience-library fingerprint.
+- `GET /api/v1/jobs/{id}/analysis-runs/{run_id}` returns one owned Analysis Run with validated evidence matches and explicit gaps.
 
-Remaining business endpoints will be added in small milestones: evidence-backed analysis runs, action items, and dashboard summary.
+Remaining business endpoints will be added in small milestones: action items and dashboard summary. Analysis retrieval quality will be upgraded separately through embedding generation, pgvector-backed hybrid retrieval, and versioned evaluation evidence.
 
 ## Key Decisions
 

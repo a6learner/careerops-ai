@@ -6,7 +6,7 @@ import pytest
 from dramatiq.brokers.redis import RedisBroker
 
 from careerops.core.config import get_settings
-from careerops.workers.dispatcher import DramatiqParseRunDispatcher
+from careerops.workers.dispatcher import DramatiqAnalysisRunDispatcher, DramatiqParseRunDispatcher
 
 pytestmark = pytest.mark.integration
 
@@ -40,6 +40,43 @@ async def test_dispatcher_enqueues_parse_run_id_in_redis() -> None:
 
         assert message is not None
         assert message.args == (str(parse_run_id),)
+        consumer.ack(message)
+    finally:
+        consumer.close()
+        if connected:
+            broker.flush_all()
+        broker.close()
+
+
+@pytest.mark.skipif(
+    os.getenv("CAREEROPS_RUN_INTEGRATION") != "1",
+    reason="requires local Redis container",
+)
+@pytest.mark.asyncio
+async def test_dispatcher_enqueues_analysis_run_id_in_redis() -> None:
+    namespace = f"careerops-analysis-test-{uuid4()}"
+    queue_name = "analysis-runs-test"
+    broker = RedisBroker(url=get_settings().redis_url, namespace=namespace)
+
+    def do_nothing(analysis_run_id: str) -> None:
+        return None
+
+    actor = dramatiq.actor(
+        do_nothing,
+        actor_name=f"test_analysis_run_{uuid4()}",
+        broker=broker,
+        queue_name=queue_name,
+    )
+    analysis_run_id = uuid4()
+    consumer = broker.consume(queue_name, timeout=1_000)
+    connected = False
+    try:
+        await DramatiqAnalysisRunDispatcher(actor).dispatch(analysis_run_id)
+        connected = True
+        message = next(consumer)
+
+        assert message is not None
+        assert message.args == (str(analysis_run_id),)
         consumer.ack(message)
     finally:
         consumer.close()

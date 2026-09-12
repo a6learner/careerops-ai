@@ -70,3 +70,4 @@ What future condition would justify reopening this decision?
 - `ADR-012-groq-requirement-parser.md`: Groq structured output behind the worker parser boundary with bounded transient retries and candidate-ID grounding.
 - `ADR-013-requirement-parser-evaluation.md`: versioned labeled datasets, separated quality metrics, immutable raw evidence, and development-versus-holdout discipline.
 - `ADR-014-evidence-integrity-foundation.md`: analysis result persistence, semantic citation validation, structural database constraints, and atomic completion.
+- `ADR-015-analysis-run-end-to-end.md`: Analysis Run API, deterministic retrieval, fake matching, worker lifecycle, recovery, and complete verdict enforcement.

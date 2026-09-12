@@ -84,3 +84,33 @@ class RequirementParserError(Exception):
 class ParserOutputValidationError(Exception):
     def __init__(self) -> None:
         super().__init__("Requirement parser returned invalid output.")
+
+
+class AnalysisRunNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Analysis run was not found.")
+
+
+class AnalysisRunDispatchError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Analysis run queue is unavailable.")
+
+
+class ParseRunNotReadyError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Parse run is not ready for analysis.")
+
+
+class NoActiveExperiencesError(Exception):
+    def __init__(self) -> None:
+        super().__init__("At least one active experience is required.")
+
+
+class EvidenceMatcherError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Evidence matcher failed.")
+
+
+class MatcherOutputValidationError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Evidence matcher returned invalid output.")

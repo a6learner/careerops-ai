@@ -97,3 +97,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0013 Groq Structured Requirement Parser](0013-groq-structured-parser.md)
 - [0014 Requirement Parser Evaluation](0014-parser-evaluation.md)
 - [0015 Evidence Integrity Foundation](0015-evidence-integrity-foundation.md)
+- [0016 Analysis Run End-To-End](0016-analysis-run-end-to-end.md)

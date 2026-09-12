@@ -17,6 +17,10 @@ class AnalysisResultRepository:
         analysis_run_id: UUID,
         matches: tuple[ValidatedEvidenceMatch, ...],
         validation_failure_count: int,
+        model_name: str,
+        latency_ms: int,
+        input_tokens: int | None,
+        output_tokens: int | None,
     ) -> bool:
         result = await self._session.execute(
             update(AnalysisRun)
@@ -27,6 +31,11 @@ class AnalysisResultRepository:
             .values(
                 status="succeeded",
                 validation_failure_count=validation_failure_count,
+                model_name=model_name,
+                error_code=None,
+                latency_ms=latency_ms,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
                 finished_at=datetime.now(UTC),
             )
             .returning(AnalysisRun.id)

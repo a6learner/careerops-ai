@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     redis_url: str = "redis://localhost:6379/0"
     parse_run_stale_after_seconds: int = Field(default=300, ge=30)
     parse_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
+    analysis_run_stale_after_seconds: int = Field(default=300, ge=30)
+    analysis_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
     llm_provider: Literal["fake", "groq"] = "fake"
     llm_model: str = "openai/gpt-oss-20b"
     llm_base_url: str = "https://api.groq.com/openai/v1"

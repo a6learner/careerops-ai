@@ -132,6 +132,10 @@ async def test_invalid_positive_evidence_rolls_back_run_completion() -> None:
             await AnalysisResultService(AnalysisResultRepository(execution_session)).complete(
                 analysis_run_id,
                 (invalid_match,),
+                model_name="fake-matcher",
+                latency_ms=1,
+                input_tokens=None,
+                output_tokens=None,
             )
         await execution_session.rollback()
 

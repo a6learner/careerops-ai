@@ -9,6 +9,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from careerops.api.analysis_runs import router as analysis_runs_router
 from careerops.api.auth import router as auth_router
 from careerops.api.experiences import router as experiences_router
 from careerops.api.jobs import router as jobs_router
@@ -21,6 +22,8 @@ from careerops.core.request_id import RequestIdMiddleware
 from careerops.db.health import DatabaseReadinessChecker
 from careerops.db.session import create_session_factory
 from careerops.domain.errors import (
+    AnalysisRunDispatchError,
+    AnalysisRunNotFoundError,
     DuplicateEmailError,
     ExperienceNotFoundError,
     ExperienceVersionConflictError,
@@ -34,10 +37,12 @@ from careerops.domain.errors import (
     MissingIdempotencyKeyError,
     MissingIfMatchHeaderError,
     MissingTokenError,
+    NoActiveExperiencesError,
     ParseRunDispatchError,
     ParseRunNotFoundError,
+    ParseRunNotReadyError,
 )
-from careerops.workers.dispatcher import DramatiqParseRunDispatcher
+from careerops.workers.dispatcher import DramatiqAnalysisRunDispatcher, DramatiqParseRunDispatcher
 
 logger = logging.getLogger(__name__)
 
@@ -59,12 +64,14 @@ def create_app() -> FastAPI:
     app = FastAPI(title="CareerOps AI", version="0.1.0", lifespan=lifespan)
     app.state.settings = settings
     app.state.parse_run_dispatcher = DramatiqParseRunDispatcher()
+    app.state.analysis_run_dispatcher = DramatiqAnalysisRunDispatcher()
     app.add_middleware(RequestIdMiddleware)
     app.include_router(router)
     app.include_router(auth_router)
     app.include_router(experiences_router)
     app.include_router(jobs_router)
     app.include_router(parse_runs_router)
+    app.include_router(analysis_runs_router)
 
     @app.exception_handler(DuplicateEmailError)
     async def duplicate_email_handler(request: Request, exc: DuplicateEmailError) -> JSONResponse:
@@ -180,6 +187,42 @@ def create_app() -> FastAPI:
             message="Parse run was not found.",
         )
 
+    @app.exception_handler(AnalysisRunNotFoundError)
+    async def analysis_run_not_found_handler(
+        request: Request,
+        exc: AnalysisRunNotFoundError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.ANALYSIS_RUN_NOT_FOUND,
+            message="Analysis run was not found.",
+        )
+
+    @app.exception_handler(ParseRunNotReadyError)
+    async def parse_run_not_ready_handler(
+        request: Request,
+        exc: ParseRunNotReadyError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.PARSE_RUN_NOT_READY,
+            message="Parse run is not ready for analysis.",
+        )
+
+    @app.exception_handler(NoActiveExperiencesError)
+    async def no_active_experiences_handler(
+        request: Request,
+        exc: NoActiveExperiencesError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.NO_ACTIVE_EXPERIENCES,
+            message="At least one active experience is required.",
+        )
+
     @app.exception_handler(MissingIdempotencyKeyError)
     async def missing_idempotency_key_handler(
         request: Request,
@@ -214,6 +257,18 @@ def create_app() -> FastAPI:
             status_code=HTTPStatus.SERVICE_UNAVAILABLE,
             code=ErrorCode.DEPENDENCY_UNAVAILABLE,
             message="Parse run queue is unavailable; retry with the same idempotency key.",
+        )
+
+    @app.exception_handler(AnalysisRunDispatchError)
+    async def analysis_run_dispatch_error_handler(
+        request: Request,
+        exc: AnalysisRunDispatchError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            code=ErrorCode.DEPENDENCY_UNAVAILABLE,
+            message="Analysis run queue is unavailable; retry with the same idempotency key.",
         )
 
     @app.exception_handler(InvalidCursorError)
