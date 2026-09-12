@@ -96,3 +96,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0012 Worker-Backed Parse Execution](0012-worker-backed-parse-execution.md)
 - [0013 Groq Structured Requirement Parser](0013-groq-structured-parser.md)
 - [0014 Requirement Parser Evaluation](0014-parser-evaluation.md)
+- [0015 Evidence Integrity Foundation](0015-evidence-integrity-foundation.md)

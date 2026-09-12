@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. The evidence-matching persistence foundation now validates owned candidate experiences and source quotes, downgrades invalid positive claims, and uses database constraints plus atomic result writes. Retrieval, matching-worker dispatch, and analysis endpoints remain the next development slices.
 
 ## Architecture Direction
 

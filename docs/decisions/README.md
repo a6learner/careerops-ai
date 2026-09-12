@@ -69,3 +69,4 @@ What future condition would justify reopening this decision?
 - `ADR-011-worker-backed-parse-execution.md`: asynchronous parse execution with Dramatiq, PostgreSQL state transitions, input snapshots, and recovery.
 - `ADR-012-groq-requirement-parser.md`: Groq structured output behind the worker parser boundary with bounded transient retries and candidate-ID grounding.
 - `ADR-013-requirement-parser-evaluation.md`: versioned labeled datasets, separated quality metrics, immutable raw evidence, and development-versus-holdout discipline.
+- `ADR-014-evidence-integrity-foundation.md`: analysis result persistence, semantic citation validation, structural database constraints, and atomic completion.

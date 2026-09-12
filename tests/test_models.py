@@ -1,4 +1,13 @@
-from careerops.db.models import Base, Experience, Job, JobRequirement, ParseRun, User
+from careerops.db.models import (
+    AnalysisRun,
+    Base,
+    EvidenceMatch,
+    Experience,
+    Job,
+    JobRequirement,
+    ParseRun,
+    User,
+)
 
 
 def test_users_table_metadata_matches_initial_migration_contract() -> None:
@@ -144,3 +153,61 @@ def test_job_requirements_table_metadata_matches_migration_contract() -> None:
     assert requirements.columns["skill_normalized"].nullable
     assert requirements.columns["source_span_start"].nullable
     assert requirements.columns["source_span_end"].nullable
+
+
+def test_analysis_runs_table_metadata_matches_migration_contract() -> None:
+    analysis_runs = Base.metadata.tables["analysis_runs"]
+
+    assert AnalysisRun.__tablename__ == "analysis_runs"
+    assert set(analysis_runs.columns.keys()) == {
+        "id",
+        "user_id",
+        "job_id",
+        "parse_run_id",
+        "status",
+        "idempotency_key",
+        "input_fingerprint",
+        "model_name",
+        "prompt_version",
+        "attempt",
+        "validation_failure_count",
+        "error_code",
+        "latency_ms",
+        "input_tokens",
+        "output_tokens",
+        "started_at",
+        "finished_at",
+        "created_at",
+    }
+    assert analysis_runs.columns["id"].primary_key
+    assert not analysis_runs.columns["parse_run_id"].nullable
+    assert not analysis_runs.columns["validation_failure_count"].nullable
+    constraint_names = {constraint.name for constraint in analysis_runs.constraints}
+    assert "ck_analysis_runs_validation_failure_count" in constraint_names
+
+
+def test_evidence_matches_table_metadata_enforces_grounding_contract() -> None:
+    evidence_matches = Base.metadata.tables["evidence_matches"]
+
+    assert EvidenceMatch.__tablename__ == "evidence_matches"
+    assert set(evidence_matches.columns.keys()) == {
+        "id",
+        "analysis_run_id",
+        "requirement_id",
+        "experience_id",
+        "experience_version",
+        "verdict",
+        "quote",
+        "quote_valid",
+        "confidence",
+    }
+    assert evidence_matches.columns["id"].primary_key
+    assert not evidence_matches.columns["analysis_run_id"].nullable
+    assert not evidence_matches.columns["requirement_id"].nullable
+    assert evidence_matches.columns["experience_id"].nullable
+    assert evidence_matches.columns["experience_version"].nullable
+    assert evidence_matches.columns["quote"].nullable
+    assert not evidence_matches.columns["quote_valid"].nullable
+    constraint_names = {constraint.name for constraint in evidence_matches.constraints}
+    assert "ck_evidence_matches_grounded_verdict" in constraint_names
+    assert "ck_evidence_matches_confidence" in constraint_names
