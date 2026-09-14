@@ -9,6 +9,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from careerops.api.action_items import router as action_items_router
 from careerops.api.analysis_runs import router as analysis_runs_router
 from careerops.api.auth import router as auth_router
 from careerops.api.experiences import router as experiences_router
@@ -22,6 +23,10 @@ from careerops.core.request_id import RequestIdMiddleware
 from careerops.db.health import DatabaseReadinessChecker
 from careerops.db.session import create_session_factory
 from careerops.domain.errors import (
+    ActionItemNotFoundError,
+    ActionItemSourceNotActionableError,
+    ActionItemSourceNotFoundError,
+    ActionItemVersionConflictError,
     AnalysisRunDispatchError,
     AnalysisRunNotFoundError,
     DuplicateEmailError,
@@ -72,6 +77,55 @@ def create_app() -> FastAPI:
     app.include_router(jobs_router)
     app.include_router(parse_runs_router)
     app.include_router(analysis_runs_router)
+    app.include_router(action_items_router)
+
+    @app.exception_handler(ActionItemNotFoundError)
+    async def action_item_not_found_handler(
+        request: Request,
+        exc: ActionItemNotFoundError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.ACTION_ITEM_NOT_FOUND,
+            message="Action item was not found.",
+        )
+
+    @app.exception_handler(ActionItemVersionConflictError)
+    async def action_item_version_conflict_handler(
+        request: Request,
+        exc: ActionItemVersionConflictError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.ACTION_ITEM_VERSION_CONFLICT,
+            message="Action item version conflict.",
+        )
+
+    @app.exception_handler(ActionItemSourceNotFoundError)
+    async def action_item_source_not_found_handler(
+        request: Request,
+        exc: ActionItemSourceNotFoundError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.ACTION_ITEM_SOURCE_NOT_FOUND,
+            message="Action item source was not found.",
+        )
+
+    @app.exception_handler(ActionItemSourceNotActionableError)
+    async def action_item_source_not_actionable_handler(
+        request: Request,
+        exc: ActionItemSourceNotActionableError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.ACTION_ITEM_SOURCE_NOT_ACTIONABLE,
+            message="Only partial, missing, or insufficient-evidence results can become tasks.",
+        )
 
     @app.exception_handler(DuplicateEmailError)
     async def duplicate_email_handler(request: Request, exc: DuplicateEmailError) -> JSONResponse:

@@ -71,3 +71,4 @@ What future condition would justify reopening this decision?
 - `ADR-013-requirement-parser-evaluation.md`: versioned labeled datasets, separated quality metrics, immutable raw evidence, and development-versus-holdout discipline.
 - `ADR-014-evidence-integrity-foundation.md`: analysis result persistence, semantic citation validation, structural database constraints, and atomic completion.
 - `ADR-015-analysis-run-end-to-end.md`: Analysis Run API, deterministic retrieval, fake matching, worker lifecycle, recovery, and complete verdict enforcement.
+- `ADR-016-action-items.md`: Job-scoped Action Items with gap provenance, idempotent creation, optimistic locking, authorization, and archived-Job retention.

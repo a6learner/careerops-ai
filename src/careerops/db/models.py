@@ -83,6 +83,12 @@ class EvidenceVerdict(StrEnum):
     INSUFFICIENT_EVIDENCE = "insufficient_evidence"
 
 
+class ActionItemStatus(StrEnum):
+    TODO = "todo"
+    DOING = "doing"
+    DONE = "done"
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -108,8 +114,8 @@ class Experience(Base):
         Index(
             "idx_experiences_user_active_updated",
             "user_id",
-            "updated_at",
-            postgresql_where="deleted_at IS NULL",
+            text("updated_at DESC"),
+            postgresql_where=text("deleted_at IS NULL"),
         ),
     )
 
@@ -418,3 +424,88 @@ class EvidenceMatch(Base):
     quote: Mapped[str | None] = mapped_column(Text, nullable=True)
     quote_valid: Mapped[bool] = mapped_column(Boolean, nullable=False)
     confidence: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
+
+
+class ActionItem(Base):
+    __tablename__ = "action_items"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('todo', 'doing', 'done')",
+            name="ck_action_items_status",
+        ),
+        CheckConstraint(
+            "char_length(btrim(title)) BETWEEN 1 AND 200",
+            name="ck_action_items_title",
+        ),
+        CheckConstraint("version >= 1", name="ck_action_items_version_positive"),
+        CheckConstraint(
+            "char_length(request_fingerprint) = 64",
+            name="ck_action_items_request_fingerprint",
+        ),
+        CheckConstraint(
+            "char_length(idempotency_key) BETWEEN 1 AND 255",
+            name="ck_action_items_idempotency_key",
+        ),
+        Index(
+            "uq_action_items_user_idempotency",
+            "user_id",
+            "idempotency_key",
+            unique=True,
+        ),
+        Index(
+            "idx_action_items_user_updated",
+            "user_id",
+            text("updated_at DESC"),
+            text("id DESC"),
+        ),
+        Index(
+            "idx_action_items_user_status_updated",
+            "user_id",
+            "status",
+            text("updated_at DESC"),
+            text("id DESC"),
+        ),
+        Index(
+            "idx_action_items_user_job_updated",
+            "user_id",
+            "job_id",
+            text("updated_at DESC"),
+            text("id DESC"),
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("users.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    job_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("jobs.id", ondelete="RESTRICT"),
+        nullable=False,
+    )
+    source_evidence_match_id: Mapped[UUID | None] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("evidence_matches.id", ondelete="RESTRICT"),
+        nullable=True,
+    )
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[str] = mapped_column(
+        Text,
+        nullable=False,
+        server_default=ActionItemStatus.TODO.value,
+    )
+    version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    idempotency_key: Mapped[str] = mapped_column(Text, nullable=False)
+    request_fingerprint: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )

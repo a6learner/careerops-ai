@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs now provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Embedding generation, pgvector retrieval, and a real evidence matcher remain later quality-focused slices.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Job-scoped Action Items now support manual creation, gap provenance, idempotent retries, optimistic updates, and archived-Job retention. Dashboard aggregation and caching remain the next business slice; embedding generation, pgvector retrieval, and a real evidence matcher remain later quality-focused slices.
 
 ## Architecture Direction
 
@@ -116,8 +116,11 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
 - `POST /api/v1/jobs/{id}/analysis-runs` creates or reuses a queued idempotent Analysis Run for an explicit successful Parse Run and the current active experience-library fingerprint.
 - `GET /api/v1/jobs/{id}/analysis-runs/{run_id}` returns one owned Analysis Run with validated evidence matches and explicit gaps.
+- `GET /api/v1/action-items` lists owned tasks with optional Job/status filters and cursor pagination, including archived-Job state.
+- `POST /api/v1/action-items` idempotently creates a manual task or one linked to an actionable Evidence Match.
+- `PATCH /api/v1/action-items/{id}` updates title or status with `If-Match` optimistic locking, including after its Job is archived.
 
-Remaining business endpoints will be added in small milestones: action items and dashboard summary. Analysis retrieval quality will be upgraded separately through embedding generation, pgvector-backed hybrid retrieval, and versioned evaluation evidence.
+The remaining business endpoint is the Dashboard summary with Redis-backed aggregation and write-side invalidation. Analysis retrieval quality will be upgraded separately through embedding generation, pgvector-backed hybrid retrieval, and versioned evaluation evidence.
 
 ## Key Decisions
 

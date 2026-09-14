@@ -1,4 +1,5 @@
 from careerops.db.models import (
+    ActionItem,
     AnalysisRun,
     Base,
     EvidenceMatch,
@@ -213,3 +214,34 @@ def test_evidence_matches_table_metadata_enforces_grounding_contract() -> None:
     assert "ck_evidence_matches_confidence" in constraint_names
     indexes = {index.name: index for index in evidence_matches.indexes}
     assert indexes["uq_evidence_matches_run_requirement"].unique
+
+
+def test_action_items_table_metadata_matches_migration_contract() -> None:
+    action_items = Base.metadata.tables["action_items"]
+
+    assert ActionItem.__tablename__ == "action_items"
+    assert set(action_items.columns.keys()) == {
+        "id",
+        "user_id",
+        "job_id",
+        "source_evidence_match_id",
+        "title",
+        "status",
+        "version",
+        "idempotency_key",
+        "request_fingerprint",
+        "created_at",
+        "updated_at",
+    }
+    assert action_items.columns["id"].primary_key
+    assert not action_items.columns["user_id"].nullable
+    assert not action_items.columns["job_id"].nullable
+    assert action_items.columns["source_evidence_match_id"].nullable
+    assert not action_items.columns["title"].nullable
+    assert not action_items.columns["status"].nullable
+    assert not action_items.columns["version"].nullable
+    indexes = {index.name: index for index in action_items.indexes}
+    assert indexes["uq_action_items_user_idempotency"].unique
+    assert [column.name for column in indexes["idx_action_items_user_updated"].columns] == [
+        "user_id",
+    ]

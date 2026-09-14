@@ -114,3 +114,24 @@ class EvidenceMatcherError(Exception):
 class MatcherOutputValidationError(Exception):
     def __init__(self) -> None:
         super().__init__("Evidence matcher returned invalid output.")
+
+
+class ActionItemNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Action item was not found.")
+
+
+class ActionItemVersionConflictError(Exception):
+    def __init__(self, current_version: int) -> None:
+        super().__init__("Action item version conflict.")
+        self.current_version = current_version
+
+
+class ActionItemSourceNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Action item source was not found.")
+
+
+class ActionItemSourceNotActionableError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Action item source is not actionable.")
