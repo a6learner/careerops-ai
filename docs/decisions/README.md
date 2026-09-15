@@ -72,3 +72,4 @@ What future condition would justify reopening this decision?
 - `ADR-014-evidence-integrity-foundation.md`: analysis result persistence, semantic citation validation, structural database constraints, and atomic completion.
 - `ADR-015-analysis-run-end-to-end.md`: Analysis Run API, deterministic retrieval, fake matching, worker lifecycle, recovery, and complete verdict enforcement.
 - `ADR-016-action-items.md`: Job-scoped Action Items with gap provenance, idempotent creation, optimistic locking, authorization, and archived-Job retention.
+- `ADR-017-dashboard-summary-cache.md`: active progress aggregation with a disposable, fail-open Redis cache and post-commit invalidation.

@@ -81,7 +81,11 @@ async def test_action_item_source_errors_use_project_contract(
 ) -> None:
     app, _ = build_test_app()
     service = ActionItemCreateService(error)
-    monkeypatch.setattr(action_items, "build_action_item_service", lambda session: service)
+    monkeypatch.setattr(
+        action_items,
+        "build_action_item_service",
+        lambda session, cache: service,
+    )
     transport = ASGITransport(app=app)
 
     async with AsyncClient(transport=transport, base_url="http://testserver") as client:
@@ -120,7 +124,11 @@ async def test_action_item_create_returns_archived_flag(
         updated_at=now,
     )
     service = ActionItemCreateService(item)
-    monkeypatch.setattr(action_items, "build_action_item_service", lambda session: service)
+    monkeypatch.setattr(
+        action_items,
+        "build_action_item_service",
+        lambda session, cache: service,
+    )
     transport = ASGITransport(app=app)
 
     async with AsyncClient(transport=transport, base_url="http://testserver") as client:

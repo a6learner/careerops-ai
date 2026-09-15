@@ -1,7 +1,7 @@
 from datetime import timedelta
-from typing import Annotated
+from typing import Annotated, cast
 
-from fastapi import Depends, Header
+from fastapi import Depends, Header, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.core.config import get_settings
@@ -12,6 +12,11 @@ from careerops.repositories.users import UserRepository
 from careerops.security.passwords import PasswordHasher
 from careerops.security.tokens import TokenIssuer, TokenVerifier
 from careerops.services.auth import AuthService
+from careerops.services.dashboard import DashboardCache
+
+
+def get_dashboard_cache(request: Request) -> DashboardCache:
+    return cast(DashboardCache, request.app.state.dashboard_cache)
 
 
 async def get_current_user(

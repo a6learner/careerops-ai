@@ -7,6 +7,7 @@ from uuid import UUID
 
 from careerops.domain.errors import InvalidCursorError, JobNotFoundError, JobVersionConflictError
 from careerops.domain.jobs import JobCreate, JobCursor, JobRecord, JobStatus, JobUpdate
+from careerops.services.dashboard import DashboardCacheInvalidator
 
 
 class JobStore(Protocol):
@@ -37,13 +38,19 @@ class JobStore(Protocol):
 
 
 class JobService:
-    def __init__(self, jobs: JobStore) -> None:
+    def __init__(
+        self,
+        jobs: JobStore,
+        dashboard_cache: DashboardCacheInvalidator,
+    ) -> None:
         self._jobs = jobs
+        self._dashboard_cache = dashboard_cache
 
     async def create_job(self, payload: JobCreate) -> JobRecord:
         description_hash = compute_description_hash(payload.raw_description)
         job = await self._jobs.create_job(payload, description_hash)
         await self._jobs.commit()
+        await self._dashboard_cache.invalidate(payload.user_id)
         return job
 
     async def list_jobs(
@@ -92,6 +99,7 @@ class JobService:
         if updated is None:
             raise JobVersionConflictError(current.version)
         await self._jobs.commit()
+        await self._dashboard_cache.invalidate(user_id)
         return updated
 
     async def delete_job(self, user_id: UUID, job_id: UUID) -> None:
@@ -99,6 +107,7 @@ class JobService:
         if not deleted:
             raise JobNotFoundError()
         await self._jobs.commit()
+        await self._dashboard_cache.invalidate(user_id)
 
 
 def compute_description_hash(raw_description: str) -> str:

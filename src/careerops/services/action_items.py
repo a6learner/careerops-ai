@@ -25,6 +25,7 @@ from careerops.domain.errors import (
 )
 from careerops.domain.evidence_matching import EvidenceVerdict
 from careerops.domain.jobs import JobRecord
+from careerops.services.dashboard import DashboardCacheInvalidator
 
 ACTIONABLE_VERDICTS = frozenset(
     {
@@ -86,9 +87,15 @@ class ActionItemStore(Protocol):
 
 
 class ActionItemService:
-    def __init__(self, jobs: ActionItemJobReader, action_items: ActionItemStore) -> None:
+    def __init__(
+        self,
+        jobs: ActionItemJobReader,
+        action_items: ActionItemStore,
+        dashboard_cache: DashboardCacheInvalidator,
+    ) -> None:
         self._jobs = jobs
         self._action_items = action_items
+        self._dashboard_cache = dashboard_cache
 
     async def create_action_item(self, payload: ActionItemCreate) -> ActionItemRecord:
         request_fingerprint = compute_action_item_request_fingerprint(payload)
@@ -118,6 +125,7 @@ class ActionItemService:
         ensure_matching_action_item_request(creation.item, request_fingerprint)
         if creation.created:
             await self._action_items.commit()
+            await self._dashboard_cache.invalidate(payload.user_id)
         return creation.item
 
     async def list_action_items(
@@ -161,6 +169,7 @@ class ActionItemService:
         if updated is None:
             raise ActionItemVersionConflictError(current.version)
         await self._action_items.commit()
+        await self._dashboard_cache.invalidate(user_id)
         return updated
 
 

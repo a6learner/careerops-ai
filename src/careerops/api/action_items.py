@@ -5,7 +5,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Header, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from careerops.api.dependencies import get_current_user
+from careerops.api.dependencies import get_current_user, get_dashboard_cache
 from careerops.api.preconditions import (
     MAX_IDEMPOTENCY_KEY_LENGTH,
     parse_idempotency_key,
@@ -28,6 +28,7 @@ from careerops.schemas.action_items import (
     ActionItemUpdateRequest,
 )
 from careerops.services.action_items import ActionItemService, decode_action_item_cursor
+from careerops.services.dashboard import DashboardCache
 
 router = APIRouter(prefix="/api/v1/action-items", tags=["action-items"])
 
@@ -37,12 +38,13 @@ async def create_action_item(
     payload: ActionItemCreateRequest,
     current_user: Annotated[UserAccount, Depends(get_current_user)],
     session: Annotated[AsyncSession, Depends(get_session)],
+    cache: Annotated[DashboardCache, Depends(get_dashboard_cache)],
     idempotency_key: Annotated[
         str | None,
         Header(alias="Idempotency-Key", max_length=MAX_IDEMPOTENCY_KEY_LENGTH),
     ] = None,
 ) -> ActionItemResponse:
-    item = await build_action_item_service(session).create_action_item(
+    item = await build_action_item_service(session, cache).create_action_item(
         ActionItemCreate(
             user_id=current_user.id,
             job_id=payload.job_id,
@@ -58,12 +60,13 @@ async def create_action_item(
 async def list_action_items(
     current_user: Annotated[UserAccount, Depends(get_current_user)],
     session: Annotated[AsyncSession, Depends(get_session)],
+    cache: Annotated[DashboardCache, Depends(get_dashboard_cache)],
     status: Annotated[ActionItemStatus | None, Query()] = None,
     job_id: Annotated[UUID | None, Query()] = None,
     cursor: Annotated[str | None, Query()] = None,
     limit: Annotated[int, Query(ge=1, le=100)] = 50,
 ) -> ActionItemListResponse:
-    items, next_cursor = await build_action_item_service(session).list_action_items(
+    items, next_cursor = await build_action_item_service(session, cache).list_action_items(
         user_id=current_user.id,
         status=status,
         job_id=job_id,
@@ -82,9 +85,10 @@ async def update_action_item(
     payload: ActionItemUpdateRequest,
     current_user: Annotated[UserAccount, Depends(get_current_user)],
     session: Annotated[AsyncSession, Depends(get_session)],
+    cache: Annotated[DashboardCache, Depends(get_dashboard_cache)],
     if_match: Annotated[str | None, Header(alias="If-Match")] = None,
 ) -> ActionItemResponse:
-    item = await build_action_item_service(session).update_action_item(
+    item = await build_action_item_service(session, cache).update_action_item(
         user_id=current_user.id,
         action_item_id=action_item_id,
         expected_version=parse_if_match(if_match),
@@ -93,10 +97,14 @@ async def update_action_item(
     return to_response(item)
 
 
-def build_action_item_service(session: AsyncSession) -> ActionItemService:
+def build_action_item_service(
+    session: AsyncSession,
+    cache: DashboardCache,
+) -> ActionItemService:
     return ActionItemService(
         jobs=JobRepository(session),
         action_items=ActionItemRepository(session),
+        dashboard_cache=cache,
     )
 
 

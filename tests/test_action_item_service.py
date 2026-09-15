@@ -12,6 +12,7 @@ from careerops.domain.action_items import (
     ActionItemStatus,
     ActionItemUpdate,
 )
+from careerops.domain.dashboard import DashboardSummary
 from careerops.domain.errors import (
     ActionItemSourceNotActionableError,
     ActionItemSourceNotFoundError,
@@ -175,6 +176,25 @@ class InMemoryActionItemStore:
         self.committed = True
 
 
+class InMemoryDashboardCache:
+    def __init__(self) -> None:
+        self.invalidated_user_ids: list[UUID] = []
+
+    async def get(self, user_id: UUID) -> DashboardSummary | None:
+        return None
+
+    async def set(self, user_id: UUID, summary: DashboardSummary) -> None:
+        return None
+
+    async def invalidate(self, user_id: UUID) -> None:
+        self.invalidated_user_ids.append(user_id)
+
+
+class FailingCommitActionItemStore(InMemoryActionItemStore):
+    async def commit(self) -> None:
+        raise RuntimeError("database commit failed")
+
+
 def make_create(
     user_id: UUID,
     job_id: UUID,
@@ -198,13 +218,31 @@ async def test_create_manual_action_item_defaults_to_todo_and_commits() -> None:
     job_id = uuid4()
     store = InMemoryActionItemStore()
 
-    item = await ActionItemService(InMemoryJobReader({job_id}), store).create_action_item(
-        make_create(user_id, job_id)
-    )
+    cache = InMemoryDashboardCache()
+    item = await ActionItemService(
+        InMemoryJobReader({job_id}), store, cache
+    ).create_action_item(make_create(user_id, job_id))
 
     assert item.status is ActionItemStatus.TODO
     assert item.source_evidence_match_id is None
     assert store.committed
+    assert cache.invalidated_user_ids == [user_id]
+
+
+@pytest.mark.asyncio
+async def test_create_action_item_does_not_invalidate_before_commit_succeeds() -> None:
+    user_id = uuid4()
+    job_id = uuid4()
+    cache = InMemoryDashboardCache()
+
+    with pytest.raises(RuntimeError, match="database commit failed"):
+        await ActionItemService(
+            InMemoryJobReader({job_id}),
+            FailingCommitActionItemStore(),
+            cache,
+        ).create_action_item(make_create(user_id, job_id))
+
+    assert cache.invalidated_user_ids == []
 
 
 @pytest.mark.parametrize(
@@ -222,9 +260,9 @@ async def test_create_from_supported_gap_verdict(verdict: EvidenceVerdict) -> No
     source_id = uuid4()
     store = InMemoryActionItemStore(sources={source_id: ActionItemSourceRecord(source_id, verdict)})
 
-    item = await ActionItemService(InMemoryJobReader({job_id}), store).create_action_item(
-        make_create(user_id, job_id, source_id=source_id)
-    )
+    item = await ActionItemService(
+        InMemoryJobReader({job_id}), store, InMemoryDashboardCache()
+    ).create_action_item(make_create(user_id, job_id, source_id=source_id))
 
     assert item.source_evidence_match_id == source_id
 
@@ -239,12 +277,12 @@ async def test_create_rejects_matched_or_missing_source() -> None:
     )
 
     with pytest.raises(ActionItemSourceNotActionableError):
-        await ActionItemService(InMemoryJobReader({job_id}), matched_store).create_action_item(
-            make_create(user_id, job_id, source_id=source_id)
-        )
+        await ActionItemService(
+            InMemoryJobReader({job_id}), matched_store, InMemoryDashboardCache()
+        ).create_action_item(make_create(user_id, job_id, source_id=source_id))
     with pytest.raises(ActionItemSourceNotFoundError):
         await ActionItemService(
-            InMemoryJobReader({job_id}), InMemoryActionItemStore()
+            InMemoryJobReader({job_id}), InMemoryActionItemStore(), InMemoryDashboardCache()
         ).create_action_item(make_create(user_id, job_id, source_id=source_id))
 
 
@@ -252,7 +290,7 @@ async def test_create_rejects_matched_or_missing_source() -> None:
 async def test_create_requires_active_owned_job() -> None:
     with pytest.raises(JobNotFoundError):
         await ActionItemService(
-            InMemoryJobReader(set()), InMemoryActionItemStore()
+            InMemoryJobReader(set()), InMemoryActionItemStore(), InMemoryDashboardCache()
         ).create_action_item(make_create(uuid4(), uuid4()))
 
 
@@ -262,12 +300,14 @@ async def test_idempotent_replay_returns_existing_and_changed_request_conflicts(
     job_id = uuid4()
     payload = make_create(user_id, job_id)
     store = InMemoryActionItemStore()
-    service = ActionItemService(InMemoryJobReader({job_id}), store)
+    cache = InMemoryDashboardCache()
+    service = ActionItemService(InMemoryJobReader({job_id}), store, cache)
     first = await service.create_action_item(payload)
 
     replay = await service.create_action_item(payload)
 
     assert replay.id == first.id
+    assert cache.invalidated_user_ids == [user_id]
     with pytest.raises(IdempotencyKeyConflictError):
         await service.create_action_item(make_create(user_id, job_id, title="Different title"))
 
@@ -317,7 +357,8 @@ async def test_update_allows_archived_job_item_and_rejects_stale_version() -> No
         updated_at=now,
     )
     store = InMemoryActionItemStore([archived])
-    service = ActionItemService(InMemoryJobReader(set()), store)
+    cache = InMemoryDashboardCache()
+    service = ActionItemService(InMemoryJobReader(set()), store, cache)
 
     updated = await service.update_action_item(
         user_id,
@@ -328,6 +369,7 @@ async def test_update_allows_archived_job_item_and_rejects_stale_version() -> No
 
     assert updated.status is ActionItemStatus.DONE
     assert updated.job_is_archived
+    assert cache.invalidated_user_ids == [user_id]
     with pytest.raises(ActionItemVersionConflictError):
         await service.update_action_item(
             user_id,

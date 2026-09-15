@@ -3,6 +3,7 @@ from uuid import UUID, uuid4
 
 import pytest
 
+from careerops.domain.dashboard import DashboardSummary
 from careerops.domain.errors import InvalidCursorError, JobNotFoundError, JobVersionConflictError
 from careerops.domain.jobs import JobCreate, JobCursor, JobRecord, JobStatus, JobUpdate
 from careerops.services.jobs import (
@@ -103,6 +104,25 @@ class InMemoryJobStore:
         self.committed = True
 
 
+class InMemoryDashboardCache:
+    def __init__(self) -> None:
+        self.invalidated_user_ids: list[UUID] = []
+
+    async def get(self, user_id: UUID) -> DashboardSummary | None:
+        return None
+
+    async def set(self, user_id: UUID, summary: DashboardSummary) -> None:
+        return None
+
+    async def invalidate(self, user_id: UUID) -> None:
+        self.invalidated_user_ids.append(user_id)
+
+
+class FailingCommitJobStore(InMemoryJobStore):
+    async def commit(self) -> None:
+        raise RuntimeError("database commit failed")
+
+
 def make_create(user_id: UUID, raw_description: str = "Build reliable APIs.") -> JobCreate:
     return JobCreate(
         user_id=user_id,
@@ -138,7 +158,8 @@ def make_record(user_id: UUID, updated_at: datetime | None = None) -> JobRecord:
 @pytest.mark.asyncio
 async def test_create_job_computes_description_hash_and_commits() -> None:
     store = InMemoryJobStore()
-    service = JobService(store)
+    cache = InMemoryDashboardCache()
+    service = JobService(store, cache)
     payload = make_create(uuid4(), raw_description=" Build   reliable APIs. ")
 
     job = await service.create_job(payload)
@@ -146,6 +167,18 @@ async def test_create_job_computes_description_hash_and_commits() -> None:
     assert job.description_hash == compute_description_hash("Build reliable APIs.")
     assert store.created_hash == job.description_hash
     assert store.committed
+    assert cache.invalidated_user_ids == [payload.user_id]
+
+
+@pytest.mark.asyncio
+async def test_create_job_does_not_invalidate_before_commit_succeeds() -> None:
+    cache = InMemoryDashboardCache()
+    payload = make_create(uuid4())
+
+    with pytest.raises(RuntimeError, match="database commit failed"):
+        await JobService(FailingCommitJobStore(), cache).create_job(payload)
+
+    assert cache.invalidated_user_ids == []
 
 
 @pytest.mark.asyncio
@@ -153,7 +186,7 @@ async def test_list_jobs_returns_next_cursor_when_more_rows_exist() -> None:
     user_id = uuid4()
     first = make_record(user_id, datetime(2026, 9, 4, 12, 0, tzinfo=UTC))
     second = make_record(user_id, datetime(2026, 9, 4, 11, 0, tzinfo=UTC))
-    service = JobService(InMemoryJobStore([first, second]))
+    service = JobService(InMemoryJobStore([first, second]), InMemoryDashboardCache())
 
     jobs, next_cursor = await service.list_jobs(user_id, status=None, cursor=None, limit=1)
 
@@ -176,7 +209,7 @@ async def test_job_cursor_tie_breaks_on_id_when_updated_at_matches() -> None:
     first = make_record(user_id, timestamp)
     second = make_record(user_id, timestamp)
     ordered = sorted([first, second], key=lambda job: job.id, reverse=True)
-    service = JobService(InMemoryJobStore(ordered))
+    service = JobService(InMemoryJobStore(ordered), InMemoryDashboardCache())
 
     jobs, _ = await service.list_jobs(
         user_id,
@@ -195,7 +228,7 @@ def test_invalid_job_cursor_raises_domain_error() -> None:
 
 @pytest.mark.asyncio
 async def test_get_job_raises_not_found_when_store_returns_none() -> None:
-    service = JobService(InMemoryJobStore())
+    service = JobService(InMemoryJobStore(), InMemoryDashboardCache())
 
     with pytest.raises(JobNotFoundError):
         await service.get_job(uuid4(), uuid4())
@@ -205,7 +238,7 @@ async def test_get_job_raises_not_found_when_store_returns_none() -> None:
 async def test_update_job_rejects_stale_version() -> None:
     user_id = uuid4()
     existing = make_record(user_id)
-    service = JobService(InMemoryJobStore([existing]))
+    service = JobService(InMemoryJobStore([existing]), InMemoryDashboardCache())
 
     with pytest.raises(JobVersionConflictError):
         await service.update_job(
@@ -221,9 +254,11 @@ async def test_delete_job_commits_soft_delete() -> None:
     user_id = uuid4()
     existing = make_record(user_id)
     store = InMemoryJobStore([existing])
-    service = JobService(store)
+    cache = InMemoryDashboardCache()
+    service = JobService(store, cache)
 
     await service.delete_job(user_id, existing.id)
 
     assert store.deleted
     assert store.committed
+    assert cache.invalidated_user_ids == [user_id]
