@@ -164,29 +164,67 @@ After each task, provide:
 - What the author should understand.
 - A short Knowledge Check when the task introduced important engineering concepts.
 
-## Long-Running Thread Hygiene
+## Stage Development And Thread Handoff
 
 Treat chat as a temporary workspace, not the source of truth. Durable project
 memory must live in repository files and Git history.
 
-Proactively suggest starting a fresh development thread when a major module or
-milestone is complete, when the conversation has become long enough that old
-plans and completed work are easy to confuse, or before switching to a new theme
-such as auth, experiences, jobs, workers, LLM integration, evidence matching,
-frontend, deployment, or interview prep.
+For each substantive stage, state the objective, in-scope behavior, relevant
+non-goals, acceptance criteria, likely files, verification plan, and decisions
+that still require author confirmation. Keep the stage small enough to review
+and verify independently. A stage is complete only when implementation status,
+verification results, documentation impact, and remaining work are explicit;
+do not describe unverified work or work awaiting author review as accepted.
 
-Before suggesting a fresh thread, make sure important context has been saved in
-the appropriate place:
+Proactively suggest starting a fresh development thread when a major module or
+milestone is complete, when verified context has become confused, or before
+switching to a new theme such as auth, experiences, jobs, workers, LLM
+integration, evidence matching, frontend, deployment, or interview prep. A long
+conversation alone is not sufficient: name the concrete benefit of separating
+the completed stage from the next outcome.
+
+Keep these actions distinct because none implicitly authorizes the next:
+
+1. Suggest a handoff.
+2. Save or update durable project context.
+3. Create a fresh thread and continue work there.
+
+Only create and continue in a fresh thread after the author explicitly approves
+that full handoff. A request to save progress does not authorize thread creation,
+and an ordinary request to continue does not approve a pending handoff.
+
+Before suggesting or performing a handoff, make sure relevant context has been
+saved in the existing authoritative location:
 
 - Design decisions in `docs/decisions/`.
 - Learning notes in `docs/learning/`.
 - Real measurements in `docs/metrics/`.
 - Run and setup instructions in `README.md`.
-- Code history in clear Git commits.
+- Code state in Git, including the current branch or commit, uncommitted changes,
+  and verification evidence. Commit or push only with the authorization required
+  elsewhere in this file.
+
+Prepare a concise handoff brief containing the current objective and acceptance
+criteria, completed and unverified work, confirmed decisions, rejected routes
+that still matter, key files, Git state, verification evidence, the first next
+step, blockers, and actions still requiring confirmation. Update existing
+project documents instead of introducing a second source of truth solely for
+handoff state.
+
+For an approved full handoff, create at most one receiving thread for the same
+handoff. The receiving thread must first perform a read-only verification of the
+project directory, Git state, handoff facts, constraints, and proposed first
+step. It must report material differences before editing. After verification,
+send a precise continuation instruction with the authorized scope and acceptance
+criteria. Once that instruction is sent, the source thread must not continue
+editing the same work; it may only observe or clarify until ownership is settled.
+If thread-management tools are unavailable, provide the brief and a copyable
+opening prompt instead of claiming that a thread was created.
 
 When a fresh thread starts, first read `AGENTS.md`, `docs/PROJECT_CONTEXT.md`,
-`docs/decisions/`, `docs/learning/`, and `README.md`, then summarize current
-project state and recommend the next step before changing code.
+`docs/decisions/`, `docs/learning/`, and `README.md`; inspect the current Git
+status and relevant diff; then summarize the verified project state, differences
+from the handoff brief, and recommended first step before changing code.
 
 ## Understanding Levels
 
@@ -265,3 +303,11 @@ Testing should be layered:
 Use English commit messages that say what changed and why. Avoid vague messages like `update`, `fix`, or `1`.
 
 Write docs in plain language. Do not add decorative badges or filler. Keep code comments sparse and useful.
+
+The trusted push destination for this repository is
+`git@github.com:a6learner/careerops-ai.git`. Push only when the author explicitly
+requests it. Before pushing, verify that the target remote resolves exactly to
+this URL, inspect the commits and diff being pushed, and scan the pending changes
+for secrets, credentials, private data, and personal configuration. If the remote
+does not match exactly or the scan raises an unresolved concern, stop and ask the
+author instead of pushing.
