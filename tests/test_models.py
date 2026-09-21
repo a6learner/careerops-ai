@@ -4,6 +4,7 @@ from careerops.db.models import (
     Base,
     EvidenceMatch,
     Experience,
+    ExperienceEmbeddingRun,
     Job,
     JobRequirement,
     ParseRun,
@@ -37,6 +38,10 @@ def test_experiences_table_metadata_matches_migration_contract() -> None:
         "version",
         "content_hash",
         "embedding",
+        "embedding_content_hash",
+        "embedding_model",
+        "embedding_input_version",
+        "embedded_at",
         "deleted_at",
         "created_at",
         "updated_at",
@@ -50,7 +55,37 @@ def test_experiences_table_metadata_matches_migration_contract() -> None:
     assert not experiences.columns["version"].nullable
     assert not experiences.columns["content_hash"].nullable
     assert experiences.columns["embedding"].nullable
+    assert experiences.columns["embedding_content_hash"].nullable
     assert experiences.columns["deleted_at"].nullable
+    assert "ck_experiences_embedding_provenance" in {
+        constraint.name for constraint in experiences.constraints
+    }
+
+
+def test_embedding_runs_table_enforces_lifecycle_and_target_uniqueness() -> None:
+    runs = Base.metadata.tables["experience_embedding_runs"]
+
+    assert ExperienceEmbeddingRun.__tablename__ == "experience_embedding_runs"
+    assert set(runs.columns.keys()) == {
+        "id",
+        "user_id",
+        "experience_id",
+        "experience_version",
+        "content_hash",
+        "status",
+        "model_name",
+        "input_version",
+        "attempt",
+        "error_code",
+        "started_at",
+        "finished_at",
+        "created_at",
+    }
+    constraint_names = {constraint.name for constraint in runs.constraints}
+    assert "ck_experience_embedding_runs_lifecycle" in constraint_names
+    indexes = {index.name: index for index in runs.indexes}
+    assert indexes["uq_experience_embedding_runs_target"].unique
+    assert indexes["uq_experience_embedding_runs_active"].unique
 
 
 def test_jobs_table_metadata_matches_migration_contract() -> None:

@@ -100,3 +100,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0016 Analysis Run End-To-End](0016-analysis-run-end-to-end.md)
 - [0017 Action Items](0017-action-items.md)
 - [0018 Dashboard Aggregation And Cache](0018-dashboard-aggregation-and-cache.md)
+- [0019 Experience Embedding Lifecycle](0019-experience-embedding-lifecycle.md)

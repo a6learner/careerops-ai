@@ -6,7 +6,11 @@ import pytest
 from dramatiq.brokers.redis import RedisBroker
 
 from careerops.core.config import get_settings
-from careerops.workers.dispatcher import DramatiqAnalysisRunDispatcher, DramatiqParseRunDispatcher
+from careerops.workers.dispatcher import (
+    DramatiqAnalysisRunDispatcher,
+    DramatiqEmbeddingRunDispatcher,
+    DramatiqParseRunDispatcher,
+)
 
 pytestmark = pytest.mark.integration
 
@@ -77,6 +81,43 @@ async def test_dispatcher_enqueues_analysis_run_id_in_redis() -> None:
 
         assert message is not None
         assert message.args == (str(analysis_run_id),)
+        consumer.ack(message)
+    finally:
+        consumer.close()
+        if connected:
+            broker.flush_all()
+        broker.close()
+
+
+@pytest.mark.skipif(
+    os.getenv("CAREEROPS_RUN_INTEGRATION") != "1",
+    reason="requires local Redis container",
+)
+@pytest.mark.asyncio
+async def test_dispatcher_enqueues_embedding_run_id_in_redis() -> None:
+    namespace = f"careerops-embedding-test-{uuid4()}"
+    queue_name = "embedding-runs-test"
+    broker = RedisBroker(url=get_settings().redis_url, namespace=namespace)
+
+    def do_nothing(embedding_run_id: str) -> None:
+        return None
+
+    actor = dramatiq.actor(
+        do_nothing,
+        actor_name=f"test_embedding_run_{uuid4()}",
+        broker=broker,
+        queue_name=queue_name,
+    )
+    embedding_run_id = uuid4()
+    consumer = broker.consume(queue_name, timeout=1_000)
+    connected = False
+    try:
+        await DramatiqEmbeddingRunDispatcher(actor).dispatch(embedding_run_id)
+        connected = True
+        message = next(consumer)
+
+        assert message is not None
+        assert message.args == (str(embedding_run_id),)
         consumer.ack(message)
     finally:
         consumer.close()

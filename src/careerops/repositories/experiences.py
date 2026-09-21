@@ -70,6 +70,10 @@ class ExperienceRepository:
             "content_hash": content_hash,
             "updated_at": datetime.now(UTC),
             "embedding": None,
+            "embedding_content_hash": None,
+            "embedding_model": None,
+            "embedding_input_version": None,
+            "embedded_at": None,
         }
         if payload.title is not None:
             values["title"] = payload.title
@@ -108,7 +112,15 @@ class ExperienceRepository:
                 Experience.user_id == user_id,
                 Experience.deleted_at.is_(None),
             )
-            .values(deleted_at=datetime.now(UTC), updated_at=datetime.now(UTC))
+            .values(
+                deleted_at=datetime.now(UTC),
+                updated_at=datetime.now(UTC),
+                embedding=None,
+                embedding_content_hash=None,
+                embedding_model=None,
+                embedding_input_version=None,
+                embedded_at=None,
+            )
             .returning(Experience.id)
         )
         return result.scalar_one_or_none() is not None

@@ -2,6 +2,7 @@ from datetime import date, datetime
 from enum import StrEnum
 from uuid import UUID, uuid4
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     Boolean,
     CheckConstraint,
@@ -18,21 +19,10 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import ARRAY, CITEXT
 from sqlalchemy.dialects.postgresql import UUID as PostgresUUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy.types import UserDefinedType
 
 
 class Base(DeclarativeBase):
     pass
-
-
-class PgVector(UserDefinedType[list[float]]):
-    cache_ok = True
-
-    def __init__(self, dimensions: int = 1536) -> None:
-        self._dimensions = dimensions
-
-    def get_col_spec(self, **kw: object) -> str:
-        return f"vector({self._dimensions})"
 
 
 class ExperienceKind(StrEnum):
@@ -89,6 +79,14 @@ class ActionItemStatus(StrEnum):
     DONE = "done"
 
 
+class EmbeddingRunStatus(StrEnum):
+    QUEUED = "queued"
+    RUNNING = "running"
+    SUCCEEDED = "succeeded"
+    FAILED = "failed"
+    SUPERSEDED = "superseded"
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -111,6 +109,15 @@ class Experience(Base):
         ),
         CheckConstraint("version >= 1", name="ck_experiences_version_positive"),
         CheckConstraint("char_length(content_hash) = 64", name="ck_experiences_content_hash"),
+        CheckConstraint(
+            "(embedding IS NULL AND embedding_content_hash IS NULL "
+            "AND embedding_model IS NULL AND embedding_input_version IS NULL "
+            "AND embedded_at IS NULL) OR "
+            "(embedding IS NOT NULL AND embedding_content_hash = content_hash "
+            "AND embedding_model IS NOT NULL AND embedding_input_version IS NOT NULL "
+            "AND embedded_at IS NOT NULL)",
+            name="ck_experiences_embedding_provenance",
+        ),
         Index(
             "idx_experiences_user_active_updated",
             "user_id",
@@ -140,7 +147,11 @@ class Experience(Base):
         server_default="1",
     )
     content_hash: Mapped[str] = mapped_column(Text, nullable=False)
-    embedding: Mapped[list[float] | None] = mapped_column(PgVector(1536), nullable=True)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(1536), nullable=True)
+    embedding_content_hash: Mapped[str | None] = mapped_column(Text, nullable=True)
+    embedding_model: Mapped[str | None] = mapped_column(Text, nullable=True)
+    embedding_input_version: Mapped[str | None] = mapped_column(Text, nullable=True)
+    embedded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
@@ -148,6 +159,87 @@ class Experience(Base):
         server_default=func.now(),
     )
     updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+
+
+class ExperienceEmbeddingRun(Base):
+    __tablename__ = "experience_embedding_runs"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'running', 'succeeded', 'failed', 'superseded')",
+            name="ck_experience_embedding_runs_status",
+        ),
+        CheckConstraint(
+            "experience_version >= 1",
+            name="ck_experience_embedding_runs_experience_version_positive",
+        ),
+        CheckConstraint(
+            "attempt >= 1",
+            name="ck_experience_embedding_runs_attempt_positive",
+        ),
+        CheckConstraint(
+            "char_length(content_hash) = 64",
+            name="ck_experience_embedding_runs_content_hash",
+        ),
+        CheckConstraint(
+            "(status = 'queued' AND started_at IS NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'running' AND started_at IS NOT NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'succeeded' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'failed' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NOT NULL) OR "
+            "(status = 'superseded' AND finished_at IS NOT NULL AND error_code IS NULL)",
+            name="ck_experience_embedding_runs_lifecycle",
+        ),
+        Index(
+            "uq_experience_embedding_runs_target",
+            "experience_id",
+            "experience_version",
+            "content_hash",
+            "model_name",
+            "input_version",
+            unique=True,
+        ),
+        Index(
+            "uq_experience_embedding_runs_active",
+            "experience_id",
+            unique=True,
+            postgresql_where=text("status IN ('queued', 'running')"),
+        ),
+        Index(
+            "idx_experience_embedding_runs_status_created",
+            "status",
+            "created_at",
+            "id",
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("users.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    experience_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("experiences.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    experience_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    content_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[str] = mapped_column(Text, nullable=False)
+    model_name: Mapped[str] = mapped_column(Text, nullable=False)
+    input_version: Mapped[str] = mapped_column(Text, nullable=False)
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    error_code: Mapped[str | None] = mapped_column(Text, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         server_default=func.now(),

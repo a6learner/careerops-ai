@@ -1,10 +1,19 @@
 import hashlib
 import json
+import logging
 from typing import Protocol
 from uuid import UUID
 
-from careerops.domain.errors import ExperienceNotFoundError, ExperienceVersionConflictError
+from careerops.domain.embeddings import EMBEDDING_INPUT_VERSION, FAKE_EMBEDDING_MODEL_NAME
+from careerops.domain.errors import (
+    EmbeddingRunDispatchError,
+    ExperienceNotFoundError,
+    ExperienceVersionConflictError,
+)
 from careerops.domain.experiences import ExperienceCreate, ExperienceRecord, ExperienceUpdate
+from careerops.services.embedding_recovery import EmbeddingRunDispatcher
+
+logger = logging.getLogger(__name__)
 
 
 class ExperienceStore(Protocol):
@@ -41,14 +50,38 @@ class ExperienceStore(Protocol):
     async def commit(self) -> None: ...
 
 
+class EmbeddingRunScheduler(Protocol):
+    async def create_run(
+        self,
+        experience: ExperienceRecord,
+        model_name: str,
+        input_version: str,
+    ) -> UUID: ...
+
+    async def supersede_active_runs(self, user_id: UUID, experience_id: UUID) -> None: ...
+
+
 class ExperienceService:
-    def __init__(self, experiences: ExperienceStore) -> None:
+    def __init__(
+        self,
+        experiences: ExperienceStore,
+        embedding_runs: EmbeddingRunScheduler,
+        dispatcher: EmbeddingRunDispatcher,
+    ) -> None:
         self._experiences = experiences
+        self._embedding_runs = embedding_runs
+        self._dispatcher = dispatcher
 
     async def create_experience(self, payload: ExperienceCreate) -> ExperienceRecord:
         content_hash = compute_experience_content_hash(payload)
         experience = await self._experiences.create_experience(payload, content_hash)
+        run_id = await self._embedding_runs.create_run(
+            experience,
+            FAKE_EMBEDDING_MODEL_NAME,
+            EMBEDDING_INPUT_VERSION,
+        )
         await self._experiences.commit()
+        await self._dispatch_best_effort(run_id)
         return experience
 
     async def list_experiences(self, user_id: UUID) -> list[ExperienceRecord]:
@@ -82,6 +115,7 @@ class ExperienceService:
                 outcome=merged.outcome,
             )
         )
+        await self._embedding_runs.supersede_active_runs(user_id, experience_id)
         updated = await self._experiences.update_experience(
             user_id=user_id,
             experience_id=experience_id,
@@ -91,14 +125,27 @@ class ExperienceService:
         )
         if updated is None:
             raise ExperienceVersionConflictError(current.version)
+        run_id = await self._embedding_runs.create_run(
+            updated,
+            FAKE_EMBEDDING_MODEL_NAME,
+            EMBEDDING_INPUT_VERSION,
+        )
         await self._experiences.commit()
+        await self._dispatch_best_effort(run_id)
         return updated
 
     async def delete_experience(self, user_id: UUID, experience_id: UUID) -> None:
+        await self._embedding_runs.supersede_active_runs(user_id, experience_id)
         deleted = await self._experiences.soft_delete_experience(user_id, experience_id)
         if not deleted:
             raise ExperienceNotFoundError()
         await self._experiences.commit()
+
+    async def _dispatch_best_effort(self, run_id: UUID) -> None:
+        try:
+            await self._dispatcher.dispatch(run_id)
+        except EmbeddingRunDispatchError:
+            logger.warning("Embedding run dispatch failed run_id=%s", run_id)
 
 
 def compute_experience_content_hash(payload: ExperienceCreate) -> str:

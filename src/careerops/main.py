@@ -50,7 +50,11 @@ from careerops.domain.errors import (
     ParseRunNotFoundError,
     ParseRunNotReadyError,
 )
-from careerops.workers.dispatcher import DramatiqAnalysisRunDispatcher, DramatiqParseRunDispatcher
+from careerops.workers.dispatcher import (
+    DramatiqAnalysisRunDispatcher,
+    DramatiqEmbeddingRunDispatcher,
+    DramatiqParseRunDispatcher,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -85,6 +89,7 @@ def create_app() -> FastAPI:
     )
     app.state.parse_run_dispatcher = DramatiqParseRunDispatcher()
     app.state.analysis_run_dispatcher = DramatiqAnalysisRunDispatcher()
+    app.state.embedding_run_dispatcher = DramatiqEmbeddingRunDispatcher()
     app.add_middleware(RequestIdMiddleware)
     app.include_router(router)
     app.include_router(auth_router)

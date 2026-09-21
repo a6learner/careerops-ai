@@ -35,6 +35,21 @@ class ExperienceVersionConflictError(Exception):
         self.current_version = current_version
 
 
+class EmbeddingRunDispatchError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Embedding run queue is unavailable.")
+
+
+class EmbeddingProviderError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Embedding provider failed.")
+
+
+class EmbeddingOutputValidationError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Embedding provider returned invalid output.")
+
+
 class MissingIfMatchHeaderError(Exception):
     def __init__(self) -> None:
         super().__init__("Missing If-Match header.")
