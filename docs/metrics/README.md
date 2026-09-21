@@ -33,3 +33,9 @@ Prefer small, durable files:
 - interpretation and limitations
 
 Do not overwrite old results when comparing performance. Add a new dated artifact so the improvement can be traced.
+
+## Current Retrieval Evidence
+
+- `2026-09-20-lexical-retrieval-baseline.md` explains the metric definitions,
+  observed baseline, and limitations.
+- `2026-09-20-lexical-retrieval-baseline.json` preserves the full ranked output.

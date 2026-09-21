@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Job-scoped Action Items support manual creation, gap provenance, idempotent retries, optimistic updates, and archived-Job retention. The Dashboard summarizes active Job and Action Item counts through a disposable Redis cache. Experience embeddings now have durable, version-bound fake generation, stale-result fencing, and PostgreSQL-backed recovery. Pgvector retrieval and a real evidence matcher remain later quality-focused slices.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Job-scoped Action Items support manual creation, gap provenance, idempotent retries, optimistic updates, and archived-Job retention. The Dashboard summarizes active Job and Action Item counts through a disposable Redis cache. Experience embeddings now have durable, version-bound fake generation, stale-result fencing, and PostgreSQL-backed recovery. A versioned synthetic evaluation records the existing lexical Top-5 retrieval baseline before any production ranking change. Pgvector retrieval, real embeddings, and a real evidence matcher remain later quality-focused slices.
 
 ## Architecture Direction
 
@@ -94,6 +94,16 @@ output filename so historical evidence remains intact:
   --git-revision <commit-or-working-tree-label>
 ```
 
+Evaluate the current lexical evidence retriever offline, again choosing a new
+output filename for every saved comparison:
+
+```powershell
+.\.venv\Scripts\python -m careerops.evaluation.run_evidence_retrieval `
+  --dataset evals/evidence_retrieval_v1.json `
+  --output docs/metrics/YYYY-MM-DD-lexical-retrieval-baseline.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
 Using the explicit `.venv` paths keeps project dependencies out of the global Python or Anaconda environment.
 
 ## API Surface
@@ -122,7 +132,7 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `PATCH /api/v1/action-items/{id}` updates title or status with `If-Match` optimistic locking, including after its Job is archived.
 - `GET /api/v1/dashboard/summary` returns the current user's active Job and Action Item status totals, cached in Redis with PostgreSQL fallback.
 
-The backend MVP core loop now reaches the Dashboard summary. The embedding lifecycle is ready, but Analysis Runs intentionally continue to use deterministic lexical/skill retrieval. Pgvector-backed hybrid retrieval and versioned retrieval evaluation are separate later stages.
+The backend MVP core loop now reaches the Dashboard summary. The embedding lifecycle is ready, and the deterministic lexical/skill retriever has a versioned offline baseline. Analysis Runs intentionally continue to use that unchanged retriever. Real embeddings and pgvector-backed hybrid retrieval remain separate later stages.
 
 ## Key Decisions
 

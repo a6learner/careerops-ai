@@ -74,3 +74,4 @@ What future condition would justify reopening this decision?
 - `ADR-016-action-items.md`: Job-scoped Action Items with gap provenance, idempotent creation, optimistic locking, authorization, and archived-Job retention.
 - `ADR-017-dashboard-summary-cache.md`: active progress aggregation with a disposable, fail-open Redis cache and post-commit invalidation.
 - `ADR-018-experience-embedding-lifecycle.md`: version-bound fake embedding generation with durable runs, stale-result fencing, and PostgreSQL recovery.
+- `ADR-019-retrieval-evaluation-baseline.md`: versioned labels and metric definitions for an offline lexical retrieval baseline before vector or hybrid ranking.

@@ -1,0 +1,330 @@
+{
+  "name": "careerops-synthetic-evidence-retrieval",
+  "version": 1,
+  "experiences": [
+    {
+      "id": "20000000-0000-0000-0000-000000000001",
+      "title": "Career API",
+      "kind": "project",
+      "description": "Built reliable REST APIs with FastAPI and PostgreSQL, added pytest coverage, and packaged the service with Docker.",
+      "skills": ["Python", "FastAPI", "PostgreSQL", "pytest", "Docker"],
+      "outcome": "Delivered an authenticated backend service."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000002",
+      "title": "Caching Service",
+      "kind": "project",
+      "description": "Implemented Redis caching, cache invalidation, and rate limiting for backend endpoints.",
+      "skills": ["Redis", "Python", "Caching"],
+      "outcome": "Documented fail-open cache behavior."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000003",
+      "title": "Frontend Dashboard",
+      "kind": "project",
+      "description": "Built a responsive analytics dashboard with React and TypeScript.",
+      "skills": ["React", "TypeScript", "CSS"],
+      "outcome": "Shipped reusable dashboard components."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000004",
+      "title": "Event Pipeline",
+      "kind": "project",
+      "description": "Developed Java services that publish and consume Kafka events for an order pipeline.",
+      "skills": ["Java", "Kafka", "Distributed Systems"],
+      "outcome": "Added idempotent event processing."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000005",
+      "title": "Vision Classifier",
+      "kind": "research",
+      "description": "Trained and evaluated image classification models using PyTorch and NumPy.",
+      "skills": ["PyTorch", "NumPy", "Machine Learning"],
+      "outcome": "Compared model errors on a held-out dataset."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000006",
+      "title": "Cloud Deployment",
+      "kind": "project",
+      "description": "Deployed containerized services to AWS using Kubernetes and Terraform.",
+      "skills": ["AWS", "Kubernetes", "Terraform"],
+      "outcome": "Automated repeatable infrastructure provisioning."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000007",
+      "title": "Reinforcement Learning Research",
+      "kind": "research",
+      "description": "Implemented reinforcement learning experiments and simulation tooling in C++.",
+      "skills": ["C++", "Reinforcement Learning", "Research"],
+      "outcome": "Ran controlled ablation experiments."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000008",
+      "title": "Database Performance Lab",
+      "kind": "course",
+      "description": "Optimized SQL queries and compared composite indexes using MySQL execution plans.",
+      "skills": ["SQL", "MySQL", "Database Indexing"],
+      "outcome": "Explained query-plan trade-offs."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000009",
+      "title": "CI Test Harness",
+      "kind": "project",
+      "description": "Created automated pytest suites and GitHub Actions checks for Python services.",
+      "skills": ["pytest", "GitHub Actions", "Python", "Testing"],
+      "outcome": "Kept continuous integration deterministic."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000010",
+      "title": "Authentication Service",
+      "kind": "project",
+      "description": "Implemented OAuth login, signed JWT access tokens, and authorization checks.",
+      "skills": ["OAuth", "JWT", "Security", "Python"],
+      "outcome": "Added cross-user authorization tests."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000011",
+      "title": "Service Observability",
+      "kind": "work",
+      "description": "Instrumented services with Prometheus metrics, Grafana dashboards, and structured logs.",
+      "skills": ["Prometheus", "Grafana", "Observability"],
+      "outcome": "Made production failures diagnosable."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000012",
+      "title": "Data Engineering Pipeline",
+      "kind": "project",
+      "description": "Built Airflow ETL workflows that transform data with Spark and load warehouse tables.",
+      "skills": ["Airflow", "ETL", "Spark", "Python"],
+      "outcome": "Scheduled recoverable batch jobs."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000013",
+      "title": "iOS Study App",
+      "kind": "project",
+      "description": "Developed an iOS study application using Swift and UIKit.",
+      "skills": ["Swift", "iOS", "UIKit"],
+      "outcome": "Published a working mobile prototype."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000014",
+      "title": "Engineering Team Lead",
+      "kind": "work",
+      "description": "Led project planning, mentored junior developers, and coordinated stakeholder reviews.",
+      "skills": ["Leadership", "Mentoring", "Communication"],
+      "outcome": "Delivered milestones across a five-person team."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000015",
+      "title": "Operating Systems Course",
+      "kind": "course",
+      "description": "Implemented concurrent processes, locks, and message passing in C.",
+      "skills": ["C", "Concurrency", "Operating Systems"],
+      "outcome": "Verified safety and liveness properties."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000016",
+      "title": "Accessible Web Portal",
+      "kind": "project",
+      "description": "Created accessible HTML and CSS components with keyboard navigation.",
+      "skills": ["HTML", "CSS", "Accessibility"],
+      "outcome": "Passed an accessibility checklist."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000017",
+      "title": "Knowledge Graph Prototype",
+      "kind": "research",
+      "description": "Modeled connected entities and traversals in Neo4j using Cypher queries.",
+      "skills": ["Neo4j", "Cypher", "Graph Database"],
+      "outcome": "Demonstrated relationship queries."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000018",
+      "title": "Serverless Processor",
+      "kind": "project",
+      "description": "Built event-driven AWS Lambda functions for serverless document processing.",
+      "skills": ["AWS", "Lambda", "Serverless", "Python"],
+      "outcome": "Handled retries and duplicate events."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000019",
+      "title": "Go RPC Service",
+      "kind": "project",
+      "description": "Implemented a Go microservice with gRPC APIs and protobuf contracts.",
+      "skills": ["Go", "gRPC", "Protobuf"],
+      "outcome": "Added contract and integration tests."
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000020",
+      "title": "Embedded Controller",
+      "kind": "project",
+      "description": "Programmed an embedded controller in Rust with memory-safe device interfaces.",
+      "skills": ["Rust", "Embedded Systems"],
+      "outcome": "Validated device behavior with hardware tests."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "python-multiple",
+      "description": "Multiple exact Python skills test recall rather than hit rate.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000001", "category": "must_have", "text": "Python programming experience is required.", "skill_normalized": "python"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000001", "20000000-0000-0000-0000-000000000002", "20000000-0000-0000-0000-000000000005", "20000000-0000-0000-0000-000000000009", "20000000-0000-0000-0000-000000000010", "20000000-0000-0000-0000-000000000012", "20000000-0000-0000-0000-000000000018"]
+    },
+    {
+      "case_id": "postgresql",
+      "description": "Single exact database skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000002", "category": "must_have", "text": "Experience with PostgreSQL is required.", "skill_normalized": "postgresql"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000001"]
+    },
+    {
+      "case_id": "redis-caching",
+      "description": "Exact cache technology and lexical context.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000003", "category": "must_have", "text": "Build Redis caching for backend services.", "skill_normalized": "redis"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000002"]
+    },
+    {
+      "case_id": "react-typescript",
+      "description": "Two frontend technologies with one primary normalized skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000004", "category": "must_have", "text": "Develop React interfaces using TypeScript.", "skill_normalized": "react"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000003"]
+    },
+    {
+      "case_id": "java-kafka",
+      "description": "Event pipeline evidence with exact Kafka skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000005", "category": "must_have", "text": "Build Java event pipelines with Kafka.", "skill_normalized": "kafka"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000004"]
+    },
+    {
+      "case_id": "pytorch-ml",
+      "description": "Machine learning framework evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000006", "category": "nice_to_have", "text": "PyTorch machine learning experience is preferred.", "skill_normalized": "pytorch"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000005"]
+    },
+    {
+      "case_id": "kubernetes",
+      "description": "Container orchestration with exact Kubernetes skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000007", "category": "must_have", "text": "Deploy services with Kubernetes.", "skill_normalized": "kubernetes"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000006"]
+    },
+    {
+      "case_id": "aws-multiple",
+      "description": "Multiple relevant AWS experiences test recall rather than hit rate.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000008", "category": "must_have", "text": "Hands-on AWS development experience.", "skill_normalized": "aws"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000006", "20000000-0000-0000-0000-000000000018"]
+    },
+    {
+      "case_id": "docker-multiple",
+      "description": "Multiple relevant Docker experiences.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000009", "category": "must_have", "text": "Package backend applications with Docker.", "skill_normalized": "docker"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000001", "20000000-0000-0000-0000-000000000006"]
+    },
+    {
+      "case_id": "reinforcement-learning-cpp",
+      "description": "Research evidence with a language skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000010", "category": "nice_to_have", "text": "Implement reinforcement learning experiments in C++.", "skill_normalized": "c++"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000007"]
+    },
+    {
+      "case_id": "sql-optimization",
+      "description": "Lexical and exact SQL evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000011", "category": "must_have", "text": "Optimize SQL queries and database indexes.", "skill_normalized": "sql"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000008"]
+    },
+    {
+      "case_id": "pytest-multiple",
+      "description": "Multiple experiences contain pytest evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000012", "category": "must_have", "text": "Write automated tests with pytest.", "skill_normalized": "pytest"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000001", "20000000-0000-0000-0000-000000000009"]
+    },
+    {
+      "case_id": "jwt-auth",
+      "description": "Authentication evidence with exact JWT skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000013", "category": "must_have", "text": "Implement secure JWT authentication and authorization.", "skill_normalized": "jwt"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000010"]
+    },
+    {
+      "case_id": "observability",
+      "description": "Monitoring and logging evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000014", "category": "responsibility", "text": "Monitor services using Prometheus and Grafana.", "skill_normalized": "prometheus"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000011"]
+    },
+    {
+      "case_id": "airflow-etl",
+      "description": "Data workflow evidence with exact Airflow skill.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000015", "category": "must_have", "text": "Create Airflow ETL workflows.", "skill_normalized": "airflow"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000012"]
+    },
+    {
+      "case_id": "swift-ios",
+      "description": "Mobile development evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000016", "category": "nice_to_have", "text": "Develop iOS applications in Swift.", "skill_normalized": "swift"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000013"]
+    },
+    {
+      "case_id": "leadership",
+      "description": "Non-technical skill evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000017", "category": "responsibility", "text": "Lead project planning and mentor engineers.", "skill_normalized": "leadership"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000014"]
+    },
+    {
+      "case_id": "concurrency",
+      "description": "Systems-course concurrency evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000018", "category": "must_have", "text": "Understand operating systems concurrency and locks.", "skill_normalized": "concurrency"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000015"]
+    },
+    {
+      "case_id": "accessibility",
+      "description": "Accessible frontend implementation evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000019", "category": "responsibility", "text": "Build accessible HTML interfaces.", "skill_normalized": "accessibility"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000016"]
+    },
+    {
+      "case_id": "neo4j",
+      "description": "Graph database evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000020", "category": "nice_to_have", "text": "Experience with Neo4j graph databases.", "skill_normalized": "neo4j"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000017"]
+    },
+    {
+      "case_id": "lambda-serverless",
+      "description": "Serverless cloud evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000021", "category": "must_have", "text": "Build serverless functions with AWS Lambda.", "skill_normalized": "lambda"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000018"]
+    },
+    {
+      "case_id": "go-grpc",
+      "description": "RPC service evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000022", "category": "must_have", "text": "Develop Go services with gRPC.", "skill_normalized": "grpc"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000019"]
+    },
+    {
+      "case_id": "rust-embedded",
+      "description": "Embedded systems language evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000023", "category": "nice_to_have", "text": "Program embedded systems in Rust.", "skill_normalized": "rust"},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000020"]
+    },
+    {
+      "case_id": "container-orchestration-paraphrase",
+      "description": "A synonym-only query exposes a lexical retrieval limitation.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000024", "category": "must_have", "text": "Operate container orchestration platforms.", "skill_normalized": null},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000006"]
+    },
+    {
+      "case_id": "stream-processing-paraphrase",
+      "description": "A paraphrase without the labeled technology tests semantic misses.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000025", "category": "responsibility", "text": "Design durable message streaming consumers.", "skill_normalized": null},
+      "relevant_experience_ids": ["20000000-0000-0000-0000-000000000004"]
+    },
+    {
+      "case_id": "ruby-negative",
+      "description": "No Experience contains Ruby or Rails evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000026", "category": "must_have", "text": "Ruby on Rails development experience.", "skill_normalized": "ruby"},
+      "relevant_experience_ids": []
+    },
+    {
+      "case_id": "salesforce-negative",
+      "description": "No Experience contains Salesforce CRM evidence.",
+      "requirement": {"id": "30000000-0000-0000-0000-000000000027", "category": "nice_to_have", "text": "Salesforce CRM administration experience.", "skill_normalized": "salesforce"},
+      "relevant_experience_ids": []
+    }
+  ]
+}

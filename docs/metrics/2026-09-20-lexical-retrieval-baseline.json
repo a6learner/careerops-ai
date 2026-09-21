@@ -1,0 +1,768 @@
+{
+  "created_at": "2026-09-21T00:34:01.424860Z",
+  "git_revision": "234a381-plus-working-tree-p1-2a",
+  "dataset_name": "careerops-synthetic-evidence-retrieval",
+  "dataset_version": 1,
+  "dataset_sha256": "a6534b300c95d705e4c13146ae94e35d46fb9baf1bc974c05aaa8dc86e011e8e",
+  "retriever_version": "lexical-skill-v1",
+  "candidate_limit": 5,
+  "summary": {
+    "query_count": 27,
+    "positive_query_count": 25,
+    "negative_query_count": 2,
+    "recall_at_1": 0.8257142857142857,
+    "recall_at_3": 0.8971428571428571,
+    "recall_at_5": 0.9085714285714286,
+    "mrr_at_5": 0.92,
+    "no_relevant_returned_accuracy_at_5": 0.5
+  },
+  "cases": [
+    {
+      "case_id": "python-multiple",
+      "description": "Multiple exact Python skills test recall rather than hit rate.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000001",
+        "20000000-0000-0000-0000-000000000002",
+        "20000000-0000-0000-0000-000000000005",
+        "20000000-0000-0000-0000-000000000009",
+        "20000000-0000-0000-0000-000000000010",
+        "20000000-0000-0000-0000-000000000012",
+        "20000000-0000-0000-0000-000000000018"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000001",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000002",
+          "rank": 2,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 3,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000009",
+          "rank": 4,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000010",
+          "rank": 5,
+          "score": 101,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 0.14285714285714285,
+      "recall_at_3": 0.42857142857142855,
+      "recall_at_5": 0.7142857142857143,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "postgresql",
+      "description": "Single exact database skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000001"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000001",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "redis-caching",
+      "description": "Exact cache technology and lexical context.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000002"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000002",
+          "rank": 1,
+          "score": 103,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000001",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000009",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "react-typescript",
+      "description": "Two frontend technologies with one primary normalized skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000003"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000003",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000008",
+          "rank": 4,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000013",
+          "rank": 5,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "java-kafka",
+      "description": "Event pipeline evidence with exact Kafka skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000004"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000004",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000018",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "pytorch-ml",
+      "description": "Machine learning framework evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000005"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 1,
+          "score": 103,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000007",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "kubernetes",
+      "description": "Container orchestration with exact Kubernetes skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000006"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000004",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000011",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "aws-multiple",
+      "description": "Multiple relevant AWS experiences test recall rather than hit rate.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000006",
+        "20000000-0000-0000-0000-000000000018"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000018",
+          "rank": 2,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 0.5,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "docker-multiple",
+      "description": "Multiple relevant Docker experiences.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000001",
+        "20000000-0000-0000-0000-000000000006"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000001",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 2,
+          "score": 100,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000002",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 0.5,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "reinforcement-learning-cpp",
+      "description": "Research evidence with a language skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000007"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000007",
+          "rank": 1,
+          "score": 104,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "sql-optimization",
+      "description": "Lexical and exact SQL evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000008"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000008",
+          "rank": 1,
+          "score": 103,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000017",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "pytest-multiple",
+      "description": "Multiple experiences contain pytest evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000001",
+        "20000000-0000-0000-0000-000000000009"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000009",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000001",
+          "rank": 2,
+          "score": 100,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 0.5,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "jwt-auth",
+      "description": "Authentication evidence with exact JWT skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000010"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000010",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "observability",
+      "description": "Monitoring and logging evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000011"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000011",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 2,
+          "score": 2,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000004",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 4,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000008",
+          "rank": 5,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "airflow-etl",
+      "description": "Data workflow evidence with exact Airflow skill.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000012"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000012",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "swift-ios",
+      "description": "Mobile development evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000013"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000013",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "leadership",
+      "description": "Non-technical skill evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000014"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000014",
+          "rank": 1,
+          "score": 103,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "concurrency",
+      "description": "Systems-course concurrency evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000015"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000015",
+          "rank": 1,
+          "score": 103,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000004",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000020",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "accessibility",
+      "description": "Accessible frontend implementation evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000016"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000016",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000020",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "neo4j",
+      "description": "Graph database evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000017"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000017",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "lambda-serverless",
+      "description": "Serverless cloud evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000018"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000018",
+          "rank": 1,
+          "score": 103,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "go-grpc",
+      "description": "RPC service evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000019"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000019",
+          "rank": 1,
+          "score": 101,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000004",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000006",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000011",
+          "rank": 4,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "rust-embedded",
+      "description": "Embedded systems language evidence.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000020"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000020",
+          "rank": 1,
+          "score": 102,
+          "relevant": true
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000004",
+          "rank": 2,
+          "score": 1,
+          "relevant": false
+        },
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000015",
+          "rank": 3,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "reciprocal_rank_at_5": 1.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "container-orchestration-paraphrase",
+      "description": "A synonym-only query exposes a lexical retrieval limitation.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000006"
+      ],
+      "ranked_experiences": [],
+      "recall_at_1": 0.0,
+      "recall_at_3": 0.0,
+      "recall_at_5": 0.0,
+      "reciprocal_rank_at_5": 0.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "stream-processing-paraphrase",
+      "description": "A paraphrase without the labeled technology tests semantic misses.",
+      "relevant_experience_ids": [
+        "20000000-0000-0000-0000-000000000004"
+      ],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000015",
+          "rank": 1,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": 0.0,
+      "recall_at_3": 0.0,
+      "recall_at_5": 0.0,
+      "reciprocal_rank_at_5": 0.0,
+      "no_relevant_returned_at_5": null
+    },
+    {
+      "case_id": "ruby-negative",
+      "description": "No Experience contains Ruby or Rails evidence.",
+      "relevant_experience_ids": [],
+      "ranked_experiences": [
+        {
+          "experience_id": "20000000-0000-0000-0000-000000000005",
+          "rank": 1,
+          "score": 1,
+          "relevant": false
+        }
+      ],
+      "recall_at_1": null,
+      "recall_at_3": null,
+      "recall_at_5": null,
+      "reciprocal_rank_at_5": null,
+      "no_relevant_returned_at_5": false
+    },
+    {
+      "case_id": "salesforce-negative",
+      "description": "No Experience contains Salesforce CRM evidence.",
+      "relevant_experience_ids": [],
+      "ranked_experiences": [],
+      "recall_at_1": null,
+      "recall_at_3": null,
+      "recall_at_5": null,
+      "reciprocal_rank_at_5": null,
+      "no_relevant_returned_at_5": true
+    }
+  ],
+  "limitations": [
+    "Small synthetic development set; results do not establish production accuracy.",
+    "Labels were authored for development and are not an independent holdout set.",
+    "The baseline evaluates deterministic lexical and exact-skill ranking only.",
+    "Latency, throughput, provider reliability, token usage, and cost were not measured."
+  ]
+}
