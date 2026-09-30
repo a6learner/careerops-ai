@@ -39,3 +39,7 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-09-20-lexical-retrieval-baseline.md` explains the metric definitions,
   observed baseline, and limitations.
 - `2026-09-20-lexical-retrieval-baseline.json` preserves the full ranked output.
+- `2026-09-21-lexical-retrieval-v2-development.md` explains the reviewed,
+  multi-profile development baseline and sealed-holdout boundary.
+- `2026-09-21-lexical-retrieval-v2-development.json` preserves the full v2
+  development ranking output and dataset hashes.

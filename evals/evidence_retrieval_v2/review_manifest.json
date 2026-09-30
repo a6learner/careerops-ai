@@ -1,0 +1,14 @@
+{
+  "name": "careerops-evidence-retrieval-v2-label-review",
+  "version": 2,
+  "status": "approved_frozen",
+  "reviewer": "project author",
+  "reviewed_at": "2026-09-21T23:28:59.7585504Z",
+  "corpus_sha256": "139729a73aa99dc6cd6a9199d8c1b44e901e3d4cb1171ef4abd4990071fd1d0f",
+  "development_queries_sha256": "ee78882ee3c627d4de1bc1e33e936b5ab4f3a4e615fc88b0002baf1c9c1a0d0e",
+  "holdout_queries_sha256": "921a5afcf8b9f39a645548ce0793484b3e76118c5229d528a4400498cf28ca02",
+  "notes": [
+    "Project author reviewed all 40 Experiences, 40 development queries, and 20 holdout queries.",
+    "Labels were frozen before the development lexical v2 evaluation; holdout rankings remained unobserved."
+  ]
+}

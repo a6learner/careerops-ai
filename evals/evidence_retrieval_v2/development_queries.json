@@ -1,0 +1,240 @@
+{
+  "name": "CareerOps Evidence Retrieval Evaluation Queries",
+  "version": 2,
+  "split": "development",
+  "queries": [
+    {
+      "query_id": "61111111-1111-4111-8111-000000000001", "profile_id": "backend-platform", "description": "Direct framework and database match.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000001", "category": "must_have", "text": "Build Python APIs with FastAPI and PostgreSQL.", "skill_normalized": "python backend development"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000001", "support_level": "full", "supporting_quote": "Built a Python FastAPI order service with PostgreSQL transactions", "rationale": "The candidate implemented the requested stack in one backend service."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000008"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000002", "profile_id": "backend-platform", "description": "Composite reliability requirement split across two projects.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000002", "category": "responsibility", "text": "Prevent duplicate writes and keep reads available when the cache fails.", "skill_normalized": "backend resilience"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000001", "support_level": "partial", "supporting_quote": "idempotency keys to prevent duplicate orders", "rationale": "Supports duplicate-write prevention but not cache failure handling."}, {"experience_id": "11111111-1111-4111-8111-000000000005", "support_level": "partial", "supporting_quote": "fails open to PostgreSQL when Redis is unavailable", "rationale": "Supports cache failure availability but not idempotent writes."}, {"experience_id": "11111111-1111-4111-8111-000000000007", "support_level": "partial", "supporting_quote": "DynamoDB conditional writes for deduplication", "rationale": "Supports duplicate-write prevention but not cache failure handling."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000002"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000003", "profile_id": "backend-platform", "description": "Direct event-processing match.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000003", "category": "must_have", "text": "Develop Java consumers for Kafka-based event processing.", "skill_normalized": "java kafka"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000002", "support_level": "full", "supporting_quote": "Implemented Java Kafka consumers with retry topics", "rationale": "Direct evidence of implementing Java Kafka consumers."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000007"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000004", "profile_id": "backend-platform", "description": "Composite deployment requirement with a serverless distractor.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000004", "category": "responsibility", "text": "Ship containerized services through CI/CD with health checks and rollback procedures.", "skill_normalized": "container delivery"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000003", "support_level": "full", "supporting_quote": "Packaged a service with Docker and deployed it to Kubernetes through GitHub Actions with health checks and rollback steps", "rationale": "One project demonstrates the complete delivery workflow."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000007"], "negative_rationale": null, "tags": ["lexical", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000005", "profile_id": "backend-platform", "description": "Direct authorization match.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000005", "category": "must_have", "text": "Implement OAuth2, JWT validation, and role-based access control.", "skill_normalized": "api authorization"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000004", "support_level": "full", "supporting_quote": "OAuth2 login, JWT validation, and role-based authorization checks", "rationale": "The experience covers every named authorization mechanism."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000001"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000006", "profile_id": "backend-platform", "description": "Transaction safety expressed without exact project terminology.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000006", "category": "responsibility", "text": "Protect financial state from retries and simultaneous updates.", "skill_normalized": "transactional consistency"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000009", "support_level": "partial", "supporting_quote": "serializable transactions to preserve account balances", "rationale": "Supports simultaneous-update safety but not retry safety."}, {"experience_id": "11111111-1111-4111-8111-000000000001", "support_level": "partial", "supporting_quote": "idempotency keys to prevent duplicate orders", "rationale": "Supports retry safety but not the financial balance invariant."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000006"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000007", "profile_id": "backend-platform", "description": "Negative for an absent web framework.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000007", "category": "must_have", "text": "Maintain production applications built with Ruby on Rails.", "skill_normalized": "ruby on rails"},
+      "labels": [], "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000001", "11111111-1111-4111-8111-000000000010"], "negative_rationale": "The profile has backend applications but no Ruby or Rails implementation evidence.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000008", "profile_id": "backend-platform", "description": "Negative for infrastructure-as-code despite deployment experience.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000008", "category": "nice_to_have", "text": "Provision cloud infrastructure with Terraform modules.", "skill_normalized": "terraform"},
+      "labels": [], "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000003", "11111111-1111-4111-8111-000000000007"], "negative_rationale": "Deployment and AWS usage do not demonstrate Terraform or infrastructure provisioning.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000009", "profile_id": "backend-platform", "description": "Chinese requirement retrieving English AWS worker evidence.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000009", "category": "responsibility", "text": "使用 AWS 无服务器组件构建可去重的异步任务处理流程。", "skill_normalized": "aws serverless processing"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000007", "support_level": "full", "supporting_quote": "AWS Lambda and SQS, using DynamoDB conditional writes for deduplication", "rationale": "The English experience covers serverless asynchronous processing and deduplication."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000002"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "61111111-1111-4111-8111-000000000010", "profile_id": "backend-platform", "description": "Negative where Rust appears only as a future idea.",
+      "requirement": {"id": "71111111-1111-4111-8111-000000000010", "category": "must_have", "text": "Operate a production backend implemented in Rust.", "skill_normalized": "rust backend"},
+      "labels": [], "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000010"], "negative_rationale": "Rust was only documented as a possible rewrite and was not implemented or operated.", "tags": ["hard_negative"]
+    },
+
+    {
+      "query_id": "62222222-2222-4222-8222-000000000001", "profile_id": "data-ai", "description": "Direct warehouse pipeline match.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000001", "category": "must_have", "text": "Build Airflow pipelines that load modeled data into Snowflake.", "skill_normalized": "airflow snowflake etl"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000001", "support_level": "full", "supporting_quote": "Airflow and modeled validated warehouse tables with dbt and Snowflake", "rationale": "Direct evidence of orchestrating and modeling Snowflake loads."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000009"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000002", "profile_id": "data-ai", "description": "Semantic retrieval quality requirement.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000002", "category": "responsibility", "text": "Measure whether a knowledge-grounded assistant retrieves the right evidence before generation.", "skill_normalized": "rag retrieval evaluation"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000002", "support_level": "full", "supporting_quote": "retrieval-augmented generation prototype with text embeddings and labeled Recall@K evaluation cases", "rationale": "The project evaluates evidence retrieval for a grounded generation workflow."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000007"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000003", "profile_id": "data-ai", "description": "Direct experiment reproducibility match.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000003", "category": "nice_to_have", "text": "Track scikit-learn experiments with MLflow and reproducible Docker jobs.", "skill_normalized": "mlops experiment tracking"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000003", "support_level": "full", "supporting_quote": "Tracked scikit-learn experiments with MLflow and packaged reproducible training jobs in Docker", "rationale": "The exact experiment tracking and packaging workflow is demonstrated."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000006"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000004", "profile_id": "data-ai", "description": "Composite streaming and batch data requirement.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000004", "category": "responsibility", "text": "Design both real-time event aggregation and scheduled warehouse transformations.", "skill_normalized": "batch and streaming data"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000004", "support_level": "partial", "supporting_quote": "Spark Structured Streaming, wrote windowed aggregates", "rationale": "Supports the real-time aggregation half."}, {"experience_id": "22222222-2222-4222-8222-000000000001", "support_level": "partial", "supporting_quote": "Orchestrated daily Python ETL jobs with Airflow", "rationale": "Supports the scheduled transformation half."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000009"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000005", "profile_id": "data-ai", "description": "Feature freshness match.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000005", "category": "responsibility", "text": "Serve versioned ML features online and reject stale values.", "skill_normalized": "online feature store"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000005", "support_level": "full", "supporting_quote": "Served versioned machine-learning features through Feast with Redis online storage and rejected stale features through freshness validation", "rationale": "The feature store includes versioned online serving and stale-value rejection."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000004"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000006", "profile_id": "data-ai", "description": "Chinese requirement retrieving English forecasting evidence.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000006", "category": "must_have", "text": "使用滚动时间验证评估需求预测基线。", "skill_normalized": "time series forecasting"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000006", "support_level": "full", "supporting_quote": "Trained scikit-learn time-series baselines and evaluated them with rolling temporal validation", "rationale": "The English experience explicitly uses rolling temporal validation for forecasting baselines."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000003"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000007", "profile_id": "data-ai", "description": "Negative for absent language-model training.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000007", "category": "must_have", "text": "Fine-tune large language models with distributed GPU training.", "skill_normalized": "llm fine tuning"},
+      "labels": [], "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000002", "22222222-2222-4222-8222-000000000007"], "negative_rationale": "RAG and image classification work do not demonstrate LLM fine-tuning or distributed GPU training.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000008", "profile_id": "data-ai", "description": "Negative where a topic was presented but not implemented.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000008", "category": "responsibility", "text": "Implement differentially private model training in production.", "skill_normalized": "differential privacy"},
+      "labels": [], "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000010"], "negative_rationale": "The profile only presented papers and explicitly did not implement such a system.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000009", "profile_id": "data-ai", "description": "Data correctness distributed across validation projects.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000009", "category": "responsibility", "text": "Block schema-invalid batches and stale online features before consumers see them.", "skill_normalized": "data validation"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000008", "support_level": "partial", "supporting_quote": "checks for schema drift, missing values, and invalid categorical fields", "rationale": "Supports schema and batch validation."}, {"experience_id": "22222222-2222-4222-8222-000000000005", "support_level": "partial", "supporting_quote": "rejected stale features through freshness validation", "rationale": "Supports blocking stale online features."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "62222222-2222-4222-8222-000000000010", "profile_id": "data-ai", "description": "Chinese request for an English vision experience.",
+      "requirement": {"id": "72222222-2222-4222-8222-000000000010", "category": "nice_to_have", "text": "能够训练图像分类模型，并分析不同类别的错误模式。", "skill_normalized": "image classification"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000007", "support_level": "full", "supporting_quote": "Fine-tuned a TensorFlow image classifier and analyzed class-level confusion matrices", "rationale": "The experience demonstrates both training and class-specific error analysis."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000006"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "composite", "hard_negative"]
+    },
+
+    {
+      "query_id": "63333333-3333-4333-8333-000000000001", "profile_id": "frontend-mobile", "description": "Direct accessible React match.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000001", "category": "must_have", "text": "Build accessible React interfaces in TypeScript with keyboard support.", "skill_normalized": "accessible react"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000001", "support_level": "full", "supporting_quote": "React and TypeScript dashboard with keyboard navigation", "rationale": "The experience directly covers framework, language, and accessibility behavior."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000006"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000002", "profile_id": "frontend-mobile", "description": "Server-rendered commerce match.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000002", "category": "responsibility", "text": "Deliver an SEO-friendly storefront using server-side rendering and caching.", "skill_normalized": "nextjs ssr"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000002", "support_level": "full", "supporting_quote": "server-side rendering, route-level caching, and structured metadata", "rationale": "The storefront demonstrates the complete SEO and rendering requirement."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000007"], "negative_rationale": null, "tags": ["paraphrase", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000003", "profile_id": "frontend-mobile", "description": "Offline-first behavior phrased as field resilience.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000003", "category": "responsibility", "text": "Let field users continue entering records without connectivity and reconcile changes later.", "skill_normalized": "offline mobile sync"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000003", "support_level": "full", "supporting_quote": "offline queue and conflict-aware synchronization after reconnection", "rationale": "The mobile app supports offline entry and later reconciliation."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000005"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000004", "profile_id": "frontend-mobile", "description": "Composite native mobile requirement across two platforms.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000004", "category": "nice_to_have", "text": "Develop native mobile applications for both Android and iOS.", "skill_normalized": "native mobile development"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000004", "support_level": "partial", "supporting_quote": "Kotlin Android application with Jetpack Compose", "rationale": "Supports Android but not iOS."}, {"experience_id": "33333333-3333-4333-8333-000000000005", "support_level": "partial", "supporting_quote": "Built a SwiftUI study timer", "rationale": "Supports iOS but not Android."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000003"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000005", "profile_id": "frontend-mobile", "description": "Direct design-system match.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000005", "category": "must_have", "text": "Maintain a TypeScript component library in Storybook with visual regression coverage.", "skill_normalized": "design systems"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000006", "support_level": "full", "supporting_quote": "TypeScript components in Storybook with design tokens and visual regression tests", "rationale": "Direct evidence for all requested component-library practices."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000001"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000006", "profile_id": "frontend-mobile", "description": "Negative for an unimplemented browser runtime technology.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000006", "category": "nice_to_have", "text": "Optimize compute-heavy browser features with WebAssembly.", "skill_normalized": "webassembly"},
+      "labels": [], "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000007"], "negative_rationale": "The performance audit used web loading techniques but no WebAssembly implementation.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000007", "profile_id": "frontend-mobile", "description": "Negative for a different cross-platform framework.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000007", "category": "must_have", "text": "Ship cross-platform mobile features with Flutter and Dart.", "skill_normalized": "flutter"},
+      "labels": [], "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000003", "33333333-3333-4333-8333-000000000004", "33333333-3333-4333-8333-000000000005"], "negative_rationale": "The profile has React Native, Android, and iOS work but no Flutter or Dart evidence.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000008", "profile_id": "frontend-mobile", "description": "Negative for GraphQL despite API integration experience.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000008", "category": "nice_to_have", "text": "Implement real-time GraphQL subscriptions for the client.", "skill_normalized": "graphql subscriptions"},
+      "labels": [], "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000009"], "hard_negative_rationale": "This is the closest in-profile distractor because it connects a Node API to React, while still lacking GraphQL and subscriptions.", "negative_rationale": "The backend-for-frontend demonstrates API aggregation but not GraphQL or subscriptions.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000009", "profile_id": "frontend-mobile", "description": "Chinese requirement retrieving English localization evidence.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000009", "category": "responsibility", "text": "为中英文用户提供本地化文案、日期格式和缺失翻译回退。", "skill_normalized": "internationalization"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000010", "support_level": "full", "supporting_quote": "Localized a web interface in English and Chinese with ICU message formatting, locale-aware dates, and missing-translation fallbacks", "rationale": "The bilingual project covers messages, locale-aware dates, and documented fallbacks."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "63333333-3333-4333-8333-000000000010", "profile_id": "frontend-mobile", "description": "Checkout behavior and accessibility testing across two projects.",
+      "requirement": {"id": "73333333-3333-4333-8333-000000000010", "category": "responsibility", "text": "Automate checkout failure paths and verify keyboard-only interaction.", "skill_normalized": "browser accessibility testing"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000008", "support_level": "full", "supporting_quote": "Playwright end-to-end tests for checkout, failed payments, and keyboard-only navigation", "rationale": "One suite directly tests both requested behaviors."}, {"experience_id": "33333333-3333-4333-8333-000000000001", "support_level": "partial", "supporting_quote": "keyboard navigation", "rationale": "Supports keyboard accessibility but not checkout failure testing."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000006"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+
+    {
+      "query_id": "64444444-4444-4444-8444-000000000001", "profile_id": "systems-research", "description": "Multiple C++ systems experiences for storage or parser reliability.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000001", "category": "must_have", "text": "Build systems software in C++ with storage or parser experience.", "skill_normalized": "c++ systems"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000001", "support_level": "full", "supporting_quote": "C++ log-structured merge storage engine", "rationale": "Direct C++ storage-systems evidence."}, {"experience_id": "44444444-4444-4444-8444-000000000007", "support_level": "partial", "supporting_quote": "coverage-guided fuzz tests in C++ for a binary protocol parser", "rationale": "Demonstrates C++ parser testing, but not that the candidate built the parser or broader systems software."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000005"], "negative_rationale": null, "tags": ["lexical", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000002", "profile_id": "systems-research", "description": "Direct Rust networking match.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000002", "category": "must_have", "text": "Develop asynchronous network services in Rust using Tokio.", "skill_normalized": "rust async networking"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000002", "support_level": "full", "supporting_quote": "Rust asynchronous TCP server with Tokio", "rationale": "Direct implementation evidence for the requested stack."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000009"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000003", "profile_id": "systems-research", "description": "Operating-systems implementation match.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000003", "category": "education", "text": "Hands-on operating systems work with scheduling and virtual memory.", "skill_normalized": "operating systems"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000003", "support_level": "full", "supporting_quote": "priority scheduling and copy-on-write process memory", "rationale": "The kernel work covers both scheduling and virtual memory."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000004", "profile_id": "systems-research", "description": "Consensus behavior phrased as failure recovery.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000004", "category": "responsibility", "text": "Test replicated systems under leader-loss and log-repair scenarios.", "skill_normalized": "distributed consensus"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000004", "support_level": "full", "supporting_quote": "Fault-injection tests covered leader loss and log repair", "rationale": "The replicated key-value store was tested under both named failure scenarios."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000010"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000005", "profile_id": "systems-research", "description": "Direct compiler implementation match.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000005", "category": "nice_to_have", "text": "Implement and validate optimization passes in LLVM.", "skill_normalized": "llvm compilers"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000005", "support_level": "full", "supporting_quote": "Wrote an LLVM optimization pass in C++ and used regression tests against reference outputs to detect incorrect transformations", "rationale": "Direct compiler-pass implementation and validation evidence."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000001"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000006", "profile_id": "systems-research", "description": "Direct GPU optimization match.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000006", "category": "must_have", "text": "Optimize CUDA kernels through memory-access and occupancy profiling.", "skill_normalized": "cuda optimization"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000006", "support_level": "full", "supporting_quote": "shared memory, coalesced access, and occupancy profiling", "rationale": "The research work demonstrates every requested optimization technique."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000008"], "negative_rationale": null, "tags": ["exact_skill", "lexical", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000007", "profile_id": "systems-research", "description": "Negative for orchestration despite distributed-systems work.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000007", "category": "must_have", "text": "Operate Kubernetes clusters and write Helm charts.", "skill_normalized": "kubernetes"},
+      "labels": [], "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000004", "44444444-4444-4444-8444-000000000010"], "negative_rationale": "Distributed systems experience does not demonstrate Kubernetes operations or Helm.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000008", "profile_id": "systems-research", "description": "Negative for enterprise Java services.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000008", "category": "must_have", "text": "Build Spring Boot microservices in Java.", "skill_normalized": "java spring boot"},
+      "labels": [], "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000002", "44444444-4444-4444-8444-000000000004"], "negative_rationale": "The profile has networked and distributed services but no Java or Spring Boot evidence.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000009", "profile_id": "systems-research", "description": "Chinese requirement retrieving English vector-search evidence.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000009", "category": "responsibility", "text": "比较近似向量索引与精确搜索，并解释召回率和延迟之间的权衡。", "skill_normalized": "vector retrieval evaluation"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000008", "support_level": "full", "supporting_quote": "Compared HNSW and exact vector search on synthetic embeddings and documented recall-latency trade-offs", "rationale": "The English research experience exactly matches the Chinese requirement."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000006"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "64444444-4444-4444-8444-000000000010", "profile_id": "systems-research", "description": "Implementation and specification evidence for distributed correctness.",
+      "requirement": {"id": "74444444-4444-4444-8444-000000000010", "category": "nice_to_have", "text": "Reason about distributed-system safety using both implementation tests and formal specifications.", "skill_normalized": "distributed systems correctness"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000010", "support_level": "partial", "supporting_quote": "model-checked safety and liveness properties", "rationale": "Supports formal specification and verification."}, {"experience_id": "44444444-4444-4444-8444-000000000004", "support_level": "partial", "supporting_quote": "Fault-injection tests covered leader loss and log repair", "rationale": "Supports implementation-level failure testing."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    }
+  ]
+}

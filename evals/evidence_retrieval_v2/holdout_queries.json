@@ -1,0 +1,125 @@
+{
+  "name": "CareerOps Evidence Retrieval Evaluation Queries",
+  "version": 2,
+  "split": "holdout",
+  "queries": [
+    {
+      "query_id": "81111111-1111-4111-8111-000000000001", "profile_id": "backend-platform", "description": "Database performance evidence without naming the course title.",
+      "requirement": {"id": "91111111-1111-4111-8111-000000000001", "category": "responsibility", "text": "Diagnose slow relational queries and design appropriate indexes.", "skill_normalized": "sql performance"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000008", "support_level": "full", "supporting_quote": "PostgreSQL EXPLAIN ANALYZE and composite indexes to optimize joins", "rationale": "The lab demonstrates query diagnosis and index design."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "81111111-1111-4111-8111-000000000002", "profile_id": "backend-platform", "description": "Concurrency control match in Go.",
+      "requirement": {"id": "91111111-1111-4111-8111-000000000002", "category": "must_have", "text": "Write race-free concurrent services in Go.", "skill_normalized": "go concurrency"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000006", "support_level": "full", "supporting_quote": "Wrote a Go token-bucket rate limiter and tested concurrent clients for race-free quota enforcement", "rationale": "The implementation and race checks directly support the requirement."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000009"], "negative_rationale": null, "tags": ["exact_skill", "hard_negative"]
+    },
+    {
+      "query_id": "81111111-1111-4111-8111-000000000003", "profile_id": "backend-platform", "description": "Reliable asynchronous delivery across broker and serverless projects.",
+      "requirement": {"id": "91111111-1111-4111-8111-000000000003", "category": "responsibility", "text": "Make asynchronous jobs recoverable from malformed messages and duplicate delivery.", "skill_normalized": "reliable async processing"},
+      "labels": [{"experience_id": "11111111-1111-4111-8111-000000000002", "support_level": "partial", "supporting_quote": "retry topics and a dead-letter queue for malformed events", "rationale": "Supports malformed-message recovery."}, {"experience_id": "11111111-1111-4111-8111-000000000007", "support_level": "partial", "supporting_quote": "DynamoDB conditional writes for deduplication", "rationale": "Supports duplicate-delivery protection."}],
+      "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000001"], "hard_negative_rationale": "The Order API's idempotency handles synchronous request retries, not duplicate delivery of asynchronous messages or jobs.", "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "81111111-1111-4111-8111-000000000004", "profile_id": "backend-platform", "description": "Negative for an RPC stack not used by the rate limiter.",
+      "requirement": {"id": "91111111-1111-4111-8111-000000000004", "category": "must_have", "text": "Design gRPC APIs and Protocol Buffers schemas.", "skill_normalized": "grpc protobuf"},
+      "labels": [], "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000006", "11111111-1111-4111-8111-000000000010"], "negative_rationale": "Go and API work do not establish gRPC or Protocol Buffers experience.", "tags": ["hard_negative"]
+    },
+    {
+      "query_id": "81111111-1111-4111-8111-000000000005", "profile_id": "backend-platform", "description": "Negative for a document database.",
+      "requirement": {"id": "91111111-1111-4111-8111-000000000005", "category": "nice_to_have", "text": "Model and operate high-volume collections in MongoDB.", "skill_normalized": "mongodb"},
+      "labels": [], "hard_negative_experience_ids": ["11111111-1111-4111-8111-000000000005", "11111111-1111-4111-8111-000000000008"], "negative_rationale": "The profile uses PostgreSQL, Redis, and DynamoDB but provides no MongoDB evidence.", "tags": ["hard_negative"]
+    },
+
+    {
+      "query_id": "82222222-2222-4222-8222-000000000001", "profile_id": "data-ai", "description": "Dashboard traceability match.",
+      "requirement": {"id": "92222222-2222-4222-8222-000000000001", "category": "responsibility", "text": "Create stakeholder dashboards whose metrics are traceable to SQL transformations.", "skill_normalized": "analytics dashboards"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000009", "support_level": "full", "supporting_quote": "Wrote documented SQL transformations and built Tableau dashboards whose charts were traceable to those queries", "rationale": "The analytics work directly demonstrates SQL-to-chart traceability."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "82222222-2222-4222-8222-000000000002", "profile_id": "data-ai", "description": "Chinese requirement retrieving English batch-pipeline evidence.",
+      "requirement": {"id": "92222222-2222-4222-8222-000000000002", "category": "must_have", "text": "编排每日批处理任务，并在数据不完整时阻止仓库表更新。", "skill_normalized": "batch data orchestration"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000001", "support_level": "full", "supporting_quote": "Orchestrated daily Python ETL jobs with Airflow and modeled validated warehouse tables with dbt and Snowflake, blocking incomplete loads before table updates", "rationale": "The project combines daily orchestration with blocking incomplete warehouse loads."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000004"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "82222222-2222-4222-8222-000000000003", "profile_id": "data-ai", "description": "Model reproducibility and leakage prevention split across projects.",
+      "requirement": {"id": "92222222-2222-4222-8222-000000000003", "category": "responsibility", "text": "Make training reproducible and evaluate temporal models without future-data leakage.", "skill_normalized": "reproducible machine learning"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000003", "support_level": "partial", "supporting_quote": "packaged reproducible training jobs in Docker", "rationale": "Supports reproducible training environments."}, {"experience_id": "22222222-2222-4222-8222-000000000006", "support_level": "partial", "supporting_quote": "Compared models without leaking future observations", "rationale": "Supports leakage-safe temporal evaluation."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000007"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "82222222-2222-4222-8222-000000000004", "profile_id": "data-ai", "description": "Late-event streaming behavior.",
+      "requirement": {"id": "92222222-2222-4222-8222-000000000004", "category": "nice_to_have", "text": "Test late-event behavior in a windowed event-processing pipeline.", "skill_normalized": "stream processing"},
+      "labels": [{"experience_id": "22222222-2222-4222-8222-000000000004", "support_level": "full", "supporting_quote": "Processed Kafka events with Spark Structured Streaming, wrote windowed aggregates to a feature table, and exercised late events with deterministic fixtures", "rationale": "The quote establishes both the windowed streaming pipeline and its late-event tests."}],
+      "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000001"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "82222222-2222-4222-8222-000000000005", "profile_id": "data-ai", "description": "Negative for an absent learning paradigm.",
+      "requirement": {"id": "92222222-2222-4222-8222-000000000005", "category": "nice_to_have", "text": "Train reinforcement-learning agents for continuous-control tasks.", "skill_normalized": "reinforcement learning"},
+      "labels": [], "hard_negative_experience_ids": ["22222222-2222-4222-8222-000000000006", "22222222-2222-4222-8222-000000000007"], "negative_rationale": "Forecasting and classification experience do not demonstrate reinforcement learning.", "tags": ["hard_negative"]
+    },
+
+    {
+      "query_id": "83333333-3333-4333-8333-000000000001", "profile_id": "frontend-mobile", "description": "Chinese accessibility requirement retrieving English evidence.",
+      "requirement": {"id": "93333333-3333-4333-8333-000000000001", "category": "must_have", "text": "构建支持键盘操作和语义化 HTML 的前端页面。", "skill_normalized": "web accessibility"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000001", "support_level": "full", "supporting_quote": "keyboard navigation, semantic HTML, and automated accessibility checks", "rationale": "The English project contains all requested accessibility practices."}, {"experience_id": "33333333-3333-4333-8333-000000000008", "support_level": "partial", "supporting_quote": "keyboard-only navigation", "rationale": "Supports keyboard operation but not semantic HTML."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000006"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "83333333-3333-4333-8333-000000000002", "profile_id": "frontend-mobile", "description": "Mobile resilience across offline and persisted-state work.",
+      "requirement": {"id": "93333333-3333-4333-8333-000000000002", "category": "responsibility", "text": "Preserve user work across network loss and application restarts on mobile devices.", "skill_normalized": "mobile resilience"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000003", "support_level": "partial", "supporting_quote": "offline queue and conflict-aware synchronization after reconnection; recovery tests preserved locally entered records across network loss", "rationale": "Supports preserving work through network loss, but not application restarts."}, {"experience_id": "33333333-3333-4333-8333-000000000005", "support_level": "partial", "supporting_quote": "Timer state survived application restarts", "rationale": "Supports preserving state through application restarts."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000004"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "83333333-3333-4333-8333-000000000003", "profile_id": "frontend-mobile", "description": "Backend-for-frontend integration match.",
+      "requirement": {"id": "93333333-3333-4333-8333-000000000003", "category": "nice_to_have", "text": "Create a Node service that shapes database data for a React application.", "skill_normalized": "backend for frontend"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000009", "support_level": "full", "supporting_quote": "Node.js Express backend-for-frontend that aggregated PostgreSQL data for a React client", "rationale": "Direct evidence of the requested integration pattern."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000002"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "83333333-3333-4333-8333-000000000004", "profile_id": "frontend-mobile", "description": "Accessibility and reusable component evidence across projects.",
+      "requirement": {"id": "93333333-3333-4333-8333-000000000004", "category": "responsibility", "text": "Define reusable UI components and document their accessibility expectations.", "skill_normalized": "accessible design systems"},
+      "labels": [{"experience_id": "33333333-3333-4333-8333-000000000006", "support_level": "full", "supporting_quote": "Maintained reusable TypeScript components in Storybook with design tokens and visual regression tests, documenting component states and accessibility expectations", "rationale": "The component library establishes reusable components and their accessibility expectations."}],
+      "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000001", "33333333-3333-4333-8333-000000000008"], "negative_rationale": null, "tags": ["paraphrase", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "83333333-3333-4333-8333-000000000005", "profile_id": "frontend-mobile", "description": "Negative for an absent frontend framework.",
+      "requirement": {"id": "93333333-3333-4333-8333-000000000005", "category": "must_have", "text": "Maintain a Vue 3 application using Pinia.", "skill_normalized": "vue"},
+      "labels": [], "hard_negative_experience_ids": ["33333333-3333-4333-8333-000000000001", "33333333-3333-4333-8333-000000000002"], "negative_rationale": "React and Next.js experience do not demonstrate Vue or Pinia.", "tags": ["hard_negative"]
+    },
+
+    {
+      "query_id": "84444444-4444-4444-8444-000000000001", "profile_id": "systems-research", "description": "Crash-safe local persistence requirement.",
+      "requirement": {"id": "94444444-4444-4444-8444-000000000001", "category": "responsibility", "text": "Recover committed records after a storage-process crash.", "skill_normalized": "storage recovery"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000001", "support_level": "full", "supporting_quote": "Crash-recovery tests restored committed records", "rationale": "The storage engine explicitly verifies the required crash recovery."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000004"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "84444444-4444-4444-8444-000000000002", "profile_id": "systems-research", "description": "C++ correctness evidence across storage, compiler, and parser projects.",
+      "requirement": {"id": "94444444-4444-4444-8444-000000000002", "category": "must_have", "text": "Use C++ to build low-level components with regression-tested failure behavior.", "skill_normalized": "c++ systems testing"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000001", "support_level": "partial", "supporting_quote": "C++ log-structured merge storage engine", "rationale": "Supports the low-level C++ component clause, but the quote does not establish regression-tested failure behavior."}, {"experience_id": "44444444-4444-4444-8444-000000000005", "support_level": "full", "supporting_quote": "Wrote an LLVM optimization pass in C++ and used regression tests against reference outputs to detect incorrect transformations", "rationale": "The quote establishes a low-level C++ compiler component and regression tests for incorrect transformation behavior."}, {"experience_id": "44444444-4444-4444-8444-000000000007", "support_level": "partial", "supporting_quote": "Created coverage-guided fuzz tests in C++ for a binary protocol parser, minimized crashing inputs, and added regression fixtures for every minimized crash", "rationale": "Supports regression-tested parser failure behavior in C++, but not that the candidate built the parser component itself."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000003"], "negative_rationale": null, "tags": ["paraphrase", "multi_relevant", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "84444444-4444-4444-8444-000000000003", "profile_id": "systems-research", "description": "Chinese requirement retrieving English transport evidence.",
+      "requirement": {"id": "94444444-4444-4444-8444-000000000003", "category": "nice_to_have", "text": "分析网络丢包条件下的拥塞控制行为，并保存可复现的数据包轨迹。", "skill_normalized": "network congestion analysis"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000009", "support_level": "full", "supporting_quote": "study congestion control and packet loss under emulated network conditions, capturing packet traces for reproducible scenarios", "rationale": "The transport lab covers loss, congestion control, and saved traces."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000002"], "negative_rationale": null, "tags": ["paraphrase", "zh_en", "composite", "hard_negative"]
+    },
+    {
+      "query_id": "84444444-4444-4444-8444-000000000004", "profile_id": "systems-research", "description": "Approximate retrieval trade-off match.",
+      "requirement": {"id": "94444444-4444-4444-8444-000000000004", "category": "responsibility", "text": "Evaluate when an approximate nearest-neighbor index is worth reduced retrieval completeness.", "skill_normalized": "approximate nearest neighbor"},
+      "labels": [{"experience_id": "44444444-4444-4444-8444-000000000008", "support_level": "full", "supporting_quote": "Compared HNSW and exact vector search on synthetic embeddings and documented recall-latency trade-offs", "rationale": "The quote compares approximate and exact search using the requested trade-off."}],
+      "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000006"], "negative_rationale": null, "tags": ["paraphrase", "hard_negative"]
+    },
+    {
+      "query_id": "84444444-4444-4444-8444-000000000005", "profile_id": "systems-research", "description": "Negative for hardware-description and FPGA work.",
+      "requirement": {"id": "94444444-4444-4444-8444-000000000005", "category": "nice_to_have", "text": "Design FPGA accelerators in Verilog.", "skill_normalized": "fpga verilog"},
+      "labels": [], "hard_negative_experience_ids": ["44444444-4444-4444-8444-000000000006"], "negative_rationale": "CUDA GPU optimization does not demonstrate FPGA or Verilog development.", "tags": ["hard_negative"]
+    }
+  ]
+}

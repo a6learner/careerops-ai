@@ -102,3 +102,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0018 Dashboard Aggregation And Cache](0018-dashboard-aggregation-and-cache.md)
 - [0019 Experience Embedding Lifecycle](0019-experience-embedding-lifecycle.md)
 - [0020 Evidence Retrieval Evaluation Baseline](0020-retrieval-evaluation-baseline.md)
+- [0021 Retrieval Evaluation V2](0021-retrieval-evaluation-v2.md)
