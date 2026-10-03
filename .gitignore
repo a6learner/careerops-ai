@@ -1,4 +1,7 @@
+# Local secrets and machine-specific environment overrides.
 .env
+.env.*
+!.env.example
 .venv/
 __pycache__/
 .mypy_cache/

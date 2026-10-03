@@ -43,3 +43,9 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   multi-profile development baseline and sealed-holdout boundary.
 - `2026-09-21-lexical-retrieval-v2-development.json` preserves the full v2
   development ranking output and dataset hashes.
+- `2026-10-01-gemini-embedding-2-development.md` explains the controlled real
+  embedding comparison and its limitations.
+- `2026-10-01-gemini-embedding-2-development-comparison.json` preserves every
+  lexical, vector, and hybrid development ranking.
+- `2026-10-01-gemini-embedding-2-development-vectors.json.gz` preserves the
+  validated 1536-dimensional development vector cache.
