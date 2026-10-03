@@ -89,7 +89,9 @@ production retriever.
   `25d7703b355a184c8d0365557caa5483660893097060108c345993fc5814cbf8`
 - Vector cache SHA-256:
   `8b07d9f80dc40d0fa744bab038034f39e4f6a4f9a69f2fe5b44f6419d82ad7b8`
-- Comparison JSON SHA-256:
+- Comparison JSON normalized committed-content SHA-256:
+  `19aa221b03b6795571407b680c5cadcaa5b1be80a6307253801f4dcee33f40b1`
+- Original Windows CRLF working-copy SHA-256:
   `c3d9fe3bee8c78aaf50f5eb25eee568bd35e0af07323d2973a480c8a48236d24`
 
 ## Command

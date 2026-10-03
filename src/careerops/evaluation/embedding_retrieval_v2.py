@@ -50,6 +50,7 @@ RRF_K = 60
 HYBRID_ALPHAS = (0.25, 0.5, 0.75)
 VECTOR_THRESHOLDS = tuple(round(-0.2 + (step * 0.05), 2) for step in range(23))
 MAX_LIVE_UNIQUE_INPUTS = 80
+MAX_HOLDOUT_QUERY_INPUTS = 20
 MetricValue = TypeVar("MetricValue")
 
 
@@ -264,6 +265,39 @@ def build_input_plan(
     unique_hashes = {item.input_sha256 for item in inputs}
     if len(unique_hashes) > MAX_LIVE_UNIQUE_INPUTS:
         raise ValueError("Embedding evaluation input budget exceeds 80 unique inputs.")
+    return InputPlan(tuple(inputs), document_hashes, query_hashes)
+
+
+def build_holdout_query_plan(
+    corpus: RetrievalV2Corpus,
+    query_set: RetrievalV2QuerySet,
+) -> InputPlan:
+    if query_set.split is not RetrievalSplit.HOLDOUT:
+        raise RuntimeError("The holdout runner requires the frozen holdout split.")
+    document_hashes: dict[UUID, str] = {}
+    for profile in corpus.profiles:
+        for experience in profile.experiences:
+            item = make_input(
+                input_id=f"document:{experience.id}",
+                role=EmbeddingRole.DOCUMENT,
+                input_version=DOCUMENT_INPUT_VERSION,
+                rendered_text=render_document_input(experience),
+            )
+            document_hashes[experience.id] = item.input_sha256
+    inputs: list[EmbeddingEvalInput] = []
+    query_hashes: dict[str, str] = {}
+    for query in query_set.queries:
+        item = make_input(
+            input_id=f"query:{query.query_id}",
+            role=EmbeddingRole.QUERY,
+            input_version=QUERY_INPUT_VERSION,
+            rendered_text=render_query_input(query),
+        )
+        inputs.append(item)
+        query_hashes[query.query_id] = item.input_sha256
+    unique_hashes = {item.input_sha256 for item in inputs}
+    if len(unique_hashes) > MAX_HOLDOUT_QUERY_INPUTS:
+        raise ValueError("Holdout input budget exceeds 20 unique queries.")
     return InputPlan(tuple(inputs), document_hashes, query_hashes)
 
 
@@ -518,6 +552,55 @@ def evaluate_comparison(
         lexical_summary,
     )
     return lexical, selected_vector, selected_hybrid
+
+
+def evaluate_fixed_comparison(
+    *,
+    corpus: RetrievalV2Corpus,
+    query_set: RetrievalV2QuerySet,
+    input_plan: InputPlan,
+    vectors: dict[str, tuple[float, ...]],
+    vector_threshold: float,
+    hybrid_threshold: float,
+    hybrid_alpha: float,
+) -> tuple[RetrievalMethodReport, SelectedMethod, SelectedMethod]:
+    lexical_rankings = build_lexical_rankings(corpus, query_set)
+    lexical_results = score_rankings(query_set, lexical_rankings)
+    lexical_summary = summarize_results(lexical_results)
+    lexical = RetrievalMethodReport(
+        retriever_version="lexical-skill-v1",
+        vector_threshold=None,
+        lexical_weight=None,
+        development_gate_passed=None,
+        summary=lexical_summary,
+        queries=lexical_results,
+    )
+    vector_scores = build_vector_scores(corpus, query_set, input_plan, vectors)
+    vector = selected_candidate(
+        threshold=vector_threshold,
+        alpha=None,
+        results=score_rankings(
+            query_set,
+            vector_rankings(query_set, vector_scores, vector_threshold),
+        ),
+        lexical_summary=lexical_summary,
+    )
+    hybrid = selected_candidate(
+        threshold=hybrid_threshold,
+        alpha=hybrid_alpha,
+        results=score_rankings(
+            query_set,
+            hybrid_rankings(
+                query_set,
+                lexical_rankings,
+                vector_scores,
+                threshold=hybrid_threshold,
+                alpha=hybrid_alpha,
+            ),
+        ),
+        lexical_summary=lexical_summary,
+    )
+    return lexical, vector, hybrid
 
 
 def build_lexical_rankings(

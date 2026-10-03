@@ -163,6 +163,30 @@ uses one document batch and one development-query batch with one attempt each,
 requires exactly 1536 finite non-zero vectors, refuses output overwrite, and never
 accepts the holdout split.
 
+P1-3b has a separate one-time holdout runner. Do not run it without explicit
+holdout authorization. It verifies the committed P1-3a report and vector-cache
+hashes, reuses the 40 frozen document vectors, and submits only the 20 synthetic
+holdout queries in one single-attempt batch. The vector threshold `0.65`, hybrid
+threshold `0.65`, and hybrid lexical weight `0.50` cannot be overridden:
+
+```powershell
+$env:CAREEROPS_RUN_EMBEDDING_HOLDOUT='1'
+.\.venv\Scripts\python -m careerops.evaluation.run_embedding_holdout_v2 `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --holdout-queries evals/evidence_retrieval_v2/holdout_queries.json `
+  --review-manifest evals/evidence_retrieval_v2/review_manifest.json `
+  --frozen-development-report docs/metrics/2026-10-01-gemini-embedding-2-development-comparison.json `
+  --frozen-development-cache docs/metrics/2026-10-01-gemini-embedding-2-development-vectors.json.gz `
+  --cache docs/metrics/YYYY-MM-DD-gemini-embedding-2-holdout-queries.json.gz `
+  --output docs/metrics/YYYY-MM-DD-gemini-embedding-2-holdout-comparison.json `
+  --git-revision <commit-or-working-tree-label>
+Remove-Item Env:CAREEROPS_RUN_EMBEDDING_HOLDOUT
+```
+
+The holdout runner has no fake CLI mode and no parameter grid. Default tests use
+development-derived toy queries marked as holdout, not the real holdout file. A
+provider failure saves an incomplete query cache and writes no comparison report.
+
 Using the explicit `.venv` paths keeps project dependencies out of the global Python or Anaconda environment.
 
 ## API Surface

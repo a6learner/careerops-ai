@@ -104,3 +104,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0020 Evidence Retrieval Evaluation Baseline](0020-retrieval-evaluation-baseline.md)
 - [0021 Retrieval Evaluation V2](0021-retrieval-evaluation-v2.md)
 - [0022 Real Embedding Evaluation](0022-real-embedding-evaluation.md)
+- [0023 Frozen Embedding Holdout](0023-frozen-embedding-holdout.md)
