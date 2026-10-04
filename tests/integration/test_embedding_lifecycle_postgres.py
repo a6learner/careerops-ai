@@ -23,7 +23,7 @@ from careerops.domain.users import UserAccount
 from careerops.main import create_app
 from careerops.repositories.embedding_runs import EmbeddingRunRepository
 from careerops.repositories.experiences import to_record
-from careerops.services.embedding_execution import EmbeddingExecutionService
+from careerops.services.embedding_execution import EmbeddingExecutionService, EmbeddingProvider
 
 pytestmark = pytest.mark.integration
 
@@ -34,6 +34,14 @@ class RecordingDispatcher:
 
     async def dispatch(self, run_id: UUID) -> None:
         self.ids.append(run_id)
+
+
+class FixedProviderResolver:
+    def __init__(self, provider: EmbeddingProvider) -> None:
+        self.provider = provider
+
+    def resolve(self, model_name: str, document_input_version: str) -> EmbeddingProvider:
+        return self.provider
 
 
 @pytest.mark.skipif(
@@ -112,7 +120,7 @@ async def test_embedding_lifecycle_rejects_stale_completion_and_writes_current_v
             async with session_factory() as worker_session:
                 executed = await EmbeddingExecutionService(
                     EmbeddingRunRepository(worker_session),
-                    FakeEmbeddingProvider(),
+                    FixedProviderResolver(FakeEmbeddingProvider()),
                 ).execute(new_run_id)
                 assert executed
 

@@ -2,22 +2,39 @@ from uuid import UUID
 
 import dramatiq
 
+from careerops.adapters.embedding_factory import ConfiguredEmbeddingProviderResolver
 from careerops.adapters.factory import create_requirement_parser
-from careerops.adapters.fake_embedding_provider import FakeEmbeddingProvider
 from careerops.adapters.fake_evidence_matcher import FakeEvidenceMatcher
 from careerops.core.config import get_settings
 from careerops.db.session import create_session_factory
+from careerops.domain.analysis_runs import AnalysisRunWorkItem
+from careerops.domain.embeddings import embedding_space_for_analysis_pipeline
 from careerops.repositories.analysis_results import AnalysisResultRepository
 from careerops.repositories.analysis_runs import AnalysisRunRepository
 from careerops.repositories.embedding_runs import EmbeddingRunRepository
+from careerops.repositories.evidence_retrieval import EvidenceVectorRepository
 from careerops.repositories.parse_runs import ParseRunRepository
 from careerops.services.analysis_results import AnalysisResultService
 from careerops.services.analysis_run_execution import AnalysisRunExecutionService, EvidenceMatcher
-from careerops.services.embedding_execution import EmbeddingExecutionService, EmbeddingProvider
+from careerops.services.embedding_execution import EmbeddingExecutionService
+from careerops.services.hybrid_retrieval import HybridEvidenceRetriever
 from careerops.services.parse_run_execution import ParseRunExecutionService, RequirementParser
 from careerops.workers.broker import redis_broker
 
 worker_session_factory = create_session_factory(get_settings().database_url)
+
+
+def build_hybrid_retriever(
+    work_item: AnalysisRunWorkItem,
+    vectors: EvidenceVectorRepository,
+    resolver: ConfiguredEmbeddingProviderResolver,
+) -> HybridEvidenceRetriever:
+    space = embedding_space_for_analysis_pipeline(work_item.prompt_version)
+    return HybridEvidenceRetriever(
+        vectors=vectors,
+        provider=resolver.resolve(space.model_name, space.document_input_version),
+        space=space,
+    )
 
 
 @dramatiq.actor(
@@ -53,7 +70,10 @@ async def execute_parse_run_async(
     max_retries=0,
 )
 async def execute_analysis_run(analysis_run_id: str) -> None:
-    await execute_analysis_run_async(UUID(analysis_run_id), FakeEvidenceMatcher())
+    await execute_analysis_run_async(
+        UUID(analysis_run_id),
+        FakeEvidenceMatcher(),
+    )
 
 
 async def execute_analysis_run_async(
@@ -61,10 +81,18 @@ async def execute_analysis_run_async(
     matcher: EvidenceMatcher,
 ) -> bool:
     async with worker_session_factory() as session:
+        settings = get_settings()
+        resolver = ConfiguredEmbeddingProviderResolver(settings)
+        vectors = EvidenceVectorRepository(session)
         service = AnalysisRunExecutionService(
             store=AnalysisRunRepository(session),
             results=AnalysisResultService(AnalysisResultRepository(session)),
             matcher=matcher,
+            retriever_factory=lambda work_item: build_hybrid_retriever(
+                work_item,
+                vectors,
+                resolver,
+            ),
         )
         return await service.execute(analysis_run_id)
 
@@ -76,16 +104,15 @@ async def execute_analysis_run_async(
     max_retries=0,
 )
 async def execute_embedding_run(embedding_run_id: str) -> None:
-    await execute_embedding_run_async(UUID(embedding_run_id), FakeEmbeddingProvider())
+    await execute_embedding_run_async(UUID(embedding_run_id))
 
 
 async def execute_embedding_run_async(
     embedding_run_id: UUID,
-    provider: EmbeddingProvider,
 ) -> bool:
     async with worker_session_factory() as session:
         service = EmbeddingExecutionService(
             store=EmbeddingRunRepository(session),
-            provider=provider,
+            providers=ConfiguredEmbeddingProviderResolver(get_settings()),
         )
         return await service.execute(embedding_run_id)

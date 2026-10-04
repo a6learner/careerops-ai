@@ -8,7 +8,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.db.models import AnalysisRun, EvidenceMatch, Experience, JobRequirement, ParseRun
 from careerops.domain.analysis_runs import (
-    ANALYSIS_PROMPT_VERSION,
     FAKE_ANALYSIS_MODEL_NAME,
     AnalysisInput,
     AnalysisRunCreationResult,
@@ -67,6 +66,7 @@ class AnalysisRunRepository:
         parse_run: ParseRunRecord,
         idempotency_key: str,
         input_fingerprint: str,
+        prompt_version: str,
     ) -> AnalysisRunCreationResult:
         analysis_run_id = uuid4()
         result = await self._session.execute(
@@ -80,7 +80,7 @@ class AnalysisRunRepository:
                 idempotency_key=idempotency_key,
                 input_fingerprint=input_fingerprint,
                 model_name=FAKE_ANALYSIS_MODEL_NAME,
-                prompt_version=ANALYSIS_PROMPT_VERSION,
+                prompt_version=prompt_version,
                 attempt=1,
             )
             .on_conflict_do_nothing(
@@ -118,10 +118,13 @@ class AnalysisRunRepository:
             .values(status=AnalysisRunStatus.RUNNING.value, started_at=datetime.now(UTC))
             .returning(
                 AnalysisRun.id,
+                AnalysisRun.attempt,
                 AnalysisRun.user_id,
                 AnalysisRun.job_id,
                 AnalysisRun.parse_run_id,
                 AnalysisRun.input_fingerprint,
+                AnalysisRun.prompt_version,
+                AnalysisRun.created_at,
             )
         )
         row = result.one_or_none()
@@ -129,10 +132,13 @@ class AnalysisRunRepository:
             return None
         return AnalysisRunWorkItem(
             id=row.id,
+            attempt=row.attempt,
             user_id=row.user_id,
             job_id=row.job_id,
             parse_run_id=row.parse_run_id,
             input_fingerprint=row.input_fingerprint,
+            prompt_version=row.prompt_version,
+            created_at=row.created_at,
         )
 
     async def load_analysis_input(self, work_item: AnalysisRunWorkItem) -> AnalysisInput:
@@ -172,6 +178,7 @@ class AnalysisRunRepository:
     async def fail_analysis_run(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         model_name: str,
         error_code: AnalysisRunErrorCode,
         latency_ms: int,
@@ -181,6 +188,7 @@ class AnalysisRunRepository:
             .where(
                 AnalysisRun.id == analysis_run_id,
                 AnalysisRun.status == AnalysisRunStatus.RUNNING.value,
+                AnalysisRun.attempt == attempt,
             )
             .values(
                 status=AnalysisRunStatus.FAILED.value,

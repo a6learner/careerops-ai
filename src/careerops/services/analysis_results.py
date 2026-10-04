@@ -8,6 +8,7 @@ class AnalysisResultStore(Protocol):
     async def complete_analysis_run(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         matches: tuple[ValidatedEvidenceMatch, ...],
         validation_failure_count: int,
         model_name: str,
@@ -26,6 +27,7 @@ class AnalysisResultService:
     async def complete(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         matches: tuple[ValidatedEvidenceMatch, ...],
         model_name: str,
         latency_ms: int,
@@ -34,6 +36,7 @@ class AnalysisResultService:
     ) -> bool:
         completed = await self._results.complete_analysis_run(
             analysis_run_id=analysis_run_id,
+            attempt=attempt,
             matches=matches,
             validation_failure_count=sum(match.validation_failed for match in matches),
             model_name=model_name,

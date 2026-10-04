@@ -4,7 +4,7 @@ import logging
 from typing import Protocol
 from uuid import UUID
 
-from careerops.domain.embeddings import EMBEDDING_INPUT_VERSION, FAKE_EMBEDDING_MODEL_NAME
+from careerops.domain.embeddings import FAKE_EMBEDDING_SPACE, EmbeddingSpace
 from careerops.domain.errors import (
     EmbeddingRunDispatchError,
     ExperienceNotFoundError,
@@ -67,18 +67,20 @@ class ExperienceService:
         experiences: ExperienceStore,
         embedding_runs: EmbeddingRunScheduler,
         dispatcher: EmbeddingRunDispatcher,
+        embedding_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
     ) -> None:
         self._experiences = experiences
         self._embedding_runs = embedding_runs
         self._dispatcher = dispatcher
+        self._embedding_space = embedding_space
 
     async def create_experience(self, payload: ExperienceCreate) -> ExperienceRecord:
         content_hash = compute_experience_content_hash(payload)
         experience = await self._experiences.create_experience(payload, content_hash)
         run_id = await self._embedding_runs.create_run(
             experience,
-            FAKE_EMBEDDING_MODEL_NAME,
-            EMBEDDING_INPUT_VERSION,
+            self._embedding_space.model_name,
+            self._embedding_space.document_input_version,
         )
         await self._experiences.commit()
         await self._dispatch_best_effort(run_id)
@@ -127,8 +129,8 @@ class ExperienceService:
             raise ExperienceVersionConflictError(current.version)
         run_id = await self._embedding_runs.create_run(
             updated,
-            FAKE_EMBEDDING_MODEL_NAME,
-            EMBEDDING_INPUT_VERSION,
+            self._embedding_space.model_name,
+            self._embedding_space.document_input_version,
         )
         await self._experiences.commit()
         await self._dispatch_best_effort(run_id)

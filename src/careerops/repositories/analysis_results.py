@@ -15,6 +15,7 @@ class AnalysisResultRepository:
     async def complete_analysis_run(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         matches: tuple[ValidatedEvidenceMatch, ...],
         validation_failure_count: int,
         model_name: str,
@@ -27,6 +28,7 @@ class AnalysisResultRepository:
             .where(
                 AnalysisRun.id == analysis_run_id,
                 AnalysisRun.status == "running",
+                AnalysisRun.attempt == attempt,
             )
             .values(
                 status="succeeded",

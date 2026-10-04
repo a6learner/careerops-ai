@@ -10,6 +10,12 @@ from careerops.domain.analysis_runs import (
     AnalysisRunRecord,
     AnalysisRunStatus,
 )
+from careerops.domain.embeddings import (
+    FAKE_EMBEDDING_SPACE,
+    GEMINI_EMBEDDING_SPACE,
+    EmbeddingSpace,
+    analysis_pipeline_version,
+)
 from careerops.domain.errors import (
     AnalysisRunDispatchError,
     IdempotencyKeyConflictError,
@@ -110,6 +116,7 @@ class AnalysisRunStore:
         parse_run: ParseRunRecord,
         idempotency_key: str,
         input_fingerprint: str,
+        prompt_version: str,
     ) -> AnalysisRunCreationResult:
         self.existing = make_analysis_run(
             user_id=user_id,
@@ -117,6 +124,7 @@ class AnalysisRunStore:
             parse_run_id=parse_run.id,
             idempotency_key=idempotency_key,
             input_fingerprint=input_fingerprint,
+            prompt_version=prompt_version,
         )
         return AnalysisRunCreationResult(run=self.existing, created=True)
 
@@ -148,6 +156,24 @@ async def test_submit_analysis_run_commits_queued_run_then_dispatches() -> None:
     assert run.input_fingerprint == compute_analysis_input_fingerprint(parse_run, (experience,))
     assert store.committed
     assert dispatcher.ids == [run.id]
+
+
+@pytest.mark.asyncio
+async def test_analysis_run_binds_configured_retrieval_space() -> None:
+    job, parse_run, experience = make_inputs()
+    store = AnalysisRunStore()
+    service = build_service(
+        job,
+        parse_run,
+        [experience],
+        store,
+        Dispatcher(),
+        retrieval_space=GEMINI_EMBEDDING_SPACE,
+    )
+
+    run = await service.submit_analysis_run(job.user_id, job.id, parse_run.id, "gemini-space")
+
+    assert run.prompt_version == analysis_pipeline_version(GEMINI_EMBEDDING_SPACE)
 
 
 @pytest.mark.asyncio
@@ -216,6 +242,7 @@ def build_service(
     experiences: list[ExperienceRecord],
     store: AnalysisRunStore,
     dispatcher: Dispatcher,
+    retrieval_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
 ) -> AnalysisRunService:
     return AnalysisRunService(
         JobReader(job),
@@ -223,6 +250,7 @@ def build_service(
         ExperienceReader(experiences),
         store,
         dispatcher,
+        retrieval_space,
     )
 
 
@@ -301,6 +329,7 @@ def make_analysis_run(
     parse_run_id: UUID,
     idempotency_key: str,
     input_fingerprint: str,
+    prompt_version: str = ANALYSIS_PROMPT_VERSION,
 ) -> AnalysisRunRecord:
     now = datetime.now(UTC)
     return AnalysisRunRecord(
@@ -312,7 +341,7 @@ def make_analysis_run(
         idempotency_key=idempotency_key,
         input_fingerprint=input_fingerprint,
         model_name=FAKE_ANALYSIS_MODEL_NAME,
-        prompt_version=ANALYSIS_PROMPT_VERSION,
+        prompt_version=prompt_version,
         attempt=1,
         validation_failure_count=0,
         error_code=None,

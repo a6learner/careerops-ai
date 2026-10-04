@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Job-scoped Action Items support manual creation, gap provenance, idempotent retries, optimistic updates, and archived-Job retention. The Dashboard summarizes active Job and Action Item counts through a disposable Redis cache. Experience embeddings have durable, version-bound fake generation, stale-result fencing, and PostgreSQL-backed recovery. Reviewed multi-profile labels keep development selection separate from one-time holdout evidence. Default-off evaluation paths compare lexical, Gemini vector, and weighted-RRF hybrid retrieval on synthetic data without changing production Analysis Runs. Real-provider evidence remains isolated from production behavior.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, user-owned Experiences and Jobs, and worker-backed parse and Analysis Runs. Analysis workers use deterministic lexical retrieval plus provenance-fenced exact pgvector scoring and fixed weighted RRF, with lexical fallback when vectors or the query provider are unavailable. Evidence matching remains worker-only and fake-backed so citation validation, atomic persistence, recovery, and CI stay deterministic. Experience embeddings have durable version/content/model/input provenance and stale-result fencing. Reviewed development and one-time holdout evidence justify the frozen retrieval contract without turning holdout data into a tuning set.
 
 ## Architecture Direction
 
@@ -46,6 +46,19 @@ Run the worker in a separate terminal:
 ```powershell
 .\.venv\Scripts\dramatiq careerops.workers.tasks --processes 1 --threads 4
 ```
+
+Embedding and hybrid retrieval default to the deterministic fake provider. A local
+Gemini worker requires `CAREEROPS_EMBEDDING_PROVIDER=gemini`, an ignored
+`CAREEROPS_GEMINI_API_KEY`, and a process-only live gate that is never read from
+`.env`:
+
+```powershell
+$env:CAREEROPS_RUN_EMBEDDING_INTEGRATION = "1"
+try { .\.venv\Scripts\dramatiq careerops.workers.tasks --processes 1 --threads 4 }
+finally { Remove-Item Env:CAREEROPS_RUN_EMBEDDING_INTEGRATION -ErrorAction SilentlyContinue }
+```
+
+The API still only schedules durable work; provider calls occur in the worker.
 
 The checked-in `.env.example` defaults to the deterministic `fake` provider.
 To run Groq locally, copy the example to the ignored `.env`, set
@@ -215,7 +228,7 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `PATCH /api/v1/action-items/{id}` updates title or status with `If-Match` optimistic locking, including after its Job is archived.
 - `GET /api/v1/dashboard/summary` returns the current user's active Job and Action Item status totals, cached in Redis with PostgreSQL fallback.
 
-The backend MVP core loop reaches the Dashboard summary. The embedding lifecycle and reviewed retrieval evidence are documented and tested. Analysis Runs intentionally continue to use the deterministic lexical/skill retriever; default-off development and one-time holdout evaluation remain isolated from production behavior.
+The backend MVP core loop reaches the Dashboard summary. Local Analysis Runs now use exact hybrid retrieval inside the worker while preserving lexical fallback, object-level authorization, evidence validation, and atomic result writes. The evidence matcher remains deterministic test infrastructure; a real matcher is a separate future stage.
 
 ## Key Decisions
 

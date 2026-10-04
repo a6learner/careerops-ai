@@ -12,10 +12,11 @@ from careerops.domain.embeddings import (
     EmbeddingRunErrorCode,
     EmbeddingRunWorkItem,
 )
-from careerops.domain.errors import EmbeddingProviderError
+from careerops.domain.errors import EmbeddingProviderError, EmbeddingProviderFailureReason
 from careerops.domain.experiences import ExperienceKind, ExperienceRecord
 from careerops.services.embedding_execution import (
     EmbeddingExecutionService,
+    EmbeddingProvider,
     render_embedding_input,
 )
 
@@ -68,6 +69,19 @@ class FailingProvider:
 
     async def embed(self, input_text: str) -> EmbeddingOutput:
         raise EmbeddingProviderError()
+
+
+class DisabledProvider(FailingProvider):
+    async def embed(self, input_text: str) -> EmbeddingOutput:
+        raise EmbeddingProviderError(EmbeddingProviderFailureReason.DISABLED)
+
+
+class FixedProviderResolver:
+    def __init__(self, provider: EmbeddingProvider) -> None:
+        self.provider = provider
+
+    def resolve(self, model_name: str, document_input_version: str) -> EmbeddingProvider:
+        return self.provider
 
 
 def make_work_item() -> EmbeddingRunWorkItem:
@@ -124,7 +138,7 @@ async def test_execution_commits_valid_vector() -> None:
     work_item = make_work_item()
     store = ExecutionStore(work_item)
 
-    service = EmbeddingExecutionService(store, FakeEmbeddingProvider())
+    service = EmbeddingExecutionService(store, FixedProviderResolver(FakeEmbeddingProvider()))
 
     completed = await service.execute(work_item.id)
 
@@ -140,7 +154,10 @@ async def test_execution_rejects_non_finite_vector() -> None:
     work_item = make_work_item()
     store = ExecutionStore(work_item)
 
-    handled = await EmbeddingExecutionService(store, InvalidProvider()).execute(work_item.id)
+    handled = await EmbeddingExecutionService(
+        store,
+        FixedProviderResolver(InvalidProvider()),
+    ).execute(work_item.id)
 
     assert handled
     assert store.completed_vector is None
@@ -152,17 +169,38 @@ async def test_execution_records_provider_failure() -> None:
     work_item = make_work_item()
     store = ExecutionStore(work_item)
 
-    handled = await EmbeddingExecutionService(store, FailingProvider()).execute(work_item.id)
+    handled = await EmbeddingExecutionService(
+        store,
+        FixedProviderResolver(FailingProvider()),
+    ).execute(work_item.id)
 
     assert handled
     assert store.failed_code is EmbeddingRunErrorCode.PROVIDER_FAILED
 
 
 @pytest.mark.asyncio
+async def test_execution_records_disabled_provider_after_claim() -> None:
+    work_item = make_work_item()
+    store = ExecutionStore(work_item)
+
+    handled = await EmbeddingExecutionService(
+        store,
+        FixedProviderResolver(DisabledProvider()),
+    ).execute(work_item.id)
+
+    assert handled
+    assert store.failed_code is EmbeddingRunErrorCode.PROVIDER_DISABLED
+    assert store.commit_count == 2
+
+
+@pytest.mark.asyncio
 async def test_duplicate_delivery_without_claim_is_noop() -> None:
     store = ExecutionStore(None)
 
-    completed = await EmbeddingExecutionService(store, FakeEmbeddingProvider()).execute(uuid4())
+    completed = await EmbeddingExecutionService(
+        store,
+        FixedProviderResolver(FakeEmbeddingProvider()),
+    ).execute(uuid4())
 
     assert not completed
     assert store.completed_vector is None

@@ -22,7 +22,11 @@ from careerops.db.models import (
     User,
 )
 from careerops.db.session import create_session_factory
-from careerops.domain.analysis_runs import AnalysisRunStatus
+from careerops.domain.analysis_runs import (
+    ANALYSIS_PROMPT_VERSION,
+    AnalysisRunErrorCode,
+    AnalysisRunStatus,
+)
 from careerops.domain.parse_runs import ParseRunRecord, ParseRunStatus
 from careerops.domain.users import UserAccount
 from careerops.main import create_app
@@ -296,6 +300,7 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
                 parse_run,
                 idempotency_key,
                 "f" * 64,
+                    ANALYSIS_PROMPT_VERSION,
             )
             if creation.created:
                 await repository.commit()
@@ -318,6 +323,31 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
         requeued = await repository.requeue_stale_analysis_runs(now, 10)
         await repository.commit()
         recovered = await repository.get_analysis_run(user_id, job_id, first[0])
+
+        current_work = await repository.claim_analysis_run(first[0])
+        assert current_work is not None
+        assert current_work.attempt == 2
+        await repository.commit()
+
+        assert not await repository.fail_analysis_run(
+            first[0],
+            1,
+            "stale-worker",
+            AnalysisRunErrorCode.MATCHER_FAILED,
+            1,
+        )
+        assert not await AnalysisResultRepository(
+            recovery_session
+        ).complete_analysis_run(
+            first[0],
+            1,
+            (),
+            0,
+            "stale-worker",
+            1,
+            None,
+            None,
+        )
 
     assert requeued == [first[0]]
     assert recovered is not None

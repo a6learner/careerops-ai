@@ -5,6 +5,7 @@ from tests.test_analysis_run_service import make_inputs
 
 from careerops.adapters.fake_evidence_matcher import FakeEvidenceMatcher
 from careerops.domain.analysis_runs import (
+    ANALYSIS_PROMPT_VERSION,
     AnalysisInput,
     AnalysisRunErrorCode,
     AnalysisRunWorkItem,
@@ -41,6 +42,7 @@ class ExecutionStore:
     async def fail_analysis_run(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         model_name: str,
         error_code: AnalysisRunErrorCode,
         latency_ms: int,
@@ -61,6 +63,7 @@ class ResultStore:
     async def complete_analysis_run(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         matches: tuple[ValidatedEvidenceMatch, ...],
         validation_failure_count: int,
         model_name: str,
@@ -146,10 +149,13 @@ async def test_execution_fails_when_experience_library_changed() -> None:
     store, results = make_execution_dependencies()
     store.work_item = AnalysisRunWorkItem(
         id=store.work_item.id,
+        attempt=store.work_item.attempt,
         user_id=store.work_item.user_id,
         job_id=store.work_item.job_id,
         parse_run_id=store.work_item.parse_run_id,
         input_fingerprint="f" * 64,
+        prompt_version=store.work_item.prompt_version,
+        created_at=store.work_item.created_at,
     )
 
     executed = await AnalysisRunExecutionService(
@@ -204,6 +210,7 @@ def make_execution_dependencies() -> tuple[ExecutionStore, ResultStore]:
     )
     work_item = AnalysisRunWorkItem(
         id=uuid4(),
+        attempt=1,
         user_id=job.user_id,
         job_id=job.id,
         parse_run_id=parse_run.id,
@@ -212,5 +219,7 @@ def make_execution_dependencies() -> tuple[ExecutionStore, ResultStore]:
             parse_run.input_fingerprint,
             (experience,),
         ),
+        prompt_version=ANALYSIS_PROMPT_VERSION,
+        created_at=experience.created_at,
     )
     return ExecutionStore(work_item, analysis_input), ResultStore()

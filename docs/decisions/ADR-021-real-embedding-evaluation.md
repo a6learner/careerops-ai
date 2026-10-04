@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Accepted for P1-3a; its production-isolation restriction is superseded by ADR-023
 
 ## Context
 

@@ -15,11 +15,20 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
 
 from careerops.adapters.fake_embedding_provider import FakeEmbeddingProvider
-from careerops.domain.embeddings import EMBEDDING_DIMENSIONS, EmbeddingOutput
+from careerops.domain.embeddings import (
+    EMBEDDING_DIMENSIONS,
+    GEMINI_DOCUMENT_INPUT_VERSION,
+    GEMINI_EMBEDDING_MODEL_NAME,
+    GEMINI_QUERY_INPUT_VERSION,
+    EmbeddingOutput,
+    render_document_embedding_input,
+    render_query_embedding_input,
+)
 from careerops.domain.evidence_retrieval import (
     DEFAULT_CANDIDATE_LIMIT,
     retrieve_evidence_candidates,
 )
+from careerops.domain.ranking import RankedItem, weighted_rrf
 from careerops.evaluation.evidence_retrieval import (
     RetrievalEvalExperience,
     to_experience_record,
@@ -41,9 +50,9 @@ from careerops.evaluation.gemini_embedding_provider import (
     EmbeddingProviderUsage,
 )
 
-GEMINI_EMBEDDING_MODEL = "gemini-embedding-2"
-QUERY_INPUT_VERSION = "gemini-embedding-2-search-query-v1"
-DOCUMENT_INPUT_VERSION = "gemini-embedding-2-search-document-v1"
+GEMINI_EMBEDDING_MODEL = GEMINI_EMBEDDING_MODEL_NAME
+QUERY_INPUT_VERSION = GEMINI_QUERY_INPUT_VERSION
+DOCUMENT_INPUT_VERSION = GEMINI_DOCUMENT_INPUT_VERSION
 VECTOR_RETRIEVER_VERSION = "gemini-embedding-2-cosine-v1"
 HYBRID_RETRIEVER_VERSION = "weighted-rrf-v1"
 RRF_K = 60
@@ -302,18 +311,14 @@ def build_holdout_query_plan(
 
 
 def render_query_input(query: RetrievalV2Query) -> str:
-    return f"task: search result | query: {query.requirement.text}"
+    return render_query_embedding_input(query.requirement.text, QUERY_INPUT_VERSION)
 
 
 def render_document_input(experience: RetrievalEvalExperience) -> str:
-    payload = {
-        "description": experience.description,
-        "kind": experience.kind.value,
-        "outcome": experience.outcome,
-        "skills": experience.skills,
-    }
-    text = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-    return f"title: {experience.title} | text: {text}"
+    return render_document_embedding_input(
+        to_experience_record(experience),
+        DOCUMENT_INPUT_VERSION,
+    )
 
 
 def make_input(
@@ -626,7 +631,7 @@ def build_lexical_rankings(
                 rank=index,
                 score=float(candidate.score),
                 relevant=candidate.experience.id in relevant,
-                lexical_score=candidate.score,
+                lexical_score=int(candidate.score),
                 vector_cosine=None,
             )
             for index, candidate in enumerate(candidates, start=1)
@@ -699,46 +704,33 @@ def hybrid_rankings(
     for query in query_set.queries:
         lexical_items = lexical_rankings[query.query_id]
         vector_items = vector[query.query_id]
-        lexical_by_id = {item.experience_id: item for item in lexical_items}
-        vector_by_id = {item.experience_id: item for item in vector_items}
         relevant = {label.experience_id for label in query.labels}
-        candidates: list[tuple[UUID, float, float | None, int | None]] = []
-        for experience_id in set(lexical_by_id) | set(vector_by_id):
-            lexical = lexical_by_id.get(experience_id)
-            semantic = vector_by_id.get(experience_id)
-            score = 0.0
-            if lexical is not None:
-                score += alpha / (RRF_K + lexical.rank)
-            if semantic is not None:
-                score += (1.0 - alpha) / (RRF_K + semantic.rank)
-            candidates.append(
-                (
-                    experience_id,
-                    round(score, 12),
-                    semantic.vector_cosine if semantic is not None else None,
-                    lexical.lexical_score if lexical is not None else None,
-                )
-            )
-        candidates.sort(
-            key=lambda item: (
-                -item[1],
-                -(item[2] if item[2] is not None else -math.inf),
-                -(item[3] if item[3] is not None else -1),
-                str(item[0]),
-            )
+        candidates = weighted_rrf(
+            tuple(
+                RankedItem(item.experience_id, item.rank, float(item.lexical_score or 0))
+                for item in lexical_items
+            ),
+            tuple(
+                RankedItem(item.experience_id, item.rank, item.vector_cosine or 0.0)
+                for item in vector_items
+            ),
+            lexical_weight=alpha,
+            vector_weight=1.0 - alpha,
+            k=RRF_K,
+            limit=DEFAULT_CANDIDATE_LIMIT,
         )
         rankings[query.query_id] = [
             EmbeddingRankedExperience(
-                experience_id=experience_id,
+                experience_id=item.experience_id,
                 rank=index,
-                score=score,
-                relevant=experience_id in relevant,
-                lexical_score=lexical_score,
-                vector_cosine=cosine,
+                score=item.score,
+                relevant=item.experience_id in relevant,
+                lexical_score=(
+                    int(item.lexical_score) if item.lexical_score is not None else None
+                ),
+                vector_cosine=item.vector_score,
             )
-            for index, (experience_id, score, cosine, lexical_score) in enumerate(
-                candidates[:DEFAULT_CANDIDATE_LIMIT], start=1
-            )
+            for index, item in enumerate(candidates, start=1)
         ]
     return rankings
 

@@ -55,3 +55,5 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   lexical, vector, and hybrid holdout ranking.
 - `2026-10-03-gemini-embedding-2-holdout-queries.json.gz` preserves the validated
   query-only holdout vector cache.
+- `2026-10-03-local-hybrid-retrieval-test-record.md` records the offline and local
+  PostgreSQL verification for production-path hybrid retrieval integration.

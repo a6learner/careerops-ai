@@ -154,7 +154,7 @@ def evaluate_case(
         RankedExperience(
             experience_id=candidate.experience.id,
             rank=index,
-            score=candidate.score,
+                score=int(candidate.score),
             relevant=candidate.experience.id in relevant_ids,
         )
         for index, candidate in enumerate(candidate_set.candidates, start=1)

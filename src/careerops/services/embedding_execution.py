@@ -1,4 +1,3 @@
-import json
 import math
 from typing import Protocol
 from uuid import UUID
@@ -8,8 +7,13 @@ from careerops.domain.embeddings import (
     EmbeddingOutput,
     EmbeddingRunErrorCode,
     EmbeddingRunWorkItem,
+    render_document_embedding_input,
 )
-from careerops.domain.errors import EmbeddingOutputValidationError, EmbeddingProviderError
+from careerops.domain.errors import (
+    EmbeddingOutputValidationError,
+    EmbeddingProviderError,
+    EmbeddingProviderFailureReason,
+)
 
 
 class EmbeddingProvider(Protocol):
@@ -17,6 +21,10 @@ class EmbeddingProvider(Protocol):
     def model_name(self) -> str: ...
 
     async def embed(self, input_text: str) -> EmbeddingOutput: ...
+
+
+class EmbeddingProviderResolver(Protocol):
+    def resolve(self, model_name: str, document_input_version: str) -> EmbeddingProvider: ...
 
 
 class EmbeddingExecutionStore(Protocol):
@@ -38,9 +46,13 @@ class EmbeddingExecutionStore(Protocol):
 
 
 class EmbeddingExecutionService:
-    def __init__(self, store: EmbeddingExecutionStore, provider: EmbeddingProvider) -> None:
+    def __init__(
+        self,
+        store: EmbeddingExecutionStore,
+        providers: EmbeddingProviderResolver,
+    ) -> None:
         self._store = store
-        self._provider = provider
+        self._providers = providers
 
     async def execute(self, run_id: UUID) -> bool:
         work_item = await self._store.claim_run(run_id)
@@ -49,10 +61,11 @@ class EmbeddingExecutionService:
             return False
 
         try:
-            output = await self._provider.embed(render_embedding_input(work_item))
+            provider = self._providers.resolve(work_item.model_name, work_item.input_version)
+            output = await provider.embed(render_embedding_input(work_item))
             validate_embedding_output(output, work_item)
-        except EmbeddingProviderError:
-            await self._fail(work_item, EmbeddingRunErrorCode.PROVIDER_FAILED)
+        except EmbeddingProviderError as exc:
+            await self._fail(work_item, provider_error_code(exc.reason))
             return True
         except EmbeddingOutputValidationError:
             await self._fail(work_item, EmbeddingRunErrorCode.OUTPUT_INVALID)
@@ -71,16 +84,16 @@ class EmbeddingExecutionService:
             await self._store.commit()
 
 
+def provider_error_code(reason: EmbeddingProviderFailureReason) -> EmbeddingRunErrorCode:
+    if reason is EmbeddingProviderFailureReason.DISABLED:
+        return EmbeddingRunErrorCode.PROVIDER_DISABLED
+    if reason is EmbeddingProviderFailureReason.MISCONFIGURED:
+        return EmbeddingRunErrorCode.PROVIDER_MISCONFIGURED
+    return EmbeddingRunErrorCode.PROVIDER_FAILED
+
+
 def render_embedding_input(work_item: EmbeddingRunWorkItem) -> str:
-    experience = work_item.experience
-    payload = {
-        "description": experience.description,
-        "kind": experience.kind.value,
-        "outcome": experience.outcome,
-        "skills": list(experience.skills),
-        "title": experience.title,
-    }
-    return json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return render_document_embedding_input(work_item.experience, work_item.input_version)
 
 
 def validate_embedding_output(
@@ -91,5 +104,6 @@ def validate_embedding_output(
         output.model_name != work_item.model_name
         or len(output.vector) != EMBEDDING_DIMENSIONS
         or any(not math.isfinite(value) for value in output.vector)
+        or not any(value != 0 for value in output.vector)
     ):
         raise EmbeddingOutputValidationError()

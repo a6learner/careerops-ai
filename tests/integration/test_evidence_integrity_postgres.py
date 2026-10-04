@@ -131,6 +131,7 @@ async def test_invalid_positive_evidence_rolls_back_run_completion() -> None:
         with pytest.raises(IntegrityError):
             await AnalysisResultService(AnalysisResultRepository(execution_session)).complete(
                 analysis_run_id,
+                1,
                 (invalid_match,),
                 model_name="fake-matcher",
                 latency_ms=1,

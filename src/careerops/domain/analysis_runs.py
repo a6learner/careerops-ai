@@ -3,12 +3,13 @@ from datetime import datetime
 from enum import StrEnum
 from uuid import UUID
 
+from careerops.domain.embeddings import FAKE_EMBEDDING_SPACE, analysis_pipeline_version
 from careerops.domain.evidence_matching import EvidenceVerdict, ProposedEvidenceMatch
 from careerops.domain.experiences import ExperienceRecord
 from careerops.domain.parse_runs import JobRequirementRecord
 
 FAKE_ANALYSIS_MODEL_NAME = "local-fake-evidence-matcher"
-ANALYSIS_PROMPT_VERSION = "match-v1"
+ANALYSIS_PROMPT_VERSION = analysis_pipeline_version(FAKE_EMBEDDING_SPACE)
 
 
 class AnalysisRunStatus(StrEnum):
@@ -69,10 +70,13 @@ class AnalysisRunCreationResult:
 @dataclass(frozen=True)
 class AnalysisRunWorkItem:
     id: UUID
+    attempt: int
     user_id: UUID
     job_id: UUID
     parse_run_id: UUID
     input_fingerprint: str
+    prompt_version: str
+    created_at: datetime
 
 
 @dataclass(frozen=True)

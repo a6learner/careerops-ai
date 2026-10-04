@@ -16,6 +16,7 @@ class RecordingAnalysisResultStore:
     async def complete_analysis_run(
         self,
         analysis_run_id: UUID,
+        attempt: int,
         matches: tuple[ValidatedEvidenceMatch, ...],
         validation_failure_count: int,
         model_name: str,
@@ -42,6 +43,7 @@ async def test_completion_counts_downgraded_matches_and_commits_once() -> None:
 
     completed = await AnalysisResultService(store).complete(
         uuid4(),
+        1,
         matches,
         model_name="fake-matcher",
         latency_ms=4,
@@ -61,6 +63,7 @@ async def test_duplicate_worker_completion_does_not_commit() -> None:
 
     completed = await AnalysisResultService(store).complete(
         uuid4(),
+        1,
         (),
         model_name="fake-matcher",
         latency_ms=0,

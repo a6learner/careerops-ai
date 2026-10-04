@@ -7,7 +7,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.api.dependencies import get_current_user
 from careerops.api.preconditions import parse_if_match
+from careerops.core.config import get_settings
 from careerops.db.session import get_session
+from careerops.domain.embeddings import embedding_space_for_provider
 from careerops.domain.experiences import ExperienceCreate, ExperienceRecord, ExperienceUpdate
 from careerops.domain.users import UserAccount
 from careerops.repositories.embedding_runs import EmbeddingRunRepository
@@ -118,6 +120,7 @@ def build_experience_service(
         experiences=ExperienceRepository(session),
         embedding_runs=EmbeddingRunRepository(session),
         dispatcher=dispatcher,
+        embedding_space=embedding_space_for_provider(get_settings().embedding_provider),
     )
 
 

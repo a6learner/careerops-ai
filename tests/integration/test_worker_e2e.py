@@ -1,10 +1,13 @@
 import asyncio
 import os
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
 
+from careerops.core.config import Settings
+from careerops.db.models import Experience
+from careerops.db.session import create_session_factory
 from careerops.main import create_app
 
 pytestmark = pytest.mark.integration
@@ -17,6 +20,11 @@ pytestmark = pytest.mark.integration
 )
 @pytest.mark.asyncio
 async def test_api_dispatches_work_that_worker_completes() -> None:
+    settings = Settings()
+    assert settings.llm_provider == "fake", "worker E2E must not call a real LLM provider"
+    assert settings.embedding_provider == "fake", (
+        "worker E2E must not call a real embedding provider"
+    )
     app = create_app()
     email = f"worker-e2e-{uuid4()}@example.com"
     password = "strong-password"
@@ -35,6 +43,31 @@ async def test_api_dispatches_work_that_worker_completes() -> None:
             )
             token = login.json()["access_token"]
             headers = {"Authorization": f"Bearer {token}"}
+            experience = await client.post(
+                "/api/v1/experiences",
+                headers=headers,
+                json={
+                    "title": "CareerOps AI",
+                    "kind": "project",
+                    "description": "Built reliable Python APIs with PostgreSQL.",
+                    "skills": ["Python", "PostgreSQL"],
+                    "outcome": "Added deterministic integration tests.",
+                },
+            )
+            assert experience.status_code == 201
+            session_factory = create_session_factory(settings.database_url)
+            for _ in range(450):
+                async with session_factory() as session:
+                    stored_experience = await session.get(
+                        Experience,
+                        UUID(experience.json()["id"]),
+                    )
+                    if stored_experience is not None and stored_experience.embedding is not None:
+                        break
+                await asyncio.sleep(0.1)
+            assert stored_experience is not None
+            assert stored_experience.embedding is not None
+
             job = await client.post(
                 "/api/v1/jobs",
                 headers=headers,
@@ -52,13 +85,36 @@ async def test_api_dispatches_work_that_worker_completes() -> None:
             assert run.json()["status"] == "queued"
 
             path = f"/api/v1/jobs/{job.json()['id']}/parse-runs/{run.json()['id']}"
-            completed = run
+            completed_parse = run
             for _ in range(450):
-                completed = await client.get(path, headers=headers)
-                if completed.json()["status"] in {"succeeded", "failed"}:
+                completed_parse = await client.get(path, headers=headers)
+                if completed_parse.json()["status"] in {"succeeded", "failed"}:
                     break
                 await asyncio.sleep(0.1)
 
-    assert completed.status_code == 200
-    assert completed.json()["status"] == "succeeded"
-    assert len(completed.json()["requirements"]) == 2
+            assert completed_parse.status_code == 200
+            assert completed_parse.json()["status"] == "succeeded"
+            assert len(completed_parse.json()["requirements"]) == 2
+
+            analysis = await client.post(
+                f"/api/v1/jobs/{job.json()['id']}/analysis-runs",
+                headers={**headers, "Idempotency-Key": f"worker-analysis-{uuid4()}"},
+                json={"parse_run_id": completed_parse.json()["id"]},
+            )
+            assert analysis.status_code == 202
+            analysis_path = (
+                f"/api/v1/jobs/{job.json()['id']}/analysis-runs/{analysis.json()['id']}"
+            )
+            completed_analysis = analysis
+            for _ in range(450):
+                completed_analysis = await client.get(analysis_path, headers=headers)
+                if completed_analysis.json()["status"] in {"succeeded", "failed"}:
+                    break
+                await asyncio.sleep(0.1)
+
+            await session_factory.kw["bind"].dispose()
+
+    assert completed_analysis.status_code == 200
+    assert completed_analysis.json()["status"] == "succeeded"
+    assert len(completed_analysis.json()["matches"]) == 2
+    assert completed_analysis.json()["validation_failure_count"] == 0

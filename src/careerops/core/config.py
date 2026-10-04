@@ -20,6 +20,12 @@ class Settings(BaseSettings):
     analysis_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
     embedding_run_stale_after_seconds: int = Field(default=300, ge=30)
     embedding_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
+    embedding_provider: Literal["fake", "gemini"] = "fake"
+    gemini_api_key: SecretStr | None = None
+    gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta"
+    embedding_timeout_seconds: float = Field(default=30.0, ge=1.0, le=120.0)
+    embedding_max_attempts: int = Field(default=2, ge=1, le=3)
+    embedding_retry_base_delay_seconds: float = Field(default=0.25, ge=0.0, le=5.0)
     llm_provider: Literal["fake", "groq"] = "fake"
     llm_model: str = "openai/gpt-oss-20b"
     llm_base_url: str = "https://api.groq.com/openai/v1"

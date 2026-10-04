@@ -4,9 +4,9 @@ from typing import cast
 
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from careerops.adapters.embedding_factory import get_embedding_space
 from careerops.core.config import get_settings
 from careerops.db.session import create_session_factory
-from careerops.domain.embeddings import EMBEDDING_INPUT_VERSION, FAKE_EMBEDDING_MODEL_NAME
 from careerops.repositories.embedding_runs import EmbeddingRunRepository
 from careerops.services.embedding_recovery import (
     EmbeddingRecoveryResult,
@@ -17,14 +17,15 @@ from careerops.workers.dispatcher import DramatiqEmbeddingRunDispatcher
 
 async def recover_embedding_runs() -> EmbeddingRecoveryResult:
     settings = get_settings()
+    space = get_embedding_space(settings)
     session_factory = create_session_factory(settings.database_url)
     try:
         async with session_factory() as session:
             service = EmbeddingRecoveryService(
                 store=EmbeddingRunRepository(session),
                 dispatcher=DramatiqEmbeddingRunDispatcher(),
-                model_name=FAKE_EMBEDDING_MODEL_NAME,
-                input_version=EMBEDDING_INPUT_VERSION,
+                model_name=space.model_name,
+                input_version=space.document_input_version,
             )
             stale_before = datetime.now(UTC) - timedelta(
                 seconds=settings.embedding_run_stale_after_seconds

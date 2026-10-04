@@ -7,8 +7,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.api.dependencies import get_current_user
 from careerops.api.preconditions import MAX_IDEMPOTENCY_KEY_LENGTH, parse_idempotency_key
+from careerops.core.config import get_settings
 from careerops.db.session import get_session
 from careerops.domain.analysis_runs import AnalysisRunRecord, EvidenceMatchRecord
+from careerops.domain.embeddings import embedding_space_for_provider
 from careerops.domain.users import UserAccount
 from careerops.repositories.analysis_runs import AnalysisRunRepository
 from careerops.repositories.experiences import ExperienceRepository
@@ -75,6 +77,7 @@ def build_analysis_run_service(
         experiences=ExperienceRepository(session),
         analysis_runs=AnalysisRunRepository(session),
         dispatcher=dispatcher,
+        retrieval_space=embedding_space_for_provider(get_settings().embedding_provider),
     )
 
 

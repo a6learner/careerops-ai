@@ -78,3 +78,4 @@ What future condition would justify reopening this decision?
 - `ADR-020-retrieval-evaluation-v2-holdout-policy.md`: reviewed multi-profile labels, expanded ranking metrics, and a sealed holdout policy before provider comparison.
 - `ADR-021-real-embedding-evaluation.md`: default-off Gemini development evaluation, reproducible vector caching, deterministic cosine and hybrid ranking, and holdout gates.
 - `ADR-022-frozen-embedding-holdout.md`: one-time holdout evaluation with committed development evidence, fixed parameters, reused document vectors, and a query-only live-call budget.
+- `ADR-023-local-hybrid-retrieval-integration.md`: worker-side exact pgvector retrieval, fixed weighted RRF, provenance fencing, lexical fallback, and Analysis attempt fencing.

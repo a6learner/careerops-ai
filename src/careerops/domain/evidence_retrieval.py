@@ -24,7 +24,7 @@ _STOP_WORDS = {
 @dataclass(frozen=True)
 class EvidenceCandidate:
     experience: ExperienceRecord
-    score: int
+    score: float
 
 
 @dataclass(frozen=True)
@@ -54,7 +54,7 @@ def _rank_candidates(
     limit: int,
 ) -> tuple[EvidenceCandidate, ...]:
     scored = [
-        EvidenceCandidate(experience=experience, score=_score(requirement, experience))
+        EvidenceCandidate(experience=experience, score=float(_score(requirement, experience)))
         for experience in experiences
     ]
     relevant = [candidate for candidate in scored if candidate.score > 0]

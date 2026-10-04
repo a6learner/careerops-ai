@@ -8,6 +8,11 @@ from careerops.domain.analysis_runs import (
     AnalysisRunRecord,
     AnalysisRunStatus,
 )
+from careerops.domain.embeddings import (
+    FAKE_EMBEDDING_SPACE,
+    EmbeddingSpace,
+    analysis_pipeline_version,
+)
 from careerops.domain.errors import (
     AnalysisRunNotFoundError,
     IdempotencyKeyConflictError,
@@ -60,6 +65,7 @@ class AnalysisRunStore(Protocol):
         parse_run: ParseRunRecord,
         idempotency_key: str,
         input_fingerprint: str,
+        prompt_version: str,
     ) -> AnalysisRunCreationResult: ...
 
     async def commit(self) -> None: ...
@@ -77,12 +83,14 @@ class AnalysisRunService:
         experiences: AnalysisExperienceReader,
         analysis_runs: AnalysisRunStore,
         dispatcher: AnalysisRunDispatcher,
+        retrieval_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
     ) -> None:
         self._jobs = jobs
         self._parse_runs = parse_runs
         self._experiences = experiences
         self._analysis_runs = analysis_runs
         self._dispatcher = dispatcher
+        self._prompt_version = analysis_pipeline_version(retrieval_space)
 
     async def submit_analysis_run(
         self,
@@ -102,7 +110,11 @@ class AnalysisRunService:
             raise ParseRunNotReadyError()
 
         experiences = tuple(await self._experiences.list_experiences(user_id))
-        input_fingerprint = compute_analysis_input_fingerprint(parse_run, experiences)
+        input_fingerprint = compute_analysis_input_fingerprint(
+            parse_run,
+            experiences,
+            self._prompt_version,
+        )
         existing = await self._analysis_runs.get_analysis_run_by_idempotency_key(
             user_id,
             job_id,
@@ -123,6 +135,7 @@ class AnalysisRunService:
             parse_run,
             idempotency_key,
             input_fingerprint,
+            self._prompt_version,
         )
         ensure_matching_analysis_input(creation.run, input_fingerprint)
         if creation.created:
@@ -148,11 +161,13 @@ class AnalysisRunService:
 def compute_analysis_input_fingerprint(
     parse_run: ParseRunRecord,
     experiences: tuple[ExperienceRecord, ...],
+    prompt_version: str = ANALYSIS_PROMPT_VERSION,
 ) -> str:
     return compute_analysis_fingerprint(
         parse_run.id,
         parse_run.input_fingerprint,
         experiences,
+        prompt_version,
     )
 
 
@@ -160,13 +175,14 @@ def compute_analysis_fingerprint(
     parse_run_id: UUID,
     parse_input_fingerprint: str,
     experiences: tuple[ExperienceRecord, ...],
+    prompt_version: str = ANALYSIS_PROMPT_VERSION,
 ) -> str:
     experience_state = "\n".join(
         f"{experience.id}:{experience.version}:{experience.content_hash}"
         for experience in sorted(experiences, key=lambda item: str(item.id))
     )
     raw = (
-        f"{parse_run_id}:{parse_input_fingerprint}:{ANALYSIS_PROMPT_VERSION}\n"
+        f"{parse_run_id}:{parse_input_fingerprint}:{prompt_version}\n"
         f"{experience_state}"
     )
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()

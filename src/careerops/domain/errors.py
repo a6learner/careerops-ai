@@ -1,3 +1,6 @@
+from enum import StrEnum
+
+
 class DuplicateEmailError(Exception):
     def __init__(self, email: str) -> None:
         super().__init__("Email is already registered.")
@@ -40,9 +43,19 @@ class EmbeddingRunDispatchError(Exception):
         super().__init__("Embedding run queue is unavailable.")
 
 
+class EmbeddingProviderFailureReason(StrEnum):
+    REQUEST_FAILED = "provider_request_failed"
+    DISABLED = "provider_disabled"
+    MISCONFIGURED = "provider_misconfigured"
+
+
 class EmbeddingProviderError(Exception):
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        reason: EmbeddingProviderFailureReason = EmbeddingProviderFailureReason.REQUEST_FAILED,
+    ) -> None:
         super().__init__("Embedding provider failed.")
+        self.reason = reason
 
 
 class EmbeddingOutputValidationError(Exception):
