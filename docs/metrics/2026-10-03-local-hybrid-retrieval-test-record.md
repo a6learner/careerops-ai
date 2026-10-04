@@ -3,6 +3,7 @@
 Date: 2026-10-03  
 Branch: `codex/p1-3b-embedding-holdout`  
 Starting commit: `6fcbf5559eaf90d226e1acd1cfcbbd5321c1f452`
+Verified implementation commit: `d1cd1f0e16f3356a5485849505471792c5115061`
 
 ## Scope
 
