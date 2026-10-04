@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import os
+import subprocess
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -235,6 +236,25 @@ def load_frozen_development_evidence(
         validate_vector(vector)
         document_vectors[item.input_sha256] = vector
     return FrozenDevelopmentEvidence(report, cache, document_vectors)
+
+
+def validate_frozen_development_commit() -> None:
+    try:
+        result = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", FROZEN_DEVELOPMENT_COMMIT, "HEAD"],
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except OSError as exc:
+        raise RuntimeError("Unable to verify the frozen P1-3a commit in Git history.") from exc
+    if result.returncode != 0:
+        raise ValueError("The frozen P1-3a commit is not an ancestor of the current HEAD.")
+
+
+def validate_frozen_manifest_development_hash(development_queries_sha256: str) -> None:
+    if development_queries_sha256 != FROZEN_DEVELOPMENT_QUERIES_SHA256:
+        raise ValueError("Review manifest development-query hash is not frozen P1-3a data.")
 
 
 def new_holdout_cache(

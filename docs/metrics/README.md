@@ -49,3 +49,9 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   lexical, vector, and hybrid development ranking.
 - `2026-10-01-gemini-embedding-2-development-vectors.json.gz` preserves the
   validated 1536-dimensional development vector cache.
+- `2026-10-03-gemini-embedding-2-holdout.md` explains the authorized one-time
+  holdout comparison and its limitations.
+- `2026-10-03-gemini-embedding-2-holdout-comparison.json` preserves every frozen
+  lexical, vector, and hybrid holdout ranking.
+- `2026-10-03-gemini-embedding-2-holdout-queries.json.gz` preserves the validated
+  query-only holdout vector cache.

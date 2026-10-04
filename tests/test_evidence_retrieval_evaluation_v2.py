@@ -1,7 +1,7 @@
 from datetime import UTC, datetime
 from hashlib import sha256
 from pathlib import Path
-from uuid import UUID
+from uuid import NAMESPACE_URL, UUID, uuid5
 
 import pytest
 
@@ -41,18 +41,41 @@ SECOND_ID = UUID("40000000-0000-0000-0000-000000000002")
 THIRD_ID = UUID("40000000-0000-0000-0000-000000000003")
 
 
-def test_checked_in_v2_draft_meets_size_and_difficulty_quotas(tmp_path: Path) -> None:
+def test_checked_in_development_and_derived_holdout_meet_validation(
+    tmp_path: Path,
+) -> None:
     base = Path("evals/evidence_retrieval_v2")
     corpus, _ = load_corpus(base / "experiences.json")
     development, _ = load_query_set(base / "development_queries.json", corpus)
-    holdout, _ = load_query_set(base / "holdout_queries.json", corpus)
+    holdout_queries = [
+        query.model_copy(
+            update={
+                "query_id": f"test-holdout-{query.query_id}",
+                "requirement": query.requirement.model_copy(
+                    update={
+                        "id": uuid5(NAMESPACE_URL, f"test-holdout-{query.query_id}")
+                    }
+                ),
+            }
+        )
+        for query in development.queries[:20]
+    ]
+    holdout = development.model_copy(
+        update={
+            "name": "test-holdout-derived-from-development",
+            "split": RetrievalSplit.HOLDOUT,
+            "queries": holdout_queries,
+        }
+    )
+    holdout_path = tmp_path / "derived-holdout.json"
+    holdout_path.write_text(holdout.model_dump_json(), encoding="utf-8")
 
     validate_acceptance_dataset(corpus, development, holdout)
     manifest_path = tmp_path / "review-manifest.json"
     manifest = prepare_review(
         base / "experiences.json",
         base / "development_queries.json",
-        base / "holdout_queries.json",
+        holdout_path,
         manifest_path,
     )
 
@@ -61,7 +84,7 @@ def test_checked_in_v2_draft_meets_size_and_difficulty_quotas(tmp_path: Path) ->
         prepare_review(
             base / "experiences.json",
             base / "development_queries.json",
-            base / "holdout_queries.json",
+            holdout_path,
             manifest_path,
         )
 

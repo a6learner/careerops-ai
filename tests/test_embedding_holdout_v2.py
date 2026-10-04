@@ -1,3 +1,4 @@
+import subprocess
 from hashlib import sha256
 from pathlib import Path
 
@@ -17,6 +18,8 @@ from careerops.evaluation.embedding_holdout_v2 import (
     load_holdout_cache,
     new_holdout_cache,
     normalized_text_sha256,
+    validate_frozen_development_commit,
+    validate_frozen_manifest_development_hash,
     validate_holdout_cache,
 )
 from careerops.evaluation.embedding_retrieval_v2 import (
@@ -150,6 +153,24 @@ def test_frozen_development_evidence_matches_committed_artifacts(tmp_path: Path)
             corpus_sha256=corpus_hash,
             input_plan=plan,
         )
+
+
+def test_frozen_commit_and_manifest_hash_are_required(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def missing_commit(*args: object, **kwargs: object) -> subprocess.CompletedProcess[bytes]:
+        del args, kwargs
+        return subprocess.CompletedProcess(args=[], returncode=1)
+
+    monkeypatch.setattr(
+        "careerops.evaluation.embedding_holdout_v2.subprocess.run",
+        missing_commit,
+    )
+    with pytest.raises(ValueError, match="not an ancestor"):
+        validate_frozen_development_commit()
+
+    with pytest.raises(ValueError, match="development-query hash"):
+        validate_frozen_manifest_development_hash("0" * 64)
 
 
 @pytest.mark.asyncio

@@ -4,7 +4,7 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Job-scoped Action Items support manual creation, gap provenance, idempotent retries, optimistic updates, and archived-Job retention. The Dashboard summarizes active Job and Action Item counts through a disposable Redis cache. Experience embeddings now have durable, version-bound fake generation, stale-result fencing, and PostgreSQL-backed recovery. Reviewed multi-profile development labels record the harder lexical v2 baseline while a separate holdout remains sealed. A default-off evaluation path can compare lexical, Gemini vector, and weighted-RRF hybrid retrieval on synthetic development data without changing production Analysis Runs. No real embedding evaluation has been run or saved yet. Pgvector production retrieval and a real evidence matcher remain later quality-focused slices.
+This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, a reusable current-user dependency, user-owned Experiences and Jobs CRUD, and worker-backed idempotent parse runs that turn immutable JD snapshots into candidate-grounded structured requirements through a fake or Groq adapter. A versioned synthetic evaluation set records parser quality without putting live model calls in CI. Evidence-backed Analysis Runs provide idempotent submission and polling, deterministic Top-5 candidate retrieval, worker-only fake matching, changed-input detection, citation validation, atomic result writes, and PostgreSQL constraints for complete verdict integrity. Job-scoped Action Items support manual creation, gap provenance, idempotent retries, optimistic updates, and archived-Job retention. The Dashboard summarizes active Job and Action Item counts through a disposable Redis cache. Experience embeddings have durable, version-bound fake generation, stale-result fencing, and PostgreSQL-backed recovery. Reviewed multi-profile labels keep development selection separate from one-time holdout evidence. Default-off evaluation paths compare lexical, Gemini vector, and weighted-RRF hybrid retrieval on synthetic data without changing production Analysis Runs. Real-provider evidence remains isolated from production behavior.
 
 ## Architecture Direction
 
@@ -118,7 +118,7 @@ Run retrieval evaluation v2 only with the approved manifest and development spli
 The command rejects holdout queries. Keep the holdout sealed until lexical, vector,
 and hybrid candidates and parameters are frozen for their one-time comparison.
 
-Exercise the P1-3a evaluation pipeline offline with its deterministic fake provider:
+Exercise the embedding evaluation pipeline offline with its deterministic fake provider:
 
 ```powershell
 .\.venv\Scripts\python -m careerops.evaluation.run_embedding_retrieval_v2 `
@@ -163,10 +163,10 @@ uses one document batch and one development-query batch with one attempt each,
 requires exactly 1536 finite non-zero vectors, refuses output overwrite, and never
 accepts the holdout split.
 
-P1-3b has a separate one-time holdout runner. Do not run it without explicit
-holdout authorization. It verifies the committed P1-3a report and vector-cache
-hashes, reuses the 40 frozen document vectors, and submits only the 20 synthetic
-holdout queries in one single-attempt batch. The vector threshold `0.65`, hybrid
+The one-time holdout runner is separate from development evaluation. Do not run it
+without explicit holdout authorization. It verifies the committed development
+report and vector-cache hashes, reuses the 40 frozen document vectors, and submits
+only the 20 synthetic holdout queries in one single-attempt batch. The vector threshold `0.65`, hybrid
 threshold `0.65`, and hybrid lexical weight `0.50` cannot be overridden:
 
 ```powershell
@@ -215,7 +215,7 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `PATCH /api/v1/action-items/{id}` updates title or status with `If-Match` optimistic locking, including after its Job is archived.
 - `GET /api/v1/dashboard/summary` returns the current user's active Job and Action Item status totals, cached in Redis with PostgreSQL fallback.
 
-The backend MVP core loop now reaches the Dashboard summary. The embedding lifecycle is ready, and the deterministic lexical/skill retriever has reviewed v1 and v2 development baselines. Analysis Runs intentionally continue to use that unchanged retriever. P1-3a adds only a default-off development evaluation path; no real embedding result has been generated. The v2 holdout remains sealed, and pgvector-backed production hybrid retrieval remains a separate later stage.
+The backend MVP core loop reaches the Dashboard summary. The embedding lifecycle and reviewed retrieval evidence are documented and tested. Analysis Runs intentionally continue to use the deterministic lexical/skill retriever; default-off development and one-time holdout evaluation remain isolated from production behavior.
 
 ## Key Decisions
 

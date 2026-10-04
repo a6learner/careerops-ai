@@ -1,0 +1,2382 @@
+{
+  "created_at": "2026-10-04T02:28:53.315873Z",
+  "git_revision": "0a89ef87cf4ddd2661a021e81fc2fc3a1d41dad8-plus-working-tree-holdout-readiness-fixes",
+  "frozen_development_commit": "0c6d9cd139ae05efa28aa038dc26fae912807d66",
+  "frozen_development_report_sha256": "19aa221b03b6795571407b680c5cadcaa5b1be80a6307253801f4dcee33f40b1",
+  "frozen_development_cache_sha256": "8b07d9f80dc40d0fa744bab038034f39e4f6a4f9a69f2fe5b44f6419d82ad7b8",
+  "corpus_sha256": "139729a73aa99dc6cd6a9199d8c1b44e901e3d4cb1171ef4abd4990071fd1d0f",
+  "holdout_queries_sha256": "921a5afcf8b9f39a645548ce0793484b3e76118c5229d528a4400498cf28ca02",
+  "query_cache_sha256": "ef7f1154240c7970d0785a50e0bf55e298216f3c6358511cd1743d47e05302c6",
+  "provider": "gemini",
+  "model_name": "gemini-embedding-2",
+  "output_dimensionality": 1536,
+  "query_input_version": "gemini-embedding-2-search-query-v1",
+  "document_input_version": "gemini-embedding-2-search-document-v1",
+  "cache_created_at": "2026-10-04T02:28:52.039716Z",
+  "cache_completed_at": "2026-10-04T02:28:53.118047Z",
+  "reused_document_input_count": 40,
+  "requested_input_count": 20,
+  "unique_input_count": 20,
+  "holdout_input_count": 20,
+  "provider_request_attempt_count": 1,
+  "usage": [
+    {
+      "role": "query",
+      "unique_input_count": 20,
+      "request_attempt_count": 1,
+      "token_count": 384,
+      "billable_character_count": null
+    }
+  ],
+  "pre_registered_success_policy": "Require Recall@5, negative accuracy@5, Hit@5, and MRR@5 no worse than holdout lexical, with at least one strict improvement.",
+  "lexical": {
+    "retriever_version": "lexical-skill-v1",
+    "vector_threshold": null,
+    "lexical_weight": null,
+    "holdout_success": null,
+    "summary": {
+      "query_count": 20,
+      "positive_query_count": 15,
+      "negative_query_count": 5,
+      "recall_at_1": 0.6222222222222222,
+      "recall_at_3": 0.7666666666666667,
+      "recall_at_5": 0.7666666666666667,
+      "precision_at_5": 0.22666666666666668,
+      "hit_at_1": 0.8,
+      "hit_at_3": 0.8,
+      "hit_at_5": 0.8,
+      "mrr_at_5": 0.8,
+      "no_relevant_returned_accuracy_at_5": 0.4,
+      "mean_returned_candidate_count": 2.0
+    },
+    "queries": [
+      {
+        "query_id": "81111111-1111-4111-8111-000000000001",
+        "profile_id": "backend-platform",
+        "description": "Database performance evidence without naming the course title.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000008"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000008": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000010",
+            "rank": 1,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "precision_at_5": 0.0,
+        "hit_at_1": 0.0,
+        "hit_at_3": 0.0,
+        "hit_at_5": 0.0,
+        "reciprocal_rank_at_5": 0.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000002",
+        "profile_id": "backend-platform",
+        "description": "Concurrency control match in Go.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000006"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000006": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000006",
+            "rank": 1,
+            "score": 3.0,
+            "relevant": true,
+            "lexical_score": 3,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000001",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000009",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000003",
+        "profile_id": "backend-platform",
+        "description": "Reliable asynchronous delivery across broker and serverless projects.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000002",
+          "11111111-1111-4111-8111-000000000007"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000002": "partial",
+          "11111111-1111-4111-8111-000000000007": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000007",
+            "rank": 1,
+            "score": 2.0,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000001",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000002",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000005",
+            "rank": 4,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 4,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000004",
+        "profile_id": "backend-platform",
+        "description": "Negative for an RPC stack not used by the rate limiter.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000010",
+            "rank": 1,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000005",
+        "profile_id": "backend-platform",
+        "description": "Negative for a document database.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000001",
+        "profile_id": "data-ai",
+        "description": "Dashboard traceability match.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000009"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000009",
+            "rank": 1,
+            "score": 4.0,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000002",
+        "profile_id": "data-ai",
+        "description": "Chinese requirement retrieving English batch-pipeline evidence.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000001"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000001": "full"
+        },
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "precision_at_5": 0.0,
+        "hit_at_1": 0.0,
+        "hit_at_3": 0.0,
+        "hit_at_5": 0.0,
+        "reciprocal_rank_at_5": 0.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000003",
+        "profile_id": "data-ai",
+        "description": "Model reproducibility and leakage prevention split across projects.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000003",
+          "22222222-2222-4222-8222-000000000006"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000003": "partial",
+          "22222222-2222-4222-8222-000000000006": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000006",
+            "rank": 1,
+            "score": 4.0,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000003",
+            "rank": 2,
+            "score": 2.0,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000001",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000002",
+            "rank": 4,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000005",
+            "rank": 5,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 5,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000004",
+        "profile_id": "data-ai",
+        "description": "Late-event streaming behavior.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000004"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000004": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000004",
+            "rank": 1,
+            "score": 103.0,
+            "relevant": true,
+            "lexical_score": 103,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000005",
+        "profile_id": "data-ai",
+        "description": "Negative for an absent learning paradigm.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000005",
+            "rank": 1,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000010",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000001",
+        "profile_id": "frontend-mobile",
+        "description": "Chinese accessibility requirement retrieving English evidence.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000001",
+          "33333333-3333-4333-8333-000000000008"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000001": "full",
+          "33333333-3333-4333-8333-000000000008": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 1,
+            "score": 1.0,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000002",
+        "profile_id": "frontend-mobile",
+        "description": "Mobile resilience across offline and persisted-state work.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000003",
+          "33333333-3333-4333-8333-000000000005"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000003": "partial",
+          "33333333-3333-4333-8333-000000000005": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000003",
+            "rank": 1,
+            "score": 2.0,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000004",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000003",
+        "profile_id": "frontend-mobile",
+        "description": "Backend-for-frontend integration match.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000009"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000009",
+            "rank": 1,
+            "score": 3.0,
+            "relevant": true,
+            "lexical_score": 3,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000002",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000003",
+            "rank": 4,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 5,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 5,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000004",
+        "profile_id": "frontend-mobile",
+        "description": "Accessibility and reusable component evidence across projects.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000006"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000006": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000006",
+            "rank": 1,
+            "score": 4.0,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000008",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000005",
+        "profile_id": "frontend-mobile",
+        "description": "Negative for an absent frontend framework.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 1,
+            "score": 2.0,
+            "relevant": false,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000004",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000001",
+        "profile_id": "systems-research",
+        "description": "Crash-safe local persistence requirement.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000001"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000001": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000001",
+            "rank": 1,
+            "score": 2.0,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000003",
+            "rank": 2,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000007",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000002",
+        "profile_id": "systems-research",
+        "description": "C++ correctness evidence across storage, compiler, and parser projects.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000001",
+          "44444444-4444-4444-8444-000000000005",
+          "44444444-4444-4444-8444-000000000007"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000001": "partial",
+          "44444444-4444-4444-8444-000000000005": "full",
+          "44444444-4444-4444-8444-000000000007": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000005",
+            "rank": 1,
+            "score": 2.0,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000007",
+            "rank": 2,
+            "score": 2.0,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000001",
+            "rank": 3,
+            "score": 1.0,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000002",
+            "rank": 4,
+            "score": 1.0,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 4,
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.6,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000003",
+        "profile_id": "systems-research",
+        "description": "Chinese requirement retrieving English transport evidence.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000009"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000009": "full"
+        },
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": 0.0,
+        "recall_at_3": 0.0,
+        "recall_at_5": 0.0,
+        "precision_at_5": 0.0,
+        "hit_at_1": 0.0,
+        "hit_at_3": 0.0,
+        "hit_at_5": 0.0,
+        "reciprocal_rank_at_5": 0.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000004",
+        "profile_id": "systems-research",
+        "description": "Approximate retrieval trade-off match.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000008"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000008": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000008",
+            "rank": 1,
+            "score": 4.0,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000005",
+        "profile_id": "systems-research",
+        "description": "Negative for hardware-description and FPGA work.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      }
+    ]
+  },
+  "vector": {
+    "retriever_version": "gemini-embedding-2-cosine-v1",
+    "vector_threshold": 0.65,
+    "lexical_weight": null,
+    "holdout_success": true,
+    "summary": {
+      "query_count": 20,
+      "positive_query_count": 15,
+      "negative_query_count": 5,
+      "recall_at_1": 0.8222222222222223,
+      "recall_at_3": 0.9666666666666667,
+      "recall_at_5": 0.9666666666666667,
+      "precision_at_5": 0.26666666666666666,
+      "hit_at_1": 1.0,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr_at_5": 1.0,
+      "no_relevant_returned_accuracy_at_5": 0.8,
+      "mean_returned_candidate_count": 1.5
+    },
+    "queries": [
+      {
+        "query_id": "81111111-1111-4111-8111-000000000001",
+        "profile_id": "backend-platform",
+        "description": "Database performance evidence without naming the course title.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000008"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000008": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000008",
+            "rank": 1,
+            "score": 0.727616963924,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.727616963924
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000002",
+        "profile_id": "backend-platform",
+        "description": "Concurrency control match in Go.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000006"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000006": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000006",
+            "rank": 1,
+            "score": 0.762694558132,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.762694558132
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000001",
+            "rank": 2,
+            "score": 0.660388923207,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.660388923207
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000009",
+            "rank": 3,
+            "score": 0.657063272841,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.657063272841
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000003",
+        "profile_id": "backend-platform",
+        "description": "Reliable asynchronous delivery across broker and serverless projects.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000002",
+          "11111111-1111-4111-8111-000000000007"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000002": "partial",
+          "11111111-1111-4111-8111-000000000007": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000007",
+            "rank": 1,
+            "score": 0.684182357991,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.684182357991
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000002",
+            "rank": 2,
+            "score": 0.666024502964,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.666024502964
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000005",
+            "rank": 3,
+            "score": 0.654398302776,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.654398302776
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000004",
+        "profile_id": "backend-platform",
+        "description": "Negative for an RPC stack not used by the rate limiter.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000010",
+            "rank": 1,
+            "score": 0.651906919252,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.651906919252
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000005",
+        "profile_id": "backend-platform",
+        "description": "Negative for a document database.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000001",
+        "profile_id": "data-ai",
+        "description": "Dashboard traceability match.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000009"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000009",
+            "rank": 1,
+            "score": 0.770753696607,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.770753696607
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000001",
+            "rank": 2,
+            "score": 0.654831818175,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.654831818175
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000002",
+        "profile_id": "data-ai",
+        "description": "Chinese requirement retrieving English batch-pipeline evidence.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000001"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000001": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000001",
+            "rank": 1,
+            "score": 0.733795415675,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.733795415675
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000008",
+            "rank": 2,
+            "score": 0.660755946346,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.660755946346
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000003",
+        "profile_id": "data-ai",
+        "description": "Model reproducibility and leakage prevention split across projects.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000003",
+          "22222222-2222-4222-8222-000000000006"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000003": "partial",
+          "22222222-2222-4222-8222-000000000006": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000006",
+            "rank": 1,
+            "score": 0.745226089647,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.745226089647
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000003",
+            "rank": 2,
+            "score": 0.668302503838,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.668302503838
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000004",
+            "rank": 3,
+            "score": 0.667354745897,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.667354745897
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000004",
+        "profile_id": "data-ai",
+        "description": "Late-event streaming behavior.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000004"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000004": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000004",
+            "rank": 1,
+            "score": 0.706899643722,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.706899643722
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000005",
+        "profile_id": "data-ai",
+        "description": "Negative for an absent learning paradigm.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000001",
+        "profile_id": "frontend-mobile",
+        "description": "Chinese accessibility requirement retrieving English evidence.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000001",
+          "33333333-3333-4333-8333-000000000008"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000001": "full",
+          "33333333-3333-4333-8333-000000000008": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 1,
+            "score": 0.710096741206,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.710096741206
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000002",
+        "profile_id": "frontend-mobile",
+        "description": "Mobile resilience across offline and persisted-state work.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000003",
+          "33333333-3333-4333-8333-000000000005"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000003": "partial",
+          "33333333-3333-4333-8333-000000000005": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000003",
+            "rank": 1,
+            "score": 0.753651400253,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.753651400253
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 2,
+            "score": 0.65314457622,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.65314457622
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000003",
+        "profile_id": "frontend-mobile",
+        "description": "Backend-for-frontend integration match.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000009"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000009",
+            "rank": 1,
+            "score": 0.710027837146,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.710027837146
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000004",
+        "profile_id": "frontend-mobile",
+        "description": "Accessibility and reusable component evidence across projects.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000006"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000006": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000006",
+            "rank": 1,
+            "score": 0.737393601398,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.737393601398
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 2,
+            "score": 0.688820353756,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.688820353756
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000005",
+        "profile_id": "frontend-mobile",
+        "description": "Negative for an absent frontend framework.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000001",
+        "profile_id": "systems-research",
+        "description": "Crash-safe local persistence requirement.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000001"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000001": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000001",
+            "rank": 1,
+            "score": 0.690389968368,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.690389968368
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000004",
+            "rank": 2,
+            "score": 0.656077208387,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.656077208387
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000002",
+        "profile_id": "systems-research",
+        "description": "C++ correctness evidence across storage, compiler, and parser projects.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000001",
+          "44444444-4444-4444-8444-000000000005",
+          "44444444-4444-4444-8444-000000000007"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000001": "partial",
+          "44444444-4444-4444-8444-000000000005": "full",
+          "44444444-4444-4444-8444-000000000007": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000007",
+            "rank": 1,
+            "score": 0.730579455691,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.730579455691
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000001",
+            "rank": 2,
+            "score": 0.718588572041,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.718588572041
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000005",
+            "rank": 3,
+            "score": 0.713262564368,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.713262564368
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000002",
+            "rank": 4,
+            "score": 0.658469395074,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.658469395074
+          }
+        ],
+        "returned_candidate_count": 4,
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.6,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000003",
+        "profile_id": "systems-research",
+        "description": "Chinese requirement retrieving English transport evidence.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000009"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000009",
+            "rank": 1,
+            "score": 0.7382771321,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.7382771321
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000004",
+        "profile_id": "systems-research",
+        "description": "Approximate retrieval trade-off match.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000008"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000008": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000008",
+            "rank": 1,
+            "score": 0.77286619289,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.77286619289
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000005",
+        "profile_id": "systems-research",
+        "description": "Negative for hardware-description and FPGA work.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      }
+    ]
+  },
+  "hybrid": {
+    "retriever_version": "weighted-rrf-v1",
+    "vector_threshold": 0.65,
+    "lexical_weight": 0.5,
+    "holdout_success": true,
+    "summary": {
+      "query_count": 20,
+      "positive_query_count": 15,
+      "negative_query_count": 5,
+      "recall_at_1": 0.8222222222222223,
+      "recall_at_3": 0.9666666666666667,
+      "recall_at_5": 0.9666666666666667,
+      "precision_at_5": 0.26666666666666666,
+      "hit_at_1": 1.0,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr_at_5": 1.0,
+      "no_relevant_returned_accuracy_at_5": 0.4,
+      "mean_returned_candidate_count": 2.3
+    },
+    "queries": [
+      {
+        "query_id": "81111111-1111-4111-8111-000000000001",
+        "profile_id": "backend-platform",
+        "description": "Database performance evidence without naming the course title.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000008"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000008": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000008",
+            "rank": 1,
+            "score": 0.008196721311,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.727616963924
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000010",
+            "rank": 2,
+            "score": 0.008196721311,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000002",
+        "profile_id": "backend-platform",
+        "description": "Concurrency control match in Go.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000006"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000006": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000006",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 3,
+            "vector_cosine": 0.762694558132
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000001",
+            "rank": 2,
+            "score": 0.016129032258,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": 0.660388923207
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000009",
+            "rank": 3,
+            "score": 0.015873015873,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": 0.657063272841
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000003",
+        "profile_id": "backend-platform",
+        "description": "Reliable asynchronous delivery across broker and serverless projects.",
+        "relevant_experience_ids": [
+          "11111111-1111-4111-8111-000000000002",
+          "11111111-1111-4111-8111-000000000007"
+        ],
+        "support_levels": {
+          "11111111-1111-4111-8111-000000000002": "partial",
+          "11111111-1111-4111-8111-000000000007": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000007",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": 0.684182357991
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000002",
+            "rank": 2,
+            "score": 0.016001024066,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": 0.666024502964
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000005",
+            "rank": 3,
+            "score": 0.015749007937,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": 0.654398302776
+          },
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000001",
+            "rank": 4,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 4,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000004",
+        "profile_id": "backend-platform",
+        "description": "Negative for an RPC stack not used by the rate limiter.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "11111111-1111-4111-8111-000000000010",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": 0.651906919252
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "81111111-1111-4111-8111-000000000005",
+        "profile_id": "backend-platform",
+        "description": "Negative for a document database.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000001",
+        "profile_id": "data-ai",
+        "description": "Dashboard traceability match.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000009"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000009",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": 0.770753696607
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000001",
+            "rank": 2,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.654831818175
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000002",
+        "profile_id": "data-ai",
+        "description": "Chinese requirement retrieving English batch-pipeline evidence.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000001"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000001": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000001",
+            "rank": 1,
+            "score": 0.008196721311,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.733795415675
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000008",
+            "rank": 2,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.660755946346
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000003",
+        "profile_id": "data-ai",
+        "description": "Model reproducibility and leakage prevention split across projects.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000003",
+          "22222222-2222-4222-8222-000000000006"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000003": "partial",
+          "22222222-2222-4222-8222-000000000006": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000006",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": 0.745226089647
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000003",
+            "rank": 2,
+            "score": 0.016129032258,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": 0.668302503838
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000004",
+            "rank": 3,
+            "score": 0.007936507937,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.667354745897
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000001",
+            "rank": 4,
+            "score": 0.007936507937,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000002",
+            "rank": 5,
+            "score": 0.0078125,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 5,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000004",
+        "profile_id": "data-ai",
+        "description": "Late-event streaming behavior.",
+        "relevant_experience_ids": [
+          "22222222-2222-4222-8222-000000000004"
+        ],
+        "support_levels": {
+          "22222222-2222-4222-8222-000000000004": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000004",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 103,
+            "vector_cosine": 0.706899643722
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "82222222-2222-4222-8222-000000000005",
+        "profile_id": "data-ai",
+        "description": "Negative for an absent learning paradigm.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000005",
+            "rank": 1,
+            "score": 0.008196721311,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "22222222-2222-4222-8222-000000000010",
+            "rank": 2,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000001",
+        "profile_id": "frontend-mobile",
+        "description": "Chinese accessibility requirement retrieving English evidence.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000001",
+          "33333333-3333-4333-8333-000000000008"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000001": "full",
+          "33333333-3333-4333-8333-000000000008": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": 0.710096741206
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000002",
+        "profile_id": "frontend-mobile",
+        "description": "Mobile resilience across offline and persisted-state work.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000003",
+          "33333333-3333-4333-8333-000000000005"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000003": "partial",
+          "33333333-3333-4333-8333-000000000005": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000003",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": 0.753651400253
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 2,
+            "score": 0.016001024066,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": 0.65314457622
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000004",
+            "rank": 3,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 0.5,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.4,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000003",
+        "profile_id": "frontend-mobile",
+        "description": "Backend-for-frontend integration match.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000009"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000009",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 3,
+            "vector_cosine": 0.710027837146
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 2,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000002",
+            "rank": 3,
+            "score": 0.007936507937,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000003",
+            "rank": 4,
+            "score": 0.0078125,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 5,
+            "score": 0.007692307692,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 5,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000004",
+        "profile_id": "frontend-mobile",
+        "description": "Accessibility and reusable component evidence across projects.",
+        "relevant_experience_ids": [
+          "33333333-3333-4333-8333-000000000006"
+        ],
+        "support_levels": {
+          "33333333-3333-4333-8333-000000000006": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000006",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": 0.737393601398
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000001",
+            "rank": 2,
+            "score": 0.016129032258,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": 0.688820353756
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000008",
+            "rank": 3,
+            "score": 0.007936507937,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 3,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "83333333-3333-4333-8333-000000000005",
+        "profile_id": "frontend-mobile",
+        "description": "Negative for an absent frontend framework.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000005",
+            "rank": 1,
+            "score": 0.008196721311,
+            "relevant": false,
+            "lexical_score": 2,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "33333333-3333-4333-8333-000000000004",
+            "rank": 2,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 2,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": false
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000001",
+        "profile_id": "systems-research",
+        "description": "Crash-safe local persistence requirement.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000001"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000001": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000001",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": 0.690389968368
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000004",
+            "rank": 2,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": null,
+            "vector_cosine": 0.656077208387
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000003",
+            "rank": 3,
+            "score": 0.008064516129,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000007",
+            "rank": 4,
+            "score": 0.007936507937,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": null
+          }
+        ],
+        "returned_candidate_count": 4,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000002",
+        "profile_id": "systems-research",
+        "description": "C++ correctness evidence across storage, compiler, and parser projects.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000001",
+          "44444444-4444-4444-8444-000000000005",
+          "44444444-4444-4444-8444-000000000007"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000001": "partial",
+          "44444444-4444-4444-8444-000000000005": "full",
+          "44444444-4444-4444-8444-000000000007": "partial"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000007",
+            "rank": 1,
+            "score": 0.016261237441,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": 0.730579455691
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000005",
+            "rank": 2,
+            "score": 0.016133229248,
+            "relevant": true,
+            "lexical_score": 2,
+            "vector_cosine": 0.713262564368
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000001",
+            "rank": 3,
+            "score": 0.016001024066,
+            "relevant": true,
+            "lexical_score": 1,
+            "vector_cosine": 0.718588572041
+          },
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000002",
+            "rank": 4,
+            "score": 0.015625,
+            "relevant": false,
+            "lexical_score": 1,
+            "vector_cosine": 0.658469395074
+          }
+        ],
+        "returned_candidate_count": 4,
+        "recall_at_1": 0.3333333333333333,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.6,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000003",
+        "profile_id": "systems-research",
+        "description": "Chinese requirement retrieving English transport evidence.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000009"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000009": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000009",
+            "rank": 1,
+            "score": 0.008196721311,
+            "relevant": true,
+            "lexical_score": null,
+            "vector_cosine": 0.7382771321
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000004",
+        "profile_id": "systems-research",
+        "description": "Approximate retrieval trade-off match.",
+        "relevant_experience_ids": [
+          "44444444-4444-4444-8444-000000000008"
+        ],
+        "support_levels": {
+          "44444444-4444-4444-8444-000000000008": "full"
+        },
+        "ranked_experiences": [
+          {
+            "experience_id": "44444444-4444-4444-8444-000000000008",
+            "rank": 1,
+            "score": 0.016393442623,
+            "relevant": true,
+            "lexical_score": 4,
+            "vector_cosine": 0.77286619289
+          }
+        ],
+        "returned_candidate_count": 1,
+        "recall_at_1": 1.0,
+        "recall_at_3": 1.0,
+        "recall_at_5": 1.0,
+        "precision_at_5": 0.2,
+        "hit_at_1": 1.0,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "reciprocal_rank_at_5": 1.0,
+        "no_relevant_returned_at_5": null
+      },
+      {
+        "query_id": "84444444-4444-4444-8444-000000000005",
+        "profile_id": "systems-research",
+        "description": "Negative for hardware-description and FPGA work.",
+        "relevant_experience_ids": [],
+        "support_levels": {},
+        "ranked_experiences": [],
+        "returned_candidate_count": 0,
+        "recall_at_1": null,
+        "recall_at_3": null,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "hit_at_1": null,
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "reciprocal_rank_at_5": null,
+        "no_relevant_returned_at_5": true
+      }
+    ]
+  },
+  "limitations": [
+    "Synthetic holdout labels do not establish production accuracy.",
+    "One project author reviewed the labels; inter-annotator agreement is not measured.",
+    "The Gemini stable model alias may differ from its P1-3a implementation date.",
+    "The holdout is evaluated once with frozen parameters and is not used for retuning.",
+    "No production Analysis Run retrieval behavior changed."
+  ]
+}

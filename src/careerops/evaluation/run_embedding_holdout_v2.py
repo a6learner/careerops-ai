@@ -21,6 +21,8 @@ from careerops.evaluation.embedding_holdout_v2 import (
     load_frozen_development_evidence,
     load_holdout_cache,
     new_holdout_cache,
+    validate_frozen_development_commit,
+    validate_frozen_manifest_development_hash,
     validate_holdout_cache,
     vector_holdout_report,
 )
@@ -74,6 +76,7 @@ async def run(
 ) -> EmbeddingHoldoutReport:
     if output_path.exists():
         raise FileExistsError(f"Refusing to overwrite holdout evidence: {output_path}")
+    validate_frozen_development_commit()
     corpus, corpus_hash = load_corpus(experiences_path)
     query_set, query_set_hash = load_query_set(holdout_queries_path, corpus)
     if query_set.split is not RetrievalSplit.HOLDOUT:
@@ -81,6 +84,7 @@ async def run(
     if len(query_set.queries) != EXPECTED_HOLDOUT_QUERY_COUNT:
         raise ValueError("The frozen holdout must contain exactly 20 queries.")
     manifest = load_review_manifest(review_manifest_path)
+    validate_frozen_manifest_development_hash(manifest.development_queries_sha256)
     validate_review_manifest(
         manifest,
         corpus_sha256=corpus_hash,

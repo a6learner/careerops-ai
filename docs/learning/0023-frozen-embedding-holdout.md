@@ -7,8 +7,10 @@ committed P1-3a development report and cache, reuses 40 document vectors, embeds
 most 20 holdout queries in one batch, and evaluates only the frozen vector and
 hybrid configurations.
 
-No real holdout request, ranking, or metric has been produced by this implementation
-stage. Default tests use development-derived toy queries marked as holdout.
+The separately authorized one-time run completed on 2026-10-03 with 20 query
+embeddings in one provider request and no document re-embedding. Its final report
+and query cache are stored under `docs/metrics/`. Default tests continue to use
+development-derived toy queries marked as holdout.
 
 ## Why It Exists
 
@@ -46,6 +48,10 @@ rg -n "holdout_queries.json" tests/test_embedding_holdout_v2.py
 
 The command should return no match. Then run the normal repository quality gates.
 Do not set `CAREEROPS_RUN_EMBEDDING_HOLDOUT` during verification.
+
+The authorized run produced a complete query-only cache and an immutable comparison
+report. Both vector and hybrid satisfied the pre-registered holdout rule. These are
+holdout results, not production-retrieval evidence.
 
 ## What You Must Understand
 
