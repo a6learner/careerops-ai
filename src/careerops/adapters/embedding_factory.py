@@ -71,5 +71,3 @@ class ConfiguredEmbeddingProviderResolver:
 
 def get_embedding_space(settings: Settings) -> EmbeddingSpace:
     return embedding_space_for_provider(settings.embedding_provider)
-
-
