@@ -114,3 +114,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0030 Evidence Matcher Development Stop](0030-evidence-matcher-development-stop.md)
 - [0031 One-Time Evidence Matcher Holdout](0031-one-time-evidence-matcher-holdout.md)
 - [0032 Real Evidence Matcher Worker Integration](0032-real-evidence-matcher-worker-integration.md)
+- [0033 Analysis Admission Rate Limiting](0033-analysis-admission-rate-limiting.md)

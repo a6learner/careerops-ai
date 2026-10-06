@@ -119,6 +119,17 @@ class AnalysisRunNotFoundError(Exception):
         super().__init__("Analysis run was not found.")
 
 
+class AnalysisRateLimitExceededError(Exception):
+    def __init__(self, retry_after_seconds: int) -> None:
+        self.retry_after_seconds = retry_after_seconds
+        super().__init__("Analysis creation rate limit exceeded.")
+
+
+class AnalysisRateLimitUnavailableError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Analysis rate limiter is unavailable.")
+
+
 class AnalysisRunDispatchError(Exception):
     def __init__(self) -> None:
         super().__init__("Analysis run queue is unavailable.")

@@ -22,13 +22,21 @@ from careerops.schemas.analysis_runs import (
     AnalysisRunSubmitRequest,
     EvidenceMatchResponse,
 )
-from careerops.services.analysis_runs import AnalysisRunDispatcher, AnalysisRunService
+from careerops.services.analysis_runs import (
+    AnalysisRateLimiter,
+    AnalysisRunDispatcher,
+    AnalysisRunService,
+)
 
 router = APIRouter(prefix="/api/v1/jobs/{job_id}/analysis-runs", tags=["analysis-runs"])
 
 
 def get_analysis_run_dispatcher(request: Request) -> AnalysisRunDispatcher:
     return cast(AnalysisRunDispatcher, request.app.state.analysis_run_dispatcher)
+
+
+def get_analysis_rate_limiter(request: Request) -> AnalysisRateLimiter:
+    return cast(AnalysisRateLimiter, request.app.state.analysis_rate_limiter)
 
 
 @router.post("", response_model=AnalysisRunResponse, status_code=HTTPStatus.ACCEPTED)
@@ -38,12 +46,13 @@ async def submit_analysis_run(
     current_user: Annotated[UserAccount, Depends(get_current_user)],
     session: Annotated[AsyncSession, Depends(get_session)],
     dispatcher: Annotated[AnalysisRunDispatcher, Depends(get_analysis_run_dispatcher)],
+    rate_limiter: Annotated[AnalysisRateLimiter, Depends(get_analysis_rate_limiter)],
     idempotency_key: Annotated[
         str | None,
         Header(alias="Idempotency-Key", max_length=MAX_IDEMPOTENCY_KEY_LENGTH),
     ] = None,
 ) -> AnalysisRunResponse:
-    run = await build_analysis_run_service(session, dispatcher).submit_analysis_run(
+    run = await build_analysis_run_service(session, dispatcher, rate_limiter).submit_analysis_run(
         user_id=current_user.id,
         job_id=job_id,
         parse_run_id=payload.parse_run_id,
@@ -59,8 +68,9 @@ async def get_analysis_run(
     current_user: Annotated[UserAccount, Depends(get_current_user)],
     session: Annotated[AsyncSession, Depends(get_session)],
     dispatcher: Annotated[AnalysisRunDispatcher, Depends(get_analysis_run_dispatcher)],
+    rate_limiter: Annotated[AnalysisRateLimiter, Depends(get_analysis_rate_limiter)],
 ) -> AnalysisRunResponse:
-    run = await build_analysis_run_service(session, dispatcher).get_analysis_run(
+    run = await build_analysis_run_service(session, dispatcher, rate_limiter).get_analysis_run(
         current_user.id,
         job_id,
         analysis_run_id,
@@ -71,6 +81,7 @@ async def get_analysis_run(
 def build_analysis_run_service(
     session: AsyncSession,
     dispatcher: AnalysisRunDispatcher,
+    rate_limiter: AnalysisRateLimiter,
 ) -> AnalysisRunService:
     settings = get_settings()
     return AnalysisRunService(
@@ -79,6 +90,7 @@ def build_analysis_run_service(
         experiences=ExperienceRepository(session),
         analysis_runs=AnalysisRunRepository(session),
         dispatcher=dispatcher,
+        rate_limiter=rate_limiter,
         retrieval_space=embedding_space_for_provider(settings.embedding_provider),
         matcher_model_name=configured_evidence_matcher_model(settings),
     )

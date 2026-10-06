@@ -10,6 +10,7 @@ from fastapi.responses import JSONResponse
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from careerops.adapters.redis_analysis_rate_limiter import RedisAnalysisRateLimiter
 from careerops.api.action_items import router as action_items_router
 from careerops.api.analysis_runs import router as analysis_runs_router
 from careerops.api.auth import router as auth_router
@@ -30,6 +31,8 @@ from careerops.domain.errors import (
     ActionItemSourceNotActionableError,
     ActionItemSourceNotFoundError,
     ActionItemVersionConflictError,
+    AnalysisRateLimitExceededError,
+    AnalysisRateLimitUnavailableError,
     AnalysisRunDispatchError,
     AnalysisRunNotFoundError,
     DuplicateEmailError,
@@ -86,6 +89,11 @@ def create_app() -> FastAPI:
     app.state.dashboard_cache = RedisDashboardCache(
         redis_client,
         ttl_seconds=settings.dashboard_cache_ttl_seconds,
+    )
+    app.state.analysis_rate_limiter = RedisAnalysisRateLimiter(
+        redis_client,
+        limit=settings.analysis_rate_limit,
+        window_seconds=settings.analysis_rate_limit_window_seconds,
     )
     app.state.parse_run_dispatcher = DramatiqParseRunDispatcher()
     app.state.analysis_run_dispatcher = DramatiqAnalysisRunDispatcher()
@@ -274,6 +282,33 @@ def create_app() -> FastAPI:
             message="Analysis run was not found.",
         )
 
+    @app.exception_handler(AnalysisRateLimitExceededError)
+    async def analysis_rate_limit_exceeded_handler(
+        request: Request,
+        exc: AnalysisRateLimitExceededError,
+    ) -> JSONResponse:
+        retry_after = str(exc.retry_after_seconds)
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.TOO_MANY_REQUESTS,
+            code=ErrorCode.ANALYSIS_RATE_LIMITED,
+            message="Analysis creation rate limit exceeded.",
+            details={"retry_after_seconds": exc.retry_after_seconds},
+            headers={"Retry-After": retry_after},
+        )
+
+    @app.exception_handler(AnalysisRateLimitUnavailableError)
+    async def analysis_rate_limit_unavailable_handler(
+        request: Request,
+        exc: AnalysisRateLimitUnavailableError,
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            code=ErrorCode.DEPENDENCY_UNAVAILABLE,
+            message="Analysis admission control is unavailable; retry later.",
+        )
+
     @app.exception_handler(ParseRunNotReadyError)
     async def parse_run_not_ready_handler(
         request: Request,
@@ -401,6 +436,7 @@ def error_response(
     code: ErrorCode,
     message: str,
     details: dict[str, object] | None = None,
+    headers: dict[str, str] | None = None,
 ) -> JSONResponse:
     request_id = cast(str, getattr(request.state, "request_id", "unknown"))
     payload = ErrorResponse(
@@ -414,6 +450,7 @@ def error_response(
     return JSONResponse(
         status_code=status_code,
         content=payload.model_dump(mode="json"),
+        headers=headers,
     )
 
 

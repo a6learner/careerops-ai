@@ -8,7 +8,12 @@ from httpx import ASGITransport, AsyncClient
 from careerops.api import analysis_runs
 from careerops.api.dependencies import get_current_user
 from careerops.db.session import get_session
-from careerops.domain.errors import NoActiveExperiencesError, ParseRunNotReadyError
+from careerops.domain.errors import (
+    AnalysisRateLimitExceededError,
+    AnalysisRateLimitUnavailableError,
+    NoActiveExperiencesError,
+    ParseRunNotReadyError,
+)
 from careerops.domain.users import UserAccount
 from careerops.main import create_app
 
@@ -78,7 +83,7 @@ async def test_analysis_precondition_errors_use_conflict_contract(
     monkeypatch.setattr(
         analysis_runs,
         "build_analysis_run_service",
-        lambda session, dispatcher: service,
+        lambda session, dispatcher, rate_limiter: service,
     )
     transport = ASGITransport(app=app)
 
@@ -91,3 +96,53 @@ async def test_analysis_precondition_errors_use_conflict_contract(
 
     assert response.status_code == 409
     assert response.json()["error"]["code"] == code
+
+
+@pytest.mark.asyncio
+async def test_analysis_rate_limit_error_includes_retry_after(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    app = build_test_app()
+    service = RejectingAnalysisRunService(AnalysisRateLimitExceededError(43))
+    monkeypatch.setattr(
+        analysis_runs,
+        "build_analysis_run_service",
+        lambda session, dispatcher, rate_limiter: service,
+    )
+    transport = ASGITransport(app=app)
+
+    async with AsyncClient(transport=transport, base_url="http://testserver") as client:
+        response = await client.post(
+            f"/api/v1/jobs/{uuid4()}/analysis-runs",
+            headers={"Idempotency-Key": "analysis-key"},
+            json={"parse_run_id": str(uuid4())},
+        )
+
+    assert response.status_code == 429
+    assert response.headers["Retry-After"] == "43"
+    assert response.json()["error"]["code"] == "ANALYSIS_RATE_LIMITED"
+    assert response.json()["error"]["details"] == {"retry_after_seconds": 43}
+
+
+@pytest.mark.asyncio
+async def test_analysis_rate_limiter_unavailable_fails_closed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    app = build_test_app()
+    service = RejectingAnalysisRunService(AnalysisRateLimitUnavailableError())
+    monkeypatch.setattr(
+        analysis_runs,
+        "build_analysis_run_service",
+        lambda session, dispatcher, rate_limiter: service,
+    )
+    transport = ASGITransport(app=app)
+
+    async with AsyncClient(transport=transport, base_url="http://testserver") as client:
+        response = await client.post(
+            f"/api/v1/jobs/{uuid4()}/analysis-runs",
+            headers={"Idempotency-Key": "analysis-key"},
+            json={"parse_run_id": str(uuid4())},
+        )
+
+    assert response.status_code == 503
+    assert response.json()["error"]["code"] == "DEPENDENCY_UNAVAILABLE"

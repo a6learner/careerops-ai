@@ -5,6 +5,7 @@ from uuid import UUID
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
     FAKE_ANALYSIS_MODEL_NAME,
+    AnalysisRateLimitReservation,
     AnalysisRunCreationResult,
     AnalysisRunRecord,
     AnalysisRunStatus,
@@ -76,6 +77,16 @@ class AnalysisRunDispatcher(Protocol):
     async def dispatch(self, analysis_run_id: UUID) -> None: ...
 
 
+class AnalysisRateLimiter(Protocol):
+    async def reserve(self, user_id: UUID) -> AnalysisRateLimitReservation: ...
+
+    async def release(
+        self,
+        user_id: UUID,
+        reservation: AnalysisRateLimitReservation,
+    ) -> None: ...
+
+
 class AnalysisRunService:
     def __init__(
         self,
@@ -84,6 +95,7 @@ class AnalysisRunService:
         experiences: AnalysisExperienceReader,
         analysis_runs: AnalysisRunStore,
         dispatcher: AnalysisRunDispatcher,
+        rate_limiter: AnalysisRateLimiter,
         retrieval_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
         matcher_model_name: str = FAKE_ANALYSIS_MODEL_NAME,
     ) -> None:
@@ -92,6 +104,7 @@ class AnalysisRunService:
         self._experiences = experiences
         self._analysis_runs = analysis_runs
         self._dispatcher = dispatcher
+        self._rate_limiter = rate_limiter
         self._prompt_version = matcher_pipeline_version(
             retrieval_space,
             matcher_model_name,
@@ -134,17 +147,23 @@ class AnalysisRunService:
         if not experiences:
             raise NoActiveExperiencesError()
 
-        creation = await self._analysis_runs.create_or_get_queued_analysis_run(
-            user_id,
-            job_id,
-            parse_run,
-            idempotency_key,
-            input_fingerprint,
-            self._prompt_version,
-        )
-        ensure_matching_analysis_input(creation.run, input_fingerprint)
-        if creation.created:
-            await self._analysis_runs.commit()
+        reservation = await self._rate_limiter.reserve(user_id)
+        creation: AnalysisRunCreationResult | None = None
+        try:
+            creation = await self._analysis_runs.create_or_get_queued_analysis_run(
+                user_id,
+                job_id,
+                parse_run,
+                idempotency_key,
+                input_fingerprint,
+                self._prompt_version,
+            )
+            ensure_matching_analysis_input(creation.run, input_fingerprint)
+            if creation.created:
+                await self._analysis_runs.commit()
+        finally:
+            if creation is None or not creation.created:
+                await self._rate_limiter.release(user_id, reservation)
         if creation.run.status is AnalysisRunStatus.QUEUED:
             await self._dispatcher.dispatch(creation.run.id)
         return creation.run

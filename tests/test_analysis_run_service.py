@@ -7,6 +7,7 @@ from careerops.adapters.evidence_matcher_factory import GROQ_EVIDENCE_MATCHER_MO
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
     FAKE_ANALYSIS_MODEL_NAME,
+    AnalysisRateLimitReservation,
     AnalysisRunCreationResult,
     AnalysisRunRecord,
     AnalysisRunStatus,
@@ -20,6 +21,7 @@ from careerops.domain.embeddings import (
     EmbeddingSpace,
 )
 from careerops.domain.errors import (
+    AnalysisRateLimitExceededError,
     AnalysisRunDispatchError,
     IdempotencyKeyConflictError,
     NoActiveExperiencesError,
@@ -136,6 +138,36 @@ class AnalysisRunStore:
         self.committed = True
 
 
+class ConcurrentLoserStore(AnalysisRunStore):
+    def __init__(self, concurrent_run: AnalysisRunRecord) -> None:
+        super().__init__()
+        self.concurrent_run = concurrent_run
+
+    async def create_or_get_queued_analysis_run(
+        self,
+        user_id: UUID,
+        job_id: UUID,
+        parse_run: ParseRunRecord,
+        idempotency_key: str,
+        input_fingerprint: str,
+        prompt_version: str,
+    ) -> AnalysisRunCreationResult:
+        return AnalysisRunCreationResult(run=self.concurrent_run, created=False)
+
+
+class FailingCreateStore(AnalysisRunStore):
+    async def create_or_get_queued_analysis_run(
+        self,
+        user_id: UUID,
+        job_id: UUID,
+        parse_run: ParseRunRecord,
+        idempotency_key: str,
+        input_fingerprint: str,
+        prompt_version: str,
+    ) -> AnalysisRunCreationResult:
+        raise RuntimeError("database write failed")
+
+
 class Dispatcher:
     def __init__(self, *, fail: bool = False) -> None:
         self.fail = fail
@@ -145,6 +177,26 @@ class Dispatcher:
         if self.fail:
             raise AnalysisRunDispatchError()
         self.ids.append(analysis_run_id)
+
+
+class RateLimiter:
+    def __init__(self, error: Exception | None = None) -> None:
+        self.error = error
+        self.reserved_user_ids: list[UUID] = []
+        self.released: list[tuple[UUID, AnalysisRateLimitReservation]] = []
+
+    async def reserve(self, user_id: UUID) -> AnalysisRateLimitReservation:
+        if self.error is not None:
+            raise self.error
+        self.reserved_user_ids.append(user_id)
+        return AnalysisRateLimitReservation(token=f"reservation-{len(self.reserved_user_ids)}")
+
+    async def release(
+        self,
+        user_id: UUID,
+        reservation: AnalysisRateLimitReservation,
+    ) -> None:
+        self.released.append((user_id, reservation))
 
 
 @pytest.mark.asyncio
@@ -160,6 +212,127 @@ async def test_submit_analysis_run_commits_queued_run_then_dispatches() -> None:
     assert run.input_fingerprint == compute_analysis_input_fingerprint(parse_run, (experience,))
     assert store.committed
     assert dispatcher.ids == [run.id]
+
+
+@pytest.mark.asyncio
+async def test_idempotent_replay_does_not_reserve_another_rate_limit_slot() -> None:
+    job, parse_run, experience = make_inputs()
+    existing = make_analysis_run(
+        user_id=job.user_id,
+        job_id=job.id,
+        parse_run_id=parse_run.id,
+        idempotency_key="analysis-key",
+        input_fingerprint=compute_analysis_input_fingerprint(parse_run, (experience,)),
+    )
+    limiter = RateLimiter()
+    service = build_service(
+        job,
+        parse_run,
+        [experience],
+        AnalysisRunStore(existing),
+        Dispatcher(),
+        rate_limiter=limiter,
+    )
+
+    replayed = await service.submit_analysis_run(
+        job.user_id,
+        job.id,
+        parse_run.id,
+        "analysis-key",
+    )
+
+    assert replayed.id == existing.id
+    assert limiter.reserved_user_ids == []
+    assert limiter.released == []
+
+
+@pytest.mark.asyncio
+async def test_concurrent_idempotency_loser_releases_its_rate_limit_slot() -> None:
+    job, parse_run, experience = make_inputs()
+    existing = make_analysis_run(
+        user_id=job.user_id,
+        job_id=job.id,
+        parse_run_id=parse_run.id,
+        idempotency_key="analysis-key",
+        input_fingerprint=compute_analysis_input_fingerprint(parse_run, (experience,)),
+    )
+    limiter = RateLimiter()
+    dispatcher = Dispatcher()
+    service = build_service(
+        job,
+        parse_run,
+        [experience],
+        ConcurrentLoserStore(existing),
+        dispatcher,
+        rate_limiter=limiter,
+    )
+
+    run = await service.submit_analysis_run(
+        job.user_id,
+        job.id,
+        parse_run.id,
+        "analysis-key",
+    )
+
+    assert run.id == existing.id
+    assert len(limiter.reserved_user_ids) == 1
+    assert len(limiter.released) == 1
+    assert dispatcher.ids == [existing.id]
+
+
+@pytest.mark.asyncio
+async def test_rate_limit_rejection_creates_no_run_and_dispatches_nothing() -> None:
+    job, parse_run, experience = make_inputs()
+    store = AnalysisRunStore()
+    dispatcher = Dispatcher()
+    service = build_service(
+        job,
+        parse_run,
+        [experience],
+        store,
+        dispatcher,
+        rate_limiter=RateLimiter(AnalysisRateLimitExceededError(60)),
+    )
+
+    with pytest.raises(AnalysisRateLimitExceededError):
+        await service.submit_analysis_run(
+            job.user_id,
+            job.id,
+            parse_run.id,
+            "analysis-key",
+        )
+
+    assert store.existing is None
+    assert not store.committed
+    assert dispatcher.ids == []
+
+
+@pytest.mark.asyncio
+async def test_repository_creation_failure_releases_reservation() -> None:
+    job, parse_run, experience = make_inputs()
+    store = FailingCreateStore()
+    limiter = RateLimiter()
+    dispatcher = Dispatcher()
+    service = build_service(
+        job,
+        parse_run,
+        [experience],
+        store,
+        dispatcher,
+        rate_limiter=limiter,
+    )
+
+    with pytest.raises(RuntimeError, match="database write failed"):
+        await service.submit_analysis_run(
+            job.user_id,
+            job.id,
+            parse_run.id,
+            "analysis-key",
+        )
+
+    assert not store.committed
+    assert dispatcher.ids == []
+    assert len(limiter.released) == 1
 
 
 @pytest.mark.asyncio
@@ -223,12 +396,14 @@ async def test_submit_analysis_run_requires_active_experience() -> None:
 async def test_dispatch_failure_keeps_committed_queued_run() -> None:
     job, parse_run, experience = make_inputs()
     store = AnalysisRunStore()
+    limiter = RateLimiter()
     service = build_service(
         job,
         parse_run,
         [experience],
         store,
         Dispatcher(fail=True),
+        rate_limiter=limiter,
     )
 
     with pytest.raises(AnalysisRunDispatchError):
@@ -237,6 +412,7 @@ async def test_dispatch_failure_keeps_committed_queued_run() -> None:
     assert store.existing is not None
     assert store.existing.status is AnalysisRunStatus.QUEUED
     assert store.committed
+    assert limiter.released == []
 
 
 @pytest.mark.asyncio
@@ -269,6 +445,7 @@ def build_service(
     dispatcher: Dispatcher,
     retrieval_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
     matcher_model_name: str = FAKE_ANALYSIS_MODEL_NAME,
+    rate_limiter: RateLimiter | None = None,
 ) -> AnalysisRunService:
     return AnalysisRunService(
         JobReader(job),
@@ -276,6 +453,7 @@ def build_service(
         ExperienceReader(experiences),
         store,
         dispatcher,
+        rate_limiter or RateLimiter(),
         retrieval_space,
         matcher_model_name,
     )

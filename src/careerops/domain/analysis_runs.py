@@ -122,6 +122,11 @@ class AnalysisRunCreationResult:
 
 
 @dataclass(frozen=True)
+class AnalysisRateLimitReservation:
+    token: str
+
+
+@dataclass(frozen=True)
 class AnalysisRunWorkItem:
     id: UUID
     attempt: int

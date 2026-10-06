@@ -86,3 +86,4 @@ What future condition would justify reopening this decision?
 - `ADR-028-evidence-matcher-coverage-evaluation.md`: evaluation-only full/partial/gap coverage, directional overclaim and underclaim metrics, all-case failure denominators, and safe invalid-output diagnostics.
 - `ADR-029-one-time-evidence-matcher-holdout.md`: frozen prompt-v4 holdout identity, separate authorization, at-most-once checkpoint recovery, and the completed one-time safety result.
 - `ADR-030-real-evidence-matcher-worker-integration.md`: durable matcher identity, worker-only real-provider authorization, specific failure persistence, no fake fallback, and attempt-fenced recovery.
+- `ADR-031-analysis-admission-rate-limiting.md`: atomic per-user Redis sliding-window admission for new Analysis Runs, idempotent replay bypass, compensating release, and fail-closed cost protection.

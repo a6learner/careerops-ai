@@ -103,3 +103,6 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-06-real-evidence-matcher-worker-integration-test-record.md` records
   offline, PostgreSQL, and real-Dramatiq verification of the controlled worker
   integration; no provider request was made.
+- `2026-10-06-analysis-admission-rate-limit-test-record.md` records offline,
+  PostgreSQL, and direct Redis-container verification of per-user Analysis Run
+  admission control, including the current host-port test limitation.

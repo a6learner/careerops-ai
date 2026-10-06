@@ -18,6 +18,8 @@ class Settings(BaseSettings):
     parse_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
     analysis_run_stale_after_seconds: int = Field(default=300, ge=30)
     analysis_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
+    analysis_rate_limit: int = Field(default=5, ge=1, le=1_000)
+    analysis_rate_limit_window_seconds: int = Field(default=3_600, ge=1, le=86_400)
     embedding_run_stale_after_seconds: int = Field(default=300, ge=30)
     embedding_run_recovery_batch_size: int = Field(default=100, ge=1, le=1_000)
     embedding_provider: Literal["fake", "gemini"] = "fake"

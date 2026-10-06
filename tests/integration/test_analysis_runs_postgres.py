@@ -10,7 +10,7 @@ from sqlalchemy.exc import IntegrityError
 
 from careerops.adapters.evidence_matcher_factory import GROQ_EVIDENCE_MATCHER_MODEL
 from careerops.adapters.fake_evidence_matcher import FakeEvidenceMatcher
-from careerops.api.analysis_runs import get_analysis_run_dispatcher
+from careerops.api.analysis_runs import get_analysis_rate_limiter, get_analysis_run_dispatcher
 from careerops.api.dependencies import get_current_user
 from careerops.core.config import Settings
 from careerops.db.models import (
@@ -25,6 +25,7 @@ from careerops.db.models import (
 from careerops.db.session import create_session_factory
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
+    AnalysisRateLimitReservation,
     AnalysisRunErrorCode,
     AnalysisRunStatus,
     matcher_pipeline_version,
@@ -47,6 +48,18 @@ class RecordingDispatcher:
 
     async def dispatch(self, analysis_run_id: UUID) -> None:
         self.ids.append(analysis_run_id)
+
+
+class AllowingRateLimiter:
+    async def reserve(self, user_id: UUID) -> AnalysisRateLimitReservation:
+        return AnalysisRateLimitReservation(token=str(uuid4()))
+
+    async def release(
+        self,
+        user_id: UUID,
+        reservation: AnalysisRateLimitReservation,
+    ) -> None:
+        return None
 
 
 @pytest.mark.skipif(
@@ -135,6 +148,7 @@ async def test_analysis_api_to_fake_worker_to_query() -> None:
 
     app.dependency_overrides[get_current_user] = current_user
     app.dependency_overrides[get_analysis_run_dispatcher] = lambda: dispatcher
+    app.dependency_overrides[get_analysis_rate_limiter] = AllowingRateLimiter
 
     async with app.router.lifespan_context(app):
         transport = ASGITransport(app=app)

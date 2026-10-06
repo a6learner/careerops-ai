@@ -111,6 +111,14 @@ jobs as disabled. Each real matcher execution makes one HTTP attempt. A timeout,
 429, 5xx, invalid JSON, invalid schema, or invalid contract becomes a durable
 failure; there is no fake fallback or claimed process-wide TPM smoothing.
 
+New Analysis Runs are admitted through a per-user Redis sliding window before a
+durable row or queue message is created. The default allows five new runs per
+hour. A valid `Idempotency-Key` replay returns its existing run without consuming
+another slot. Rejection returns `429 ANALYSIS_RATE_LIMITED` with `Retry-After`;
+Redis admission failure returns 503 instead of silently disabling cost
+protection. Configure the window with `CAREEROPS_ANALYSIS_RATE_LIMIT` and
+`CAREEROPS_ANALYSIS_RATE_LIMIT_WINDOW_SECONDS`.
+
 Recover queued work and stale running work from PostgreSQL:
 
 ```powershell
@@ -401,7 +409,7 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
 - `POST /api/v1/jobs/{id}/parse-runs` creates or reuses a queued idempotent parse run for one owned active job; a key can be replayed only while that job's parse input is unchanged.
 - `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
-- `POST /api/v1/jobs/{id}/analysis-runs` creates or reuses a queued idempotent Analysis Run for an explicit successful Parse Run and the current active experience-library fingerprint.
+- `POST /api/v1/jobs/{id}/analysis-runs` creates or reuses a queued idempotent Analysis Run for an explicit successful Parse Run and the current active experience-library fingerprint; only new runs consume the per-user admission window.
 - `GET /api/v1/jobs/{id}/analysis-runs/{run_id}` returns one owned Analysis Run with validated evidence matches and explicit gaps.
 - `GET /api/v1/action-items` lists owned tasks with optional Job/status filters and cursor pagination, including archived-Job state.
 - `POST /api/v1/action-items` idempotently creates a manual task or one linked to an actionable Evidence Match.
