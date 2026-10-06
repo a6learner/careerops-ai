@@ -3,8 +3,8 @@ from uuid import UUID
 import dramatiq
 
 from careerops.adapters.embedding_factory import ConfiguredEmbeddingProviderResolver
+from careerops.adapters.evidence_matcher_factory import ConfiguredEvidenceMatcherResolver
 from careerops.adapters.factory import create_requirement_parser
-from careerops.adapters.fake_evidence_matcher import FakeEvidenceMatcher
 from careerops.core.config import get_settings
 from careerops.db.session import create_session_factory
 from careerops.domain.analysis_runs import AnalysisRunWorkItem
@@ -70,24 +70,30 @@ async def execute_parse_run_async(
     max_retries=0,
 )
 async def execute_analysis_run(analysis_run_id: str) -> None:
-    await execute_analysis_run_async(
-        UUID(analysis_run_id),
-        FakeEvidenceMatcher(),
-    )
+    await execute_analysis_run_async(UUID(analysis_run_id))
 
 
 async def execute_analysis_run_async(
     analysis_run_id: UUID,
-    matcher: EvidenceMatcher,
+    matcher: EvidenceMatcher | None = None,
 ) -> bool:
     async with worker_session_factory() as session:
         settings = get_settings()
         resolver = ConfiguredEmbeddingProviderResolver(settings)
+        matcher_resolver = ConfiguredEvidenceMatcherResolver(settings)
         vectors = EvidenceVectorRepository(session)
         service = AnalysisRunExecutionService(
             store=AnalysisRunRepository(session),
             results=AnalysisResultService(AnalysisResultRepository(session)),
             matcher=matcher,
+            matcher_factory=(
+                None
+                if matcher is not None
+                else lambda work_item: matcher_resolver.resolve_pipeline(
+                    work_item.model_name,
+                    work_item.prompt_version,
+                )
+            ),
             retriever_factory=lambda work_item: build_hybrid_retriever(
                 work_item,
                 vectors,

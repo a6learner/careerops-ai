@@ -79,3 +79,10 @@ What future condition would justify reopening this decision?
 - `ADR-021-real-embedding-evaluation.md`: default-off Gemini development evaluation, reproducible vector caching, deterministic cosine and hybrid ranking, and holdout gates.
 - `ADR-022-frozen-embedding-holdout.md`: one-time holdout evaluation with committed development evidence, fixed parameters, reused document vectors, and a query-only live-call budget.
 - `ADR-023-local-hybrid-retrieval-integration.md`: worker-side exact pgvector retrieval, fixed weighted RRF, provenance fencing, lexical fallback, and Analysis attempt fencing.
+- `ADR-024-offline-real-evidence-matcher-contract.md`: typed minimal matcher input, strict positive/gap output, exact source quotes, adversarial validation, and durable failure categories without live provider integration.
+- `ADR-025-evidence-matcher-evaluation-v1.md`: synthetic matcher development/holdout inputs, author-reviewed hashes, separated matcher-only/end-to-end metrics, and sealed holdout execution.
+- `ADR-026-groq-evidence-matcher-development.md`: shared Groq HTTP mechanics, an independent strict matcher adapter, invocation-local live authorization, bounded development calls, and immutable rate-limit recovery evidence.
+- `ADR-027-evidence-matcher-evaluation-rubric-v2.md`: explicit verdict boundaries, oracle versus candidate-conditioned labels, acceptable evidence sets, component metrics, offline rescoring, and proposed development gates.
+- `ADR-028-evidence-matcher-coverage-evaluation.md`: evaluation-only full/partial/gap coverage, directional overclaim and underclaim metrics, all-case failure denominators, and safe invalid-output diagnostics.
+- `ADR-029-one-time-evidence-matcher-holdout.md`: frozen prompt-v4 holdout identity, separate authorization, at-most-once checkpoint recovery, and the completed one-time safety result.
+- `ADR-030-real-evidence-matcher-worker-integration.md`: durable matcher identity, worker-only real-provider authorization, specific failure persistence, no fake fallback, and attempt-fenced recovery.

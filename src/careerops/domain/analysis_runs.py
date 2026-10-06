@@ -3,13 +3,58 @@ from datetime import datetime
 from enum import StrEnum
 from uuid import UUID
 
-from careerops.domain.embeddings import FAKE_EMBEDDING_SPACE, analysis_pipeline_version
-from careerops.domain.evidence_matching import EvidenceVerdict, ProposedEvidenceMatch
+from careerops.domain.embeddings import (
+    FAKE_EMBEDDING_SPACE,
+    EmbeddingSpace,
+    analysis_pipeline_version,
+)
+from careerops.domain.evidence_matching import (
+    MATCHER_PROMPT_VERSION,
+    MATCHER_SCHEMA_VERSION,
+    SUPPORTED_MATCHER_PROMPT_VERSIONS,
+    EvidenceVerdict,
+    ProposedEvidenceMatch,
+)
 from careerops.domain.experiences import ExperienceRecord
 from careerops.domain.parse_runs import JobRequirementRecord
 
 FAKE_ANALYSIS_MODEL_NAME = "local-fake-evidence-matcher"
-ANALYSIS_PROMPT_VERSION = analysis_pipeline_version(FAKE_EMBEDDING_SPACE)
+
+
+def matcher_pipeline_version(space: EmbeddingSpace, matcher_model_name: str) -> str:
+    return ":".join(
+        (
+            analysis_pipeline_version(space),
+            MATCHER_SCHEMA_VERSION,
+            MATCHER_PROMPT_VERSION,
+            matcher_model_name,
+        )
+    )
+
+
+def fake_matcher_pipeline_version(space: EmbeddingSpace) -> str:
+    return matcher_pipeline_version(space, FAKE_ANALYSIS_MODEL_NAME)
+
+
+ANALYSIS_PROMPT_VERSION = fake_matcher_pipeline_version(FAKE_EMBEDDING_SPACE)
+
+
+def matcher_prompt_version_from_pipeline(pipeline_version: str) -> str:
+    matches = [
+        version
+        for version in SUPPORTED_MATCHER_PROMPT_VERSIONS
+        if version in pipeline_version.split(":")
+    ]
+    if len(matches) != 1:
+        raise ValueError("Analysis pipeline has no unique matcher prompt version.")
+    return matches[0]
+
+
+def matcher_model_name_from_pipeline(pipeline_version: str) -> str:
+    model_name = pipeline_version.rpartition(":")[2].strip()
+    if not model_name:
+        raise ValueError("Analysis pipeline has no matcher model name.")
+    return model_name
 
 
 class AnalysisRunStatus(StrEnum):
@@ -24,6 +69,15 @@ class AnalysisRunErrorCode(StrEnum):
     ANALYSIS_INPUT_CHANGED = "ANALYSIS_INPUT_CHANGED"
     MATCHER_FAILED = "MATCHER_FAILED"
     MATCHER_OUTPUT_INVALID = "MATCHER_OUTPUT_INVALID"
+    MATCHER_PROVIDER_DISABLED = "MATCHER_PROVIDER_DISABLED"
+    MATCHER_PROVIDER_MISCONFIGURED = "MATCHER_PROVIDER_MISCONFIGURED"
+    MATCHER_PROVIDER_TIMEOUT = "MATCHER_PROVIDER_TIMEOUT"
+    MATCHER_PROVIDER_RATE_LIMITED = "MATCHER_PROVIDER_RATE_LIMITED"
+    MATCHER_PROVIDER_UNAVAILABLE = "MATCHER_PROVIDER_UNAVAILABLE"
+    MATCHER_PROVIDER_FAILED = "MATCHER_PROVIDER_FAILED"
+    MATCHER_OUTPUT_INVALID_JSON = "MATCHER_OUTPUT_INVALID_JSON"
+    MATCHER_OUTPUT_INVALID_SCHEMA = "MATCHER_OUTPUT_INVALID_SCHEMA"
+    MATCHER_OUTPUT_INVALID_CONTRACT = "MATCHER_OUTPUT_INVALID_CONTRACT"
 
 
 @dataclass(frozen=True)
@@ -75,6 +129,7 @@ class AnalysisRunWorkItem:
     job_id: UUID
     parse_run_id: UUID
     input_fingerprint: str
+    model_name: str
     prompt_version: str
     created_at: datetime
 

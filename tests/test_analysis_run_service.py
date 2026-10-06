@@ -3,18 +3,21 @@ from uuid import UUID, uuid4
 
 import pytest
 
+from careerops.adapters.evidence_matcher_factory import GROQ_EVIDENCE_MATCHER_MODEL
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
     FAKE_ANALYSIS_MODEL_NAME,
     AnalysisRunCreationResult,
     AnalysisRunRecord,
     AnalysisRunStatus,
+    fake_matcher_pipeline_version,
+    matcher_model_name_from_pipeline,
+    matcher_pipeline_version,
 )
 from careerops.domain.embeddings import (
     FAKE_EMBEDDING_SPACE,
     GEMINI_EMBEDDING_SPACE,
     EmbeddingSpace,
-    analysis_pipeline_version,
 )
 from careerops.domain.errors import (
     AnalysisRunDispatchError,
@@ -125,6 +128,7 @@ class AnalysisRunStore:
             idempotency_key=idempotency_key,
             input_fingerprint=input_fingerprint,
             prompt_version=prompt_version,
+            model_name=matcher_model_name_from_pipeline(prompt_version),
         )
         return AnalysisRunCreationResult(run=self.existing, created=True)
 
@@ -173,7 +177,28 @@ async def test_analysis_run_binds_configured_retrieval_space() -> None:
 
     run = await service.submit_analysis_run(job.user_id, job.id, parse_run.id, "gemini-space")
 
-    assert run.prompt_version == analysis_pipeline_version(GEMINI_EMBEDDING_SPACE)
+    assert run.prompt_version == fake_matcher_pipeline_version(GEMINI_EMBEDDING_SPACE)
+
+
+@pytest.mark.asyncio
+async def test_analysis_run_binds_configured_matcher_model() -> None:
+    job, parse_run, experience = make_inputs()
+    service = build_service(
+        job,
+        parse_run,
+        [experience],
+        AnalysisRunStore(),
+        Dispatcher(),
+        matcher_model_name=GROQ_EVIDENCE_MATCHER_MODEL,
+    )
+
+    run = await service.submit_analysis_run(job.user_id, job.id, parse_run.id, "groq")
+
+    assert run.model_name == GROQ_EVIDENCE_MATCHER_MODEL
+    assert run.prompt_version == matcher_pipeline_version(
+        FAKE_EMBEDDING_SPACE,
+        GROQ_EVIDENCE_MATCHER_MODEL,
+    )
 
 
 @pytest.mark.asyncio
@@ -243,6 +268,7 @@ def build_service(
     store: AnalysisRunStore,
     dispatcher: Dispatcher,
     retrieval_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
+    matcher_model_name: str = FAKE_ANALYSIS_MODEL_NAME,
 ) -> AnalysisRunService:
     return AnalysisRunService(
         JobReader(job),
@@ -251,6 +277,7 @@ def build_service(
         store,
         dispatcher,
         retrieval_space,
+        matcher_model_name,
     )
 
 
@@ -330,6 +357,7 @@ def make_analysis_run(
     idempotency_key: str,
     input_fingerprint: str,
     prompt_version: str = ANALYSIS_PROMPT_VERSION,
+    model_name: str = FAKE_ANALYSIS_MODEL_NAME,
 ) -> AnalysisRunRecord:
     now = datetime.now(UTC)
     return AnalysisRunRecord(
@@ -340,7 +368,7 @@ def make_analysis_run(
         status=AnalysisRunStatus.QUEUED,
         idempotency_key=idempotency_key,
         input_fingerprint=input_fingerprint,
-        model_name=FAKE_ANALYSIS_MODEL_NAME,
+        model_name=model_name,
         prompt_version=prompt_version,
         attempt=1,
         validation_failure_count=0,

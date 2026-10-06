@@ -22,7 +22,8 @@ def test_valid_match_requires_owned_candidate_with_current_version_and_source_qu
             verdict=EvidenceVerdict.MATCHED,
             experience_id=experience.id,
             experience_version=experience.version,
-            quote="Built   reliable APIs",
+            source_ref="description",
+            quote="Built reliable APIs",
             confidence=0.9,
         ),
         user_id=user_id,
@@ -36,7 +37,10 @@ def test_valid_match_requires_owned_candidate_with_current_version_and_source_qu
     assert not result.validation_failed
 
 
-@pytest.mark.parametrize("failure", ["unknown", "other_user", "not_candidate", "stale", "quote"])
+@pytest.mark.parametrize(
+    "failure",
+    ["unknown", "other_user", "not_candidate", "stale", "source", "quote", "whitespace"],
+)
 def test_invalid_positive_claim_is_downgraded_and_stripped(failure: str) -> None:
     user_id = uuid4()
     experience = make_experience(user_id=user_id)
@@ -44,6 +48,7 @@ def test_invalid_positive_claim_is_downgraded_and_stripped(failure: str) -> None
     candidate_ids = {experience.id}
     proposal_id = experience.id
     proposal_version = experience.version
+    source_ref = "description"
     quote = "Built reliable APIs"
 
     if failure == "unknown":
@@ -57,8 +62,12 @@ def test_invalid_positive_claim_is_downgraded_and_stripped(failure: str) -> None
         candidate_ids = set()
     elif failure == "stale":
         proposal_version -= 1
+    elif failure == "source":
+        source_ref = "outcome"
     elif failure == "quote":
         quote = "Invented Kubernetes production experience"
+    elif failure == "whitespace":
+        quote = "Built   reliable APIs"
 
     result = validate_evidence_match(
         ProposedEvidenceMatch(
@@ -66,6 +75,7 @@ def test_invalid_positive_claim_is_downgraded_and_stripped(failure: str) -> None
             verdict=EvidenceVerdict.PARTIAL,
             experience_id=proposal_id,
             experience_version=proposal_version,
+            source_ref=source_ref,
             quote=quote,
             confidence=0.6,
         ),

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "status": "approved_frozen",
+  "authorized_by": "project author via P1-5 completion instruction",
+  "authorized_at": "2026-10-05T01:00:00-07:00",
+  "corpus_sha256": "139729a73aa99dc6cd6a9199d8c1b44e901e3d4cb1171ef4abd4990071fd1d0f",
+  "development_cases_sha256": "c8c3d535ae103ea21b4c24397e1021dc4fd7688b37f907563363a19d87329605",
+  "prompt_version": "evidence-matcher-prompt-v4",
+  "prompt_sha256": "ef33e71c303438a876c53ef026c47c38fe9c9331ecb3cc5b00d3b3d680b24b5a",
+  "schema_version": "evidence-matcher-schema-v1",
+  "response_schema_sha256": "bf2c87f276da75998a6d2421f661316a50e9b608304642a4223e6824c4307902",
+  "acceptance_policy_version": "evidence-matcher-development-gates-v4",
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "request_budget": 12,
+  "max_attempts_per_case": 1,
+  "minimum_request_interval_seconds": 11.0,
+  "max_output_tokens": 800,
+  "reasoning_effort": "low",
+  "temperature": 0.0
+}

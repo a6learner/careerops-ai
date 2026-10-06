@@ -59,7 +59,8 @@ def analysis_pipeline_version(space: EmbeddingSpace) -> str:
 
 def embedding_space_for_analysis_pipeline(version: str) -> EmbeddingSpace:
     for space in (FAKE_EMBEDDING_SPACE, GEMINI_EMBEDDING_SPACE):
-        if version == analysis_pipeline_version(space):
+        retrieval_version = analysis_pipeline_version(space)
+        if version == retrieval_version or version.startswith(f"{retrieval_version}:"):
             return space
     raise ValueError(f"Unsupported Analysis pipeline version: {version}")
 

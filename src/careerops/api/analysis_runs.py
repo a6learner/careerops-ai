@@ -5,6 +5,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Header, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from careerops.adapters.evidence_matcher_factory import configured_evidence_matcher_model
 from careerops.api.dependencies import get_current_user
 from careerops.api.preconditions import MAX_IDEMPOTENCY_KEY_LENGTH, parse_idempotency_key
 from careerops.core.config import get_settings
@@ -71,13 +72,15 @@ def build_analysis_run_service(
     session: AsyncSession,
     dispatcher: AnalysisRunDispatcher,
 ) -> AnalysisRunService:
+    settings = get_settings()
     return AnalysisRunService(
         jobs=JobRepository(session),
         parse_runs=ParseRunRepository(session),
         experiences=ExperienceRepository(session),
         analysis_runs=AnalysisRunRepository(session),
         dispatcher=dispatcher,
-        retrieval_space=embedding_space_for_provider(get_settings().embedding_provider),
+        retrieval_space=embedding_space_for_provider(settings.embedding_provider),
+        matcher_model_name=configured_evidence_matcher_model(settings),
     )
 
 

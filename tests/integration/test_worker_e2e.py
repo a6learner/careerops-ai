@@ -5,9 +5,11 @@ from uuid import UUID, uuid4
 import pytest
 from httpx import ASGITransport, AsyncClient
 
+from careerops.adapters.evidence_matcher_factory import LIVE_MATCHER_ENV
 from careerops.core.config import Settings
 from careerops.db.models import Experience
 from careerops.db.session import create_session_factory
+from careerops.domain.analysis_runs import FAKE_ANALYSIS_MODEL_NAME
 from careerops.main import create_app
 
 pytestmark = pytest.mark.integration
@@ -22,6 +24,12 @@ pytestmark = pytest.mark.integration
 async def test_api_dispatches_work_that_worker_completes() -> None:
     settings = Settings()
     assert settings.llm_provider == "fake", "worker E2E must not call a real LLM provider"
+    assert settings.evidence_matcher_provider == "fake", (
+        "worker E2E must use the fake evidence matcher"
+    )
+    assert os.getenv(LIVE_MATCHER_ENV) != "1", (
+        "worker E2E must not authorize the real evidence matcher"
+    )
     assert settings.embedding_provider == "fake", (
         "worker E2E must not call a real embedding provider"
     )
@@ -118,3 +126,4 @@ async def test_api_dispatches_work_that_worker_completes() -> None:
     assert completed_analysis.json()["status"] == "succeeded"
     assert len(completed_analysis.json()["matches"]) == 2
     assert completed_analysis.json()["validation_failure_count"] == 0
+    assert completed_analysis.json()["model_name"] == FAKE_ANALYSIS_MODEL_NAME

@@ -4,14 +4,15 @@ from uuid import UUID
 
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
+    FAKE_ANALYSIS_MODEL_NAME,
     AnalysisRunCreationResult,
     AnalysisRunRecord,
     AnalysisRunStatus,
+    matcher_pipeline_version,
 )
 from careerops.domain.embeddings import (
     FAKE_EMBEDDING_SPACE,
     EmbeddingSpace,
-    analysis_pipeline_version,
 )
 from careerops.domain.errors import (
     AnalysisRunNotFoundError,
@@ -84,13 +85,17 @@ class AnalysisRunService:
         analysis_runs: AnalysisRunStore,
         dispatcher: AnalysisRunDispatcher,
         retrieval_space: EmbeddingSpace = FAKE_EMBEDDING_SPACE,
+        matcher_model_name: str = FAKE_ANALYSIS_MODEL_NAME,
     ) -> None:
         self._jobs = jobs
         self._parse_runs = parse_runs
         self._experiences = experiences
         self._analysis_runs = analysis_runs
         self._dispatcher = dispatcher
-        self._prompt_version = analysis_pipeline_version(retrieval_space)
+        self._prompt_version = matcher_pipeline_version(
+            retrieval_space,
+            matcher_model_name,
+        )
 
     async def submit_analysis_run(
         self,

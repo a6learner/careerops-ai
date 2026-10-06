@@ -134,14 +134,48 @@ class NoActiveExperiencesError(Exception):
         super().__init__("At least one active experience is required.")
 
 
+class EvidenceMatcherFailureReason(StrEnum):
+    REQUEST_FAILED = "provider_request_failed"
+    DISABLED = "provider_disabled"
+    MISCONFIGURED = "provider_misconfigured"
+    TIMEOUT = "provider_timeout"
+    RATE_LIMITED = "provider_rate_limited"
+    UNAVAILABLE = "provider_unavailable"
+
+
 class EvidenceMatcherError(Exception):
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        reason: EvidenceMatcherFailureReason = EvidenceMatcherFailureReason.REQUEST_FAILED,
+    ) -> None:
         super().__init__("Evidence matcher failed.")
+        self.reason = reason
+
+
+class MatcherOutputFailureReason(StrEnum):
+    INVALID_JSON = "invalid_json"
+    INVALID_SCHEMA = "invalid_schema"
+    INVALID_CONTRACT = "invalid_contract"
 
 
 class MatcherOutputValidationError(Exception):
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        reason: MatcherOutputFailureReason = MatcherOutputFailureReason.INVALID_CONTRACT,
+        *,
+        diagnostic: str | None = None,
+        response_sha256: str | None = None,
+        response_size_bytes: int | None = None,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
+    ) -> None:
         super().__init__("Evidence matcher returned invalid output.")
+        self.reason = reason
+        self.diagnostic = diagnostic
+        self.response_sha256 = response_sha256
+        self.response_size_bytes = response_size_bytes
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
 
 
 class ActionItemNotFoundError(Exception):

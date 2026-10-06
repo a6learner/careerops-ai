@@ -8,6 +8,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import delete, update
 from sqlalchemy.exc import IntegrityError
 
+from careerops.adapters.evidence_matcher_factory import GROQ_EVIDENCE_MATCHER_MODEL
 from careerops.adapters.fake_evidence_matcher import FakeEvidenceMatcher
 from careerops.api.analysis_runs import get_analysis_run_dispatcher
 from careerops.api.dependencies import get_current_user
@@ -26,7 +27,9 @@ from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
     AnalysisRunErrorCode,
     AnalysisRunStatus,
+    matcher_pipeline_version,
 )
+from careerops.domain.embeddings import FAKE_EMBEDDING_SPACE
 from careerops.domain.parse_runs import ParseRunRecord, ParseRunStatus
 from careerops.domain.users import UserAccount
 from careerops.main import create_app
@@ -291,7 +294,10 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
         requirements=(),
     )
 
-    async def create_run(idempotency_key: str) -> tuple[UUID, bool]:
+    async def create_run(
+        idempotency_key: str,
+        prompt_version: str = ANALYSIS_PROMPT_VERSION,
+    ) -> tuple[UUID, bool]:
         async with session_factory() as session:
             repository = AnalysisRunRepository(session)
             creation = await repository.create_or_get_queued_analysis_run(
@@ -300,7 +306,7 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
                 parse_run,
                 idempotency_key,
                 "f" * 64,
-                    ANALYSIS_PROMPT_VERSION,
+                prompt_version,
             )
             if creation.created:
                 await repository.commit()
@@ -358,6 +364,21 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
 
     assert distinct[0] != first[0]
     assert distinct[1]
+
+    real_pipeline = matcher_pipeline_version(
+        FAKE_EMBEDDING_SPACE,
+        GROQ_EVIDENCE_MATCHER_MODEL,
+    )
+    real = await create_run("analysis-real", real_pipeline)
+    async with session_factory() as session:
+        real_run = await AnalysisRunRepository(session).get_analysis_run(
+            user_id,
+            job_id,
+            real[0],
+        )
+    assert real_run is not None
+    assert real_run.model_name == GROQ_EVIDENCE_MATCHER_MODEL
+    assert real_run.prompt_version == real_pipeline
 
     async with session_factory() as cleanup_session:
         await cleanup_session.execute(delete(AnalysisRun).where(AnalysisRun.user_id == user_id))

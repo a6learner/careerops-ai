@@ -57,3 +57,49 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   query-only holdout vector cache.
 - `2026-10-03-local-hybrid-retrieval-test-record.md` records the offline and local
   PostgreSQL verification for production-path hybrid retrieval integration.
+
+## Current Matcher Evidence
+
+- `2026-10-04-fake-evidence-matcher-development.md` explains the author-approved
+  offline pipeline run and why fake scores are not semantic-quality evidence.
+- `2026-10-04-fake-evidence-matcher-development.json` preserves every raw and
+  validated development result plus the frozen dataset hashes.
+- `2026-10-04-groq-evidence-matcher-development.md` explains the first bounded
+  real-provider run, its partial result, and its rate-limit recovery boundary.
+- `2026-10-04-groq-evidence-matcher-development.json` preserves all 12 case
+  outcomes, including the six durable `provider_rate_limited` failures.
+- `2026-10-04-groq-evidence-matcher-development-recovery.md` explains the paced,
+  six-request recovery and the complete development metrics.
+- `2026-10-04-groq-evidence-matcher-development-recovery.json` preserves the
+  merged 12-case result and its prior-report provenance.
+- `2026-10-04-groq-evidence-matcher-development-offline-rescore-v2.md` explains
+  the zero-request rubric-v2 replay and separates model, retrieval, and canonical
+  quote effects.
+- `2026-10-04-groq-evidence-matcher-development-offline-rescore-v2.json`
+  preserves the per-case v2 component metrics and source-report hash.
+- `2026-10-04-groq-evidence-matcher-development-prompt-v2.md` records the first
+  paced prompt-v2 development run, its gate failures, and zero holdout calls.
+- `2026-10-04-groq-evidence-matcher-development-prompt-v2.json` preserves all 12
+  prompt-v2 case outcomes, including one durable `invalid_schema` failure.
+- `2026-10-04-groq-evidence-matcher-development-prompt-v2-coverage-v1.md`
+  explains the zero-request three-class coverage rescore and proposed next gates.
+- `2026-10-04-groq-evidence-matcher-development-prompt-v2-coverage-v1.json`
+  preserves all denominators, failure policy, and directional error counts.
+- `2026-10-05-groq-evidence-matcher-prompt-v3-v5-development.md` compares the
+  bounded prompt iterations, selects v4 as the safest development candidate,
+  and records the quality-gate stop before holdout or worker activation.
+- `2026-10-05-evidence-matcher-prompt-v4-author-exception.md` records the
+  author's post-measurement acceptance of the one conservative underclaim while
+  preserving the original quality-gate failure.
+- `2026-10-05-evidence-matcher-holdout-readiness.md` records the offline one-time
+  runner verification, rubric-v2 holdout migration hash, and pre-execution
+  boundary; it is not a holdout result and made no provider request.
+- `2026-10-05-groq-evidence-matcher-holdout.md` records the authorized one-time
+  holdout safety pass and the visible 6/8 matcher-only coverage limitation.
+- `2026-10-05-groq-evidence-matcher-holdout.json` preserves the immutable raw
+  holdout outcomes, denominators, token usage, and frozen gate decision.
+- `2026-10-05-groq-evidence-matcher-holdout-checkpoint.json` preserves the
+  at-most-once request ledger for all eight cases.
+- `2026-10-06-real-evidence-matcher-worker-integration-test-record.md` records
+  offline, PostgreSQL, and real-Dramatiq verification of the controlled worker
+  integration; no provider request was made.

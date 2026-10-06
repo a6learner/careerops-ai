@@ -8,7 +8,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from careerops.db.models import AnalysisRun, EvidenceMatch, Experience, JobRequirement, ParseRun
 from careerops.domain.analysis_runs import (
-    FAKE_ANALYSIS_MODEL_NAME,
     AnalysisInput,
     AnalysisRunCreationResult,
     AnalysisRunErrorCode,
@@ -16,6 +15,7 @@ from careerops.domain.analysis_runs import (
     AnalysisRunStatus,
     AnalysisRunWorkItem,
     EvidenceMatchRecord,
+    matcher_model_name_from_pipeline,
 )
 from careerops.domain.evidence_matching import EvidenceVerdict
 from careerops.domain.parse_runs import ParseRunRecord
@@ -79,7 +79,7 @@ class AnalysisRunRepository:
                 status=AnalysisRunStatus.QUEUED.value,
                 idempotency_key=idempotency_key,
                 input_fingerprint=input_fingerprint,
-                model_name=FAKE_ANALYSIS_MODEL_NAME,
+                model_name=matcher_model_name_from_pipeline(prompt_version),
                 prompt_version=prompt_version,
                 attempt=1,
             )
@@ -123,6 +123,7 @@ class AnalysisRunRepository:
                 AnalysisRun.job_id,
                 AnalysisRun.parse_run_id,
                 AnalysisRun.input_fingerprint,
+                AnalysisRun.model_name,
                 AnalysisRun.prompt_version,
                 AnalysisRun.created_at,
             )
@@ -137,6 +138,7 @@ class AnalysisRunRepository:
             job_id=row.job_id,
             parse_run_id=row.parse_run_id,
             input_fingerprint=row.input_fingerprint,
+            model_name=row.model_name,
             prompt_version=row.prompt_version,
             created_at=row.created_at,
         )
@@ -182,6 +184,8 @@ class AnalysisRunRepository:
         model_name: str,
         error_code: AnalysisRunErrorCode,
         latency_ms: int,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
     ) -> bool:
         result = await self._session.execute(
             update(AnalysisRun)
@@ -195,6 +199,8 @@ class AnalysisRunRepository:
                 model_name=model_name,
                 error_code=error_code.value,
                 latency_ms=latency_ms,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
                 finished_at=datetime.now(UTC),
             )
             .returning(AnalysisRun.id)

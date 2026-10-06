@@ -1,0 +1,381 @@
+{
+  "created_at": "2026-10-05T23:25:30.592163Z",
+  "git_revision": "6041cf378004dc65c2634c666194a61465a565ab+p1-5c-prompt-v3-working-tree",
+  "evaluation_version": "evidence-matcher-coverage-v2",
+  "source_report_sha256": "431153dc5044021c9043db489c0c9c7044d535b2dcca70e966d5b5fd62b5440f",
+  "source_provider": "groq",
+  "source_model_name": "openai/gpt-oss-20b",
+  "source_prompt_version": "evidence-matcher-prompt-v3",
+  "corpus_sha256": "139729a73aa99dc6cd6a9199d8c1b44e901e3d4cb1171ef4abd4990071fd1d0f",
+  "development_cases_sha256": "c8c3d535ae103ea21b4c24397e1021dc4fd7688b37f907563363a19d87329605",
+  "provider_request_attempt_count": 0,
+  "summary": {
+    "case_count": 12,
+    "schema_valid_case_count": 12,
+    "provider_failure_count": 0,
+    "output_failure_count": 0,
+    "end_to_end_coverage_accuracy": {
+      "numerator": 11,
+      "denominator": 12,
+      "rate": 0.9166666666666666
+    },
+    "matcher_only_coverage_accuracy": {
+      "numerator": 10,
+      "denominator": 12,
+      "rate": 0.8333333333333334
+    },
+    "matcher_only_schema_valid_coverage_accuracy": {
+      "numerator": 10,
+      "denominator": 12,
+      "rate": 0.8333333333333334
+    },
+    "four_class_exact_accuracy": {
+      "numerator": 9,
+      "denominator": 12,
+      "rate": 0.75
+    },
+    "gap_subtype_difference_rate": {
+      "numerator": 1,
+      "denominator": 12,
+      "rate": 0.08333333333333333
+    },
+    "overclaim_rate": {
+      "numerator": 1,
+      "denominator": 12,
+      "rate": 0.08333333333333333
+    },
+    "underclaim_rate": {
+      "numerator": 1,
+      "denominator": 12,
+      "rate": 0.08333333333333333
+    },
+    "gap_to_positive_rate": {
+      "numerator": 0,
+      "denominator": 6,
+      "rate": 0.0
+    },
+    "partial_to_matched_rate": {
+      "numerator": 1,
+      "denominator": 4,
+      "rate": 0.25
+    },
+    "partial_to_gap_rate": {
+      "numerator": 1,
+      "denominator": 4,
+      "rate": 0.25
+    },
+    "citation_validity_rate": {
+      "numerator": 5,
+      "denominator": 5,
+      "rate": 1.0
+    },
+    "unsupported_positive_rate": {
+      "numerator": 0,
+      "denominator": 5,
+      "rate": 0.0
+    },
+    "per_coverage": {
+      "full": {
+        "support": 2,
+        "correct": 2,
+        "recall": 1.0
+      },
+      "partial": {
+        "support": 4,
+        "correct": 2,
+        "recall": 0.5
+      },
+      "gap": {
+        "support": 6,
+        "correct": 6,
+        "recall": 1.0
+      }
+    },
+    "direction_counts": {
+      "exact": 9,
+      "gap_subtype_difference": 1,
+      "gap_to_partial": 0,
+      "gap_to_full": 0,
+      "partial_to_full": 1,
+      "partial_to_gap": 1,
+      "full_to_partial": 0,
+      "full_to_gap": 0,
+      "provider_failure": 0,
+      "output_failure": 0
+    },
+    "failure_policy": [
+      "Primary coverage and four-class metrics use every case as the denominator.",
+      "Provider and output failures count as incorrect and are never inferred as gaps.",
+      "The schema-valid coverage metric excludes failures only as a diagnostic.",
+      "Gap subtype differences are coverage-correct but remain four-class diagnostics."
+    ]
+  },
+  "acceptance": {
+    "policy_version": "evidence-matcher-development-gates-v3",
+    "safety_passed": false,
+    "quality_passed": false,
+    "passed": false,
+    "gates": [
+      {
+        "name": "schema_pass",
+        "category": "safety",
+        "passed": true,
+        "observed": "12/12",
+        "required": "12/12"
+      },
+      {
+        "name": "provider_failures",
+        "category": "safety",
+        "passed": true,
+        "observed": "0",
+        "required": "0"
+      },
+      {
+        "name": "output_failures",
+        "category": "safety",
+        "passed": true,
+        "observed": "0",
+        "required": "0"
+      },
+      {
+        "name": "citation_validity",
+        "category": "safety",
+        "passed": true,
+        "observed": "5/5 (1.0000)",
+        "required": "all emitted positives"
+      },
+      {
+        "name": "unsupported_positive",
+        "category": "safety",
+        "passed": true,
+        "observed": "0/5 (0.0000)",
+        "required": "0 unsupported positives"
+      },
+      {
+        "name": "coverage_overclaim",
+        "category": "safety",
+        "passed": false,
+        "observed": "1/12 (0.0833)",
+        "required": "0 overclaims"
+      },
+      {
+        "name": "acceptable_evidence",
+        "category": "safety",
+        "passed": false,
+        "observed": "0.8333",
+        "required": "1.0000"
+      },
+      {
+        "name": "matcher_only_coverage",
+        "category": "quality",
+        "passed": true,
+        "observed": "10/12 (0.8333)",
+        "required": ">=10/12"
+      },
+      {
+        "name": "partial_to_gap",
+        "category": "quality",
+        "passed": false,
+        "observed": "1/4 (0.2500)",
+        "required": "0 partial-to-gap"
+      },
+      {
+        "name": "full_recall_nonzero",
+        "category": "quality",
+        "passed": true,
+        "observed": "2/2",
+        "required": ">0 correct"
+      },
+      {
+        "name": "partial_recall_nonzero",
+        "category": "quality",
+        "passed": true,
+        "observed": "2/4",
+        "required": ">0 correct"
+      },
+      {
+        "name": "gap_recall_nonzero",
+        "category": "quality",
+        "passed": true,
+        "observed": "6/6",
+        "required": ">0 correct"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "matcher-dev-001",
+      "oracle_verdict": "matched",
+      "candidate_conditioned_verdict": "matched",
+      "predicted_verdict": "matched",
+      "oracle_coverage": "full",
+      "candidate_conditioned_coverage": "full",
+      "predicted_coverage": "full",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-002",
+      "oracle_verdict": "partial",
+      "candidate_conditioned_verdict": "partial",
+      "predicted_verdict": "partial",
+      "oracle_coverage": "partial",
+      "candidate_conditioned_coverage": "partial",
+      "predicted_coverage": "partial",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-003",
+      "oracle_verdict": "missing",
+      "candidate_conditioned_verdict": "missing",
+      "predicted_verdict": "missing",
+      "oracle_coverage": "gap",
+      "candidate_conditioned_coverage": "gap",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-004",
+      "oracle_verdict": "insufficient_evidence",
+      "candidate_conditioned_verdict": "insufficient_evidence",
+      "predicted_verdict": "missing",
+      "oracle_coverage": "gap",
+      "candidate_conditioned_coverage": "gap",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": false,
+      "direction": "gap_subtype_difference",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-005",
+      "oracle_verdict": "matched",
+      "candidate_conditioned_verdict": "matched",
+      "predicted_verdict": "matched",
+      "oracle_coverage": "full",
+      "candidate_conditioned_coverage": "full",
+      "predicted_coverage": "full",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-006",
+      "oracle_verdict": "partial",
+      "candidate_conditioned_verdict": "partial",
+      "predicted_verdict": "missing",
+      "oracle_coverage": "partial",
+      "candidate_conditioned_coverage": "partial",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": false,
+      "matcher_only_coverage_correct": false,
+      "four_class_exact": false,
+      "direction": "partial_to_gap",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-007",
+      "oracle_verdict": "missing",
+      "candidate_conditioned_verdict": "missing",
+      "predicted_verdict": "missing",
+      "oracle_coverage": "gap",
+      "candidate_conditioned_coverage": "gap",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-008",
+      "oracle_verdict": "insufficient_evidence",
+      "candidate_conditioned_verdict": "insufficient_evidence",
+      "predicted_verdict": "insufficient_evidence",
+      "oracle_coverage": "gap",
+      "candidate_conditioned_coverage": "gap",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-009",
+      "oracle_verdict": "matched",
+      "candidate_conditioned_verdict": "partial",
+      "predicted_verdict": "matched",
+      "oracle_coverage": "full",
+      "candidate_conditioned_coverage": "partial",
+      "predicted_coverage": "full",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": false,
+      "four_class_exact": false,
+      "direction": "partial_to_full",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-010",
+      "oracle_verdict": "partial",
+      "candidate_conditioned_verdict": "partial",
+      "predicted_verdict": "partial",
+      "oracle_coverage": "partial",
+      "candidate_conditioned_coverage": "partial",
+      "predicted_coverage": "partial",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-011",
+      "oracle_verdict": "missing",
+      "candidate_conditioned_verdict": "missing",
+      "predicted_verdict": "missing",
+      "oracle_coverage": "gap",
+      "candidate_conditioned_coverage": "gap",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    },
+    {
+      "case_id": "matcher-dev-012",
+      "oracle_verdict": "insufficient_evidence",
+      "candidate_conditioned_verdict": "insufficient_evidence",
+      "predicted_verdict": "insufficient_evidence",
+      "oracle_coverage": "gap",
+      "candidate_conditioned_coverage": "gap",
+      "predicted_coverage": "gap",
+      "end_to_end_coverage_correct": true,
+      "matcher_only_coverage_correct": true,
+      "four_class_exact": true,
+      "direction": "exact",
+      "error_type": null
+    }
+  ],
+  "limitations": [
+    "This report rescored saved development output and made zero provider calls.",
+    "The source invalid_schema case contains no raw response or field diagnostic, so its exact validation failure is unknown.",
+    "Synthetic development coverage does not establish holdout or production quality.",
+    "The matcher holdout was not read, run, or used for tuning."
+  ]
+}

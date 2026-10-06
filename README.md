@@ -4,7 +4,33 @@ CareerOps AI is a backend-first project for matching internship job requirements
 
 ## Current Status
 
-This repository has a backend-first FastAPI foundation with health endpoints, local PostgreSQL and Redis dependencies, strict typing, import boundary checks, CI scaffolding, email/password authentication, signed access tokens, user-owned Experiences and Jobs, and worker-backed parse and Analysis Runs. Analysis workers use deterministic lexical retrieval plus provenance-fenced exact pgvector scoring and fixed weighted RRF, with lexical fallback when vectors or the query provider are unavailable. Evidence matching remains worker-only and fake-backed so citation validation, atomic persistence, recovery, and CI stay deterministic. Experience embeddings have durable version/content/model/input provenance and stale-result fencing. Reviewed development and one-time holdout evidence justify the frozen retrieval contract without turning holdout data into a tuning set.
+This repository has a backend-first FastAPI API, PostgreSQL and Redis, signed
+authentication, user-owned Experiences and Jobs, and independent workers for
+parsing, embeddings, and Analysis Runs. Analysis uses frozen lexical plus exact
+pgvector hybrid retrieval with deterministic weighted RRF, provenance fencing,
+and lexical fallback. PostgreSQL remains authoritative and Redis is disposable.
+
+P1-5 now includes a typed real-matcher contract, prompt-v4 Groq adapter, rubric-v2
+development and holdout evaluation, and controlled worker integration. The
+one-time eight-case matcher holdout passed every pre-frozen evidence-integrity
+safety gate: schema 8/8, zero provider/output failures, grounded citations 1/1,
+zero unsupported positives, zero `gap -> positive`, and zero
+`partial -> matched`. Matcher-only coverage was 6/8 and both partial cases were
+missed as gaps. Those quality limits remain explicit; the holdout is closed and
+must not be rerun or used for tuning.
+
+New Analysis Runs bind matcher model, prompt/schema version, and retrieval space
+before queueing. The API still never calls a model. The worker resolves the
+adapter from the durable work item, verifies output identity, validates every
+positive against ownership, Top-5 candidacy, Experience version, source, and
+quote, and persists the complete result atomically. Specific provider/output
+failures remain durable failures and never silently fall back to fake.
+
+The deterministic fake matcher remains the default for CI and local work. Real
+worker access is restricted to frozen prompt v4 and `openai/gpt-oss-20b`, and
+requires an invocation-local process gate plus the provider key. Historical
+development reports remain unchanged, including the original failed quality
+gates and the author-accepted conservative prompt-v4 limitation.
 
 ## Architecture Direction
 
@@ -65,6 +91,25 @@ To run Groq locally, copy the example to the ignored `.env`, set
 `CAREEROPS_LLM_PROVIDER=groq`, and add `CAREEROPS_LLM_API_KEY`. Never commit the
 key. Automated tests remain fake or mock-backed unless the live-test flag is
 explicitly enabled.
+
+Evidence matching is configured independently from requirement parsing. Setting
+`CAREEROPS_EVIDENCE_MATCHER_PROVIDER=groq` in the API process binds newly
+submitted Analysis Runs to the frozen Groq matcher. It does not make a network
+call. The worker additionally requires the process-only live gate:
+
+```powershell
+$env:CAREEROPS_RUN_REAL_MATCHER_WORKER = "1"
+try { .\.venv\Scripts\dramatiq careerops.workers.tasks --processes 1 --threads 4 }
+finally { Remove-Item Env:CAREEROPS_RUN_REAL_MATCHER_WORKER -ErrorAction SilentlyContinue }
+```
+
+The key may be loaded from the ignored `.env`, but putting the live gate there
+does not authorize execution because the resolver reads it directly from the
+worker process environment. Stop other unauthorized Analysis workers before
+processing Groq-bound jobs; otherwise they will correctly claim and fail those
+jobs as disabled. Each real matcher execution makes one HTTP attempt. A timeout,
+429, 5xx, invalid JSON, invalid schema, or invalid contract becomes a durable
+failure; there is no fake fallback or claimed process-wide TPM smoothing.
 
 Recover queued work and stale running work from PostgreSQL:
 
@@ -130,6 +175,141 @@ Run retrieval evaluation v2 only with the approved manifest and development spli
 
 The command rejects holdout queries. Keep the holdout sealed until lexical, vector,
 and hybrid candidates and parameters are frozen for their one-time comparison.
+
+After author approval of rubric v2, run the development split with the
+deterministic fake matcher:
+
+```powershell
+.\.venv\Scripts\python -m careerops.evaluation.run_evidence_matcher `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --cases evals/evidence_matcher_v1/development_cases.json `
+  --review-manifest evals/evidence_matcher_v1/review_manifest.json `
+  --output docs/metrics/YYYY-MM-DD-fake-evidence-matcher-development.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
+The checked-in manifest is `approved_frozen` for development hash
+`c8c3d535ae103ea21b4c24397e1021dc4fd7688b37f907563363a19d87329605`.
+Hash validation prevents changed labels from reusing that approval. The
+development runner always rejects matcher holdout, and manifest approval alone
+does not authorize a provider request.
+
+Reproduce the rubric-v2 offline rescore from saved raw development output without
+a provider call:
+
+```powershell
+.\.venv\Scripts\python -m careerops.evaluation.run_evidence_matcher_rescore `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --cases evals/evidence_matcher_v1/development_cases.json `
+  --source-report docs/metrics/2026-10-04-groq-evidence-matcher-development-recovery.json `
+  --output docs/metrics/YYYY-MM-DD-groq-evidence-matcher-offline-rescore.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
+The rescorer accepts development data only, refuses overwrite, records zero
+provider attempts, and does not require or imply holdout access.
+
+Derive coverage and directional safety metrics from an immutable development
+report without calling a provider:
+
+```powershell
+.\.venv\Scripts\python -m careerops.evaluation.run_evidence_matcher_coverage_rescore `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --cases evals/evidence_matcher_v1/development_cases.json `
+  --source-report docs/metrics/2026-10-04-groq-evidence-matcher-development-prompt-v2.json `
+  --output docs/metrics/YYYY-MM-DD-evidence-matcher-coverage.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
+For user-facing explanations, say that current materials fully demonstrate,
+partly demonstrate, or do not yet demonstrate a requirement. A missing resume
+claim is not proof that the user lacks the ability. Suggest adding concrete
+details only when the user genuinely performed the work; never suggest inventing
+an Experience, technology, metric, or result.
+
+Run a separately authorized, bounded Groq development evaluation only with an
+invocation-local opt-in:
+
+```powershell
+$env:CAREEROPS_RUN_MATCHER_EVAL = "1"
+.\.venv\Scripts\python -m careerops.evaluation.run_real_evidence_matcher `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --cases evals/evidence_matcher_v1/development_cases.json `
+  --review-manifest evals/evidence_matcher_v1/review_manifest.json `
+  --run-manifest evals/evidence_matcher_v1/prompt_v4_selected_development_manifest.json `
+  --output docs/metrics/YYYY-MM-DD-groq-evidence-matcher-development.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
+The runner is fixed to `openai/gpt-oss-20b`, one attempt per case, at most 12
+provider attempts, and an 800-token output ceiling. It refuses output overwrite
+and the matcher holdout. No further development run is currently approved; the
+command documents the frozen invocation rather than inviting another sample.
+The 2026-10-04 run exhausted its budget with six durable
+rate-limit failures; do not rerun the command as recovery because it would recall
+the six successful cases.
+
+The confirmed cause was the model's rolling 8K TPM limit, not TPD or monthly
+exhaustion: the first six successes reported 7,648 tokens while requests were sent
+in about nine seconds, and the account showed only about 8.2K daily tokens against
+the 200K TPD allowance. Recovery therefore paces requests instead of changing the
+frozen model, prompt, matcher labels, or retrieval parameters.
+
+After separate authorization, recover only those failures with a new artifact:
+
+```powershell
+$env:CAREEROPS_RUN_MATCHER_EVAL = "1"
+.\.venv\Scripts\python -m careerops.evaluation.run_real_evidence_matcher `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --cases evals/evidence_matcher_v1/development_cases.json `
+  --review-manifest evals/evidence_matcher_v1/review_manifest.json `
+  --resume-from docs/metrics/2026-10-04-groq-evidence-matcher-development.json `
+  --output docs/metrics/YYYY-MM-DD-groq-evidence-matcher-development-recovery.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
+Recovery hash-validates the original report, calls only failed case IDs, limits
+the new budget to their count, spaces requests by at least 11 seconds, and carries
+successful prior results into the new report. It still rejects holdout input.
+
+The authorized 2026-10-04 recovery used all six allowed requests and completed
+without failure. The merged development result is documented under
+`docs/metrics/2026-10-04-groq-evidence-matcher-development-recovery.md`. Do not
+repeat the recovery: there are no failed cases left, and the runner will reject a
+prior report with nothing to recover.
+
+The later prompt-v2 development report is documented in
+`docs/metrics/2026-10-04-groq-evidence-matcher-development-prompt-v2.md`. It has
+one `invalid_schema` case and did not pass the frozen gates. Do not run another
+fresh development pass or recover that case without separate authorization; no
+matcher holdout run is authorized.
+
+The one-time matcher holdout used a separate runner and opt-in. The command below
+is retained only to document the frozen invocation; the holdout completed on
+2026-10-05 and must not be run again:
+
+```powershell
+$env:CAREEROPS_RUN_MATCHER_HOLDOUT = "1"
+.\.venv\Scripts\python -m careerops.evaluation.run_evidence_matcher_holdout `
+  --experiences evals/evidence_retrieval_v2/experiences.json `
+  --development-cases evals/evidence_matcher_v1/development_cases.json `
+  --holdout-cases evals/evidence_matcher_v1/holdout_cases.json `
+  --manifest evals/evidence_matcher_v1/holdout_v2_run_manifest.json `
+  --selected-development-manifest evals/evidence_matcher_v1/prompt_v4_selected_development_manifest.json `
+  --development-report docs/metrics/2026-10-05-groq-evidence-matcher-development-prompt-v4.json `
+  --development-coverage-report docs/metrics/2026-10-05-groq-evidence-matcher-development-prompt-v4-coverage-v2-gates-v4.json `
+  --checkpoint docs/metrics/2026-10-05-groq-evidence-matcher-holdout-checkpoint.json `
+  --output docs/metrics/2026-10-05-groq-evidence-matcher-holdout.json `
+  --git-revision <commit-or-working-tree-label>
+```
+
+The manifest freezes eight request slots, one attempt per case, prompt v4, Groq
+`openai/gpt-oss-20b`, at least 11 seconds between requests, and the coverage-v2
+evaluator. Resume skips completed cases. A case that was in progress during a
+local interruption becomes an explicit indeterminate provider failure and is not
+called again. Provider/output failures never become gaps. All safety gates
+passed. Matcher-only coverage was 6/8 and both partial cases became gaps, so
+quality remains limited even though worker integration is allowed.
 
 Exercise the embedding evaluation pipeline offline with its deterministic fake provider:
 

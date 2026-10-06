@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     llm_max_attempts: int = Field(default=2, ge=1, le=3)
     llm_retry_base_delay_seconds: float = Field(default=0.25, ge=0.0, le=5.0)
     llm_max_output_tokens: int = Field(default=1_500, ge=100, le=4_000)
+    evidence_matcher_provider: Literal["fake", "groq"] = "fake"
     log_level: str = "INFO"
     jwt_secret: str = "change-me-in-local-development-secret-32-bytes-minimum"
     access_token_expire_minutes: int = 30

@@ -1,0 +1,16 @@
+{
+  "name": "careerops-evidence-matcher-v1-label-review",
+  "version": 2,
+  "status": "approved_frozen",
+  "reviewer": "project author",
+  "reviewed_at": "2026-10-05T03:04:46Z",
+  "corpus_sha256": "139729a73aa99dc6cd6a9199d8c1b44e901e3d4cb1171ef4abd4990071fd1d0f",
+  "development_cases_sha256": "c8c3d535ae103ea21b4c24397e1021dc4fd7688b37f907563363a19d87329605",
+  "holdout_cases_sha256": "ef179ec0ce80de83806381c834cf73d7f5ab8c4135f3a15305f845e559a9dfdd",
+  "notes": [
+    "Project author approved and froze matcher rubric v2, development labels, prompt v2, and acceptance gates on 2026-10-04 America/Los_Angeles.",
+    "A separate bounded prompt-v2 Groq development run was authorized after this freeze.",
+    "The holdout file was not parsed, run, or used for tuning; its byte hash is unchanged.",
+    "This approval and development authorization do not authorize a matcher holdout run."
+  ]
+}

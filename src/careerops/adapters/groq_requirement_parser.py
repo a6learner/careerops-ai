@@ -8,10 +8,9 @@ from typing import Literal
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+from careerops.adapters.groq_chat import GroqChatTransport, GroqRequestError
 from careerops.domain.errors import ParserOutputValidationError, RequirementParserError
 from careerops.domain.parse_runs import ParsedRequirement, ParserOutput, RequirementCategory
-
-TRANSIENT_STATUS_CODES = frozenset({429, 500, 502, 503, 504})
 
 
 class _RequirementPayload(BaseModel):
@@ -69,15 +68,17 @@ class GroqRequirementParser:
         transport: httpx.AsyncBaseTransport | None = None,
         sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
     ) -> None:
-        self._api_key = api_key
         self._model = model
-        self._base_url = base_url.rstrip("/")
-        self._timeout_seconds = timeout_seconds
-        self._max_attempts = max_attempts
-        self._retry_base_delay_seconds = retry_base_delay_seconds
         self._max_output_tokens = max_output_tokens
-        self._transport = transport
-        self._sleep = sleep
+        self._chat = GroqChatTransport(
+            api_key=api_key,
+            base_url=base_url,
+            timeout_seconds=timeout_seconds,
+            max_attempts=max_attempts,
+            retry_base_delay_seconds=retry_base_delay_seconds,
+            transport=transport,
+            sleep=sleep,
+        )
 
     @property
     def model_name(self) -> str:
@@ -106,10 +107,6 @@ class GroqRequirementParser:
         )
 
     async def _request(self, candidates: tuple[SourceCandidate, ...]) -> httpx.Response:
-        headers = {
-            "Authorization": f"Bearer {self._api_key}",
-            "Content-Type": "application/json",
-        }
         payload = {
             "model": self._model,
             "messages": [
@@ -141,41 +138,10 @@ class GroqRequirementParser:
             "temperature": 0.1,
             "max_completion_tokens": self._max_output_tokens,
         }
-        async with httpx.AsyncClient(
-            timeout=self._timeout_seconds,
-            transport=self._transport,
-        ) as client:
-            for attempt in range(1, self._max_attempts + 1):
-                try:
-                    response = await client.post(
-                        f"{self._base_url}/chat/completions",
-                        headers=headers,
-                        json=payload,
-                    )
-                except httpx.TransportError as exc:
-                    if attempt == self._max_attempts:
-                        raise RequirementParserError() from exc
-                    await self._sleep(self._retry_delay(attempt, None))
-                    continue
-
-                if response.status_code < 400:
-                    return response
-                if response.status_code not in TRANSIENT_STATUS_CODES:
-                    raise RequirementParserError()
-                if attempt == self._max_attempts:
-                    raise RequirementParserError()
-                await self._sleep(self._retry_delay(attempt, response.headers.get("Retry-After")))
-
-        raise RequirementParserError()
-
-    def _retry_delay(self, attempt: int, retry_after: str | None) -> float:
-        if retry_after is not None:
-            try:
-                parsed_retry_after = float(retry_after)
-                return min(max(parsed_retry_after, 0.0), 5.0)
-            except ValueError:
-                pass
-        return self._retry_base_delay_seconds * (2.0 ** (attempt - 1))
+        try:
+            return await self._chat.post_chat_completion(payload)
+        except GroqRequestError as exc:
+            raise RequirementParserError() from exc
 
 
 def build_grounded_requirements(
