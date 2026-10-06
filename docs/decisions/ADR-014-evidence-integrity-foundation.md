@@ -29,6 +29,9 @@ US-005 and US-006.
   quotes.
 - Completing a run and inserting all evidence rows uses one PostgreSQL transaction.
   If any evidence row violates a constraint, the run does not become succeeded.
+- PostgreSQL enforces the timestamp and error-code shape of every Analysis Run
+  lifecycle state. Direct writes cannot persist a queued run with timestamps, a
+  running run with a finish time, or an invalid terminal state.
 - Concurrent active analysis for the same job input is prevented by a partial
   unique index. Idempotency is scoped to user and job.
 
@@ -64,6 +67,8 @@ worker dispatch, or public endpoints. Those will build on this integrity boundar
 - Model metadata tests keep SQLAlchemy declarations aligned with the migration.
 - PostgreSQL integration tests verify that an invalid positive row causes the run
   transition and all evidence writes to roll back together.
+- Migration and PostgreSQL integration verification prove that existing valid rows
+  accept the lifecycle constraint and invalid terminal state writes are rejected.
 
 ## Revisit If
 

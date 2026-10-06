@@ -178,6 +178,15 @@ async def test_analysis_api_to_fake_worker_to_query() -> None:
             assert replayed.json()["id"] == str(analysis_run_id)
             assert dispatcher.ids == [analysis_run_id, analysis_run_id]
 
+            async with session_factory() as constraint_session:
+                with pytest.raises(IntegrityError):
+                    await constraint_session.execute(
+                        update(AnalysisRun)
+                        .where(AnalysisRun.id == analysis_run_id)
+                        .values(status=AnalysisRunStatus.SUCCEEDED.value)
+                    )
+                await constraint_session.rollback()
+
             async with session_factory() as worker_session:
                 executed = await AnalysisRunExecutionService(
                     store=AnalysisRunRepository(worker_session),

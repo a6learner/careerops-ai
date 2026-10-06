@@ -109,3 +109,6 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-06-analysis-run-observability-test-record.md` records JSON logging,
   Analysis correlation and recovery verification, plus the corrected worker-E2E
   provider-selection incident.
+- `2026-10-06-analysis-run-lifecycle-constraint-test-record.md` records the
+  populated- and empty-database migration checks plus direct PostgreSQL lifecycle
+  rejection evidence.

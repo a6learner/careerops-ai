@@ -220,6 +220,7 @@ def test_analysis_runs_table_metadata_matches_migration_contract() -> None:
     assert not analysis_runs.columns["validation_failure_count"].nullable
     constraint_names = {constraint.name for constraint in analysis_runs.constraints}
     assert "ck_analysis_runs_validation_failure_count" in constraint_names
+    assert "ck_analysis_runs_lifecycle" in constraint_names
 
 
 def test_evidence_matches_table_metadata_enforces_grounding_contract() -> None:
