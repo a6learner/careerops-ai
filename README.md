@@ -408,7 +408,11 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 - `PATCH /api/v1/action-items/{id}` updates title or status with `If-Match` optimistic locking, including after its Job is archived.
 - `GET /api/v1/dashboard/summary` returns the current user's active Job and Action Item status totals, cached in Redis with PostgreSQL fallback.
 
-The backend MVP core loop reaches the Dashboard summary. Local Analysis Runs now use exact hybrid retrieval inside the worker while preserving lexical fallback, object-level authorization, evidence validation, and atomic result writes. The evidence matcher remains deterministic test infrastructure; a real matcher is a separate future stage.
+The backend MVP core loop reaches the Dashboard summary. Local Analysis Runs use
+exact hybrid retrieval and either the default deterministic fake matcher or the
+explicitly authorized frozen Groq matcher inside the worker, while preserving
+lexical fallback, object-level authorization, evidence validation, and atomic
+result writes.
 
 ## Key Decisions
 
