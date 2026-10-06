@@ -28,6 +28,7 @@ class RejectingAnalysisRunService:
         job_id: UUID,
         parse_run_id: UUID,
         idempotency_key: str,
+        request_id: str,
     ) -> None:
         raise self.error
 

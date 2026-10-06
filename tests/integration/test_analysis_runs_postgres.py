@@ -25,6 +25,7 @@ from careerops.db.models import (
 from careerops.db.session import create_session_factory
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
+    AnalysisDispatchSource,
     AnalysisRateLimitReservation,
     AnalysisRunErrorCode,
     AnalysisRunStatus,
@@ -46,7 +47,12 @@ class RecordingDispatcher:
     def __init__(self) -> None:
         self.ids: list[UUID] = []
 
-    async def dispatch(self, analysis_run_id: UUID) -> None:
+    async def dispatch(
+        self,
+        analysis_run_id: UUID,
+        request_id: str,
+        dispatch_source: AnalysisDispatchSource,
+    ) -> None:
         self.ids.append(analysis_run_id)
 
 
@@ -347,6 +353,8 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
         current_work = await repository.claim_analysis_run(first[0])
         assert current_work is not None
         assert current_work.attempt == 2
+        recovered_item = next(item for item in requeued if item.id == first[0])
+        assert recovered_item.attempt == 2
         await repository.commit()
 
         assert not await repository.fail_analysis_run(
@@ -369,7 +377,7 @@ async def test_same_key_converges_and_different_key_creates_distinct_run() -> No
             None,
         )
 
-    assert requeued == [first[0]]
+    assert first[0] in {item.id for item in requeued}
     assert recovered is not None
     assert recovered.status is AnalysisRunStatus.QUEUED
     assert recovered.attempt == 2

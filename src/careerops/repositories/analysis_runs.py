@@ -12,6 +12,7 @@ from careerops.domain.analysis_runs import (
     AnalysisRunCreationResult,
     AnalysisRunErrorCode,
     AnalysisRunRecord,
+    AnalysisRunRecoveryItem,
     AnalysisRunStatus,
     AnalysisRunWorkItem,
     EvidenceMatchRecord,
@@ -211,7 +212,7 @@ class AnalysisRunRepository:
         self,
         stale_before: datetime,
         limit: int,
-    ) -> list[UUID]:
+    ) -> list[AnalysisRunRecoveryItem]:
         stale_ids = (
             select(AnalysisRun.id)
             .where(
@@ -233,9 +234,12 @@ class AnalysisRunRepository:
                 started_at=None,
                 finished_at=None,
             )
-            .returning(AnalysisRun.id)
+            .returning(AnalysisRun.id, AnalysisRun.attempt)
         )
-        return list(result.scalars().all())
+        return [
+            AnalysisRunRecoveryItem(id=row.id, attempt=row.attempt)
+            for row in result.all()
+        ]
 
     async def list_queued_analysis_run_ids(self, limit: int) -> list[UUID]:
         result = await self._session.execute(

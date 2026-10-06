@@ -1,3 +1,4 @@
+import logging
 from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
@@ -7,6 +8,7 @@ from careerops.adapters.evidence_matcher_factory import GROQ_EVIDENCE_MATCHER_MO
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
     FAKE_ANALYSIS_MODEL_NAME,
+    AnalysisDispatchSource,
     AnalysisRateLimitReservation,
     AnalysisRunCreationResult,
     AnalysisRunRecord,
@@ -172,11 +174,18 @@ class Dispatcher:
     def __init__(self, *, fail: bool = False) -> None:
         self.fail = fail
         self.ids: list[UUID] = []
+        self.correlations: list[tuple[str, AnalysisDispatchSource]] = []
 
-    async def dispatch(self, analysis_run_id: UUID) -> None:
+    async def dispatch(
+        self,
+        analysis_run_id: UUID,
+        request_id: str,
+        dispatch_source: AnalysisDispatchSource,
+    ) -> None:
         if self.fail:
             raise AnalysisRunDispatchError()
         self.ids.append(analysis_run_id)
+        self.correlations.append((request_id, dispatch_source))
 
 
 class RateLimiter:
@@ -200,18 +209,35 @@ class RateLimiter:
 
 
 @pytest.mark.asyncio
-async def test_submit_analysis_run_commits_queued_run_then_dispatches() -> None:
+async def test_submit_analysis_run_commits_queued_run_then_dispatches(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     job, parse_run, experience = make_inputs()
     store = AnalysisRunStore()
     dispatcher = Dispatcher()
     service = build_service(job, parse_run, [experience], store, dispatcher)
 
-    run = await service.submit_analysis_run(job.user_id, job.id, parse_run.id, "analysis-key")
+    with caplog.at_level(logging.INFO):
+        run = await service.submit_analysis_run(
+            job.user_id,
+            job.id,
+            parse_run.id,
+            "analysis-key",
+            "request-1",
+        )
 
     assert run.status is AnalysisRunStatus.QUEUED
     assert run.input_fingerprint == compute_analysis_input_fingerprint(parse_run, (experience,))
     assert store.committed
     assert dispatcher.ids == [run.id]
+    assert dispatcher.correlations == [("request-1", AnalysisDispatchSource.SUBMISSION)]
+    accepted = next(
+        record for record in caplog.records if record.getMessage() == "analysis_run_accepted"
+    )
+    assert accepted.request_id == "request-1"
+    assert accepted.run_id == str(run.id)
+    assert accepted.attempt == 1
+    assert accepted.outcome == "created"
 
 
 @pytest.mark.asyncio

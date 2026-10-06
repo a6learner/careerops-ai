@@ -3,6 +3,7 @@ from uuid import uuid4
 import pytest
 from redis.exceptions import ConnectionError
 
+from careerops.domain.analysis_runs import AnalysisDispatchSource
 from careerops.domain.errors import (
     AnalysisRunDispatchError,
     EmbeddingRunDispatchError,
@@ -18,12 +19,12 @@ from careerops.workers.dispatcher import (
 class RecordingActor:
     def __init__(self, fail: bool = False) -> None:
         self.fail = fail
-        self.sent: list[str] = []
+        self.sent: list[tuple[str, ...]] = []
 
-    def send(self, parse_run_id: str) -> object:
+    def send(self, *args: str) -> object:
         if self.fail:
             raise ConnectionError("redis unavailable")
-        self.sent.append(parse_run_id)
+        self.sent.append(args)
         return object()
 
 
@@ -34,7 +35,7 @@ async def test_dispatcher_sends_only_the_parse_run_id() -> None:
 
     await DramatiqParseRunDispatcher(actor).dispatch(parse_run_id)
 
-    assert actor.sent == [str(parse_run_id)]
+    assert actor.sent == [(str(parse_run_id),)]
 
 
 @pytest.mark.asyncio
@@ -44,19 +45,29 @@ async def test_dispatcher_converts_redis_failure_to_domain_error() -> None:
 
 
 @pytest.mark.asyncio
-async def test_analysis_dispatcher_sends_only_the_analysis_run_id() -> None:
+async def test_analysis_dispatcher_sends_correlation_context() -> None:
     actor = RecordingActor()
     analysis_run_id = uuid4()
 
-    await DramatiqAnalysisRunDispatcher(actor).dispatch(analysis_run_id)
+    await DramatiqAnalysisRunDispatcher(actor).dispatch(
+        analysis_run_id,
+        "request-1",
+        AnalysisDispatchSource.SUBMISSION,
+    )
 
-    assert actor.sent == [str(analysis_run_id)]
+    assert actor.sent == [
+        (str(analysis_run_id), "request-1", AnalysisDispatchSource.SUBMISSION.value)
+    ]
 
 
 @pytest.mark.asyncio
 async def test_analysis_dispatcher_converts_redis_failure_to_domain_error() -> None:
     with pytest.raises(AnalysisRunDispatchError):
-        await DramatiqAnalysisRunDispatcher(RecordingActor(fail=True)).dispatch(uuid4())
+        await DramatiqAnalysisRunDispatcher(RecordingActor(fail=True)).dispatch(
+            uuid4(),
+            "request-1",
+            AnalysisDispatchSource.SUBMISSION,
+        )
 
 
 @pytest.mark.asyncio
@@ -66,7 +77,7 @@ async def test_embedding_dispatcher_sends_only_the_run_id() -> None:
 
     await DramatiqEmbeddingRunDispatcher(actor).dispatch(run_id)
 
-    assert actor.sent == [str(run_id)]
+    assert actor.sent == [(str(run_id),)]
 
 
 @pytest.mark.asyncio

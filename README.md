@@ -119,6 +119,21 @@ Redis admission failure returns 503 instead of silently disabling cost
 protection. Configure the window with `CAREEROPS_ANALYSIS_RATE_LIMIT` and
 `CAREEROPS_ANALYSIS_RATE_LIMIT_WINDOW_SECONDS`.
 
+Analysis lifecycle logs are valid JSON with an explicit safe-field allowlist.
+Use `run_id` plus `attempt` to correlate durable work across duplicate delivery
+and recovery. The validated HTTP `request_id` follows initial queue delivery;
+recovery uses a new request ID because it is a separate invocation. Logs do not
+contain job or Experience text, credentials, authorization tokens, idempotency
+keys, or raw provider output.
+
+Before rebuilding the Compose worker for `test_worker_e2e.py`, set
+`CAREEROPS_LLM_PROVIDER=fake` in the same shell that runs `docker compose up`.
+Also force parser, matcher, and embedding providers to fake in the host test
+process. The test checks its own settings and the persisted fake model
+identities, but it cannot configure an already-running worker process. Inspect
+the recreated worker environment before dispatching test work; never rely on an
+ambient developer `.env` for this offline check.
+
 Recover queued work and stale running work from PostgreSQL:
 
 ```powershell

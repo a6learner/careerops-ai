@@ -6,6 +6,7 @@ import pytest
 from dramatiq.brokers.redis import RedisBroker
 
 from careerops.core.config import get_settings
+from careerops.domain.analysis_runs import AnalysisDispatchSource
 from careerops.workers.dispatcher import (
     DramatiqAnalysisRunDispatcher,
     DramatiqEmbeddingRunDispatcher,
@@ -62,7 +63,11 @@ async def test_dispatcher_enqueues_analysis_run_id_in_redis() -> None:
     queue_name = "analysis-runs-test"
     broker = RedisBroker(url=get_settings().redis_url, namespace=namespace)
 
-    def do_nothing(analysis_run_id: str) -> None:
+    def do_nothing(
+        analysis_run_id: str,
+        request_id: str,
+        dispatch_source: str,
+    ) -> None:
         return None
 
     actor = dramatiq.actor(
@@ -75,12 +80,20 @@ async def test_dispatcher_enqueues_analysis_run_id_in_redis() -> None:
     consumer = broker.consume(queue_name, timeout=1_000)
     connected = False
     try:
-        await DramatiqAnalysisRunDispatcher(actor).dispatch(analysis_run_id)
+        await DramatiqAnalysisRunDispatcher(actor).dispatch(
+            analysis_run_id,
+            "integration-request",
+            AnalysisDispatchSource.SUBMISSION,
+        )
         connected = True
         message = next(consumer)
 
         assert message is not None
-        assert message.args == (str(analysis_run_id),)
+        assert message.args == (
+            str(analysis_run_id),
+            "integration-request",
+            AnalysisDispatchSource.SUBMISSION.value,
+        )
         consumer.ack(message)
     finally:
         consumer.close()

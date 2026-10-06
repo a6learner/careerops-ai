@@ -10,6 +10,8 @@ from careerops.core.config import Settings
 from careerops.db.models import Experience
 from careerops.db.session import create_session_factory
 from careerops.domain.analysis_runs import FAKE_ANALYSIS_MODEL_NAME
+from careerops.domain.embeddings import FAKE_EMBEDDING_MODEL_NAME
+from careerops.domain.parse_runs import FAKE_PARSE_MODEL_NAME
 from careerops.main import create_app
 
 pytestmark = pytest.mark.integration
@@ -75,6 +77,7 @@ async def test_api_dispatches_work_that_worker_completes() -> None:
                 await asyncio.sleep(0.1)
             assert stored_experience is not None
             assert stored_experience.embedding is not None
+            assert stored_experience.embedding_model == FAKE_EMBEDDING_MODEL_NAME
 
             job = await client.post(
                 "/api/v1/jobs",
@@ -102,6 +105,7 @@ async def test_api_dispatches_work_that_worker_completes() -> None:
 
             assert completed_parse.status_code == 200
             assert completed_parse.json()["status"] == "succeeded"
+            assert completed_parse.json()["model_name"] == FAKE_PARSE_MODEL_NAME
             assert len(completed_parse.json()["requirements"]) == 2
 
             analysis = await client.post(

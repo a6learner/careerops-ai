@@ -12,6 +12,7 @@ from careerops.adapters.groq_evidence_matcher import GroqEvidenceMatcher
 from careerops.domain.analysis_runs import (
     ANALYSIS_PROMPT_VERSION,
     FAKE_ANALYSIS_MODEL_NAME,
+    AnalysisDispatchSource,
     AnalysisInput,
     AnalysisRunErrorCode,
     AnalysisRunWorkItem,
@@ -222,7 +223,9 @@ class WrongOutputModelMatcher(FakeEvidenceMatcher):
 
 
 @pytest.mark.asyncio
-async def test_execution_completes_all_requirements_once() -> None:
+async def test_execution_completes_all_requirements_once(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     store, results = make_execution_dependencies()
     service = AnalysisRunExecutionService(
         store,
@@ -230,8 +233,17 @@ async def test_execution_completes_all_requirements_once() -> None:
         FakeEvidenceMatcher(),
     )
 
-    first = await service.execute(store.work_item.id)
-    duplicate = await service.execute(store.work_item.id)
+    with caplog.at_level(logging.INFO):
+        first = await service.execute(
+            store.work_item.id,
+            request_id="request-1",
+            dispatch_source=AnalysisDispatchSource.SUBMISSION,
+        )
+        duplicate = await service.execute(
+            store.work_item.id,
+            request_id="request-2",
+            dispatch_source=AnalysisDispatchSource.IDEMPOTENT_REPLAY,
+        )
 
     assert first
     assert not duplicate
@@ -239,6 +251,17 @@ async def test_execution_completes_all_requirements_once() -> None:
     assert results.matches[0].verdict is EvidenceVerdict.MATCHED
     assert results.committed
     assert store.commits == 1
+    succeeded = next(
+        record for record in caplog.records if record.getMessage() == "analysis_run_succeeded"
+    )
+    skipped = next(
+        record for record in caplog.records if record.getMessage() == "analysis_run_claim_skipped"
+    )
+    assert succeeded.request_id == "request-1"
+    assert succeeded.run_id == str(store.work_item.id)
+    assert succeeded.attempt == 1
+    assert skipped.request_id == "request-2"
+    assert skipped.outcome == "not_queued"
 
 
 @pytest.mark.asyncio
@@ -555,13 +578,14 @@ async def test_execution_persists_specific_output_failure(
     assert store.failed_input_tokens == 42
     assert store.failed_output_tokens == 7
     assert not results.committed
-    assert caplog.records[-1].message == "evidence_matcher_output_rejected"
-    assert caplog.records[-1].matcher_output_failure_reason == reason.value
-    assert caplog.records[-1].matcher_output_diagnostic == (
+    assert caplog.records[-2].getMessage() == "evidence_matcher_output_rejected"
+    assert caplog.records[-2].failure_reason == reason.value
+    assert caplog.records[-2].diagnostic == (
         "loc=matches.0.evidence;type=missing"
     )
-    assert caplog.records[-1].matcher_response_sha256 == "a" * 64
-    assert caplog.records[-1].matcher_response_size_bytes == 321
+    assert caplog.records[-2].response_sha256 == "a" * 64
+    assert caplog.records[-2].response_size_bytes == 321
+    assert caplog.records[-1].getMessage() == "analysis_run_failed"
 
 
 @pytest.mark.asyncio

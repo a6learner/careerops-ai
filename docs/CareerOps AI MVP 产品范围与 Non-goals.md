@@ -487,13 +487,13 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 
 ### P0-8 可观测性
 
-- 结构化 JSON 日志，包含 request_id、user_id、run_id、latency、error_code。
-- request_id 通过队列消息传递到 worker，形成端到端链路。
+- 结构化 JSON 日志，包含 request_id、user_id、run_id、attempt、latency、error_code。
+- 初次投递的 request_id 通过队列传递到 worker；run_id 与 attempt 贯穿恢复后的完整生命周期。
 - 关键指标可查询：任务成功率、重试率、P50/P95、token 消耗。
 
 验收：
 
-- Given 一次失败的分析，When 用 request_id 检索日志，Then 可串联 API 入口、入队、worker 执行与失败原因。
+- Given 一次失败的分析，When 用 run_id 检索日志，Then 可串联 API 接收、入队、worker attempt、恢复与失败原因。
 - Given 日志输出，When 检查内容，Then 不含密码、完整令牌或完整经历原文。
 
 ### P0-9 测试分层
@@ -623,7 +623,7 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 - [ ] 三层证据校验全部生效，含 CHECK 约束验证
 - [ ] 缓存命中率与失效逻辑有数据
 - [ ] 限流返回 429 且有测试
-- [ ] request_id 端到端贯穿 API 与 worker
+- [x] Analysis run_id + attempt 贯穿 API、worker 与 recovery；初次 request_id 贯穿队列
 - [ ] 迁移可从空库执行并演示一次回滚
 - [ ] 负载测试报告已保存
 - [ ] AI 评估集与评估输出已入库

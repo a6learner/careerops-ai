@@ -9,6 +9,7 @@ from careerops.adapters.evidence_matcher_factory import configured_evidence_matc
 from careerops.api.dependencies import get_current_user
 from careerops.api.preconditions import MAX_IDEMPOTENCY_KEY_LENGTH, parse_idempotency_key
 from careerops.core.config import get_settings
+from careerops.core.request_id import request_id_from_request
 from careerops.db.session import get_session
 from careerops.domain.analysis_runs import AnalysisRunRecord, EvidenceMatchRecord
 from careerops.domain.embeddings import embedding_space_for_provider
@@ -41,6 +42,7 @@ def get_analysis_rate_limiter(request: Request) -> AnalysisRateLimiter:
 
 @router.post("", response_model=AnalysisRunResponse, status_code=HTTPStatus.ACCEPTED)
 async def submit_analysis_run(
+    request: Request,
     job_id: UUID,
     payload: AnalysisRunSubmitRequest,
     current_user: Annotated[UserAccount, Depends(get_current_user)],
@@ -57,6 +59,7 @@ async def submit_analysis_run(
         job_id=job_id,
         parse_run_id=payload.parse_run_id,
         idempotency_key=parse_idempotency_key(idempotency_key),
+        request_id=request_id_from_request(request),
     )
     return to_response(run)
 

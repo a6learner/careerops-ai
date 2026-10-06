@@ -1,3 +1,4 @@
+import logging
 from uuid import UUID
 
 import dramatiq
@@ -6,8 +7,10 @@ from careerops.adapters.embedding_factory import ConfiguredEmbeddingProviderReso
 from careerops.adapters.evidence_matcher_factory import ConfiguredEvidenceMatcherResolver
 from careerops.adapters.factory import create_requirement_parser
 from careerops.core.config import get_settings
+from careerops.core.logging import configure_logging
+from careerops.core.request_id import normalize_request_id
 from careerops.db.session import create_session_factory
-from careerops.domain.analysis_runs import AnalysisRunWorkItem
+from careerops.domain.analysis_runs import AnalysisDispatchSource, AnalysisRunWorkItem
 from careerops.domain.embeddings import embedding_space_for_analysis_pipeline
 from careerops.repositories.analysis_results import AnalysisResultRepository
 from careerops.repositories.analysis_runs import AnalysisRunRepository
@@ -22,6 +25,7 @@ from careerops.services.parse_run_execution import ParseRunExecutionService, Req
 from careerops.workers.broker import redis_broker
 
 worker_session_factory = create_session_factory(get_settings().database_url)
+logger = logging.getLogger(__name__)
 
 
 def build_hybrid_retriever(
@@ -69,14 +73,39 @@ async def execute_parse_run_async(
     queue_name="analysis-runs",
     max_retries=0,
 )
-async def execute_analysis_run(analysis_run_id: str) -> None:
-    await execute_analysis_run_async(UUID(analysis_run_id))
+async def execute_analysis_run(
+    analysis_run_id: str,
+    request_id: str | None = None,
+    dispatch_source: str = AnalysisDispatchSource.LEGACY.value,
+) -> None:
+    settings = get_settings()
+    configure_logging(settings.log_level)
+    safe_request_id = normalize_request_id(request_id)
+    source = parse_analysis_dispatch_source(dispatch_source)
+    logger.info(
+        "analysis_worker_delivery_received",
+        extra={
+            "request_id": safe_request_id,
+            "run_type": "analysis",
+            "run_id": analysis_run_id,
+            "dispatch_source": source.value,
+        },
+    )
+    await execute_analysis_run_async(
+        UUID(analysis_run_id),
+        request_id=safe_request_id,
+        dispatch_source=source,
+    )
 
 
 async def execute_analysis_run_async(
     analysis_run_id: UUID,
     matcher: EvidenceMatcher | None = None,
+    *,
+    request_id: str | None = None,
+    dispatch_source: AnalysisDispatchSource = AnalysisDispatchSource.LEGACY,
 ) -> bool:
+    safe_request_id = normalize_request_id(request_id)
     async with worker_session_factory() as session:
         settings = get_settings()
         resolver = ConfiguredEmbeddingProviderResolver(settings)
@@ -100,7 +129,18 @@ async def execute_analysis_run_async(
                 resolver,
             ),
         )
-        return await service.execute(analysis_run_id)
+        return await service.execute(
+            analysis_run_id,
+            request_id=safe_request_id,
+            dispatch_source=dispatch_source,
+        )
+
+
+def parse_analysis_dispatch_source(value: str) -> AnalysisDispatchSource:
+    try:
+        return AnalysisDispatchSource(value)
+    except ValueError:
+        return AnalysisDispatchSource.LEGACY
 
 
 @dramatiq.actor(

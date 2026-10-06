@@ -1,3 +1,5 @@
+from uuid import UUID
+
 import pytest
 from httpx import ASGITransport, AsyncClient
 
@@ -65,3 +67,27 @@ async def test_malformed_if_match_uses_project_error_contract() -> None:
     assert body["error"]["code"] == "IF_MATCH_REQUIRED"
     assert body["error"]["details"] == {}
     assert body["error"]["request_id"] == "bad-if-match"
+
+
+@pytest.mark.asyncio
+async def test_unsafe_request_id_is_replaced() -> None:
+    app = create_app()
+
+    async def fake_session() -> None:
+        return None
+
+    app.dependency_overrides[get_session] = fake_session
+    transport = ASGITransport(app=app)
+    unsafe_request_id = "contains spaces and should not enter logs"
+
+    async with AsyncClient(transport=transport, base_url="http://testserver") as client:
+        response = await client.post(
+            "/api/v1/auth/register",
+            json={"email": "not-an-email", "password": "strong-password"},
+            headers={"x-request-id": unsafe_request_id},
+        )
+
+    request_id = response.json()["error"]["request_id"]
+    assert request_id != unsafe_request_id
+    assert response.headers["x-request-id"] == request_id
+    UUID(request_id)

@@ -6,6 +6,7 @@ from typing import Protocol
 from uuid import UUID
 
 from careerops.domain.analysis_runs import (
+    AnalysisDispatchSource,
     AnalysisInput,
     AnalysisRunErrorCode,
     AnalysisRunWorkItem,
@@ -82,11 +83,31 @@ class AnalysisRunExecutionService:
         fixed_retriever = retriever or LexicalEvidenceRetriever()
         self._retriever_factory = retriever_factory or (lambda work_item: fixed_retriever)
 
-    async def execute(self, analysis_run_id: UUID) -> bool:
+    async def execute(
+        self,
+        analysis_run_id: UUID,
+        *,
+        request_id: str = "unknown",
+        dispatch_source: AnalysisDispatchSource = AnalysisDispatchSource.LEGACY,
+    ) -> bool:
         work_item = await self._store.claim_analysis_run(analysis_run_id)
         if work_item is None:
+            logger.info(
+                "analysis_run_claim_skipped",
+                extra={
+                    "request_id": request_id,
+                    "run_type": "analysis",
+                    "run_id": str(analysis_run_id),
+                    "dispatch_source": dispatch_source.value,
+                    "outcome": "not_queued",
+                },
+            )
             return False
         await self._store.commit()
+        logger.info(
+            "analysis_run_claimed",
+            extra=analysis_run_log_fields(work_item, request_id, dispatch_source),
+        )
 
         started = perf_counter()
         matcher = self._matcher_factory(work_item)
@@ -106,6 +127,8 @@ class AnalysisRunExecutionService:
                 work_item.model_name,
                 AnalysisRunErrorCode.MATCHER_OUTPUT_INVALID_CONTRACT,
                 elapsed_milliseconds(started),
+                request_id=request_id,
+                dispatch_source=dispatch_source,
             )
             return True
         analysis_input = await self._store.load_analysis_input(work_item)
@@ -122,6 +145,8 @@ class AnalysisRunExecutionService:
                 matcher.model_name,
                 AnalysisRunErrorCode.ANALYSIS_INPUT_CHANGED,
                 elapsed_milliseconds(started),
+                request_id=request_id,
+                dispatch_source=dispatch_source,
             )
             return True
 
@@ -142,6 +167,8 @@ class AnalysisRunExecutionService:
                 matcher.model_name,
                 AnalysisRunErrorCode.MATCHER_OUTPUT_INVALID_CONTRACT,
                 elapsed_milliseconds(started),
+                request_id=request_id,
+                dispatch_source=dispatch_source,
             )
             return True
         try:
@@ -167,19 +194,19 @@ class AnalysisRunExecutionService:
                 matcher.model_name,
                 provider_error_code(exc.reason),
                 elapsed_milliseconds(started),
+                request_id=request_id,
+                dispatch_source=dispatch_source,
             )
             return True
         except MatcherOutputValidationError as exc:
             logger.warning(
                 "evidence_matcher_output_rejected",
                 extra={
-                    "analysis_run_id": str(analysis_run_id),
-                    "analysis_attempt": work_item.attempt,
-                    "matcher_model_name": matcher.model_name,
-                    "matcher_output_failure_reason": exc.reason.value,
-                    "matcher_output_diagnostic": exc.diagnostic,
-                    "matcher_response_sha256": exc.response_sha256,
-                    "matcher_response_size_bytes": exc.response_size_bytes,
+                    **analysis_run_log_fields(work_item, request_id, dispatch_source),
+                    "failure_reason": exc.reason.value,
+                    "diagnostic": exc.diagnostic,
+                    "response_sha256": exc.response_sha256,
+                    "response_size_bytes": exc.response_size_bytes,
                 },
             )
             await self._fail(
@@ -188,19 +215,34 @@ class AnalysisRunExecutionService:
                 matcher.model_name,
                 output_error_code(exc.reason),
                 elapsed_milliseconds(started),
+                request_id=request_id,
+                dispatch_source=dispatch_source,
                 input_tokens=exc.input_tokens,
                 output_tokens=exc.output_tokens,
             )
             return True
-        return await self._results.complete(
+        latency_ms = elapsed_milliseconds(started)
+        completed = await self._results.complete(
             analysis_run_id,
             work_item.attempt,
             validated_matches,
             model_name=output.model_name,
-            latency_ms=elapsed_milliseconds(started),
+            latency_ms=latency_ms,
             input_tokens=output.input_tokens,
             output_tokens=output.output_tokens,
         )
+        logger.log(
+            logging.INFO if completed else logging.WARNING,
+            "analysis_run_succeeded" if completed else "analysis_run_persistence_fenced",
+            extra={
+                **analysis_run_log_fields(work_item, request_id, dispatch_source),
+                "outcome": "succeeded" if completed else "stale_attempt",
+                "latency_ms": latency_ms,
+                "input_tokens": output.input_tokens,
+                "output_tokens": output.output_tokens,
+            },
+        )
+        return completed
 
     async def _fail(
         self,
@@ -210,9 +252,11 @@ class AnalysisRunExecutionService:
         error_code: AnalysisRunErrorCode,
         latency_ms: int,
         *,
+        request_id: str,
+        dispatch_source: AnalysisDispatchSource,
         input_tokens: int | None = None,
         output_tokens: int | None = None,
-    ) -> None:
+    ) -> bool:
         failed = await self._store.fail_analysis_run(
             analysis_run_id,
             attempt,
@@ -224,6 +268,41 @@ class AnalysisRunExecutionService:
         )
         if failed:
             await self._store.commit()
+        logger.log(
+            logging.WARNING,
+            "analysis_run_failed" if failed else "analysis_run_persistence_fenced",
+            extra={
+                "request_id": request_id,
+                "run_type": "analysis",
+                "run_id": str(analysis_run_id),
+                "attempt": attempt,
+                "dispatch_source": dispatch_source.value,
+                "model_name": model_name,
+                "outcome": "failed" if failed else "stale_attempt",
+                "error_code": error_code.value,
+                "latency_ms": latency_ms,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+            },
+        )
+        return failed
+
+
+def analysis_run_log_fields(
+    work_item: AnalysisRunWorkItem,
+    request_id: str,
+    dispatch_source: AnalysisDispatchSource,
+) -> dict[str, object]:
+    return {
+        "request_id": request_id,
+        "user_id": str(work_item.user_id),
+        "run_type": "analysis",
+        "run_id": str(work_item.id),
+        "attempt": work_item.attempt,
+        "dispatch_source": dispatch_source.value,
+        "pipeline_version": work_item.prompt_version,
+        "model_name": work_item.model_name,
+    }
 
 
 def _fixed_matcher_factory(

@@ -106,3 +106,6 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-06-analysis-admission-rate-limit-test-record.md` records offline,
   PostgreSQL, and direct Redis-container verification of per-user Analysis Run
   admission control, including the current host-port test limitation.
+- `2026-10-06-analysis-run-observability-test-record.md` records JSON logging,
+  Analysis correlation and recovery verification, plus the corrected worker-E2E
+  provider-selection incident.

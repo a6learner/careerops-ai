@@ -65,6 +65,13 @@ class AnalysisRunStatus(StrEnum):
     CANCELLED = "cancelled"
 
 
+class AnalysisDispatchSource(StrEnum):
+    SUBMISSION = "submission"
+    IDEMPOTENT_REPLAY = "idempotent_replay"
+    RECOVERY = "recovery"
+    LEGACY = "legacy"
+
+
 class AnalysisRunErrorCode(StrEnum):
     ANALYSIS_INPUT_CHANGED = "ANALYSIS_INPUT_CHANGED"
     MATCHER_FAILED = "MATCHER_FAILED"
@@ -137,6 +144,12 @@ class AnalysisRunWorkItem:
     model_name: str
     prompt_version: str
     created_at: datetime
+
+
+@dataclass(frozen=True)
+class AnalysisRunRecoveryItem:
+    id: UUID
+    attempt: int
 
 
 @dataclass(frozen=True)

@@ -5,6 +5,8 @@ from typing import cast
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from careerops.core.config import get_settings
+from careerops.core.logging import configure_logging
+from careerops.core.request_id import new_request_id
 from careerops.db.session import create_session_factory
 from careerops.repositories.analysis_runs import AnalysisRunRepository
 from careerops.services.analysis_run_recovery import (
@@ -16,6 +18,8 @@ from careerops.workers.dispatcher import DramatiqAnalysisRunDispatcher
 
 async def recover_analysis_runs() -> AnalysisRunRecoveryResult:
     settings = get_settings()
+    configure_logging(settings.log_level)
+    request_id = new_request_id()
     session_factory = create_session_factory(settings.database_url)
     try:
         async with session_factory() as session:
@@ -29,6 +33,7 @@ async def recover_analysis_runs() -> AnalysisRunRecoveryResult:
             return await service.recover(
                 stale_before,
                 settings.analysis_run_recovery_batch_size,
+                request_id,
             )
     finally:
         engine = cast(AsyncEngine, session_factory.kw["bind"])
