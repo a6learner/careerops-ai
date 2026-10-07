@@ -11,3 +11,4 @@ class HealthCheck(BaseModel):
 class ReadinessCheck(BaseModel):
     status: Literal["ready", "not_ready"]
     database: bool
+    redis: bool

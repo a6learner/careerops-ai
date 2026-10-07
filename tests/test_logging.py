@@ -20,6 +20,8 @@ def test_json_log_formatter_emits_valid_allowlisted_fields() -> None:
             "request_id": "request-1",
             "run_id": "run-1",
             "attempt": 2,
+            "database_ready": False,
+            "redis_ready": True,
             "raw_output": "must-not-be-logged",
         },
     )
@@ -29,5 +31,7 @@ def test_json_log_formatter_emits_valid_allowlisted_fields() -> None:
     assert payload["request_id"] == "request-1"
     assert payload["run_id"] == "run-1"
     assert payload["attempt"] == 2
+    assert payload["database_ready"] is False
+    assert payload["redis_ready"] is True
     assert "raw_output" not in payload
     assert "timestamp" in payload

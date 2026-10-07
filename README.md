@@ -408,7 +408,9 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 ## API Surface
 
 - `GET /healthz` checks whether the API process is alive.
-- `GET /readyz` checks whether required dependencies are reachable.
+- `GET /readyz` checks PostgreSQL and Redis concurrently. It returns `200` with
+  `{"status":"ready","database":true,"redis":true}` only when both are
+  reachable; otherwise it returns `503` with each dependency's boolean state.
 - `POST /api/v1/auth/register` creates a user with a hashed password.
 - `POST /api/v1/auth/login` verifies credentials and returns a bearer access token.
 - `GET /api/v1/auth/me` returns the current user for a valid bearer access token.

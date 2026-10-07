@@ -263,7 +263,7 @@ CREATE INDEX idx_exp_embedding
 | PATCH /action-items/{id} | 更新状态 | 200 |
 | GET /dashboard/summary | 聚合数据 | 200 |
 | GET /healthz | 存活检查 | 200 |
-| GET /readyz | 依赖就绪检查 | 200 |
+| GET /readyz | PostgreSQL 与 Redis 依赖就绪检查 | 200 / 503 |
 
 设计要点，全部需要能解释：
 
@@ -516,7 +516,8 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 
 - Docker 化 API、worker、前端；Compose 启动本地依赖。
 - 迁移由 Alembic 管理，可从空库执行，包含一次可演示的回滚。
-- 健康检查区分 liveness 与 readiness。
+- 健康检查区分 liveness 与 readiness；readiness 仅在 PostgreSQL 与 Redis
+  均可访问时返回 200，否则返回 503 并标识失败依赖。
 - CI 执行 lint、类型检查、测试、迁移检查。
 - README 含问题定义、架构图、数据模型、API 摘要、关键设计决策、性能数据、已知限制。
 - ADR 目录记录至少 5 个架构决策。

@@ -117,3 +117,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0033 Analysis Admission Rate Limiting](0033-analysis-admission-rate-limiting.md)
 - [0034 Analysis Run Observability](0034-analysis-run-observability.md)
 - [0035 Analysis Run Lifecycle Constraint](0035-analysis-run-lifecycle-constraint.md)
+- [0036 API Readiness](0036-api-readiness.md)

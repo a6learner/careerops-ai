@@ -25,6 +25,8 @@ _STRUCTURED_FIELDS = (
     "requeued",
     "dispatched",
     "dispatch_failed",
+    "database_ready",
+    "redis_ready",
 )
 
 

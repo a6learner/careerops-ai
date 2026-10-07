@@ -20,6 +20,7 @@ from careerops.api.jobs import router as jobs_router
 from careerops.api.parse_runs import router as parse_runs_router
 from careerops.api.routes import router
 from careerops.cache.dashboard import RedisDashboardCache
+from careerops.cache.health import RedisReadinessChecker
 from careerops.core.config import Settings, get_settings
 from careerops.core.errors import ErrorCode, ErrorDetail, ErrorResponse
 from careerops.core.logging import configure_logging
@@ -86,6 +87,7 @@ def create_app() -> FastAPI:
         socket_timeout=settings.redis_socket_timeout_seconds,
     )
     app.state.redis_client = redis_client
+    app.state.redis_checker = RedisReadinessChecker(redis_client)
     app.state.dashboard_cache = RedisDashboardCache(
         redis_client,
         ttl_seconds=settings.dashboard_cache_ttl_seconds,

@@ -112,3 +112,5 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-06-analysis-run-lifecycle-constraint-test-record.md` records the
   populated- and empty-database migration checks plus direct PostgreSQL lifecycle
   rejection evidence.
+- `2026-10-06-api-readiness-test-record.md` records the PostgreSQL-and-Redis
+  readiness matrix, real 503 semantics, and local-container success path.

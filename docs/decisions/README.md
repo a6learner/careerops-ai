@@ -88,3 +88,4 @@ What future condition would justify reopening this decision?
 - `ADR-030-real-evidence-matcher-worker-integration.md`: durable matcher identity, worker-only real-provider authorization, specific failure persistence, no fake fallback, and attempt-fenced recovery.
 - `ADR-031-analysis-admission-rate-limiting.md`: atomic per-user Redis sliding-window admission for new Analysis Runs, idempotent replay bypass, compensating release, and fail-closed cost protection.
 - `ADR-032-analysis-run-observability.md`: allowlisted JSON events and run-attempt correlation across Analysis submission, delivery, execution, fencing, and recovery.
+- `ADR-033-api-readiness-dependencies.md`: PostgreSQL-and-Redis readiness with real HTTP 503 failure semantics and safe dependency diagnostics.
