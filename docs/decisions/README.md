@@ -89,3 +89,6 @@ What future condition would justify reopening this decision?
 - `ADR-031-analysis-admission-rate-limiting.md`: atomic per-user Redis sliding-window admission for new Analysis Runs, idempotent replay bypass, compensating release, and fail-closed cost protection.
 - `ADR-032-analysis-run-observability.md`: allowlisted JSON events and run-attempt correlation across Analysis submission, delivery, execution, fencing, and recovery.
 - `ADR-033-api-readiness-dependencies.md`: PostgreSQL-and-Redis readiness with real HTTP 503 failure semantics and safe dependency diagnostics.
+- `ADR-034-postgresql-backup-restore-drill-safety.md`: deterministic temporary resource identity, protected database names, and fail-closed cleanup gates for the local PostgreSQL recovery drill.
+- `ADR-035-bounded-worker-recovery-cycle.md`: one fake-only, bounded operational pass over parse, analysis, and embedding recovery without adding a scheduler.
+- `ADR-036-platform-neutral-deployment-contract.md`: one immutable non-root image, separate migration release step, dependency readiness, and fail-closed production secrets.

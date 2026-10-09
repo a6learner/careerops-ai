@@ -118,3 +118,6 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0034 Analysis Run Observability](0034-analysis-run-observability.md)
 - [0035 Analysis Run Lifecycle Constraint](0035-analysis-run-lifecycle-constraint.md)
 - [0036 API Readiness](0036-api-readiness.md)
+- [0037 PostgreSQL Backup/Restore Drill Safety](0037-postgresql-backup-restore-drill-safety.md)
+- [0038 Bounded Worker Recovery Cycle](0038-bounded-worker-recovery-cycle.md)
+- [0039 Platform-Neutral Deployment Contract](0039-platform-neutral-deployment-contract.md)

@@ -1,8 +1,10 @@
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+DEFAULT_LOCAL_JWT_SECRET = "change-me-in-local-development-secret-32-bytes-minimum"
 
 
 class Settings(BaseSettings):
@@ -38,8 +40,16 @@ class Settings(BaseSettings):
     llm_max_output_tokens: int = Field(default=1_500, ge=100, le=4_000)
     evidence_matcher_provider: Literal["fake", "groq"] = "fake"
     log_level: str = "INFO"
-    jwt_secret: str = "change-me-in-local-development-secret-32-bytes-minimum"
+    jwt_secret: str = DEFAULT_LOCAL_JWT_SECRET
     access_token_expire_minutes: int = 30
+
+    @model_validator(mode="after")
+    def reject_unsafe_production_defaults(self) -> "Settings":
+        if self.environment.casefold() == "production" and (
+            self.jwt_secret == DEFAULT_LOCAL_JWT_SECRET
+        ):
+            raise ValueError("production requires an explicit CAREEROPS_JWT_SECRET")
+        return self
 
 
 @lru_cache

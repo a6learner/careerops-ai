@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: careerops
       POSTGRES_PASSWORD: careerops
     ports:
-      - "5432:5432"
+      - "${CAREEROPS_POSTGRES_PORT:-5432}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U careerops -d careerops"]
       interval: 5s
@@ -18,19 +18,63 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "${CAREEROPS_REDIS_PORT:-6379}:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 3s
       retries: 10
 
+  migrate:
+    build: .
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      CAREEROPS_ENV: ${CAREEROPS_ENV:-local}
+      CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:careerops@postgres:5432/careerops
+      CAREEROPS_JWT_SECRET: ${CAREEROPS_JWT_SECRET:-change-me-in-local-development-secret-32-bytes-minimum}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api:
+    build: .
+    ports:
+      - "${CAREEROPS_API_PORT:-8000}:8000"
+    environment:
+      CAREEROPS_ENV: ${CAREEROPS_ENV:-local}
+      CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:careerops@postgres:5432/careerops
+      CAREEROPS_REDIS_URL: redis://redis:6379/0
+      CAREEROPS_JWT_SECRET: ${CAREEROPS_JWT_SECRET:-change-me-in-local-development-secret-32-bytes-minimum}
+      CAREEROPS_LLM_PROVIDER: ${CAREEROPS_LLM_PROVIDER:-fake}
+      CAREEROPS_EMBEDDING_PROVIDER: ${CAREEROPS_EMBEDDING_PROVIDER:-fake}
+      CAREEROPS_EVIDENCE_MATCHER_PROVIDER: ${CAREEROPS_EVIDENCE_MATCHER_PROVIDER:-fake}
+      CAREEROPS_LOG_LEVEL: ${CAREEROPS_LOG_LEVEL:-INFO}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=2)",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
   worker:
     build: .
     command: ["dramatiq", "careerops.workers.tasks", "--processes", "1", "--threads", "4"]
     environment:
+      CAREEROPS_ENV: ${CAREEROPS_ENV:-local}
       CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:careerops@postgres:5432/careerops
       CAREEROPS_REDIS_URL: redis://redis:6379/0
+      CAREEROPS_JWT_SECRET: ${CAREEROPS_JWT_SECRET:-change-me-in-local-development-secret-32-bytes-minimum}
       CAREEROPS_LLM_PROVIDER: ${CAREEROPS_LLM_PROVIDER:-fake}
       CAREEROPS_LLM_MODEL: ${CAREEROPS_LLM_MODEL:-openai/gpt-oss-20b}
       CAREEROPS_LLM_BASE_URL: ${CAREEROPS_LLM_BASE_URL:-https://api.groq.com/openai/v1}
@@ -39,9 +83,13 @@ services:
       CAREEROPS_LLM_MAX_ATTEMPTS: ${CAREEROPS_LLM_MAX_ATTEMPTS:-2}
       CAREEROPS_LLM_RETRY_BASE_DELAY_SECONDS: ${CAREEROPS_LLM_RETRY_BASE_DELAY_SECONDS:-0.25}
       CAREEROPS_LLM_MAX_OUTPUT_TOKENS: ${CAREEROPS_LLM_MAX_OUTPUT_TOKENS:-1500}
+      CAREEROPS_EMBEDDING_PROVIDER: ${CAREEROPS_EMBEDDING_PROVIDER:-fake}
+      CAREEROPS_GEMINI_API_KEY: ${CAREEROPS_GEMINI_API_KEY:-}
+      CAREEROPS_EVIDENCE_MATCHER_PROVIDER: ${CAREEROPS_EVIDENCE_MATCHER_PROVIDER:-fake}
+      CAREEROPS_LOG_LEVEL: ${CAREEROPS_LOG_LEVEL:-INFO}
     depends_on:
-      postgres:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       redis:
         condition: service_healthy
 

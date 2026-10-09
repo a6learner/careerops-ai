@@ -32,6 +32,13 @@ requires an invocation-local process gate plus the provider key. Historical
 development reports remain unchanged, including the original failed quality
 gates and the author-accepted conservative prompt-v4 limitation.
 
+P1-8 operational hardening is complete locally: isolated PostgreSQL
+backup/restore, bounded durable-work recovery, and a clean-container deployment
+rehearsal all have saved evidence. The deployment image includes migrations,
+uses reviewed Python 3.11 Linux constraints, runs API and worker roles as a
+non-root user, and keeps migration as a separate release step. No cloud platform
+or production availability claim has been made.
+
 ## Architecture Direction
 
 ```mermaid
@@ -66,6 +73,25 @@ Start local infrastructure:
 ```powershell
 docker compose up -d postgres redis
 ```
+
+Run the complete containerized fake-provider stack from a clean checkout:
+
+```powershell
+docker compose up -d --build
+docker compose ps
+Invoke-RestMethod http://127.0.0.1:8000/healthz
+Invoke-RestMethod http://127.0.0.1:8000/readyz
+```
+
+The one-shot `migrate` container must finish successfully before `api` and
+`worker` start. The API readiness check requires both PostgreSQL and Redis. Stop
+the stack without deleting PostgreSQL data using `docker compose down`; add `-v`
+only when intentionally deleting the local Compose database.
+
+`CAREEROPS_ENV=production` refuses the checked-in development JWT secret. A real
+deployment must inject a separate `CAREEROPS_JWT_SECRET`; do not place it in the
+repository or image. Platform-neutral release and rollback checks are documented
+in `docs/operations/deployment-runbook.md`.
 
 Run the worker in a separate terminal:
 
@@ -134,7 +160,18 @@ identities, but it cannot configure an already-running worker process. Inspect
 the recreated worker environment before dispatching test work; never rely on an
 ambient developer `.env` for this offline check.
 
-Recover queued work and stale running work from PostgreSQL:
+Run one bounded recovery pass across queued work and stale running work in
+PostgreSQL. This operational entry point refuses to dispatch unless the parser,
+embedding, and evidence-matcher provider settings in its process are all `fake`:
+
+```powershell
+.\.venv\Scripts\python -m careerops.workers.recovery_cycle
+```
+
+The command prints one JSON summary and exits nonzero when any recovery type has
+an exception or Redis dispatch failure. It does not configure an already-running
+worker, so verify that worker's three provider settings are also `fake` before
+using this command. The individual commands remain available for diagnosis:
 
 ```powershell
 .\.venv\Scripts\python -m careerops.workers.recovery
@@ -142,11 +179,73 @@ Recover queued work and stale running work from PostgreSQL:
 .\.venv\Scripts\python -m careerops.workers.embedding_recovery
 ```
 
+Preview the isolated worker recovery drill without creating resources:
+
+```powershell
+.\.venv\Scripts\python -m careerops.operations.worker_recovery_drill plan `
+  --run-id 20261006t180000z_1a2b3c4d
+```
+
+The real drill requires an invocation-local gate and matching cleanup run ID. It
+uses one sentinel-protected `careerops_p18b_*` database, one labeled temporary
+Redis container, and a dedicated fake-only worker; it never uses the development
+database, existing Redis data, or an existing worker:
+
+```powershell
+$env:CAREEROPS_RUN_WORKER_RECOVERY_DRILL = "1"
+$drillExitCode = 1
+try {
+  .\.venv\Scripts\python -m careerops.operations.worker_recovery_drill run `
+    --run-id 20261006t180000z_1a2b3c4d `
+    --confirm-cleanup-run-id 20261006t180000z_1a2b3c4d
+  $drillExitCode = $LASTEXITCODE
+} finally {
+  Remove-Item Env:CAREEROPS_RUN_WORKER_RECOVERY_DRILL -ErrorAction SilentlyContinue
+}
+if ($drillExitCode -ne 0) { exit $drillExitCode }
+```
+
 Apply database migrations:
 
 ```powershell
 .\.venv\Scripts\alembic upgrade head
 ```
+
+Preview the isolated P1-8a PostgreSQL backup/restore resources without creating a
+database, directory, or dump:
+
+```powershell
+.\.venv\Scripts\python -m careerops.operations.backup_restore_drill plan `
+  --run-id 20261006t120000z_1a2b3c4d
+```
+
+The planner accepts only its fixed temporary database namespace and system-temp
+artifact root. It does not execute a backup, restore, cleanup, or provider call.
+
+Run the synthetic drill only with separate author approval. The run ID and cleanup
+confirmation must match exactly:
+
+```powershell
+$env:CAREEROPS_RUN_BACKUP_RESTORE_DRILL = "1"
+$drillExitCode = 1
+try {
+  .\.venv\Scripts\python -m careerops.operations.backup_restore_drill run `
+    --run-id 20261006t140000z_deadbeef `
+    --confirm-cleanup-run-id 20261006t140000z_deadbeef
+  $drillExitCode = $LASTEXITCODE
+} finally {
+  Remove-Item Env:CAREEROPS_RUN_BACKUP_RESTORE_DRILL -ErrorAction SilentlyContinue
+}
+if ($drillExitCode -ne 0) { exit $drillExitCode }
+```
+
+The command creates only derived `careerops_p18a_*` databases, migrates and seeds
+the source with synthetic data, uses the Compose PostgreSQL 16 `pg_dump` and
+`pg_restore`, verifies the restored data and read paths, and deletes the exact
+sentinel-verified resources only after success. A failed run keeps its databases,
+manifest, dump, and diagnostic file. Inspect those resources and obtain cleanup
+authorization before using the `cleanup-failed` subcommand with the same run ID.
+Redis is never backed up, and no model provider is called.
 
 Useful checks:
 

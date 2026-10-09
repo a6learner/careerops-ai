@@ -114,3 +114,12 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   rejection evidence.
 - `2026-10-06-api-readiness-test-record.md` records the PostgreSQL-and-Redis
   readiness matrix, real 503 semantics, and local-container success path.
+- `2026-10-06-postgresql-backup-restore-drill.md` records the isolated synthetic
+  PostgreSQL custom-format backup, restore verification, measured local timings,
+  failure recovery, and exact cleanup boundary.
+- `2026-10-06-worker-recovery-cycle-drill.md` records isolated fake-only recovery
+  of stale parse and analysis work plus missing embedding work, including exact
+  cleanup evidence.
+- `2026-10-06-container-deployment-rehearsal.md` records the isolated constrained-image
+  build, empty-database migration, API/worker startup, readiness, non-root identities,
+  repeat migration, dependency check, and exact Compose cleanup.
