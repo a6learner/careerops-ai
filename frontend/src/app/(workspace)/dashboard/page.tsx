@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { DashboardSummary } from "@/components/dashboard/dashboard-summary";
 import { Card } from "@/components/ui/card";
-import { StatusBadge } from "@/components/ui/status-badge";
 
 const steps = [
   {
@@ -34,8 +33,7 @@ export default function DashboardPage() {
     <div>
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <StatusBadge tone="brand">P1-9 local frontend</StatusBadge>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight">Your evidence workspace</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Your evidence workspace</h1>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]">
             Move from real experience evidence to job requirements, grounded analysis, and focused
             preparation tasks.

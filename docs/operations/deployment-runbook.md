@@ -7,7 +7,7 @@ does not provision PostgreSQL, Redis, TLS, DNS, backups, or monitoring.
 
 ## Required Inputs
 
-- An immutable image built from the intended Git revision.
+- Immutable backend and frontend images built from the intended Git revision.
 - The reviewed `constraints/deployment-py311-linux.txt` used by that image build.
 - PostgreSQL with pgvector and a tested backup/restore path.
 - Disposable Redis reachable by API and worker processes.
@@ -24,8 +24,10 @@ does not provision PostgreSQL, Redis, TLS, DNS, backups, or monitoring.
 5. Start or replace API containers.
 6. Wait for `/healthz` and then `/readyz` to return HTTP 200.
 7. Start or replace worker containers with the intended provider configuration.
-8. Run one synthetic smoke flow or inspect an already authorized queued item.
-9. Observe structured errors, queue recovery results, and dependency readiness.
+8. Start the frontend with its server-only API base URL and canonical public origin.
+9. Wait for frontend `/healthz` and `/readyz` to return HTTP 200.
+10. Run one synthetic smoke flow or inspect an already authorized queued item.
+11. Observe structured errors, queue recovery results, and dependency readiness.
 
 ## Failure And Recovery
 
@@ -40,6 +42,11 @@ does not provision PostgreSQL, Redis, TLS, DNS, backups, or monitoring.
   then run the recovery cycle. Attempt fencing prevents the stale worker from
   committing over the recovered attempt.
 - Provider fails: keep the durable failure. Do not silently substitute fake output.
+- Frontend live but not ready: inspect API `/readyz` first. Frontend readiness is
+  dependency-aware and must not conceal an unavailable API.
+- Mutation returns 403 only through the containerized frontend: verify that
+  `CAREEROPS_FRONTEND_ORIGIN` exactly matches the browser-visible HTTP(S) origin.
+  The internal `http://api:8000` address is not a browser origin.
 
 ## Rollback Boundary
 
@@ -48,7 +55,29 @@ database schema and queued message shapes. Do not automatically downgrade Alembi
 For an incompatible migration, use an explicitly reviewed expand/contract plan or
 restore the database according to the separately tested recovery procedure.
 
-## Local Rehearsal
+## Local Full-Stack Acceptance
+
+Install the pinned Playwright Chromium once from `frontend/`, then run:
+
+```powershell
+npx playwright install chromium
+Set-Location ..
+.\scripts\local_full_stack_acceptance.ps1 -RunId localcheck
+```
+
+The harness uses the base Compose file plus `docker-compose.acceptance.yml`. It
+asserts the resolved and running API/worker environments use `fake` parser,
+embedding, and matcher providers; checks the one-shot migration exit code and
+the non-root frontend identity; calls frontend liveness/readiness; completes the
+browser core loop; and removes only its exact Compose project resources in a
+`finally` block. No manual database edit is part of acceptance.
+
+Use a unique run ID and unoccupied ports. The checked-in acceptance environment
+uses PostgreSQL `15410`, Redis `16310`, API `18010`, and frontend `13010`. The
+root `.env` is deliberately not trusted to select fake providers because it may
+contain a developer's real-provider settings.
+
+## Backend-Only Operational Rehearsal
 
 Use a unique Compose project and a non-default host port so existing development
 containers are not selected:
@@ -73,3 +102,8 @@ Remove-Item Env:CAREEROPS_REDIS_PORT
 Before deletion, verify the exact Compose project name. `down --volumes` is only
 appropriate for the isolated rehearsal project, never for a development or
 production project whose PostgreSQL volume must be retained.
+
+The worker is not an HTTP service, so Compose disables the backend image's API
+healthcheck for that role. Worker correctness is demonstrated by the queued
+browser workflow and durable terminal state, not by probing port 8000 in the
+worker container.

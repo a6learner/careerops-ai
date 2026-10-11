@@ -37,4 +37,14 @@ describe("session security", () => {
       isTrustedMutationRequest(new Request("http://localhost:3000/api/session/login")),
     ).toBe(false);
   });
+
+  it("uses the explicit public origin when the container listener is internal", () => {
+    const internalRequest = new Request("http://0.0.0.0:3000/api/session/login", {
+      headers: { origin: "http://127.0.0.1:13010" },
+    });
+
+    expect(isTrustedMutationRequest(internalRequest, "http://127.0.0.1:13010")).toBe(true);
+    expect(isTrustedMutationRequest(internalRequest, "http://127.0.0.1:3000")).toBe(false);
+    expect(isTrustedMutationRequest(internalRequest, "not-a-url")).toBe(false);
+  });
 });

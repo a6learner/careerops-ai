@@ -70,6 +70,8 @@ services:
   worker:
     build: .
     command: ["dramatiq", "careerops.workers.tasks", "--processes", "1", "--threads", "4"]
+    healthcheck:
+      disable: true
     environment:
       CAREEROPS_ENV: ${CAREEROPS_ENV:-local}
       CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:careerops@postgres:5432/careerops
@@ -92,6 +94,30 @@ services:
         condition: service_completed_successfully
       redis:
         condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "${CAREEROPS_FRONTEND_PORT:-3000}:3000"
+    environment:
+      CAREEROPS_API_BASE_URL: http://api:8000
+      CAREEROPS_FRONTEND_ORIGIN: http://127.0.0.1:${CAREEROPS_FRONTEND_PORT:-3000}
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/readyz').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
 
 volumes:
   postgres-data:

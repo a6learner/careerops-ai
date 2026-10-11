@@ -19,11 +19,33 @@ export function sessionCookieOptions(isProduction: boolean): SessionCookieOption
   };
 }
 
-export function isTrustedMutationRequest(request: Request): boolean {
+export function isTrustedMutationRequest(
+  request: Request,
+  configuredOrigin = process.env.CAREEROPS_FRONTEND_ORIGIN,
+): boolean {
   const origin = request.headers.get("origin");
   if (origin === null) {
     return false;
   }
 
-  return origin === new URL(request.url).origin;
+  if (configuredOrigin === undefined) {
+    return origin === new URL(request.url).origin;
+  }
+
+  try {
+    const trustedUrl = new URL(configuredOrigin);
+    if (
+      !["http:", "https:"].includes(trustedUrl.protocol) ||
+      trustedUrl.username ||
+      trustedUrl.password ||
+      trustedUrl.pathname !== "/" ||
+      trustedUrl.search ||
+      trustedUrl.hash
+    ) {
+      return false;
+    }
+    return origin === trustedUrl.origin;
+  } catch {
+    return false;
+  }
 }
