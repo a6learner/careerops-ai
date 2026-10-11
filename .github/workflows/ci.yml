@@ -5,6 +5,49 @@ on:
   pull_request:
 
 jobs:
+  migration:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_DB: careerops_ci
+          POSTGRES_USER: careerops
+          POSTGRES_PASSWORD: careerops
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U careerops -d careerops_ci"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+
+    env:
+      CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:careerops@127.0.0.1:5432/careerops_ci
+      CAREEROPS_LLM_PROVIDER: fake
+      CAREEROPS_EMBEDDING_PROVIDER: fake
+      CAREEROPS_EVIDENCE_MATCHER_PROVIDER: fake
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -e ".[dev,worker]"
+
+      - name: Upgrade fresh pgvector database to head
+        run: alembic upgrade head
+
+      - name: Verify current revision matches head
+        run: test "$(alembic current | awk '{print $1}')" = "$(alembic heads | awk '{print $1}')"
+
+      - name: Verify model metadata matches migrations
+        run: alembic check
+
   backend:
     runs-on: ubuntu-latest
     strategy:
@@ -74,5 +117,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build deployment image
+      - name: Build backend deployment image
         run: docker build --tag careerops-ai-ci .
+
+      - name: Build frontend deployment image
+        run: docker build --tag careerops-frontend-ci frontend

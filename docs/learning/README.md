@@ -125,3 +125,5 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0041 Local Frontend Resource Workflows](0041-local-frontend-resource-workflows.md)
 - [0042 Local Frontend Parse Run Workflow](0042-local-frontend-parse-run-workflow.md)
 - [0043 Local Frontend Analysis Tasks And Dashboard](0043-local-frontend-analysis-tasks-dashboard.md)
+- [0044 Local Full-Stack Acceptance](0044-local-full-stack-acceptance.md)
+- [0045 P0 Closure Evidence And Safe Boundaries](0045-p0-closure-evidence.md)

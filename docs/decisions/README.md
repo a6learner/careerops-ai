@@ -93,3 +93,5 @@ What future condition would justify reopening this decision?
 - `ADR-035-bounded-worker-recovery-cycle.md`: one fake-only, bounded operational pass over parse, analysis, and embedding recovery without adding a scheduler.
 - `ADR-036-platform-neutral-deployment-contract.md`: one immutable non-root image, separate migration release step, dependency readiness, and fail-closed production secrets.
 - `ADR-037-local-frontend-session-boundary.md`: Next.js same-origin BFF, HttpOnly access-token cookie, restricted proxy boundary, and lightweight frontend dependencies.
+- `ADR-038-local-full-stack-acceptance.md`: frontend container topology, canonical public origin, fake-only isolated Compose acceptance, and browser-driven verification.
+- `ADR-039-refresh-token-deferral.md`: explicit MVP refresh-token deferral and the resulting bounded-session limitation.

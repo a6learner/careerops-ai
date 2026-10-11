@@ -67,8 +67,9 @@ and cookie tests.
 
 The current backend has no refresh-token endpoint, so expiration requires another
 login. SameSite=Lax and exact Origin checks reduce cross-site mutation risk but do
-not replace FastAPI authorization or ordinary XSS prevention. The P1-9 container
-and production network topology remain deferred to P1-10 and P1-12.
+not replace FastAPI authorization or ordinary XSS prevention. P1-10 subsequently
+added the frontend container and local network topology. Cloud topology remains
+deferred to P1-13.
 
 The selected `eslint-config-next` dependency currently brings an unpatched
 development-only glob-parser advisory. The runtime dependency audit is clean. A
@@ -90,7 +91,8 @@ release is available.
 
 ## Revisit If
 
-- P1-11 approves a refresh-token or server-side session contract.
+- A later stage reopens the ADR-039 refresh-token deferral with a separately
+  approved session-lifecycle design.
 - Multiple public origins become a real deployment requirement.
 - A measured frontend workflow demonstrates that TanStack Query is insufficient.
 - Next.js publishes a compatible ESLint dependency chain that resolves the

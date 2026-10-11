@@ -71,28 +71,17 @@ If schedule pressure appears, cut scope before cutting tests, deployment, or evi
 
 ## Current Delivery Sequence
 
-As of 2026-10-08, use this sequence when an older stage suggestion conflicts
-with it. P1-8 completed the local backend operational foundation, but the MVP is
-not ready for cloud deployment until a user can complete the core loop through
-a local browser UI.
+As of 2026-10-10, use this sequence when an older stage suggestion conflicts
+with it. P1-8 through P1-10 established the local operational and browser core
+loop. P1-11 closes the remaining P0 evidence and contract gaps before local
+product hardening or cloud work.
 
 ### P1-9: Local Frontend MVP
 
-Build the smallest Next.js demo layer that exposes the existing backend core
-loop: authentication, Experiences, Jobs, parse status and requirements,
-Analysis Run status and evidence/gaps, Action Items, and Dashboard. The UI must
-also make the existing 401, 409, 429, 503, queued, running, and failed states
-understandable.
-
-Keep this stage focused on the existing API. Do not add a design system,
-animations, mobile-specific work, resume generation, new backend product
-features, or permissive CORS as a shortcut. The receiving stage must first make
-a read-only API/UI map and obtain approval for the frontend dependency and
-token-handling choice before implementation.
-
-Acceptance: a user can complete the existing MVP core loop in a browser against
-the local backend, with deterministic fake providers and no direct model call
-from the API.
+Status: completed locally. The minimal Next.js demo layer exposes authentication,
+Experiences, Jobs, Parse and Analysis Runs, evidence/gaps, Action Items, and the
+Dashboard through the accepted same-origin session boundary. It preserves the
+existing API and displays actionable HTTP and durable-workflow failures.
 
 ### P1-10: Local Full-Stack Acceptance
 
@@ -105,6 +94,12 @@ coverage; approve any major new test dependency before adding it.
 Acceptance: a fresh local environment can start the complete product using the
 documented workflow and complete the core loop through the browser.
 
+Status: completed locally on 2026-10-10. The saved acceptance used a fresh,
+isolated Compose project and volume, forced parser, embedding, and matcher to
+deterministic fake providers, completed the core loop in Chromium without direct
+database changes, and verified exact project cleanup. Cloud deployment and P1-11
+remain separate stages.
+
 ### P1-11: P0 Closure
 
 Close the remaining delivery evidence and contract gaps: save local pagination
@@ -115,13 +110,30 @@ documented refresh-token endpoint is implemented or deferred as a known MVP
 limitation. Any public API or authentication contract change still requires
 author approval.
 
-Acceptance: every P0 delivery claim is either verified by a committed artifact
+Acceptance: every P0 delivery claim is either verified by a saved repository artifact
 or explicitly recorded as a known limitation, with no invented metrics.
 
-### P1-12: Cloud Deployment
+Status: implemented and verified locally on 2026-10-10. The 5,000-Job benchmark,
+latest one-step rollback drill, fake-provider demo rehearsal, refresh-token
+deferral, and final evidence/limitation matrix are saved. The fresh-database CI
+job is configured and its commands were exercised locally; a GitHub-hosted green
+run remains pending commit and push authorization.
+
+### P1-12: Local Product Hardening
+
+Improve local product clarity and resilience without adding new business scope:
+review accessibility and small-screen behavior, tighten actionable error and
+empty states, and resolve focused usability defects found through the accepted
+core loop. Keep API, database, authentication, authorization, and provider
+contracts unchanged unless separately approved.
+
+Acceptance: the existing local core loop is easier to understand and recover
+from, with focused evidence for each change and no broad UI redesign.
+
+### P1-13: Cloud Deployment
 
 Choose a deployment provider and add provider-specific infrastructure only
-after P1-9 through P1-11 pass locally. Then configure secrets, TLS, release
+after P1-9 through P1-12 pass locally. Then configure secrets, TLS, release
 migrations, health probes, rollback, and a production smoke test without
 weakening the platform-neutral deployment contract.
 

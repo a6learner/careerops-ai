@@ -18,7 +18,8 @@ Use `PyJWT` with `HS256`, a project-configured `CAREEROPS_JWT_SECRET`, and a def
 
 Invalid email and wrong password both return `401 INVALID_CREDENTIALS` with the same message so the API does not reveal whether an email is registered.
 
-Refresh tokens and protected resource dependencies are deferred to later slices.
+Refresh tokens were deferred from this slice and are now explicitly outside the
+local MVP under ADR-039. Protected resource dependencies were added in ADR-007.
 
 ## Alternatives Considered
 
@@ -31,7 +32,9 @@ Refresh tokens and protected resource dependencies are deferred to later slices.
 
 The API can now authenticate users and return a portable bearer token for future protected endpoints.
 
-The token cannot yet be used to access protected resources because current-user extraction is intentionally deferred. Token revocation is also not implemented yet.
+ADR-007 subsequently made the token usable on protected resources. Token refresh,
+revocation, logout invalidation, and server-side session management are not
+implemented; access-token expiry requires another login.
 
 ## Verification Or Evidence
 
@@ -41,4 +44,6 @@ The PostgreSQL integration test covers registering a real user, logging in with 
 
 ## Revisit If
 
-Revisit when adding refresh tokens, logout, token revocation, secret rotation, or deployment-specific secret management.
+Revisit through a separate authentication design when refresh, logout,
+revocation, secret rotation, or deployment-specific secret management is
+approved. ADR-039 records the current MVP deferral.

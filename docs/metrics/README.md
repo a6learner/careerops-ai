@@ -135,3 +135,14 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-10-local-frontend-mvp-test-record.md` records final P1-9 Analysis,
   Action Item, Dashboard, error-state, frontend quality-gate, and completion
   boundaries.
+- `2026-10-10-local-full-stack-acceptance.md` records the isolated P1-10 Compose
+  startup, fake-provider assertions, Chromium core loop, corrected deployment
+  boundary failures, and exact cleanup evidence.
+- `2026-10-10-read-endpoint-performance.md` summarizes local P50/P95 results for
+  the main authenticated reads, including 5,000-Job cursor traversal; the JSON
+  companion preserves every sample and both query plans.
+- `2026-10-10-migration-rollback-drill.md` records the isolated latest-revision
+  downgrade/re-upgrade boundary, data preservation, constraint restoration, and
+  exact cleanup.
+- `2026-10-10-p0-demo-rehearsal.md` records the timed fake-provider browser demo
+  rehearsal and its 3–5 minute pacing result.

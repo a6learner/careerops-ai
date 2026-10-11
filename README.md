@@ -39,30 +39,27 @@ uses reviewed Python 3.11 Linux constraints, runs API and worker roles as a
 non-root user, and keeps migration as a separate release step. No cloud platform
 or production availability claim has been made.
 
-P1-9a added the local Next.js frontend foundation, an editable Tailwind component
-layer, registration and login screens, and a same-origin backend-for-frontend.
-The browser never receives the bearer token: Next.js stores it in an HttpOnly
-cookie and forwards allowlisted requests to FastAPI.
+P1-9 is complete locally. The Next.js same-origin backend-for-frontend keeps the
+bearer token in an HttpOnly cookie and exposes the existing Experience, Job,
+Parse, Analysis, Action Item, and Dashboard workflows. It preserves FastAPI's
+authorization, idempotency, optimistic-locking, rate-limit, and durable failure
+contracts rather than duplicating them in the browser.
 
-P1-9b adds API-backed Experience create, list, edit, and delete flows plus Job
-creation, cursor pagination, status filtering, and optimistic status updates.
-The resource screens preserve FastAPI's `If-Match` contract and render actionable
-401, 409, 429, and 503 feedback with request IDs. Parse, Analysis, Action Item,
-and live Dashboard workflows remain staged work; the browser core loop is not yet
-complete.
+P1-10 is complete locally. Compose now runs the frontend alongside the separate
+migration, API, worker, PostgreSQL, and Redis services. A fresh isolated Compose
+project passed a Chromium-driven registration-to-Dashboard core loop with parser,
+embedding, and matcher providers all forced to `fake`, followed by exact project
+container, network, and volume cleanup. This is local synthetic acceptance, not a
+cloud deployment or production-availability claim.
 
-P1-9c adds the Job Parse Run workflow. A user can submit a parse with an
-idempotency key, see queued and running progress, poll the existing worker-backed
-run to a terminal state, inspect structured requirements, and see durable failure
-codes. Dispatch and transport retries reuse the same key; starting a distinct run
-creates a new key.
-
-P1-9 is now complete locally. The frontend can submit and poll Analysis Runs,
-show only validated positive quotes, distinguish partial evidence and gaps, create
-Action Items from actionable gaps, manage manual and sourced tasks, and display
-real Dashboard API counts. It presents 401, 409, 429, 503 and durable workflow
-states without changing backend semantics. Browser-driven full-stack acceptance
-and frontend container integration remain P1-10 work.
+P1-11 closes the remaining local P0 evidence gaps. A reproducible synthetic
+benchmark saves raw samples and P50/P95 for the main reads, including stable
+cursor traversal over 5,000 Jobs. A disposable pgvector database passed the
+supported one-revision downgrade/re-upgrade drill. CI now has a fresh-database
+migration job, and the fake-provider demo has a timed 3–5 minute rehearsal mode.
+Refresh tokens are explicitly deferred: after the 30-minute access token expires,
+the user must log in again. The complete status and limitations are in
+`docs/P0_EVIDENCE_AND_LIMITATIONS.md`.
 
 ## Architecture Direction
 
@@ -114,7 +111,12 @@ is not `Secure` because the documented development URL uses HTTP; production
 sets `Secure` and requires HTTPS. `CAREEROPS_API_BASE_URL` is server-only and
 must not be renamed with a `NEXT_PUBLIC_` prefix.
 
-Run the P1-9 frontend quality gates:
+The backend has no refresh-token endpoint. Session expiry clears the frontend
+cookie after a backend 401 and requires another login. ADR-039 records why a
+refresh/session lifecycle was deferred instead of adding an unsafe partial
+implementation.
+
+Run the frontend quality gates:
 
 ```powershell
 Set-Location frontend
@@ -123,6 +125,15 @@ npm run typecheck
 npm test
 npm audit --omit=dev
 npm run build
+```
+
+The browser acceptance dependency is development-only. Install its pinned
+Chromium once on a new workstation:
+
+```powershell
+Set-Location frontend
+npx playwright install chromium
+Set-Location ..
 ```
 
 The full dependency audit currently reports an upstream development-only glob
@@ -137,19 +148,76 @@ Start local infrastructure:
 docker compose up -d postgres redis
 ```
 
-Run the complete containerized fake-provider stack from a clean checkout:
+Run the complete containerized stack from a clean checkout:
 
 ```powershell
 docker compose up -d --build
 docker compose ps
 Invoke-RestMethod http://127.0.0.1:8000/healthz
 Invoke-RestMethod http://127.0.0.1:8000/readyz
+Invoke-RestMethod http://127.0.0.1:3000/healthz
+Invoke-RestMethod http://127.0.0.1:3000/readyz
 ```
 
 The one-shot `migrate` container must finish successfully before `api` and
-`worker` start. The API readiness check requires both PostgreSQL and Redis. Stop
-the stack without deleting PostgreSQL data using `docker compose down`; add `-v`
-only when intentionally deleting the local Compose database.
+`worker` start. The API readiness check requires both PostgreSQL and Redis, and
+frontend readiness delegates to that API check. The browser calls only the
+Next.js origin; the BFF reaches FastAPI over the Compose network at
+`http://api:8000`. `CAREEROPS_FRONTEND_ORIGIN` must exactly match the public URL
+used by the browser when a non-default frontend port is selected. Stop the stack
+without deleting PostgreSQL data using `docker compose down`; add `-v` only when
+intentionally deleting the local Compose database.
+
+For reproducible local browser acceptance, use the harness instead of the ordinary
+development command. It creates a unique Compose project, refuses occupied
+ports or pre-existing project resources, overrides all three providers to
+`fake` even when the ignored root `.env` selects a real provider, runs the full
+Chromium core loop, and removes only that project's containers, network, and
+volume in `finally`:
+
+```powershell
+.\scripts\local_full_stack_acceptance.ps1 -RunId localcheck
+```
+
+Run the same fake-provider browser flow at presentation pace. The browser phase
+must finish between three and five minutes:
+
+```powershell
+.\scripts\local_full_stack_acceptance.ps1 -RunId demo-check -DemoRehearsal
+```
+
+The narration and checkpoints are in `docs/demo/p0-demo-script.md`.
+
+The default isolated ports are PostgreSQL `15410`, Redis `16310`, API `18010`,
+and frontend `13010`. Override the script parameters if any are occupied. Do not
+use the acceptance cleanup command against an ordinary development or production
+Compose project.
+
+Measure the main authenticated read endpoints with 5,000 synthetic Jobs in a
+separate disposable database:
+
+```powershell
+.\scripts\local_read_endpoint_benchmark.ps1 `
+  -RunId localcheck `
+  -EvidenceName 2026-10-10-read-endpoint-performance-reproduction
+```
+
+The harness uses 25 warmups and 200 nearest-rank percentile samples per ordinary
+scenario, checks full cursor traversal and insertion stability, captures indexed
+and unindexed query plans, refuses to overwrite evidence files, and deletes only
+its exact Compose project. The saved 2026-10-10 results are local sequential
+measurements, not production capacity evidence.
+
+Exercise only the supported latest migration rollback boundary in another
+isolated database:
+
+```powershell
+.\scripts\local_migration_rollback_drill.ps1 -RunId localcheck
+```
+
+This performs `base -> head -> 202609190001 -> head`, verifies data preservation
+and lifecycle-constraint restoration, and cleans up its own volume. It never
+downgrades the development database.
 
 `CAREEROPS_ENV=production` refuses the checked-in development JWT secret. A real
 deployment must inject a separate `CAREEROPS_JWT_SECRET`; do not place it in the

@@ -32,8 +32,8 @@ CareerOps AI 是一个**以后端为核心的职位要求匹配服务**。系统
 | 后端能力 | 项目中的具体落点 | 面试可讲的深度 |
 |---|---|---|
 | API 设计 | REST 资源建模、状态码语义、分页、错误契约、版本前缀 | 为什么分析是子资源而不是动词端点 |
-| 关系数据建模 | 8 张核心表、外键策略、唯一约束、软删除 | 为什么分析结果不可变而职位可变 |
-| 索引与查询优化 | 列表页复合索引、EXPLAIN 前后对比 | 从 Seq Scan 到 Index Scan 的实测差异 |
+| 关系数据建模 | 9 张核心表、外键策略、唯一约束、软删除 | 为什么分析结果不可变而职位可变 |
+| 索引与查询优化 | 列表页复合索引、EXPLAIN 对比 | 为什么计划变化不等于已证明延迟改善 |
 | 事务 | 分析结果与证据行原子写入 | 为什么必须单事务提交，部分写入的后果 |
 | 并发控制 | 唯一部分索引防止重复分析、乐观锁更新 | 竞态条件如何复现和验证 |
 | 幂等性 | Idempotency-Key、任务去重键 | 用户双击提交和任务重投递如何处理 |
@@ -44,7 +44,7 @@ CareerOps AI 是一个**以后端为核心的职位要求匹配服务**。系统
 | 可观测性 | 结构化日志、request_id、trace 贯穿异步任务、指标 | 一次失败分析如何端到端定位 |
 | 测试 | 单元、集成、契约、并发、授权、AI 回归 | 如何测试一个不确定输出的系统 |
 | 部署运维 | Docker、迁移、健康检查、配置分离、回滚 | 迁移失败与回滚策略 |
-| 性能验证 | 负载测试、P50/P95、连接池调优 | 瓶颈定位过程 |
+| 性能验证 | 可复现的顺序读取基准、P50/P95 | 样本、百分位计算与证据边界 |
 
 ## 系统架构
 
@@ -67,7 +67,7 @@ API Service (FastAPI)
     +-----> Redis       (cache, rate limit, queue broker)
     |
     v
-Worker Service (Celery or Dramatiq)
+Worker Service (Dramatiq)
   - parse pipeline
   - retrieval pipeline
   - claim validation
@@ -197,9 +197,11 @@ Worker Service (Celery or Dramatiq)
 
 约束要点：`verdict = matched` 时 `experience_id` 和 `quote` 必须非空。这可以用表级 CHECK 约束表达，让**数据库本身拒绝无证据的正向断言**。这是一个很强的面试点：不变量应该尽可能下沉到最底层。
 
-**action_items** 与 **analysis_feedback**
+**action_items** 与 **experience_embedding_runs**
 
-常规业务表，分别记录任务和用户反馈，`analysis_feedback` 关联到具体 `analysis_run_id` 与 `evidence_match_id`。
+`action_items` 记录手工任务或来自 gap 的任务；
+`experience_embedding_runs` 记录版本绑定、可恢复的嵌入生命周期。
+`analysis_feedback` 未进入当前 MVP 数据模型。
 
 ### 索引设计
 
@@ -224,9 +226,7 @@ CREATE UNIQUE INDEX uq_analysis_idem
 CREATE INDEX idx_evidence_run
   ON evidence_matches (analysis_run_id, requirement_id);
 
--- 向量检索
-CREATE INDEX idx_exp_embedding
-  ON experiences USING hnsw (embedding vector_cosine_ops);
+-- 向量检索当前使用小规模精确 pgvector 距离查询；尚未建立 HNSW 索引
 ```
 
 第二个索引是**用数据库约束解决并发问题**的典型案例，比应用层加锁更可靠。这类实现细节远比“我用了 Redis”更能体现工程判断。
@@ -241,7 +241,6 @@ CREATE INDEX idx_exp_embedding
 |---|---|---:|
 | POST /auth/register | 注册 | 201 |
 | POST /auth/login | 登录并签发令牌 | 200 |
-| POST /auth/refresh | 刷新令牌 | 200 |
 | GET /experiences | 分页列表 | 200 |
 | POST /experiences | 创建 | 201 |
 | GET /experiences/{id} | 详情 | 200 |
@@ -257,7 +256,6 @@ CREATE INDEX idx_exp_embedding
 | POST /jobs/{id}/analysis-runs | 触发分析 | 202 |
 | GET /jobs/{id}/analysis-runs | 分析历史列表 | 200 |
 | GET /analysis-runs/{id} | 分析详情含证据 | 200 |
-| POST /analysis-runs/{id}/feedback | 提交反馈 | 201 |
 | GET /action-items | 任务列表 | 200 |
 | POST /action-items | 创建任务，可来自建议 | 201 |
 | PATCH /action-items/{id} | 更新状态 | 200 |
@@ -309,7 +307,7 @@ queued --> running --> succeeded
              |
              +--> failed (可重试)
              |
-             +--> failed_permanent (校验失败或超出重试上限)
+             +--> failed (携带结构化 error_code)
              |
              +--> cancelled
 ```
@@ -332,7 +330,7 @@ queued --> running --> succeeded
 
 - **超时**：单次模型调用超时上限，整任务超时上限。
 - **重试**：指数退避加抖动，仅对超时、限流、5xx 和格式错误重试；对校验失败不盲目重试。
-- **重试上限**：达到上限进入 `failed_permanent`，写入结构化 `error_code`。
+- **重试上限**：达到上限进入 `failed`，写入结构化 `error_code`。
 - **幂等执行**：任务体可能被投递多次，写入前检查终态，避免重复写入。
 - **原子提交**：结果与证据行同事务，禁止出现有分析无证据的中间态。
 - **worker 崩溃恢复**：running 超过阈值的任务由定时任务回收为 queued 或 failed。
@@ -344,8 +342,8 @@ queued --> running --> succeeded
 
 | 缓存对象 | 键 | 失效方式 | 收益 |
 |---|---|---|---|
-| JD 解析结果 | `parse:{description_hash}:{prompt_version}` | 提示词或模型版本变更 | 相同 JD 零成本复用 |
-| 经历嵌入 | `emb:{content_hash}:{model}` | content_hash 变化 | 避免重复嵌入调用 |
+| 解析复用 | PostgreSQL 中的 input fingerprint 与成功 run | 输入或 provider identity 变化 | 保留可追溯的 durable reuse |
+| 经历嵌入 | PostgreSQL 中的版本绑定 embedding run | Experience 版本变化 | Redis 丢失不影响嵌入事实 |
 | 仪表盘聚合 | `dash:{user_id}` | 写操作主动失效，TTL 兜底 | 减少多表聚合查询 |
 | 限流计数 | `rl:{user_id}:{window}` | TTL 自然过期 | 成本与滥用控制 |
 
@@ -407,7 +405,8 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 ### P0-1 认证与对象级授权
 
 - 邮箱密码注册登录，密码使用 bcrypt 或 argon2 哈希。
-- 令牌签发与刷新，令牌过期可验证。
+- 签发 30 分钟 access token，令牌过期可验证；refresh token 按 ADR-039
+  延期，过期后重新登录。
 - 所有资源查询强制携带 `user_id` 过滤条件。
 
 验收：
@@ -450,7 +449,7 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 
 - Given 用户连续点击三次解析，When 请求携带同一 Idempotency-Key，Then 只创建一个 run 且只调用一次模型。
 - Given 同一 JD 未变更，When 已有 succeeded 结果，Then 命中缓存或提示复用，不产生新模型调用。
-- Given 模型返回非法 JSON，When 达到重试上限，Then run 变为 failed_permanent 且 error_code 明确。
+- Given 模型返回非法 JSON，When 执行结束，Then run 变为 failed 且 error_code 明确。
 - Given worker 在 running 中被强杀，When 回收任务运行，Then 该 run 被重新入队或标记失败，不会永久卡在 running。
 
 ### P0-5 证据匹配与三层校验
@@ -508,7 +507,7 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 | 并发 | 并发触发分析、并发更新 | 唯一索引与乐观锁生效 |
 | 契约 | 错误码与响应结构快照 | 全部错误码 |
 | AI 回归 | 固定标注集评估 | 可重复执行并对比 |
-| 负载 | 列表与详情端点压测 | 产出 P50/P95 报告 |
+| 性能 | 列表与详情端点顺序测量 | 保存原始样本与 P50/P95 报告 |
 
 所有涉及 LLM 的测试使用 fake provider，保证 CI 离线、稳定、零成本。
 
@@ -567,7 +566,7 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 - 列表与详情端点 P50/P95 延迟，索引优化前后对比
 - 异步任务成功率、重试率、永久失败率
 - 并发重复分析阻止率（应为 100%）
-- 缓存命中率（JD 解析、嵌入、仪表盘）
+- 仪表盘缓存命中率；解析与嵌入复用率仅在补充测量后使用
 - 集成测试与授权测试覆盖的端点比例
 - 部署后错误率
 
@@ -591,15 +590,13 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 
 技术栈行：
 
-> Python, FastAPI, PostgreSQL (pgvector), Redis, Celery, Docker, pytest, GitHub Actions, Next.js
+> Python, FastAPI, PostgreSQL (pgvector), Redis, Dramatiq, Docker, pytest, GitHub Actions, Next.js
 
-项目描述骨架（数字待实测替换）：
-
-- Designed a versioned REST API with cursor pagination, optimistic concurrency (If-Match), and idempotent async job submission, cutting list-endpoint P95 latency from **A** ms to **B** ms via composite indexing.
-- Built an asynchronous LLM pipeline with exponential-backoff retries, timeout handling, stale-task recovery, and partial-unique-index deduplication, eliminating duplicate model calls under concurrent submissions.
-- Enforced evidence integrity through schema validation, citation verification against source text, and database CHECK constraints, reducing unsupported AI claims from **C**% to **D**% across **N** labeled requirement cases.
-- Added Redis caching keyed by content hash for parse results and embeddings, achieving **E**% hit rate and reducing per-analysis model cost by **F**%.
-- Instrumented end-to-end request tracing across API and workers with structured logging, enabling single-ID failure diagnosis.
+简历表达必须直接引用 `docs/metrics/` 中的已保存证据。不要保留 A/B/C/D
+占位数字，也不要把 fake-provider、本地顺序测量或冻结小样本 holdout 写成
+生产性能或业务效果。当前可安全表述的主线是版本化 REST API、游标分页、
+乐观锁、幂等异步任务、可恢复 worker、三层证据完整性和跨 API/worker 的
+结构化关联日志；量化数字以最终简历审阅时的证据链接为准。
 
 ## 范围控制规则
 
@@ -625,11 +622,11 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 - [ ] 缓存命中率与失效逻辑有数据
 - [ ] 限流返回 429 且有测试
 - [x] Analysis run_id + attempt 贯穿 API、worker 与 recovery；初次 request_id 贯穿队列
-- [ ] 迁移可从空库执行并演示一次回滚
-- [ ] 负载测试报告已保存
+- [x] 迁移可从空库执行并演示一次受支持的一步回滚
+- [x] 主要读取端点 P50/P95 与 5,000 Job 游标证据已保存
 - [ ] AI 评估集与评估输出已入库
 - [ ] CI 全绿且离线可运行
-- [ ] README、架构图、5 个 ADR、Demo 脚本完成
+- [x] README、架构图、ADR、Demo 脚本完成
 - [ ] 简历数字均可追溯到保存的输出
 
 ## 当前决策
