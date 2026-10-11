@@ -92,3 +92,4 @@ What future condition would justify reopening this decision?
 - `ADR-034-postgresql-backup-restore-drill-safety.md`: deterministic temporary resource identity, protected database names, and fail-closed cleanup gates for the local PostgreSQL recovery drill.
 - `ADR-035-bounded-worker-recovery-cycle.md`: one fake-only, bounded operational pass over parse, analysis, and embedding recovery without adding a scheduler.
 - `ADR-036-platform-neutral-deployment-contract.md`: one immutable non-root image, separate migration release step, dependency readiness, and fail-closed production secrets.
+- `ADR-037-local-frontend-session-boundary.md`: Next.js same-origin BFF, HttpOnly access-token cookie, restricted proxy boundary, and lightweight frontend dependencies.

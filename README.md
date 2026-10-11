@@ -39,6 +39,31 @@ uses reviewed Python 3.11 Linux constraints, runs API and worker roles as a
 non-root user, and keeps migration as a separate release step. No cloud platform
 or production availability claim has been made.
 
+P1-9a added the local Next.js frontend foundation, an editable Tailwind component
+layer, registration and login screens, and a same-origin backend-for-frontend.
+The browser never receives the bearer token: Next.js stores it in an HttpOnly
+cookie and forwards allowlisted requests to FastAPI.
+
+P1-9b adds API-backed Experience create, list, edit, and delete flows plus Job
+creation, cursor pagination, status filtering, and optimistic status updates.
+The resource screens preserve FastAPI's `If-Match` contract and render actionable
+401, 409, 429, and 503 feedback with request IDs. Parse, Analysis, Action Item,
+and live Dashboard workflows remain staged work; the browser core loop is not yet
+complete.
+
+P1-9c adds the Job Parse Run workflow. A user can submit a parse with an
+idempotency key, see queued and running progress, poll the existing worker-backed
+run to a terminal state, inspect structured requirements, and see durable failure
+codes. Dispatch and transport retries reuse the same key; starting a distinct run
+creates a new key.
+
+P1-9 is now complete locally. The frontend can submit and poll Analysis Runs,
+show only validated positive quotes, distinguish partial evidence and gaps, create
+Action Items from actionable gaps, manage manual and sourced tasks, and display
+real Dashboard API counts. It presents 401, 409, 429, 503 and durable workflow
+states without changing backend semantics. Browser-driven full-stack acceptance
+and frontend container integration remain P1-10 work.
+
 ## Architecture Direction
 
 ```mermaid
@@ -67,6 +92,44 @@ Run the API through the virtual environment:
 ```powershell
 .\.venv\Scripts\uvicorn careerops.main:create_app --factory --reload
 ```
+
+Run the local Next.js frontend in a second terminal:
+
+```powershell
+Set-Location frontend
+Copy-Item .env.example .env.local
+npm install
+npm run dev
+```
+
+Open `http://127.0.0.1:3000`. Keep the browser, frontend, and API on the
+documented `127.0.0.1` host spelling so the host-only session cookie and local
+service URLs stay predictable.
+
+The browser calls only same-origin Next.js Route Handlers. Login stores the
+backend access token in an HttpOnly, SameSite=Lax cookie, and the server-side
+proxy adds the bearer header when forwarding an allowlisted API request. The
+token is never stored in browser JavaScript or local storage. The local cookie
+is not `Secure` because the documented development URL uses HTTP; production
+sets `Secure` and requires HTTPS. `CAREEROPS_API_BASE_URL` is server-only and
+must not be renamed with a `NEXT_PUBLIC_` prefix.
+
+Run the P1-9 frontend quality gates:
+
+```powershell
+Set-Location frontend
+npm run lint
+npm run typecheck
+npm test
+npm audit --omit=dev
+npm run build
+```
+
+The full dependency audit currently reports an upstream development-only glob
+parser advisory through `eslint-config-next`; the production dependency audit
+is clean. Do not use `npm audit fix --force`, because its suggested downgrade is
+incompatible with the selected Next.js release. Revisit the pin when the Next.js
+ESLint dependency chain publishes a compatible patched release.
 
 Start local infrastructure:
 

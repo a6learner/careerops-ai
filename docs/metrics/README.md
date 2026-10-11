@@ -123,3 +123,15 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-06-container-deployment-rehearsal.md` records the isolated constrained-image
   build, empty-database migration, API/worker startup, readiness, non-root identities,
   repeat migration, dependency check, and exact Compose cleanup.
+- `2026-10-08-local-frontend-foundation-test-record.md` records the P1-9a Next.js
+  session boundary, component and proxy-policy tests, frontend quality gates, and
+  the current development-only dependency-audit limitation.
+- `2026-10-08-local-frontend-resource-workflows-test-record.md` records the P1-9b
+  Experience and Job workflow tests, optimistic-locking boundary, and frontend
+  quality gates without repeating the P1-8 backend suite.
+- `2026-10-10-local-frontend-parse-run-test-record.md` records the P1-9c Parse Run
+  submission, idempotent retry, state presentation, requirements rendering, and
+  frontend quality gates.
+- `2026-10-10-local-frontend-mvp-test-record.md` records final P1-9 Analysis,
+  Action Item, Dashboard, error-state, frontend quality-gate, and completion
+  boundaries.

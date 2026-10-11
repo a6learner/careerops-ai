@@ -69,6 +69,66 @@ The project should freeze feature work around the seventh effective development 
 
 If schedule pressure appears, cut scope before cutting tests, deployment, or evidence guarantees.
 
+## Current Delivery Sequence
+
+As of 2026-10-08, use this sequence when an older stage suggestion conflicts
+with it. P1-8 completed the local backend operational foundation, but the MVP is
+not ready for cloud deployment until a user can complete the core loop through
+a local browser UI.
+
+### P1-9: Local Frontend MVP
+
+Build the smallest Next.js demo layer that exposes the existing backend core
+loop: authentication, Experiences, Jobs, parse status and requirements,
+Analysis Run status and evidence/gaps, Action Items, and Dashboard. The UI must
+also make the existing 401, 409, 429, 503, queued, running, and failed states
+understandable.
+
+Keep this stage focused on the existing API. Do not add a design system,
+animations, mobile-specific work, resume generation, new backend product
+features, or permissive CORS as a shortcut. The receiving stage must first make
+a read-only API/UI map and obtain approval for the frontend dependency and
+token-handling choice before implementation.
+
+Acceptance: a user can complete the existing MVP core loop in a browser against
+the local backend, with deterministic fake providers and no direct model call
+from the API.
+
+### P1-10: Local Full-Stack Acceptance
+
+Containerize the frontend and integrate it with the API, worker, PostgreSQL,
+Redis, and migration release step. Validate a clean local startup and one full
+browser-driven core-loop run using fake providers, without manual database
+intervention. Add frontend-focused automated tests and proportionate end-to-end
+coverage; approve any major new test dependency before adding it.
+
+Acceptance: a fresh local environment can start the complete product using the
+documented workflow and complete the core loop through the browser.
+
+### P1-11: P0 Closure
+
+Close the remaining delivery evidence and contract gaps: save local pagination
+and read-endpoint P50/P95 evidence including the 5,000-Job case; demonstrate the
+supported Alembic migration rollback boundary; run a fresh-database migration
+check in CI; add the 3-5 minute demo script; and explicitly decide whether the
+documented refresh-token endpoint is implemented or deferred as a known MVP
+limitation. Any public API or authentication contract change still requires
+author approval.
+
+Acceptance: every P0 delivery claim is either verified by a committed artifact
+or explicitly recorded as a known limitation, with no invented metrics.
+
+### P1-12: Cloud Deployment
+
+Choose a deployment provider and add provider-specific infrastructure only
+after P1-9 through P1-11 pass locally. Then configure secrets, TLS, release
+migrations, health probes, rollback, and a production smoke test without
+weakening the platform-neutral deployment contract.
+
+Acceptance: the locally accepted product is deployed and verified through its
+documented production workflow. Local success is not presented as production
+availability evidence.
+
 ## Source Material
 
 - Detailed MVP scope: `docs/CareerOps AI MVP 产品范围与 Non-goals.md`

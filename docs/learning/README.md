@@ -121,3 +121,7 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0037 PostgreSQL Backup/Restore Drill Safety](0037-postgresql-backup-restore-drill-safety.md)
 - [0038 Bounded Worker Recovery Cycle](0038-bounded-worker-recovery-cycle.md)
 - [0039 Platform-Neutral Deployment Contract](0039-platform-neutral-deployment-contract.md)
+- [0040 Local Frontend Session Boundary](0040-local-frontend-session-boundary.md)
+- [0041 Local Frontend Resource Workflows](0041-local-frontend-resource-workflows.md)
+- [0042 Local Frontend Parse Run Workflow](0042-local-frontend-parse-run-workflow.md)
+- [0043 Local Frontend Analysis Tasks And Dashboard](0043-local-frontend-analysis-tasks-dashboard.md)
