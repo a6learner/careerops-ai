@@ -38,6 +38,7 @@ $result = [ordered]@{
         parser = 'fake'
         embedding = 'fake'
         matcher = 'fake'
+        job_search = 'fake'
     }
     migration = 'not_run'
     frontend_user = 'not_checked'

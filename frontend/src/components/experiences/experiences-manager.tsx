@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
 import { ExperienceForm, type ExperienceInput } from "@/components/experiences/experience-form";
+import { CvImportPanel } from "@/components/experiences/cv-import-panel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
@@ -84,6 +85,8 @@ export function ExperiencesManager() {
           <ExperienceForm isSubmitting={create.isPending} onSubmit={(input) => create.mutate(input)} onCancel={() => setShowCreate(false)} />
         </Card>
       ) : null}
+
+      <CvImportPanel />
 
       {mutationError ? <div className="mt-6"><ApiFeedback error={mutationError} onRetry={clearMutationError} /></div> : null}
       {experiences.isPending ? <Card className="mt-6 p-6 text-sm text-[var(--muted)]">Loading experiences…</Card> : null}

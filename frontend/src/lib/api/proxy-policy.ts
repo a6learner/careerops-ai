@@ -4,6 +4,11 @@ const ALLOWED_ROOTS = new Set([
   "jobs",
   "action-items",
   "dashboard",
+  "cv-imports",
+  "experience-drafts",
+  "job-discovery-runs",
+  "job-discovery-results",
+  "job-drafts",
 ]);
 
 const ALLOWED_FORWARD_HEADERS = ["content-type", "if-match", "idempotency-key"];

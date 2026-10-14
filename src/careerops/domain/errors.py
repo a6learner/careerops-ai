@@ -208,3 +208,24 @@ class ActionItemSourceNotFoundError(Exception):
 class ActionItemSourceNotActionableError(Exception):
     def __init__(self) -> None:
         super().__init__("Action item source is not actionable.")
+
+
+class AssistedResourceNotFoundError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Assisted import resource was not found.")
+
+
+class AssistedResourceConflictError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Assisted import resource is not in the required state.")
+
+
+class AssistedRunDispatchError(Exception):
+    def __init__(self) -> None:
+        super().__init__("Assisted import queue is unavailable.")
+
+
+class InvalidDocumentError(Exception):
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message

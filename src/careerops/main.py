@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from careerops.adapters.redis_analysis_rate_limiter import RedisAnalysisRateLimiter
 from careerops.api.action_items import router as action_items_router
 from careerops.api.analysis_runs import router as analysis_runs_router
+from careerops.api.assisted_imports import router as assisted_imports_router
 from careerops.api.auth import router as auth_router
 from careerops.api.dashboard import router as dashboard_router
 from careerops.api.experiences import router as experiences_router
@@ -36,6 +37,9 @@ from careerops.domain.errors import (
     AnalysisRateLimitUnavailableError,
     AnalysisRunDispatchError,
     AnalysisRunNotFoundError,
+    AssistedResourceConflictError,
+    AssistedResourceNotFoundError,
+    AssistedRunDispatchError,
     DuplicateEmailError,
     ExperienceNotFoundError,
     ExperienceVersionConflictError,
@@ -43,6 +47,7 @@ from careerops.domain.errors import (
     IdempotencyKeyConflictError,
     InvalidCredentialsError,
     InvalidCursorError,
+    InvalidDocumentError,
     InvalidTokenError,
     JobNotFoundError,
     JobVersionConflictError,
@@ -58,6 +63,8 @@ from careerops.workers.dispatcher import (
     DramatiqAnalysisRunDispatcher,
     DramatiqEmbeddingRunDispatcher,
     DramatiqParseRunDispatcher,
+    cv_import_dispatcher,
+    job_discovery_dispatcher,
 )
 
 logger = logging.getLogger(__name__)
@@ -100,6 +107,8 @@ def create_app() -> FastAPI:
     app.state.parse_run_dispatcher = DramatiqParseRunDispatcher()
     app.state.analysis_run_dispatcher = DramatiqAnalysisRunDispatcher()
     app.state.embedding_run_dispatcher = DramatiqEmbeddingRunDispatcher()
+    app.state.cv_import_dispatcher = cv_import_dispatcher()
+    app.state.job_discovery_dispatcher = job_discovery_dispatcher()
     app.add_middleware(RequestIdMiddleware)
     app.include_router(router)
     app.include_router(auth_router)
@@ -109,6 +118,51 @@ def create_app() -> FastAPI:
     app.include_router(analysis_runs_router)
     app.include_router(action_items_router)
     app.include_router(dashboard_router)
+    app.include_router(assisted_imports_router)
+
+    @app.exception_handler(AssistedResourceNotFoundError)
+    async def assisted_resource_not_found_handler(
+        request: Request, exc: AssistedResourceNotFoundError
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.NOT_FOUND,
+            code=ErrorCode.ASSISTED_RESOURCE_NOT_FOUND,
+            message="Assisted import resource was not found.",
+        )
+
+    @app.exception_handler(AssistedResourceConflictError)
+    async def assisted_resource_conflict_handler(
+        request: Request, exc: AssistedResourceConflictError
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.CONFLICT,
+            code=ErrorCode.ASSISTED_RESOURCE_CONFLICT,
+            message="Assisted import resource is not in the required state.",
+        )
+
+    @app.exception_handler(AssistedRunDispatchError)
+    async def assisted_dispatch_handler(
+        request: Request, exc: AssistedRunDispatchError
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            code=ErrorCode.DEPENDENCY_UNAVAILABLE,
+            message="Assisted import queue is unavailable; retry with the same idempotency key.",
+        )
+
+    @app.exception_handler(InvalidDocumentError)
+    async def invalid_document_handler(
+        request: Request, exc: InvalidDocumentError
+    ) -> JSONResponse:
+        return error_response(
+            request=request,
+            status_code=HTTPStatus.UNPROCESSABLE_ENTITY,
+            code=ErrorCode.INVALID_DOCUMENT,
+            message=exc.message,
+        )
 
     @app.exception_handler(ActionItemNotFoundError)
     async def action_item_not_found_handler(

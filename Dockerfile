@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-slim AS base
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -15,6 +15,18 @@ RUN python -m pip install --no-cache-dir \
         --constraint constraints/deployment-py311-linux.txt ".[worker]" \
     && addgroup --system careerops \
     && adduser --system --ingroup careerops careerops
+
+FROM base AS worker
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --yes libreoffice-writer \
+    && rm -rf /var/lib/apt/lists/*
+
+USER careerops
+
+CMD ["dramatiq", "careerops.workers.tasks", "--processes", "1", "--threads", "4"]
+
+FROM base AS api
 
 USER careerops
 

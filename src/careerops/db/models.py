@@ -11,12 +11,13 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    LargeBinary,
     Numeric,
     Text,
     func,
     text,
 )
-from sqlalchemy.dialects.postgresql import ARRAY, CITEXT
+from sqlalchemy.dialects.postgresql import ARRAY, CITEXT, JSONB
 from sqlalchemy.dialects.postgresql import UUID as PostgresUUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -85,6 +86,19 @@ class EmbeddingRunStatus(StrEnum):
     SUCCEEDED = "succeeded"
     FAILED = "failed"
     SUPERSEDED = "superseded"
+
+
+class AssistedRunStatus(StrEnum):
+    QUEUED = "queued"
+    RUNNING = "running"
+    SUCCEEDED = "succeeded"
+    FAILED = "failed"
+
+
+class DraftStatus(StrEnum):
+    PENDING = "pending"
+    CONFIRMED = "confirmed"
+    REJECTED = "rejected"
 
 
 class User(Base):
@@ -612,4 +626,222 @@ class ActionItem(Base):
         DateTime(timezone=True),
         nullable=False,
         server_default=func.now(),
+    )
+
+
+class CvImport(Base):
+    __tablename__ = "cv_imports"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'running', 'succeeded', 'failed')",
+            name="ck_cv_imports_status",
+        ),
+        CheckConstraint("size_bytes BETWEEN 1 AND 5242880", name="ck_cv_imports_size"),
+        CheckConstraint("char_length(content_sha256) = 64", name="ck_cv_imports_sha256"),
+        CheckConstraint("attempt >= 1", name="ck_cv_imports_attempt"),
+        CheckConstraint(
+            "(status = 'queued' AND started_at IS NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'running' AND started_at IS NOT NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'succeeded' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NULL AND normalized_text IS NOT NULL) OR "
+            "(status = 'failed' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NOT NULL)",
+            name="ck_cv_imports_lifecycle",
+        ),
+        Index("uq_cv_imports_user_idempotency", "user_id", "idempotency_key", unique=True),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    status: Mapped[str] = mapped_column(Text, nullable=False)
+    idempotency_key: Mapped[str] = mapped_column(Text, nullable=False)
+    filename: Mapped[str] = mapped_column(Text, nullable=False)
+    document_type: Mapped[str] = mapped_column(Text, nullable=False)
+    media_type: Mapped[str] = mapped_column(Text, nullable=False)
+    size_bytes: Mapped[int] = mapped_column(Integer, nullable=False)
+    content_sha256: Mapped[str] = mapped_column(Text, nullable=False)
+    source_bytes: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+    normalized_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    extractor_name: Mapped[str] = mapped_column(Text, nullable=False)
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    error_code: Mapped[str | None] = mapped_column(Text, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+
+class ExperienceDraft(Base):
+    __tablename__ = "experience_drafts"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('pending', 'confirmed', 'rejected')",
+            name="ck_experience_drafts_status",
+        ),
+        CheckConstraint(
+            "kind IN ('project', 'work', 'research', 'course', 'other')",
+            name="ck_experience_drafts_kind",
+        ),
+        CheckConstraint("version >= 1", name="ck_experience_drafts_version"),
+        CheckConstraint(
+            "jsonb_typeof(source_refs) = 'array' AND jsonb_array_length(source_refs) > 0",
+            name="ck_experience_drafts_source_refs",
+        ),
+        CheckConstraint(
+            "(status = 'confirmed' AND confirmed_experience_id IS NOT NULL) OR "
+            "(status <> 'confirmed' AND confirmed_experience_id IS NULL)",
+            name="ck_experience_drafts_confirmation",
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    cv_import_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("cv_imports.id", ondelete="CASCADE"), nullable=False
+    )
+    status: Mapped[str] = mapped_column(Text, nullable=False)
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    kind: Mapped[str] = mapped_column(Text, nullable=False)
+    description: Mapped[str] = mapped_column(Text, nullable=False)
+    skills: Mapped[list[str]] = mapped_column(ARRAY(Text), nullable=False, server_default="{}")
+    outcome: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_refs: Mapped[list[dict[str, object]]] = mapped_column(JSONB, nullable=False)
+    version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    confirmed_experience_id: Mapped[UUID | None] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("experiences.id", ondelete="RESTRICT"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+
+class JobDiscoveryRun(Base):
+    __tablename__ = "job_discovery_runs"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'running', 'succeeded', 'failed')",
+            name="ck_job_discovery_runs_status",
+        ),
+        CheckConstraint("attempt >= 1", name="ck_job_discovery_runs_attempt"),
+        CheckConstraint(
+            "char_length(query_fingerprint) = 64",
+            name="ck_job_discovery_runs_fingerprint",
+        ),
+        CheckConstraint(
+            "(status = 'queued' AND started_at IS NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'running' AND started_at IS NOT NULL AND finished_at IS NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'succeeded' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NULL) OR "
+            "(status = 'failed' AND started_at IS NOT NULL AND finished_at IS NOT NULL "
+            "AND error_code IS NOT NULL)",
+            name="ck_job_discovery_runs_lifecycle",
+        ),
+        Index(
+            "uq_job_discovery_runs_user_idempotency", "user_id", "idempotency_key", unique=True
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    status: Mapped[str] = mapped_column(Text, nullable=False)
+    idempotency_key: Mapped[str] = mapped_column(Text, nullable=False)
+    query: Mapped[str] = mapped_column(Text, nullable=False)
+    location: Mapped[str | None] = mapped_column(Text, nullable=True)
+    remote: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    published_within_days: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    query_fingerprint: Mapped[str] = mapped_column(Text, nullable=False)
+    provider_name: Mapped[str] = mapped_column(Text, nullable=False)
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    error_code: Mapped[str | None] = mapped_column(Text, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+
+class JobDiscoveryResult(Base):
+    __tablename__ = "job_discovery_results"
+    __table_args__ = (
+        Index(
+            "uq_job_discovery_results_provider_result",
+            "run_id",
+            "provider_result_id",
+            unique=True,
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    run_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("job_discovery_runs.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    provider_result_id: Mapped[str] = mapped_column(Text, nullable=False)
+    company: Mapped[str] = mapped_column(Text, nullable=False)
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    source_url: Mapped[str] = mapped_column(Text, nullable=False)
+    summary: Mapped[str] = mapped_column(Text, nullable=False)
+    raw_description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    location: Mapped[str | None] = mapped_column(Text, nullable=True)
+    published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    observed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+class JobDraft(Base):
+    __tablename__ = "job_drafts"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('pending', 'confirmed', 'rejected')", name="ck_job_drafts_status"
+        ),
+        CheckConstraint("version >= 1", name="ck_job_drafts_version"),
+        CheckConstraint(
+            "(status = 'confirmed' AND confirmed_job_id IS NOT NULL) OR "
+            "(status <> 'confirmed' AND confirmed_job_id IS NULL)",
+            name="ck_job_drafts_confirmation",
+        ),
+        Index("uq_job_drafts_result", "result_id", unique=True),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    result_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True),
+        ForeignKey("job_discovery_results.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    status: Mapped[str] = mapped_column(Text, nullable=False)
+    company: Mapped[str] = mapped_column(Text, nullable=False)
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    raw_description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_url: Mapped[str] = mapped_column(Text, nullable=False)
+    location: Mapped[str | None] = mapped_column(Text, nullable=True)
+    version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    confirmed_job_id: Mapped[UUID | None] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("jobs.id", ondelete="RESTRICT"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
     )

@@ -9,10 +9,17 @@ from redis.exceptions import RedisError
 from careerops.domain.analysis_runs import AnalysisDispatchSource
 from careerops.domain.errors import (
     AnalysisRunDispatchError,
+    AssistedRunDispatchError,
     EmbeddingRunDispatchError,
     ParseRunDispatchError,
 )
-from careerops.workers.tasks import execute_analysis_run, execute_embedding_run, execute_parse_run
+from careerops.workers.tasks import (
+    execute_analysis_run,
+    execute_cv_import,
+    execute_embedding_run,
+    execute_job_discovery,
+    execute_parse_run,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +39,10 @@ class AnalysisRunActor(Protocol):
 
 class EmbeddingRunActor(Protocol):
     def send(self, embedding_run_id: str) -> object: ...
+
+
+class AssistedRunActor(Protocol):
+    def send(self, run_id: str) -> object: ...
 
 
 class DramatiqParseRunDispatcher:
@@ -94,3 +105,22 @@ class DramatiqEmbeddingRunDispatcher:
             await asyncio.to_thread(self._actor.send, str(embedding_run_id))
         except (BrokerError, RedisError) as exc:
             raise EmbeddingRunDispatchError() from exc
+
+
+class DramatiqAssistedRunDispatcher:
+    def __init__(self, actor: AssistedRunActor) -> None:
+        self._actor = actor
+
+    async def dispatch(self, run_id: UUID) -> None:
+        try:
+            await asyncio.to_thread(self._actor.send, str(run_id))
+        except (BrokerError, RedisError) as exc:
+            raise AssistedRunDispatchError() from exc
+
+
+def cv_import_dispatcher() -> DramatiqAssistedRunDispatcher:
+    return DramatiqAssistedRunDispatcher(execute_cv_import)
+
+
+def job_discovery_dispatcher() -> DramatiqAssistedRunDispatcher:
+    return DramatiqAssistedRunDispatcher(execute_job_discovery)

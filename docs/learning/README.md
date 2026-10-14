@@ -127,3 +127,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0043 Local Frontend Analysis Tasks And Dashboard](0043-local-frontend-analysis-tasks-dashboard.md)
 - [0044 Local Full-Stack Acceptance](0044-local-full-stack-acceptance.md)
 - [0045 P0 Closure Evidence And Safe Boundaries](0045-p0-closure-evidence.md)
+- [0046 CV Import And Assisted Job Discovery](0046-cv-import-and-assisted-job-discovery.md)

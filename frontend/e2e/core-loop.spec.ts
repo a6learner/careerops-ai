@@ -23,8 +23,9 @@ test("completes the fake-provider core loop through the same-origin frontend", a
 
   const runSuffix = Date.now();
   const email = `p110-${runSuffix}@example.com`;
-  const experienceTitle = `P1-10 Backend Project ${runSuffix}`;
-  const jobTitle = `Backend Engineer ${runSuffix}`;
+  const experienceTitle = `Imported Backend Project ${runSuffix}`;
+  const searchQuery = `Backend Engineer ${runSuffix}`;
+  const jobTitle = `Junior ${searchQuery}`;
 
   await page.goto("/register");
   await page.getByLabel("Email address").fill(email);
@@ -34,32 +35,48 @@ test("completes the fake-provider core loop through the same-origin frontend", a
   await pauseForNarration(20_000);
 
   await page.getByRole("link", { name: "Experiences" }).first().click();
-  await page.getByRole("button", { name: "Add experience" }).click();
-  await page.getByLabel("Title").fill(experienceTitle);
-  await page.getByLabel("What you did").fill(
-    "Built a reliable Python API with background workers and evidence validation.",
-  );
-  await page.getByLabel("Skills").fill("Python, FastAPI, PostgreSQL");
-  await page.getByLabel("Outcome").fill("Completed a deterministic local acceptance workflow.");
-  await page.getByRole("button", { name: "Add experience" }).click();
+  await page.getByLabel("Choose CV").setInputFiles({
+    name: `careerops-${runSuffix}.md`,
+    mimeType: "text/markdown",
+    buffer: Buffer.from(
+      `${experienceTitle}\nBuilt a reliable Python API with background workers, PostgreSQL, and evidence validation.`,
+    ),
+  });
+  await expect(page.locator('input[name="title"]')).toHaveValue(experienceTitle, {
+    timeout: 60_000,
+  });
+  await page.getByRole("button", { name: "Confirm as experience" }).click();
   await expect(page.getByRole("heading", { name: experienceTitle })).toBeVisible();
   await pauseForNarration(25_000);
 
   await page.getByRole("link", { name: "Jobs" }).first().click();
-  await page.getByRole("button", { name: "Add job" }).click();
-  await page.getByLabel("Company").fill("P1-10 Test Company");
-  await page.getByLabel("Role").fill(jobTitle);
+  await page.getByLabel("Keywords").fill(searchQuery);
+  await page.getByLabel("Location").fill("Los Angeles");
+  await page.getByLabel("Published within days").fill("14");
+  await page.getByRole("button", { name: "Search jobs" }).click();
+  await expect(page.getByRole("heading", { name: jobTitle })).toBeVisible({ timeout: 60_000 });
+  const incompleteResultCard = page
+    .getByText(/Observed .*Description required/)
+    .first()
+    .locator("..");
+  await expect(incompleteResultCard).toBeVisible();
+  await incompleteResultCard.getByRole("button", { name: "Review draft" }).click();
+  await expect(page.getByRole("heading", { name: "Review job draft" })).toBeVisible();
+  const confirmJob = page.getByRole("button", { name: "Confirm as job" });
+  await expect(confirmJob).toBeDisabled();
   await page
-    .getByLabel("Job description")
+    .getByRole("textbox", { name: "Job description" })
     .fill("Python experience is required. Kubernetes experience is required.");
-  await page.getByRole("button", { name: "Save job" }).click();
+  await page.getByRole("button", { name: "Save draft" }).click();
+  await expect(confirmJob).toBeEnabled();
+  await confirmJob.click();
   await expect(page.getByRole("heading", { name: jobTitle })).toBeVisible();
   await pauseForNarration(25_000);
 
   await page.getByRole("button", { name: "Parse description" }).click();
-  await expect(page.getByText("Python experience is required"))
+  await expect(page.getByText("Python experience is required").last())
     .toBeVisible({ timeout: 60_000 });
-  await expect(page.getByText("Kubernetes experience is required"))
+  await expect(page.getByText("Kubernetes experience is required").last())
     .toBeVisible();
   await pauseForNarration(30_000);
 

@@ -44,7 +44,7 @@ async function proxyRequest(request: Request, context: RouteContext): Promise<Re
     const backendResponse = await fetch(backendUrl, {
       method: request.method,
       headers: forwardedRequestHeaders(request.headers, token),
-      body: hasBody ? await request.text() : undefined,
+      body: hasBody ? await request.arrayBuffer() : undefined,
       cache: "no-store",
     });
 

@@ -61,6 +61,19 @@ Refresh tokens are explicitly deferred: after the 30-minute access token expires
 the user must log in again. The complete status and limitations are in
 `docs/P0_EVIDENCE_AND_LIMITATIONS.md`.
 
+CV Import And Assisted Job Discovery is implemented as one review-first feature.
+Users can upload text PDF, DOCX, DOC, ODT, RTF, UTF-8 TXT, or Markdown files;
+Google Docs should first be exported as DOCX or PDF. Extraction runs in the
+worker, preserves exact source quotes, and creates editable drafts. It never
+creates a formal Experience until the user confirms it. Scanned-PDF OCR and
+direct Google Drive import are not implemented.
+
+Job discovery uses a worker-side adapter and currently has only a deterministic
+fake provider. Results preserve the source URL and observation time, become
+editable drafts, and require the full job description before confirmation. The
+fake provider is product-loop evidence only; it does not prove real listing
+coverage or freshness. Manual Experience and Job creation remain available.
+
 ## Architecture Direction
 
 ```mermaid
@@ -71,9 +84,17 @@ flowchart TD
     Redis --> Worker[Worker service]
     Worker --> Postgres
     Worker --> LLM[LLM provider adapter]
+    Worker --> Documents[Document extraction / LibreOffice]
+    Worker --> Search[Job search adapter]
 ```
 
 The API service will never call the LLM directly. Model calls belong in the worker so request latency stays predictable and tests can replace the provider with a fake implementation.
+
+The worker image includes LibreOffice for DOC, ODT, and RTF conversion. A
+host-run worker needs `soffice` available on `PATH` to process those formats;
+PDF, DOCX, TXT, and Markdown use Python extractors directly. Encrypted PDFs,
+suspicious office archives, non-UTF-8 text, empty documents, and files larger
+than 5 MiB are rejected. Scanned PDFs report that no usable text was found.
 
 ## Local Setup
 

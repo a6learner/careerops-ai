@@ -95,3 +95,4 @@ What future condition would justify reopening this decision?
 - `ADR-037-local-frontend-session-boundary.md`: Next.js same-origin BFF, HttpOnly access-token cookie, restricted proxy boundary, and lightweight frontend dependencies.
 - `ADR-038-local-full-stack-acceptance.md`: frontend container topology, canonical public origin, fake-only isolated Compose acceptance, and browser-driven verification.
 - `ADR-039-refresh-token-deferral.md`: explicit MVP refresh-token deferral and the resulting bounded-session limitation.
+- `ADR-040-cv-import-and-assisted-job-discovery.md`: worker-backed document normalization, review-only drafts, and fake-first job discovery with source and freshness preservation.

@@ -68,7 +68,9 @@ services:
       start_period: 5s
 
   worker:
-    build: .
+    build:
+      context: .
+      target: worker
     command: ["dramatiq", "careerops.workers.tasks", "--processes", "1", "--threads", "4"]
     healthcheck:
       disable: true

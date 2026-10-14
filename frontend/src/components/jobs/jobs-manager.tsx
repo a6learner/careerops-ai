@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
 import { JobCreateForm, statusLabel, type JobInput } from "@/components/jobs/job-create-form";
+import { JobDiscoveryPanel } from "@/components/jobs/job-discovery-panel";
 import { ParseRunPanel } from "@/components/jobs/parse-run-panel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -77,6 +78,8 @@ export function JobsManager() {
           <JobCreateForm isSubmitting={create.isPending} onSubmit={(input) => create.mutate(input)} onCancel={() => setShowCreate(false)} />
         </Card>
       ) : null}
+
+      <JobDiscoveryPanel />
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <label className="text-sm font-medium" htmlFor="job-filter">Status</label>

@@ -4,7 +4,7 @@ import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { EXPERIENCE_KINDS, type Experience, type ExperienceKind } from "@/lib/api/types";
+import { EXPERIENCE_KINDS, type ExperienceKind } from "@/lib/api/types";
 
 export type ExperienceInput = {
   title: string;
@@ -15,7 +15,7 @@ export type ExperienceInput = {
 };
 
 type ExperienceFormProps = {
-  experience?: Experience;
+  experience?: ExperienceInput & { id: string };
   isSubmitting: boolean;
   onSubmit: (input: ExperienceInput) => void;
   onCancel?: () => void;

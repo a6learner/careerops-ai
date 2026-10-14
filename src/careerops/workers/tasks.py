@@ -6,6 +6,7 @@ import dramatiq
 from careerops.adapters.embedding_factory import ConfiguredEmbeddingProviderResolver
 from careerops.adapters.evidence_matcher_factory import ConfiguredEvidenceMatcherResolver
 from careerops.adapters.factory import create_requirement_parser
+from careerops.adapters.fake_job_search import FakeJobSearchProvider
 from careerops.core.config import get_settings
 from careerops.core.logging import configure_logging
 from careerops.core.request_id import normalize_request_id
@@ -14,11 +15,16 @@ from careerops.domain.analysis_runs import AnalysisDispatchSource, AnalysisRunWo
 from careerops.domain.embeddings import embedding_space_for_analysis_pipeline
 from careerops.repositories.analysis_results import AnalysisResultRepository
 from careerops.repositories.analysis_runs import AnalysisRunRepository
+from careerops.repositories.assisted_imports import AssistedImportRepository
 from careerops.repositories.embedding_runs import EmbeddingRunRepository
 from careerops.repositories.evidence_retrieval import EvidenceVectorRepository
 from careerops.repositories.parse_runs import ParseRunRepository
 from careerops.services.analysis_results import AnalysisResultService
 from careerops.services.analysis_run_execution import AnalysisRunExecutionService, EvidenceMatcher
+from careerops.services.assisted_imports import (
+    CvImportExecutionService,
+    JobDiscoveryExecutionService,
+)
 from careerops.services.embedding_execution import EmbeddingExecutionService
 from careerops.services.hybrid_retrieval import HybridEvidenceRetriever
 from careerops.services.parse_run_execution import ParseRunExecutionService, RequirementParser
@@ -162,3 +168,29 @@ async def execute_embedding_run_async(
             providers=ConfiguredEmbeddingProviderResolver(get_settings()),
         )
         return await service.execute(embedding_run_id)
+
+
+@dramatiq.actor(
+    actor_name="execute_cv_import",
+    broker=redis_broker,
+    queue_name="cv-imports",
+    max_retries=0,
+)
+async def execute_cv_import(cv_import_id: str) -> None:
+    async with worker_session_factory() as session:
+        service = CvImportExecutionService(AssistedImportRepository(session))
+        await service.execute(UUID(cv_import_id))
+
+
+@dramatiq.actor(
+    actor_name="execute_job_discovery",
+    broker=redis_broker,
+    queue_name="job-discovery",
+    max_retries=0,
+)
+async def execute_job_discovery(run_id: str) -> None:
+    async with worker_session_factory() as session:
+        service = JobDiscoveryExecutionService(
+            AssistedImportRepository(session), FakeJobSearchProvider()
+        )
+        await service.execute(UUID(run_id))

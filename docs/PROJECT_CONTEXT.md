@@ -119,21 +119,43 @@ deferral, and final evidence/limitation matrix are saved. The fresh-database CI
 job is configured and its commands were exercised locally; a GitHub-hosted green
 run remains pending commit and push authorization.
 
-### P1-12: Local Product Hardening
+### CV Import And Assisted Job Discovery
 
-Improve local product clarity and resilience without adding new business scope:
-review accessibility and small-screen behavior, tighten actionable error and
-empty states, and resolve focused usability defects found through the accepted
-core loop. Keep API, database, authentication, authorization, and provider
-contracts unchanged unless separately approved.
+Status: completed locally on 2026-10-11. Full backend and frontend quality
+gates, fresh migration and drift checks, a worker-image LibreOffice RTF smoke,
+and the isolated fake-provider browser flow passed. The exact evidence and
+limits are saved in
+`docs/metrics/2026-10-11-cv-import-job-discovery-test-record.md`.
 
-Acceptance: the existing local core loop is easier to understand and recover
-from, with focused evidence for each change and no broad UI redesign.
+This is one review-first feature rather than a sequence of route-numbered
+milestones. It adds worker-backed import for text PDF, DOCX, DOC, ODT, RTF,
+UTF-8 TXT, and Markdown, with Google Docs supported through DOCX/PDF export.
+Every generated Experience draft retains exact CV source references; no formal
+Experience or embedding run exists until user confirmation. Scanned-PDF OCR,
+Google OAuth, and new employer/date fields are deferred.
 
-### P1-13: Cloud Deployment
+Assisted job discovery uses a neutral worker adapter and a deterministic fake
+provider. Results retain provider identity, source URL, and observation time.
+The user reviews a Job draft and must paste a complete description when the
+source supplies only a summary. No real search provider, generic URL fetching,
+broad scraping, per-user provider keys, or automatic applications are included.
+Manual Experience and Job entry remains unchanged.
+
+ADR-040 records the format, worker, draft, provenance, retention, and provider
+boundaries. Learning note 0046 explains the transaction and authorization
+behavior. Development uses focused tests; completion requires one consolidated
+backend/frontend quality pass and one fake-provider browser flow through import,
+discovery, Parse, Analysis, Action Items, and Dashboard.
+
+### P1-13: Local Product Hardening
+
+After P1-12, improve accessibility, small-screen behavior, actionable error and
+empty states, and focused usability defects without a broad UI redesign.
+
+### P1-14: Cloud Deployment
 
 Choose a deployment provider and add provider-specific infrastructure only
-after P1-9 through P1-12 pass locally. Then configure secrets, TLS, release
+after P1-9 through P1-13 pass locally. Then configure secrets, TLS, release
 migrations, health probes, rollback, and a production smoke test without
 weakening the platform-neutral deployment contract.
 
