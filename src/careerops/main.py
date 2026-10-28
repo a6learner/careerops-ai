@@ -19,6 +19,7 @@ from careerops.api.dashboard import router as dashboard_router
 from careerops.api.experiences import router as experiences_router
 from careerops.api.jobs import router as jobs_router
 from careerops.api.parse_runs import router as parse_runs_router
+from careerops.api.project_records import router as project_records_router
 from careerops.api.routes import router
 from careerops.cache.dashboard import RedisDashboardCache
 from careerops.cache.health import RedisReadinessChecker
@@ -59,6 +60,7 @@ from careerops.domain.errors import (
     ParseRunNotFoundError,
     ParseRunNotReadyError,
 )
+from careerops.domain.project_records import ProjectRecordConflictError, ProjectRecordNotFoundError
 from careerops.workers.dispatcher import (
     DramatiqAnalysisRunDispatcher,
     DramatiqEmbeddingRunDispatcher,
@@ -119,6 +121,28 @@ def create_app() -> FastAPI:
     app.include_router(action_items_router)
     app.include_router(dashboard_router)
     app.include_router(assisted_imports_router)
+    app.include_router(project_records_router)
+
+    @app.exception_handler(ProjectRecordNotFoundError)
+    async def project_record_not_found(
+        request: Request,
+        exc: ProjectRecordNotFoundError,
+    ) -> JSONResponse:
+        return error_response(
+            request, 404, ErrorCode.PROJECT_RECORD_NOT_FOUND, "Project record was not found."
+        )
+
+    @app.exception_handler(ProjectRecordConflictError)
+    async def project_record_conflict(
+        request: Request,
+        exc: ProjectRecordConflictError,
+    ) -> JSONResponse:
+        return error_response(
+            request,
+            409,
+            ErrorCode.PROJECT_RECORD_CONFLICT,
+            "Record changed or transition is not allowed; reload before retrying.",
+        )
 
     @app.exception_handler(AssistedResourceNotFoundError)
     async def assisted_resource_not_found_handler(
@@ -154,9 +178,7 @@ def create_app() -> FastAPI:
         )
 
     @app.exception_handler(InvalidDocumentError)
-    async def invalid_document_handler(
-        request: Request, exc: InvalidDocumentError
-    ) -> JSONResponse:
+    async def invalid_document_handler(request: Request, exc: InvalidDocumentError) -> JSONResponse:
         return error_response(
             request=request,
             status_code=HTTPStatus.UNPROCESSABLE_ENTITY,

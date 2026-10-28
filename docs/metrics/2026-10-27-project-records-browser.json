@@ -1,0 +1,27 @@
+{
+  "run_id": "projectrecordspatch20261027",
+  "project": "careerops-p110-projectrecordspatch20261027",
+  "frontend_url": "http://127.0.0.1:23028",
+  "frontend_next_version": "16.4.3",
+  "providers": {
+    "parser": "fake",
+    "embedding": "fake",
+    "matcher": "fake",
+    "job_search": "fake"
+  },
+  "migration": "passed",
+  "frontend_user": "uid=1000",
+  "core_loop": "passed",
+  "demo_rehearsal": "not_requested",
+  "browser_elapsed_seconds": 15.3,
+  "cleanup": "passed",
+  "playwright": {
+    "passed": 2,
+    "reported_elapsed_seconds": 13.6,
+    "scenarios": [
+      "original fake-provider browser core loop",
+      "manual project checkpoint capture, review, reload, search and withdrawal"
+    ]
+  },
+  "limits": "Local synthetic integration evidence only; no MCP host, model-quality, production or efficiency claim."
+}

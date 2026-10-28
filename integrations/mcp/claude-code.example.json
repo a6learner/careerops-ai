@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "careerops": {
+      "type": "stdio",
+      "command": "C:/REPLACE_WITH_CAREEROPS_VENV/Scripts/python.exe",
+      "args": ["-m", "careerops.agent.mcp_server"],
+      "env": {
+        "CAREEROPS_AGENT_API_URL": "http://127.0.0.1:8000",
+        "CAREEROPS_AGENT_STATE_DIR": "C:/REPLACE_WITH_PRIVATE_STATE_DIRECTORY/careerops-agent"
+      }
+    }
+  }
+}

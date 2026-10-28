@@ -10,6 +10,21 @@ Say `not measured` instead of inventing latency improvements, accuracy, recall, 
 
 ## Metrics To Collect
 
+Latest additive project-records slice: see
+`2026-10-27-project-records-test-record.md` for the full/focused JUnit reports,
+original-plus-new browser acceptance, migration checks, security patch and
+explicit MCP/production limitations.
+
+The next local client/Skill slice and independent-agent verification are in
+`2026-10-27-project-agent-client-test-record.md`. The author subsequently approved
+the optional SDK; protocol evidence is recorded separately from that earlier slice
+in `2026-10-27-project-agent-mcp-test-record.md`.
+
+The separately authorized real Codex recording/review/fresh-session demonstration
+is in `2026-10-27-project-agent-host-demo-record.md`, with a synthetic tool trace,
+original model outputs and browser screenshots. Its integration evidence does
+not certify the synthetic material as the author's personal experience.
+
 Useful metrics for this project include:
 
 - main read endpoint P50 and P95 latency

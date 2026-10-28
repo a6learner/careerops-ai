@@ -9,7 +9,10 @@ def parse_if_match(value: str | None) -> int:
     normalized = value.strip().strip('"')
     if not normalized.isdecimal():
         raise MissingIfMatchHeaderError()
-    version = int(normalized)
+    try:
+        version = int(normalized)
+    except ValueError as exc:
+        raise MissingIfMatchHeaderError() from exc
     if version < 1:
         raise MissingIfMatchHeaderError()
     return version

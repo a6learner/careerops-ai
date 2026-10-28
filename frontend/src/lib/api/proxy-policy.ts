@@ -2,6 +2,7 @@ const ALLOWED_ROOTS = new Set([
   "auth",
   "experiences",
   "jobs",
+  "projects",
   "action-items",
   "dashboard",
   "cv-imports",

@@ -10,6 +10,7 @@ describe("backend proxy policy", () => {
   it("allows only authenticated CareerOps resource roots", () => {
     expect(isAllowedBackendPath(["api", "v1", "auth", "me"])).toBe(true);
     expect(isAllowedBackendPath(["api", "v1", "jobs", "job-id", "parse-runs"])).toBe(true);
+    expect(isAllowedBackendPath(["api", "v1", "projects", "project-id", "checkpoints"])).toBe(true);
     expect(isAllowedBackendPath(["api", "v1", "auth", "login"])).toBe(false);
     expect(isAllowedBackendPath(["api", "v1", "admin"])).toBe(false);
     expect(isAllowedBackendPath(["api", "v1", "jobs", "..", "auth", "me"])).toBe(false);

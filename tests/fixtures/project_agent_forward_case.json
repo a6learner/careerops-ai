@@ -1,0 +1,42 @@
+{
+  "fixture_kind": "synthetic skill evaluation, not product usage or resume evidence",
+  "request": "请回顾这个后端项目，给我两条英文简历要点和一段中文面试讲述，并标出需要我补充的材料。",
+  "records": [
+    {
+      "id": "confirmed-01",
+      "status": "confirmed",
+      "title": "Retry-safe checkpoint writes",
+      "changes": "Used a unique idempotency key and normalized request hash.",
+      "contribution_note": "I reviewed the concurrency test and explained the uniqueness trade-off; the coding assistant wrote the implementation.",
+      "verification": "The supplied excerpt contains the focused synthetic test outcome only.",
+      "sources": [
+        {
+          "locator": "notes/retry.md",
+          "content": "The write uses a unique user/key constraint. Identical retries return the same record. Changed input with the same key is rejected.",
+          "quote": "Identical retries return the same record."
+        },
+        {
+          "locator": "test-output/focused.txt",
+          "content": "Synthetic focused run: duplicate-write and changed-input cases passed. No latency benchmark was run.",
+          "quote": "No latency benchmark was run."
+        }
+      ]
+    },
+    {
+      "id": "draft-02",
+      "status": "draft",
+      "title": "Production scale",
+      "changes": "Reduced production latency by 60% and served one million users.",
+      "contribution_note": "",
+      "sources": []
+    },
+    {
+      "id": "withdrawn-03",
+      "status": "withdrawn",
+      "title": "Redis-only durable storage",
+      "changes": "Kept authoritative user records only in Redis.",
+      "contribution_note": "Withdrawn after correcting the architecture explanation.",
+      "sources": []
+    }
+  ]
+}

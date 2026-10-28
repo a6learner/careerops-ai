@@ -128,3 +128,7 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0044 Local Full-Stack Acceptance](0044-local-full-stack-acceptance.md)
 - [0045 P0 Closure Evidence And Safe Boundaries](0045-p0-closure-evidence.md)
 - [0046 CV Import And Assisted Job Discovery](0046-cv-import-and-assisted-job-discovery.md)
+- [0047 Project Checkpoints And Reviewed Evidence](0047-project-checkpoints.md)
+- [0048 Protected Agent Client And Recovery](0048-protected-agent-client.md)
+- [0049 MCP Tool Boundary](0049-mcp-tool-boundary.md)
+- [0050 Project Agent Demo And Responsibilities](0050-project-agent-demo.md)

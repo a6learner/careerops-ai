@@ -62,7 +62,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: python -m pip install -e ".[dev,worker]"
+        run: python -m pip install -e ".[dev,worker,agent]"
 
       - name: Lint
         run: ruff check .

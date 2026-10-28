@@ -19,6 +19,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+agent = [
+    "mcp==2.3.0",
+]
 dev = [
     "import-linter>=2.0",
     "mypy>=1.11.0",

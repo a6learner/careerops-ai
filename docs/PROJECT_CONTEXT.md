@@ -163,10 +163,40 @@ Acceptance: the locally accepted product is deployed and verified through its
 documented production workflow. Local success is not presented as production
 availability evidence.
 
+## Proposed Extension: Project Evidence Agent
+
+As of 2026-10-27, the author authorized incremental implementation while
+preserving the existing product. The first project/checkpoint API and review UI
+slice is implemented locally, pending author review. Users would bring their existing
+coding assistant/model; a Skill and local MCP adapter would capture selected
+development checkpoints, preserve sources, and support later resume/interview
+preparation through reviewed evidence. No new server model provider is proposed
+for this recording path.
+
+Scope, provisional schedule, milestone ledger, acceptance gates, and continuation
+instructions live in `docs/product/project-evidence-agent-plan.md`.
+ADR-041 records the initial slice contract. ADR-042 adds the Windows local client,
+DPAPI-protected terminal session/packets, same-key replay and a repository Skill.
+The author explicitly approved `mcp==2.3.0` after the initial automatic-review
+rejection. The optional SDK and eight-tool stdio adapter are implemented;
+official SDK discovery/calls and deterministic recovery tests passed locally.
+After explicit author authorization, two real Codex model sessions completed
+synthetic recording, UI review and fresh-session evidence recall. See
+`docs/metrics/2026-10-27-project-agent-host-demo-record.md` and learning note 0050.
+Real-project extraction, broader quality evaluation and other host acceptance
+remain pending. Earlier SDK evidence is separate in
+`docs/metrics/2026-10-27-project-agent-mcp-test-record.md`.
+Automatic capture remains unimplemented. Initial verification
+is saved in `docs/metrics/2026-10-27-project-records-test-record.md`.
+Client verification is in `docs/metrics/2026-10-27-project-agent-client-test-record.md`.
+P1-13 and P1-14 remain outstanding;
+this proposal does not mark them complete or replace their delivery contract.
+
 ## Source Material
 
 - Detailed MVP scope: `docs/CareerOps AI MVP 产品范围与 Non-goals.md`
 - User stories and use cases: `docs/product/user-stories-and-use-cases.md`
+- Proposed project recording extension: `docs/product/project-evidence-agent-plan.md`
 - Programming language research: `docs/52 条 2027 届实习 JD 语言要求调研.md`
 - Decision records: `docs/decisions/`
 - Learning notes: `docs/learning/`

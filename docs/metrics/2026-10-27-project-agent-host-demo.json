@@ -1,0 +1,409 @@
+{
+  "date_local": "2026-10-27",
+  "baseline_head": "381ef0e",
+  "scope": "Isolated local synthetic demonstration; not personal resume evidence.",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "medium",
+  "actual_model_sessions": 2,
+  "attempts": [
+    {
+      "run_directory": "20261028T041933-record-c0f54dda",
+      "phase": "record",
+      "exit_code": 1,
+      "timed_out": false,
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "medium",
+      "thread_ids": [],
+      "mcp_calls": []
+    },
+    {
+      "run_directory": "20261028T042039-record-bcfa1cdf",
+      "phase": "record",
+      "exit_code": 0,
+      "timed_out": false,
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "medium",
+      "runner_retries": 0,
+      "codex_transport_retry_control": "not configured; built-in provider overrides unsupported",
+      "thread_ids": [
+        "01a180bd-1e0f-7710-aca0-46b999bea51a"
+      ],
+      "mcp_calls": [
+        {
+          "server": "careerops",
+          "tool": "list_projects",
+          "status": "completed"
+        },
+        {
+          "server": "careerops",
+          "tool": "register_project",
+          "status": "completed"
+        },
+        {
+          "server": "careerops",
+          "tool": "save_checkpoint",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "run_directory": "20261028T042149-recall-a3694ecb",
+      "phase": "recall",
+      "exit_code": 0,
+      "timed_out": false,
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "medium",
+      "runner_retries": 0,
+      "codex_transport_retry_control": "not configured; built-in provider overrides unsupported",
+      "thread_ids": [
+        "01a180be-2fd0-79c1-9723-2fd5d9a312ca"
+      ],
+      "mcp_calls": [
+        {
+          "server": "careerops",
+          "tool": "search_project_evidence",
+          "status": "completed"
+        },
+        {
+          "server": "careerops",
+          "tool": "get_project_context",
+          "status": "completed"
+        },
+        {
+          "server": "careerops",
+          "tool": "get_evidence",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "configuration_preflight_failure": "Reserved built-in openai provider overrides rejected before thread/model startup; removed, not replaced with another provider.",
+  "demo_project": "careerops-agent-demo-20261027",
+  "frontend_origin": "http://127.0.0.1:13021",
+  "api_origin": "http://127.0.0.1:18021",
+  "bindings": "127.0.0.1 only",
+  "backend_providers": "fake",
+  "global_host_configuration_changed": false,
+  "human_review": "UI confirmation by the executing assistant for the synthetic fixture only, not author acceptance or certification.",
+  "cleanup": "Demo retained intentionally for user inspection; stop script preserves the database volume.",
+  "sessions": [
+    {
+      "phase": "record",
+      "thread_ids": [
+        "01a180bd-1e0f-7710-aca0-46b999bea51a"
+      ],
+      "calls": [
+        {
+          "server": "careerops",
+          "tool": "list_projects",
+          "arguments": {
+            "limit": 100
+          },
+          "status": "completed",
+          "error": null,
+          "structured_result": {
+            "items": [],
+            "next_cursor": null
+          }
+        },
+        {
+          "server": "careerops",
+          "tool": "register_project",
+          "arguments": {
+            "idempotency_key": "0c303ae2-9563-5967-9ef8-c047ba028463",
+            "payload": {
+              "name": "CareerOps MCP Demo - Synthetic",
+              "goal": "Synthetic MCP record and recall demonstration"
+            }
+          },
+          "status": "completed",
+          "error": null,
+          "structured_result": {
+            "id": "b942251c-c118-4732-aea8-627c16b49da4",
+            "name": "CareerOps MCP Demo - Synthetic",
+            "goal": "Synthetic MCP record and recall demonstration",
+            "created_at": "2026-10-28T04:20:51.148861Z"
+          }
+        },
+        {
+          "server": "careerops",
+          "tool": "save_checkpoint",
+          "arguments": {
+            "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+            "idempotency_key": "9f0dfbbc-2a73-59bd-b6cf-b20b04932398",
+            "approved_for_upload": true,
+            "payload": {
+              "schema_version": "1",
+              "title": "Synthetic Demo: preserve checkpoint identity after a lost response",
+              "objective": "Demonstrate evidence recording with synthetic excerpts only.",
+              "changes": "Illustrative design: persist an original packet and key before submission.",
+              "decisions": "Synthetic rationale: PostgreSQL uniqueness protects logical save identity.",
+              "failures": "Synthetic failure: replacing a retry key can create a duplicate record.",
+              "verification": "Synthetic test description only; no test was executed for this fixture.",
+              "remaining": "Human review and contribution confirmation; real measurements not measured.",
+              "contribution": "Unconfirmed; demonstration fixture is not the author's real experience.",
+              "host": "codex-synthetic-host-demo",
+              "base_revision": null,
+              "sources": [
+                {
+                  "kind": "user_note",
+                  "locator": "demo/synthetic-decision.md",
+                  "content": "SYNTHETIC DESIGN: PostgreSQL stores a unique logical operation key. After a lost response, replay the original packet with the same key.",
+                  "quote": "replay the original packet with the same key"
+                },
+                {
+                  "kind": "user_note",
+                  "locator": "demo/synthetic-failure.md",
+                  "content": "SYNTHETIC FAILURE: Changing the key after a duplicate or lost response is unsafe because the server may already have committed the original record.",
+                  "quote": "the server may already have committed the original record"
+                },
+                {
+                  "kind": "user_note",
+                  "locator": "demo/synthetic-test-description.md",
+                  "content": "SYNTHETIC TEST DESCRIPTION ONLY: A planned fake transport accepts a save, drops its response, then receives the same packet and key. This is not a real executed test result; performance and reliability are not measured.",
+                  "quote": "This is not a real executed test result"
+                }
+              ]
+            }
+          },
+          "status": "completed",
+          "error": null,
+          "structured_result": {
+            "packet_id": "5fd90bbc-b55a-5026-bd8a-eb3732d075e4",
+            "state": "accepted",
+            "record": {
+              "id": "24b391b8-56af-4d8a-b516-8a488059beb9",
+              "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+              "status": "draft",
+              "version": 1,
+              "payload": {
+                "schema_version": "1",
+                "title": "Synthetic Demo: preserve checkpoint identity after a lost response",
+                "objective": "Demonstrate evidence recording with synthetic excerpts only.",
+                "changes": "Illustrative design: persist an original packet and key before submission.",
+                "decisions": "Synthetic rationale: PostgreSQL uniqueness protects logical save identity.",
+                "failures": "Synthetic failure: replacing a retry key can create a duplicate record.",
+                "verification": "Synthetic test description only; no test was executed for this fixture.",
+                "remaining": "Human review and contribution confirmation; real measurements not measured.",
+                "contribution": "Unconfirmed; demonstration fixture is not the author's real experience.",
+                "host": "codex-synthetic-host-demo",
+                "base_revision": null,
+                "sources": [
+                  {
+                    "kind": "user_note",
+                    "locator": "demo/synthetic-decision.md",
+                    "content": "SYNTHETIC DESIGN: PostgreSQL stores a unique logical operation key. After a lost response, replay the original packet with the same key.",
+                    "quote": "replay the original packet with the same key"
+                  },
+                  {
+                    "kind": "user_note",
+                    "locator": "demo/synthetic-failure.md",
+                    "content": "SYNTHETIC FAILURE: Changing the key after a duplicate or lost response is unsafe because the server may already have committed the original record.",
+                    "quote": "the server may already have committed the original record"
+                  },
+                  {
+                    "kind": "user_note",
+                    "locator": "demo/synthetic-test-description.md",
+                    "content": "SYNTHETIC TEST DESCRIPTION ONLY: A planned fake transport accepts a save, drops its response, then receives the same packet and key. This is not a real executed test result; performance and reliability are not measured.",
+                    "quote": "This is not a real executed test result"
+                  }
+                ]
+              },
+              "content_sha256": "ae575a91d8f546e195172ecd83c50d7acf87b184667fb4a24d41cc255f6eb101",
+              "contribution_note": "",
+              "created_at": "2026-10-28T04:20:56.385604Z",
+              "reviewed_at": null
+            },
+            "error_code": null,
+            "message": "Saved as the returned review state; no personal claim was auto-confirmed."
+          }
+        }
+      ]
+    },
+    {
+      "phase": "recall",
+      "thread_ids": [
+        "01a180be-2fd0-79c1-9723-2fd5d9a312ca"
+      ],
+      "calls": [
+        {
+          "server": "careerops",
+          "tool": "search_project_evidence",
+          "arguments": {
+            "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+            "query": null,
+            "limit": 100
+          },
+          "status": "completed",
+          "error": null,
+          "structured_result": {
+            "items": [
+              {
+                "id": "24b391b8-56af-4d8a-b516-8a488059beb9",
+                "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+                "status": "confirmed",
+                "version": 2,
+                "payload": {
+                  "schema_version": "1",
+                  "title": "Synthetic Demo: preserve checkpoint identity after a lost response",
+                  "objective": "Demonstrate evidence recording with synthetic excerpts only.",
+                  "changes": "Illustrative design: persist an original packet and key before submission.",
+                  "decisions": "Synthetic rationale: PostgreSQL uniqueness protects logical save identity.",
+                  "failures": "Synthetic failure: replacing a retry key can create a duplicate record.",
+                  "verification": "Synthetic test description only; no test was executed for this fixture.",
+                  "remaining": "Human review and contribution confirmation; real measurements not measured.",
+                  "contribution": "Unconfirmed; demonstration fixture is not the author's real experience.",
+                  "host": "codex-synthetic-host-demo",
+                  "base_revision": null,
+                  "sources": [
+                    {
+                      "kind": "user_note",
+                      "locator": "demo/synthetic-decision.md",
+                      "content": "SYNTHETIC DESIGN: PostgreSQL stores a unique logical operation key. After a lost response, replay the original packet with the same key.",
+                      "quote": "replay the original packet with the same key"
+                    },
+                    {
+                      "kind": "user_note",
+                      "locator": "demo/synthetic-failure.md",
+                      "content": "SYNTHETIC FAILURE: Changing the key after a duplicate or lost response is unsafe because the server may already have committed the original record.",
+                      "quote": "the server may already have committed the original record"
+                    },
+                    {
+                      "kind": "user_note",
+                      "locator": "demo/synthetic-test-description.md",
+                      "content": "SYNTHETIC TEST DESCRIPTION ONLY: A planned fake transport accepts a save, drops its response, then receives the same packet and key. This is not a real executed test result; performance and reliability are not measured.",
+                      "quote": "This is not a real executed test result"
+                    }
+                  ]
+                },
+                "content_sha256": "ae575a91d8f546e195172ecd83c50d7acf87b184667fb4a24d41cc255f6eb101",
+                "contribution_note": "Synthetic demo review only: this account reviewed the supplied illustrative design and failure notes. This is not the author's real experience, implementation ownership, or proof of executed tests.",
+                "created_at": "2026-10-28T04:20:56.385604Z",
+                "reviewed_at": "2026-10-28T04:21:34.965133Z"
+              }
+            ],
+            "next_cursor": null
+          }
+        },
+        {
+          "server": "careerops",
+          "tool": "get_project_context",
+          "arguments": {
+            "project_id": "b942251c-c118-4732-aea8-627c16b49da4"
+          },
+          "status": "completed",
+          "error": null,
+          "structured_result": {
+            "project": {
+              "id": "b942251c-c118-4732-aea8-627c16b49da4",
+              "name": "CareerOps MCP Demo - Synthetic",
+              "goal": "Synthetic MCP record and recall demonstration",
+              "created_at": "2026-10-28T04:20:51.148861Z"
+            },
+            "confirmed_records": {
+              "items": [
+                {
+                  "id": "24b391b8-56af-4d8a-b516-8a488059beb9",
+                  "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+                  "status": "confirmed",
+                  "version": 2,
+                  "payload": {
+                    "schema_version": "1",
+                    "title": "Synthetic Demo: preserve checkpoint identity after a lost response",
+                    "objective": "Demonstrate evidence recording with synthetic excerpts only.",
+                    "changes": "Illustrative design: persist an original packet and key before submission.",
+                    "decisions": "Synthetic rationale: PostgreSQL uniqueness protects logical save identity.",
+                    "failures": "Synthetic failure: replacing a retry key can create a duplicate record.",
+                    "verification": "Synthetic test description only; no test was executed for this fixture.",
+                    "remaining": "Human review and contribution confirmation; real measurements not measured.",
+                    "contribution": "Unconfirmed; demonstration fixture is not the author's real experience.",
+                    "host": "codex-synthetic-host-demo",
+                    "base_revision": null,
+                    "sources": [
+                      {
+                        "kind": "user_note",
+                        "locator": "demo/synthetic-decision.md",
+                        "content": "SYNTHETIC DESIGN: PostgreSQL stores a unique logical operation key. After a lost response, replay the original packet with the same key.",
+                        "quote": "replay the original packet with the same key"
+                      },
+                      {
+                        "kind": "user_note",
+                        "locator": "demo/synthetic-failure.md",
+                        "content": "SYNTHETIC FAILURE: Changing the key after a duplicate or lost response is unsafe because the server may already have committed the original record.",
+                        "quote": "the server may already have committed the original record"
+                      },
+                      {
+                        "kind": "user_note",
+                        "locator": "demo/synthetic-test-description.md",
+                        "content": "SYNTHETIC TEST DESCRIPTION ONLY: A planned fake transport accepts a save, drops its response, then receives the same packet and key. This is not a real executed test result; performance and reliability are not measured.",
+                        "quote": "This is not a real executed test result"
+                      }
+                    ]
+                  },
+                  "content_sha256": "ae575a91d8f546e195172ecd83c50d7acf87b184667fb4a24d41cc255f6eb101",
+                  "contribution_note": "Synthetic demo review only: this account reviewed the supplied illustrative design and failure notes. This is not the author's real experience, implementation ownership, or proof of executed tests.",
+                  "created_at": "2026-10-28T04:20:56.385604Z",
+                  "reviewed_at": "2026-10-28T04:21:34.965133Z"
+                }
+              ],
+              "next_cursor": null
+            }
+          }
+        },
+        {
+          "server": "careerops",
+          "tool": "get_evidence",
+          "arguments": {
+            "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+            "checkpoint_id": "24b391b8-56af-4d8a-b516-8a488059beb9"
+          },
+          "status": "completed",
+          "error": null,
+          "structured_result": {
+            "id": "24b391b8-56af-4d8a-b516-8a488059beb9",
+            "project_id": "b942251c-c118-4732-aea8-627c16b49da4",
+            "status": "confirmed",
+            "version": 2,
+            "payload": {
+              "schema_version": "1",
+              "title": "Synthetic Demo: preserve checkpoint identity after a lost response",
+              "objective": "Demonstrate evidence recording with synthetic excerpts only.",
+              "changes": "Illustrative design: persist an original packet and key before submission.",
+              "decisions": "Synthetic rationale: PostgreSQL uniqueness protects logical save identity.",
+              "failures": "Synthetic failure: replacing a retry key can create a duplicate record.",
+              "verification": "Synthetic test description only; no test was executed for this fixture.",
+              "remaining": "Human review and contribution confirmation; real measurements not measured.",
+              "contribution": "Unconfirmed; demonstration fixture is not the author's real experience.",
+              "host": "codex-synthetic-host-demo",
+              "base_revision": null,
+              "sources": [
+                {
+                  "kind": "user_note",
+                  "locator": "demo/synthetic-decision.md",
+                  "content": "SYNTHETIC DESIGN: PostgreSQL stores a unique logical operation key. After a lost response, replay the original packet with the same key.",
+                  "quote": "replay the original packet with the same key"
+                },
+                {
+                  "kind": "user_note",
+                  "locator": "demo/synthetic-failure.md",
+                  "content": "SYNTHETIC FAILURE: Changing the key after a duplicate or lost response is unsafe because the server may already have committed the original record.",
+                  "quote": "the server may already have committed the original record"
+                },
+                {
+                  "kind": "user_note",
+                  "locator": "demo/synthetic-test-description.md",
+                  "content": "SYNTHETIC TEST DESCRIPTION ONLY: A planned fake transport accepts a save, drops its response, then receives the same packet and key. This is not a real executed test result; performance and reliability are not measured.",
+                  "quote": "This is not a real executed test result"
+                }
+              ]
+            },
+            "content_sha256": "ae575a91d8f546e195172ecd83c50d7acf87b184667fb4a24d41cc255f6eb101",
+            "contribution_note": "Synthetic demo review only: this account reviewed the supplied illustrative design and failure notes. This is not the author's real experience, implementation ownership, or proof of executed tests.",
+            "created_at": "2026-10-28T04:20:56.385604Z",
+            "reviewed_at": "2026-10-28T04:21:34.965133Z"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Replace the two REPLACE_WITH paths before copying this entry into your chosen
+# Codex configuration scope. These are literal placeholders, not host variables.
+# Sign in once with the same Python/API/state settings in your own terminal:
+#   <python> -m careerops.agent login
+# The current protected-state implementation requires Windows. Do not put a
+# password, token, API key or browser cookie in this configuration.
+# Schema reference: https://learn.chatgpt.com/docs/extend/mcp
+
+[mcp_servers.careerops]
+command = "C:/REPLACE_WITH_CAREEROPS_VENV/Scripts/python.exe"
+args = ["-m", "careerops.agent.mcp_server"]
+
+[mcp_servers.careerops.env]
+CAREEROPS_AGENT_API_URL = "http://127.0.0.1:8000"
+CAREEROPS_AGENT_STATE_DIR = "C:/REPLACE_WITH_PRIVATE_STATE_DIRECTORY/careerops-agent"

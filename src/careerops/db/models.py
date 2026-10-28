@@ -9,11 +9,13 @@ from sqlalchemy import (
     Date,
     DateTime,
     ForeignKey,
+    ForeignKeyConstraint,
     Index,
     Integer,
     LargeBinary,
     Numeric,
     Text,
+    UniqueConstraint,
     func,
     text,
 )
@@ -78,6 +80,76 @@ class ActionItemStatus(StrEnum):
     TODO = "todo"
     DOING = "doing"
     DONE = "done"
+
+
+class Project(Base):
+    __tablename__ = "projects"
+    __table_args__ = (
+        UniqueConstraint("id", "user_id", name="uq_projects_id_owner"),
+        CheckConstraint("char_length(btrim(name)) BETWEEN 1 AND 160", name="ck_projects_name"),
+        CheckConstraint("char_length(btrim(goal)) BETWEEN 1 AND 2000", name="ck_projects_goal"),
+        CheckConstraint("char_length(idempotency_key) BETWEEN 1 AND 255", name="ck_projects_key"),
+        CheckConstraint("request_fingerprint ~ '^[0-9a-f]{64}$'", name="ck_projects_hash"),
+        Index("uq_projects_user_key", "user_id", "idempotency_key", unique=True),
+        Index("idx_projects_owner_created", "user_id", "created_at", "id"),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        PostgresUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    name: Mapped[str] = mapped_column(Text, nullable=False)
+    goal: Mapped[str] = mapped_column(Text, nullable=False)
+    idempotency_key: Mapped[str] = mapped_column(Text, nullable=False)
+    request_fingerprint: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
+class ProjectCheckpoint(Base):
+    __tablename__ = "project_checkpoints"
+    __table_args__ = (
+        ForeignKeyConstraint(
+            ["project_id", "user_id"],
+            ["projects.id", "projects.user_id"],
+            name="fk_checkpoints_project_owner",
+            ondelete="CASCADE",
+        ),
+        CheckConstraint(
+            "status IN ('draft', 'confirmed', 'withdrawn')", name="ck_checkpoints_status"
+        ),
+        CheckConstraint("version >= 1", name="ck_checkpoints_version"),
+        CheckConstraint(
+            "char_length(idempotency_key) BETWEEN 1 AND 255", name="ck_checkpoints_key"
+        ),
+        CheckConstraint("content_sha256 ~ '^[0-9a-f]{64}$'", name="ck_checkpoints_hash"),
+        CheckConstraint("project_checkpoint_sources_valid(payload)", name="ck_checkpoints_sources"),
+        CheckConstraint(
+            "(status = 'draft' AND reviewed_at IS NULL AND contribution_note = '') OR "
+            "(status = 'confirmed' AND reviewed_at IS NOT NULL "
+            "AND char_length(btrim(contribution_note)) BETWEEN 1 AND 2000) OR "
+            "(status = 'withdrawn' AND reviewed_at IS NOT NULL "
+            "AND char_length(contribution_note) <= 2000)",
+            name="ck_checkpoints_review",
+        ),
+        Index("uq_checkpoints_user_key", "user_id", "idempotency_key", unique=True),
+        Index("idx_checkpoints_project_created", "user_id", "project_id", "created_at", "id"),
+    )
+
+    id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), nullable=False)
+    project_id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), nullable=False)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="draft")
+    version: Mapped[int] = mapped_column(Integer, nullable=False, server_default="1")
+    payload: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False)
+    content_sha256: Mapped[str] = mapped_column(Text, nullable=False)
+    idempotency_key: Mapped[str] = mapped_column(Text, nullable=False)
+    contribution_note: Mapped[str] = mapped_column(Text, nullable=False, server_default="")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class EmbeddingRunStatus(StrEnum):
@@ -748,9 +820,7 @@ class JobDiscoveryRun(Base):
             "AND error_code IS NOT NULL)",
             name="ck_job_discovery_runs_lifecycle",
         ),
-        Index(
-            "uq_job_discovery_runs_user_idempotency", "user_id", "idempotency_key", unique=True
-        ),
+        Index("uq_job_discovery_runs_user_idempotency", "user_id", "idempotency_key", unique=True),
     )
 
     id: Mapped[UUID] = mapped_column(PostgresUUID(as_uuid=True), primary_key=True, default=uuid4)

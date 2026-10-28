@@ -12,7 +12,13 @@ def test_parse_if_match_rejects_missing_or_malformed_versions(value: str | None)
 
 def test_parse_if_match_accepts_plain_or_quoted_positive_versions() -> None:
     assert parse_if_match("3") == 3
+    assert parse_if_match(" 0003 ") == 3
     assert parse_if_match('"3"') == 3
+
+
+def test_parse_if_match_maps_integer_conversion_limit_to_precondition_error() -> None:
+    with pytest.raises(MissingIfMatchHeaderError):
+        parse_if_match("9" * 5000)
 
 
 @pytest.mark.parametrize("value", [None, "", " "])

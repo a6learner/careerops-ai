@@ -1,0 +1,33 @@
+services:
+  postgres:
+    ports: !override
+      - "127.0.0.1:15421:5432"
+
+  redis:
+    ports: !override
+      - "127.0.0.1:16321:6379"
+
+  migrate:
+    environment:
+      CAREEROPS_ENV: local
+      CAREEROPS_JWT_SECRET: change-me-in-local-development-secret-32-bytes-minimum
+
+  api:
+    ports: !override
+      - "127.0.0.1:18021:8000"
+    environment:
+      CAREEROPS_ENV: local
+      CAREEROPS_JWT_SECRET: change-me-in-local-development-secret-32-bytes-minimum
+      CAREEROPS_LLM_API_KEY: ""
+      CAREEROPS_GEMINI_API_KEY: ""
+
+  worker:
+    environment:
+      CAREEROPS_ENV: local
+      CAREEROPS_JWT_SECRET: change-me-in-local-development-secret-32-bytes-minimum
+
+  frontend:
+    ports: !override
+      - "127.0.0.1:13021:3000"
+    environment:
+      CAREEROPS_FRONTEND_ORIGIN: http://127.0.0.1:13021
