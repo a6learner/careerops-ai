@@ -10,6 +10,10 @@ Say `not measured` instead of inventing latency improvements, accuracy, recall, 
 
 ## Metrics To Collect
 
+Publication checks and the later offline regression are in
+`2026-10-27-publication-check.md`. Public JUnit artifacts use neutral host/path
+labels while retaining their original test results.
+
 Latest additive project-records slice: see
 `2026-10-27-project-records-test-record.md` for the full/focused JUnit reports,
 original-plus-new browser acceptance, migration checks, security patch and

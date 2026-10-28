@@ -192,6 +192,11 @@ Client verification is in `docs/metrics/2026-10-27-project-agent-client-test-rec
 P1-13 and P1-14 remain outstanding;
 this proposal does not mark them complete or replace their delivery contract.
 
+The author subsequently authorized publication of the current implementation and
+a concise GitHub README. The project-journal/MCP/demo implementation is committed
+as `668669d`. Historical verification records retain their original working-tree
+status; publication checks are in `docs/metrics/2026-10-27-publication-check.md`.
+
 ## Source Material
 
 - Detailed MVP scope: `docs/CareerOps AI MVP 产品范围与 Non-goals.md`
