@@ -6,10 +6,12 @@ import { useState } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
 import { ExperienceForm, type ExperienceInput } from "@/components/experiences/experience-form";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { apiRequest } from "@/lib/api/client";
+import { describeRunError } from "@/lib/run-errors";
+import { cn } from "@/lib/utils";
 import type { CvImport, Experience, ExperienceDraft } from "@/lib/api/types";
 
 export function CvImportPanel() {
@@ -65,16 +67,19 @@ export function CvImportPanel() {
 
   const error = upload.error ?? record.error ?? update.error ?? confirm.error ?? reject.error;
   return (
-    <Card className="mt-6 p-5 sm:p-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h2 className="font-semibold">Import CV</h2>
-          <p className="mt-1 text-sm text-[var(--muted)]">
-            PDF, DOCX, DOC, ODT, RTF, TXT, and Markdown. Export Google Docs as DOCX or PDF first.
-          </p>
+    <Card className="mt-8 p-4">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="text-xl" aria-hidden="true">📄</span>
+          <div className="min-w-0">
+            <h2 className="text-sm font-semibold">Import CV</h2>
+            <p className="text-xs text-muted">
+              PDF, DOCX, DOC, ODT, RTF, TXT, and Markdown. Export Google Docs as DOCX or PDF first.
+            </p>
+          </div>
         </div>
-        <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-[var(--brand)] px-4 py-2 text-sm font-medium text-white">
-          <FileUp className="size-4" />
+        <label className={cn(buttonVariants({ variant: "secondary", size: "sm" }), "cursor-pointer focus-within:ring-2 focus-within:ring-brand/40")}>
+          <FileUp className="size-3.5" aria-hidden="true" />
           {upload.isPending ? "Uploading…" : "Choose CV"}
           <input
             className="sr-only"
@@ -93,11 +98,11 @@ export function CvImportPanel() {
         <div className="mt-5 space-y-4">
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <span className="font-medium">{record.data.filename}</span>
-            <StatusBadge>{record.data.status}</StatusBadge>
-            {record.data.error_code ? <span className="text-rose-700">{record.data.error_code}</span> : null}
+            <StatusBadge tone={record.data.status === "failed" ? "red" : record.data.status === "succeeded" ? "green" : "blue"} dot>{record.data.status}</StatusBadge>
+            {record.data.error_code ? <span className="text-danger">{describeRunError(record.data.error_code)} <span className="font-mono text-[11px] text-muted">({record.data.error_code})</span></span> : null}
           </div>
           {record.data.status === "succeeded" && record.data.drafts.length === 0 ? (
-            <p className="text-sm text-[var(--muted)]">No reviewable experience blocks were found.</p>
+            <p className="text-sm text-muted">No reviewable experience blocks were found.</p>
           ) : null}
           {record.data.drafts.map((draft) => (
             <DraftEditor
@@ -135,13 +140,13 @@ function DraftEditor({
   onReject: () => void;
 }) {
   if (draft.status !== "pending") {
-    return <div className="rounded-lg border p-4 text-sm"><strong>{draft.title}</strong> — {draft.status}</div>;
+    return <div className="flex items-center gap-2 rounded-md bg-surface-subtle px-3 py-2.5 text-sm"><strong className="font-medium">{draft.title}</strong><StatusBadge tone={draft.status === "confirmed" ? "green" : "gray"}>{draft.status}</StatusBadge></div>;
   }
   return (
-    <div className="rounded-lg border p-4">
+    <div className="rounded-md p-4 shadow-card">
       <details className="mb-4 text-sm">
-        <summary className="cursor-pointer font-medium">View CV source</summary>
-        <blockquote className="mt-2 whitespace-pre-wrap border-l-2 border-indigo-200 pl-3 text-slate-600">
+        <summary className="cursor-pointer text-muted hover:text-foreground">View CV source</summary>
+        <blockquote className="mt-2 whitespace-pre-wrap border-l-[3px] border-foreground pl-3.5 leading-6">
           {draft.source_refs.map((reference) => reference.quote).join("\n\n")}
         </blockquote>
       </details>

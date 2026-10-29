@@ -44,7 +44,7 @@ const queuedRun: ParseRun = {
 describe("ParseRunPanel", () => {
   it("reuses the idempotency key when a submission is retried", async () => {
     const postKeys: string[] = [];
-    vi.spyOn(globalThis, "fetch").mockImplementation(async (_input, init) => {
+    mockFetch((init) => {
       if (init?.method === "POST") {
         postKeys.push(new Headers(init.headers).get("idempotency-key") ?? "");
         if (postKeys.length === 1) {
@@ -57,7 +57,7 @@ describe("ParseRunPanel", () => {
     const user = userEvent.setup();
     renderWithQuery(<ParseRunPanel job={job} />);
 
-    await user.click(screen.getByRole("button", { name: "Parse description" }));
+    await user.click(await screen.findByRole("button", { name: "Parse description" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("Service unavailable");
     await user.click(screen.getByRole("button", { name: "Try again" }));
 
@@ -83,11 +83,11 @@ describe("ParseRunPanel", () => {
         },
       ],
     };
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(Response.json(succeededRun, { status: 202 }));
+    mockFetch(() => Response.json(succeededRun, { status: 202 }));
     const user = userEvent.setup();
     renderWithQuery(<ParseRunPanel job={job} />);
 
-    await user.click(screen.getByRole("button", { name: "Parse description" }));
+    await user.click(await screen.findByRole("button", { name: "Parse description" }));
 
     expect(await screen.findByText("Succeeded")).toBeInTheDocument();
     expect(screen.getByText("Must Have")).toBeInTheDocument();
@@ -95,19 +95,48 @@ describe("ParseRunPanel", () => {
   });
 
   it("shows a durable parse failure without inventing requirements", async () => {
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(
-      Response.json({ ...queuedRun, status: "failed", error_code: "PARSER_OUTPUT_INVALID" }, { status: 202 }),
-    );
+    mockFetch(() => Response.json({ ...queuedRun, status: "failed", error_code: "PARSER_OUTPUT_INVALID" }, { status: 202 }));
     const user = userEvent.setup();
     renderWithQuery(<ParseRunPanel job={job} />);
 
-    await user.click(screen.getByRole("button", { name: "Parse description" }));
+    await user.click(await screen.findByRole("button", { name: "Parse description" }));
 
     expect(await screen.findByText("Failed")).toBeInTheDocument();
     expect(screen.getByText(/PARSER_OUTPUT_INVALID/)).toBeInTheDocument();
     expect(screen.queryByText("Must Have")).not.toBeInTheDocument();
   });
+
+  it("restores the latest parse run after a reload without submitting again", async () => {
+    vi.restoreAllMocks();
+    const restored: ParseRun = {
+      ...queuedRun,
+      status: "succeeded",
+      finished_at: "2026-10-10T00:00:02Z",
+      requirements: [
+        { id: "requirement-id", category: "must_have", text: "Python experience required.", skill_normalized: "python", source_span_start: 0, source_span_end: 27 },
+      ],
+    };
+    const fetchMock = mockFetch(() => Response.json(restored), restored);
+    renderWithQuery(<ParseRunPanel job={job} />);
+
+    expect(await screen.findByText("Python experience required.")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Parse description" })).not.toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledWith("/api/backend/api/v1/jobs/job-id/parse-runs/latest", undefined);
+    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(false);
+  });
 });
+
+// The panel first asks for the latest run; tests that start from an empty job answer it with the API's 404.
+function mockFetch(handler: (init?: RequestInit) => Response, latest: ParseRun | null = null) {
+  return vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
+    const url = String(input);
+    if (url.endsWith("/parse-runs/latest")) {
+      return latest ? Response.json(latest) : apiError(404, "PARSE_RUN_NOT_FOUND", "Parse run was not found.");
+    }
+    if (url.includes("/analysis-runs/latest")) return apiError(404, "ANALYSIS_RUN_NOT_FOUND", "Analysis run was not found.");
+    return handler(init);
+  });
+}
 
 function apiError(status: number, code: string, message: string): Response {
   return Response.json(

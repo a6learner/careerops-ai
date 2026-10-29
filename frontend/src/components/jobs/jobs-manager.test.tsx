@@ -31,7 +31,7 @@ describe("JobsManager", () => {
     const user = userEvent.setup();
     renderWithQuery(<JobsManager />);
 
-    await screen.findByText("No jobs in this view.");
+    await screen.findByText("No jobs yet.");
     await user.click(screen.getByRole("button", { name: "Add job" }));
     await user.type(screen.getByLabelText("Company"), "Example Corp");
     await user.type(screen.getByLabelText("Role"), "Backend Engineer Intern");
@@ -55,7 +55,7 @@ describe("JobsManager", () => {
     ));
   });
 
-  it("updates status with optimistic locking", async () => {
+  it("saves a status change from the board card with optimistic locking", async () => {
     const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementation(async (_input, init) => {
       if (init?.method === "PATCH") return Response.json({ ...job, status: "applied", version: 3 });
       return Response.json({ items: [job], next_cursor: null });
@@ -63,9 +63,9 @@ describe("JobsManager", () => {
     const user = userEvent.setup();
     renderWithQuery(<JobsManager />);
 
-    await screen.findByText("Backend Engineer Intern");
+    const savedColumn = await screen.findByRole("region", { name: "Saved jobs" });
+    expect(savedColumn).toHaveTextContent("Backend Engineer Intern");
     await user.selectOptions(screen.getByLabelText("Update status"), "applied");
-    await user.click(screen.getByRole("button", { name: "Update" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledWith(
       "/api/backend/api/v1/jobs/job-id",

@@ -3,7 +3,10 @@
 import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { JOB_STATUSES, type JobStatus } from "@/lib/api/types";
 
 export type JobInput = {
@@ -18,10 +21,12 @@ export type JobInput = {
 
 export function JobCreateForm({
   isSubmitting,
+  defaultStatus = "saved",
   onSubmit,
   onCancel,
 }: {
   isSubmitting: boolean;
+  defaultStatus?: JobStatus;
   onSubmit: (input: JobInput) => void;
   onCancel: () => void;
 }) {
@@ -49,12 +54,12 @@ export function JobCreateForm({
       </div>
       <Field label="Source URL" hint="Optional" htmlFor="job-source-url"><Input id="job-source-url" name="source_url" type="url" maxLength={2_048} placeholder="https://…" /></Field>
       <Field label="Job description" htmlFor="job-description">
-        <textarea id="job-description" name="raw_description" maxLength={50_000} required rows={8} className="w-full rounded-lg border bg-white px-3 py-2.5 text-sm leading-6 outline-none focus:border-[var(--brand)] focus:ring-3 focus:ring-[var(--brand-soft)]" />
+        <Textarea id="job-description" name="raw_description" maxLength={50_000} required rows={8} />
       </Field>
       <Field label="Starting status" htmlFor="job-status">
-        <select id="job-status" name="status" defaultValue="saved" className="h-11 w-full rounded-lg border bg-white px-3 text-sm outline-none focus:border-[var(--brand)] focus:ring-3 focus:ring-[var(--brand-soft)]">
+        <Select id="job-status" name="status" defaultValue={defaultStatus}>
           {JOB_STATUSES.map((status) => <option key={status} value={status}>{statusLabel(status)}</option>)}
-        </select>
+        </Select>
       </Field>
       <div className="flex gap-3">
         <Button disabled={isSubmitting}>{isSubmitting ? "Saving…" : "Save job"}</Button>
@@ -64,17 +69,6 @@ export function JobCreateForm({
   );
 }
 
-function Field({ label, hint, htmlFor, children }: { label: string; hint?: string; htmlFor: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <label className="font-medium" htmlFor={htmlFor}>{label}</label>
-        {hint ? <span className="text-[var(--muted)]">{hint}</span> : null}
-      </div>
-      {children}
-    </div>
-  );
-}
 
 function optionalText(value: FormDataEntryValue | null): string | null {
   const text = String(value ?? "").trim();

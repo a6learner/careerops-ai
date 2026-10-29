@@ -1,22 +1,34 @@
 "use client";
 
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { ChevronRight, FileText, Plus, Search, X } from "lucide-react";
 import { useRef, useState, type FormEvent } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
+import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { PageHeader } from "@/components/ui/page-header";
+import { Select } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
+import { StatusBadge, type TagColor } from "@/components/ui/status-badge";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/toast";
 import { apiRequest } from "@/lib/api/client";
 import type {
   CheckpointPayload, CheckpointRecord, ProjectRecord, RecordPage, RecordStatus,
 } from "@/lib/api/project-records";
+import { cn } from "@/lib/utils";
 
-const textAreaStyle = "min-h-24 w-full rounded-lg border bg-white px-3 py-2 text-sm focus:outline-2 focus:outline-[var(--brand)]";
+const RECORD_STATUS_COLORS: Record<RecordStatus, TagColor> = { draft: "yellow", confirmed: "green", withdrawn: "gray" };
 
 export function ProjectsManager() {
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [selected, setSelected] = useState<ProjectRecord | null>(null);
+  const [showCreate, setShowCreate] = useState(false);
   const pending = useRef<{ body: string; key: string } | null>(null);
   const projects = useInfiniteQuery({
     queryKey: ["projects"], initialPageParam: null as string | null,
@@ -34,6 +46,8 @@ export function ProjectsManager() {
     onSuccess: async (project) => {
       pending.current = null;
       setSelected(project);
+      setShowCreate(false);
+      toast({ tone: "success", title: "Project created", description: project.name });
       await queryClient.invalidateQueries({ queryKey: ["projects"] });
     },
   });
@@ -44,37 +58,86 @@ export function ProjectsManager() {
     if (pending.current?.body !== body) pending.current = { body, key: crypto.randomUUID() };
     create.mutate(pending.current);
   }
-  return <div className="space-y-6">
+
+  const items = projects.data?.pages.flatMap((page) => page.items) ?? [];
+  const noProjects = !projects.isPending && !projects.error && items.length === 0;
+  const formVisible = showCreate || noProjects;
+  const active = selected ?? items[0] ?? null;
+
+  return (
     <div>
-      <p className="text-sm font-semibold text-[var(--brand)]">Project evidence</p>
-      <h1 className="mt-1 text-3xl font-semibold">Projects</h1>
-      <p className="mt-2 text-sm text-[var(--muted)]">Keep decisions, failures and source excerpts for future resume and interview preparation.</p>
+      <PageHeader
+        icon="🗂️"
+        title="Projects"
+        description="Keep decisions, failures and source excerpts while the work is fresh, for later resume and interview preparation."
+      />
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-[220px_minmax(0,1fr)]">
+        <aside aria-label="Your projects" className="lg:sticky lg:top-16 lg:self-start">
+          <div className="flex items-center justify-between px-2 pb-1.5">
+            <p className="text-xs font-medium text-faint">Projects</p>
+            {!noProjects ? (
+              <button
+                type="button"
+                className="rounded p-0.5 text-faint transition-colors hover:bg-hover hover:text-foreground"
+                aria-label={showCreate ? "Close project form" : "New project"}
+                onClick={() => setShowCreate((value) => !value)}
+              >
+                {showCreate ? <X className="size-4" aria-hidden="true" /> : <Plus className="size-4" aria-hidden="true" />}
+              </button>
+            ) : null}
+          </div>
+          {projects.isPending ? (
+            <div role="status" className="space-y-2 px-2"><span className="sr-only">Loading projects…</span><Skeleton className="h-4 w-32" /><Skeleton className="h-4 w-24" /></div>
+          ) : null}
+          {projects.error ? <ApiFeedback error={projects.error} onRetry={() => void projects.refetch()} /> : null}
+          <ul className="space-y-px">
+            {items.map((project) => (
+              <li key={project.id}>
+                <button
+                  type="button"
+                  aria-pressed={active?.id === project.id}
+                  onClick={() => setSelected(project)}
+                  className={cn(
+                    "flex h-[30px] w-full items-center gap-2 rounded-md px-2 text-left text-sm transition-colors",
+                    active?.id === project.id ? "bg-hover font-medium" : "text-muted hover:bg-hover hover:text-foreground",
+                  )}
+                >
+                  <FileText className="size-4 shrink-0 text-faint" strokeWidth={1.75} aria-hidden="true" />
+                  <span className="truncate">{project.name}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          {projects.hasNextPage ? (
+            <Button size="sm" variant="ghost" className="mt-1" disabled={projects.isFetchingNextPage} onClick={() => void projects.fetchNextPage()}>
+              Load more projects
+            </Button>
+          ) : null}
+        </aside>
+
+        <div className="min-w-0">
+          {formVisible ? (
+            <Card className="mb-8 p-5 shadow-raised">
+              <h2 className="mb-4 text-base font-semibold">Add a project</h2>
+              <form className="grid gap-4" onSubmit={submit}>
+                <Field label="Project name" htmlFor="project-name"><Input id="project-name" name="name" required maxLength={160} /></Field>
+                <Field label="Project goal" htmlFor="project-goal"><Input id="project-goal" name="goal" required maxLength={2000} /></Field>
+                <div><Button disabled={create.isPending}>{create.isPending ? "Saving…" : "Create project"}</Button></div>
+              </form>
+              {create.error ? <div className="mt-4"><ApiFeedback error={create.error} /></div> : null}
+            </Card>
+          ) : null}
+          {active ? <CheckpointWorkspace key={active.id} project={active} /> : null}
+        </div>
+      </div>
     </div>
-    <Card className="p-5">
-      <h2 className="mb-4 text-lg font-semibold">Add a project</h2>
-      <form className="grid gap-4" onSubmit={submit}>
-        <label className="grid gap-2 text-sm">Project name<Input name="name" required maxLength={160} /></label>
-        <label className="grid gap-2 text-sm">Project goal<Input name="goal" required maxLength={2000} /></label>
-        <Button disabled={create.isPending}>{create.isPending ? "Saving…" : "Create project"}</Button>
-      </form>
-      {create.error ? <div className="mt-4"><ApiFeedback error={create.error} /></div> : null}
-    </Card>
-    {projects.isPending ? <p role="status">Loading projects…</p> : null}
-    {projects.error ? <ApiFeedback error={projects.error} onRetry={() => void projects.refetch()} /> : null}
-    {projects.data?.pages.flatMap((p) => p.items).length === 0 ? <p>No projects yet. Add one to start keeping evidence.</p> : null}
-    <div className="flex flex-wrap gap-3" aria-label="Your projects">
-      {projects.data?.pages.flatMap((p) => p.items).map((project) => <Button
-        key={project.id} variant="secondary" aria-pressed={selected?.id === project.id}
-        onClick={() => setSelected(project)}>{project.name}</Button>)}
-    </div>
-    {projects.hasNextPage ? <Button variant="secondary" disabled={projects.isFetchingNextPage}
-      onClick={() => void projects.fetchNextPage()}>Load more projects</Button> : null}
-    {selected ? <CheckpointWorkspace key={selected.id} project={selected} /> : <p>Select a project to review its records.</p>}
-  </div>;
+  );
 }
 
 function CheckpointWorkspace({ project }: { project: ProjectRecord }) {
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<RecordStatus | "all">("all");
   const [showForm, setShowForm] = useState(false);
@@ -93,30 +156,62 @@ function CheckpointWorkspace({ project }: { project: ProjectRecord }) {
   async function refresh() {
     await queryClient.invalidateQueries({ queryKey: ["project-checkpoints", project.id] });
   }
-  return <section className="space-y-4" aria-label="Project records">
-    <h2 className="text-2xl font-semibold">{project.name}</h2><p>{project.goal}</p>
-    <p className="text-sm text-[var(--muted)]">Records are client-supplied drafts. Confirmation records your review; it does not certify authorship, skill or test execution. Withdrawn records remain in history.</p>
-    <Button onClick={() => setShowForm(!showForm)}>{showForm ? "Close record form" : "Record a stage"}</Button>
-    {showForm ? <CheckpointForm projectId={project.id} onSaved={async () => { setShowForm(false); await refresh(); }} /> : null}
-    <form className="flex flex-wrap items-end gap-3" onSubmit={(event) => {
-      event.preventDefault(); setQuery(String(new FormData(event.currentTarget).get("query") ?? "").trim());
-    }}>
-      <label className="grid gap-2 text-sm">Search records<Input name="query" maxLength={100} /></label>
-      <label className="grid gap-2 text-sm">Record status<select className="h-11 rounded-lg border px-3"
-        value={status} onChange={(e) => setStatus(e.target.value as RecordStatus | "all")}>
-        <option value="all">All records</option><option value="draft">Draft</option>
-        <option value="confirmed">Confirmed</option><option value="withdrawn">Withdrawn</option>
-      </select></label><Button variant="secondary">Search</Button>
-    </form>
-    {records.isPending ? <p role="status">Loading records…</p> : null}
-    {records.error ? <ApiFeedback error={records.error} onRetry={() => void records.refetch()} /> : null}
-    {records.data?.pages.flatMap((p) => p.items).length === 0 ? <p>No records in this view.</p> : null}
-    {records.data?.pages.flatMap((p) => p.items).map((record) => <RecordCard
-      key={`${record.id}:${record.version}`} record={record} onReviewed={refresh} />)}
-    {records.hasNextPage ? <Button variant="secondary" disabled={records.isFetchingNextPage}
-      onClick={() => void records.fetchNextPage()}>Load more records</Button> : null}
-  </section>;
+  const items = records.data?.pages.flatMap((page) => page.items) ?? [];
+
+  return (
+    <section aria-label="Project records">
+      <h2 className="text-[28px] font-bold leading-tight tracking-tight">{project.name}</h2>
+      <p className="mt-1.5 text-[15px] leading-6 text-muted">{project.goal}</p>
+      <Callout icon="ℹ️" className="mt-4 text-muted">
+        Records are client-supplied drafts. Confirmation records your review; it does not certify authorship, skill or test execution. Withdrawn records remain in history.
+      </Callout>
+
+      <div className="mt-6 flex flex-wrap items-end justify-between gap-3 border-b pb-3">
+        <form className="flex flex-wrap items-end gap-2" onSubmit={(event) => {
+          event.preventDefault(); setQuery(String(new FormData(event.currentTarget).get("query") ?? "").trim());
+        }}>
+          <Field label="Search records" htmlFor={`record-query-${project.id}`}>
+            <Input id={`record-query-${project.id}`} name="query" maxLength={100} className="w-44" />
+          </Field>
+          <Field label="Record status" htmlFor={`record-status-${project.id}`}>
+            <Select id={`record-status-${project.id}`} value={status} onChange={(e) => setStatus(e.target.value as RecordStatus | "all")}>
+              <option value="all">All records</option><option value="draft">Draft</option>
+              <option value="confirmed">Confirmed</option><option value="withdrawn">Withdrawn</option>
+            </Select>
+          </Field>
+          <Button variant="secondary"><Search className="size-3.5" aria-hidden="true" />Search</Button>
+        </form>
+        <Button onClick={() => setShowForm(!showForm)}>{showForm ? "Close record form" : "Record a stage"}</Button>
+      </div>
+
+      {showForm ? (
+        <CheckpointForm
+          projectId={project.id}
+          onSaved={async () => {
+            setShowForm(false);
+            toast({ tone: "success", title: "Record draft saved", description: "Review its sources, then confirm your contribution." });
+            await refresh();
+          }}
+        />
+      ) : null}
+
+      <div className="mt-4 space-y-3">
+        {records.isPending ? <div role="status" className="space-y-2"><span className="sr-only">Loading records…</span><Skeleton className="h-16 w-full" /></div> : null}
+        {records.error ? <ApiFeedback error={records.error} onRetry={() => void records.refetch()} /> : null}
+        {!records.isPending && !records.error && items.length === 0 ? <p className="px-1 text-sm text-faint">No records in this view.</p> : null}
+        {items.map((record) => <RecordCard key={`${record.id}:${record.version}`} record={record} onReviewed={refresh} />)}
+        {records.hasNextPage ? <Button variant="secondary" size="sm" disabled={records.isFetchingNextPage}
+          onClick={() => void records.fetchNextPage()}>Load more records</Button> : null}
+      </div>
+    </section>
+  );
 }
+
+const PAYLOAD_TEXT_FIELDS = [
+  ["changes", "What changed", 4000, true], ["decisions", "Decisions and trade-offs", 4000, false],
+  ["failures", "Failures and fixes", 4000, false], ["verification", "Verification and limits", 4000, false],
+  ["remaining", "Remaining work", 2000, false], ["contribution", "Proposed personal contribution", 2000, false],
+] as const;
 
 function CheckpointForm({ projectId, onSaved }: { projectId: string; onSaved: () => Promise<void> }) {
   const pending = useRef<{ body: string; key: string } | null>(null);
@@ -143,27 +238,40 @@ function CheckpointForm({ projectId, onSaved }: { projectId: string; onSaved: ()
     if (pending.current?.body !== body) pending.current = { body, key: crypto.randomUUID() };
     create.mutate(pending.current);
   }
-  return <Card className="p-5"><form onSubmit={submit} className="grid gap-4">
-    <h3 className="font-semibold">New stage record</h3>
-    <p className="text-sm">Paste only selected non-sensitive excerpts. This form does not read or upload your repository.</p>
-    <label className="grid gap-2 text-sm">Stage title<Input name="title" required maxLength={200} /></label>
-    <label className="grid gap-2 text-sm">Objective<Input name="objective" required maxLength={2000} /></label>
-    {([ ["changes", "What changed", 4000, true], ["decisions", "Decisions and trade-offs", 4000, false],
-      ["failures", "Failures and fixes", 4000, false], ["verification", "Verification and limits", 4000, false],
-      ["remaining", "Remaining work", 2000, false], ["contribution", "Proposed personal contribution", 2000, false],
-    ] as const).map(([name, label, maxLength, required]) => <label key={name} className="grid gap-2 text-sm">{label}
-      <textarea name={name} maxLength={maxLength} required={required} className={textAreaStyle} /></label>)}
-    <label className="grid gap-2 text-sm">Base revision (optional)<Input name="base_revision" maxLength={100} /></label>
-    <label className="grid gap-2 text-sm">Source label (relative, no credentials)<Input name="locator" required maxLength={300} placeholder="docs/decision-note.md" /></label>
-    <label className="grid gap-2 text-sm">Source excerpt<textarea name="content" required maxLength={8000} className={textAreaStyle} /></label>
-    <label className="grid gap-2 text-sm">Exact quote from the excerpt<textarea name="quote" required maxLength={2000} className={textAreaStyle} /></label>
-    <Button disabled={create.isPending}>{create.isPending ? "Saving…" : "Save record draft"}</Button>
-    {create.error ? <ApiFeedback error={create.error} /> : null}
-  </form></Card>;
+  const id = (name: string) => `checkpoint-${projectId}-${name}`;
+  return (
+    <Card className="mt-4 p-5 shadow-raised">
+      <form onSubmit={submit} className="grid gap-4">
+        <div>
+          <h3 className="text-base font-semibold">New stage record</h3>
+          <p className="mt-1 text-sm text-muted">Paste only selected non-sensitive excerpts. This form does not read or upload your repository.</p>
+        </div>
+        <Field label="Stage title" htmlFor={id("title")}><Input id={id("title")} name="title" required maxLength={200} /></Field>
+        <Field label="Objective" htmlFor={id("objective")}><Input id={id("objective")} name="objective" required maxLength={2000} /></Field>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {PAYLOAD_TEXT_FIELDS.map(([name, label, maxLength, required]) => (
+            <Field key={name} label={label} htmlFor={id(name)}>
+              <Textarea id={id(name)} name={name} maxLength={maxLength} required={required} />
+            </Field>
+          ))}
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field label="Base revision (optional)" htmlFor={id("base_revision")}><Input id={id("base_revision")} name="base_revision" maxLength={100} /></Field>
+          <Field label="Source label (relative, no credentials)" htmlFor={id("locator")}><Input id={id("locator")} name="locator" required maxLength={300} placeholder="docs/decision-note.md" /></Field>
+        </div>
+        <Field label="Source excerpt" htmlFor={id("content")}><Textarea id={id("content")} name="content" required maxLength={8000} className="font-mono text-[13px]" /></Field>
+        <Field label="Exact quote from the excerpt" htmlFor={id("quote")}><Textarea id={id("quote")} name="quote" required maxLength={2000} className="min-h-16" /></Field>
+        <div><Button disabled={create.isPending}>{create.isPending ? "Saving…" : "Save record draft"}</Button></div>
+        {create.error ? <ApiFeedback error={create.error} /> : null}
+      </form>
+    </Card>
+  );
 }
 
 function RecordCard({ record, onReviewed }: { record: CheckpointRecord; onReviewed: () => Promise<void> }) {
+  const toast = useToast();
   const [note, setNote] = useState("");
+  const [confirmingWithdraw, setConfirmingWithdraw] = useState(false);
   const review = useMutation({
     mutationFn: (status: "confirmed" | "withdrawn") => apiRequest<CheckpointRecord>(
       `/api/v1/projects/${record.project_id}/checkpoints/${record.id}/review`, {
@@ -171,37 +279,85 @@ function RecordCard({ record, onReviewed }: { record: CheckpointRecord; onReview
         body: JSON.stringify({ status, contribution_note: status === "confirmed" ? note.trim() : "" }),
       },
     ),
-    onSuccess: onReviewed,
+    onSuccess: async (updated) => {
+      toast({ tone: "success", title: updated.status === "confirmed" ? "Record confirmed" : "Record withdrawn", description: updated.payload.title });
+      await onReviewed();
+    },
   });
-  return <Card className="space-y-3 p-5">
-    <div className="flex flex-wrap justify-between gap-2"><h3 className="font-semibold">{record.payload.title}</h3>
-      <span className="text-sm">{record.status} · v{record.version}</span></div>
-    <p className="whitespace-pre-wrap">{record.payload.objective}</p>
-    <details><summary className="cursor-pointer text-sm font-medium">Record details and sources</summary>
-      <dl className="mt-3 space-y-3 text-sm">
-        {([ ["Changes", record.payload.changes], ["Decisions", record.payload.decisions],
-          ["Failures", record.payload.failures], ["Verification (client supplied)", record.payload.verification],
-          ["Remaining", record.payload.remaining], ["Proposed contribution", record.payload.contribution],
-          ["Reviewed contribution", record.contribution_note], ["Host", record.payload.host],
-          ["Base revision", record.payload.base_revision], ["Content SHA-256", record.content_sha256],
-        ] as const).map(([label, value]) => value ? <div key={label}><dt className="font-medium">{label}</dt>
-          <dd className="whitespace-pre-wrap break-words">{value}</dd></div> : null)}
-      </dl>
-      {record.payload.sources.map((source, i) => <div key={i} className="mt-4 space-y-2 border-t pt-3 text-sm">
-        <p className="break-words">{source.locator} · {source.kind} · client supplied</p>
-        <blockquote className="whitespace-pre-wrap border-l-2 pl-3">{source.quote}</blockquote>
-        <pre className="overflow-x-auto whitespace-pre-wrap break-words rounded bg-slate-50 p-3">{source.content}</pre>
-      </div>)}
-    </details>
-    {record.status === "draft" ? <label className="grid gap-2 text-sm">Your actual contribution
-      <Input value={note} onChange={(e) => setNote(e.target.value)} maxLength={2000}
-        placeholder="Describe what you personally designed, implemented or verified" /></label> : null}
-    <div className="flex flex-wrap gap-3">
-      {record.status === "draft" ? <Button disabled={!note.trim() || review.isPending}
-        onClick={() => review.mutate("confirmed")}>Confirm record</Button> : null}
-      {record.status !== "withdrawn" ? <Button variant="secondary" disabled={review.isPending}
-        onClick={() => review.mutate("withdrawn")}>Withdraw record</Button> : <p className="text-sm">Withdrawn: keep for history, exclude from current career claims.</p>}
-    </div>
-    {review.error ? <ApiFeedback error={review.error} onRetry={() => { review.reset(); void onReviewed(); }} /> : null}
-  </Card>;
+  const details = ([
+    ["Changes", record.payload.changes], ["Decisions", record.payload.decisions],
+    ["Failures", record.payload.failures], ["Verification (client supplied)", record.payload.verification],
+    ["Remaining", record.payload.remaining], ["Proposed contribution", record.payload.contribution],
+    ["Reviewed contribution", record.contribution_note],
+  ] as const).filter(([, value]) => Boolean(value));
+
+  return (
+    <article className="rounded-md bg-surface p-4 shadow-card">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <h3 className="text-[15px] font-semibold">{record.payload.title}</h3>
+        <span className="flex items-center gap-1.5">
+          <StatusBadge tone={RECORD_STATUS_COLORS[record.status]} dot>{record.status}</StatusBadge>
+          <span className="text-xs text-faint">v{record.version}</span>
+        </span>
+      </div>
+      <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-muted">{record.payload.objective}</p>
+
+      <details className="group mt-2">
+        <summary className="-ml-1 flex w-fit cursor-pointer list-none items-center gap-1 rounded px-1 py-0.5 text-sm text-muted transition-colors hover:bg-hover hover:text-foreground [&::-webkit-details-marker]:hidden">
+          <ChevronRight className="size-4 transition-transform group-open:rotate-90" aria-hidden="true" />
+          Record details and sources
+        </summary>
+        <dl className="mt-3 space-y-3 pl-5 text-sm">
+          {details.map(([label, value]) => (
+            <div key={label}>
+              <dt className="text-xs font-medium text-muted">{label}</dt>
+              <dd className="mt-0.5 whitespace-pre-wrap break-words leading-6">{value}</dd>
+            </div>
+          ))}
+        </dl>
+        {record.payload.sources.map((source, index) => (
+          <div key={index} className="mt-4 space-y-2 pl-5 text-sm">
+            <p className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
+              <code className="rounded bg-[rgb(135_131_120/0.15)] px-1.5 py-0.5 font-mono text-[#eb5757]">{source.locator}</code>
+              <span>{source.kind} · client supplied</span>
+            </p>
+            <blockquote className="whitespace-pre-wrap border-l-[3px] border-foreground pl-3.5 leading-6">{source.quote}</blockquote>
+            <pre className="overflow-x-auto whitespace-pre-wrap break-words rounded-md bg-surface-subtle p-3 font-mono text-[13px] leading-6">{source.content}</pre>
+          </div>
+        ))}
+        <dl className="mt-4 grid gap-x-4 gap-y-1 pl-5 text-xs text-faint sm:grid-cols-[auto_1fr]">
+          <dt>Host</dt><dd className="break-all">{record.payload.host}</dd>
+          {record.payload.base_revision ? <><dt>Base revision</dt><dd className="break-all font-mono">{record.payload.base_revision}</dd></> : null}
+          <dt>Content SHA-256</dt><dd className="break-all font-mono" title={record.content_sha256}>{record.content_sha256}</dd>
+        </dl>
+      </details>
+
+      {record.status === "draft" ? (
+        <div className="mt-3">
+          <Field label="Your actual contribution" htmlFor={`record-note-${record.id}`}>
+            <Input id={`record-note-${record.id}`} value={note} onChange={(e) => setNote(e.target.value)} maxLength={2000}
+              placeholder="Describe what you personally designed, implemented or verified" />
+          </Field>
+        </div>
+      ) : null}
+
+      {confirmingWithdraw ? (
+        <div className="mt-3 flex flex-wrap items-center gap-2 rounded-md bg-danger-soft px-3 py-2.5 text-sm">
+          <span className="mr-auto text-[var(--tag-red-fg)]">Withdraw this record? It stays in history but is excluded from current career claims.</span>
+          <Button size="sm" variant="ghost" onClick={() => setConfirmingWithdraw(false)}>Cancel</Button>
+          <Button size="sm" variant="danger" disabled={review.isPending} onClick={() => review.mutate("withdrawn")}>
+            {review.isPending ? "Withdrawing…" : "Confirm withdraw"}
+          </Button>
+        </div>
+      ) : (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {record.status === "draft" ? <Button size="sm" disabled={!note.trim() || review.isPending}
+            onClick={() => review.mutate("confirmed")}>Confirm record</Button> : null}
+          {record.status !== "withdrawn" ? <Button size="sm" variant="secondary" disabled={review.isPending}
+            onClick={() => setConfirmingWithdraw(true)}>Withdraw record</Button> : <p className="text-sm text-muted">Withdrawn: keep for history, exclude from current career claims.</p>}
+        </div>
+      )}
+      {review.error ? <div className="mt-3"><ApiFeedback error={review.error} onRetry={() => { review.reset(); void onReviewed(); }} /></div> : null}
+    </article>
+  );
 }

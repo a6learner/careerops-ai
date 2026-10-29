@@ -3,7 +3,10 @@
 import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { EXPERIENCE_KINDS, type ExperienceKind } from "@/lib/api/types";
 
 export type ExperienceInput = {
@@ -52,29 +55,27 @@ export function ExperienceForm({
           />
         </Field>
         <Field label="Type" htmlFor={`experience-kind-${experience?.id ?? "new"}`}>
-          <select
+          <Select
             id={`experience-kind-${experience?.id ?? "new"}`}
             name="kind"
             defaultValue={experience?.kind ?? "project"}
-            className="h-11 w-full rounded-lg border bg-white px-3 text-sm outline-none focus:border-[var(--brand)] focus:ring-3 focus:ring-[var(--brand-soft)]"
           >
             {EXPERIENCE_KINDS.map((kind) => (
               <option key={kind} value={kind}>
                 {titleCase(kind)}
               </option>
             ))}
-          </select>
+          </Select>
         </Field>
       </div>
       <Field label="What you did" htmlFor={`experience-description-${experience?.id ?? "new"}`}>
-        <textarea
+        <Textarea
           id={`experience-description-${experience?.id ?? "new"}`}
           name="description"
           defaultValue={experience?.description}
           maxLength={10_000}
           required
           rows={5}
-          className="w-full rounded-lg border bg-white px-3 py-2.5 text-sm leading-6 outline-none focus:border-[var(--brand)] focus:ring-3 focus:ring-[var(--brand-soft)]"
         />
       </Field>
       <Field label="Skills" hint="Comma separated" htmlFor={`experience-skills-${experience?.id ?? "new"}`}>
@@ -86,13 +87,13 @@ export function ExperienceForm({
         />
       </Field>
       <Field label="Outcome" hint="Optional" htmlFor={`experience-outcome-${experience?.id ?? "new"}`}>
-        <textarea
+        <Textarea
           id={`experience-outcome-${experience?.id ?? "new"}`}
           name="outcome"
           defaultValue={experience?.outcome ?? ""}
           maxLength={2_000}
           rows={2}
-          className="w-full rounded-lg border bg-white px-3 py-2.5 text-sm leading-6 outline-none focus:border-[var(--brand)] focus:ring-3 focus:ring-[var(--brand-soft)]"
+          className="min-h-16"
         />
       </Field>
       <div className="flex flex-wrap gap-3">
@@ -107,27 +108,6 @@ export function ExperienceForm({
   );
 }
 
-function Field({
-  label,
-  hint,
-  htmlFor,
-  children,
-}: {
-  label: string;
-  hint?: string;
-  htmlFor: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <label className="font-medium" htmlFor={htmlFor}>{label}</label>
-        {hint ? <span className="text-[var(--muted)]">{hint}</span> : null}
-      </div>
-      {children}
-    </div>
-  );
-}
 
 function uniqueSkills(value: string): string[] {
   const seen = new Set<string>();

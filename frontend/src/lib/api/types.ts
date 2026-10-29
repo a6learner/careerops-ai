@@ -220,3 +220,30 @@ export type JobDraft = {
   created_at: string;
   updated_at: string;
 };
+
+export type FocusJob = {
+  id: string;
+  company: string;
+  title: string;
+  status: JobStatus;
+  deadline: string | null;
+  updated_at: string;
+};
+
+export type FocusActionItem = {
+  id: string;
+  job_id: string;
+  job_company: string;
+  job_title: string;
+  title: string;
+  status: ActionItemStatus;
+  updated_at: string;
+};
+
+export type DashboardFocus = {
+  generated_at: string;
+  today: string;
+  upcoming_deadlines: FocusJob[];
+  recent_jobs: FocusJob[];
+  open_action_items: FocusActionItem[];
+};

@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-export function LogoutButton() {
+export function LogoutButton({ compact = false }: { compact?: boolean }) {
   const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
@@ -26,7 +27,7 @@ export function LogoutButton() {
       type="button"
       variant="ghost"
       size="sm"
-      className="w-full justify-start"
+      className={cn(!compact && "w-full justify-start px-2 font-normal")}
       onClick={logout}
       disabled={isLoggingOut}
     >

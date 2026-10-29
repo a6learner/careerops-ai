@@ -14,9 +14,13 @@ describe("DashboardSummary", () => {
     const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
     render(<QueryClientProvider client={client}><DashboardSummary /></QueryClientProvider>);
 
-    expect(await screen.findByText("Active jobs")).toBeInTheDocument();
+    expect(await screen.findByText("Tracked jobs")).toBeInTheDocument();
     expect(screen.getByText("6")).toBeInTheDocument();
-    expect(screen.getByText("3")).toBeInTheDocument();
-    expect(screen.getAllByText("2")).toHaveLength(4);
+    // Submitted counts every job past "applied" (2 + 1 + 0); open tasks are todo + doing (2 + 1).
+    expect(screen.getAllByText("3")).toHaveLength(2);
+    expect(screen.getByText("40% of 5 tasks")).toBeInTheDocument();
+    expect(screen.getByRole("img", {
+      name: "Saved 2, Preparing 1, Applied 2, Interview 1, Offer 0, Rejected 0, Withdrawn 0",
+    })).toBeInTheDocument();
   });
 });

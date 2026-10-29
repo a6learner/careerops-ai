@@ -3,22 +3,22 @@ import type { ButtonHTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-55",
+export const buttonVariants = cva(
+  "inline-flex select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 disabled:pointer-events-none disabled:opacity-45 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary:
-          "bg-[var(--brand)] text-white shadow-sm hover:bg-[var(--brand-strong)]",
-        secondary:
-          "border bg-white text-[var(--foreground)] shadow-sm hover:bg-[var(--surface-subtle)]",
-        ghost: "text-[var(--muted)] hover:bg-black/5 hover:text-[var(--foreground)]",
-        danger: "bg-[var(--danger)] text-white hover:bg-[#a8293c]",
+        primary: "bg-brand text-white shadow-[inset_0_0_0_1px_rgb(15_15_15/0.1),0_1px_2px_rgb(15_15_15/0.1)] hover:bg-brand-strong",
+        secondary: "bg-surface text-foreground shadow-[inset_0_0_0_1px_rgb(15_15_15/0.1),0_1px_2px_rgb(15_15_15/0.06)] hover:bg-hover",
+        ghost: "text-muted hover:bg-hover hover:text-foreground",
+        danger: "bg-danger text-white hover:bg-danger-strong",
+        "danger-outline": "bg-surface text-danger shadow-[inset_0_0_0_1px_rgb(212_76_71/0.4)] hover:bg-danger-soft",
       },
       size: {
-        default: "h-10 px-4",
-        sm: "h-9 px-3",
-        lg: "h-11 px-5",
+        default: "h-8 px-3",
+        sm: "h-7 px-2 text-[13px]",
+        lg: "h-9 px-4",
+        icon: "size-7",
       },
     },
     defaultVariants: {

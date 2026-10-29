@@ -1,6 +1,6 @@
+import { CircleAlert } from "lucide-react";
 import Link from "next/link";
 
-import { Card } from "@/components/ui/card";
 import { ApiRequestError } from "@/lib/api/client";
 
 type ApiFeedbackProps = {
@@ -11,25 +11,28 @@ type ApiFeedbackProps = {
 export function ApiFeedback({ error, onRetry }: ApiFeedbackProps) {
   const content = describeError(error);
   return (
-    <Card role="alert" className="border-rose-200 bg-[var(--danger-soft)] p-4">
-      <p className="text-sm font-semibold text-[var(--danger)]">{content.title}</p>
-      <p className="mt-1 text-sm leading-6 text-slate-700">{content.message}</p>
-      {error instanceof ApiRequestError ? (
-        <p className="mt-2 text-xs text-slate-500">Request ID: {error.detail.request_id}</p>
-      ) : null}
-      <div className="mt-3 flex gap-3 text-sm font-semibold">
-        {content.signIn ? (
-          <Link className="text-[var(--brand)] hover:underline" href="/login?reason=expired">
-            Sign in again
-          </Link>
+    <div role="alert" className="flex gap-3 rounded-md bg-danger-soft px-4 py-3.5">
+      <CircleAlert className="mt-0.5 size-4 shrink-0 text-danger" aria-hidden="true" />
+      <div className="min-w-0">
+        <p className="text-sm font-semibold text-danger">{content.title}</p>
+        <p className="mt-1 text-sm leading-6 text-foreground/80">{content.message}</p>
+        {error instanceof ApiRequestError ? (
+          <p className="mt-2 font-mono text-[11px] text-muted">Request ID: {error.detail.request_id}</p>
         ) : null}
-        {onRetry ? (
-          <button className="text-[var(--brand)] hover:underline" type="button" onClick={onRetry}>
-            Try again
-          </button>
-        ) : null}
+        <div className="mt-3 flex gap-4 text-sm font-medium">
+          {content.signIn ? (
+            <Link className="text-brand hover:underline" href="/login?reason=expired">
+              Sign in again
+            </Link>
+          ) : null}
+          {onRetry ? (
+            <button className="text-brand hover:underline" type="button" onClick={onRetry}>
+              Try again
+            </button>
+          ) : null}
+        </div>
       </div>
-    </Card>
+    </div>
   );
 }
 
