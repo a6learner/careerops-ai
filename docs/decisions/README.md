@@ -96,5 +96,8 @@ What future condition would justify reopening this decision?
 - `ADR-038-local-full-stack-acceptance.md`: frontend container topology, canonical public origin, fake-only isolated Compose acceptance, and browser-driven verification.
 - `ADR-039-refresh-token-deferral.md`: explicit MVP refresh-token deferral and the resulting bounded-session limitation.
 - `ADR-040-cv-import-and-assisted-job-discovery.md`: worker-backed document normalization, review-only drafts, and fake-first job discovery with source and freshness preservation.
-- `ADR-041-project-evidence-agent.md`: initial project/checkpoint API, immutable source snapshots, idempotent review and ownership constraints; MCP/Skill integration remains proposed.
+- `ADR-041-project-evidence-agent.md`: initial project/checkpoint API, immutable source snapshots, idempotent review and ownership constraints; the MCP/Skill integration it proposed was later implemented under ADR-042.
 - `ADR-042-local-agent-client-and-mcp-boundary.md`: protected local client, same-key recovery and repository Skill; the author approved the optional MCP SDK after the initial automatic-review rejection.
+- `ADR-043-temporary-cloud-lab.md`: one-off private, fake-provider, single-host cloud exercise reached through an SSH tunnel; not public deployment or P1-14 acceptance.
+- `ADR-044-frontend-visual-system.md`: locally owned Notion-inspired visual system, shared UI primitives, board/gallery/detail page structure; supersedes only the MVP "no design system" exclusion.
+- `ADR-045-latest-run-and-dashboard-focus-reads.md`: owner-scoped latest Parse/Analysis Run lookup and an uncached dashboard focus read, with no migration.

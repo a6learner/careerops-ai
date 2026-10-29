@@ -71,10 +71,11 @@ If schedule pressure appears, cut scope before cutting tests, deployment, or evi
 
 ## Current Delivery Sequence
 
-As of 2026-10-10, use this sequence when an older stage suggestion conflicts
-with it. P1-8 through P1-10 established the local operational and browser core
-loop. P1-11 closes the remaining P0 evidence and contract gaps before local
-product hardening or cloud work.
+As of 2026-10-29, use this sequence when an older stage suggestion conflicts
+with it. P1-8 through P1-11 are complete locally. P1-12 (CV import and assisted
+job discovery) and the Project Evidence Agent extension are implemented. The
+P1-13 UI and usability work is implemented on `claude/ui-and-product-polish`
+pending author review. P1-14 public cloud deployment remains open.
 
 ### P1-9: Local Frontend MVP
 
@@ -116,10 +117,12 @@ or explicitly recorded as a known limitation, with no invented metrics.
 Status: implemented and verified locally on 2026-10-10. The 5,000-Job benchmark,
 latest one-step rollback drill, fake-provider demo rehearsal, refresh-token
 deferral, and final evidence/limitation matrix are saved. The fresh-database CI
-job is configured and its commands were exercised locally; a GitHub-hosted green
-run remains pending commit and push authorization.
+job is configured and its commands were exercised locally. The work has since
+been pushed, and `.github/workflows/ci.yml` runs on every push, but no
+GitHub-hosted run result is saved in the repository, so a green CI run is not
+claimed.
 
-### CV Import And Assisted Job Discovery
+### P1-12: CV Import And Assisted Job Discovery
 
 Status: completed locally on 2026-10-11. Full backend and frontend quality
 gates, fresh migration and drift checks, a worker-image LibreOffice RTF smoke,
@@ -147,10 +150,18 @@ behavior. Development uses focused tests; completion requires one consolidated
 backend/frontend quality pass and one fake-provider browser flow through import,
 discovery, Parse, Analysis, Action Items, and Dashboard.
 
-### P1-13: Local Product Hardening
+### P1-13: Local Product Hardening And Visual System
 
 After P1-12, improve accessibility, small-screen behavior, actionable error and
-empty states, and focused usability defects without a broad UI redesign.
+empty states, and focused usability defects.
+
+On 2026-10-28 the author widened this stage to include a visual redesign and
+chose a Notion-inspired direction after reviewing screenshots. ADR-044 records
+the visual system; ADR-045 records the additive latest-run and dashboard focus
+read endpoints that the job detail page and dashboard need. Work is on branch
+`claude/ui-and-product-polish`; verification is recorded in
+`docs/metrics/2026-10-29-ui-polish-test-record.md`. Status: implemented and
+verified locally, pending author review.
 
 ### P1-14: Cloud Deployment
 
@@ -163,14 +174,15 @@ Acceptance: the locally accepted product is deployed and verified through its
 documented production workflow. Local success is not presented as production
 availability evidence.
 
-## Proposed Extension: Project Evidence Agent
+## Project Evidence Agent Extension
 
 As of 2026-10-27, the author authorized incremental implementation while
-preserving the existing product. The first project/checkpoint API and review UI
-slice is implemented locally, pending author review. Users would bring their existing
-coding assistant/model; a Skill and local MCP adapter would capture selected
-development checkpoints, preserve sources, and support later resume/interview
-preparation through reviewed evidence. No new server model provider is proposed
+preserving the existing product. The project/checkpoint API, review UI, Windows
+client, repository Skill and eight-tool MCP stdio adapter are implemented and
+were published in `668669d`. Users bring their existing coding assistant/model;
+the Skill and local MCP adapter capture selected development checkpoints,
+preserve sources, and support later resume/interview preparation through
+reviewed evidence. No new server model provider is proposed
 for this recording path.
 
 Scope, provisional schedule, milestone ledger, acceptance gates, and continuation
@@ -206,9 +218,8 @@ topology accessed through an SSH tunnel. No paid resource, public HTTPS site,
 live-provider run or remote MCP access is implied. This is not completion of
 P1-13 or the public P1-14 contract. ADR-043 records the scope;
 `docs/operations/cloud-lab.md` is the practical guide, learning note 0051 explains
-the boundaries, and `docs/metrics/2026-10-28-cloud-lab-preparation.md` records
-verification and the next required user action. Preparation originally excluded
-commit/push; the later publication authorization is recorded below.
+the boundaries. `docs/metrics/2026-10-28-cloud-lab-preparation.md` and
+`docs/metrics/2026-10-28-cloud-lab-run.md` hold the evidence.
 
 After creating the VM, the author authorized assistant SSH operation using the
 designated key file without inspecting its contents. The private cloud lab
@@ -223,14 +234,16 @@ evidence, not public HTTPS,
 live-model quality, remote MCP, P1-13 closure or formal P1-14 acceptance.
 
 The author subsequently authorized committing and pushing the lab configuration,
-scripts and verified records on the existing development branch. Local secrets,
+scripts and verified records on the existing development branch. They were
+committed as `ebcc99d` and pushed to `origin/codex/p1-3b-embedding-holdout`;
+as of 2026-10-29 they are not merged into `main`. Local secrets,
 database dumps and transfer archives remain ignored under `.cloud-lab/`.
 
 ## Source Material
 
 - Detailed MVP scope: `docs/CareerOps AI MVP 产品范围与 Non-goals.md`
 - User stories and use cases: `docs/product/user-stories-and-use-cases.md`
-- Proposed project recording extension: `docs/product/project-evidence-agent-plan.md`
+- Project recording extension plan and milestone ledger: `docs/product/project-evidence-agent-plan.md`
 - Programming language research: `docs/52 条 2027 届实习 JD 语言要求调研.md`
 - Decision records: `docs/decisions/`
 - Learning notes: `docs/learning/`

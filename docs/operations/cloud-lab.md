@@ -4,7 +4,8 @@
 
 用一台临时 Linux 主机学习远程部署，测试完成后删除。只有你自己访问，
 只放合成数据，parser、embedding、matcher 全部使用 fake。没有模型费用。
-这份指南不代表已经完成云端验收，也不代表 P1-13 或正式公网部署已经完成。
+2026-10-28 已按本指南执行过一次私有实验并删除实例（见 `docs/metrics/2026-10-28-cloud-lab-run.md`）。
+这不代表 P1-14 正式公网部署验收。
 
 第一轮不买域名、不配置公网 HTTPS、不使用托管数据库或负载均衡器。
 网页通过 SSH 隧道访问：链路由 SSH 加密，浏览器访问本机 loopback 地址。
@@ -128,7 +129,7 @@ df -h /
 
 ## 3. 从本机传输本次代码
 
-当前准备工作不自动 commit/push。不要在服务器 clone 后误以为拿到了尚未提交的配置。
+实验配置已提交为 `ebcc99d` 并推送到 `origin/codex/p1-3b-embedding-holdout`（截至 2026-10-29 尚未合入 `main`）。可以在服务器上 clone 该分支或提交，也可以继续用下面的打包方式传输指定文件。
 在仓库根目录的 PowerShell 打包下列明确路径，不包含 `.env`、私钥、Git 历史、
 本机虚拟环境或数据库。tar 包仅用于你自己的临时主机。
 
@@ -143,7 +144,7 @@ scp -i "C:\PATH\LightsailKey.pem" .cloud-lab/release.tar.gz ubuntu@PUBLIC_IP:~/r
 ```
 
 保存 SHA256，云端用 `sha256sum ~/release.tar.gz` 比对。这标识本次实际传输内容；
-HEAD 只标识原始提交，不包括尚未提交的准备工作。上传前用 `tar -tzf` 检查文件列表。
+若从干净工作区打包，HEAD 与 SHA256 共同标识传输内容；工作区有改动时 HEAD 不包含它们。上传前用 `tar -tzf` 检查文件列表。
 
 Ubuntu：
 

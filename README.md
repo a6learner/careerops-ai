@@ -21,14 +21,24 @@ turn reviewed evidence into preparation tasks and resume or interview drafts.
 | Capability | How it helps |
 |---|---|
 | Experience library | Add experience manually or import a CV into editable drafts for review. |
-| Job preparation | Save a job description, parse requirements, and review supporting experience and gaps. |
+| Job preparation | Track roles on a status board; each job page shows parsed requirements, supporting evidence quotes and gaps, and keeps them after a reload. |
 | Project journal | Record changes, decisions, failures and verification with selected source excerpts. |
 | Coding-assistant integration | Save checkpoints through MCP and a Skill; retrieve them in a later session. |
-| Review and progress | Confirm your contribution, withdraw records, create tasks and track applications. |
+| Review and progress | Confirm your contribution, withdraw records, turn gaps into tasks, and see upcoming deadlines and next tasks on the dashboard. |
 
 For project recording, the model runs in your existing coding assistant.
 CareerOps does not collect its model API key. Saved records start as drafts;
 you review the sources and your contribution before confirming them.
+
+## Interface
+
+![Job page with parsed requirements, evidence quotes and gaps](docs/design/2026-10-28-redesign-preview/desktop-job-detail.png)
+
+Jobs and Action Items are boards, Experiences is a gallery, and each job has its
+own page. Screenshots of every page at desktop and phone width are in
+[`docs/design/2026-10-28-redesign-preview/`](docs/design/2026-10-28-redesign-preview/).
+They use synthetic data and the deterministic fake providers. The visual system
+is described in [ADR-044](docs/decisions/ADR-044-frontend-visual-system.md).
 
 ## Demo
 
@@ -41,7 +51,8 @@ This local flow was exercised with real Codex sessions and a synthetic project:
 
 ![Project journal showing a reviewed checkpoint](docs/metrics/2026-10-27-project-agent-demo-confirmed.png)
 
-The screenshot shows the actual local app with synthetic data. The generated
+The screenshot shows the actual local app with synthetic data, before the
+2026-10-29 visual redesign. The generated
 material keeps that label and does not present it as a real personal achievement.
 See the [demo walkthrough](docs/learning/0050-project-agent-demo.md) and
 [fresh-session output](docs/metrics/2026-10-27-project-agent-host-recall-output.md).
@@ -66,7 +77,7 @@ in this mode are demo outputs.
 To try it:
 
 1. Add an experience in **Experiences** and a target job in **Jobs**.
-2. Parse the job, run analysis, and review the evidence and gaps.
+2. Open the job, parse it, run analysis, and review the evidence and gaps.
 3. Create preparation tasks in **Action Items** and follow progress in **Dashboard**.
 4. In **Projects**, save a development stage, inspect its sources, and review it.
 
@@ -80,13 +91,15 @@ Stop the local stack with `docker compose down`; the database volume is retained
 ## Current scope
 
 The application workflow and the Codex project-journal integration have been
-verified locally. The project is a local prototype; production deployment and
+verified locally. The project is a local prototype. A private, fake-provider
+cloud lab reached through an SSH tunnel was run once and then deleted
+([record](docs/metrics/2026-10-28-cloud-lab-run.md)). Public deployment and
 broader real-project quality evaluation remain pending.
 
 - Recording is triggered by a user request or Skill workflow; automatic background capture is not implemented.
 - Confirming a record records your review; it does not certify authorship, skill or test execution.
 - Job discovery currently uses a fake provider. Live job-search coverage is not available.
-- Learning-plan generation, learning-resource search and Notion sync are planned work.
+- Learning-plan generation, learning-resource search and Notion sync are unscheduled ideas, not committed scope.
 - Claude Code configuration examples are provided; its live integration has not been verified.
 
 ## Built with

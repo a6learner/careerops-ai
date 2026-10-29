@@ -16,12 +16,12 @@ production verification.
 | Observability and lifecycle integrity | Verified | ADR-032; `docs/metrics/2026-10-06-analysis-run-observability-test-record.md`; lifecycle constraint record | No production log backend, alerting, or SLO evidence. |
 | Liveness and readiness | Verified | ADR-033; `docs/metrics/2026-10-06-api-readiness-test-record.md`; P1-10 frontend readiness evidence | Local dependency checks only. |
 | Backup and recovery | Verified locally | ADR-034, ADR-035; backup/restore and worker-recovery drill records | Synthetic local data only; no managed-cloud restore evidence. |
-| Fresh database migration | Implemented and locally exercised | CI `migration` job; P1-11 rollback drill begins from blank pgvector DB | GitHub-hosted CI result is pending commit/push and cannot be claimed green yet. |
-| Supported migration rollback | Verified | `docs/metrics/2026-10-10-migration-rollback-drill.md` | Only the latest one-step boundary is supported; no destructive or production downgrade was attempted. |
+| Fresh database migration | Implemented and locally exercised | CI `migration` job; P1-11 rollback drill begins from blank pgvector DB | The work has been pushed and CI runs on every push, but no GitHub-hosted run result is saved in the repository, so a green run is not claimed. |
+| Supported migration rollback | Verified | `docs/metrics/2026-10-10-migration-rollback-drill.md` | Verified on 2026-10-10 for `202610060001 <-> 202609190001`, the head at that time. Later migrations `202610110001` and `202610270001` have downgrade functions but no saved drill, and `scripts/local_migration_rollback_drill.ps1` still asserts the old head, so it must be re-targeted before reuse. No destructive or production downgrade was attempted. |
 | Main read P50/P95 | Verified locally | `docs/metrics/2026-10-10-read-endpoint-performance.{md,json}` | Sequential single-machine synthetic measurement; not throughput, concurrency, availability, or production evidence. |
 | Browser core loop | Verified locally | ADR-038; `docs/metrics/2026-10-10-local-full-stack-acceptance.md` | All providers fake; no cloud deployment claim. |
 | 3–5 minute demo | Verified locally | `docs/demo/p0-demo-script.md`; `docs/metrics/2026-10-10-p0-demo-rehearsal.md` | Automation validates the browser path and pacing; human narration quality remains presenter's responsibility. |
-| Cloud deployment | Deferred | Platform-neutral runbook and ADR-036 | Provider, TLS, DNS, production secrets, hosted migrations, and production smoke test are P1-13. |
+| Cloud deployment | Deferred (public) | Platform-neutral runbook and ADR-036; one private fake-provider lab: ADR-043, `docs/metrics/2026-10-28-cloud-lab-run.md` | Provider, TLS, DNS, production secrets, hosted migrations, and production smoke test are P1-14. The private lab is not public or production evidence. |
 
 ## Evidence Rules
 

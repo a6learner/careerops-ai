@@ -8,12 +8,10 @@ available. No model API key is required by this client.
 
 ## Prerequisites
 
-Use the normal CareerOps API with migrations through `202610270001`. For this
-uncommitted initial release, a fresh isolated environment receives the amended
-withdrawal trigger. If a database already applied the earlier uncommitted version
-of that migration, do not downgrade it to update a function; arrange a separate
-forward-only migration before using it. No development DB has been migrated by
-the implementation sessions.
+Use the normal CareerOps API with migrations through `202610270001`. That
+migration was published in `668669d`, so any change to it now needs a new
+forward-only migration. A database that applied a pre-publication draft of
+`202610270001` should not be reused; recreate it from a clean migration run.
 
 Use Python from the CareerOps development environment, e.g.
 `.\.venv\Scripts\python` from this repository. Protected storage requires Windows;

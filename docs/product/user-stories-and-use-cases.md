@@ -115,7 +115,7 @@ Development alignment:
 - object-level authorization
 - soft deletion
 - content hashing
-- future embedding generation
+- version-bound embedding runs (ADR-018)
 
 ### US-002: Keep My Career Data Private
 
@@ -160,8 +160,9 @@ Development alignment:
 - retry and failure states
 
 Implementation status: the backend resource and worker execution slices are
-complete with deterministic fake parsing. A real LLM adapter and bounded
-provider retry policy remain future work.
+complete with deterministic fake parsing as the default. A Groq parser adapter
+is implemented behind the adapter boundary (ADR-012); fake remains the default
+for tests and local acceptance.
 
 ### US-005: Match Requirements To Evidence
 
@@ -221,10 +222,12 @@ tool so that I can tailor my resume without inventing unsupported claims.
 
 Development alignment:
 
-- future resume-tailoring prompt export
 - citations back to experiences
 - explicit instruction to avoid unsupported claims
-- not part of the current MVP implementation
+- not part of the MVP application loop; partly addressed by the Project Evidence
+  Agent extension, where the user's own coding host drafts cited resume bullets
+  and STAR stories from confirmed checkpoints (`668669d`). There is no
+  server-side resume generation.
 
 ## Core Use Cases
 
@@ -273,7 +276,7 @@ Main flow:
 3. If the version matches, the update is applied.
 4. The version increments.
 5. The content hash is recomputed.
-6. The embedding is cleared so a future worker can regenerate it.
+6. The embedding is invalidated and a version-bound embedding run is scheduled for the worker.
 
 Failure and edge cases:
 
@@ -305,7 +308,7 @@ Main flow:
 Failure and edge cases:
 
 - Blank description returns 422.
-- Invalid status transitions return a domain error.
+- Status must be one of the CHECK-constrained values; any valid status can follow any other, so a user can correct a mistaken status.
 - Cross-user access returns 404.
 
 Backend implications:
@@ -438,12 +441,21 @@ P0.
 These are useful, but not required for the MVP:
 
 - Generate an evidence-grounded prompt for another AI resume editor.
-- Upload an existing resume and compare it against a JD.
+- Compare an uploaded resume against a JD. (Uploading a CV into reviewable
+  Experience drafts is delivered; see below.)
 - Batch tailor suggestions across multiple JDs.
 - Recommend projects or preparation plans based on repeated JD patterns.
 - Support richer experience kinds such as volunteer, activity, leadership, or
   personal interest as first-class enum values.
-- Import experiences from GitHub, documents, or other sources.
+- Import experiences from GitHub or other non-document sources.
+
+Delivered beyond the MVP loop, documented as extensions rather than core-loop
+stories:
+
+- CV import into reviewable Experience drafts (ADR-040, `381ef0e`).
+- Assisted job discovery with a fake provider only (ADR-040).
+- Project journal with a local MCP adapter and Skill (ADR-041, ADR-042, `668669d`).
+- Job detail page, status boards and dashboard focus lists (ADR-044, ADR-045).
 
 Future resume-related features must preserve the evidence rule: generated
 suggestions may reframe real experience, but must not invent claims.
