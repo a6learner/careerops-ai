@@ -197,6 +197,35 @@ a concise GitHub README. The project-journal/MCP/demo implementation is committe
 as `668669d`. Historical verification records retain their original working-tree
 status; publication checks are in `docs/metrics/2026-10-27-publication-check.md`.
 
+## Temporary Cloud Learning Lab
+
+On 2026-10-28, the author requested preparation for a short remote deployment
+exercise, followed by resource deletion, and step-by-step provisioning guidance.
+Preparation uses a separate single-host, fake-provider, synthetic-data Compose
+topology accessed through an SSH tunnel. No paid resource, public HTTPS site,
+live-provider run or remote MCP access is implied. This is not completion of
+P1-13 or the public P1-14 contract. ADR-043 records the scope;
+`docs/operations/cloud-lab.md` is the practical guide, learning note 0051 explains
+the boundaries, and `docs/metrics/2026-10-28-cloud-lab-preparation.md` records
+verification and the next required user action. Preparation originally excluded
+commit/push; the later publication authorization is recorded below.
+
+After creating the VM, the author authorized assistant SSH operation using the
+designated key file without inspecting its contents. The private cloud lab
+subsequently built and started successfully on Ubuntu; both browser workflows,
+synthetic queue-loss recovery and full-table backup/restore comparison passed.
+Actual evidence is in `docs/metrics/2026-10-28-cloud-lab-run.md` and its JSON.
+After inspection, the author reported deleting the Lightsail instance. The
+assistant-owned SSH tunnel exited with a remote-closed connection. The local
+source, synthetic backup and experiment records remain; final billing and any
+unrelated cloud resources have not been audited. This is private cloud execution
+evidence, not public HTTPS,
+live-model quality, remote MCP, P1-13 closure or formal P1-14 acceptance.
+
+The author subsequently authorized committing and pushing the lab configuration,
+scripts and verified records on the existing development branch. Local secrets,
+database dumps and transfer archives remain ignored under `.cloud-lab/`.
+
 ## Source Material
 
 - Detailed MVP scope: `docs/CareerOps AI MVP 产品范围与 Non-goals.md`
