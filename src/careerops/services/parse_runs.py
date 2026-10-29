@@ -35,6 +35,8 @@ class ParseRunStore(Protocol):
         parse_run_id: UUID,
     ) -> ParseRunRecord | None: ...
 
+    async def get_latest_parse_run(self, user_id: UUID, job_id: UUID) -> ParseRunRecord | None: ...
+
     async def create_or_get_queued_parse_run(
         self,
         user_id: UUID,
@@ -111,6 +113,14 @@ class ParseRunService:
             job_id=job_id,
             parse_run_id=parse_run_id,
         )
+        if run is None:
+            raise ParseRunNotFoundError()
+        return run
+
+    async def get_latest_parse_run(self, user_id: UUID, job_id: UUID) -> ParseRunRecord:
+        if await self._jobs.get_job(user_id, job_id) is None:
+            raise JobNotFoundError()
+        run = await self._parse_runs.get_latest_parse_run(user_id, job_id)
         if run is None:
             raise ParseRunNotFoundError()
         return run

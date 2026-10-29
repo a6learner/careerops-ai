@@ -25,7 +25,9 @@ from careerops.domain.embeddings import (
 from careerops.domain.errors import (
     AnalysisRateLimitExceededError,
     AnalysisRunDispatchError,
+    AnalysisRunNotFoundError,
     IdempotencyKeyConflictError,
+    JobNotFoundError,
     NoActiveExperiencesError,
     ParseRunNotReadyError,
 )
@@ -112,6 +114,21 @@ class AnalysisRunStore:
             and self.existing.user_id == user_id
             and self.existing.job_id == job_id
             and self.existing.id == analysis_run_id
+        ):
+            return self.existing
+        return None
+
+    async def get_latest_analysis_run(
+        self,
+        user_id: UUID,
+        job_id: UUID,
+        parse_run_id: UUID,
+    ) -> AnalysisRunRecord | None:
+        if (
+            self.existing is not None
+            and self.existing.user_id == user_id
+            and self.existing.job_id == job_id
+            and self.existing.parse_run_id == parse_run_id
         ):
             return self.existing
         return None
@@ -585,3 +602,26 @@ def make_analysis_run(
         created_at=now,
         matches=(),
     )
+
+
+@pytest.mark.asyncio
+async def test_get_latest_analysis_run_is_scoped_to_parse_run() -> None:
+    job, parse_run, experience = make_inputs()
+    store = AnalysisRunStore()
+    service = build_service(job, parse_run, [experience], store, Dispatcher())
+    submitted = await service.submit_analysis_run(
+        job.user_id, job.id, parse_run.id, "analysis-key", "request-1"
+    )
+
+    assert await service.get_latest_analysis_run(job.user_id, job.id, parse_run.id) == submitted
+    with pytest.raises(AnalysisRunNotFoundError):
+        await service.get_latest_analysis_run(job.user_id, job.id, uuid4())
+
+
+@pytest.mark.asyncio
+async def test_get_latest_analysis_run_hides_other_users_job() -> None:
+    job, parse_run, experience = make_inputs()
+    service = build_service(job, parse_run, [experience], AnalysisRunStore(), Dispatcher())
+
+    with pytest.raises(JobNotFoundError):
+        await service.get_latest_analysis_run(uuid4(), job.id, parse_run.id)

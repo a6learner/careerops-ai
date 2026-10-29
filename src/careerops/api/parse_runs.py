@@ -42,6 +42,18 @@ async def submit_parse_run(
     return to_response(run)
 
 
+@router.get("/latest", response_model=ParseRunResponse)
+async def get_latest_parse_run(
+    job_id: UUID,
+    current_user: Annotated[UserAccount, Depends(get_current_user)],
+    session: Annotated[AsyncSession, Depends(get_session)],
+    dispatcher: Annotated[ParseRunDispatcher, Depends(get_parse_run_dispatcher)],
+) -> ParseRunResponse:
+    service = build_parse_run_service(session, dispatcher)
+    run = await service.get_latest_parse_run(user_id=current_user.id, job_id=job_id)
+    return to_response(run)
+
+
 @router.get("/{parse_run_id}", response_model=ParseRunResponse)
 async def get_parse_run(
     job_id: UUID,

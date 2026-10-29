@@ -61,6 +61,18 @@ class ParseRunRepository:
             return None
         return await self._to_record(parse_run)
 
+    async def get_latest_parse_run(self, user_id: UUID, job_id: UUID) -> ParseRunRecord | None:
+        result = await self._session.execute(
+            select(ParseRun)
+            .where(ParseRun.user_id == user_id, ParseRun.job_id == job_id)
+            .order_by(ParseRun.created_at.desc(), ParseRun.id.desc())
+            .limit(1)
+        )
+        parse_run = result.scalar_one_or_none()
+        if parse_run is None:
+            return None
+        return await self._to_record(parse_run)
+
     async def create_or_get_queued_parse_run(
         self,
         user_id: UUID,

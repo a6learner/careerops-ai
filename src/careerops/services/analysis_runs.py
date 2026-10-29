@@ -64,6 +64,13 @@ class AnalysisRunStore(Protocol):
         analysis_run_id: UUID,
     ) -> AnalysisRunRecord | None: ...
 
+    async def get_latest_analysis_run(
+        self,
+        user_id: UUID,
+        job_id: UUID,
+        parse_run_id: UUID,
+    ) -> AnalysisRunRecord | None: ...
+
     async def create_or_get_queued_analysis_run(
         self,
         user_id: UUID,
@@ -202,6 +209,19 @@ class AnalysisRunService:
         if await self._jobs.get_job(user_id, job_id) is None:
             raise JobNotFoundError()
         run = await self._analysis_runs.get_analysis_run(user_id, job_id, analysis_run_id)
+        if run is None:
+            raise AnalysisRunNotFoundError()
+        return run
+
+    async def get_latest_analysis_run(
+        self,
+        user_id: UUID,
+        job_id: UUID,
+        parse_run_id: UUID,
+    ) -> AnalysisRunRecord:
+        if await self._jobs.get_job(user_id, job_id) is None:
+            raise JobNotFoundError()
+        run = await self._analysis_runs.get_latest_analysis_run(user_id, job_id, parse_run_id)
         if run is None:
             raise AnalysisRunNotFoundError()
         return run
