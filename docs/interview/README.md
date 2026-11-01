@@ -2,6 +2,10 @@
 
 This directory turns implementation work into interview material.
 
+Start with [`project-walkthrough.md`](project-walkthrough.md): an end-to-end
+explanation of the system, the hard problems it solves, measured open problems,
+and candidate next directions.
+
 The goal is not to memorize the repository. The goal is to explain the important engineering decisions, failure modes, trade-offs, and measured results clearly.
 
 ## What To Capture

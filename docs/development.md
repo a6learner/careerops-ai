@@ -205,6 +205,16 @@ To run Groq locally, copy the example to the ignored `.env`, set
 key. Automated tests remain fake or mock-backed unless the live-test flag is
 explicitly enabled.
 
+The Groq parser (`parse-v3`, ADR-046) merges a sentence the model returns once per
+listed skill into one requirement and keeps the first skill. A rejected parse
+logs `requirement_parser_output_rejected` with a `failure_reason` and stores
+provider token counts on the failed run.
+
+On Windows, use `127.0.0.1` rather than `localhost` in `CAREEROPS_DATABASE_URL`
+and `CAREEROPS_REDIS_URL` for host-run processes and integration tests. `localhost`
+may try IPv6 first and exceed the 0.2 s Redis socket timeout, which makes
+`/readyz` report Redis as unavailable.
+
 Evidence matching is configured independently from requirement parsing. Setting
 `CAREEROPS_EVIDENCE_MATCHER_PROVIDER=groq` in the API process binds newly
 submitted Analysis Runs to the frozen Groq matcher. It does not make a network
@@ -632,7 +642,9 @@ MCP/CLI setup is described in [the agent guide](product/project-agent-local-usag
 - `POST`/`GET /api/v1/projects/{id}/checkpoints` create and list stage records (status filter and text search `q`); `GET .../checkpoints/{checkpoint_id}` reads one; `PATCH .../checkpoints/{checkpoint_id}/review` confirms or withdraws it with `If-Match`.
 
 The backend MVP core loop reaches the Dashboard summary. Local Analysis Runs use
-exact hybrid retrieval and either the default deterministic fake matcher or the
+exact hybrid retrieval (with the default fake embeddings, vector scores almost
+never pass the 0.65 threshold, so retrieval is effectively lexical) and either the
+default deterministic fake matcher or the
 explicitly authorized frozen Groq matcher inside the worker, while preserving
 lexical fallback, object-level authorization, evidence validation, and atomic
 result writes.
@@ -642,4 +654,4 @@ result writes.
 - Python is used with strict typing discipline because the project targets backend systems plus LLM governance, not a language showcase.
 - PostgreSQL is the only source of truth. Redis may be cleared and rebuilt.
 - Dramatiq is the worker queue because its Redis integration is small and direct for this project size. PostgreSQL remains the durable task source and can rebuild queued delivery.
-- Database constraints will enforce core invariants, especially the rule that positive evidence matches cannot be stored without real evidence.
+- Database constraints enforce core invariants. A positive evidence match cannot be stored without a cited Experience, version, non-blank quote and `quote_valid = true`. The substring, ownership, candidate and version checks that set `quote_valid` run in application code (`domain/evidence_matching.py`).

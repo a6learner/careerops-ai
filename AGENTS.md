@@ -133,7 +133,7 @@ Treat evidence matching as the technical center of the project.
 
 1. Schema layer: model output must match the expected schema. Invalid shape is an upstream failure.
 2. Validation layer: code must verify that cited experiences exist, belong to the current user, and contain the cited text or span.
-3. Database layer: constraints must prevent unsupported positive claims from being persisted even if application code has a bug.
+3. Database layer: constraints must reject any positive claim that lacks a cited experience, version, non-blank quote, and validated-quote flag, even if application code has a bug. Today the quote-substring, ownership, candidate and version checks run in the validation layer, and the database stores their result as `quote_valid`; moving more of that check into the database is an open improvement, not a current guarantee.
 
 No positive skill or experience claim may be stored or shown without traceable evidence. Missing evidence must be represented as a gap or insufficient evidence.
 

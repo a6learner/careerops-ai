@@ -14,13 +14,14 @@ is slow. Design decisions, failed approaches and verification results are easy
 to lose. A job description can also reveal gaps without making the next step clear.
 
 CareerOps keeps those details with their sources, makes gaps visible, and helps
-turn reviewed evidence into preparation tasks and resume or interview drafts.
+turn gaps into preparation tasks. Resume and interview drafting from confirmed
+project records happens in your own coding assistant, not in CareerOps.
 
 ## What you can do
 
 | Capability | How it helps |
 |---|---|
-| Experience library | Add experience manually or import a CV into editable drafts for review. |
+| Experience library | Add experience manually or import a CV; the import splits the text into editable drafts for review (no model is used). |
 | Job preparation | Track roles on a status board; each job page shows parsed requirements, supporting evidence quotes and gaps, and keeps them after a reload. |
 | Project journal | Record changes, decisions, failures and verification with selected source excerpts. |
 | Coding-assistant integration | Save checkpoints through MCP and a Skill; retrieve them in a later session. |
@@ -99,6 +100,12 @@ broader real-project quality evaluation remain pending.
 - Recording is triggered by a user request or Skill workflow; automatic background capture is not implemented.
 - Confirming a record records your review; it does not certify authorship, skill or test execution.
 - Job discovery currently uses a fake provider. Live job-search coverage is not available.
+- Real providers (Groq parser and matcher, Gemini embeddings) are opt-in and need
+  explicit flags. A 2026-10-31 run on real job descriptions found that the parser
+  rejected most full descriptions, which is now fixed (ADR-046). The matcher stays
+  safe but under-claims, and that is still open; see the
+  [real-data test record](docs/metrics/2026-10-31-real-data-walkthrough-test-record.md)
+  and the [project walkthrough](docs/interview/project-walkthrough.md).
 - Learning-plan generation, learning-resource search and Notion sync are unscheduled ideas, not committed scope.
 - Claude Code configuration examples are provided; its live integration has not been verified.
 
@@ -106,8 +113,11 @@ broader real-project quality evaluation remain pending.
 
 Python · FastAPI · PostgreSQL/pgvector · Redis/Dramatiq · Next.js · MCP · Docker
 
-The backend separates API requests from worker-side model calls. Evidence checks,
-database constraints and retry-safe operations support the application workflow.
+The backend separates API requests from worker-side model calls. All providers
+default to deterministic fakes. Evidence checks, database constraints and
+retry-safe operations support the application workflow. For an end-to-end
+explanation of how the system works, see the
+[project walkthrough](docs/interview/project-walkthrough.md).
 
 For development commands and technical details, see the
 [development guide](docs/development.md). Design explanations and knowledge checks

@@ -77,6 +77,14 @@ job discovery) and the Project Evidence Agent extension are implemented. The
 P1-13 UI and usability work is implemented on `claude/ui-and-product-polish`
 pending author review. P1-14 public cloud deployment remains open.
 
+On 2026-10-31 a full walkthrough re-read the code and ran the pipeline with real
+providers on the author's CV and three real job descriptions. The real parser
+rejected most full descriptions; parse-v3 (ADR-046) fixed that and is verified on
+the same descriptions. The matcher stays safe but under-claims and breaks its
+contract on larger jobs. The next stage (matcher quality and the AI/agent
+direction) is not chosen yet. See `docs/interview/project-walkthrough.md` and
+`docs/metrics/2026-10-31-real-data-walkthrough-test-record.md`.
+
 ### P1-9: Local Frontend MVP
 
 Status: completed locally. The minimal Next.js demo layer exposes authentication,
