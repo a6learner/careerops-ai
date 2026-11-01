@@ -366,11 +366,21 @@ def main() -> None:
     parser.add_argument("--matcher-labels", type=Path)
     parser.add_argument("--requirements", type=Path)
     parser.add_argument("--cv-import-state", type=Path)
+    parser.add_argument("--exclude", type=Path, help="exclusions.json; drops those JDs")
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     report: dict[str, Any] = {"dataset": str(args.dataset)}
     if args.results:
         results = json.loads(args.results.read_text(encoding="utf-8"))
+        if args.exclude:
+            excluded = {
+                item["jd_id"]
+                for item in json.loads(args.exclude.read_text(encoding="utf-8"))["exclude"]
+            }
+            results["jobs"] = {
+                key: job for key, job in results["jobs"].items() if job["jd_id"] not in excluded
+            }
+            report["excluded_jd_ids"] = sorted(excluded)
         report["parser"] = score_parser(args.dataset, results, args.parser_labels)
         report["matcher"] = score_matcher(
             args.dataset, results, args.matcher_labels, args.requirements

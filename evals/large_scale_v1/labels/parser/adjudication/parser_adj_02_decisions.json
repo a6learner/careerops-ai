@@ -1,0 +1,3558 @@
+[
+ {
+  "jd_id": "jd-01896ea3aa",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-01d7e0ebc3",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-01d7e0ebc3",
+  "candidate_id": 30,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-022348a7d2",
+  "candidate_id": 6,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-022348a7d2",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "sdk"
+ },
+ {
+  "jd_id": "jd-022348a7d2",
+  "candidate_id": 48,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-025ea9deaf",
+  "candidate_id": 51,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-042119b79f",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "rest api"
+ },
+ {
+  "jd_id": "jd-04e1e64396",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-04e1e64396",
+  "candidate_id": 42,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-05ce501113",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "go"
+ },
+ {
+  "jd_id": "jd-06627db35f",
+  "candidate_id": 5,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-06627db35f",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-0703562bb9",
+  "candidate_id": 4,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-0a79c9443f",
+  "candidate_id": 46,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-0c427a657e",
+  "candidate_id": 9,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-0c427a657e",
+  "candidate_id": 17,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-0c427a657e",
+  "candidate_id": 24,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-0c427a657e",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-0d25d595f1",
+  "candidate_id": 10,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-0d25d595f1",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-0d25d595f1",
+  "candidate_id": 18,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-0d25d595f1",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-0d25d595f1",
+  "candidate_id": 40,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-0e940dc9e4",
+  "candidate_id": 17,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "linux"
+ },
+ {
+  "jd_id": "jd-0f3b9e743f",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1299301886",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-1299301886",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-137bc8ddcc",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-13803da6ba",
+  "candidate_id": 7,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-13803da6ba",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-13b226ea7f",
+  "candidate_id": 15,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-13b226ea7f",
+  "candidate_id": 43,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-13b226ea7f",
+  "candidate_id": 47,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-13b226ea7f",
+  "candidate_id": 50,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-140189c247",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "iam"
+ },
+ {
+  "jd_id": "jd-1475625714",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-14ca7d8e72",
+  "candidate_id": 64,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-15675d7d86",
+  "candidate_id": 15,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-15675d7d86",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-15675d7d86",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-15675d7d86",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "slack"
+ },
+ {
+  "jd_id": "jd-15675d7d86",
+  "candidate_id": 37,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-167a3d63c0",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-175c16d4f8",
+  "candidate_id": 6,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1b09715445",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-1b09715445",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-1b0ac5b6eb",
+  "candidate_id": 15,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-1b0ac5b6eb",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-1b6a610511",
+  "candidate_id": 13,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1be4e42fcd",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1be4e42fcd",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-1d931cf5fa",
+  "candidate_id": 4,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1dcd03e8cb",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-1de9a3bf45",
+  "candidate_id": 20,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "rl"
+ },
+ {
+  "jd_id": "jd-1e3e9747cf",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-1e3e9747cf",
+  "candidate_id": 34,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1f8710e6de",
+  "candidate_id": 19,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-1f8710e6de",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-20374e729e",
+  "candidate_id": 8,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-20374e729e",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2197a66b6d",
+  "candidate_id": 6,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2197a66b6d",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2197a66b6d",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2197a66b6d",
+  "candidate_id": 57,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-232dc238a2",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-232dc238a2",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "github"
+ },
+ {
+  "jd_id": "jd-23ac1779a4",
+  "candidate_id": 44,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-23ac1779a4",
+  "candidate_id": 49,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-23ac1779a4",
+  "candidate_id": 52,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-23ac1779a4",
+  "candidate_id": 58,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-23ac1779a4",
+  "candidate_id": 64,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "terraform"
+ },
+ {
+  "jd_id": "jd-23ac1779a4",
+  "candidate_id": 85,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-252787b3f3",
+  "candidate_id": 13,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-252787b3f3",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-252787b3f3",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-25ab77c358",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-26634804aa",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-26634804aa",
+  "candidate_id": 45,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-26eec39d7f",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-26eec39d7f",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "kyc"
+ },
+ {
+  "jd_id": "jd-26eec39d7f",
+  "candidate_id": 45,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "pkce"
+ },
+ {
+  "jd_id": "jd-26eec39d7f",
+  "candidate_id": 62,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "soc 2"
+ },
+ {
+  "jd_id": "jd-279a1d0ab1",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-279a1d0ab1",
+  "candidate_id": 35,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2a2fdc3def",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2a2fdc3def",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2a2fdc3def",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-2ab0c1f84b",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2c1f9bc1aa",
+  "candidate_id": 5,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-2c1f9bc1aa",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-2c1f9bc1aa",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-2c2092d392",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2cfc1f6e6d",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2dc4620cdc",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2dc4620cdc",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2e0a38d357",
+  "candidate_id": 79,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 53,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "generative ai"
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 70,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 76,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 84,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 89,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 93,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2e52971de3",
+  "candidate_id": 97,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2e5e69761c",
+  "candidate_id": 0,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-2e5e69761c",
+  "candidate_id": 3,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "kubernetes"
+ },
+ {
+  "jd_id": "jd-2e5e69761c",
+  "candidate_id": 19,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-311d9a6c3a",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-311d9a6c3a",
+  "candidate_id": 41,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-311d9a6c3a",
+  "candidate_id": 52,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ci"
+ },
+ {
+  "jd_id": "jd-311d9a6c3a",
+  "candidate_id": 64,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-3277526724",
+  "candidate_id": 20,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ci"
+ },
+ {
+  "jd_id": "jd-329b8e5cc4",
+  "candidate_id": 67,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-329b8e5cc4",
+  "candidate_id": 101,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-329b8e5cc4",
+  "candidate_id": 116,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-32f17573a4",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-32f17573a4",
+  "candidate_id": 33,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "unix"
+ },
+ {
+  "jd_id": "jd-32f396e5a8",
+  "candidate_id": 51,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "unix"
+ },
+ {
+  "jd_id": "jd-32f396e5a8",
+  "candidate_id": 54,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "django"
+ },
+ {
+  "jd_id": "jd-32f396e5a8",
+  "candidate_id": 57,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "git"
+ },
+ {
+  "jd_id": "jd-343f2f2b12",
+  "candidate_id": 1,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-348dab907e",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-3555033404",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-3555033404",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-3555033404",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-35b32f63ea",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-3708c31dd4",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-3708c31dd4",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-37567c4b7d",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-381390c5e7",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-381390c5e7",
+  "candidate_id": 26,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-381390c5e7",
+  "candidate_id": 39,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-381390c5e7",
+  "candidate_id": 65,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-381390c5e7",
+  "candidate_id": 99,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-38a8961055",
+  "candidate_id": 9,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-38a8961055",
+  "candidate_id": 17,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-38a8961055",
+  "candidate_id": 22,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-38a8961055",
+  "candidate_id": 35,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-38a8961055",
+  "candidate_id": 65,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-394c6e6acf",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "rest api"
+ },
+ {
+  "jd_id": "jd-396ec1c4b3",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-39bf878d27",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-39bf878d27",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-3b24b77af3",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-3b24b77af3",
+  "candidate_id": 70,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-3c6702bc5f",
+  "candidate_id": 7,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-3c6702bc5f",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-3cb22d5577",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "api"
+ },
+ {
+  "jd_id": "jd-3ce2b24c3a",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "rlvr"
+ },
+ {
+  "jd_id": "jd-3ce2b24c3a",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-3ce2b24c3a",
+  "candidate_id": 35,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-3ded297450",
+  "candidate_id": 8,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-3ded297450",
+  "candidate_id": 19,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "next.js"
+ },
+ {
+  "jd_id": "jd-3ded297450",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "next.js"
+ },
+ {
+  "jd_id": "jd-3e3323d504",
+  "candidate_id": 60,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "gpu"
+ },
+ {
+  "jd_id": "jd-3ee2b2b85c",
+  "candidate_id": 33,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-40b0f217a3",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-41924dff4c",
+  "candidate_id": 55,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-438871e519",
+  "candidate_id": 4,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-43a2bbca7e",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "iac"
+ },
+ {
+  "jd_id": "jd-444fca021a",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ruby"
+ },
+ {
+  "jd_id": "jd-449ac9fcf0",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-449ac9fcf0",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-449ac9fcf0",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-454eaefb59",
+  "candidate_id": 6,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-454eaefb59",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "rest api"
+ },
+ {
+  "jd_id": "jd-45d51e91e2",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-4787e81bf4",
+  "candidate_id": 10,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4787e81bf4",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4787e81bf4",
+  "candidate_id": 22,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4787e81bf4",
+  "candidate_id": 46,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-47ca6f2a23",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-47ca6f2a23",
+  "candidate_id": 24,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-47ca6f2a23",
+  "candidate_id": 35,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-47ca6f2a23",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-47ca6f2a23",
+  "candidate_id": 44,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-481e46598b",
+  "candidate_id": 20,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-4a1cc83d6b",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "aws cost explorer"
+ },
+ {
+  "jd_id": "jd-4d2879d8d0",
+  "candidate_id": 8,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4d2879d8d0",
+  "candidate_id": 12,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4da151e1e4",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-4e3f6657f9",
+  "candidate_id": 28,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-4e7ef5494e",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4e7ef5494e",
+  "candidate_id": 47,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-4e7ef5494e",
+  "candidate_id": 69,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": ".net"
+ },
+ {
+  "jd_id": "jd-549191bf37",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-550beed089",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-550beed089",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5531cb84d2",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-5531cb84d2",
+  "candidate_id": 19,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-55a45641b2",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-56bc05acda",
+  "candidate_id": 18,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-56bc05acda",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-57493570bb",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-57493570bb",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-57493570bb",
+  "candidate_id": 44,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-57d5918692",
+  "candidate_id": 15,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-57d5918692",
+  "candidate_id": 36,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "iac"
+ },
+ {
+  "jd_id": "jd-591b059806",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-5ca616e65a",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5ca616e65a",
+  "candidate_id": 14,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5ca616e65a",
+  "candidate_id": 33,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5e00b287bb",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5e00b287bb",
+  "candidate_id": 12,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5e0f86b11d",
+  "candidate_id": 72,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-5e0f86b11d",
+  "candidate_id": 76,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "python"
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 42,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "api"
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 56,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 60,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 96,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 100,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "react"
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 104,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-5f93b2b3be",
+  "candidate_id": 107,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-6095f3ea91",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-613e68b514",
+  "candidate_id": 17,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-6235847f96",
+  "candidate_id": 35,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "agile"
+ },
+ {
+  "jd_id": "jd-62e309dd9f",
+  "candidate_id": 21,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-632aa5716f",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-632aa5716f",
+  "candidate_id": 45,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 44,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 47,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 50,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 54,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 57,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 60,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-639fc9ce63",
+  "candidate_id": 63,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67835005ac",
+  "candidate_id": 30,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67835005ac",
+  "candidate_id": 34,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67835005ac",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67835005ac",
+  "candidate_id": 56,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67835005ac",
+  "candidate_id": 72,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67835005ac",
+  "candidate_id": 94,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67d0f95e4a",
+  "candidate_id": 113,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "vector database"
+ },
+ {
+  "jd_id": "jd-67d0f95e4a",
+  "candidate_id": 122,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-67d0f95e4a",
+  "candidate_id": 134,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-67d0f95e4a",
+  "candidate_id": 144,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67f6401181",
+  "candidate_id": 52,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-67f6401181",
+  "candidate_id": 68,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-687e8d8ccb",
+  "candidate_id": 20,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-687e8d8ccb",
+  "candidate_id": 31,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-687e8d8ccb",
+  "candidate_id": 34,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-687e8d8ccb",
+  "candidate_id": 40,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-6b61360868",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-6eaf240730",
+  "candidate_id": 6,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-6f1e385a7b",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-703dea4b11",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-703dea4b11",
+  "candidate_id": 15,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-71316f502c",
+  "candidate_id": 2,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-73c450c9e7",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-73c450c9e7",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-74e81c003c",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-74e81c003c",
+  "candidate_id": 33,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-772e9e3dc4",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ethernet"
+ },
+ {
+  "jd_id": "jd-77509af86a",
+  "candidate_id": 20,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-77b7e6f212",
+  "candidate_id": 17,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "llm"
+ },
+ {
+  "jd_id": "jd-7898e93a98",
+  "candidate_id": 4,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-7898e93a98",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "owasp"
+ },
+ {
+  "jd_id": "jd-7aefb978a1",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-7aefb978a1",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-7aefb978a1",
+  "candidate_id": 20,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-7c4109d0ff",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-7e976ee122",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "api"
+ },
+ {
+  "jd_id": "jd-7f60e5f671",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-7f832d166a",
+  "candidate_id": 13,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-7f832d166a",
+  "candidate_id": 43,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-7ffd50acdd",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-82987f2806",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-82987f2806",
+  "candidate_id": 56,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-82987f2806",
+  "candidate_id": 86,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-837c588ca9",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-837c588ca9",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-851e800585",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-851e800585",
+  "candidate_id": 33,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-851e800585",
+  "candidate_id": 39,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-86c2d6ee29",
+  "candidate_id": 35,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-884508de41",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-884508de41",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-884508de41",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-884508de41",
+  "candidate_id": 60,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-884508de41",
+  "candidate_id": 77,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-884508de41",
+  "candidate_id": 80,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8889d19c43",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8889d19c43",
+  "candidate_id": 16,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-88fa2cc5f2",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-89418ba2f0",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-89418ba2f0",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-89939ce9b9",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "continuous integration"
+ },
+ {
+  "jd_id": "jd-8a7833e50e",
+  "candidate_id": 15,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8a7833e50e",
+  "candidate_id": 24,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8b4c413398",
+  "candidate_id": 46,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-8b4c413398",
+  "candidate_id": 50,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-8b4c413398",
+  "candidate_id": 76,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8b4c413398",
+  "candidate_id": 79,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8b4c413398",
+  "candidate_id": 83,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "react"
+ },
+ {
+  "jd_id": "jd-8b58d16db8",
+  "candidate_id": 10,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-8b58d16db8",
+  "candidate_id": 19,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-8b58d16db8",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-8c85cee901",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8eedad8687",
+  "candidate_id": 13,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8eedad8687",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "go"
+ },
+ {
+  "jd_id": "jd-8eedad8687",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-8eedad8687",
+  "candidate_id": 33,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-8f9a54629e",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-8fbe301ede",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-903c2ef43d",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-903c2ef43d",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-903c2ef43d",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-903c2ef43d",
+  "candidate_id": 35,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ast"
+ },
+ {
+  "jd_id": "jd-903c2ef43d",
+  "candidate_id": 40,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-903c2ef43d",
+  "candidate_id": 44,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-915994263b",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-915994263b",
+  "candidate_id": 18,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-92541b372d",
+  "candidate_id": 3,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-9277499526",
+  "candidate_id": 66,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-9445688df1",
+  "candidate_id": 15,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-9445688df1",
+  "candidate_id": 41,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-94e9130c78",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-94e9130c78",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ci/cd"
+ },
+ {
+  "jd_id": "jd-94e9130c78",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-96268431ff",
+  "candidate_id": 61,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "generative ai"
+ },
+ {
+  "jd_id": "jd-963e9c1260",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-963e9c1260",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "gpu"
+ },
+ {
+  "jd_id": "jd-9c49b24787",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-9e50772f61",
+  "candidate_id": 3,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-9f58abd578",
+  "candidate_id": 34,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-9f58abd578",
+  "candidate_id": 40,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-9f58abd578",
+  "candidate_id": 55,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-a002dad76f",
+  "candidate_id": 3,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-a2075d143e",
+  "candidate_id": 4,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-a2075d143e",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-a217603de0",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-a217603de0",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-a217603de0",
+  "candidate_id": 45,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-a217603de0",
+  "candidate_id": 48,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-a217603de0",
+  "candidate_id": 51,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-a217603de0",
+  "candidate_id": 96,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-a30c4f42c0",
+  "candidate_id": 43,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-a764d41c1f",
+  "candidate_id": 5,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-a764d41c1f",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "bluetooth"
+ },
+ {
+  "jd_id": "jd-a764d41c1f",
+  "candidate_id": 28,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "mmwave"
+ },
+ {
+  "jd_id": "jd-ab26468257",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ab26468257",
+  "candidate_id": 15,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ab26468257",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ab26468257",
+  "candidate_id": 50,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-abc03b9438",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "nlp"
+ },
+ {
+  "jd_id": "jd-abc03b9438",
+  "candidate_id": 28,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "llm"
+ },
+ {
+  "jd_id": "jd-ac295c9a90",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "iac"
+ },
+ {
+  "jd_id": "jd-acb6ba7599",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-acb6ba7599",
+  "candidate_id": 34,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-acc62d82b2",
+  "candidate_id": 16,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ad55f6b548",
+  "candidate_id": 0,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ad55f6b548",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-ad55f6b548",
+  "candidate_id": 32,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ae26b28e91",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-af49729c9c",
+  "candidate_id": 10,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-b07140f599",
+  "candidate_id": 19,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-b07140f599",
+  "candidate_id": 47,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "rest api"
+ },
+ {
+  "jd_id": "jd-b0e8c68f29",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-b0e8c68f29",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "next.js"
+ },
+ {
+  "jd_id": "jd-b0e8c68f29",
+  "candidate_id": 36,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-b2efedb7be",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-b5d3f87da5",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "continuous integration"
+ },
+ {
+  "jd_id": "jd-b800c7d735",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-b800c7d735",
+  "candidate_id": 48,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "generative ai"
+ },
+ {
+  "jd_id": "jd-b86ed670a4",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-b86ed670a4",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-b90fec80e6",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-b90fec80e6",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-b90fec80e6",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-b90fec80e6",
+  "candidate_id": 68,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-b9b0ff71da",
+  "candidate_id": 14,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-b9b0ff71da",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "agile"
+ },
+ {
+  "jd_id": "jd-b9e9ef4168",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-ba5272986f",
+  "candidate_id": 3,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ba5272986f",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ba5272986f",
+  "candidate_id": 45,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-bb6b54b549",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "continuous integration"
+ },
+ {
+  "jd_id": "jd-bd9f677a08",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-bd9f677a08",
+  "candidate_id": 41,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-bee5954510",
+  "candidate_id": 8,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "genai"
+ },
+ {
+  "jd_id": "jd-bee5954510",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-bfe4b028cf",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-bfe4b028cf",
+  "candidate_id": 42,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-bfe4b028cf",
+  "candidate_id": 50,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c3b3b93b13",
+  "candidate_id": 4,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 33,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 41,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 44,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c5f2cbaf0a",
+  "candidate_id": 47,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c5ff9ae17c",
+  "candidate_id": 16,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c5ff9ae17c",
+  "candidate_id": 20,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c5ff9ae17c",
+  "candidate_id": 33,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c62300341c",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c664c50898",
+  "candidate_id": 20,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c664c50898",
+  "candidate_id": 31,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c7332b6227",
+  "candidate_id": 15,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c7332b6227",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c805777b28",
+  "candidate_id": 0,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "linux"
+ },
+ {
+  "jd_id": "jd-c805777b28",
+  "candidate_id": 15,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c8c86e968c",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-c8c86e968c",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-c8c86e968c",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ci/cd"
+ },
+ {
+  "jd_id": "jd-cc1971c86c",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-ccd54fc393",
+  "candidate_id": 19,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-cd2f824dad",
+  "candidate_id": 8,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-cd2f824dad",
+  "candidate_id": 11,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-cd2f824dad",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-cd2f824dad",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-cdc412e3ed",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-cdc412e3ed",
+  "candidate_id": 45,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-ce019e9955",
+  "candidate_id": 28,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d0188c4304",
+  "candidate_id": 5,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-d0188c4304",
+  "candidate_id": 13,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d024e2a5e4",
+  "candidate_id": 9,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d024e2a5e4",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d0e3ba1294",
+  "candidate_id": 7,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d0e3ba1294",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d239ee1f92",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-d239ee1f92",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "transformers"
+ },
+ {
+  "jd_id": "jd-d2672ccb19",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "new relic"
+ },
+ {
+  "jd_id": "jd-d2cc46b93d",
+  "candidate_id": 8,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "node.js"
+ },
+ {
+  "jd_id": "jd-d463f0ebda",
+  "candidate_id": 6,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d463f0ebda",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d467bf8bcc",
+  "candidate_id": 12,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d467bf8bcc",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-d467bf8bcc",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-d4de6185d6",
+  "candidate_id": 10,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d5541dc4a6",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d5541dc4a6",
+  "candidate_id": 23,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d5541dc4a6",
+  "candidate_id": 28,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d5541dc4a6",
+  "candidate_id": 46,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d596ed0df9",
+  "candidate_id": 7,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-d596ed0df9",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d596ed0df9",
+  "candidate_id": 60,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d6da327021",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-d780cc1647",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-da045977f9",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-da045977f9",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-dac7015334",
+  "candidate_id": 40,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-dac7015334",
+  "candidate_id": 46,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-dc051e3291",
+  "candidate_id": 31,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-dc051e3291",
+  "candidate_id": 41,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-dc051e3291",
+  "candidate_id": 51,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-dc5b58fc1b",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-dc5b58fc1b",
+  "candidate_id": 42,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "microsoft word"
+ },
+ {
+  "jd_id": "jd-de49e83fbb",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e035ec53fb",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e035ec53fb",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "education",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e0e4f3984c",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e0e4f3984c",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e1210ae658",
+  "candidate_id": 9,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e1210ae658",
+  "candidate_id": 25,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e1210ae658",
+  "candidate_id": 32,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e1210ae658",
+  "candidate_id": 36,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e365ae8f58",
+  "candidate_id": 14,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e365ae8f58",
+  "candidate_id": 21,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e4e3392511",
+  "candidate_id": 1,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e4e9d60027",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e5f116cfa7",
+  "candidate_id": 28,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "reinforcement learning"
+ },
+ {
+  "jd_id": "jd-e6327c2354",
+  "candidate_id": 37,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "api"
+ },
+ {
+  "jd_id": "jd-e6327c2354",
+  "candidate_id": 89,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e64fe66641",
+  "candidate_id": 32,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e64fe66641",
+  "candidate_id": 39,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e64fe66641",
+  "candidate_id": 69,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e64fe66641",
+  "candidate_id": 72,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e651f71095",
+  "candidate_id": 18,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e755c574a0",
+  "candidate_id": 8,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e86abe6ff1",
+  "candidate_id": 10,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e9c48cb295",
+  "candidate_id": 8,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-e9c48cb295",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "machine learning"
+ },
+ {
+  "jd_id": "jd-e9ffaf60b6",
+  "candidate_id": 23,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-e9ffaf60b6",
+  "candidate_id": 55,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-e9ffaf60b6",
+  "candidate_id": 58,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ea79374f05",
+  "candidate_id": 54,
+  "is_requirement": true,
+  "category": "nice_to_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ebf276c3ad",
+  "candidate_id": 4,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ebf276c3ad",
+  "candidate_id": 26,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ecdfcad00f",
+  "candidate_id": 30,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ecdfcad00f",
+  "candidate_id": 38,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 55,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 65,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 68,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 71,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 75,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 78,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ef530bcbc6",
+  "candidate_id": 86,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "slo"
+ },
+ {
+  "jd_id": "jd-f04a257aa7",
+  "candidate_id": 39,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-f3fa39296d",
+  "candidate_id": 19,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-f9aa195aed",
+  "candidate_id": 27,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "agile"
+ },
+ {
+  "jd_id": "jd-fabef260c2",
+  "candidate_id": 13,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ml"
+ },
+ {
+  "jd_id": "jd-fb6911e97f",
+  "candidate_id": 2,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "api"
+ },
+ {
+  "jd_id": "jd-fb6911e97f",
+  "candidate_id": 14,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-fb6911e97f",
+  "candidate_id": 32,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "android sdk"
+ },
+ {
+  "jd_id": "jd-fcc9086401",
+  "candidate_id": 11,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-fe30ff7862",
+  "candidate_id": 10,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-fe30ff7862",
+  "candidate_id": 16,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-fe30ff7862",
+  "candidate_id": 29,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "ai"
+ },
+ {
+  "jd_id": "jd-fe432154cb",
+  "candidate_id": 48,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-fe432154cb",
+  "candidate_id": 56,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-fe432154cb",
+  "candidate_id": 63,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": "transformers"
+ },
+ {
+  "jd_id": "jd-ff8e29373c",
+  "candidate_id": 22,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ffbccc8edb",
+  "candidate_id": 18,
+  "is_requirement": false,
+  "category": null,
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ffbccc8edb",
+  "candidate_id": 24,
+  "is_requirement": true,
+  "category": "must_have",
+  "skill_normalized": null
+ },
+ {
+  "jd_id": "jd-ffbe164c1a",
+  "candidate_id": 17,
+  "is_requirement": true,
+  "category": "responsibility",
+  "skill_normalized": "ml"
+ }
+]

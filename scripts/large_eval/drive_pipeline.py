@@ -34,7 +34,9 @@ PASSWORD = "large-eval-password-2026"
 TOKEN_TTL_SECONDS = 20 * 60
 POLL_SECONDS = 2.0
 RUN_TIMEOUT_SECONDS = 600.0
-RATE_LIMIT_CODES = {"MATCHER_PROVIDER_RATE_LIMITED", "ANALYSIS_RATE_LIMITED"}
+# PARSER_FAILED hides the HTTP status (observed: Groq 429 tokens-per-minute, 413, 400), so it is
+# retried after a cooldown; every attempt is still recorded.
+RETRYABLE_CODES = {"MATCHER_PROVIDER_RATE_LIMITED", "ANALYSIS_RATE_LIMITED", "PARSER_FAILED"}
 MAX_PROVIDER_RETRIES = 3
 QUOTA_STREAK = 3
 TERMINAL = {"succeeded", "failed"}
@@ -270,8 +272,7 @@ def summarize_run(body: dict[str, Any]) -> dict[str, Any]:
 
 
 def is_rate_limited(body: dict[str, Any]) -> bool:
-    code = body.get("error_code") or ""
-    return code in RATE_LIMIT_CODES or (code == "PARSER_FAILED" and "429" in str(body))
+    return (body.get("error_code") or "") in RETRYABLE_CODES
 
 
 def run_provider_stage(
@@ -284,20 +285,24 @@ def run_provider_stage(
     limit: int | None,
     pace: Pacer,
     cooldown: float,
+    retry_failed: bool = False,
 ) -> int:
     sessions: dict[str, Session] = {}
     done = 0
     rate_limit_streak = 0
     for job_key in keys:
         result_key = f"{kind}:{job_key.removeprefix('job:')}"
-        if state.get(result_key):
+        previous = state.get(result_key)
+        if previous is not None and not (
+            retry_failed and previous["final"].get("error_code") in RETRYABLE_CODES
+        ):
             continue
         job = state.get(job_key)
         if job is None:
             continue
         user_key = job["user_key"]
         session = sessions.setdefault(user_key, Session(api=api, email=email_for(user_key, tag)))
-        attempts: list[dict[str, Any]] = []
+        attempts: list[dict[str, Any]] = list(previous["attempts"]) if previous else []
         body: dict[str, Any] = {}
         for _ in range(MAX_PROVIDER_RETRIES):
             pace.wait()
@@ -373,6 +378,7 @@ def main() -> int:
     parser.add_argument("--limit", type=int)
     parser.add_argument("--pace", type=float, default=25.0)
     parser.add_argument("--cooldown", type=float, default=120.0)
+    parser.add_argument("--retry-failed", action="store_true")
     parser.add_argument("--order", type=Path, help="optional JSON list of job keys to run in order")
     args = parser.parse_args()
 
@@ -406,6 +412,7 @@ def main() -> int:
             args.limit,
             Pacer(args.pace),
             args.cooldown,
+            args.retry_failed,
         )
 
 

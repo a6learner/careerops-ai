@@ -1,0 +1,42 @@
+{
+ "00": {
+  "missing_commas_inserted": 0,
+  "text_replaced_from_candidate_id": 1,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "01": {
+  "missing_commas_inserted": 0,
+  "text_replaced_from_candidate_id": 0,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "02": {
+  "missing_commas_inserted": 1,
+  "text_replaced_from_candidate_id": 0,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "03": {
+  "missing_commas_inserted": 0,
+  "text_replaced_from_candidate_id": 0,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "04": {
+  "missing_commas_inserted": 3,
+  "text_replaced_from_candidate_id": 0,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "05": {
+  "missing_commas_inserted": 0,
+  "text_replaced_from_candidate_id": 33,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "06": {
+  "missing_commas_inserted": 0,
+  "text_replaced_from_candidate_id": 0,
+  "unknown_or_duplicate_candidate_dropped": 0
+ },
+ "07": {
+  "missing_commas_inserted": 0,
+  "text_replaced_from_candidate_id": 0,
+  "unknown_or_duplicate_candidate_dropped": 0
+ }
+}
