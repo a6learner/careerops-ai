@@ -101,3 +101,4 @@ What future condition would justify reopening this decision?
 - `ADR-043-temporary-cloud-lab.md`: one-off private, fake-provider, single-host cloud exercise reached through an SSH tunnel; not public deployment or P1-14 acceptance.
 - `ADR-044-frontend-visual-system.md`: locally owned Notion-inspired visual system, shared UI primitives, board/gallery/detail page structure; supersedes only the MVP "no design system" exclusion.
 - `ADR-045-latest-run-and-dashboard-focus-reads.md`: owner-scoped latest Parse/Analysis Run lookup and an uncached dashboard focus read, with no migration.
+- `ADR-046-parser-contract-hardening.md`: parse-v3 merges repeated candidate IDs, keeps decimals and abbreviations inside one candidate, and records failure reasons and tokens; amends ADR-012's duplicate-ID rule.

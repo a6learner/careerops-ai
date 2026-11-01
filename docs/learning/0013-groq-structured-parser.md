@@ -1,5 +1,8 @@
 # 0013 Groq Structured Requirement Parser
 
+> Update 2026-10-31: the duplicate-ID rule and the sentence splitter described here
+> were changed in parse-v3. See [0053](0053-parser-contract-hardening.md) and ADR-046.
+
 ## What Changed
 
 The worker can now select either the deterministic fake parser or a real Groq

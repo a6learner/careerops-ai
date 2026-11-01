@@ -213,7 +213,7 @@ async def test_parse_runs_are_idempotent_and_authorized() -> None:
     assert submitted.status_code == 202
     assert submitted.json()["status"] == "queued"
     assert submitted.json()["model_name"] == "local-fake-parser"
-    assert submitted.json()["prompt_version"] == "parse-v2"
+    assert submitted.json()["prompt_version"] == "parse-v3"
     assert submitted.json()["requirements"] == []
 
     assert repeated.status_code == 202

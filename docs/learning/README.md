@@ -134,3 +134,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0050 Project Agent Demo And Responsibilities](0050-project-agent-demo.md)
 - [0051 Temporary Cloud Deployment](0051-temporary-cloud-deployment.md)
 - [0052 Visual System, Job Detail Page And Durable Run Lookup](0052-visual-system-and-durable-job-page.md)
+- [0053 Parser Contract Hardening (parse-v3)](0053-parser-contract-hardening.md)

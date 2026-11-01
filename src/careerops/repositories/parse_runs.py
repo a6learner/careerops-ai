@@ -188,6 +188,9 @@ class ParseRunRepository:
         model_name: str,
         error_code: ParseRunErrorCode,
         latency_ms: int,
+        *,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
     ) -> bool:
         result = await self._session.execute(
             update(ParseRun)
@@ -200,6 +203,8 @@ class ParseRunRepository:
                 model_name=model_name,
                 error_code=error_code.value,
                 latency_ms=latency_ms,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
                 finished_at=datetime.now(UTC),
             )
             .returning(ParseRun.id)

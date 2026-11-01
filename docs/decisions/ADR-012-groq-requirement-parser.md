@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted
+Accepted. Amended by ADR-046 (2026-10-31): repeated candidate IDs are now merged
+instead of failing the run, and the candidate splitter keeps decimals and common
+abbreviations together.
 
 ## Context
 
