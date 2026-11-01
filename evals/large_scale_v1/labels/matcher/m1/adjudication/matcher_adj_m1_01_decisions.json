@@ -1,0 +1,876 @@
+[
+ {
+  "pair_id": "r01-jd-c664c50898",
+  "requirement_id": "eeb2b1e3-33ca-4cd0-8774-86f89b4bfe37",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r01-e1",
+    "source_ref": "description",
+    "quote": "Built three REST endpoints in Python with FastAPI that expose scheduled report runs"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Built platform APIs around scheduled runs; AI-engine APIs, session history and protocols not shown."
+ },
+ {
+  "pair_id": "r01-jd-c664c50898",
+  "requirement_id": "338ec105-8ed7-4fa8-a2b9-ebb85741aca8",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "metric_not_proven",
+  "rationale": "Backend work shown only as a ten-week internship; 5+ years not proven."
+ },
+ {
+  "pair_id": "r02-jd-4045d11ef8",
+  "requirement_id": "a2643604-bda5-4b62-9d81-4ee7b4d26865",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r02-e1",
+    "source_ref": "description",
+    "quote": "Added a new endpoint for bulk status lookups"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Feature implementation shown; design ownership and roadmap influence not shown."
+ },
+ {
+  "pair_id": "r02-jd-4045d11ef8",
+  "requirement_id": "a5cd71cd-b51b-440d-81a7-2bf361fd0d1d",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r02-e4",
+    "source_ref": "description",
+    "quote": "ran short workshops on graph algorithms and dynamic programming for newer members"
+   },
+   {
+    "exp_key": "r02-e1",
+    "source_ref": "description",
+    "quote": "participated in code review on every pull request"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Knowledge sharing / code review shown; receiving senior mentorship not stated."
+ },
+ {
+  "pair_id": "r02-jd-4045d11ef8",
+  "requirement_id": "f404fc44-13e7-48e1-b2f7-f85978145276",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r02-e1",
+    "source_ref": "description",
+    "quote": "Wrote JUnit 5 and Mockito tests"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Tested software shown; readable/well-designed code not explicit."
+ },
+ {
+  "pair_id": "r02-jd-4045d11ef8",
+  "requirement_id": "d248b31d-c600-4a00-b92a-e5bcba88b064",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r02-e1",
+    "source_ref": "description",
+    "quote": "Added a new endpoint for bulk status lookups"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Web service work shown; interest in learning the named stack not shown."
+ },
+ {
+  "pair_id": "r02-jd-d38866737f",
+  "requirement_id": "a1cadd4e-8515-44b2-8b37-bd021aefd006",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "metric_not_proven",
+  "rationale": "Only a twelve-week internship; 4+ years not proven."
+ },
+ {
+  "pair_id": "r02-jd-d38866737f",
+  "requirement_id": "387fa296-64e7-4cda-9c39-e3a934681c3e",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r02-e4",
+    "source_ref": "description",
+    "quote": "ran short workshops on graph algorithms and dynamic programming"
+   },
+   {
+    "exp_key": "r02-e3",
+    "source_ref": "description",
+    "quote": "Wrote a multithreaded HTTP server from raw sockets"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "CS fundamentals (algorithms; networking/concurrency) explicitly shown."
+ },
+ {
+  "pair_id": "r02-jd-d38866737f",
+  "requirement_id": "6a59c01b-4de7-4a59-9747-399f3abb8fb2",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Kafka-based application service, not implementation of data infrastructure."
+ },
+ {
+  "pair_id": "r03-jd-8f9a54629e",
+  "requirement_id": "7b8f448d-43a2-4f25-bcb1-2552ed8cec58",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r03-e4",
+    "source_ref": "description",
+    "quote": "set up a GitHub Actions workflow that deploys on merge to main"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Set up a CD workflow, an engineering process improvement."
+ },
+ {
+  "pair_id": "r03-jd-8f9a54629e",
+  "requirement_id": "f0e72f89-9e0b-40c6-91bc-edebf5ee3054",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r03-e1",
+    "source_ref": "title",
+    "quote": "Backend Intern, Larkspur Payments"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Alternative 'prior relevant engineering experience' satisfied."
+ },
+ {
+  "pair_id": "r03-jd-8f9a54629e",
+  "requirement_id": "a09c8eb6-b717-4e40-911c-38d5f0850bc1",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r03-e3",
+    "source_ref": "description",
+    "quote": "implementing token bucket and sliding window rate limiters"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Algorithms shown; data modeling and schema design not shown."
+ },
+ {
+  "pair_id": "r03-jd-8f9a54629e",
+  "requirement_id": "54f7f7cf-f4fc-4581-aab4-67bc5b6f9f48",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "metric_not_proven",
+  "rationale": "Two short internships; 1+ years not proven."
+ },
+ {
+  "pair_id": "r04-jd-cd2f824dad",
+  "requirement_id": "3574c928-9050-43b7-9ea9-0251aaba20be",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r04-e2",
+    "source_ref": "description",
+    "quote": "wrote unit tests with Jest for the time zone conversion logic"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Automated tests shown; test plans not shown."
+ },
+ {
+  "pair_id": "r04-jd-cd2f824dad",
+  "requirement_id": "c8284b04-5dce-4a03-8927-3933497e391d",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r04-e1",
+    "source_ref": "description",
+    "quote": "Built the backend for my college's club event signup site"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Built and ran software; on-call/support rotation not shown."
+ },
+ {
+  "pair_id": "r04-jd-cd2f824dad",
+  "requirement_id": "db3ac8a0-e121-4049-969b-55c869513172",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r04-e3",
+    "source_ref": "description",
+    "quote": "Implemented a hash map with open addressing, a binary heap and Dijkstra's algorithm"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Data structures/algorithms shown; networking, OS, distributed systems not."
+ },
+ {
+  "pair_id": "r04-jd-cd2f824dad",
+  "requirement_id": "1e1c499a-c011-497e-9777-492a34a7c29c",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r04-e1",
+    "source_ref": "description",
+    "quote": "using Node.js, Express and TypeScript"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Node.js shown; large-scale data sets not."
+ },
+ {
+  "pair_id": "r04-jd-cd2f824dad",
+  "requirement_id": "3dc6c8e8-5786-44bf-973a-53ce4e637338",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r04-e3",
+    "source_ref": "description",
+    "quote": "Implemented a hash map with open addressing, a binary heap and Dijkstra's algorithm"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Data structures/algorithms shown; distributed systems/scalability not."
+ },
+ {
+  "pair_id": "r04-jd-cd2f824dad",
+  "requirement_id": "f4ad4206-4b5f-46a1-895a-0c05346ad429",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Soft-skill ownership/quality focus not explicitly stated."
+ },
+ {
+  "pair_id": "r05-jd-e64fe66641",
+  "requirement_id": "5fefc7e7-c38d-49f7-8ccf-29bcfa9893ef",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r05-e3",
+    "source_ref": "description",
+    "quote": "Extended a teaching database's optimizer with a cost-based join reordering pass"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Contributing C++ code to an existing codebase shown; AI research not."
+ },
+ {
+  "pair_id": "r05-jd-e64fe66641",
+  "requirement_id": "9af2a6c9-4f22-4ad6-a78d-c99860f88634",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r05-e1",
+    "source_ref": "description",
+    "quote": "led sprint demos for business stakeholders"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Verbal communication shown; written deliverables not in this experience."
+ },
+ {
+  "pair_id": "r05-jd-e64fe66641",
+  "requirement_id": "b76cbbd9-ccc2-4e2e-8ab4-8c25bb003b48",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r05-e2",
+    "source_ref": "description",
+    "quote": "Building a prototype log-structured storage engine in Rust for a lab project on write amplification"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Research assistant building a solution for an assigned lab research topic."
+ },
+ {
+  "pair_id": "r05-jd-e64fe66641",
+  "requirement_id": "c98eaa03-49d4-4692-875b-165eb5a4f621",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r05-e3",
+    "source_ref": "description",
+    "quote": "Extended a teaching database's optimizer"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Existing codebase shown; one experience does not show both existing and new."
+ },
+ {
+  "pair_id": "r07-jd-11ebcf2759",
+  "requirement_id": "5cde84a7-f8f1-48cf-bb9c-6769c2f0464a",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r07-e1",
+    "source_ref": "skill:5",
+    "quote": "Python"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Python shown; SQL and warehouse transformation/orchestration tooling not."
+ },
+ {
+  "pair_id": "r07-jd-b5d3f87da5",
+  "requirement_id": "e8bcd88e-e9f4-4486-bf0b-ce4d9673f0bf",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "metric_not_proven",
+  "rationale": "Undergraduate research only; 4+ years not proven."
+ },
+ {
+  "pair_id": "r08-jd-dfbda7987d",
+  "requirement_id": "50dd9573-ac0f-4048-98bc-a0eb37bd22a6",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r08-e1",
+    "source_ref": "description",
+    "quote": "Built offline features in PySpark from viewing logs"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Built a data pipeline; testing, documentation and warehouse loading not shown."
+ },
+ {
+  "pair_id": "r08-jd-dfbda7987d",
+  "requirement_id": "c7a230b6-2bf2-4f80-aa4d-4b9f26a2a75c",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r08-e3",
+    "source_ref": "description",
+    "quote": "Presented findings to faculty"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Shared results; full problem-to-documentation ownership not shown."
+ },
+ {
+  "pair_id": "r10-jd-05ce501113",
+  "requirement_id": "1c4596db-5f30-40e6-b482-f317603d6497",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r10-e3",
+    "source_ref": "description",
+    "quote": "Ran a usability study with eight participants, built low and high fidelity prototypes in Figma and redesigned the trip planner flow"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Worked with users to understand needs and made product redesign decisions."
+ },
+ {
+  "pair_id": "r10-jd-05ce501113",
+  "requirement_id": "16c830aa-7ce5-4725-80fb-d40f3ab90cca",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r10-e2",
+    "source_ref": "description",
+    "quote": "storing listings in PostgreSQL through Drizzle ORM"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "SQL database shown; Go and Protocol Buffers not."
+ },
+ {
+  "pair_id": "r10-jd-05ce501113",
+  "requirement_id": "8497072a-a969-42f7-900e-a94727d51993",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r10-e2",
+    "source_ref": "description",
+    "quote": "Node.js API route layer, storing listings in PostgreSQL"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "API and data model built; multiple consumers and versioning not shown."
+ },
+ {
+  "pair_id": "r10-jd-05ce501113",
+  "requirement_id": "2de5281f-29a8-4d5d-b386-cbc0a911a719",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r10-e1",
+    "source_ref": "description",
+    "quote": "wrote component tests with React Testing Library"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Testing practice shown; production-cluster software is an 'especially' preference, not a necessary condition."
+ },
+ {
+  "pair_id": "r10-jd-05ce501113",
+  "requirement_id": "0d7632a1-94ec-42da-897b-5bea08501c8f",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Teacher dashboard is not for infrastructure operators; audience is not a separable condition."
+ },
+ {
+  "pair_id": "r10-jd-454eaefb59",
+  "requirement_id": "cba24a0f-a790-4aee-9a03-99227ba1aadc",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No work with underwriters; transit usability study is a different domain."
+ },
+ {
+  "pair_id": "r10-jd-454eaefb59",
+  "requirement_id": "dc088506-7f26-43dd-b93e-626c7119ad13",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r10-e1",
+    "source_ref": "description",
+    "quote": "Built React components in TypeScript with React Query for server state and wrote component tests"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Components and testing shown; code review and roadmap not."
+ },
+ {
+  "pair_id": "r10-jd-454eaefb59",
+  "requirement_id": "692059b3-65da-4eb0-8e03-399798287392",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r10-e2",
+    "source_ref": "description",
+    "quote": "Full-stack app built with Next.js and a Node.js API route layer"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Frontend integrated with own API; working with backend engineers not shown."
+ },
+ {
+  "pair_id": "r10-jd-454eaefb59",
+  "requirement_id": "c894b995-e92d-418c-90ac-7a249faf002d",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Teacher dashboard is customer-facing; no internal tool for power users."
+ },
+ {
+  "pair_id": "r10-jd-454eaefb59",
+  "requirement_id": "9fa04435-2b63-470c-95d8-26dac36d6583",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r10-e2",
+    "source_ref": "description",
+    "quote": "a Node.js API route layer"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Built server-side API routes in Node.js; Python is only an example."
+ },
+ {
+  "pair_id": "r10-jd-454eaefb59",
+  "requirement_id": "bb513370-958c-4393-8c65-1969c653a1f3",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Chat app is not a rich-text editor, virtualized table, collaborative interface, cybersecurity or insurtech."
+ },
+ {
+  "pair_id": "r11-jd-ff8e29373c",
+  "requirement_id": "d3f8f2a3-350a-4891-87dd-f225ff52efaf",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No explicit analytical problem-solving evidence."
+ },
+ {
+  "pair_id": "r13-jd-ab26468257",
+  "requirement_id": "b2366824-925e-4486-aea3-6fcd9a210a40",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Helping junior developers or knowledge sharing not stated."
+ },
+ {
+  "pair_id": "r15-jd-0cce175874",
+  "requirement_id": "76ef3da3-eda2-4bc5-aa90-cfcb7544cac7",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r15-e1",
+    "source_ref": "description",
+    "quote": "deterministic simulation testing framework"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Testing technique shown; software design/refactoring/TDD not."
+ },
+ {
+  "pair_id": "r16-jd-a7f559d18c",
+  "requirement_id": "f7c24ece-0b20-40cd-b0f8-8b549cb857ea",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r16-e1",
+    "source_ref": "description",
+    "quote": "tests for uniqueness and not-null keys"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Data accuracy work shown; cross-functional collaboration and ML use not."
+ },
+ {
+  "pair_id": "r16-jd-a7f559d18c",
+  "requirement_id": "e864dd86-f4f2-4a5e-ac6f-f152c276eaa7",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r16-e1",
+    "source_ref": "description",
+    "quote": "Built Airflow DAGs that load point-of-sale exports into Snowflake"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Pipelines with integrity for analytics; ML workloads not shown."
+ },
+ {
+  "pair_id": "r16-jd-a7f559d18c",
+  "requirement_id": "f4003422-d749-4d8f-9e9d-2a5f214c5cfd",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r16-e1",
+    "source_ref": "description",
+    "quote": "load point-of-sale exports into Snowflake"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Integrated internal store data; external APIs not shown."
+ },
+ {
+  "pair_id": "r16-jd-a7f559d18c",
+  "requirement_id": "55ab7ed6-a0bd-4a7c-9054-10c320340f77",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Snowflake is not AWS/GCP/Azure; no AI/LLM/API interest shown."
+ },
+ {
+  "pair_id": "r16-jd-a7f559d18c",
+  "requirement_id": "ce9a53e2-92fe-445e-891d-2ed1a91e5d19",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r16-e2",
+    "source_ref": "description",
+    "quote": "Processed a multi-gigabyte web server log dataset with PySpark on a course-provided cluster"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Distributed-systems exposure through coursework."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "579ebb3a-2d0e-404f-9531-41f64947c075",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r18-e1",
+    "source_ref": "outcome",
+    "quote": "Weekly summary screen shipped in an App Store release."
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Shipped a feature within a ten-week internship; pushing code in the first week not shown."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "c8d87014-d340-47d9-ad50-46a3ca0c2b01",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r18-e1",
+    "source_ref": "description",
+    "quote": "Built a new SwiftUI screen for weekly summaries"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Frontend UI shown; high-call-rate backend services not."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "13187acf-2e76-4f07-bda1-3c48e5c71462",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r18-e1",
+    "source_ref": "description",
+    "quote": "wrote XCTest unit tests for the summary aggregation"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Testing shown; documentation culture not."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "aa76f5e4-378c-43e5-a7de-04fecbe8507b",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r18-e3",
+    "source_ref": "description",
+    "quote": "a bounding volume hierarchy for acceleration"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Implemented an acceleration data structure/algorithm."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "5c22b364-1aa2-456e-9e2e-9d192c2fbd6c",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r18-e1",
+    "source_ref": "description",
+    "quote": "Fixed a memory leak caused by a retain cycle in a Combine subscription"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Built, shipped and debugged a production app; scale not shown."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "71707a73-d5c5-4b74-89df-f071dfc65a2f",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r18-e1",
+    "source_ref": "description",
+    "quote": "Fixed a memory leak caused by a retain cycle in a Combine subscription, found with Instruments"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Worked through a tough technical issue."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "8b4fb90a-fdf7-4e4d-af99-f1ec4cf311d8",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r18-e1",
+    "source_ref": "description",
+    "quote": "wrote XCTest unit tests for the summary aggregation"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Quality effort (tests) shown; end-user experience focus not explicit."
+ },
+ {
+  "pair_id": "r18-jd-37085a77c7",
+  "requirement_id": "1b4db102-fddd-4de8-b106-908bd69bbb3d",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r18-e2",
+    "source_ref": "description",
+    "quote": "Personal iOS app built with SwiftUI and Core Data"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Independent work shown; multi-project and cross-functional not."
+ },
+ {
+  "pair_id": "r19-jd-3ee2b2b85c",
+  "requirement_id": "ab71cc9f-ffd2-4ac2-b80f-71bc0245fecc",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r19-e1",
+    "source_ref": "description",
+    "quote": "wrote unit tests with JUnit and MockK"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Implemented and tested code; design not explicit."
+ },
+ {
+  "pair_id": "r19-jd-884508de41",
+  "requirement_id": "168d1b28-a878-4b8b-bf2f-eac4f7300645",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r19-e1",
+    "source_ref": "title",
+    "quote": "Android Developer Intern"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Software engineering experience stated."
+ },
+ {
+  "pair_id": "r19-jd-884508de41",
+  "requirement_id": "6c81bf24-0db9-49a5-a3b5-14f283f11d6d",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r19-e4",
+    "source_ref": "description",
+    "quote": "Led a team of four at a 48-hour campus game jam"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Small-team delivery shown; minimal supervision on high-stakes projects not."
+ },
+ {
+  "pair_id": "r19-jd-884508de41",
+  "requirement_id": "a0a76859-bf47-4a54-b0fa-34bc51f1ccce",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r19-e1",
+    "source_ref": "title",
+    "quote": "Android Developer Intern"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Software engineering background shown by internship."
+ },
+ {
+  "pair_id": "r20-jd-d780cc1647",
+  "requirement_id": "28e49bf1-86ad-4c1a-a12d-2cd59d9f07ef",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r20-e1",
+    "source_ref": "description",
+    "quote": "Wrote Playwright end-to-end tests in TypeScript for the invoicing web app"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Wrote code improving product quality; scaling capability not."
+ },
+ {
+  "pair_id": "r20-jd-d780cc1647",
+  "requirement_id": "941d496e-1a28-45eb-98d4-f9adf471b184",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r20-e1",
+    "source_ref": "description",
+    "quote": "Wrote Playwright end-to-end tests"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Testing shown; cross-team planning/building not."
+ },
+ {
+  "pair_id": "r20-jd-d780cc1647",
+  "requirement_id": "00732aab-8bf7-4d19-9280-13f9487bc640",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Traces for test triage are not metrics created for debugging/monitoring."
+ },
+ {
+  "pair_id": "r20-jd-d780cc1647",
+  "requirement_id": "34277447-a6ee-4276-aa8c-a8874df0da50",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r20-e1",
+    "source_ref": "description",
+    "quote": "Triaged flaky tests by recording traces and replacing fixed waits with explicit assertions"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Triage and root cause shown; coordination not."
+ },
+ {
+  "pair_id": "r20-jd-d780cc1647",
+  "requirement_id": "8f761eaa-d994-4ff6-9236-de7c98a7bdbe",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r20-e1",
+    "source_ref": "description",
+    "quote": "Wrote Playwright end-to-end tests in TypeScript for the invoicing web app"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Real project; learning from professionals not stated."
+ },
+ {
+  "pair_id": "r22-jd-8b58d16db8",
+  "requirement_id": "3d20e858-a7f0-487b-bbf3-8e9f4b2a1536",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "learning_or_discussion_only",
+  "rationale": "Unit testing only read about, explicitly not done; no version control or Python."
+ },
+ {
+  "pair_id": "r23-jd-4d2879d8d0",
+  "requirement_id": "e99bf4a8-8d5f-4fa8-af28-7bfa0da0edcc",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r23-e1",
+    "source_ref": "description",
+    "quote": "a weekly pair-programming exercise with another student"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Collaboration shown; independent execution, deadlines and feedback not shown."
+ },
+ {
+  "pair_id": "r24-jd-af49729c9c",
+  "requirement_id": "a882bcad-b39c-4d5b-aa6d-5f0fbc6123e3",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r24-e1",
+    "source_ref": "description",
+    "quote": "Worked on the checkout service in Python and Flask with a PostgreSQL database"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Development shown; deployment explicitly by infra team, ground-up design not shown."
+ },
+ {
+  "pair_id": "r24-jd-af49729c9c",
+  "requirement_id": "78222ab4-c3e4-4f9b-bf21-dbc684f2ba62",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r24-e1",
+    "source_ref": "description",
+    "quote": "Worked on the checkout service in Python and Flask with a PostgreSQL database"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Development shown; deployment explicitly not done by candidate."
+ },
+ {
+  "pair_id": "r24-jd-af49729c9c",
+  "requirement_id": "5a3f89fe-da5f-4deb-9235-e01d9f57424e",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "metric_not_proven",
+  "rationale": "Performance improvement is an unverified claim with no diagnosis described."
+ },
+ {
+  "pair_id": "r24-jd-af49729c9c",
+  "requirement_id": "30477628-d165-4f53-81c7-34bd8a88ac86",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "future_plan_only",
+  "rationale": "Mentoring is only planned."
+ }
+]

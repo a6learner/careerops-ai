@@ -1,0 +1,1924 @@
+[
+  {
+    "pair_id": "r01-jd-f3fa39296d",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "9d991799-7e0b-413d-988f-e29f8ece2133",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r01-e1",
+            "source_ref": "outcome",
+            "quote": "Endpoints shipped to internal users before the internship ended"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "ab42b9a5-46db-426e-b6b7-a26dfd4f8b13",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r01-e4",
+            "source_ref": "description",
+            "quote": "fixed a split-vote livelock by randomizing election timeouts"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "46cacfe1-f794-4c08-a325-086db482f2ed",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "635c1eef-e215-4542-bbd8-cb2999094321",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r01-e1",
+            "source_ref": "description",
+            "quote": "Built three REST endpoints in Python with FastAPI"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "37a395db-9694-4951-8e23-0421b0299eaa",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "4f931ad1-8806-49cd-9599-c104c40b472a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ed7887b7-2416-4957-a0c6-d23ef36c0bb1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "80cfa23d-c388-4036-9b14-8db43ef304be",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8573dce8-6430-481a-9617-cf2465d9dec5",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r01-e4",
+            "source_ref": "skill:2",
+            "quote": "Distributed Systems"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "53c9f4e4-d157-4388-9220-d6542940279a",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r01-e1",
+            "source_ref": "skill:0",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "9587c377-ee30-4315-b5e3-c4ab0c328a60",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r01-e1",
+            "source_ref": "outcome",
+            "quote": "Endpoints shipped to internal users before the internship ended"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "e6880cd0-2b91-43e0-8bf5-784392bcc59c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "fa140f52-42bb-45e4-8efa-21251eb74ca0",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r01-e4",
+            "source_ref": "description",
+            "quote": "fixed a split-vote livelock by randomizing election timeouts"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "00ee63d1-6ae3-482b-8bb9-c7d1d72e3b65",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e66ea7fe-de6a-423c-bea0-be13cbb8ad73",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r03-jd-6b61360868",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "d841af91-0f62-436e-b1a3-1e4428100ac2",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r03-e1",
+            "source_ref": "description",
+            "quote": "Services were deployed to Kubernetes by the team's existing Helm charts; I updated resource limits and readiness probes for my service"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "a7f5e940-2424-44ee-a62c-c83bb92430eb",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r03-e2",
+            "source_ref": "description",
+            "quote": "Migrated a nightly reconciliation job from cron on a VM to a Kubernetes CronJob and added Prometheus metrics and alerts for job duration and failure count. Wrote table-driven Go tests"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "3f9d3f5b-a499-45fd-aff4-1fbcaaa36a1d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "6685e990-7d55-4e85-af11-82ebea49a54c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1171ccab-c74a-48c7-beda-afc924c97359",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "aede6775-c52c-44c4-8319-dbbcfda19217",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r03-e1",
+            "source_ref": "skill:0",
+            "quote": "Go"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r04-jd-56bc05acda",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "a57188ef-a995-47a2-829d-2a3b39a6dc94",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r06-jd-2a2fdc3def",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "cf1fa60b-e68e-472d-b1ea-874517c3cbdc",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "bfc462a7-6485-475d-8466-e9226f279f4e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "60509958-31f8-4e53-b907-e5c974203886",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "a1b80d18-2e71-4aa8-93ba-0df32a713b69",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r06-e1",
+            "source_ref": "skill:3",
+            "quote": "PostgreSQL"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r07-jd-449ac9fcf0",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "93873d45-cf4c-4072-a5b3-e4666b962cae",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "521e2b56-457b-46b7-b696-c5afdbefc583",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "75988975-ef7c-48f3-a3df-688c1a2bff9d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ddf73e3e-c1a9-4550-bfd9-b2fa00729a7f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b617d76c-5a19-4ec2-b9b5-d5e0c005536c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2acdec06-1f36-463d-8b89-1a98acb2b0bb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "11dc3ec0-3596-4e23-bd0d-8900555e09c9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "23aa9ae0-13d2-4232-a1e2-363dd0efb2e5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "52f9bd15-02fd-4ce3-97dc-ccbbf9ada665",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ba9b953f-2a53-4322-9661-6cec746f3272",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ae040d9d-5290-4713-88b5-9542f2dd4478",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "09dca0f5-27ec-49c0-943c-bc755c34c5d1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "9cb37e35-2039-4c7e-b5fd-477779d01219",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r07-e1",
+            "source_ref": "description",
+            "quote": "Implemented a pseudo-labeling pipeline and ran ablations on confidence thresholds"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "c46a5589-ec41-40c1-b095-0c90786661f0",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r09-jd-550beed089",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "11defc94-338b-42c6-9291-91fd9faa0eae",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f7d8a0db-72f2-4697-b1af-0e3a3e29558e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "9ee8de0b-f022-4e87-aa24-0aa9b43f5394",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ea4678f0-2888-4ea6-856e-f1e591f8248d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1bd485ef-1457-44a3-ac10-e405c9f6d8bd",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "c6ad6184-b8b8-4c1e-987f-ceef7aedc85e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "99fc1c01-9ea4-43ac-a05b-24a8d68b112e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "0816d1c4-f641-494a-88d9-caede3aa145f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "0cd477d3-1843-40d5-97af-9307321c5dc0",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "7c770640-b142-4e07-a077-9baba5749c56",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "edab3382-a168-4848-9a63-5fa6744a8f95",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "848b8fc3-62c9-4a83-b07a-7304e2bc46f6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "3748c0b5-06ca-4e55-9c8c-2ee958d9905e",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r09-e1",
+            "source_ref": "skill:0",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "e87bcd8b-4ab6-4f40-bc2c-5beeb2844959",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ce087e56-6d27-49f2-adc4-38d0493d8d16",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "342668d2-19ec-4509-bffc-f97620f498c2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "70025bf5-d1b9-409b-95de-8b56a1a94cc9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1eaea7fa-eb4f-4484-9fbe-0afbb12dc9eb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "6b1fc846-d946-46a5-a9d9-154ce6cb00c8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r10-jd-454eaefb59",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "c775cd34-708a-430c-b784-f11dd498e33e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "c6934170-c88c-4911-b55f-2024693288e3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "10eea7f8-3836-4223-a542-794299a00c6e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "6447ba80-b613-4414-a79c-50a3be379cf5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "cba24a0f-a790-4aee-9a03-99227ba1aadc",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "dc088506-7f26-43dd-b93e-626c7119ad13",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r10-e1",
+            "source_ref": "description",
+            "quote": "wrote component tests with React Testing Library. Fixed accessibility issues found in an audit"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "0d672de3-d807-4d2b-ba55-6c8e7ccca89f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "54a8599b-b7ed-4d18-b4a3-dd48ecf77b88",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r10-e1",
+            "source_ref": "description",
+            "quote": "Built React components in TypeScript"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "692059b3-65da-4eb0-8e03-399798287392",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "ab84a407-ca04-450e-8146-0e7fcfe35a5b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "10397de7-8d7d-4f2d-ac65-93e8b3a03bf6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "c894b995-e92d-418c-90ac-7a249faf002d",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r10-e1",
+            "source_ref": "description",
+            "quote": "internship on the teacher dashboard"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "9fa04435-2b63-470c-95d8-26dac36d6583",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "69c17fe2-eb44-4435-8aa8-a78659547ec5",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r10-e2",
+            "source_ref": "skill:2",
+            "quote": "PostgreSQL"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "dc613412-df10-410f-add1-305536599aa8",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r10-e2",
+            "source_ref": "skill:0",
+            "quote": "Next.js"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "19fbd702-728e-4cee-be95-62a8d32c8a26",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "bb513370-958c-4393-8c65-1969c653a1f3",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r10-e4",
+            "source_ref": "description",
+            "quote": "Built a chat application with a React frontend and an Express backend using WebSockets via Socket.IO"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r12-jd-d467bf8bcc",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "1ed3e06a-0f6d-4a37-b2ce-e3d6c5875b27",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e31cce65-0291-4b89-9af6-0b5bbff67e25",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "12f7b13a-2d80-4099-895e-a6b87818d752",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "eee8e910-2a9f-46b6-aabc-ca4e9c562b03",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "fb658e82-3eb5-4817-82c5-336b79cd1499",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "80925398-bf75-4de9-8328-acfb79d3ec25",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "04be7333-dec3-4c49-83e1-1fa6071f720d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "84417164-ba25-4d16-976c-256e55f1a5d0",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "bc505201-1617-41d4-bbde-2c204381c53b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "572cedf2-f4d8-4c56-87d3-404ebbb5ab30",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2fe96d84-4002-4abf-bf15-fa24f392f3bc",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b06ca73a-1b8d-4b61-be92-38200aa8ec9b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "29f6dd94-865a-482f-9417-5f05ab462143",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f9244200-95e4-46b7-8d24-65b3b174e008",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f88bda5d-e39e-4a40-8736-0af51af6b072",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "4278c6f3-03b2-47a9-bae1-597174f10a96",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r13-jd-ab26468257",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "ed5e68b0-d4fc-4139-94e2-7744ab66c819",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8baf61fb-80aa-4851-8399-e4e81cdbb3bb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b1476a7e-62df-41e5-849a-56b8502644ad",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "6f41404c-d816-4e1e-a574-2843aec757e4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b2366824-925e-4486-aea3-6fcd9a210a40",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r13-e4",
+            "source_ref": "description",
+            "quote": "Host a Gitea server, a WireGuard VPN and Grafana with Prometheus scraping node metrics"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "1e99ac3a-e761-46b4-8414-e7afaed41a34",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8dbf6013-1c53-406c-b28f-1efe8381314c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r15-jd-0cce175874",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "c43601d2-e9b3-4932-8fce-574d316dc886",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2d266c86-7e78-465b-af6c-b5f6a835d950",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r15-e2",
+            "source_ref": "skill:0",
+            "quote": "C++"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "465bdb4c-fc06-41f0-ab2e-7109128a27a7",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r15-e1",
+            "source_ref": "skill:1",
+            "quote": "Distributed Systems"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "76ef3da3-eda2-4bc5-aa90-cfcb7544cac7",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r15-e2",
+            "source_ref": "description",
+            "quote": "Wrote crash tests that kill the process at random points and verify durability after restart"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r16-jd-a7f559d18c",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "475404bf-0b3f-4939-92ea-e55490c43579",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r16-e1",
+            "source_ref": "description",
+            "quote": "Built Airflow DAGs that load point-of-sale exports into Snowflake and wrote dbt models for daily store sales"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "f7c24ece-0b20-40cd-b0f8-8b549cb857ea",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r16-e1",
+            "source_ref": "description",
+            "quote": "wrote dbt models for daily store sales with tests for uniqueness and not-null keys. Added a data freshness check"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "af025c50-a397-4afa-8f9d-a8415699d880",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e864dd86-f4f2-4a5e-ac6f-f152c276eaa7",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r16-e1",
+            "source_ref": "description",
+            "quote": "Built Airflow DAGs that load point-of-sale exports into Snowflake and wrote dbt models for daily store sales with tests for uniqueness and not-null keys"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "721f7a63-b34c-4f49-b9de-386e2f59e40f",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r16-e1",
+            "source_ref": "description",
+            "quote": "Built Airflow DAGs that load point-of-sale exports into Snowflake"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "f4003422-d749-4d8f-9e9d-2a5f214c5cfd",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "fabe00b7-006e-44f7-bbfa-e8f9103adc58",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r16-e2",
+            "source_ref": "description",
+            "quote": "Tuned partitioning and broadcast joins and compared runtime against a naive version in the written report"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "c1cb3e91-1074-42ef-91bc-66d4cd398824",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r16-e2",
+            "source_ref": "description",
+            "quote": "Tuned partitioning and broadcast joins and compared runtime against a naive version"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "e99b94e4-8550-4a31-acb6-42a8c5742ed3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e29e1ad6-c90b-40f5-be8a-005f489edf0a",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r16-e1",
+            "source_ref": "skill:5",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "7f21da63-9edf-4487-955d-b27b9c58aae8",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r16-e3",
+            "source_ref": "description",
+            "quote": "modeled it in DuckDB and built a dashboard in Streamlit showing ridership by route and hour. Wrote SQL window functions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "55ab7ed6-a0bd-4a7c-9054-10c320340f77",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r16-e1",
+            "source_ref": "skill:1",
+            "quote": "Snowflake"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "ce9a53e2-92fe-445e-891d-2ed1a91e5d19",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "d1b15174-532c-451f-a0ba-e8e7058ce31f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f5e216bd-5142-42c2-9c84-60d1799ea161",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r18-jd-37085a77c7",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "9051cef9-b457-42f5-bcf7-0422e58c58ab",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "579ebb3a-2d0e-404f-9531-41f64947c075",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "c8d87014-d340-47d9-ad50-46a3ca0c2b01",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2e7efa45-4358-4a93-b457-f834c7bdc6d2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e246c812-2cad-48f7-bdbd-4ae1427486ee",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "10bc3931-ab73-4b65-9ad1-b9c85cb88866",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "13187acf-2e76-4f07-bda1-3c48e5c71462",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "0bc29060-b3e3-460b-8c0c-446307e8f148",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b80be565-8365-497d-8505-63355067de66",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e7cbb4ed-18a3-4607-aff6-b4a336c9c8df",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8a556ddc-a565-43f9-a04a-98a5e36eb548",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "aa76f5e4-378c-43e5-a7de-04fecbe8507b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "0a411794-33db-4437-adb5-f68f2438f7b9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "6999a275-6ebf-4839-9ce1-7d5c2822d3d5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "5c22b364-1aa2-456e-9e2e-9d192c2fbd6c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "71707a73-d5c5-4b74-89df-f071dfc65a2f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8b4fb90a-fdf7-4e4d-af99-f1ec4cf311d8",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r18-e1",
+            "source_ref": "description",
+            "quote": "wrote XCTest unit tests for the summary aggregation. Fixed a memory leak caused by a retain cycle"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "1b4db102-fddd-4de8-b106-908bd69bbb3d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r19-jd-774ae7a4ff",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "3e86b215-5461-47ee-8e49-1d979d33436d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "9b0a9e1f-07df-46b6-b0d9-527b65d6a6ce",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "c5f618e0-c76f-4dd0-8dc6-d3ff5f306885",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "63c528c9-75d1-473a-87d4-bb07c3b2d64b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "20eef060-da74-429c-a4b6-e6914763de57",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "236f0a90-14c8-4305-9e02-56bdeef7675e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "fe53e2bb-67e4-4ff1-83e4-f948a1fd835b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f3e04742-48ca-4007-aad4-53a9e284b779",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "bdc57926-94b4-45ff-a656-a0c1292146ea",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "51ac82b9-62aa-4f5a-975d-e46e28534f60",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b3fc3873-70ce-4d2e-b219-b3caad15d2d7",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "334f605c-575d-49be-add9-6504c25b8896",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "bea34d13-d75e-4920-ba0c-7cbfbb391ebe",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "c5d04012-375e-4cf6-bd9e-a3cd84f084cc",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r19-e3",
+            "source_ref": "description",
+            "quote": "Implemented an entity component system in C++ with archetype storage and a simple job system for parallel updates"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "0d603ca5-7820-40f5-bef2-ad2009f6dd76",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "4244a5da-3cb7-4acf-8ebf-9e448beadb4f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "3cedd980-4aa4-439d-98df-b1f04e80bf33",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r19-e2",
+            "source_ref": "description",
+            "quote": "Released a free build on an indie game storefront and collected playtest feedback from classmates"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "d6730c94-9d2c-4b5c-94aa-94bce2f156b3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "9ad1f90f-495a-4f01-b481-3caa95bb5ac5",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r19-e4",
+            "source_ref": "description",
+            "quote": "made scope cuts on the second day so the game was playable at the deadline"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "5e26b4cf-3cbd-41ac-96bb-01bf365bd5cb",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r19-e4",
+            "source_ref": "description",
+            "quote": "Led a team of four at a 48-hour campus game jam"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "ae995186-3f89-4cc4-91ca-1af338ddce74",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "90d04ea6-d3a6-4582-a166-d3b923c8a2a8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "937222db-e3b2-4378-9cbf-96142230f181",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "3b79b46a-8a1a-4f4b-bed4-7c68db3abbfe",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2fcb459d-a7d7-46f2-b1d5-36b5e8ddf3f9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r20-jd-d780cc1647",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "b830ec82-edca-4be2-87e1-a89c31bdc9b7",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "28e49bf1-86ad-4c1a-a12d-2cd59d9f07ef",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "941d496e-1a28-45eb-98d4-f9adf471b184",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "00732aab-8bf7-4d19-9280-13f9487bc640",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r20-e1",
+            "source_ref": "description",
+            "quote": "Triaged flaky tests by recording traces and replacing fixed waits with explicit assertions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "34277447-a6ee-4276-aa8c-a8874df0da50",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r20-e1",
+            "source_ref": "description",
+            "quote": "Triaged flaky tests by recording traces and replacing fixed waits with explicit assertions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "8f761eaa-d994-4ff6-9236-de7c98a7bdbe",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e579a6b7-afaa-43a6-96bf-423f9899d96d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2c579f19-c288-438e-b04b-7b86de0ace13",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "db1b4f7f-8706-42de-9c1f-4e33098993f6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "48f95698-c253-4293-a9cd-549c4de7e08c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b0bb96c6-7033-4935-91dd-0f3966e9c90a",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r20-e4",
+            "source_ref": "skill:0",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r22-jd-8b58d16db8",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "0c0926d4-339f-4a2c-867e-8a53b4f538ac",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "9ee5baae-b4c6-4e9c-9b80-982d16a3a3f3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f9b6e610-5e81-48bf-bedf-aeabe9d02997",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1519e575-47d5-471e-bfe2-5b3d262c4afc",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1081331a-48c8-47a4-87f2-d5abc7592117",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b63f7198-2ae3-47a9-81ad-4b38736e7fe4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "79a4a2dd-8c6b-46ea-b46e-bb6fd2768d6f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "5eacd26f-5844-418d-b67e-2f72dd23139b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "a29e6cf7-0bff-4ec4-b3e2-655a633447a3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "dbb4ca89-cd55-43a8-8fe8-6477848bea33",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "94b415cf-c321-4314-ab06-7020e2f6fec1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "58fa267f-fb65-4630-88df-6269995cd956",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "3d20e858-a7f0-487b-bbf3-8e9f4b2a1536",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "aad1c6d5-2a29-423c-a6a6-d2dca1113547",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r23-jd-c7332b6227",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "8a61d3b8-61c4-420a-b067-a4d39712b45e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "23b1c305-c8f9-483a-9101-5cc1f6182eef",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "4b193d14-457a-4828-a8a4-56c8885cd44d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "9ebf3d44-7524-4c27-9ae0-64effa52f6e7",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "345f0bed-a76e-4e56-bb79-187782c4ccf0",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "98ff8061-b934-4401-b093-913bc9d8662a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2fe4cf9d-2a45-49a8-a2c7-aed6c6d6799c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "17099fd5-2d5c-45fa-8b74-71b5747eb70e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "3ead40b0-486d-4e41-98ff-fb033e4a4045",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "78e20a25-b06f-4780-8a95-a24ddd6aa800",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "42e42fdb-9ea4-446b-a27b-c32edf622768",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "7a657436-af32-47ed-947c-2bf64992a05c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "fc760681-0d15-46ab-811c-c658fa40402b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1e67f6e8-8620-44c9-a48b-3701c6220ae7",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "0ebadb1e-4b60-4cd3-ae21-36a07f7a0a2d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8ab1cb38-1146-45f5-b71c-edc52c2e3e07",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "81c91c8b-df51-462b-a2ad-d18a8d3acb25",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "002506d1-5fae-4ccd-9fec-48153fb6710d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "6b0e94e4-bd8c-4a3f-a777-5e01ae77083b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  },
+  {
+    "pair_id": "r26-jd-3ce2b24c3a",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "7e5a8abb-9d1c-40c6-9bbf-b9666f555fdb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "b3ef0780-9ff5-43ae-8e4f-92a87fb25c89",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "3a3995d4-58ca-497f-bb7a-d9b64eca03b2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2262395b-8735-46a2-867a-681324391143",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "968cb03f-e99a-4493-910f-2dab2d2068e4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1ed0c1a6-8c5c-4e1a-93d7-20bfb0bd54a1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "8775571d-5bec-4d75-bee1-0c2932c2b314",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "239b96de-bf78-4553-80a1-d812b77e8fb9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "352b2bc5-9369-45a2-ad2e-ef47f71c58af",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "599fdb0f-cf17-425f-aac6-cc6a10b3763a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "2444937f-03d1-49d4-a09c-29d339961779",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "description",
+            "quote": "Built a Java Spring Boot endpoint that reconciled card settlement files from two processors against PostgreSQL ledger rows"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves the requirement."
+      },
+      {
+        "requirement_id": "6f299d9c-7d86-4997-b8ef-9680f16f910f",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r26-e4",
+            "source_ref": "description",
+            "quote": "Implemented a Python FastAPI service for club registrations with SQLAlchemy models and Alembic migrations"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "This experience proves only a separable part of the composite requirement."
+      },
+      {
+        "requirement_id": "a72d80b2-43aa-4849-9083-61775c469b8c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "51f1a301-3b43-42c0-ad11-c56a295298e6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "e98becae-1532-469f-bb2c-3afd9141e491",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "fd69096d-fb4c-41f3-8691-669ed41c916b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "f99e140f-3c95-482e-9fb1-59db127d720f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "de7357f6-10bd-42b2-b1b8-90853cb4c0c8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      },
+      {
+        "requirement_id": "1c5dea09-03f6-4faf-b09e-efa081badeec",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No supplied experience explicitly proves this requirement."
+      }
+    ]
+  }
+]
