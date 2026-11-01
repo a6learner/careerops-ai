@@ -2,36 +2,64 @@
 
 build: python -I parser_adjudication.py build <S> <n_packets>
 merge: python -I parser_adjudication.py merge <S>
-Final label per candidate: if both labelers agree on selection, category and skill -> that; otherwise the
-adjudicator's decision. Writes labels/parser_final/parser_labels_NN.json (labeler "adjudicated").
+Final label per candidate: if both labelers agree on selection, category and skill -> that;
+otherwise the adjudicator's decision. Writes labels/parser_final/parser_labels_NN.json
+(labeler "adjudicated").
 """
 
 import glob
 import json
 import sys
+from typing import Any
 
-S = sys.argv[2]
+Labels = dict[str, dict[Any, dict[str, Any]]]
+Packets = dict[str, tuple[str, dict[str, Any]]]
 
 
-def load(directory):
-    out = {}
-    for path in sorted(glob.glob(f"{S}/labels/{directory}/parser_labels_*.json")):
-        for item in json.load(open(path, encoding="utf-8")):
+def load_json(path: str) -> Any:
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def write_json(path: str, data: Any) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+
+
+def load(root: str, directory: str) -> Labels:
+    out: Labels = {}
+    for path in sorted(glob.glob(f"{root}/labels/{directory}/parser_labels_*.json")):
+        for item in load_json(path):
             out[item["jd_id"]] = {r["candidate_id"]: r for r in item["requirements"]}
     return out
 
 
-def packets():
-    out = {}
-    for path in sorted(glob.glob(f"{S}/labels/packets/parser_batch_*.json")):
+def packets(root: str) -> Packets:
+    out: Packets = {}
+    for path in sorted(glob.glob(f"{root}/labels/packets/parser_batch_*.json")):
         nn = path[-7:-5]
-        for item in json.load(open(path, encoding="utf-8")):
+        for item in load_json(path):
             out[item["jd_id"]] = (nn, item)
     return out
 
 
-def disagreements():
-    a, b, pk = load("parser_codex"), load("parser_agy_repaired"), packets()
+def agree(ra: dict[str, Any] | None, rb: dict[str, Any] | None) -> bool:
+    return bool(
+        ra
+        and rb
+        and ra["category"] == rb["category"]
+        and ra["skill_normalized"] == rb["skill_normalized"]
+    )
+
+
+def option(r: dict[str, Any] | None) -> dict[str, Any] | None:
+    if r is None:
+        return None
+    return {"category": r["category"], "skill_normalized": r["skill_normalized"]}
+
+
+def disagreements(root: str) -> list[dict[str, Any]]:
+    a, b, pk = load(root, "parser_codex"), load(root, "parser_agy_repaired"), packets(root)
     items = []
     for jd_id, (_, item) in sorted(pk.items()):
         cands = item["candidates"]
@@ -40,31 +68,52 @@ def disagreements():
             ra, rb = a[jd_id].get(cid), b[jd_id].get(cid)
             if ra is None and rb is None:
                 continue
-            if ra and rb and ra["category"] == rb["category"] and ra["skill_normalized"] == rb["skill_normalized"]:
+            if agree(ra, rb):
                 continue
-            context = [x["text"] for x in cands[max(0, cid - 4): cid]]
-            items.append({
-                "jd_id": jd_id, "title": item["title"], "candidate_id": cid, "text": c["text"],
-                "preceding_lines": context,
-                "option_a": None if ra is None else {"category": ra["category"], "skill_normalized": ra["skill_normalized"]},
-                "option_b": None if rb is None else {"category": rb["category"], "skill_normalized": rb["skill_normalized"]},
-            })
+            context = [x["text"] for x in cands[max(0, cid - 4) : cid]]
+            items.append(
+                {
+                    "jd_id": jd_id,
+                    "title": item["title"],
+                    "candidate_id": cid,
+                    "text": c["text"],
+                    "preceding_lines": context,
+                    "option_a": option(ra),
+                    "option_b": option(rb),
+                }
+            )
     return items
 
 
-if sys.argv[1] == "build":
-    items = disagreements()
-    n = int(sys.argv[3])
+def build(root: str, n: int) -> None:
+    items = disagreements(root)
     for i in range(n):
-        json.dump(items[i::n], open(f"{S}/labels/adjudication/parser_adj_{i:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        write_json(f"{root}/labels/adjudication/parser_adj_{i:02d}.json", items[i::n])
     print(f"{len(items)} items in {n} packets")
-else:
-    a, b, pk = load("parser_codex"), load("parser_agy_repaired"), packets()
+
+
+def load_decisions(root: str) -> dict[tuple[str, Any], dict[str, Any]]:
     decisions = {}
-    for path in sorted(glob.glob(f"{S}/labels/adjudication/parser_adj_*_decisions.json")):
-        for d in json.load(open(path, encoding="utf-8")):
+    for path in sorted(glob.glob(f"{root}/labels/adjudication/parser_adj_*_decisions.json")):
+        for d in load_json(path):
             decisions[(d["jd_id"], d["candidate_id"])] = d
-    batches, stats = {}, {"agreed": 0, "adjudicated_selected": 0, "adjudicated_rejected": 0, "missing_decision": 0}
+    return decisions
+
+
+def normalize_skill(skill: Any) -> str | None:
+    return skill.strip().lower() or None if isinstance(skill, str) else None
+
+
+def merge(root: str) -> None:
+    a, b, pk = load(root, "parser_codex"), load(root, "parser_agy_repaired"), packets(root)
+    decisions = load_decisions(root)
+    batches: dict[str, list[dict[str, Any]]] = {}
+    stats = {
+        "agreed": 0,
+        "adjudicated_selected": 0,
+        "adjudicated_rejected": 0,
+        "missing_decision": 0,
+    }
     for jd_id, (nn, item) in sorted(pk.items()):
         reqs = []
         for c in item["candidates"]:
@@ -72,9 +121,16 @@ else:
             ra, rb = a[jd_id].get(cid), b[jd_id].get(cid)
             if ra is None and rb is None:
                 continue
-            if ra and rb and ra["category"] == rb["category"] and ra["skill_normalized"] == rb["skill_normalized"]:
+            if ra is not None and agree(ra, rb):
                 stats["agreed"] += 1
-                reqs.append({"candidate_id": cid, "text": c["text"], "category": ra["category"], "skill_normalized": ra["skill_normalized"]})
+                reqs.append(
+                    {
+                        "candidate_id": cid,
+                        "text": c["text"],
+                        "category": ra["category"],
+                        "skill_normalized": ra["skill_normalized"],
+                    }
+                )
                 continue
             d = decisions.get((jd_id, cid))
             if d is None:
@@ -84,11 +140,31 @@ else:
                 stats["adjudicated_rejected"] += 1
                 continue
             stats["adjudicated_selected"] += 1
-            skill = d.get("skill_normalized")
-            skill = skill.strip().lower() or None if isinstance(skill, str) else None
-            reqs.append({"candidate_id": cid, "text": c["text"], "category": d["category"], "skill_normalized": skill})
-        batches.setdefault(nn, []).append({"jd_id": jd_id, "labeler": "adjudicated", "requirements": reqs})
+            reqs.append(
+                {
+                    "candidate_id": cid,
+                    "text": c["text"],
+                    "category": d["category"],
+                    "skill_normalized": normalize_skill(d.get("skill_normalized")),
+                }
+            )
+        batches.setdefault(nn, []).append(
+            {"jd_id": jd_id, "labeler": "adjudicated", "requirements": reqs}
+        )
     for nn, data in batches.items():
-        json.dump(data, open(f"{S}/labels/parser_final/parser_labels_{nn}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    json.dump(stats, open(f"{S}/labels/parser_final/MERGE_STATS.json", "w"), indent=1)
+        write_json(f"{root}/labels/parser_final/parser_labels_{nn}.json", data)
+    with open(f"{root}/labels/parser_final/MERGE_STATS.json", "w") as f:
+        json.dump(stats, f, indent=1)
     print(stats)
+
+
+def main() -> None:
+    root = sys.argv[2]
+    if sys.argv[1] == "build":
+        build(root, int(sys.argv[3]))
+    else:
+        merge(root)
+
+
+if __name__ == "__main__":
+    main()
