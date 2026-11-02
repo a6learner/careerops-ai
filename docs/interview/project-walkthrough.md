@@ -256,7 +256,7 @@ resumes, 150 analysed pairs; model-made labels; development set, not a holdout;
 
 - **The one-call matcher breaks as requirements grow.** Analyses succeeded 29/31 at
   1–5 requirements, 23/40 at 6–10, 7/35 at 11–15 and 0/44 at 16 or more. The median
-  parsed job has 10 requirements. This confirms the contract failures seen above.
+  parsed job has 11 requirements. This confirms the contract failures seen above.
 - **`MATCHER_PROVIDER_FAILED` mostly hides contract failures.** Groq's server-side
   schema check rejected the model output; the adapter reports that as a provider error.
 - **Under-claiming confirmed.** On the 59 successful analyses: over-claim 1.8%,

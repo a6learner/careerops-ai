@@ -18,7 +18,7 @@ say how often they happen. Interview claims need rates with sample sizes, not an
 ## What It Found
 
 - The matcher's one-call design breaks on larger jobs: 29/31 analyses succeeded at 1–5 requirements, 7/35 at
-  11–15 and 0/44 at 16 or more. The median parsed job has 10 requirements.
+  11–15 and 0/44 at 16 or more. The median parsed job has 11 requirements.
 - Where the matcher succeeded it was conservative: over-claim 1.8%, under-claim 13.1%, and it found none of the
   33 labeled partial matches. All 13 stored positive claims had a cited experience, a quote and `quote_valid = true`.
 - The parser keeps grounding but misses requirements: precision 84.1%, recall 57.9%, and only 44.0% recall on

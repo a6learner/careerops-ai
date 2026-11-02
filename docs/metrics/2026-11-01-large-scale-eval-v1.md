@@ -2,8 +2,10 @@
 
 This record covers the first large run of the real pipeline: 302 real job descriptions (JDs), 50 synthetic
 resumes, and 150 resume × JD pairs, all sent through the HTTP API and the worker. Every number here comes from
-a file in `docs/metrics/2026-11-01-large-scale-eval-v1/` or from committed labels under `evals/large_scale_v1/`.
-Rates carry n and a 95% Wilson interval. The decision behind the run is ADR-047.
+a file in `docs/metrics/2026-11-01-large-scale-eval-v1/`, from the committed dataset and labels under
+`evals/large_scale_v1/` (`jds.json`, `resumes.json`, `pairs.json`, `labels/`), or from the cited source file for a
+configuration value. Rates from the scorer carry n, and most carry a 95% Wilson interval; where a table omits the
+interval, it is in `score.json`. The decision behind the run is ADR-047.
 
 **This is a development set, not a holdout.** It was built and scored at the same time. All labels were made by
 models (Codex, Antigravity and Claude subagents) and then adjudicated by Claude subagents. They are not human
@@ -15,7 +17,7 @@ ground truth.
 |---|---|
 | JDs | 302 public postings (`evals/large_scale_v1/jds.json`: source_type greenhouse_api 121, ashby_api 106, html_page 58, lever_api 17; intern 179, new grad 92, mid 31) |
 | Resumes | 50 synthetic personas, 214 experiences (4–6 each), 8 strata including 5 adversarial (`resumes.json`) |
-| Pairs | 150 (one JD per pair, high/medium/low designed fit); the other 152 JDs were parsed only |
+| Pairs | 150 (one JD per pair, `designed_fit` high/medium/low in `pairs.json`); the other 152 JDs were parsed only |
 | Product code | unchanged (`git diff f97e31d -- src tests` is empty); prompts parse-v3 and evidence-matcher-prompt-v4; model `openai/gpt-oss-20b` |
 | Embeddings | Gemini `gemini-embedding-2` |
 | Harness | `scripts/large_eval/` (driver, extractor, scorer, retrieval check, scale test) |
@@ -24,10 +26,14 @@ ground truth.
 
 The LLM provider changed during the run, at the author's request. The scorer separates the periods.
 
+The period boundaries are the scorer's constants `OPENROUTER_SWITCH` and `GROQ_PIN` in
+`scripts/large_eval/score.py`. They are approximate: the switch is the worker restart time, and the pin is just
+before the first analysis kept after the pin.
+
 | Period (UTC) | LLM route | Used for |
 |---|---|---|
-| until 2026-11-02 02:14 | Groq free tier, direct | 91 first parse attempts |
-| 02:14–03:49 | OpenRouter, upstream chosen per request | 211 first parse attempts, the 20 first repeat parses |
+| until about 2026-11-02 02:14 | Groq free tier, direct | 91 first parse attempts |
+| about 02:14–03:49 | OpenRouter, upstream chosen per request | 211 first parse attempts, the 20 first repeat parses |
 | from 03:49 | OpenRouter with Allowed Providers = Groq only | **all 150 analyses**, the 20 second repeat parses, the re-runs of pairs `r09-jd-06627db35f` and `r29-jd-e0e4f3984c` |
 
 On OpenRouter without pinning, four identical parser requests went to four different upstreams (DekaLLM,
@@ -47,7 +53,7 @@ Source: `score.json` → `parser`. Scored on the 302 primary jobs; the 40 repeat
 | … OpenRouter mixed period | 204/211 = 96.7% (93.3–98.4) |
 | Succeeded after the driver's retries and the two pair re-runs | 295/302 = 97.7% (95.3–98.9) |
 | Failed runs by code (all attempts) | `PARSER_FAILED` 133, `PARSER_OUTPUT_INVALID` 8 |
-| Requirements per successful parse | p50 10, p95 26, max 46 |
+| Requirements per successful parse | p50 11, p95 26, max 46 (n = 295) |
 | Latency of successful parses | p50 3.55 s, p95 11.94 s (n = 295) |
 
 Against the adjudicated parser labels (295 JDs with a successful parse, 5,012 labeled requirements, exact text match):
@@ -88,7 +94,7 @@ Source: `score.json` → `matcher`. One analysis per pair, no retries were neede
 
 | Metric | Result |
 |---|---|
-| Analyses succeeded | 59/150 = 39.3% |
+| Analyses succeeded | 59/150 = 39.3% (31.9–47.3) |
 | `MATCHER_OUTPUT_INVALID_CONTRACT` | 62 |
 | `MATCHER_PROVIDER_FAILED` | 28 |
 | `MATCHER_OUTPUT_INVALID_SCHEMA` | 1 |
@@ -107,11 +113,11 @@ Source: `score.json` → `matcher`. One analysis per pair, no retries were neede
 
 The matcher sends all requirements in one call with an 800-token output cap
 (`GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS`). At 16 or more requirements no analysis succeeded. The parser's median is
-10 requirements, which falls in the 6–10 bin where 23 of 40 analyses succeeded.
+11 requirements, which falls in the 11–15 bin where 7 of 35 analyses succeeded (20.0%, 10.0–35.9).
 
-**What `MATCHER_PROVIDER_FAILED` meant here.** All 417 OpenRouter responses in the worker log were HTTP 200
-(`worker_log_counts.json`), so these failures were not timeouts or HTTP errors. Their stored latency ranged from
-2.0 to 42.7 s. A probe (`provider_probes.md`) showed that when Groq's server-side JSON-schema
+**What `MATCHER_PROVIDER_FAILED` meant here.** The surviving worker log records 417 OpenRouter responses, all
+HTTP 200, and no other OpenRouter status (`worker_log_counts.json`). The log does not tie responses to runs, so it
+does not prove the cause of each failure. Their stored latency ranged from 2.0 to 42.7 s. A probe (`provider_probes.md`) showed that when Groq's server-side JSON-schema
 check rejects the model's output, OpenRouter returns HTTP 200 with `finish_reason: "error"`, no content, and
 "Upstream error from Groq: Parsing failed". The adapter needs string content, so it reports a provider failure.
 Called directly, Groq returns HTTP 400 `json_validate_failed`, which the adapter also maps to
@@ -203,13 +209,16 @@ Claude's reading of the rubric.
 ## Sensitivity: excluding the 7 JDs flagged in review
 
 Source: `score_excluding_reviewed_jds.json`. Parser F1 0.683 (vs 0.686); matcher success 56/146; over-claim
-6/320 = 1.9%; under-claim 44/320 = 13.8%. No conclusion changes.
+6/320 = 1.9%; under-claim 44/320 = 13.8%. Against the full set (parser F1 0.686, matcher success 59/150,
+over-claim 6/335 = 1.8%, under-claim 44/335 = 13.1%), each value moves by less than one percentage point and in no
+case changes direction.
 
 ## Re-runs of pairs r09-jd-06627db35f and r29-jd-e0e4f3984c
 
 Its first parse run was left in `running` when the host went to sleep, and the driver only retries failed runs, so
 it was never resubmitted before the first evaluation database was deleted. It was then re-run on a rebuilt stack
-(fresh database, same code, all 214 experiences re-embedded, same pinned OpenRouter→Groq route): the parse
+(fresh database, same code, every experience re-created and its embedding run completed before the parse, as
+the driver's embedding check reported; that check's output was not saved; same pinned OpenRouter→Groq route): the parse
 succeeded with 25 requirements, matcher labels round M3 were committed first (`evals/large_scale_v1/labels/matcher/m3/`,
 agreement 0.72, κ 0.588, 7 blinded disputes), and the analysis failed `MATCHER_OUTPUT_INVALID_CONTRACT`, consistent
 with the 21+ bucket. Its rows are merged into `results_real_run.json` (`rerun_on_rebuilt_stack: true`) and
