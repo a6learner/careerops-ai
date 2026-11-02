@@ -1,0 +1,243 @@
+[
+ {
+  "pair_id": "r09-jd-06627db35f",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "33b788d2-5c50-4fff-8d7c-117ceab13c2e",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Course project collected data, trained and deployed a classifier end to end."
+   },
+   {
+    "requirement_id": "18198133-c514-470c-a393-6cb939c322be",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No feature engineering, signal averaging, research-to-production or cross-functional product work."
+   },
+   {
+    "requirement_id": "0f32f31a-4448-474d-ba79-e9ce51416aeb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Section header; nothing to prove."
+   },
+   {
+    "requirement_id": "3ac46d13-6cdc-47d9-be65-0d339e7cbbab",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No partnering with PM/tech lead on roadmap or GA launches."
+   },
+   {
+    "requirement_id": "c492f73e-0f42-48e6-89be-44fc602a927f",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Data, training and deployment shown; no feature engineering, monitoring or email domain."
+   },
+   {
+    "requirement_id": "eed14a65-240b-4d88-9235-4bda25dbcd3a",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "Failure rate made visible, but no measured reliability or customer-impact improvement."
+   },
+   {
+    "requirement_id": "6a53b7f7-770a-41de-b10b-bdc3583ecd54",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e2",
+      "source_ref": "description",
+      "quote": "computes exact-match and rubric-based scores"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Offline metric scoring shown; no A/B testing, thresholds or post-launch monitoring."
+   },
+   {
+    "requirement_id": "a2d836d7-757f-420f-9cfb-9505cca39fa0",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e6",
+      "source_ref": "description",
+      "quote": "Wrote lab handouts"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Wrote debugging handouts (documentation); no cross-time-zone communication."
+   },
+   {
+    "requirement_id": "f85c7722-479d-4c37-835f-d3d746bd9958",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No on-call rotation."
+   },
+   {
+    "requirement_id": "9002442a-d482-4457-9a65-d41330390f6b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No alert or false-positive investigation work."
+   },
+   {
+    "requirement_id": "1fe34439-86ad-4227-a948-799784cbd0e1",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Section header; nothing to prove."
+   },
+   {
+    "requirement_id": "a611fce8-b7ed-413d-8191-947e35163ce3",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a BS degree."
+   },
+   {
+    "requirement_id": "a7ac6dc1-23e9-4189-8d0c-e6f192a45bf8",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "Applied LLM extraction internship, but 1+ years and production operation not stated."
+   },
+   {
+    "requirement_id": "4a81cebb-be42-4f83-a5d1-1acd884643af",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Data collection, training and deployment shown; no feature engineering, model selection or monitoring."
+   },
+   {
+    "requirement_id": "f8954baa-35b8-4084-8256-1e8513539e40",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e3",
+      "source_ref": "description",
+      "quote": "Implemented logistic regression, softmax regression and a two-layer neural network with backpropagation in NumPy"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Algorithms and numerical computing in NumPy; no feature development or signal combination."
+   },
+   {
+    "requirement_id": "775bb88f-d190-4c8c-91a6-09b97b9c1e5d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No production data analysis or efficacy experiments."
+   },
+   {
+    "requirement_id": "78dddb8f-da96-4ead-b3ee-c473cd9cd899",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No online/offline pipelines, data tables or labeling workflows."
+   },
+   {
+    "requirement_id": "0788599e-06fb-430f-8f21-86d6f66c5684",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e2",
+      "source_ref": "description",
+      "quote": "computes exact-match and rubric-based scores"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Offline metrics computed; no A/B tests, thresholds, drift monitoring or rollback."
+   },
+   {
+    "requirement_id": "7d220d7f-e560-470b-bade-562028f4e4db",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e6",
+      "source_ref": "description",
+      "quote": "Wrote lab handouts"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Written handouts shown; asynchronous communication not shown."
+   },
+   {
+    "requirement_id": "88d3b074-7e85-4833-94d3-bd91226f1754",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No explicit independent or distributed cross-functional team work."
+   },
+   {
+    "requirement_id": "11f821e7-8dc1-45fb-b834-e70be309627e",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e1",
+      "source_ref": "skill:0",
+      "quote": "Python"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Python shown; no Go, AWS, Spark or Databricks."
+   },
+   {
+    "requirement_id": "89f776c4-a75b-46c9-815e-98ae0f442d13",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No email security, DLP or customer ML deployment."
+   },
+   {
+    "requirement_id": "c435e62a-ee5e-4f71-8df0-c99a01206fcb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No detectors or rules complementing ML models."
+   },
+   {
+    "requirement_id": "5b37251f-52f0-4388-a03e-1487aa68229b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No operationalised research in customer-facing systems."
+   },
+   {
+    "requirement_id": "6459b3eb-e07b-48a2-ae99-ca7b9cf9c2b2",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r09-e5",
+      "source_ref": "description",
+      "quote": "I wrote the backend in Flask and the prompt chain; a teammate built the frontend"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Built a hackathon app from scratch with a teammate."
+   }
+  ]
+ }
+]

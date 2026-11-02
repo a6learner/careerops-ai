@@ -1,0 +1,249 @@
+[
+ {
+  "pair_id": "r09-jd-06627db35f",
+  "resume_id": "r09",
+  "experiences": [
+   {
+    "exp_key": "r09-e1",
+    "kind": "work",
+    "title": "AI Engineering Intern, Copperline Health (healthcare software startup)",
+    "description": "Part-time internship during the semester. Built a structured extraction pipeline that turns clinical intake notes into JSON using a hosted LLM with a JSON schema, then validates the output with Pydantic and rejects records that fail. Wrote a regression test suite of fixed note examples that runs against a recorded fake provider in CI. All data used was synthetic; I never accessed real patient records.",
+    "skills": [
+     "Python",
+     "LLM Structured Output",
+     "Pydantic",
+     "JSON Schema",
+     "pytest",
+     "CI"
+    ],
+    "outcome": "Schema failure rate became visible on a weekly dashboard the team reviews."
+   },
+   {
+    "exp_key": "r09-e2",
+    "kind": "project",
+    "title": "Prompt Evaluation Harness",
+    "description": "Wrote an open source command-line tool in Python that runs a set of prompts against multiple model providers, stores outputs in SQLite and computes exact-match and rubric-based scores. Supports caching responses so reruns do not cost money.",
+    "skills": [
+     "Python",
+     "SQLite",
+     "LLM Evaluation",
+     "CLI Tools",
+     "Caching"
+    ],
+    "outcome": null
+   },
+   {
+    "exp_key": "r09-e3",
+    "kind": "course",
+    "title": "Machine Learning Course: Linear Models and Neural Nets in NumPy",
+    "description": "Implemented logistic regression, softmax regression and a two-layer neural network with backpropagation in NumPy. Verified gradients with finite differences.",
+    "skills": [
+     "NumPy",
+     "Machine Learning",
+     "Backpropagation"
+    ],
+    "outcome": null
+   },
+   {
+    "exp_key": "r09-e4",
+    "kind": "course",
+    "title": "Embedded Systems: Gesture Recognition on a Microcontroller",
+    "description": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers on an ARM Cortex-M board. Wrote the firmware in C.",
+    "skills": [
+     "C",
+     "TensorFlow Lite",
+     "Embedded Systems"
+    ],
+    "outcome": null
+   },
+   {
+    "exp_key": "r09-e5",
+    "kind": "project",
+    "title": "Hackathon: Meeting Notes Summarizer",
+    "description": "Built a web app in a weekend that summarizes meeting transcripts using an LLM API and extracts action items. I wrote the backend in Flask and the prompt chain; a teammate built the frontend.",
+    "skills": [
+     "Flask",
+     "Python",
+     "Prompt Engineering",
+     "LLM APIs"
+    ],
+    "outcome": null
+   },
+   {
+    "exp_key": "r09-e6",
+    "kind": "work",
+    "title": "Teaching Assistant, Intro to Programming",
+    "description": "Led two lab sections each week for an introductory Python course and graded weekly assignments. Wrote lab handouts on debugging with print statements and the Python debugger.",
+    "skills": [
+     "Python",
+     "Teaching"
+    ],
+    "outcome": null
+   }
+  ],
+  "disputed": [
+   {
+    "requirement": {
+     "requirement_id": "18198133-c514-470c-a393-6cb939c322be",
+     "category": "responsibility",
+     "text": "This includes but is not limited to generating and refining features, testing hypotheses, averaging signals, and translating research ideas into production-grade systems, all while collaborating cross-functionally to turn customer needs into measurable product improvements.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r09-e4",
+       "source_ref": "description",
+       "quote": "trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers on an ARM Cortex-M board"
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "3ac46d13-6cdc-47d9-be65-0d339e7cbbab",
+     "category": "responsibility",
+     "text": "Partner with Product Manager, Tech Lead and engineering stakeholders to align technical deliverables to roadmap milestones and ensure successful GA launches across supported environments.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r09-e5",
+       "source_ref": "description",
+       "quote": "I wrote the backend in Flask and the prompt chain; a teammate built the frontend."
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "775bb88f-d190-4c8c-91a6-09b97b9c1e5d",
+     "category": "must_have",
+     "text": "Demonstrated ability to interrogate production data, identify behavioral or trend shifts, and launch targeted experiments to improve model efficacy.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "insufficient_evidence",
+     "evidence": [],
+     "gap_reason_code": "explicit_non_implementation"
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "78dddb8f-da96-4ead-b3ee-c473cd9cd899",
+     "category": "must_have",
+     "text": "Understanding of online vs offline pipelines, data tables and labeling workflows to effectively leverage tooling to support safe, scalable model deployments.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r09-e2",
+       "source_ref": "description",
+       "quote": "stores outputs in SQLite and computes exact-match and rubric-based scores"
+      }
+     ],
+     "gap_reason_code": null
+    },
+    "option_b": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "88d3b074-7e85-4833-94d3-bd91226f1754",
+     "category": "must_have",
+     "text": "Effective working independently and across distributed, cross-functional teams.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r09-e5",
+       "source_ref": "description",
+       "quote": "I wrote the backend in Flask and the prompt chain; a teammate built the frontend."
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "c435e62a-ee5e-4f71-8df0-c99a01206fcb",
+     "category": "nice_to_have",
+     "text": "Experience writing detectors/rules to complement ML models for safe launches and rapid iteration.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r09-e1",
+       "source_ref": "description",
+       "quote": "using a hosted LLM with a JSON schema, then validates the output with Pydantic and rejects records that fail"
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "5b37251f-52f0-4388-a03e-1487aa68229b",
+     "category": "nice_to_have",
+     "text": "Experience with operationalising research into reliable, customer-facing systems, with emphasis on scalability, performance, and detection accuracy in real-world environments.",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r09-e4",
+       "source_ref": "description",
+       "quote": "trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers on an ARM Cortex-M board"
+      }
+     ],
+     "gap_reason_code": null
+    },
+    "option_b": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    }
+   }
+  ]
+ }
+]

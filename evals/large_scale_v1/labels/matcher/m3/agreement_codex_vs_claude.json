@@ -1,0 +1,61 @@
+{
+ "pair_count_both": 1,
+ "missing_in_a": [],
+ "missing_in_b": [],
+ "requirement_count": 25,
+ "verdict_agreement": 0.72,
+ "verdict_kappa": 0.5882352941176471,
+ "confusion_a_vs_b": {
+  "matched->matched": 2,
+  "partial->missing": 6,
+  "missing->missing": 6,
+  "partial->partial": 8,
+  "insufficient_evidence->insufficient_evidence": 2,
+  "insufficient_evidence->missing": 1
+ },
+ "disagreement_count": 7,
+ "disagreements": [
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "18198133-c514-470c-a393-6cb939c322be",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "3ac46d13-6cdc-47d9-be65-0d339e7cbbab",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "775bb88f-d190-4c8c-91a6-09b97b9c1e5d",
+   "a": "insufficient_evidence",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "78dddb8f-da96-4ead-b3ee-c473cd9cd899",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "88d3b074-7e85-4833-94d3-bd91226f1754",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "c435e62a-ee5e-4f71-8df0-c99a01206fcb",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r09-jd-06627db35f",
+   "requirement_id": "5b37251f-52f0-4388-a03e-1487aa68229b",
+   "a": "partial",
+   "b": "missing"
+  }
+ ]
+}
