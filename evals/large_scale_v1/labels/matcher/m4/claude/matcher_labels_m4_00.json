@@ -1,0 +1,20 @@
+[
+ {
+  "pair_id": "r29-jd-e0e4f3984c",
+  "labeler": "claude",
+  "labels": [
+   {"requirement_id": "4f35c782-6282-4671-bb0c-083dc32ca656", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "No experience states degree enrollment; course entry names no degree and equivalence to a degree is not stated."},
+   {"requirement_id": "a64958f8-0a92-425b-a29f-9236a742da04", "verdict": "matched", "evidence": [{"exp_key": "r29-e3", "source_ref": "description", "quote": "Built a .NET Minimal API for tracking forty shared tools"}], "gap_reason_code": null, "rationale": "Built and shipped a working software project used by residents."},
+   {"requirement_id": "e74042ac-3116-477d-afd3-37f9bd534a34", "verdict": "partial", "evidence": [{"exp_key": "r29-e2", "source_ref": "description", "quote": "Wrote a C# worker"}], "gap_reason_code": null, "rationale": "Writing code shown; learning new languages/frameworks/tools not explicitly stated."},
+   {"requirement_id": "60e34f91-017a-4a15-ab47-e83da2af7176", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "No AI coding tools or agents mentioned."},
+   {"requirement_id": "1549f634-1fee-45f7-94b5-385fd3037e88", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "Soft trait with no explicit evidence of curiosity or motivation."},
+   {"requirement_id": "a346e63d-1bb9-4df8-8471-e0a4202d8ece", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "No explicit ownership, speed or independent learning statement."},
+   {"requirement_id": "6c413b19-c786-49c0-8cc0-8139bc231930", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "Location availability not stated in any experience."},
+   {"requirement_id": "aba9a585-995d-460b-91ad-6145eaaa6f29", "verdict": "matched", "evidence": [{"exp_key": "r29-e1", "source_ref": "title", "quote": "Engineering Intern, Harbor Ticketing"}], "gap_reason_code": null, "rationale": "Engineering internship implementing ASP.NET Core endpoints and tests."},
+   {"requirement_id": "0694a3cb-8866-4386-bd5f-008d72275d6b", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "Backend APIs and a worker only; no frontend, developer tool or infrastructure project stated."},
+   {"requirement_id": "48f27dfd-5789-473c-a70d-0c2c2691c91e", "verdict": "matched", "evidence": [{"exp_key": "r29-e3", "source_ref": "title", "quote": "Dorm Tool Lending API"}], "gap_reason_code": null, "rationale": "Personal project built and used by eight residents."},
+   {"requirement_id": "ae85823d-2fc6-4a11-b146-775221f165ed", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "No cloud, Linux, containers or distributed systems explicitly mentioned."},
+   {"requirement_id": "86381a30-ca3f-4945-9045-56259d04679d", "verdict": "missing", "evidence": [], "gap_reason_code": "required_technology_absent", "rationale": "No LLM or AI agent work."}
+  ]
+ }
+]

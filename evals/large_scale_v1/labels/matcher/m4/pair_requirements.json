@@ -1,0 +1,82 @@
+[
+ {
+  "pair_id": "r29-jd-e0e4f3984c",
+  "resume_id": "r29",
+  "jd_id": "jd-e0e4f3984c",
+  "parse_run_id": "7ec2afda-feba-4faa-9296-8542358cc8a8",
+  "requirements": [
+   {
+    "requirement_id": "4f35c782-6282-4671-bb0c-083dc32ca656",
+    "category": "education",
+    "text": "Currently pursuing a degree in Computer Science, Software Engineering, or a related field, or have equivalent hands-on experience",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "a64958f8-0a92-425b-a29f-9236a742da04",
+    "category": "must_have",
+    "text": "Strong programming fundamentals and experience building software projects",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "e74042ac-3116-477d-afd3-37f9bd534a34",
+    "category": "must_have",
+    "text": "Comfortable writing code and learning new languages, frameworks, and tools",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "60e34f91-017a-4a15-ab47-e83da2af7176",
+    "category": "must_have",
+    "text": "AI-native: actively use AI coding tools and agents in your development workflow",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "1549f634-1fee-45f7-94b5-385fd3037e88",
+    "category": "must_have",
+    "text": "Curious about how systems work and excited to solve challenging technical problems",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "a346e63d-1bb9-4df8-8471-e0a4202d8ece",
+    "category": "must_have",
+    "text": "Able to take ownership, move quickly, and learn independently",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "6c413b19-c786-49c0-8cc0-8139bc231930",
+    "category": "must_have",
+    "text": "Able to work in person from our Toronto office",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "aba9a585-995d-460b-91ad-6145eaaa6f29",
+    "category": "nice_to_have",
+    "text": "Previous software engineering internship experience",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "0694a3cb-8866-4386-bd5f-008d72275d6b",
+    "category": "nice_to_have",
+    "text": "Experience building full-stack applications, developer tools, or infrastructure projects",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "48f27dfd-5789-473c-a70d-0c2c2691c91e",
+    "category": "nice_to_have",
+    "text": "Contributions to open-source projects or interesting personal projects",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "ae85823d-2fc6-4a11-b146-775221f165ed",
+    "category": "nice_to_have",
+    "text": "Experience with cloud infrastructure, Linux, containers, or distributed systems",
+    "skill_normalized": "cloud infrastructure"
+   },
+   {
+    "requirement_id": "86381a30-ca3f-4945-9045-56259d04679d",
+    "category": "nice_to_have",
+    "text": "Experience building with LLMs or AI agents",
+    "skill_normalized": "llms"
+   }
+  ]
+ }
+]

@@ -1,0 +1,194 @@
+[
+ {
+  "pair_id": "r29-jd-e0e4f3984c",
+  "resume_id": "r29",
+  "experiences": [
+   {
+    "exp_key": "r29-e1",
+    "kind": "work",
+    "title": "Engineering Intern, Harbor Ticketing",
+    "description": "Implemented ASP.NET Core endpoints for reserving seats at six small venues, using Entity Framework Core transactions against SQL Server. Added xUnit tests for expired holds and simultaneous checkout requests.",
+    "skills": [
+     "C#",
+     "ASP.NET Core",
+     "Entity Framework Core",
+     "SQL Server",
+     "xUnit"
+    ],
+    "outcome": "The revised hold path prevented overselling in the team's 500-request load test."
+   },
+   {
+    "exp_key": "r29-e2",
+    "kind": "work",
+    "title": "Box Office Notification Worker",
+    "description": "Wrote a C# worker that consumed RabbitMQ messages after ticket purchases and rendered venue-specific confirmation templates. Configured dead-letter queues for invalid payloads and added correlation identifiers to Serilog entries.",
+    "skills": [
+     "C#",
+     "RabbitMQ",
+     "Serilog",
+     "Message Queues"
+    ],
+    "outcome": "Support staff could trace failed confirmations from purchase to dead-letter record using one identifier."
+   },
+   {
+    "exp_key": "r29-e3",
+    "kind": "project",
+    "title": "Dorm Tool Lending API",
+    "description": "Built a .NET Minimal API for tracking forty shared tools, with SQLite persistence and Swagger documentation. Used optimistic concurrency tokens to reject returns made from stale browser tabs.",
+    "skills": [
+     ".NET",
+     "C#",
+     "SQLite",
+     "Swagger",
+     "Optimistic Concurrency"
+    ],
+    "outcome": "Eight residents used the service for a month and recorded 73 loans."
+   },
+   {
+    "exp_key": "r29-e4",
+    "kind": "course",
+    "title": "Data Structures Portfolio",
+    "description": "Implemented hash tables, AVL trees, and priority queues in C# without collection-library equivalents. Benchmarked lookup behavior on randomized inputs and explained collision strategies in a written analysis.",
+    "skills": [
+     "C#",
+     "Data Structures",
+     "Benchmarking",
+     "Technical Writing"
+    ],
+    "outcome": null
+   }
+  ],
+  "disputed": [
+   {
+    "requirement": {
+     "requirement_id": "4f35c782-6282-4671-bb0c-083dc32ca656",
+     "category": "education",
+     "text": "Currently pursuing a degree in Computer Science, Software Engineering, or a related field, or have equivalent hands-on experience",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "matched",
+     "evidence": [
+      {
+       "exp_key": "r29-e1",
+       "source_ref": "description",
+       "quote": "Implemented ASP.NET Core endpoints for reserving seats at six small venues, using Entity Framework Core transactions against SQL Server."
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "1549f634-1fee-45f7-94b5-385fd3037e88",
+     "category": "must_have",
+     "text": "Curious about how systems work and excited to solve challenging technical problems",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r29-e1",
+       "source_ref": "description",
+       "quote": "Added xUnit tests for expired holds and simultaneous checkout requests."
+      },
+      {
+       "exp_key": "r29-e1",
+       "source_ref": "outcome",
+       "quote": "The revised hold path prevented overselling in the team's 500-request load test."
+      }
+     ],
+     "gap_reason_code": null
+    },
+    "option_b": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "a346e63d-1bb9-4df8-8471-e0a4202d8ece",
+     "category": "must_have",
+     "text": "Able to take ownership, move quickly, and learn independently",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "partial",
+     "evidence": [
+      {
+       "exp_key": "r29-e3",
+       "source_ref": "description",
+       "quote": "Built a .NET Minimal API for tracking forty shared tools, with SQLite persistence and Swagger documentation."
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "0694a3cb-8866-4386-bd5f-008d72275d6b",
+     "category": "nice_to_have",
+     "text": "Experience building full-stack applications, developer tools, or infrastructure projects",
+     "skill_normalized": null
+    },
+    "option_a": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    },
+    "option_b": {
+     "verdict": "matched",
+     "evidence": [
+      {
+       "exp_key": "r29-e2",
+       "source_ref": "description",
+       "quote": "Wrote a C# worker that consumed RabbitMQ messages after ticket purchases and rendered venue-specific confirmation templates. Configured dead-letter queues for invalid payloads and added correlation identifiers to Serilog entries."
+      }
+     ],
+     "gap_reason_code": null
+    }
+   },
+   {
+    "requirement": {
+     "requirement_id": "ae85823d-2fc6-4a11-b146-775221f165ed",
+     "category": "nice_to_have",
+     "text": "Experience with cloud infrastructure, Linux, containers, or distributed systems",
+     "skill_normalized": "cloud infrastructure"
+    },
+    "option_a": {
+     "verdict": "matched",
+     "evidence": [
+      {
+       "exp_key": "r29-e2",
+       "source_ref": "description",
+       "quote": "consumed RabbitMQ messages after ticket purchases"
+      },
+      {
+       "exp_key": "r29-e2",
+       "source_ref": "skill:3",
+       "quote": "Message Queues"
+      }
+     ],
+     "gap_reason_code": null
+    },
+    "option_b": {
+     "verdict": "missing",
+     "evidence": [],
+     "gap_reason_code": "required_technology_absent"
+    }
+   }
+  ]
+ }
+]
