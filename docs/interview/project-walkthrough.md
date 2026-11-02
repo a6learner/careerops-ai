@@ -266,8 +266,9 @@ resumes, 148 analysed pairs; model-made labels; development set, not a holdout;
   responsibility-line recall 44.0%. Same-host repeat parses matched exactly 8/19 times.
 - **DOCX CV import makes one draft per CV** (0/214 experiences split); Markdown with
   blank lines splits 214/214.
-- **Free-tier limits end runs.** Groq's 200k tokens/day and Gemini's 1,000 embeds/day
-  stopped the run until the author moved to paid routes. A failed embedding run is
+- **Free-tier limits end runs.** Groq free-tier rate limits (210 HTTP 429 and 13 HTTP 413 in
+  the surviving worker log) and Gemini's daily embedding quota stopped the run until the
+  author moved to paid routes. A failed embedding run is
   permanent for that experience version.
 
 Structural gaps:

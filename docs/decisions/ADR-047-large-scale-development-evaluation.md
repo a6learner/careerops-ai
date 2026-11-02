@@ -50,13 +50,13 @@ The 2026-10-31 walkthrough (n = 3 JDs, 1 CV) found parser rejections (fixed by A
 ## Consequences
 
 - Free-tier limits shaped the first part of the run and are themselves findings:
-  - Groq allows 200,000 tokens per day and 8,000 tokens per minute.
-  - Gemini allows 1,000 embedding requests per day.
+  - Groq (response headers) allows 1,000 requests per day and 8,000 tokens per minute, and returns 429 once a daily token cap is reached.
+  - The Gemini free tier has a daily embedding quota; when it ran out, embedding runs failed.
   - A failed embedding run is permanent for that experience version.
 - Parser results mix provider periods; they are reported per period. The matcher results come from one period.
 - The matcher's quality numbers cover only analyses that succeeded, which are mostly small JDs.
 - Model labels can share biases with the system under test. Cross-family labeling and the reported κ limit this risk but do not remove it.
-- Each resume has only 4–8 experiences. The retrievers returned about 2 candidates on average, so recall@5 still separates lexical from hybrid retrieval, but a larger experience library would be a harder test.
+- Each resume has only 4–6 experiences. The retrievers returned about 2 candidates on average, so recall@5 still separates lexical from hybrid retrieval, but a larger experience library would be a harder test.
 
 ## Verification or evidence
 

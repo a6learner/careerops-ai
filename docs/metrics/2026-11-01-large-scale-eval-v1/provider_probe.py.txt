@@ -1,0 +1,22 @@
+"""Send the product parser's exact request for one JD and print status + error body (no key printed)."""
+import json, re, sys
+import httpx
+from careerops.adapters.groq_requirement_parser import (
+    _ParserPayload, extract_source_candidates, requirement_parser_instructions)
+from careerops.core.config import Settings
+
+s = Settings()
+jd = sys.argv[1]
+jds = {j["jd_id"]: j for j in json.load(open("evals/large_scale_v1/jds.json", encoding="utf-8"))}
+cands = extract_source_candidates(jds[jd]["raw_description"])
+payload = {"model": s.llm_model, "messages": [
+    {"role": "system", "content": requirement_parser_instructions()},
+    {"role": "user", "content": json.dumps({"candidates": [{"candidate_id": c.candidate_id, "text": c.text} for c in cands]})}],
+    "response_format": {"type": "json_schema", "json_schema": {"name": "job_requirements", "strict": True, "schema": _ParserPayload.model_json_schema()}},
+    "reasoning_effort": "low", "temperature": 0.1, "max_completion_tokens": s.llm_max_output_tokens}
+key = s.llm_api_key.get_secret_value() if hasattr(s.llm_api_key, "get_secret_value") else s.llm_api_key
+r = httpx.post(s.llm_base_url.rstrip("/") + "/chat/completions", headers={"Authorization": "Bearer " + key}, json=payload, timeout=90)
+print("candidates", len(cands), "max_out", s.llm_max_output_tokens, "status", r.status_code)
+print({h: v for h, v in r.headers.items() if "ratelimit" in h or "retry" in h})
+body = r.text if r.status_code != 200 else json.dumps({"provider": r.json().get("provider"), "finish": r.json()["choices"][0].get("finish_reason"), "reasoning": (r.json().get("usage") or {}).get("completion_tokens_details"), "out": (r.json().get("usage") or {}).get("completion_tokens")})
+print(re.sub(r"org_\w+", "org_X", body[:600]))

@@ -20,7 +20,7 @@ say how often they happen. Interview claims need rates with sample sizes, not an
 - The matcher's one-call design breaks on larger jobs: 29/31 analyses succeeded at 1–5 requirements, 7/34 at
   11–15 and 0/43 at 16 or more. The median parsed job has 10 requirements.
 - Where the matcher succeeded it was conservative: over-claim 1.8%, under-claim 13.1%, and it found none of the
-  33 labeled partial matches. No stored positive claim lacked a validated quote.
+  33 labeled partial matches. All 13 stored positive claims had a cited experience, a quote and `quote_valid = true`.
 - The parser keeps grounding but misses requirements: precision 84.0%, recall 57.7%, and only 44.0% recall on
   responsibility lines. Two parses of the same JD on the same host gave the same requirement set only 8 of 19 times.
 - `MATCHER_PROVIDER_FAILED` mostly meant "Groq's schema check rejected the model output", not an outage.
@@ -48,7 +48,9 @@ say how often they happen. Interview claims need rates with sample sizes, not an
 - Label files are validated (every quote is an exact substring of the cited field) and committed with their
   agreement and adjudication statistics.
 - `score.py` reproduces every number in the record from the saved artifacts.
-- A SQL check on the evaluation database before it was deleted found 0 positive matches without a valid quote.
+- A SQL check on the evaluation database before it was deleted found 0 of 13 positive matches missing an
+  experience, a quote or `quote_valid = true`.
+- Codex audited every number in the metrics record against the artifacts; its corrections were applied.
 
 ## What The Author Must Understand
 
@@ -67,6 +69,6 @@ say how often they happen. Interview claims need rates with sample sizes, not an
 4. Why did the analyses wait for the OpenRouter provider pin, while the parses already run were kept?
 5. Repeat parses on the same host gave identical requirement sets 8 of 19 times. What does that mean for caching
    parse results and for comparing two analyses of "the same" job?
-6. Hybrid recall@5 was 74.9% (M1) and lexical 60.8%. Why is this not automatic with 4–8 experiences per resume?
+6. Hybrid recall@5 was 74.9% (M1) and lexical 60.8%. Why is this not automatic with 4–6 experiences per resume?
 7. The scale driver reported 6,132 timeouts, yet the record says 7,500/7,500 analyses succeeded. Which source is
    right and why?

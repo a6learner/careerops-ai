@@ -13,10 +13,10 @@ ground truth.
 
 | Item | Value |
 |---|---|
-| JDs | 302 public postings (Notion list 112, Greenhouse boards 90, Lever/Ashby/other 100); intern 179, new grad 92, mid 31 |
-| Resumes | 50 fictional personas, 214 experiences, 8 strata (including 5 adversarial) |
+| JDs | 302 public postings (`evals/large_scale_v1/jds.json`: source_type greenhouse_api 121, ashby_api 106, html_page 58, lever_api 17; intern 179, new grad 92, mid 31) |
+| Resumes | 50 synthetic personas, 214 experiences (4–6 each), 8 strata including 5 adversarial (`resumes.json`) |
 | Pairs | 150 (one JD per pair, high/medium/low designed fit); the other 152 JDs were parsed only |
-| Product code | unchanged; prompts parse-v3 and evidence-matcher-prompt-v4; model `openai/gpt-oss-20b` |
+| Product code | unchanged (`git diff f97e31d -- src tests` is empty); prompts parse-v3 and evidence-matcher-prompt-v4; model `openai/gpt-oss-20b` |
 | Embeddings | Gemini `gemini-embedding-2` |
 | Harness | `scripts/large_eval/` (driver, extractor, scorer, retrieval check, scale test) |
 
@@ -31,7 +31,7 @@ The LLM provider changed during the run, at the author's request. The scorer sep
 | from 03:49 | OpenRouter with Allowed Providers = Groq only | **all 148 analyses**, the 20 second repeat parses |
 
 On OpenRouter without pinning, four identical parser requests went to four different upstreams (DekaLLM,
-Darkbloom, AkashML, Parasail), with output lengths from 200 to 832 tokens. That is why the analyses waited for the
+Darkbloom, AkashML, Parasail), with output lengths from 200 to 832 tokens (`provider_probes.md`). That is why the analyses waited for the
 Groq pin. The 11 driver records made before the pin (18 analysis runs in the database) are kept in
 `analysis_attempts_before_groq_pin.jsonl` and
 are excluded from the matcher numbers (`score.py --analysis-state`).
@@ -48,7 +48,7 @@ Source: `score.json` → `parser`. Scored on the 302 primary jobs; the 40 repeat
 | Succeeded after the driver's retries | 293/302 = 97.0% (94.4–98.4) |
 | Failed runs by code (all attempts) | `PARSER_FAILED` 133, `PARSER_OUTPUT_INVALID` 8 |
 | Requirements per successful parse | p50 10, p95 26, max 46 |
-| Latency of successful parses | p50 3.45 s, p95 11.6 s |
+| Latency of successful parses | p50 3.59 s, p95 11.94 s (n = 293) |
 
 Against the adjudicated parser labels (293 JDs with a successful parse, 4,969 labeled requirements, exact text match):
 
@@ -61,17 +61,16 @@ Against the adjudicated parser labels (293 JDs with a successful parse, 4,969 la
 | Normalized skill exactly equal | 56.5% (54.7–58.4) |
 | Recall: education / nice_to_have / must_have / responsibility | 75.7% / 80.5% / 60.6% / 44.0% |
 
-What the failures were (from direct probes of the exact product payload, see `driver_state.jsonl` and ADR-047):
+What the failures were (from direct probes of the exact product payload, `provider_probes.md`):
 
 - In the Groq free-tier period the surviving worker log (it covers only the last stack session; earlier sessions'
   logs were overwritten) shows 210 HTTP 429, 13 HTTP 413, 19 HTTP 400 and 82 HTTP 200 responses from Groq
-  (`worker_log_counts.json`). The 429s
-  come from the free tier's daily cap of 200,000 tokens. The product's `PARSER_FAILED` code does not say which HTTP
-  status caused it.
-- One 455-line JD needs 10,853 tokens in one request, above the free tier's 8,000 tokens per minute (HTTP 413). The
-  parser has no input-size guard or chunking.
-- One 4-line JD made the model return an empty requirement list, which the strict schema (`minItems: 1`) rejects
-  (HTTP 400). There is no non-error outcome for "this posting has no requirements".
+  (`worker_log_counts.json`). The product's `PARSER_FAILED` code does not say which HTTP status caused a failure.
+  Groq's response headers gave the limits: 8,000 tokens per minute and 1,000 requests per day.
+- One JD with 455 candidate lines needs 10,853 tokens in one request, above the free tier's 8,000 tokens per
+  minute (HTTP 413). The parser has no input-size guard or chunking.
+- One JD with 4 candidate lines made the model return an empty requirement list, which the strict schema
+  (`minItems: 1`) rejects (HTTP 400). There is no non-error outcome for "this posting has no requirements".
 
 **Determinism** (`score.json` → `parser.determinism`), text-set Jaccard between two successful parses of one JD:
 
@@ -80,7 +79,8 @@ What the failures were (from direct probes of the exact product payload, see `dr
 | Repeat vs repeat, same pinned upstream | 19 | 0.84 | 8/19 = 42.1% (23.1–63.7) | 1 (max 40) |
 | Original (mixed upstreams) vs repeat | 18 | 0.57 | 2/18 = 11.1% (3.1–32.8) | 2 (max 18) |
 
-Even on one upstream at temperature 0.1, fewer than half of the re-parsed JDs gave the same requirement set.
+Even on one upstream at the parser's temperature of 0.1 (`groq_requirement_parser.py`), fewer than half of the
+re-parsed JDs gave the same requirement set.
 
 ## Matcher (148 pairs, Groq-pinned period only)
 
@@ -105,11 +105,13 @@ Source: `score.json` → `matcher`. One analysis per pair, no retries were neede
 | 16–20 | 0/24 = 0% (0–13.8) |
 | 21+ | 0/19 = 0% (0–16.8) |
 
-The matcher sends all requirements in one call with an 800-token output cap. At 16 or more requirements no analysis
-succeeded. The parser's median is 10 requirements, so a typical real posting sits where about half of the analyses fail.
+The matcher sends all requirements in one call with an 800-token output cap
+(`GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS`). At 16 or more requirements no analysis succeeded. The parser's median is
+10 requirements, which falls in the 6–10 bin where 23 of 40 analyses succeeded.
 
-**What `MATCHER_PROVIDER_FAILED` meant here.** All 417 OpenRouter responses in the worker log were HTTP 200 (`worker_log_counts.json`), and
-these failures took 11.6–23.6 s, so they were not timeouts. A probe showed that when Groq's server-side JSON-schema
+**What `MATCHER_PROVIDER_FAILED` meant here.** All 417 OpenRouter responses in the worker log were HTTP 200
+(`worker_log_counts.json`), so these failures were not timeouts or HTTP errors. Their stored latency ranged from
+2.0 to 42.7 s. A probe (`provider_probes.md`) showed that when Groq's server-side JSON-schema
 check rejects the model's output, OpenRouter returns HTTP 200 with `finish_reason: "error"`, no content, and
 "Upstream error from Groq: Parsing failed". The adapter needs string content, so it reports a provider failure.
 Called directly, Groq returns HTTP 400 `json_validate_failed`, which the adapter also maps to
@@ -133,10 +135,12 @@ not proven one by one.
 The matcher is conservative: it almost never claims a skill the labels call a gap, and it misses most labeled
 positives. The scored subset is biased toward small JDs, because only those succeeded.
 
-**Evidence guarantee.** In the pinned period the database stored 13 positive matches (11 matched, 2 partial). None
+**Positive-evidence field check (n = 13).** In the pinned period the database stored 13 positive matches (11 matched, 2 partial). None
 lacked an experience, a non-blank quote, or `quote_valid = true` (`evidence_guarantee_check.txt`, a SQL check on
-the evaluation database before it was deleted). The adversarial resumes, which include
-prompt-injection text, had 0/15 over-claims (0–20.4%).
+the evaluation database before it was deleted). This checks that the stored
+fields are complete, not that the evidence is semantically right. On the adversarial resumes, which include
+prompt-injection text, 0 of the 15 scored requirements were over-claimed (0–20.4%); that is a small subset of
+successful analyses and does not show robustness in general.
 
 ## Retrieval (offline, product retrievers, stored vectors)
 
@@ -148,7 +152,7 @@ requirements.
 | M1 | 171 | 60.8% | 74.9% | 24 | 43 |
 | M2 | 188 | 52.1% | 70.7% | 35 | 55 |
 
-Lexical never found an experience that hybrid missed. Each resume has 4–8 experiences, but the retrievers return
+Lexical never found an experience that hybrid missed. Each resume has 4–6 experiences, but the retrievers return
 about 2 candidates on average (mean 2.0 hybrid in M1), so recall@5 is not automatic. During the OpenRouter-period
 analyses, 0 of 1,867 requirement retrievals in the worker log fell back to lexical (the product logs a warning
 when it does).
@@ -166,8 +170,9 @@ DOCX import collapses the whole resume into one draft, so a DOCX user must split
 
 ## Scale and reliability (fake providers, separate stack)
 
-Source: `scale_db_metrics.txt`, `scale_driver_summary.json`, `scale_reads_idle.json`. 50 users × 150 jobs on one
-laptop, worker with 2 processes × 4 threads. These numbers measure the system, not the model.
+Source: `scale_db_metrics.txt`, `scale_driver_summary.json`, `scale_reads_idle.json`. 50 users × 150 jobs on the
+author's Windows workstation, worker with 2 processes × 4 threads (`provider_probes.md`, run configuration). These
+numbers measure the system, not the model.
 
 | Metric | Result |
 |---|---|
@@ -187,7 +192,7 @@ failures: the database shows all 7,500 succeeded.
 
 | Labels | Labelers | Agreement | Adjudication |
 |---|---|---|---|
-| Parser (302 JDs, 20,744 candidate lines) | Codex vs Antigravity | selection κ 0.882, category κ 0.984, skill exact 0.875 | 1,526 disputes; final 5,164 requirements |
+| Parser (302 JDs, 20,744 candidate lines) | Codex vs Antigravity | selection κ 0.882, category κ 0.984, skill exact 0.875 | 1,526 adjudicated candidates (selection, category or skill differed); final 5,164 requirements |
 | Matcher M1 (68 pairs, 827 requirements) | Codex vs Claude | 0.860, κ 0.581 | 116 disputes; chose Claude 105, Codex 6, neither 5 |
 | Matcher M2 (80 pairs, 940 requirements) | Codex vs Claude | 0.870, κ 0.674 | 122 disputes, blinded; chose Claude 93, Codex 26, neither 3 |
 
@@ -202,11 +207,12 @@ Source: `score_excluding_reviewed_jds.json`. Parser F1 0.682 (vs 0.684); matcher
 
 ## Not measured
 
-- Money spent on OpenRouter and Gemini: not measured per run (the author's provider dashboards hold it).
+- Money spent on OpenRouter and Gemini: not measured per run (the provider dashboards may hold it).
 - Which OpenRouter upstream served each parse in the mixed period: not recorded.
 - Human-labeled ground truth: not available; an author spot-check is still open.
 - Matcher quality on large JDs: not measurable, because no analysis with 16 or more requirements succeeded.
-- One pair parse was left in `running` after the host slept and was never finished; it is excluded.
+- One parse run was left in `running` (`evidence_guarantee_check.txt`) after the host went to sleep mid-run and was
+  never finished; it is excluded.
 
 ## Files
 
@@ -214,4 +220,4 @@ Source: `score_excluding_reviewed_jds.json`. Parser F1 0.682 (vs 0.684); matcher
 `score.json`, `score_excluding_reviewed_jds.json`, `results_real_run.json` (all parse and analysis rows exported from
 the database), `driver_state.jsonl` (every submitted attempt), `analysis_attempts_before_groq_pin.jsonl`,
 `retrieval_m1.json`, `retrieval_m2.json`, `cv_import_state.jsonl`, `order_*.json`, `worker_log_counts.json`,
-`evidence_guarantee_check.txt`, `scale_db_metrics.txt`, `scale_driver_summary.json`, `scale_reads_idle.json`.
+`evidence_guarantee_check.txt`, `provider_probes.md`, `provider_probe.py.txt`, `scale_db_metrics.txt`, `scale_driver_summary.json`, `scale_reads_idle.json`.
