@@ -230,6 +230,75 @@ async def test_groq_matcher_classifies_http_failure(
 
 
 @pytest.mark.asyncio
+async def test_groq_matcher_treats_provider_schema_rejection_as_invalid_output() -> None:
+    _, _, _, typed_input = matcher_input()
+
+    def handle(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            400,
+            request=request,
+            json={"error": {"code": "json_validate_failed", "message": "schema mismatch"}},
+        )
+
+    with pytest.raises(MatcherOutputValidationError) as captured:
+        await make_matcher(httpx.MockTransport(handle)).match(typed_input)
+
+    assert captured.value.reason is MatcherOutputFailureReason.INVALID_SCHEMA
+    assert captured.value.diagnostic == "provider_rejected_output:code=json_validate_failed"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("finish_reason", ["error", "length"])
+async def test_groq_matcher_treats_aborted_generation_as_invalid_output(
+    finish_reason: str,
+) -> None:
+    _, _, _, typed_input = matcher_input()
+
+    def handle(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            request=request,
+            json={
+                "model": "openai/gpt-oss-20b",
+                "choices": [
+                    {"message": {"content": None}, "finish_reason": finish_reason}
+                ],
+                "usage": {"prompt_tokens": 900, "completion_tokens": 800},
+            },
+        )
+
+    with pytest.raises(MatcherOutputValidationError) as captured:
+        await make_matcher(httpx.MockTransport(handle)).match(typed_input)
+
+    assert captured.value.reason is MatcherOutputFailureReason.INVALID_SCHEMA
+    assert captured.value.diagnostic == (
+        f"provider_rejected_output:finish_reason={finish_reason}"
+    )
+    assert captured.value.input_tokens == 900
+    assert captured.value.output_tokens == 800
+
+
+@pytest.mark.asyncio
+async def test_groq_matcher_treats_unexplained_empty_content_as_request_failure() -> None:
+    _, _, _, typed_input = matcher_input()
+
+    def handle(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            request=request,
+            json={
+                "model": "openai/gpt-oss-20b",
+                "choices": [{"message": {"content": None}, "finish_reason": "stop"}],
+            },
+        )
+
+    with pytest.raises(EvidenceMatcherError) as captured:
+        await make_matcher(httpx.MockTransport(handle)).match(typed_input)
+
+    assert captured.value.reason is EvidenceMatcherFailureReason.REQUEST_FAILED
+
+
+@pytest.mark.asyncio
 async def test_groq_matcher_classifies_timeout() -> None:
     _, _, _, typed_input = matcher_input()
 

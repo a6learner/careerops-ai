@@ -7,7 +7,7 @@ const RUN_ERROR_MESSAGES: Record<string, string> = {
   MATCHER_OUTPUT_INVALID: "The matcher returned output that failed validation, so no evidence claims were saved.",
   MATCHER_OUTPUT_INVALID_JSON: "The matcher returned malformed output, so no evidence claims were saved.",
   MATCHER_OUTPUT_INVALID_SCHEMA: "The matcher output did not match the expected schema, so no evidence claims were saved.",
-  MATCHER_OUTPUT_INVALID_CONTRACT: "The matcher cited evidence that could not be verified, so no evidence claims were saved.",
+  MATCHER_OUTPUT_INVALID_CONTRACT: "The matcher did not return one valid answer for every requirement, so no evidence claims were saved.",
   MATCHER_PROVIDER_DISABLED: "The evidence matcher is disabled in this environment.",
   MATCHER_PROVIDER_MISCONFIGURED: "The evidence matcher is not configured correctly. Check the worker settings.",
   MATCHER_PROVIDER_TIMEOUT: "The matching provider timed out. Try again in a moment.",

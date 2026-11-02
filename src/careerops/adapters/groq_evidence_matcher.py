@@ -22,11 +22,18 @@ from careerops.domain.errors import (
     EvidenceMatcherError,
     EvidenceMatcherFailureReason,
     MatcherOutputFailureReason,
+    MatcherOutputValidationError,
 )
 from careerops.domain.evidence_matching import (
     MATCHER_SCHEMA_VERSION,
     EvidenceMatcherInput,
 )
+
+GROQ_SCHEMA_REJECTION_CODE = "json_validate_failed"
+# "length" means the output budget ran out mid-answer. "error" is how OpenRouter reports an
+# upstream that aborted generation after HTTP 200; large_scale_v1 probes saw it for Groq
+# schema rejections.
+REJECTED_OUTPUT_FINISH_REASONS = frozenset({"length", "error"})
 
 
 class _EvidenceReferencePayload(BaseModel):
@@ -55,11 +62,12 @@ class _MatcherPayload(BaseModel):
 
 
 class _MessagePayload(BaseModel):
-    content: str
+    content: str | None = None
 
 
 class _ChoicePayload(BaseModel):
     message: _MessagePayload
+    finish_reason: str | None = None
 
 
 class _UsagePayload(BaseModel):
@@ -142,16 +150,31 @@ class GroqEvidenceMatcher:
         try:
             response = await self._chat.post_chat_completion(payload)
         except GroqRequestError as exc:
+            if exc.provider_error_code == GROQ_SCHEMA_REJECTION_CODE:
+                raise MatcherOutputValidationError(
+                    MatcherOutputFailureReason.INVALID_SCHEMA,
+                    diagnostic=f"provider_rejected_output:code={GROQ_SCHEMA_REJECTION_CODE}",
+                ) from exc
             raise EvidenceMatcherError(matcher_failure_reason(exc.reason)) from exc
         try:
             completion = _ChatCompletionPayload.model_validate(response.json())
         except (ValueError, ValidationError) as exc:
             raise EvidenceMatcherError(EvidenceMatcherFailureReason.REQUEST_FAILED) from exc
 
-        content = completion.choices[0].message.content
+        choice = completion.choices[0]
         usage = completion.usage
         input_tokens = usage.prompt_tokens if usage is not None else None
         output_tokens = usage.completion_tokens if usage is not None else None
+        if choice.finish_reason in REJECTED_OUTPUT_FINISH_REASONS:
+            raise MatcherOutputValidationError(
+                MatcherOutputFailureReason.INVALID_SCHEMA,
+                diagnostic=f"provider_rejected_output:finish_reason={choice.finish_reason}",
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+            )
+        content = choice.message.content
+        if content is None:
+            raise EvidenceMatcherError(EvidenceMatcherFailureReason.REQUEST_FAILED)
         try:
             raw_payload = json.loads(content)
         except json.JSONDecodeError as exc:

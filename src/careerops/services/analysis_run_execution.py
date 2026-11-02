@@ -333,7 +333,12 @@ def validate_matcher_output(
         )
         or any(not _proposal_shape_is_valid(match) for match in output.matches)
     ):
-        raise MatcherOutputValidationError(MatcherOutputFailureReason.INVALID_CONTRACT)
+        raise MatcherOutputValidationError(
+            MatcherOutputFailureReason.INVALID_CONTRACT,
+            diagnostic=contract_diagnostic(expected_ids, proposed_ids, output),
+            input_tokens=output.input_tokens,
+            output_tokens=output.output_tokens,
+        )
 
     proposals = {match.requirement_id: match for match in output.matches}
     experiences = {experience.id: experience for experience in analysis_input.experiences}
@@ -347,6 +352,21 @@ def validate_matcher_output(
             },
         )
         for candidate_set in candidate_sets
+    )
+
+
+def contract_diagnostic(
+    expected_ids: tuple[UUID, ...],
+    proposed_ids: tuple[UUID, ...],
+    output: EvidenceMatcherOutput,
+) -> str:
+    expected = set(expected_ids)
+    proposed = set(proposed_ids)
+    invalid_shapes = sum(not _proposal_shape_is_valid(match) for match in output.matches)
+    return (
+        f"expected={len(expected_ids)};returned={len(proposed_ids)};"
+        f"missing={len(expected - proposed)};unknown={len(proposed - expected)};"
+        f"duplicates={len(proposed_ids) - len(proposed)};invalid_shape={invalid_shapes}"
     )
 
 

@@ -259,6 +259,9 @@ resumes, 150 analysed pairs; model-made labels; development set, not a holdout;
   parsed job has 11 requirements. This confirms the contract failures seen above.
 - **`MATCHER_PROVIDER_FAILED` mostly hides contract failures.** Groq's server-side
   schema check rejected the model output; the adapter reports that as a provider error.
+  Fixed afterwards in ADR-048: these now fail as `MATCHER_OUTPUT_INVALID_SCHEMA`, and
+  contract failures keep tokens and a coverage diagnostic. The large_scale_v1 numbers
+  above were measured before that change.
 - **Under-claiming confirmed.** On the 59 successful analyses: over-claim 1.8%,
   under-claim 13.1%, labeled partial matches found 0/33. 0 stored positives lacked a
   validated quote.

@@ -103,3 +103,4 @@ What future condition would justify reopening this decision?
 - `ADR-045-latest-run-and-dashboard-focus-reads.md`: owner-scoped latest Parse/Analysis Run lookup and an uncached dashboard focus read, with no migration.
 - `ADR-046-parser-contract-hardening.md`: parse-v3 merges repeated candidate IDs, keeps decimals and abbreviations inside one candidate, and records failure reasons and tokens; amends ADR-012's duplicate-ID rule.
 - `ADR-047-large-scale-development-evaluation.md`: 302-JD / 50-resume development set with model labels from two labelers plus adjudication, real-pipeline runs through the API and worker, and mid-run provider change to OpenRouter pinned to Groq; not a holdout.
+- `ADR-048-matcher-failure-diagnostics.md`: provider-side schema rejections and aborted generations become `MATCHER_OUTPUT_INVALID_SCHEMA`; contract failures keep token counts and log a coverage diagnostic; no new codes or migration.
