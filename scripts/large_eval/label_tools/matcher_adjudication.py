@@ -1,13 +1,18 @@
 """Matcher-label adjudication packets and final merge (round-aware).
 
-build: python -I matcher_adjudication.py build <S> <round> <labeler_a_dir> <labeler_b_dir> <n>
+build: python -I matcher_adjudication.py build <S> <round> <dir_a> <dir_b> <n> [blind]
+direction: python -I matcher_adjudication.py direction <S> <round> <labeler_a_dir> <labeler_b_dir>
 merge: python -I matcher_adjudication.py merge <S> <round> <labeler_a_dir> <labeler_b_dir>
 Agreement on verdict -> final = that verdict; positive evidence = union of both labelers'
 grounded evidence; gap reason from labeler A. Disagreement -> adjudicator decision
 (verdict, evidence, gap_reason_code).
+
+blind (used from round m2): each dispute's two options are put in a hash-determined order and shown
+without rationale, so the adjudicator cannot tell which labeler wrote which option.
 """
 
 import glob
+import hashlib
 import json
 import sys
 from typing import Any
@@ -38,12 +43,23 @@ def packets(root: str, rnd: str) -> dict[str, dict[str, Any]]:
     return out
 
 
-def strip(label: dict[str, Any]) -> dict[str, Any]:
-    return {k: label.get(k) for k in DISPUTE_FIELDS}
+def strip(label: dict[str, Any], blind: bool = False) -> dict[str, Any]:
+    fields = [k for k in DISPUTE_FIELDS if not (blind and k == "rationale")]
+    return {k: label.get(k) for k in fields}
+
+
+def swapped(pid: str, rid: str) -> bool:
+    return hashlib.sha256(f"{pid}:{rid}".encode()).digest()[0] % 2 == 1
 
 
 def build(
-    root: str, rnd: str, a: Labels, b: Labels, pk: dict[str, dict[str, Any]], n: int
+    root: str,
+    rnd: str,
+    a: Labels,
+    b: Labels,
+    pk: dict[str, dict[str, Any]],
+    n: int,
+    blind: bool = False,
 ) -> None:
     items = []
     for pid, pair in sorted(pk.items()):
@@ -51,7 +67,10 @@ def build(
         for req in pair["requirements"]:
             la, lb = a[pid][req["requirement_id"]], b[pid][req["requirement_id"]]
             if la["verdict"] != lb["verdict"]:
-                dis.append({"requirement": req, "option_a": strip(la), "option_b": strip(lb)})
+                first, second = strip(la, blind), strip(lb, blind)
+                if blind and swapped(pid, req["requirement_id"]):
+                    first, second = second, first
+                dis.append({"requirement": req, "option_a": first, "option_b": second})
         if dis:
             items.append(
                 {
@@ -134,11 +153,31 @@ def merge(root: str, rnd: str, a: Labels, b: Labels, pk: dict[str, dict[str, Any
     print(stats)
 
 
+def direction(root: str, rnd: str, a: Labels, b: Labels) -> None:
+    pattern = f"{root}/labels/adjudication/matcher_adj_{rnd}_*_decisions.json"
+    counts = {"labeler_a": 0, "labeler_b": 0, "neither": 0}
+    for path in sorted(glob.glob(pattern)):
+        for d in load_json(path):
+            va = a[d["pair_id"]][d["requirement_id"]]["verdict"]
+            vb = b[d["pair_id"]][d["requirement_id"]]["verdict"]
+            key = "neither"
+            if d["verdict"] == va:
+                key = "labeler_a"
+            elif d["verdict"] == vb:
+                key = "labeler_b"
+            counts[key] += 1
+    with open(f"{root}/labels/matcher_final/ADJUDICATION_DIRECTION_{rnd}.json", "w") as f:
+        json.dump(counts, f, indent=1)
+    print(counts)
+
+
 def main() -> None:
     cmd, root, rnd, dir_a, dir_b = sys.argv[1:6]
     a, b, pk = load(root, rnd, dir_a), load(root, rnd, dir_b), packets(root, rnd)
     if cmd == "build":
-        build(root, rnd, a, b, pk, int(sys.argv[6]))
+        build(root, rnd, a, b, pk, int(sys.argv[6]), blind=sys.argv[7:8] == ["blind"])
+    elif cmd == "direction":
+        direction(root, rnd, a, b)
     else:
         merge(root, rnd, a, b, pk)
 

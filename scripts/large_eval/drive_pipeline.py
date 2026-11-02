@@ -39,6 +39,8 @@ RUN_TIMEOUT_SECONDS = 600.0
 RETRYABLE_CODES = {"MATCHER_PROVIDER_RATE_LIMITED", "ANALYSIS_RATE_LIMITED", "PARSER_FAILED"}
 MAX_PROVIDER_RETRIES = 3
 QUOTA_STREAK = 3
+# A key that keeps failing after this many attempts is deterministic (e.g. HTTP 400/413), not quota.
+MAX_TOTAL_ATTEMPTS = 20
 TERMINAL = {"succeeded", "failed"}
 
 
@@ -294,7 +296,9 @@ def run_provider_stage(
         result_key = f"{kind}:{job_key.removeprefix('job:')}"
         previous = state.get(result_key)
         if previous is not None and not (
-            retry_failed and previous["final"].get("error_code") in RETRYABLE_CODES
+            retry_failed
+            and previous["final"].get("error_code") in RETRYABLE_CODES
+            and len(previous["attempts"]) < MAX_TOTAL_ATTEMPTS
         ):
             continue
         job = state.get(job_key)
