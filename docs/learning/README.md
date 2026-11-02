@@ -137,3 +137,4 @@ Knowledge Check questions should not immediately turn into long answers. They ar
 - [0053 Parser Contract Hardening (parse-v3)](0053-parser-contract-hardening.md)
 - [0054 Large-Scale Development Evaluation](0054-large-scale-evaluation.md)
 - [0055 Evidence Matcher Failure Diagnostics](0055-matcher-failure-diagnostics.md)
+- [0056 Batched Evidence Matching](0056-batched-evidence-matching.md)

@@ -230,9 +230,10 @@ The key may be loaded from the ignored `.env`, but putting the live gate there
 does not authorize execution because the resolver reads it directly from the
 worker process environment. Stop other unauthorized Analysis workers before
 processing Groq-bound jobs; otherwise they will correctly claim and fail those
-jobs as disabled. Each real matcher execution makes one HTTP attempt. A timeout,
-429, 5xx, invalid JSON, invalid schema, or invalid contract becomes a durable
-failure; there is no fake fallback or claimed process-wide TPM smoothing.
+jobs as disabled. Each real matcher execution sends its requirements in batches of
+at most six (ADR-049) and makes one HTTP attempt per batch. A timeout,
+429, 5xx, invalid JSON, invalid schema, or invalid contract in any batch becomes a durable
+failure of the whole run; there is no fake fallback or claimed process-wide TPM smoothing.
 
 New Analysis Runs are admitted through a per-user Redis sliding window before a
 durable row or queue message is created. The default allows five new runs per
