@@ -77,6 +77,16 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-03-local-hybrid-retrieval-test-record.md` records the offline and local
   PostgreSQL verification for production-path hybrid retrieval integration.
 
+## Large-Scale Development Evaluation
+
+- `2026-11-01-large-scale-eval-v1.md` records the 302-JD / 50-resume / 148-pair
+  real-pipeline run (ADR-047): parser quality against model-made labels, matcher
+  success by requirement count, over- and under-claim, retrieval recall, CV import
+  segmentation, fake-provider scale numbers and provider periods.
+- `2026-11-01-large-scale-eval-v1/` holds the scorer outputs, exported database
+  rows, driver checkpoint, retrieval reports, log counts and the evidence-guarantee
+  SQL check.
+
 ## Current Matcher Evidence
 
 - `2026-10-04-fake-evidence-matcher-development.md` explains the author-approved

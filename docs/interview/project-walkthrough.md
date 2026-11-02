@@ -250,6 +250,26 @@ test record):
   `MATCHER_PROVIDER_RATE_LIMITED`.
 - **CV import made one draft from a whole one-page CV.** The PDF had no blank lines.
 
+From the 2026-11-01 large-scale development evaluation (302 real JDs, 50 synthetic
+resumes, 148 analysed pairs; model-made labels; development set, not a holdout;
+`docs/metrics/2026-11-01-large-scale-eval-v1.md`):
+
+- **The one-call matcher breaks as requirements grow.** Analyses succeeded 29/31 at
+  1–5 requirements, 23/40 at 6–10, 7/34 at 11–15 and 0/43 at 16 or more. The median
+  parsed job has 10 requirements. This confirms the contract failures seen above.
+- **`MATCHER_PROVIDER_FAILED` mostly hides contract failures.** Groq's server-side
+  schema check rejected the model output; the adapter reports that as a provider error.
+- **Under-claiming confirmed.** On the 59 successful analyses: over-claim 1.8%,
+  under-claim 13.1%, labeled partial matches found 0/33. 0 stored positives lacked a
+  validated quote.
+- **Parser recall is the parser's weak point.** Precision 84.0%, recall 57.7%,
+  responsibility-line recall 44.0%. Same-host repeat parses matched exactly 8/19 times.
+- **DOCX CV import makes one draft per CV** (0/214 experiences split); Markdown with
+  blank lines splits 214/214.
+- **Free-tier limits end runs.** Groq's 200k tokens/day and Gemini's 1,000 embeds/day
+  stopped the run until the author moved to paid routes. A failed embedding run is
+  permanent for that experience version.
+
 Structural gaps:
 
 - Project checkpoints never feed Experiences or matching.

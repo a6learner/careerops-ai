@@ -1,0 +1,655 @@
+{
+ "dataset": "evals\\large_scale_v1",
+ "analysis_runs_dropped_not_in_state": 18,
+ "parser": {
+  "jobs_with_parse": 302,
+  "first_attempt_success": {
+   "k": 271,
+   "n": 302,
+   "rate": 0.8974,
+   "ci95": [
+    0.858,
+    0.9267
+   ]
+  },
+  "first_attempt_success_by_provider_period": {
+   "groq_free_tier": {
+    "k": 67,
+    "n": 91,
+    "rate": 0.7363,
+    "ci95": [
+     0.6375,
+     0.8159
+    ]
+   },
+   "openrouter_mixed_upstreams": {
+    "k": 204,
+    "n": 211,
+    "rate": 0.9668,
+    "ci95": [
+     0.9331,
+     0.9838
+    ]
+   }
+  },
+  "final_success_after_rate_limit_retries": {
+   "k": 293,
+   "n": 302,
+   "rate": 0.9702,
+   "ci95": [
+    0.9443,
+    0.9842
+   ]
+  },
+  "failed_run_error_codes": {
+   "PARSER_FAILED": 133,
+   "PARSER_OUTPUT_INVALID": 8
+  },
+  "requirements_per_successful_parse": {
+   "n": 293,
+   "p50": 10.0,
+   "p95": 26.0,
+   "min": 1.0,
+   "max": 46.0,
+   "mean": 11.8
+  },
+  "latency_ms_successful": {
+   "n": 293,
+   "p50": 3586.0,
+   "p95": 11940.0,
+   "min": 740.0,
+   "max": 30225.0,
+   "mean": 4545.5
+  },
+  "input_tokens_per_run": {
+   "n": 294,
+   "p50": 2031.0,
+   "p95": 4250.0,
+   "min": 445.0,
+   "max": 10585.0,
+   "mean": 2253.4
+  },
+  "output_tokens_per_run": {
+   "n": 294,
+   "p50": 436.0,
+   "p95": 956.0,
+   "min": 30.0,
+   "max": 1500.0,
+   "mean": 472.7
+  },
+  "against_labels": {
+   "jds_scored": 293,
+   "labeled_requirements": 4969,
+   "predicted_requirements": 3410,
+   "text_matches": 2865,
+   "precision": {
+    "k": 2865,
+    "n": 3410,
+    "rate": 0.8402,
+    "ci95": [
+     0.8275,
+     0.8521
+    ]
+   },
+   "recall": {
+    "k": 2865,
+    "n": 4969,
+    "rate": 0.5766,
+    "ci95": [
+     0.5628,
+     0.5902
+    ]
+   },
+   "f1": 0.6839,
+   "category_accuracy_on_matches": {
+    "k": 2384,
+    "n": 2865,
+    "rate": 0.8321,
+    "ci95": [
+     0.818,
+     0.8454
+    ]
+   },
+   "skill_exact_accuracy_on_matches": {
+    "k": 1620,
+    "n": 2865,
+    "rate": 0.5654,
+    "ci95": [
+     0.5472,
+     0.5835
+    ]
+   },
+   "recall_by_label_category": {
+    "education": {
+     "k": 234,
+     "n": 309,
+     "rate": 0.7573,
+     "ci95": [
+      0.7065,
+      0.8017
+     ]
+    },
+    "must_have": {
+     "k": 1153,
+     "n": 1903,
+     "rate": 0.6059,
+     "ci95": [
+      0.5837,
+      0.6276
+     ]
+    },
+    "nice_to_have": {
+     "k": 586,
+     "n": 728,
+     "rate": 0.8049,
+     "ci95": [
+      0.7746,
+      0.8321
+     ]
+    },
+    "responsibility": {
+     "k": 892,
+     "n": 2029,
+     "rate": 0.4396,
+     "ci95": [
+      0.4182,
+      0.4613
+     ]
+    }
+   }
+  },
+  "determinism": {
+   "original_vs_first_repeat": {
+    "jds_with_two_successful_parses": 18,
+    "text_set_jaccard": {
+     "n": 18,
+     "p50": 0.5714285714285714,
+     "p95": 1.0,
+     "min": 0.0,
+     "max": 1.0,
+     "mean": 0.6
+    },
+    "abs_requirement_count_difference": {
+     "n": 18,
+     "p50": 2.0,
+     "p95": 18.0,
+     "min": 0.0,
+     "max": 18.0,
+     "mean": 4.6
+    },
+    "identical_text_sets": {
+     "k": 2,
+     "n": 18,
+     "rate": 0.1111,
+     "ci95": [
+      0.031,
+      0.328
+     ]
+    }
+   },
+   "repeat_vs_repeat2_same_host": {
+    "jds_with_two_successful_parses": 19,
+    "text_set_jaccard": {
+     "n": 19,
+     "p50": 0.8387096774193549,
+     "p95": 1.0,
+     "min": 0.024390243902439025,
+     "max": 1.0,
+     "mean": 0.7
+    },
+    "abs_requirement_count_difference": {
+     "n": 19,
+     "p50": 1.0,
+     "p95": 40.0,
+     "min": 0.0,
+     "max": 40.0,
+     "mean": 5.0
+    },
+    "identical_text_sets": {
+     "k": 8,
+     "n": 19,
+     "rate": 0.4211,
+     "ci95": [
+      0.2314,
+      0.6372
+     ]
+    }
+   }
+  }
+ },
+ "matcher": {
+  "pairs_analysed": 148,
+  "first_attempt_status": {
+   "succeeded": 59,
+   "failed": 89
+  },
+  "first_attempt_error_codes": {
+   "MATCHER_OUTPUT_INVALID_CONTRACT": 60,
+   "MATCHER_PROVIDER_FAILED": 28,
+   "MATCHER_OUTPUT_INVALID_SCHEMA": 1
+  },
+  "first_attempt_rate_limited": {
+   "k": 0,
+   "n": 148,
+   "rate": 0.0,
+   "ci95": [
+    0.0,
+    0.0253
+   ]
+  },
+  "success_by_requirement_count_excluding_rate_limits": {
+   "1-5": {
+    "k": 29,
+    "n": 31,
+    "rate": 0.9355,
+    "ci95": [
+     0.7928,
+     0.9821
+    ]
+   },
+   "11-15": {
+    "k": 7,
+    "n": 34,
+    "rate": 0.2059,
+    "ci95": [
+     0.1035,
+     0.368
+    ]
+   },
+   "16-20": {
+    "k": 0,
+    "n": 24,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.138
+    ]
+   },
+   "21+": {
+    "k": 0,
+    "n": 19,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.1682
+    ]
+   },
+   "6-10": {
+    "k": 23,
+    "n": 40,
+    "rate": 0.575,
+    "ci95": [
+     0.4219,
+     0.7149
+    ]
+   }
+  },
+  "validator_downgrades_total": 0,
+  "latency_ms_successful": {
+   "n": 59,
+   "p50": 6619.0,
+   "p95": 14807.0,
+   "min": 1637.0,
+   "max": 19741.0,
+   "mean": 7003.5
+  },
+  "input_tokens_successful": {
+   "n": 59,
+   "p50": 2273.0,
+   "p95": 3543.0,
+   "min": 919.0,
+   "max": 5336.0,
+   "mean": 2258.2
+  },
+  "output_tokens_successful": {
+   "n": 59,
+   "p50": 498.0,
+   "p95": 784.0,
+   "min": 78.0,
+   "max": 796.0,
+   "mean": 445.4
+  },
+  "against_labels": {
+   "requirements_scored": 335,
+   "four_class_confusion_label_to_predicted": {
+    "insufficient_evidence->insufficient_evidence": 2,
+    "insufficient_evidence->missing": 7,
+    "insufficient_evidence->partial": 1,
+    "matched->insufficient_evidence": 3,
+    "matched->matched": 6,
+    "matched->missing": 11,
+    "matched->partial": 1,
+    "missing->insufficient_evidence": 22,
+    "missing->matched": 1,
+    "missing->missing": 248,
+    "partial->insufficient_evidence": 1,
+    "partial->matched": 4,
+    "partial->missing": 28
+   },
+   "coverage_exact": {
+    "k": 285,
+    "n": 335,
+    "rate": 0.8507,
+    "ci95": [
+     0.8086,
+     0.8849
+    ]
+   },
+   "recall_by_coverage_class": {
+    "full": {
+     "k": 6,
+     "n": 21,
+     "rate": 0.2857,
+     "ci95": [
+      0.1381,
+      0.4996
+     ]
+    },
+    "partial": {
+     "k": 0,
+     "n": 33,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.1043
+     ]
+    },
+    "gap": {
+     "k": 279,
+     "n": 281,
+     "rate": 0.9929,
+     "ci95": [
+      0.9744,
+      0.998
+     ]
+    }
+   },
+   "overclaim_rate": {
+    "k": 6,
+    "n": 335,
+    "rate": 0.0179,
+    "ci95": [
+     0.0082,
+     0.0385
+    ]
+   },
+   "underclaim_rate": {
+    "k": 44,
+    "n": 335,
+    "rate": 0.1313,
+    "ci95": [
+     0.0993,
+     0.1717
+    ]
+   },
+   "gap_to_positive_rate": {
+    "k": 2,
+    "n": 281,
+    "rate": 0.0071,
+    "ci95": [
+     0.002,
+     0.0256
+    ]
+   },
+   "positive_citations_pointing_at_labeled_evidence_experience": {
+    "k": 8,
+    "n": 13,
+    "rate": 0.6154,
+    "ci95": [
+     0.3552,
+     0.8229
+    ]
+   },
+   "by_resume_stratum": {
+    "adversarial": {
+     "requirements": 15,
+     "overclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     }
+    },
+    "ai_ml": {
+     "requirements": 59,
+     "overclaim": {
+      "k": 1,
+      "n": 59,
+      "rate": 0.0169,
+      "ci95": [
+       0.003,
+       0.09
+      ]
+     },
+     "underclaim": {
+      "k": 7,
+      "n": 59,
+      "rate": 0.1186,
+      "ci95": [
+       0.0587,
+       0.2252
+      ]
+     }
+    },
+    "backend": {
+     "requirements": 47,
+     "overclaim": {
+      "k": 1,
+      "n": 47,
+      "rate": 0.0213,
+      "ci95": [
+       0.0038,
+       0.1111
+      ]
+     },
+     "underclaim": {
+      "k": 8,
+      "n": 47,
+      "rate": 0.1702,
+      "ci95": [
+       0.0889,
+       0.3014
+      ]
+     }
+    },
+    "data": {
+     "requirements": 35,
+     "overclaim": {
+      "k": 1,
+      "n": 35,
+      "rate": 0.0286,
+      "ci95": [
+       0.0051,
+       0.1453
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 35,
+      "rate": 0.0857,
+      "ci95": [
+       0.0296,
+       0.2238
+      ]
+     }
+    },
+    "fullstack_frontend": {
+     "requirements": 64,
+     "overclaim": {
+      "k": 1,
+      "n": 64,
+      "rate": 0.0156,
+      "ci95": [
+       0.0028,
+       0.0833
+      ]
+     },
+     "underclaim": {
+      "k": 14,
+      "n": 64,
+      "rate": 0.2188,
+      "ci95": [
+       0.135,
+       0.3343
+      ]
+     }
+    },
+    "mobile_other": {
+     "requirements": 19,
+     "overclaim": {
+      "k": 0,
+      "n": 19,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1682
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 19,
+      "rate": 0.1579,
+      "ci95": [
+       0.0552,
+       0.3757
+      ]
+     }
+    },
+    "sparse_novice": {
+     "requirements": 71,
+     "overclaim": {
+      "k": 2,
+      "n": 71,
+      "rate": 0.0282,
+      "ci95": [
+       0.0078,
+       0.097
+      ]
+     },
+     "underclaim": {
+      "k": 6,
+      "n": 71,
+      "rate": 0.0845,
+      "ci95": [
+       0.0393,
+       0.1724
+      ]
+     }
+    },
+    "systems_infra": {
+     "requirements": 25,
+     "overclaim": {
+      "k": 0,
+      "n": 25,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1332
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 25,
+      "rate": 0.12,
+      "ci95": [
+       0.0417,
+       0.2996
+      ]
+     }
+    }
+   }
+  }
+ },
+ "cv_import": {
+  "md": {
+   "imports": 50,
+   "drafts_per_cv": {
+    "n": 50,
+    "p50": 6.0,
+    "p95": 7.0,
+    "min": 6.0,
+    "max": 8.0,
+    "mean": 6.3
+   },
+   "cvs_where_every_experience_became_its_own_draft": {
+    "k": 50,
+    "n": 50,
+    "rate": 1.0,
+    "ci95": [
+     0.9286,
+     1.0
+    ]
+   },
+   "experiences_recovered_as_separate_drafts": {
+    "k": 214,
+    "n": 214,
+    "rate": 1.0,
+    "ci95": [
+     0.9824,
+     1.0
+    ]
+   },
+   "cvs_with_expected_draft_count": {
+    "k": 50,
+    "n": 50,
+    "rate": 1.0,
+    "ci95": [
+     0.9286,
+     1.0
+    ]
+   },
+   "skills_extracted_total": 0
+  },
+  "docx": {
+   "imports": 50,
+   "drafts_per_cv": {
+    "n": 50,
+    "p50": 1.0,
+    "p95": 1.0,
+    "min": 1.0,
+    "max": 1.0,
+    "mean": 1.0
+   },
+   "cvs_where_every_experience_became_its_own_draft": {
+    "k": 0,
+    "n": 50,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0714
+    ]
+   },
+   "experiences_recovered_as_separate_drafts": {
+    "k": 0,
+    "n": 214,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0176
+    ]
+   },
+   "cvs_with_expected_draft_count": {
+    "k": 0,
+    "n": 50,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0714
+    ]
+   },
+   "skills_extracted_total": 0
+  }
+ }
+}

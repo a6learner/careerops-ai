@@ -1,0 +1,14 @@
+-- Evidence guarantee check, Groq-pinned period (analysis_runs.created_at >= 2026-11-02 03:49 UTC), run 2026-11-02T04:39:13Z
+-- verdict | quote_valid | count
+insufficient_evidence|f|28
+matched|t|11
+missing|f|294
+partial|t|2
+-- positive matches lacking experience, non-blank quote or quote_valid=true:
+0
+-- all-time run status counts (parse_runs, analysis_runs):
+analysis|failed|105
+analysis|succeeded|61
+parse|failed|142
+parse|running|1
+parse|succeeded|332

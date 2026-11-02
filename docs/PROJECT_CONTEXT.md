@@ -85,6 +85,14 @@ contract on larger jobs. The next stage (matcher quality and the AI/agent
 direction) is not chosen yet. See `docs/interview/project-walkthrough.md` and
 `docs/metrics/2026-10-31-real-data-walkthrough-test-record.md`.
 
+On 2026-11-01 a large-scale development evaluation (ADR-047, branch
+`claude/large-scale-eval`) measured these problems on 302 real job descriptions,
+50 synthetic resumes and 148 analysed pairs, with model-made labels. It confirmed
+that the one-call matcher fails as requirement counts grow (0/43 at 16 or more),
+that it under-claims but does not over-claim, and that parser recall (57.7%) and
+DOCX CV import are weak. See `docs/metrics/2026-11-01-large-scale-eval-v1.md`.
+The set is for development only; a future holdout must be collected fresh.
+
 ### P1-9: Local Frontend MVP
 
 Status: completed locally. The minimal Next.js demo layer exposes authentication,

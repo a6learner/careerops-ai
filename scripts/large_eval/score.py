@@ -86,8 +86,33 @@ def succeeded_parse(job: dict[str, Any]) -> dict[str, Any] | None:
     return None
 
 
+# Provider periods of the real run (UTC): Groq free tier, then OpenRouter with per-request
+# upstream routing, then OpenRouter pinned to the Groq upstream.
+OPENROUTER_SWITCH = "2026-11-02 02:14:39"
+GROQ_PIN = "2026-11-02 03:49:00"
+
+
+def provider_period(created_at: str) -> str:
+    if created_at < OPENROUTER_SWITCH:
+        return "groq_free_tier"
+    if created_at < GROQ_PIN:
+        return "openrouter_mixed_upstreams"
+    return "openrouter_groq_pinned"
+
+
+def first_attempt_by_period(jobs: dict[str, Any]) -> dict[str, Any]:
+    outcomes: dict[str, list[bool]] = {}
+    for job in jobs.values():
+        if job["parse_runs"]:
+            first = job["parse_runs"][0]
+            period = provider_period(str(first["created_at"]))
+            outcomes.setdefault(period, []).append(first["status"] == "succeeded")
+    return {name: wilson(sum(v), len(v)) for name, v in sorted(outcomes.items())}
+
+
 def score_parser(dataset: Path, results: dict[str, Any], labels_dir: Path | None) -> dict[str, Any]:
-    jobs = results["jobs"]
+    all_jobs = results["jobs"]
+    jobs = {key: job for key, job in all_jobs.items() if not key.startswith("job:repeat")}
     first_ok = runs_total = 0
     errors: Counter[str] = Counter()
     final_ok = 0
@@ -117,6 +142,7 @@ def score_parser(dataset: Path, results: dict[str, Any], labels_dir: Path | None
     report: dict[str, Any] = {
         "jobs_with_parse": runs_total,
         "first_attempt_success": wilson(first_ok, runs_total),
+        "first_attempt_success_by_provider_period": first_attempt_by_period(jobs),
         "final_success_after_rate_limit_retries": wilson(final_ok, runs_total),
         "failed_run_error_codes": dict(errors),
         "requirements_per_successful_parse": percentiles(req_counts),
@@ -126,7 +152,7 @@ def score_parser(dataset: Path, results: dict[str, Any], labels_dir: Path | None
     }
     if labels_dir is not None:
         report["against_labels"] = parser_against_labels(dataset, jobs, labels_dir)
-    report["determinism"] = parser_determinism(jobs)
+    report["determinism"] = parser_determinism(all_jobs)
     return report
 
 
@@ -179,6 +205,17 @@ def parser_against_labels(dataset: Path, jobs: dict[str, Any], labels_dir: Path)
 
 
 def parser_determinism(jobs: dict[str, Any]) -> dict[str, Any]:
+    """Text-set stability of two parses of one JD: original vs repeat, and repeat vs repeat2."""
+    pinned = {key: job for key, job in jobs.items() if key.startswith("job:repeat")}
+    return {
+        "original_vs_first_repeat": text_set_stability(
+            {key: job for key, job in jobs.items() if not key.startswith("job:repeat2")}
+        ),
+        "repeat_vs_repeat2_same_host": text_set_stability(pinned),
+    }
+
+
+def text_set_stability(jobs: dict[str, Any]) -> dict[str, Any]:
     by_jd: dict[str, list[set[str]]] = {}
     for job in jobs.values():
         ok = succeeded_parse(job)
@@ -204,7 +241,9 @@ def score_matcher(
     requirements_file: Path | None,
 ) -> dict[str, Any]:
     jobs = {
-        key: job for key, job in results["jobs"].items() if not key.startswith("job:parser_only")
+        key: job
+        for key, job in results["jobs"].items()
+        if not key.startswith(("job:parser_only", "job:repeat"))
     }
     first_status: Counter[str] = Counter()
     first_errors: Counter[str] = Counter()
@@ -358,6 +397,22 @@ def score_cv_import(dataset: Path, state_path: Path) -> dict[str, Any]:
     return report
 
 
+def keep_state_analysis_runs(results: dict[str, Any], state_path: Path) -> int:
+    state = State.load(state_path)
+    kept = {
+        attempt["id"]
+        for key, record in state.records.items()
+        if key.startswith("analysis:")
+        for attempt in record["attempts"]
+    }
+    dropped = 0
+    for job in results["jobs"].values():
+        runs = job["analysis_runs"]
+        job["analysis_runs"] = [run for run in runs if str(run["id"]) in kept]
+        dropped += len(runs) - len(job["analysis_runs"])
+    return dropped
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=Path, required=True)
@@ -367,6 +422,11 @@ def main() -> None:
     parser.add_argument("--requirements", type=Path)
     parser.add_argument("--cv-import-state", type=Path)
     parser.add_argument("--exclude", type=Path, help="exclusions.json; drops those JDs")
+    parser.add_argument(
+        "--analysis-state",
+        type=Path,
+        help="driver state.jsonl; keep only analysis runs recorded in it (drops archived runs)",
+    )
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     report: dict[str, Any] = {"dataset": str(args.dataset)}
@@ -381,6 +441,10 @@ def main() -> None:
                 key: job for key, job in results["jobs"].items() if job["jd_id"] not in excluded
             }
             report["excluded_jd_ids"] = sorted(excluded)
+        if args.analysis_state:
+            report["analysis_runs_dropped_not_in_state"] = keep_state_analysis_runs(
+                results, args.analysis_state
+            )
         report["parser"] = score_parser(args.dataset, results, args.parser_labels)
         report["matcher"] = score_matcher(
             args.dataset, results, args.matcher_labels, args.requirements

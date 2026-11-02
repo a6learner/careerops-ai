@@ -102,3 +102,4 @@ What future condition would justify reopening this decision?
 - `ADR-044-frontend-visual-system.md`: locally owned Notion-inspired visual system, shared UI primitives, board/gallery/detail page structure; supersedes only the MVP "no design system" exclusion.
 - `ADR-045-latest-run-and-dashboard-focus-reads.md`: owner-scoped latest Parse/Analysis Run lookup and an uncached dashboard focus read, with no migration.
 - `ADR-046-parser-contract-hardening.md`: parse-v3 merges repeated candidate IDs, keeps decimals and abbreviations inside one candidate, and records failure reasons and tokens; amends ADR-012's duplicate-ID rule.
+- `ADR-047-large-scale-development-evaluation.md`: 302-JD / 50-resume development set with model labels from two labelers plus adjudication, real-pipeline runs through the API and worker, and mid-run provider change to OpenRouter pinned to Groq; not a holdout.

@@ -12,10 +12,7 @@ from typing import Any
 import httpx
 
 API = "http://127.0.0.1:8020"
-METHOD = (
-    "sequential, 10 users x 20 calls per endpoint, idle stack, "
-    "7500 jobs + 7500 analyses in DB"
-)
+METHOD = "sequential, 10 users x 20 calls per endpoint, idle stack, 7500 jobs + 7500 analyses in DB"
 
 
 def pct(values: list[float], q: float) -> float:

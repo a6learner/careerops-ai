@@ -533,9 +533,7 @@ class Driver:
             for _ in range(20):
                 await self.timed_read(user, endpoint_name, path, read_params)
 
-    def stage_metrics(
-        self, records: list[dict[str, Any]], wall_seconds: float
-    ) -> dict[str, Any]:
+    def stage_metrics(self, records: list[dict[str, Any]], wall_seconds: float) -> dict[str, Any]:
         statuses = Counter(str(record.get("status")) for record in records)
         error_codes = Counter(str(record.get("error_code") or "none") for record in records)
         terminal_records = [
@@ -583,9 +581,7 @@ class Driver:
         setup_wall = time.monotonic() - setup_started
 
         parse_started = time.monotonic()
-        await asyncio.gather(
-            *(self.safe_call("parse", self.run_parse(job)) for job in jobs)
-        )
+        await asyncio.gather(*(self.safe_call("parse", self.run_parse(job)) for job in jobs))
         parse_wall = time.monotonic() - parse_started
 
         succeeded = [job for job in jobs if job.parse_status == "succeeded" and job.parse_run_id]
@@ -630,9 +626,7 @@ class Driver:
         reads_started = time.monotonic()
         await asyncio.gather(
             *(
-                self.safe_call(
-                    "reads", self.run_reads_for_user(user, jobs_by_user[user.index])
-                )
+                self.safe_call("reads", self.run_reads_for_user(user, jobs_by_user[user.index]))
                 for user in users
             )
         )

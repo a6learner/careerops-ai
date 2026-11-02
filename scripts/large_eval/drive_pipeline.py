@@ -17,6 +17,7 @@ import argparse
 import asyncio
 import json
 import os
+import random
 import sys
 import time
 import uuid
@@ -133,6 +134,48 @@ def ensure_user(client: httpx.Client, state: State, api: str, user_key: str, tag
             response.raise_for_status()
         state.put(f"user:{user_key}", {"email": email})
     return Session(api=api, email=email)
+
+
+REPEAT_COUNT = 20
+REPEAT_SEED = 20261103
+
+
+def create_job(client: httpx.Client, api: str, session: Session, jd: JdRecord) -> str:
+    response = client.post(
+        f"{api}/api/v1/jobs",
+        headers=session.headers(client),
+        json={
+            "company": jd.company,
+            "title": jd.title,
+            "raw_description": jd.raw_description,
+            "source_url": jd.source_url,
+            "location": (jd.location or "").strip() or None,
+        },
+    )
+    response.raise_for_status()
+    return str(response.json()["id"])
+
+
+def stage_repeat_jobs(
+    client: httpx.Client,
+    state: State,
+    api: str,
+    tag: str,
+    jds: dict[str, JdRecord],
+    pairs: dict[str, Any],
+    prefix: str,
+) -> list[str]:
+    """Extra job for 20 seeded parser-only JDs, so each JD is parsed again (determinism)."""
+    session = ensure_user(client, state, api, "parser_only", tag)
+    chosen = random.Random(REPEAT_SEED).sample(sorted(pairs["parser_only_jd_ids"]), REPEAT_COUNT)
+    keys = []
+    for jd_id in chosen:
+        key = f"job:{prefix}:{jd_id}"
+        if not state.get(key):
+            job_id = create_job(client, api, session, jds[jd_id])
+            state.put(key, {"job_id": job_id, "user_key": "parser_only", "jd_id": jd_id})
+        keys.append(key)
+    return keys
 
 
 def stage_setup(
@@ -376,10 +419,13 @@ def main() -> int:
     parser.add_argument("--api", default="http://127.0.0.1:8010")
     parser.add_argument("--tag", default="v1")
     parser.add_argument(
-        "--stage", choices=["setup", "embeddings", "parse", "analysis", "cv_import"], required=True
+        "--stage",
+        choices=["setup", "embeddings", "parse", "analysis", "cv_import", "repeat_jobs"],
+        required=True,
     )
     parser.add_argument("--keys", choices=["pairs", "parser_only", "all"], default="all")
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--repeat-prefix", default="repeat", help="job key prefix for repeat_jobs")
     parser.add_argument("--pace", type=float, default=25.0)
     parser.add_argument("--cooldown", type=float, default=120.0)
     parser.add_argument("--retry-failed", action="store_true")
@@ -392,6 +438,15 @@ def main() -> int:
         if args.stage == "setup":
             stage_setup(client, state, args.api, args.tag, jds, resumes, pairs)
             return 0
+        if args.stage == "repeat_jobs":
+            print(
+                json.dumps(
+                    stage_repeat_jobs(
+                        client, state, args.api, args.tag, jds, pairs, args.repeat_prefix
+                    )
+                )
+            )
+            return 0
         if args.stage == "cv_import":
             stage_cv_import(client, state, args.api, args.tag, args.dataset)
             return 0
@@ -402,6 +457,7 @@ def main() -> int:
             keys = json.loads(args.order.read_text(encoding="utf-8"))
         else:
             keys = [key for key in state.records if key.startswith("job:")]
+            keys = [key for key in keys if not key.startswith("job:repeat")]
             if args.keys == "pairs":
                 keys = [key for key in keys if not key.startswith("job:parser_only:")]
             elif args.keys == "parser_only":
