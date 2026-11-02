@@ -87,7 +87,7 @@
       {
        "id": "fe9874de-c34a-439f-98ae-a1223f4eb404",
        "category": "nice_to_have",
-       "text": "Agent tooling exposure: Coursework, internship, or personal-project experience with LLM APIs, eval frameworks, RAG, or agent frameworks (LangChain, MCP, or similar) — production experience not required, curiosity is.",
+       "text": "Agent tooling exposure: Coursework, internship, or personal-project experience with LLM APIs, eval frameworks, RAG, or agent frameworks (LangChain, MCP, or similar) \u2014 production experience not required, curiosity is.",
        "skill_normalized": "llm api",
        "source_span_start": 2349,
        "source_span_end": 2565
@@ -244,7 +244,7 @@
       {
        "id": "eeb2b1e3-33ca-4cd0-8774-86f89b4bfe37",
        "category": "responsibility",
-       "text": "Design and build core platform services — task schedulers, session and conversation history, client-server protocols, and the APIs that connect our AI engine to every product surface.",
+       "text": "Design and build core platform services \u2014 task schedulers, session and conversation history, client-server protocols, and the APIs that connect our AI engine to every product surface.",
        "skill_normalized": "work across the superhuman product suite",
        "source_span_start": 2514,
        "source_span_end": 2697
@@ -252,7 +252,7 @@
       {
        "id": "fb955caa-2abc-4834-aa7f-f5b9e0c84247",
        "category": "responsibility",
-       "text": "Work across the Superhuman product suite — whether that's Go, Mail, Docs, or Enterprise — depending on where you and the team see the best fit.",
+       "text": "Work across the Superhuman product suite \u2014 whether that's Go, Mail, Docs, or Enterprise \u2014 depending on where you and the team see the best fit.",
        "skill_normalized": "collaborate closely with ml/ai, product, and front-end engineers",
        "source_span_start": 2702,
        "source_span_end": 2845
@@ -308,7 +308,7 @@
       {
        "id": "bd132bbd-af6f-43a4-b199-6d43de3f8ce4",
        "category": "must_have",
-       "text": "Comfort working with AI-powered systems — whether that's building infrastructure for LLM-based features, managing agentic workflows, or integrating with ML pipelines.",
+       "text": "Comfort working with AI-powered systems \u2014 whether that's building infrastructure for LLM-based features, managing agentic workflows, or integrating with ML pipelines.",
        "skill_normalized": "ai-powered systems",
        "source_span_start": 3520,
        "source_span_end": 3686
@@ -573,7 +573,7 @@
       {
        "id": "37a395db-9694-4951-8e23-0421b0299eaa",
        "category": "education",
-       "text": "Must be pursuing a bachelor’s or master’s degree in Computer Science, Computer Engineering, Software Engineering, Mathematics, Physics, or any related field",
+       "text": "Must be pursuing a bachelor\u2019s or master\u2019s degree in Computer Science, Computer Engineering, Software Engineering, Mathematics, Physics, or any related field",
        "skill_normalized": null,
        "source_span_start": 1751,
        "source_span_end": 1907
@@ -581,7 +581,7 @@
       {
        "id": "4f931ad1-8806-49cd-9599-c104c40b472a",
        "category": "education",
-       "text": "Must be graduating from a bachelor’s or master’s degree in 2028",
+       "text": "Must be graduating from a bachelor\u2019s or master\u2019s degree in 2028",
        "skill_normalized": null,
        "source_span_start": 1910,
        "source_span_end": 1973
@@ -889,7 +889,7 @@
       {
        "id": "6fcd5d1c-d997-440d-b113-c474488b1448",
        "category": "must_have",
-       "text": "Knowledge of and interest in the K–12 education technology field",
+       "text": "Knowledge of and interest in the K\u201312 education technology field",
        "skill_normalized": null,
        "source_span_start": 3756,
        "source_span_end": 3820
@@ -913,7 +913,7 @@
       {
        "id": "52048011-dda3-4fee-b779-3ddc16fe40f8",
        "category": "nice_to_have",
-       "text": "Experience with data analysis, statistical modeling, or AI/ML research projects — academic or professional",
+       "text": "Experience with data analysis, statistical modeling, or AI/ML research projects \u2014 academic or professional",
        "skill_normalized": "ai/ml",
        "source_span_start": 3995,
        "source_span_end": 4101
@@ -995,7 +995,7 @@
       {
        "id": "afcf3c66-777e-48a5-8299-9bd3b2966379",
        "category": "responsibility",
-       "text": "Work directly with Chalk’s co-founders to productionize our first iteration",
+       "text": "Work directly with Chalk\u2019s co-founders to productionize our first iteration",
        "skill_normalized": "typescript",
        "source_span_start": 2114,
        "source_span_end": 2189
@@ -1298,7 +1298,7 @@
       {
        "id": "a7f5e940-2424-44ee-a62c-c83bb92430eb",
        "category": "responsibility",
-       "text": "Your work will include everything from writing new features to testing software and you’ll gain a significant understanding of both the product and the business.",
+       "text": "Your work will include everything from writing new features to testing software and you\u2019ll gain a significant understanding of both the product and the business.",
        "skill_normalized": null,
        "source_span_start": 1405,
        "source_span_end": 1566
@@ -1436,7 +1436,7 @@
       {
        "id": "f0e72f89-9e0b-40c6-91bc-edebf5ee3054",
        "category": "education",
-       "text": "Minimum of Bachelor’s degree in Computer Science or prior relevant engineering experiences",
+       "text": "Minimum of Bachelor\u2019s degree in Computer Science or prior relevant engineering experiences",
        "skill_normalized": null,
        "source_span_start": 1657,
        "source_span_end": 1747
@@ -1646,7 +1646,7 @@
       {
        "id": "a25c58c5-6f77-45d1-ae5e-d10a2a054429",
        "category": "must_have",
-       "text": "Practical experience with deep learning: internships, undergrad or masters’ level research projects in an academic lab, Kaggle competitions, or interesting side projects",
+       "text": "Practical experience with deep learning: internships, undergrad or masters\u2019 level research projects in an academic lab, Kaggle competitions, or interesting side projects",
        "skill_normalized": "deep learning",
        "source_span_start": 2173,
        "source_span_end": 2342
@@ -1864,7 +1864,7 @@
       {
        "id": "6ce94558-9058-4e0a-ad35-28e0fa423f9c",
        "category": "responsibility",
-       "text": "Write software that will be used in production, and has meaningful impact to Stripe’s business and users.",
+       "text": "Write software that will be used in production, and has meaningful impact to Stripe\u2019s business and users.",
        "skill_normalized": null,
        "source_span_start": 3048,
        "source_span_end": 3153
@@ -1888,7 +1888,7 @@
       {
        "id": "fd4c8d6e-3d7f-4e35-8660-89bfe42334d3",
        "category": "education",
-       "text": "A strong fundamental understanding of computer science through pursuit of a Bachelor’s or Master’s degree in computer science, math, or a related discipline.",
+       "text": "A strong fundamental understanding of computer science through pursuit of a Bachelor\u2019s or Master\u2019s degree in computer science, math, or a related discipline.",
        "skill_normalized": null,
        "source_span_start": 4180,
        "source_span_end": 4337
@@ -2127,7 +2127,7 @@
       {
        "id": "c8284b04-5dce-4a03-8927-3933497e391d",
        "category": "responsibility",
-       "text": "Have end-to-end ownership of the software you develop, regularly participating in your team’s on-call/support rotation",
+       "text": "Have end-to-end ownership of the software you develop, regularly participating in your team\u2019s on-call/support rotation",
        "skill_normalized": null,
        "source_span_start": 2327,
        "source_span_end": 2445
@@ -2135,7 +2135,7 @@
       {
        "id": "8a2de7fb-2fa8-4be7-a1d1-62888e59c6e8",
        "category": "responsibility",
-       "text": "Be a driver, take the initiative to help the larger team reach desired outcomes even if it’s outside your job description",
+       "text": "Be a driver, take the initiative to help the larger team reach desired outcomes even if it\u2019s outside your job description",
        "skill_normalized": null,
        "source_span_start": 2448,
        "source_span_end": 2569
@@ -2151,7 +2151,7 @@
       {
        "id": "b6ea7060-2510-40ac-a824-587ce8754c23",
        "category": "education",
-       "text": "Bachelor’s degree in Computer Science or a related field, or equivalent practical experience",
+       "text": "Bachelor\u2019s degree in Computer Science or a related field, or equivalent practical experience",
        "skill_normalized": null,
        "source_span_start": 2672,
        "source_span_end": 2764
@@ -2756,7 +2756,7 @@
       {
        "id": "abeecae1-0bc3-43d1-b423-739ada3ec97f",
        "category": "responsibility",
-       "text": "You'll work across the stack—building responsive front-ends, scalable back-ends, and data pipelines that connect systems together.",
+       "text": "You'll work across the stack\u2014building responsive front-ends, scalable back-ends, and data pipelines that connect systems together.",
        "skill_normalized": null,
        "source_span_start": 3439,
        "source_span_end": 3569
@@ -2804,7 +2804,7 @@
       {
        "id": "a288a059-cead-466d-8388-eaefab08d091",
        "category": "must_have",
-       "text": "Comfortable working across the full stack—front-end, back-end, and data layers",
+       "text": "Comfortable working across the full stack\u2014front-end, back-end, and data layers",
        "skill_normalized": null,
        "source_span_start": 4240,
        "source_span_end": 4318
@@ -2828,7 +2828,7 @@
       {
        "id": "f53ddc75-c94d-4a28-8156-c2b92e9faa90",
        "category": "must_have",
-       "text": "Candidates should have completed their degree requirements and be available to begin full-time employment within 30–60 days of applying.",
+       "text": "Candidates should have completed their degree requirements and be available to begin full-time employment within 30\u201360 days of applying.",
        "skill_normalized": null,
        "source_span_start": 4579,
        "source_span_end": 4715
@@ -2926,7 +2926,7 @@
       {
        "id": "50e3ed92-f5b9-417d-ad43-9e82751a18d7",
        "category": "responsibility",
-       "text": "Interns will complete meaningful project work, apply Lean principles, collaborate across cultures, and support the organization’s AI/ML research roadmap.",
+       "text": "Interns will complete meaningful project work, apply Lean principles, collaborate across cultures, and support the organization\u2019s AI/ML research roadmap.",
        "skill_normalized": null,
        "source_span_start": 751,
        "source_span_end": 904
@@ -2982,7 +2982,7 @@
       {
        "id": "7130e234-ad4c-484f-b891-b3df9aaa4174",
        "category": "education",
-       "text": ") preferred, strong candidates who are rising Junior or Senior level Bachelor’s level students in the named fields will be considered",
+       "text": ") preferred, strong candidates who are rising Junior or Senior level Bachelor\u2019s level students in the named fields will be considered",
        "skill_normalized": null,
        "source_span_start": 2999,
        "source_span_end": 3132
@@ -3064,7 +3064,7 @@
       {
        "id": "cf1fa60b-e68e-472d-b1ea-874517c3cbdc",
        "category": "education",
-       "text": "You have a Bachelor's degree in Computer Science, Engineering, or a related field (or equivalent practical experience) with 1–3 years of experience building production software.",
+       "text": "You have a Bachelor's degree in Computer Science, Engineering, or a related field (or equivalent practical experience) with 1\u20133 years of experience building production software.",
        "skill_normalized": null,
        "source_span_start": 2678,
        "source_span_end": 2855
@@ -3240,7 +3240,7 @@
       {
        "id": "c66477f7-f93c-48b5-8b52-ef80a1329f15",
        "category": "responsibility",
-       "text": "Build and operate critical infrastructure across Ramp's compute, storage, messaging, and observability stack — owning the systems that handle real financial transactions at scale.",
+       "text": "Build and operate critical infrastructure across Ramp's compute, storage, messaging, and observability stack \u2014 owning the systems that handle real financial transactions at scale.",
        "skill_normalized": "infrastructure",
        "source_span_start": 3831,
        "source_span_end": 4010
@@ -3248,7 +3248,7 @@
       {
        "id": "663bd14a-cc7c-429f-8297-12ff1304bd91",
        "category": "responsibility",
-       "text": "Drive architectural change — not just flag problems.",
+       "text": "Drive architectural change \u2014 not just flag problems.",
        "skill_normalized": "architecture",
        "source_span_start": 4015,
        "source_span_end": 4067
@@ -3256,7 +3256,7 @@
       {
        "id": "e29cc62e-061d-4d25-8e88-7f5ae1ffa11c",
        "category": "responsibility",
-       "text": "Partner with product teams at the design phase — reviewing architectures, embedding golden paths, and making it easy to build correctly the first time.",
+       "text": "Partner with product teams at the design phase \u2014 reviewing architectures, embedding golden paths, and making it easy to build correctly the first time.",
        "skill_normalized": "collaboration",
        "source_span_start": 4246,
        "source_span_end": 4397
@@ -3264,7 +3264,7 @@
       {
        "id": "61062fb9-f356-4c37-81fb-28ad88456a22",
        "category": "responsibility",
-       "text": "Enable AI-native engineering — as Ramp builds increasingly AI-powered products, PE is the team that makes sure the platform can support them.",
+       "text": "Enable AI-native engineering \u2014 as Ramp builds increasingly AI-powered products, PE is the team that makes sure the platform can support them.",
        "skill_normalized": "ai",
        "source_span_start": 4743,
        "source_span_end": 4884
@@ -3272,7 +3272,7 @@
       {
        "id": "5fb9394c-6c7d-44d8-842b-70d9ac49d7f6",
        "category": "responsibility",
-       "text": "Build developer tooling and self-service infrastructure — so that other teams can answer their own questions (cost, performance, reliability) without involving PE.",
+       "text": "Build developer tooling and self-service infrastructure \u2014 so that other teams can answer their own questions (cost, performance, reliability) without involving PE.",
        "skill_normalized": "tooling",
        "source_span_start": 5112,
        "source_span_end": 5275
@@ -3280,7 +3280,7 @@
       {
        "id": "67eff2cb-bb49-4703-bfe4-0c8b8e206de0",
        "category": "responsibility",
-       "text": "Participate in on-call rotation — and more importantly, use every incident as a signal to eliminate the root cause, not just resolve the symptom.",
+       "text": "Participate in on-call rotation \u2014 and more importantly, use every incident as a signal to eliminate the root cause, not just resolve the symptom.",
        "skill_normalized": "oncall",
        "source_span_start": 5280,
        "source_span_end": 5425
@@ -3288,7 +3288,7 @@
       {
        "id": "8b99b826-583f-4051-8396-d7f99042fc59",
        "category": "responsibility",
-       "text": "Lead across the company — PE doesn't just review designs or show up when called.",
+       "text": "Lead across the company \u2014 PE doesn't just review designs or show up when called.",
        "skill_normalized": "leadership",
        "source_span_start": 5430,
        "source_span_end": 5510
@@ -3344,7 +3344,7 @@
       {
        "id": "a32859b2-8667-4439-88d5-76da41c4cd15",
        "category": "must_have",
-       "text": "Comfortable using AI tooling and coding agents as part of your everyday engineering workflow — we expect our engineers to leverage these tools to move faster and think bigger",
+       "text": "Comfortable using AI tooling and coding agents as part of your everyday engineering workflow \u2014 we expect our engineers to leverage these tools to move faster and think bigger",
        "skill_normalized": "ai",
        "source_span_start": 7555,
        "source_span_end": 7729
@@ -3594,7 +3594,7 @@
       {
        "id": "de356f5b-22bf-4a44-89d0-c88e0da72a71",
        "category": "education",
-       "text": "Minimum education: Bachelor’s degree or an equivalent combination of education, training, and/or experience",
+       "text": "Minimum education: Bachelor\u2019s degree or an equivalent combination of education, training, and/or experience",
        "skill_normalized": "bachelor's degree",
        "source_span_start": 4382,
        "source_span_end": 4489
@@ -4411,7 +4411,7 @@
       {
        "id": "50dd9573-ac0f-4048-98bc-a0eb37bd22a6",
        "category": "responsibility",
-       "text": "Build, test, and document data pipelines that bring product or business data into Figma’s data warehouse",
+       "text": "Build, test, and document data pipelines that bring product or business data into Figma\u2019s data warehouse",
        "skill_normalized": null,
        "source_span_start": 914,
        "source_span_end": 1018
@@ -4451,7 +4451,7 @@
       {
        "id": "c7a230b6-2bf2-4f80-aa4d-4b9f26a2a75c",
        "category": "responsibility",
-       "text": "With support from a manager and mentor, you’ll own a scoped project from problem definition through implementation, testing, documentation, and sharing the results.",
+       "text": "With support from a manager and mentor, you\u2019ll own a scoped project from problem definition through implementation, testing, documentation, and sharing the results.",
        "skill_normalized": null,
        "source_span_start": 1349,
        "source_span_end": 1513
@@ -4536,8 +4536,8 @@
   },
   "job:r09-jd-06627db35f": {
    "key": "job:r09-jd-06627db35f",
-   "at": "2026-11-01T08:19:24Z",
-   "job_id": "3451feb6-8792-418b-a473-1bcf95371846",
+   "at": "2026-11-02T04:53:20Z",
+   "job_id": "e1094886-cb6c-42e3-88a6-5ce80877dbdc",
    "user_key": "r09",
    "jd_id": "jd-06627db35f",
    "parse_runs": [
@@ -4554,9 +4554,242 @@
      "created_at": "2026-11-01 08:33:15.349274+00:00",
      "finished_at": null,
      "requirements": []
+    },
+    {
+     "id": "11e2133a-4ec6-461c-b8fb-39b51add2a41",
+     "status": "succeeded",
+     "error_code": null,
+     "latency_ms": 2103,
+     "input_tokens": 1806,
+     "output_tokens": 964,
+     "model_name": "openai/gpt-oss-20b",
+     "prompt_version": "parse-v3",
+     "attempt": 1,
+     "created_at": "2026-11-02 04:55:40.738230+00:00",
+     "finished_at": "2026-11-02 04:55:43.138279+00:00",
+     "requirements": [
+      {
+       "id": "33b788d2-5c50-4fff-8d7c-117ceab13c2e",
+       "category": "responsibility",
+       "text": "Rather than focusing solely on model training, you will also be responsible for developing practical, end-to-end ML solutions.",
+       "skill_normalized": null,
+       "source_span_start": 431,
+       "source_span_end": 557
+      },
+      {
+       "id": "18198133-c514-470c-a393-6cb939c322be",
+       "category": "responsibility",
+       "text": "This includes but is not limited to generating and refining features, testing hypotheses, averaging signals, and translating research ideas into production-grade systems, all while collaborating cross-functionally to turn customer needs into measurable product improvements.",
+       "skill_normalized": null,
+       "source_span_start": 558,
+       "source_span_end": 832
+      },
+      {
+       "id": "0f32f31a-4448-474d-ba79-e9ce51416aeb",
+       "category": "responsibility",
+       "text": "What you will do",
+       "skill_normalized": null,
+       "source_span_start": 1108,
+       "source_span_end": 1124
+      },
+      {
+       "id": "3ac46d13-6cdc-47d9-be65-0d339e7cbbab",
+       "category": "responsibility",
+       "text": "Partner with Product Manager, Tech Lead and engineering stakeholders to align technical deliverables to roadmap milestones and ensure successful GA launches across supported environments.",
+       "skill_normalized": null,
+       "source_span_start": 1128,
+       "source_span_end": 1315
+      },
+      {
+       "id": "c492f73e-0f42-48e6-89be-44fc602a927f",
+       "category": "responsibility",
+       "text": "Own the full ML lifecycle for Misdirected Email, including data wrangling, feature engineering, model training and evaluation, deployment, and monitoring.",
+       "skill_normalized": null,
+       "source_span_start": 1318,
+       "source_span_end": 1472
+      },
+      {
+       "id": "eed14a65-240b-4d88-9235-4bda25dbcd3a",
+       "category": "responsibility",
+       "text": "Deliver iterative improvements with measurable reliability and customer impact.",
+       "skill_normalized": null,
+       "source_span_start": 1473,
+       "source_span_end": 1552
+      },
+      {
+       "id": "6a53b7f7-770a-41de-b10b-bdc3583ecd54",
+       "category": "responsibility",
+       "text": "Run rigorous experiments and evaluations (offline metrics, online A/B testing, post-launch monitoring), set thresholds, and conduct targeted error analysis to prevent regressions.",
+       "skill_normalized": null,
+       "source_span_start": 1555,
+       "source_span_end": 1734
+      },
+      {
+       "id": "a2d836d7-757f-420f-9cfb-9505cca39fa0",
+       "category": "responsibility",
+       "text": "Communicate effectively across time zones, maintain high-quality technical documentation, and contribute to shared team knowledge.",
+       "skill_normalized": null,
+       "source_span_start": 1737,
+       "source_span_end": 1867
+      },
+      {
+       "id": "f85c7722-479d-4c37-835f-d3d746bd9958",
+       "category": "responsibility",
+       "text": "Participate in shared on-call rotation for owned components, with responsibilities focused on detection efficacy and realtime scoring systems.",
+       "skill_normalized": null,
+       "source_span_start": 1870,
+       "source_span_end": 2012
+      },
+      {
+       "id": "9002442a-d482-4457-9a65-d41330390f6b",
+       "category": "responsibility",
+       "text": "Priorities include resolving efficacy-related alerts, investigating high-visibility false positives, and addressing reported false positives/false negatives from customers or internal teams.",
+       "skill_normalized": null,
+       "source_span_start": 2013,
+       "source_span_end": 2203
+      },
+      {
+       "id": "1fe34439-86ad-4227-a948-799784cbd0e1",
+       "category": "must_have",
+       "text": "Must Haves",
+       "skill_normalized": null,
+       "source_span_start": 2205,
+       "source_span_end": 2215
+      },
+      {
+       "id": "a611fce8-b7ed-413d-8191-947e35163ce3",
+       "category": "education",
+       "text": "BS degree in Computer Science, Machine Learning, Artificial Intelligence, Information Systems, or a related engineering or quantitative field.",
+       "skill_normalized": null,
+       "source_span_start": 2219,
+       "source_span_end": 2361
+      },
+      {
+       "id": "a7ac6dc1-23e9-4189-8d0c-e6f192a45bf8",
+       "category": "must_have",
+       "text": "1+ years building and operating applied ML features in production systems.",
+       "skill_normalized": null,
+       "source_span_start": 2364,
+       "source_span_end": 2438
+      },
+      {
+       "id": "4a81cebb-be42-4f83-a5d1-1acd884643af",
+       "category": "must_have",
+       "text": "Proven experience contributing to end-to-end ML systems, including data wrangling (text and structured), feature engineering, model selection, training, evaluation, and production deployment with monitoring.",
+       "skill_normalized": null,
+       "source_span_start": 2441,
+       "source_span_end": 2648
+      },
+      {
+       "id": "f8954baa-35b8-4084-8256-1e8513539e40",
+       "category": "must_have",
+       "text": "Demonstrated ability to implement and reason about algorithms, develop features, average and combine signals, and apply numerical computing effectively.",
+       "skill_normalized": null,
+       "source_span_start": 2651,
+       "source_span_end": 2803
+      },
+      {
+       "id": "775bb88f-d190-4c8c-91a6-09b97b9c1e5d",
+       "category": "must_have",
+       "text": "Demonstrated ability to interrogate production data, identify behavioral or trend shifts, and launch targeted experiments to improve model efficacy.",
+       "skill_normalized": null,
+       "source_span_start": 2806,
+       "source_span_end": 2954
+      },
+      {
+       "id": "78dddb8f-da96-4ead-b3ee-c473cd9cd899",
+       "category": "must_have",
+       "text": "Understanding of online vs offline pipelines, data tables and labeling workflows to effectively leverage tooling to support safe, scalable model deployments.",
+       "skill_normalized": null,
+       "source_span_start": 2957,
+       "source_span_end": 3114
+      },
+      {
+       "id": "0788599e-06fb-430f-8f21-86d6f66c5684",
+       "category": "must_have",
+       "text": "Experience running offline metrics, online A/B tests, setting thresholds, and monitoring drift and performance, with guardrails and rollback strategies to ensure reliable iteration.",
+       "skill_normalized": null,
+       "source_span_start": 3117,
+       "source_span_end": 3298
+      },
+      {
+       "id": "7d220d7f-e560-470b-bade-562028f4e4db",
+       "category": "must_have",
+       "text": "Strong written and asynchronous communication skills.",
+       "skill_normalized": null,
+       "source_span_start": 3301,
+       "source_span_end": 3354
+      },
+      {
+       "id": "88d3b074-7e85-4833-94d3-bd91226f1754",
+       "category": "must_have",
+       "text": "Effective working independently and across distributed, cross-functional teams.",
+       "skill_normalized": null,
+       "source_span_start": 3355,
+       "source_span_end": 3434
+      },
+      {
+       "id": "11f821e7-8dc1-45fb-b834-e70be309627e",
+       "category": "nice_to_have",
+       "text": "Experience with our stack: Python, Go, AWS, Spark, Databricks",
+       "skill_normalized": "python",
+       "source_span_start": 3452,
+       "source_span_end": 3513
+      },
+      {
+       "id": "89f776c4-a75b-46c9-815e-98ae0f442d13",
+       "category": "nice_to_have",
+       "text": "Experience in email security/DLP or misdirected email prevention domains and customer-focused ML deployments.",
+       "skill_normalized": null,
+       "source_span_start": 3516,
+       "source_span_end": 3625
+      },
+      {
+       "id": "c435e62a-ee5e-4f71-8df0-c99a01206fcb",
+       "category": "nice_to_have",
+       "text": "Experience writing detectors/rules to complement ML models for safe launches and rapid iteration.",
+       "skill_normalized": null,
+       "source_span_start": 3628,
+       "source_span_end": 3725
+      },
+      {
+       "id": "5b37251f-52f0-4388-a03e-1487aa68229b",
+       "category": "nice_to_have",
+       "text": "Experience with operationalising research into reliable, customer-facing systems, with emphasis on scalability, performance, and detection accuracy in real-world environments.",
+       "skill_normalized": null,
+       "source_span_start": 3728,
+       "source_span_end": 3903
+      },
+      {
+       "id": "6459b3eb-e07b-48a2-ae99-ca7b9cf9c2b2",
+       "category": "nice_to_have",
+       "text": "Prior experience contributing to a small team or project to deliver a feature or component from scratch.",
+       "skill_normalized": null,
+       "source_span_start": 3906,
+       "source_span_end": 4010
+      }
+     ]
     }
    ],
-   "analysis_runs": []
+   "analysis_runs": [
+    {
+     "id": "25ccba24-eac9-43bb-9535-813688eef679",
+     "status": "failed",
+     "error_code": "MATCHER_OUTPUT_INVALID_CONTRACT",
+     "latency_ms": 26357,
+     "input_tokens": null,
+     "output_tokens": null,
+     "model_name": "openai/gpt-oss-20b",
+     "prompt_version": "match-v2:weighted-rrf-v1:gemini-embedding-2:gemini-embedding-2-search-query-v1:gemini-embedding-2-search-document-v1:evidence-matcher-schema-v1:evidence-matcher-prompt-v4:openai/gpt-oss-20b",
+     "attempt": 1,
+     "created_at": "2026-11-02 05:00:03.296314+00:00",
+     "finished_at": "2026-11-02 05:00:30.040388+00:00",
+     "parse_run_id": "11e2133a-4ec6-461c-b8fb-39b51add2a41",
+     "validation_failure_count": 0,
+     "matches": []
+    }
+   ],
+   "rerun_on_rebuilt_stack": true
   },
   "job:r09-jd-550beed089": {
    "key": "job:r09-jd-550beed089",
@@ -4621,7 +4854,7 @@
       {
        "id": "c6ad6184-b8b8-4c1e-987f-ceef7aedc85e",
        "category": "responsibility",
-       "text": "Build product extensions, integrations, and automation using Cognition’s APIs and platform primitives to unblock deployments.",
+       "text": "Build product extensions, integrations, and automation using Cognition\u2019s APIs and platform primitives to unblock deployments.",
        "skill_normalized": "api integration",
        "source_span_start": 3235,
        "source_span_end": 3360
@@ -4701,7 +4934,7 @@
       {
        "id": "342668d2-19ec-4509-bffc-f97620f498c2",
        "category": "nice_to_have",
-       "text": "Have operated cross-functionally—whether at a startup wearing multiple hats or by driving product/commercial thinking at a larger company",
+       "text": "Have operated cross-functionally\u2014whether at a startup wearing multiple hats or by driving product/commercial thinking at a larger company",
        "skill_normalized": "cross-functional operation",
        "source_span_start": 4775,
        "source_span_end": 4912
@@ -4791,7 +5024,7 @@
       {
        "id": "50914cdf-35eb-42bc-8847-060f8be32c22",
        "category": "responsibility",
-       "text": "Optimize link performance: throughput, latency, jitter, roaming, coexistence (BT↔Wi-Fi), and power modes (TWT, WoWLAN)",
+       "text": "Optimize link performance: throughput, latency, jitter, roaming, coexistence (BT\u2194Wi-Fi), and power modes (TWT, WoWLAN)",
        "skill_normalized": "bluetooth",
        "source_span_start": 1420,
        "source_span_end": 1538
@@ -5315,7 +5548,7 @@
       {
        "id": "7c1a7778-bc55-4e3e-ab51-97647a5e0829",
        "category": "nice_to_have",
-       "text": "“Engineer at heart” with a high degree of comfort in designing software systems and producing high-quality code",
+       "text": "\u201cEngineer at heart\u201d with a high degree of comfort in designing software systems and producing high-quality code",
        "skill_normalized": null,
        "source_span_start": 2242,
        "source_span_end": 2353
@@ -5567,7 +5800,7 @@
       {
        "id": "02d7347b-e9c6-4b44-958e-d5596e6097e9",
        "category": "responsibility",
-       "text": "What you’ll do:",
+       "text": "What you\u2019ll do:",
        "skill_normalized": "research",
        "source_span_start": 2433,
        "source_span_end": 2448
@@ -6182,7 +6415,7 @@
       {
        "id": "9b2e859a-3ff4-44e3-9134-f563451e6f00",
        "category": "responsibility",
-       "text": "Be an integral part of your team by helping to identify, implement and validate changes to IMC’s trading algorithm and system",
+       "text": "Be an integral part of your team by helping to identify, implement and validate changes to IMC\u2019s trading algorithm and system",
        "skill_normalized": null,
        "source_span_start": 1168,
        "source_span_end": 1293
@@ -6262,7 +6495,7 @@
       {
        "id": "3d379ad9-df52-47af-af70-122b7b73abd1",
        "category": "must_have",
-       "text": "To be able to take part in IMC’s internship programme, you will need to obtain the required visa and/or permit to enter, stay and work in the Netherlands.",
+       "text": "To be able to take part in IMC\u2019s internship programme, you will need to obtain the required visa and/or permit to enter, stay and work in the Netherlands.",
        "skill_normalized": null,
        "source_span_start": 2427,
        "source_span_end": 2581
@@ -6524,7 +6757,7 @@
       {
        "id": "1ed3e06a-0f6d-4a37-b2ce-e3d6c5875b27",
        "category": "responsibility",
-       "text": "Contribute to the development and evaluation of ML models within a defined area — recommendation, ranking, content understanding, or user behaviour modelling.",
+       "text": "Contribute to the development and evaluation of ML models within a defined area \u2014 recommendation, ranking, content understanding, or user behaviour modelling.",
        "skill_normalized": null,
        "source_span_start": 2733,
        "source_span_end": 2891
@@ -6572,7 +6805,7 @@
       {
        "id": "04be7333-dec3-4c49-83e1-1fa6071f720d",
        "category": "must_have",
-       "text": "Solid foundation in machine learning concepts — supervised learning, model evaluation, optimisation, and the trade-offs between different modelling approaches.",
+       "text": "Solid foundation in machine learning concepts \u2014 supervised learning, model evaluation, optimisation, and the trade-offs between different modelling approaches.",
        "skill_normalized": null,
        "source_span_start": 3535,
        "source_span_end": 3694
@@ -6588,7 +6821,7 @@
       {
        "id": "bc505201-1617-41d4-bbde-2c204381c53b",
        "category": "must_have",
-       "text": "Comfortable working with data — feature engineering, exploratory analysis, and interpreting experimental results.",
+       "text": "Comfortable working with data \u2014 feature engineering, exploratory analysis, and interpreting experimental results.",
        "skill_normalized": null,
        "source_span_start": 3799,
        "source_span_end": 3912
@@ -6612,7 +6845,7 @@
       {
        "id": "b06ca73a-1b8d-4b61-be92-38200aa8ec9b",
        "category": "nice_to_have",
-       "text": "Any project or coursework experience applying ML to real data — Kaggle competitions, research projects, and course capstones all count.",
+       "text": "Any project or coursework experience applying ML to real data \u2014 Kaggle competitions, research projects, and course capstones all count.",
        "skill_normalized": null,
        "source_span_start": 4133,
        "source_span_end": 4268
@@ -6620,7 +6853,7 @@
       {
        "id": "29f6dd94-865a-482f-9417-5f05ab462143",
        "category": "nice_to_have",
-       "text": "Exposure to recommendation systems, ranking, or personalisation concepts — even from an academic or reading background.",
+       "text": "Exposure to recommendation systems, ranking, or personalisation concepts \u2014 even from an academic or reading background.",
        "skill_normalized": null,
        "source_span_start": 4271,
        "source_span_end": 4390
@@ -7100,7 +7333,7 @@
       {
        "id": "5553a543-f44b-43f8-8287-d39fc35a11af",
        "category": "education",
-       "text": "Bachelor’s Degree in Computer Science",
+       "text": "Bachelor\u2019s Degree in Computer Science",
        "skill_normalized": null,
        "source_span_start": 3567,
        "source_span_end": 3604
@@ -7108,7 +7341,7 @@
       {
        "id": "a4de8fc3-2a95-4b4a-8532-bc7c534c9960",
        "category": "responsibility",
-       "text": "We need to support real-time communication and webhooks when they don’t exist (e.g., using web-sockets).",
+       "text": "We need to support real-time communication and webhooks when they don\u2019t exist (e.g., using web-sockets).",
        "skill_normalized": "webhooks",
        "source_span_start": 4681,
        "source_span_end": 4785
@@ -7116,7 +7349,7 @@
       {
        "id": "3d9df5ce-1b0d-4c15-9e3d-704b7d933b7d",
        "category": "responsibility",
-       "text": "Scale & speed: we’re handling millions of API requests per day, and growing daily.",
+       "text": "Scale & speed: we\u2019re handling millions of API requests per day, and growing daily.",
        "skill_normalized": "api",
        "source_span_start": 4790,
        "source_span_end": 4872
@@ -7132,7 +7365,7 @@
       {
        "id": "18849451-256b-4bb5-ab12-266f36d8473c",
        "category": "responsibility",
-       "text": "Operational excellence: we’re creating a reliable API layer on top of many old systems that don’t have APIs.",
+       "text": "Operational excellence: we\u2019re creating a reliable API layer on top of many old systems that don\u2019t have APIs.",
        "skill_normalized": "api",
        "source_span_start": 5173,
        "source_span_end": 5281
@@ -7148,7 +7381,7 @@
       {
        "id": "fe4b88f7-ba60-40b6-88ff-27ffe974f6d9",
        "category": "responsibility",
-       "text": "Mix of back-end and front-end: we’re building front-end apps that dog-food our own APIs (e.g. Sync, Analytics).",
+       "text": "Mix of back-end and front-end: we\u2019re building front-end apps that dog-food our own APIs (e.g. Sync, Analytics).",
        "skill_normalized": "frontend",
        "source_span_start": 5659,
        "source_span_end": 5770
@@ -7833,7 +8066,7 @@
       {
        "id": "7a4793d2-6f53-4fc8-8af3-c6c35d994c45",
        "category": "must_have",
-       "text": "● Hands-on experience in backend development using Python, with exposure to cloud-native environments.",
+       "text": "\u25cf Hands-on experience in backend development using Python, with exposure to cloud-native environments.",
        "skill_normalized": "python",
        "source_span_start": 1015,
        "source_span_end": 1117
@@ -7841,7 +8074,7 @@
       {
        "id": "24ce1781-2ab9-4b4f-97a0-a3fa0bc2c26d",
        "category": "must_have",
-       "text": "● Solid understanding of databases, REST APIs, and data pipelines.",
+       "text": "\u25cf Solid understanding of databases, REST APIs, and data pipelines.",
        "skill_normalized": "rest api",
        "source_span_start": 1119,
        "source_span_end": 1185
@@ -7849,7 +8082,7 @@
       {
        "id": "6dd33c10-4691-41e4-8c58-2d0984760e35",
        "category": "must_have",
-       "text": "● Familiarity with LLM's and AI development tools such as Cursor, GitHub Copilot, or Claude",
+       "text": "\u25cf Familiarity with LLM's and AI development tools such as Cursor, GitHub Copilot, or Claude",
        "skill_normalized": "cursor",
        "source_span_start": 1187,
        "source_span_end": 1278
@@ -7857,7 +8090,7 @@
       {
        "id": "443f4850-0e35-4dde-bd05-659829bf536c",
        "category": "nice_to_have",
-       "text": "● Familiarity with containerization (Docker, Kubernetes).",
+       "text": "\u25cf Familiarity with containerization (Docker, Kubernetes).",
        "skill_normalized": "docker",
        "source_span_start": 1507,
        "source_span_end": 1564
@@ -7865,7 +8098,7 @@
       {
        "id": "c5ec38a3-83d4-4b71-9335-33e7094f0861",
        "category": "nice_to_have",
-       "text": "● Exposure to observability tools (Prometheus, Grafana).",
+       "text": "\u25cf Exposure to observability tools (Prometheus, Grafana).",
        "skill_normalized": "prometheus",
        "source_span_start": 1566,
        "source_span_end": 1622
@@ -7873,7 +8106,7 @@
       {
        "id": "6ea0a50d-f5d7-4d9f-b72a-5dc6f6846a2e",
        "category": "nice_to_have",
-       "text": "● Interest in data platforms, streaming systems, or infrastructure-as-code.",
+       "text": "\u25cf Interest in data platforms, streaming systems, or infrastructure-as-code.",
        "skill_normalized": "data platform",
        "source_span_start": 1624,
        "source_span_end": 1699
@@ -7881,7 +8114,7 @@
       {
        "id": "af5f386b-c19a-4387-9ed4-a85c91036789",
        "category": "responsibility",
-       "text": "● Leverage AI-powered Development – Use Cursor, Copilot, and other AI tools to",
+       "text": "\u25cf Leverage AI-powered Development \u2013 Use Cursor, Copilot, and other AI tools to",
        "skill_normalized": "cursor",
        "source_span_start": 1775,
        "source_span_end": 1853
@@ -9472,7 +9705,7 @@
       {
        "id": "d4fad859-8721-4ea2-96d5-cd48cb6e3a57",
        "category": "nice_to_have",
-       "text": "Hands-on experience with LLMs, evaluations, or agentic systems — whether from internships, research, or personal projects",
+       "text": "Hands-on experience with LLMs, evaluations, or agentic systems \u2014 whether from internships, research, or personal projects",
        "skill_normalized": "llms",
        "source_span_start": 3036,
        "source_span_end": 3157
@@ -9822,7 +10055,7 @@
       {
        "id": "9b0a9e1f-07df-46b6-b0d9-527b65d6a6ce",
        "category": "responsibility",
-       "text": "You will excel in this role if you’re an experienced engineer with deep front-end expertise who can collaborate effectively across multiple teams and functions to deliver results.",
+       "text": "You will excel in this role if you\u2019re an experienced engineer with deep front-end expertise who can collaborate effectively across multiple teams and functions to deliver results.",
        "skill_normalized": null,
        "source_span_start": 995,
        "source_span_end": 1174
@@ -9870,7 +10103,7 @@
       {
        "id": "f3e04742-48ca-4007-aad4-53a9e284b779",
        "category": "responsibility",
-       "text": "Work directly with Chalk’s co-founders to productionize our first iteration",
+       "text": "Work directly with Chalk\u2019s co-founders to productionize our first iteration",
        "skill_normalized": null,
        "source_span_start": 2065,
        "source_span_end": 2140
@@ -9902,7 +10135,7 @@
       {
        "id": "334f605c-575d-49be-add9-6504c25b8896",
        "category": "responsibility",
-       "text": "Iterate rapidly to improve Chalk’s platform in response to customer needs",
+       "text": "Iterate rapidly to improve Chalk\u2019s platform in response to customer needs",
        "skill_normalized": null,
        "source_span_start": 2382,
        "source_span_end": 2455
@@ -10056,7 +10289,7 @@
       {
        "id": "168d1b28-a878-4b8b-bf2f-eac4f7300645",
        "category": "education",
-       "text": "Expérience en ingénierie, de préférence dans des domaines tels que l’informatique, les mathématiques, le Software Engineering, la physique et la science des données.",
+       "text": "Exp\u00e9rience en ing\u00e9nierie, de pr\u00e9f\u00e9rence dans des domaines tels que l\u2019informatique, les math\u00e9matiques, le Software Engineering, la physique et la science des donn\u00e9es.",
        "skill_normalized": null,
        "source_span_start": 4010,
        "source_span_end": 4175
@@ -10072,7 +10305,7 @@
       {
        "id": "6c81bf24-0db9-49a5-a3b5-14f283f11d6d",
        "category": "responsibility",
-       "text": "You’ll work in small teams with minimal supervision and own end-to-end execution of high stakes projects.",
+       "text": "You\u2019ll work in small teams with minimal supervision and own end-to-end execution of high stakes projects.",
        "skill_normalized": null,
        "source_span_start": 8661,
        "source_span_end": 8766
@@ -10513,7 +10746,7 @@
       {
        "id": "e579a6b7-afaa-43a6-96bf-423f9899d96d",
        "category": "education",
-       "text": "Must be pursuing a bachelor’s or master’s degree in Computer Science, Computer/Software Engineering, Mathematics, Physics, or a related field.",
+       "text": "Must be pursuing a bachelor\u2019s or master\u2019s degree in Computer Science, Computer/Software Engineering, Mathematics, Physics, or a related field.",
        "skill_normalized": null,
        "source_span_start": 1351,
        "source_span_end": 1493
@@ -10675,7 +10908,7 @@
       {
        "id": "9fddda38-97dd-45b2-a81d-27d1d5c50ce9",
        "category": "responsibility",
-       "text": "<h3><strong>What You’ll Do</strong></h3>",
+       "text": "<h3><strong>What You\u2019ll Do</strong></h3>",
        "skill_normalized": null,
        "source_span_start": 3247,
        "source_span_end": 3287
@@ -10739,7 +10972,7 @@
       {
        "id": "3b59e0a8-7ccd-4c27-9a6c-a618bdd4e9a0",
        "category": "must_have",
-       "text": "<h3><strong>What You’ll Need</strong></h3>",
+       "text": "<h3><strong>What You\u2019ll Need</strong></h3>",
        "skill_normalized": "python",
        "source_span_start": 4151,
        "source_span_end": 4193
@@ -11464,7 +11697,7 @@
       {
        "id": "68660d3a-5a88-4c55-9bc2-0dd7f0d2808d",
        "category": "must_have",
-       "text": "You are pursuing a bachelor’s or master’s degree in computer science, engineering, or another related field and are graduating between December 2026 and Summer 2028.",
+       "text": "You are pursuing a bachelor\u2019s or master\u2019s degree in computer science, engineering, or another related field and are graduating between December 2026 and Summer 2028.",
        "skill_normalized": null,
        "source_span_start": 1514,
        "source_span_end": 1679
@@ -11683,7 +11916,7 @@
       {
        "id": "7758b2c2-edd3-4aaa-9be9-e8fde9952018",
        "category": "responsibility",
-       "text": "As a Member of Technical Staff, Data & Evals in Harvey Research, you’ll build the data and measurement systems that power our post-training, benchmarking, and agent capability efforts.",
+       "text": "As a Member of Technical Staff, Data & Evals in Harvey Research, you\u2019ll build the data and measurement systems that power our post-training, benchmarking, and agent capability efforts.",
        "skill_normalized": null,
        "source_span_start": 1227,
        "source_span_end": 1411
@@ -11691,7 +11924,7 @@
       {
        "id": "b82aae06-e759-4f9d-8139-ed7731726967",
        "category": "responsibility",
-       "text": "We recently post-trained our first model built for legal work, and we’re now building the team to scale up our post-training efforts.",
+       "text": "We recently post-trained our first model built for legal work, and we\u2019re now building the team to scale up our post-training efforts.",
        "skill_normalized": null,
        "source_span_start": 1413,
        "source_span_end": 1546
@@ -11699,7 +11932,7 @@
       {
        "id": "2d97ad40-c4a8-4ac7-af6a-5c756322b16b",
        "category": "responsibility",
-       "text": "You’ll own synthetic data pipelines, evaluation design, the tasks and grading behind training environments, and the systems that turn feedback from domain experts into training signals and rewards.",
+       "text": "You\u2019ll own synthetic data pipelines, evaluation design, the tasks and grading behind training environments, and the systems that turn feedback from domain experts into training signals and rewards.",
        "skill_normalized": null,
        "source_span_start": 1547,
        "source_span_end": 1744
@@ -11707,7 +11940,7 @@
       {
        "id": "b9512c76-fb80-489b-a0a1-5ea1ccfcf8fb",
        "category": "responsibility",
-       "text": "These are tasks where correctness often can’t be verified automatically, so defining and measuring quality is a core research challenge.",
+       "text": "These are tasks where correctness often can\u2019t be verified automatically, so defining and measuring quality is a core research challenge.",
        "skill_normalized": null,
        "source_span_start": 1745,
        "source_span_end": 1881
@@ -11715,7 +11948,7 @@
       {
        "id": "a539bb1e-6a21-40c9-ac3f-a963aceddaf7",
        "category": "responsibility",
-       "text": "You’ll join a small, high-bar team of hands-on engineers and researchers, where each person owns a large part of the work.",
+       "text": "You\u2019ll join a small, high-bar team of hands-on engineers and researchers, where each person owns a large part of the work.",
        "skill_normalized": null,
        "source_span_start": 1882,
        "source_span_end": 2004
@@ -11723,7 +11956,7 @@
       {
        "id": "0f9ede19-ef56-4bdd-9a9f-be324639cc4f",
        "category": "responsibility",
-       "text": "We’re looking for research engineers who can build reliable data and evaluation systems, question what a metric actually tells us, and work closely with researchers and legal experts to turn model failures into measurable improvements.",
+       "text": "We\u2019re looking for research engineers who can build reliable data and evaluation systems, question what a metric actually tells us, and work closely with researchers and legal experts to turn model failures into measurable improvements.",
        "skill_normalized": null,
        "source_span_start": 2006,
        "source_span_end": 2241
@@ -12272,7 +12505,7 @@
       {
        "id": "48193d6d-9cf7-491b-baf6-faa5bdf0f75d",
        "category": "education",
-       "text": "Bachelor’s and/or Master’s degree, preferably in CS, or equivalent experience.",
+       "text": "Bachelor\u2019s and/or Master\u2019s degree, preferably in CS, or equivalent experience.",
        "skill_normalized": null,
        "source_span_start": 2590,
        "source_span_end": 2668
@@ -12397,7 +12630,7 @@
       {
        "id": "63d2a80f-1a9c-4181-949f-713be1232130",
        "category": "responsibility",
-       "text": "We are seeking talented Software Engineers to design, build, and scale Crusoe Cloud’s customer-facing platforms and managed services.",
+       "text": "We are seeking talented Software Engineers to design, build, and scale Crusoe Cloud\u2019s customer-facing platforms and managed services.",
        "skill_normalized": "cloud",
        "source_span_start": 1196,
        "source_span_end": 1329
@@ -12509,7 +12742,7 @@
       {
        "id": "8cba9e3a-dfe2-4120-9dd6-e2673b79748f",
        "category": "responsibility",
-       "text": "Enhance the team’s operational health by automating manual processes and improving monitoring, logging, and alerting systems for production services.",
+       "text": "Enhance the team\u2019s operational health by automating manual processes and improving monitoring, logging, and alerting systems for production services.",
        "skill_normalized": "automation",
        "source_span_start": 3316,
        "source_span_end": 3465
@@ -12597,7 +12830,7 @@
       {
        "id": "3b4f29d2-67af-459b-96ac-42dabe64a440",
        "category": "education",
-       "text": "Education: A bachelor’s degree in Computer Science, Computer Engineering, or related field",
+       "text": "Education: A bachelor\u2019s degree in Computer Science, Computer Engineering, or related field",
        "skill_normalized": "computer science",
        "source_span_start": 5420,
        "source_span_end": 5510
@@ -13357,7 +13590,7 @@
       {
        "id": "929a3e3e-a48e-47ff-8620-410e3dc1d258",
        "category": "must_have",
-       "text": "What We’re Looking For",
+       "text": "What We\u2019re Looking For",
        "skill_normalized": "identity",
        "source_span_start": 4616,
        "source_span_end": 4638
@@ -13952,7 +14185,7 @@
       {
        "id": "344eb54c-ca12-4b05-8c55-f3d88e60cf72",
        "category": "responsibility",
-       "text": "We’re looking for a hands-on IT Infrastructure Engineer to help scale Sierra’s internal systems during a critical period of growth.",
+       "text": "We\u2019re looking for a hands-on IT Infrastructure Engineer to help scale Sierra\u2019s internal systems during a critical period of growth.",
        "skill_normalized": null,
        "source_span_start": 1236,
        "source_span_end": 1367
@@ -13960,7 +14193,7 @@
       {
        "id": "fee34d03-49c1-467c-a271-adc9f1054541",
        "category": "responsibility",
-       "text": "You’ll be the second member of our IT Engineering team, partnering closely with our IT Lead, GRC Lead, and Platform Engineering team to build and operate the systems that support our company day-to-day.",
+       "text": "You\u2019ll be the second member of our IT Engineering team, partnering closely with our IT Lead, GRC Lead, and Platform Engineering team to build and operate the systems that support our company day-to-day.",
        "skill_normalized": null,
        "source_span_start": 1368,
        "source_span_end": 1570
@@ -14000,7 +14233,7 @@
       {
        "id": "3481a0fd-e406-473b-994f-2a3b3439d91e",
        "category": "responsibility",
-       "text": "You’ll help design and implement core infrastructure, strengthen security controls, and improve how we operate internally.",
+       "text": "You\u2019ll help design and implement core infrastructure, strengthen security controls, and improve how we operate internally.",
        "skill_normalized": null,
        "source_span_start": 1932,
        "source_span_end": 2054
@@ -14024,7 +14257,7 @@
       {
        "id": "55223708-6edd-4d64-ab2a-dd0faeea167e",
        "category": "responsibility",
-       "text": "In your first few months, you’ll focus on:",
+       "text": "In your first few months, you\u2019ll focus on:",
        "skill_normalized": null,
        "source_span_start": 2250,
        "source_span_end": 2292
@@ -14112,7 +14345,7 @@
       {
        "id": "6c027f50-d3af-42b1-b259-d0cd61481232",
        "category": "responsibility",
-       "text": "What you’ll bring",
+       "text": "What you\u2019ll bring",
        "skill_normalized": null,
        "source_span_start": 3087,
        "source_span_end": 3104
@@ -14390,7 +14623,7 @@
       {
        "id": "dccfb68f-97c3-409d-8ca2-fbc705ed9d42",
        "category": "education",
-       "text": "Education – At least a sophomore at time of application and actively pursuing a Master’s degree in Computer Engineering or related field through an accredited degree program during the time of internship.",
+       "text": "Education \u2013 At least a sophomore at time of application and actively pursuing a Master\u2019s degree in Computer Engineering or related field through an accredited degree program during the time of internship.",
        "skill_normalized": null,
        "source_span_start": 2425,
        "source_span_end": 2629
@@ -14706,7 +14939,7 @@
       {
        "id": "07fe1ed4-fcef-4f10-968b-ab1355dbcaf1",
        "category": "must_have",
-       "text": "Preferably a rising senior pursuing a bachelor’s degree in Software Engineering, Information Technology, Data Science, Artificial Intelligence, or a related field.",
+       "text": "Preferably a rising senior pursuing a bachelor\u2019s degree in Software Engineering, Information Technology, Data Science, Artificial Intelligence, or a related field.",
        "skill_normalized": null,
        "source_span_start": 3163,
        "source_span_end": 3326
@@ -15127,7 +15360,7 @@
       {
        "id": "7bc31dcb-63d8-4359-a146-554c7935d8a6",
        "category": "must_have",
-       "text": "Software Engineering Intern (Summer) | Datadog CareersDatadog named a Leader in the Gartner® Magic Quadrant™ for Observability Platforms Leader in the Gartner® Magic Quadrant™",
+       "text": "Software Engineering Intern (Summer) | Datadog CareersDatadog named a Leader in the Gartner\u00ae Magic Quadrant\u2122 for Observability Platforms Leader in the Gartner\u00ae Magic Quadrant\u2122",
        "skill_normalized": "computer science",
        "source_span_start": 0,
        "source_span_end": 175
@@ -15143,7 +15376,7 @@
       {
        "id": "633daf76-3f5d-4c00-9ca3-5e1ff1cc9f47",
        "category": "responsibility",
-       "text": "What You’ll Do:",
+       "text": "What You\u2019ll Do:",
        "skill_normalized": null,
        "source_span_start": 1966,
        "source_span_end": 1981
@@ -15167,7 +15400,7 @@
       {
        "id": "4be36b25-6321-414d-8445-f0d76f457e36",
        "category": "responsibility",
-       "text": "Help identify and solve performance, reliability, and scalability challenges in critical services supporting Datadog’s growing customer base",
+       "text": "Help identify and solve performance, reliability, and scalability challenges in critical services supporting Datadog\u2019s growing customer base",
        "skill_normalized": "distributed systems",
        "source_span_start": 2225,
        "source_span_end": 2365
@@ -15313,7 +15546,7 @@
       {
        "id": "dec58bd5-f3cf-4599-974b-acd27a578036",
        "category": "must_have",
-       "text": "Currently pursuing a Master’s degree in Computer Science, AI, Electrical Engineering, Computer Engineering, or a related field, with an expectation that the required degree will be obtained by August 2028 or earlier.",
+       "text": "Currently pursuing a Master\u2019s degree in Computer Science, AI, Electrical Engineering, Computer Engineering, or a related field, with an expectation that the required degree will be obtained by August 2028 or earlier.",
        "skill_normalized": "computer science",
        "source_span_start": 983,
        "source_span_end": 1199
@@ -15401,7 +15634,7 @@
       {
        "id": "f3ceedf3-b73e-4d66-a227-629958a0b428",
        "category": "responsibility",
-       "text": "Design and optimize the critical infrastructure of our AI stack—from fine-tuning pre-training pipelines and reinforcement learning to implementing inference optimization, robust guardrails and sophisticated evaluation frameworks.",
+       "text": "Design and optimize the critical infrastructure of our AI stack\u2014from fine-tuning pre-training pipelines and reinforcement learning to implementing inference optimization, robust guardrails and sophisticated evaluation frameworks.",
        "skill_normalized": "ai",
        "source_span_start": 4354,
        "source_span_end": 4583
@@ -15417,7 +15650,7 @@
       {
        "id": "30c8b0f0-f075-47ef-8962-09fd0aa69c77",
        "category": "responsibility",
-       "text": "You’ll be empowered with top-tier developer tools like Claude Code and Windsurf to accelerate the path from concept to code.",
+       "text": "You\u2019ll be empowered with top-tier developer tools like Claude Code and Windsurf to accelerate the path from concept to code.",
        "skill_normalized": "claude",
        "source_span_start": 4701,
        "source_span_end": 4825
@@ -15425,7 +15658,7 @@
       {
        "id": "9393d7cc-c6a6-4cff-8e3b-dca288dd7617",
        "category": "responsibility",
-       "text": "Architect agentic workflows that go beyond simple chat—enabling AI systems to autonomously navigate tools, orchestrate multi-step reasoning, and integrate seamlessly with complex microservice environments.",
+       "text": "Architect agentic workflows that go beyond simple chat\u2014enabling AI systems to autonomously navigate tools, orchestrate multi-step reasoning, and integrate seamlessly with complex microservice environments.",
        "skill_normalized": "ai",
        "source_span_start": 4829,
        "source_span_end": 5034
@@ -15663,7 +15896,7 @@
       {
        "id": "47acf414-5dae-4887-91f6-0c404810ab0c",
        "category": "education",
-       "text": "You’re currently enrolled at a Serbian university: Bachelor’s, Master’s, or PhD program or you’re self-taught with a strong passion for software engineering and technology.",
+       "text": "You\u2019re currently enrolled at a Serbian university: Bachelor\u2019s, Master\u2019s, or PhD program or you\u2019re self-taught with a strong passion for software engineering and technology.",
        "skill_normalized": null,
        "source_span_start": 1812,
        "source_span_end": 1984
@@ -16071,7 +16304,7 @@
       {
        "id": "0f2644b8-3e93-4242-9771-0c3f746689e9",
        "category": "must_have",
-       "text": "You’ve built something you’re proud of: Not just a class assignment - we want to see a project you genuinely cared about and took the initiative to build and finish.",
+       "text": "You\u2019ve built something you\u2019re proud of: Not just a class assignment - we want to see a project you genuinely cared about and took the initiative to build and finish.",
        "skill_normalized": null,
        "source_span_start": 1960,
        "source_span_end": 2125
@@ -16079,7 +16312,7 @@
       {
        "id": "144edf91-e151-4d2b-abb0-dcdedcd83edf",
        "category": "education",
-       "text": "You’re currently enrolled at a Serbian university: Bachelor’s, Master’s, or PhD program or you’re self-taught with a strong passion for software engineering and technology.",
+       "text": "You\u2019re currently enrolled at a Serbian university: Bachelor\u2019s, Master\u2019s, or PhD program or you\u2019re self-taught with a strong passion for software engineering and technology.",
        "skill_normalized": null,
        "source_span_start": 2130,
        "source_span_end": 2302
@@ -16087,7 +16320,7 @@
       {
        "id": "81b5a41e-e4a8-4317-aded-610a62d4ec8f",
        "category": "must_have",
-       "text": "You’re curious, persistent, and self-driven: you take ownership, work through challenges, and follow through on what you start.",
+       "text": "You\u2019re curious, persistent, and self-driven: you take ownership, work through challenges, and follow through on what you start.",
        "skill_normalized": null,
        "source_span_start": 2307,
        "source_span_end": 2434
@@ -16095,7 +16328,7 @@
       {
        "id": "cd80bd65-d2dd-48ec-b939-284b9892b1e0",
        "category": "must_have",
-       "text": "You’re eager to learn and improve: you’re willing to put in the work, develop your skills, and get better every week.",
+       "text": "You\u2019re eager to learn and improve: you\u2019re willing to put in the work, develop your skills, and get better every week.",
        "skill_normalized": null,
        "source_span_start": 2439,
        "source_span_end": 2556
@@ -16103,7 +16336,7 @@
       {
        "id": "1f6f355a-2f64-46fe-aa79-a6893b24bf1f",
        "category": "must_have",
-       "text": "You’re comfortable working in English: in a collaborative, professional environment.",
+       "text": "You\u2019re comfortable working in English: in a collaborative, professional environment.",
        "skill_normalized": null,
        "source_span_start": 2561,
        "source_span_end": 2645
@@ -16111,7 +16344,7 @@
       {
        "id": "b2b98812-b89e-4abb-9342-011c177f5288",
        "category": "must_have",
-       "text": "You thrive in a high-performance environment: you’re comfortable with high standards, direct feedback, and a fast pace.",
+       "text": "You thrive in a high-performance environment: you\u2019re comfortable with high standards, direct feedback, and a fast pace.",
        "skill_normalized": null,
        "source_span_start": 2650,
        "source_span_end": 2769
@@ -16119,7 +16352,7 @@
       {
        "id": "9385b5d6-2aae-4d05-9785-df57bd03c4d3",
        "category": "must_have",
-       "text": "You’re willing to challenge and be challenged: You’re comfortable asking questions, sharing your perspective, and pushing back constructively when it matters.",
+       "text": "You\u2019re willing to challenge and be challenged: You\u2019re comfortable asking questions, sharing your perspective, and pushing back constructively when it matters.",
        "skill_normalized": null,
        "source_span_start": 2774,
        "source_span_end": 2932
@@ -16590,7 +16823,7 @@
       {
        "id": "9ceb54a7-5ff8-4666-92c9-1775f888fcf4",
        "category": "education",
-       "text": "Education – At least a sophomore at time of application and actively pursuing a Bachelor’s, Master’s, or PhD in Computer Science, Computer Engineering, Data Science or related field through an accredited degree program during the time of internship.",
+       "text": "Education \u2013 At least a sophomore at time of application and actively pursuing a Bachelor\u2019s, Master\u2019s, or PhD in Computer Science, Computer Engineering, Data Science or related field through an accredited degree program during the time of internship.",
        "skill_normalized": "computer science",
        "source_span_start": 2356,
        "source_span_end": 2605
@@ -17016,7 +17249,7 @@
       {
        "id": "2e43cb62-c6c9-4a21-92e9-866123e63c00",
        "category": "responsibility",
-       "text": "What you’ll do",
+       "text": "What you\u2019ll do",
        "skill_normalized": "backend development",
        "source_span_start": 2694,
        "source_span_end": 2708
@@ -17088,7 +17321,7 @@
       {
        "id": "6d9005db-0040-486e-b86f-e4a3da752895",
        "category": "nice_to_have",
-       "text": "Bonus: you’ve built agents or agent-based workflows that run in production, not just prototypes.",
+       "text": "Bonus: you\u2019ve built agents or agent-based workflows that run in production, not just prototypes.",
        "skill_normalized": "agent-based workflows",
        "source_span_start": 4785,
        "source_span_end": 4881
@@ -17300,7 +17533,7 @@
       {
        "id": "40b07215-69b7-47e8-8744-311bffb95b13",
        "category": "education",
-       "text": "Bachelor’s and/or Master’s degree, preferable in Computer Science, or equivalent experience",
+       "text": "Bachelor\u2019s and/or Master\u2019s degree, preferable in Computer Science, or equivalent experience",
        "skill_normalized": "computer science",
        "source_span_start": 2296,
        "source_span_end": 2387
@@ -17589,7 +17822,7 @@
       {
        "id": "7e130e63-aad4-46f7-914a-c80a000ec740",
        "category": "must_have",
-       "text": "As an Applied AI Research Engineer, you’ll dive deep into cutting-edge research, understand the business functions we put on autopilot inside-out, and execute targeted ML projects that deliver pure magic.",
+       "text": "As an Applied AI Research Engineer, you\u2019ll dive deep into cutting-edge research, understand the business functions we put on autopilot inside-out, and execute targeted ML projects that deliver pure magic.",
        "skill_normalized": "pytorch",
        "source_span_start": 614,
        "source_span_end": 818
@@ -18049,7 +18282,7 @@
       {
        "id": "799d6f88-c336-4037-9935-30a69cc11dab",
        "category": "must_have",
-       "text": "Bachelor’s degree or equivalent work experience.",
+       "text": "Bachelor\u2019s degree or equivalent work experience.",
        "skill_normalized": null,
        "source_span_start": 2461,
        "source_span_end": 2509
@@ -18338,7 +18571,7 @@
       {
        "id": "cb5038c8-8b06-434d-a770-f22e823456ef",
        "category": "must_have",
-       "text": "Excellent communication and collaboration skills—aligning on interfaces, navigating tradeoffs, and driving cross-team execution.",
+       "text": "Excellent communication and collaboration skills\u2014aligning on interfaces, navigating tradeoffs, and driving cross-team execution.",
        "skill_normalized": null,
        "source_span_start": 3833,
        "source_span_end": 3961
@@ -18370,7 +18603,7 @@
       {
        "id": "02d939ce-01d3-45ff-bdfb-9425d189e576",
        "category": "nice_to_have",
-       "text": "Strong instincts for API and contract design—how to create interfaces that are stable, evolvable, and hard to misuse.",
+       "text": "Strong instincts for API and contract design\u2014how to create interfaces that are stable, evolvable, and hard to misuse.",
        "skill_normalized": null,
        "source_span_start": 4417,
        "source_span_end": 4534
@@ -18378,7 +18611,7 @@
       {
        "id": "428ce8ac-9f10-4222-b5fa-bb943a6869a8",
        "category": "nice_to_have",
-       "text": "Prior work that demonstrates “force multiplier” impact: enabling many teams via a small set of well-crafted primitives.",
+       "text": "Prior work that demonstrates \u201cforce multiplier\u201d impact: enabling many teams via a small set of well-crafted primitives.",
        "skill_normalized": null,
        "source_span_start": 4539,
        "source_span_end": 4658
@@ -19115,7 +19348,7 @@
       {
        "id": "f0ab8297-239b-4528-a3a5-8c4176be18ee",
        "category": "must_have",
-       "text": "<li>Currently pursuing a bachelor’s or master’s degree in computer science, data science, mathematics, statistics, or a related field.",
+       "text": "<li>Currently pursuing a bachelor\u2019s or master\u2019s degree in computer science, data science, mathematics, statistics, or a related field.",
        "skill_normalized": "python",
        "source_span_start": 3218,
        "source_span_end": 3352
@@ -19287,7 +19520,7 @@
       {
        "id": "9c7fcb38-2ba9-4d1a-87a1-eb8657c11d7b",
        "category": "must_have",
-       "text": "Currently pursuing a bachelor’s or master’s degree in Computer Science, Engineering, or a related technical field, with an expected graduation date in 2027.",
+       "text": "Currently pursuing a bachelor\u2019s or master\u2019s degree in Computer Science, Engineering, or a related technical field, with an expected graduation date in 2027.",
        "skill_normalized": "python",
        "source_span_start": 2702,
        "source_span_end": 2858
@@ -19522,7 +19755,7 @@
       {
        "id": "c5270b5a-243a-4113-882f-68709ba4d129",
        "category": "education",
-       "text": "Applicants must be pursuing at least a Bachelor’s or a Master’s degree in Computer Science or a related field",
+       "text": "Applicants must be pursuing at least a Bachelor\u2019s or a Master\u2019s degree in Computer Science or a related field",
        "skill_normalized": "bachelor",
        "source_span_start": 3601,
        "source_span_end": 3710
@@ -19733,7 +19966,7 @@
       {
        "id": "07cc541c-59e3-4ddb-9204-d42917806733",
        "category": "nice_to_have",
-       "text": "Familiarity with GenAI/LLM tooling — prompt frameworks, vector databases, modern LLM APIs (Anthropic, OpenAI), or Model Context Protocol (MCP)",
+       "text": "Familiarity with GenAI/LLM tooling \u2014 prompt frameworks, vector databases, modern LLM APIs (Anthropic, OpenAI), or Model Context Protocol (MCP)",
        "skill_normalized": "genai llm tooling",
        "source_span_start": 2859,
        "source_span_end": 3001
@@ -20869,7 +21102,7 @@
       {
        "id": "a0fe58f0-223b-4fd1-a10a-71f8b0dae901",
        "category": "responsibility",
-       "text": "This work will add capabilities to the various backend systems and services that support Wealthfront’s products, and will be done with automated instrumentation and monitoring to require minimal operational maintenance.",
+       "text": "This work will add capabilities to the various backend systems and services that support Wealthfront\u2019s products, and will be done with automated instrumentation and monitoring to require minimal operational maintenance.",
        "skill_normalized": "backend",
        "source_span_start": 1719,
        "source_span_end": 1938
@@ -20877,7 +21110,7 @@
       {
        "id": "fef6f40a-84a4-4e19-9346-e2dabf1e599f",
        "category": "responsibility",
-       "text": "You’ll help improve the maintainability and stability of our codebase by fixing issues and adding necessary enhancements to our existing backend systems.",
+       "text": "You\u2019ll help improve the maintainability and stability of our codebase by fixing issues and adding necessary enhancements to our existing backend systems.",
        "skill_normalized": "maintainability",
        "source_span_start": 1942,
        "source_span_end": 2095
@@ -20885,7 +21118,7 @@
       {
        "id": "6a7eeeb9-038b-44d0-aed4-3f4154bd4680",
        "category": "responsibility",
-       "text": "You’ll ensure that mission critical backend systems and services operate smoothly in production by triaging and resolving operational issues as part of a team of on-call engineers.",
+       "text": "You\u2019ll ensure that mission critical backend systems and services operate smoothly in production by triaging and resolving operational issues as part of a team of on-call engineers.",
        "skill_normalized": "ops",
        "source_span_start": 2096,
        "source_span_end": 2276
@@ -20893,7 +21126,7 @@
       {
        "id": "c9b2602f-8396-46d5-8850-1864eeb8ecd9",
        "category": "responsibility",
-       "text": "You’ll proactively identify opportunities for improving the reliability and scalability of our systems.",
+       "text": "You\u2019ll proactively identify opportunities for improving the reliability and scalability of our systems.",
        "skill_normalized": "reliability",
        "source_span_start": 2277,
        "source_span_end": 2380
@@ -21209,7 +21442,7 @@
       {
        "id": "8626a9f5-4d9e-4c88-9946-4accae510ade",
        "category": "must_have",
-       "text": "You’ll join the Mail team at a pivotal moment: as \"AI Home\" in our product and new integrations raise the bar, we’re modernizing our calendar backend, including calendar syncing, notification infrastructure, and the APIs that serve every client.",
+       "text": "You\u2019ll join the Mail team at a pivotal moment: as \"AI Home\" in our product and new integrations raise the bar, we\u2019re modernizing our calendar backend, including calendar syncing, notification infrastructure, and the APIs that serve every client.",
        "skill_normalized": "aws",
        "source_span_start": 1547,
        "source_span_end": 1792
@@ -21225,7 +21458,7 @@
       {
        "id": "bf268ff5-101a-4c90-8bcc-f20510d16453",
        "category": "must_have",
-       "text": "You’ll work in Go, Postgres, Kubernetes, and AWS, alongside a strong team of product engineers.",
+       "text": "You\u2019ll work in Go, Postgres, Kubernetes, and AWS, alongside a strong team of product engineers.",
        "skill_normalized": "ai",
        "source_span_start": 1932,
        "source_span_end": 2027
@@ -21233,7 +21466,7 @@
       {
        "id": "ac1ea568-9074-47dd-9220-d180a7d37a69",
        "category": "must_have",
-       "text": "Superhuman’s engineers have the freedom to innovate and shape the product roadmap.",
+       "text": "Superhuman\u2019s engineers have the freedom to innovate and shape the product roadmap.",
        "skill_normalized": "ai",
        "source_span_start": 2029,
        "source_span_end": 2111
@@ -21257,7 +21490,7 @@
       {
        "id": "ab1ebe6e-5b0b-4739-87f3-e6ab1f47e8f7",
        "category": "responsibility",
-       "text": "Design and build core platform services — task schedulers, session and conversation history, client-server protocols, and the APIs that connect our AI engine to every product surface.",
+       "text": "Design and build core platform services \u2014 task schedulers, session and conversation history, client-server protocols, and the APIs that connect our AI engine to every product surface.",
        "skill_normalized": "go",
        "source_span_start": 2469,
        "source_span_end": 2652
@@ -21265,7 +21498,7 @@
       {
        "id": "0e73aef6-02a5-411b-8db6-c26c2c4098ee",
        "category": "responsibility",
-       "text": "Work across the Superhuman product suite — whether that's Go, Mail, Docs, or Enterprise — depending on where you and the team see the best fit.",
+       "text": "Work across the Superhuman product suite \u2014 whether that's Go, Mail, Docs, or Enterprise \u2014 depending on where you and the team see the best fit.",
        "skill_normalized": "go",
        "source_span_start": 2657,
        "source_span_end": 2800
@@ -21337,7 +21570,7 @@
       {
        "id": "076a0c88-5ee4-498e-bec6-7ef79c1620d5",
        "category": "must_have",
-       "text": "Comfort working with AI-powered systems — whether that's building infrastructure for LLM-based features, managing agentic workflows, or integrating with ML pipelines.",
+       "text": "Comfort working with AI-powered systems \u2014 whether that's building infrastructure for LLM-based features, managing agentic workflows, or integrating with ML pipelines.",
        "skill_normalized": "ai",
        "source_span_start": 3475,
        "source_span_end": 3641
@@ -21385,7 +21618,7 @@
       {
        "id": "0870c106-ba1a-481b-9721-f192438aab3a",
        "category": "nice_to_have",
-       "text": "Strong product instincts — you care about the end-user experience and can make good tradeoffs between speed and reliability.",
+       "text": "Strong product instincts \u2014 you care about the end-user experience and can make good tradeoffs between speed and reliability.",
        "skill_normalized": "product instincts",
        "source_span_start": 4172,
        "source_span_end": 4296
@@ -21435,7 +21668,7 @@
       {
        "id": "97af08c5-51fb-4ee8-ba6a-7236f5af7c99",
        "category": "responsibility",
-       "text": "As a Site Reliability Engineer in IaaS, you will help build the next generation of Algolia’s production infrastructure.",
+       "text": "As a Site Reliability Engineer in IaaS, you will help build the next generation of Algolia\u2019s production infrastructure.",
        "skill_normalized": null,
        "source_span_start": 1437,
        "source_span_end": 1556
@@ -23016,7 +23249,7 @@
       {
        "id": "f68e8806-138a-4dac-a0e2-c900465b5f4e",
        "category": "responsibility",
-       "text": "Contribute to backend services that power Serval’s AI-driven automation workflows.",
+       "text": "Contribute to backend services that power Serval\u2019s AI-driven automation workflows.",
        "skill_normalized": null,
        "source_span_start": 1785,
        "source_span_end": 1867
@@ -23170,7 +23403,7 @@
       {
        "id": "00971ee4-281f-498d-8dcb-ad53067e8d3d",
        "category": "must_have",
-       "text": "Care for correctness-critical systems—idempotency, reconciliation, and reasoning carefully about failure modes when money is at stake.",
+       "text": "Care for correctness-critical systems\u2014idempotency, reconciliation, and reasoning carefully about failure modes when money is at stake.",
        "skill_normalized": null,
        "source_span_start": 3756,
        "source_span_end": 3890
@@ -23194,7 +23427,7 @@
       {
        "id": "c42e1728-96e3-435d-b8d9-700c7a668444",
        "category": "must_have",
-       "text": "Interest in blockchain fundamentals—EVM, smart contracts, wallets, on-chain settlement—or a strong appetite to go deep quickly.",
+       "text": "Interest in blockchain fundamentals\u2014EVM, smart contracts, wallets, on-chain settlement\u2014or a strong appetite to go deep quickly.",
        "skill_normalized": "blockchain fundamentals",
        "source_span_start": 4182,
        "source_span_end": 4309
@@ -23443,7 +23676,7 @@
       {
        "id": "2fccb035-a79f-4904-8b51-68d388e59498",
        "category": "education",
-       "text": "Estar cursando una Licenciatura o Maestría en Ciencias de la Computación en una universidad en México (obligatorio), con fecha de graduación entre Diciembre de 2027 y Verano de 2028 (obligatorio).",
+       "text": "Estar cursando una Licenciatura o Maestr\u00eda en Ciencias de la Computaci\u00f3n en una universidad en M\u00e9xico (obligatorio), con fecha de graduaci\u00f3n entre Diciembre de 2027 y Verano de 2028 (obligatorio).",
        "skill_normalized": null,
        "source_span_start": 3197,
        "source_span_end": 3393
@@ -23493,7 +23726,7 @@
       {
        "id": "b74ba0e1-2c3d-490b-9c44-da0f32cbe49f",
        "category": "responsibility",
-       "text": "What you’ll do as Junior Developer on the C++ Team at Akuna:",
+       "text": "What you\u2019ll do as Junior Developer on the C++ Team at Akuna:",
        "skill_normalized": null,
        "source_span_start": 850,
        "source_span_end": 910
@@ -23793,7 +24026,7 @@
       {
        "id": "15502a75-a9af-406e-a2d1-79065c1ccae4",
        "category": "responsibility",
-       "text": "Learn about the business, our clients’ needs, and the impact of your team and related projects",
+       "text": "Learn about the business, our clients\u2019 needs, and the impact of your team and related projects",
        "skill_normalized": null,
        "source_span_start": 3053,
        "source_span_end": 3147
@@ -23825,7 +24058,7 @@
       {
        "id": "3b4d7764-ef85-4f28-a7e4-8b6927b5f2d8",
        "category": "education",
-       "text": "Currently enrolled in a Bachelor’s or Master's degree in computer science or in a related field with a graduation date after the completion of the internship",
+       "text": "Currently enrolled in a Bachelor\u2019s or Master's degree in computer science or in a related field with a graduation date after the completion of the internship",
        "skill_normalized": null,
        "source_span_start": 3590,
        "source_span_end": 3747
@@ -24305,7 +24538,7 @@
       {
        "id": "8627b189-4492-4340-affe-0f10b7a9bf19",
        "category": "must_have",
-       "text": "You build evaluation and monitoring as a matter of course — and know which metric to trust, and how to avoid leakage and train/serve skew",
+       "text": "You build evaluation and monitoring as a matter of course \u2014 and know which metric to trust, and how to avoid leakage and train/serve skew",
        "skill_normalized": "evaluation",
        "source_span_start": 2347,
        "source_span_end": 2484
@@ -24484,7 +24717,7 @@
       {
        "id": "2f61771b-dda3-40f3-b2c1-466fb3a18698",
        "category": "responsibility",
-       "text": "Ensure low-latency and high-throughput data distribution across different platforms, with an end goal of building Northwood’s Software Defined Wide-Area-Network (SD-WAN) capabilities",
+       "text": "Ensure low-latency and high-throughput data distribution across different platforms, with an end goal of building Northwood\u2019s Software Defined Wide-Area-Network (SD-WAN) capabilities",
        "skill_normalized": null,
        "source_span_start": 2151,
        "source_span_end": 2333
@@ -24612,7 +24845,7 @@
       {
        "id": "9c96f0de-75c0-4b54-b8a7-0590a6855e88",
        "category": "responsibility",
-       "text": "This infrastructure empowers our developers to deploy changes continuously—without the risk of disrupting the system or relying on 'testing in prod.",
+       "text": "This infrastructure empowers our developers to deploy changes continuously\u2014without the risk of disrupting the system or relying on 'testing in prod.",
        "skill_normalized": null,
        "source_span_start": 3603,
        "source_span_end": 3751
@@ -24692,7 +24925,7 @@
       {
        "id": "37b9f9b3-0fdd-49d8-9bb4-94d804b96cbf",
        "category": "must_have",
-       "text": "0-2 years of professional software development experience (this doesn’t have to be from a full-time role—there are many ways to gain valuable experience, and we’d love to hear about yours - tell us about internships, projects out of the classroom, or any personal projects)",
+       "text": "0-2 years of professional software development experience (this doesn\u2019t have to be from a full-time role\u2014there are many ways to gain valuable experience, and we\u2019d love to hear about yours - tell us about internships, projects out of the classroom, or any personal projects)",
        "skill_normalized": null,
        "source_span_start": 4386,
        "source_span_end": 4659
@@ -24700,7 +24933,7 @@
       {
        "id": "de3a60aa-c70f-453a-a3df-e15083911752",
        "category": "education",
-       "text": "Completed bachelor’s degree in Computer Science, Computer Engineering, Math or other related major (soft-requirement, tell us why you didn't pursue a degree, and what you've done in it's place)",
+       "text": "Completed bachelor\u2019s degree in Computer Science, Computer Engineering, Math or other related major (soft-requirement, tell us why you didn't pursue a degree, and what you've done in it's place)",
        "skill_normalized": null,
        "source_span_start": 4664,
        "source_span_end": 4857
@@ -24862,7 +25095,7 @@
       {
        "id": "9f5b7003-ab0d-4dff-aac9-e24f21d1bb6c",
        "category": "must_have",
-       "text": "We're looking for a Cloud Platform Engineer to own the internal IT infrastructure Mercor runs on — and to run it as code.",
+       "text": "We're looking for a Cloud Platform Engineer to own the internal IT infrastructure Mercor runs on \u2014 and to run it as code.",
        "skill_normalized": "terraform",
        "source_span_start": 1015,
        "source_span_end": 1136
@@ -24939,7 +25172,7 @@
       {
        "id": "00773520-fc9e-4f9c-90df-97285257ad2e",
        "category": "must_have",
-       "text": "Comfortable with ambiguity and fast-changing priorities, and able to add structure where it’s needed",
+       "text": "Comfortable with ambiguity and fast-changing priorities, and able to add structure where it\u2019s needed",
        "skill_normalized": null,
        "source_span_start": 3436,
        "source_span_end": 3536
@@ -25090,7 +25323,7 @@
       {
        "id": "a89130e6-bc35-4e07-bd37-a16b8002d272",
        "category": "responsibility",
-       "text": "Own end‑to‑end delivery: Drive projects from spec to production, handling data models, APIs, front‑end polish, and post‑launch iteration.",
+       "text": "Own end\u2011to\u2011end delivery: Drive projects from spec to production, handling data models, APIs, front\u2011end polish, and post\u2011launch iteration.",
        "skill_normalized": "api",
        "source_span_start": 1393,
        "source_span_end": 1530
@@ -25106,7 +25339,7 @@
       {
        "id": "f97a0c0d-01a2-4550-906e-e3c70048d890",
        "category": "must_have",
-       "text": "Proven product builder: Ability to deliver user‑facing software at scale;",
+       "text": "Proven product builder: Ability to deliver user\u2011facing software at scale;",
        "skill_normalized": "product",
        "source_span_start": 1662,
        "source_span_end": 1735
@@ -25114,7 +25347,7 @@
       {
        "id": "21cf2e77-41df-403b-ad15-c129f5a427e5",
        "category": "must_have",
-       "text": "Full‑stack fluency: Comfortable with React, TypeScript, Python;",
+       "text": "Full\u2011stack fluency: Comfortable with React, TypeScript, Python;",
        "skill_normalized": "react",
        "source_span_start": 1797,
        "source_span_end": 1860
@@ -25130,7 +25363,7 @@
       {
        "id": "692905fd-5294-4f9e-a140-0bb5cb21e28b",
        "category": "nice_to_have",
-       "text": "AI experience (nice‑to‑have): Hands‑on with LLM APIs, embeddings, or RAG patterns—or hunger to learn fast.",
+       "text": "AI experience (nice\u2011to\u2011have): Hands\u2011on with LLM APIs, embeddings, or RAG patterns\u2014or hunger to learn fast.",
        "skill_normalized": "llm api",
        "source_span_start": 1917,
        "source_span_end": 2023
@@ -25180,7 +25413,7 @@
       {
        "id": "e42434f0-9d64-46a5-afdd-bbe313f44193",
        "category": "responsibility",
-       "text": "Build performant, reliable, and scalable systems powering Ramp’s products",
+       "text": "Build performant, reliable, and scalable systems powering Ramp\u2019s products",
        "skill_normalized": "system performance",
        "source_span_start": 1628,
        "source_span_end": 1701
@@ -25318,7 +25551,7 @@
       {
        "id": "a8b5dfa5-1e3c-42a0-8d6c-cbaa4085ae1a",
        "category": "education",
-       "text": "Pursuing a Bachelor's or Master’s degree in computer science, engineering, or another related field.",
+       "text": "Pursuing a Bachelor's or Master\u2019s degree in computer science, engineering, or another related field.",
        "skill_normalized": null,
        "source_span_start": 2316,
        "source_span_end": 2416
@@ -25390,7 +25623,7 @@
       {
        "id": "32a03274-5653-4982-84b7-29756a807fc7",
        "category": "responsibility",
-       "text": "You understand that reach comes with responsibility for our impact—good and bad.",
+       "text": "You understand that reach comes with responsibility for our impact\u2014good and bad.",
        "skill_normalized": null,
        "source_span_start": 3405,
        "source_span_end": 3485
@@ -25780,7 +26013,7 @@
       {
        "id": "7a0ca909-e0a2-41bf-89c3-a610e6a5f072",
        "category": "responsibility",
-       "text": "Own deployment architecture conversations and execution — designing and implementing deployment strategies across customer environments, including VPC configuration, permissioning, networking, and infrastructure provisioning.",
+       "text": "Own deployment architecture conversations and execution \u2014 designing and implementing deployment strategies across customer environments, including VPC configuration, permissioning, networking, and infrastructure provisioning.",
        "skill_normalized": "deployment architecture",
        "source_span_start": 2025,
        "source_span_end": 2250
@@ -25788,7 +26021,7 @@
       {
        "id": "19540a66-31a5-4b8d-b7a2-b7d216f34bbc",
        "category": "responsibility",
-       "text": "Manage the full infrastructure lifecycle for some of Sierra’s most critical customers: initial deployment, ongoing upgrades, scaling, and incident support.",
+       "text": "Manage the full infrastructure lifecycle for some of Sierra\u2019s most critical customers: initial deployment, ongoing upgrades, scaling, and incident support.",
        "skill_normalized": "infrastructure lifecycle",
        "source_span_start": 2255,
        "source_span_end": 2410
@@ -25836,7 +26069,7 @@
       {
        "id": "3c614bce-ab2d-40ff-863d-c1b595a2bc7c",
        "category": "must_have",
-       "text": "4+ years of experience in infrastructure, DevOps, platform engineering, or solutions architecture roles — with significant time spent on customer-facing deployment work.",
+       "text": "4+ years of experience in infrastructure, DevOps, platform engineering, or solutions architecture roles \u2014 with significant time spent on customer-facing deployment work.",
        "skill_normalized": "infrastructure",
        "source_span_start": 3020,
        "source_span_end": 3189
@@ -26298,7 +26531,7 @@
       {
        "id": "794b8d04-e03d-48bd-b48d-a2d358302105",
        "category": "must_have",
-       "text": "Currently pursuing a bachelor’s or master’s degree in computer science, software engineering, or a related technical discipline, with an expected graduation date between December 2027 and May 2028.",
+       "text": "Currently pursuing a bachelor\u2019s or master\u2019s degree in computer science, software engineering, or a related technical discipline, with an expected graduation date between December 2027 and May 2028.",
        "skill_normalized": null,
        "source_span_start": 2848,
        "source_span_end": 3045
@@ -26676,7 +26909,7 @@
       {
        "id": "982a1edd-7708-4d0a-a735-2461159a08b6",
        "category": "must_have",
-       "text": "Participate in reinforcement learning–based data mining, and help design Chain-of-Thought (CoT) annotation frameworks to improve the model’s understanding of complex risks.",
+       "text": "Participate in reinforcement learning\u2013based data mining, and help design Chain-of-Thought (CoT) annotation frameworks to improve the model\u2019s understanding of complex risks.",
        "skill_normalized": null,
        "source_span_start": 2611,
        "source_span_end": 2783
@@ -26813,7 +27046,7 @@
       {
        "id": "21a11ebc-ab50-4bc5-83d0-19e67ebbccfb",
        "category": "must_have",
-       "text": "Current Senior pursuing a Bachelor’s degree in Computer Science, Mathematics, or a related technical field, with an expected graduation date in 2027.",
+       "text": "Current Senior pursuing a Bachelor\u2019s degree in Computer Science, Mathematics, or a related technical field, with an expected graduation date in 2027.",
        "skill_normalized": null,
        "source_span_start": 4751,
        "source_span_end": 4900
@@ -26887,7 +27120,7 @@
       {
        "id": "19112380-2853-44e5-a416-dd8d5516f57f",
        "category": "responsibility",
-       "text": "What You’ll Do",
+       "text": "What You\u2019ll Do",
        "skill_normalized": "null",
        "source_span_start": 836,
        "source_span_end": 850
@@ -26911,7 +27144,7 @@
       {
        "id": "f07ab2e4-c5c8-45ea-abd6-d1f89ca3d1c2",
        "category": "responsibility",
-       "text": "Monitoring & Alerting: Monitor and respond to Zabbix, Grafana and Opensearch alerts—taking direct remediation steps or managing seamless escalations.",
+       "text": "Monitoring & Alerting: Monitor and respond to Zabbix, Grafana and Opensearch alerts\u2014taking direct remediation steps or managing seamless escalations.",
        "skill_normalized": "zabbix",
        "source_span_start": 1138,
        "source_span_end": 1287
@@ -26983,7 +27216,7 @@
       {
        "id": "0335c904-cdf5-4589-9b18-5310c58276fd",
        "category": "must_have",
-       "text": "Experience: 2–4 years of hands-on experience in Systems Administration, Linux Operations, or SRE environments.",
+       "text": "Experience: 2\u20134 years of hands-on experience in Systems Administration, Linux Operations, or SRE environments.",
        "skill_normalized": "linux",
        "source_span_start": 2552,
        "source_span_end": 2662
@@ -27281,7 +27514,7 @@
       {
        "id": "3b4f9085-0667-4ef3-9983-89a1866a91c9",
        "category": "must_have",
-       "text": "Working toward a Bachelor’s or Master’s degree in Computer Science, Data Science, Data Engineering, Artificial Intelligence, or related study.",
+       "text": "Working toward a Bachelor\u2019s or Master\u2019s degree in Computer Science, Data Science, Data Engineering, Artificial Intelligence, or related study.",
        "skill_normalized": "computer science",
        "source_span_start": 1838,
        "source_span_end": 1980
@@ -27305,7 +27538,7 @@
       {
        "id": "8349f657-9dc7-425c-a75c-ad462cfd0c93",
        "category": "must_have",
-       "text": "Minimum of 6 – 12 Technical credit hours depending on practice",
+       "text": "Minimum of 6 \u2013 12 Technical credit hours depending on practice",
        "skill_normalized": "technical credit hours",
        "source_span_start": 2085,
        "source_span_end": 2147
@@ -27369,7 +27602,7 @@
       {
        "id": "15870401-ae93-4912-9674-16d6f1a291ca",
        "category": "must_have",
-       "text": "To perform this job successfully, an individual must have intermediate knowledge of Microsoft® Word, Access, Excel, PowerPoint, Outlook, and Internet navigation and research.",
+       "text": "To perform this job successfully, an individual must have intermediate knowledge of Microsoft\u00ae Word, Access, Excel, PowerPoint, Outlook, and Internet navigation and research.",
        "skill_normalized": "microsoft office",
        "source_span_start": 2597,
        "source_span_end": 2771
@@ -27522,7 +27755,7 @@
       {
        "id": "d32dfee9-bee9-434d-b8b1-5493c877a11b",
        "category": "responsibility",
-       "text": "A weekly lunch stipend of $75/£75 or equivalent in your local currency for lunch.",
+       "text": "A weekly lunch stipend of $75/\u00a375 or equivalent in your local currency for lunch.",
        "skill_normalized": "machine learning",
        "source_span_start": 3030,
        "source_span_end": 3111
@@ -28006,7 +28239,7 @@
       {
        "id": "10535310-1bcf-4755-bf81-f9f8068a45cd",
        "category": "education",
-       "text": "Bachelor’s degree in Computer Science or related field.",
+       "text": "Bachelor\u2019s degree in Computer Science or related field.",
        "skill_normalized": "computer science",
        "source_span_start": 3124,
        "source_span_end": 3179
@@ -28208,7 +28441,7 @@
       {
        "id": "a6323866-9b97-4ba9-9398-a77c835de6bf",
        "category": "must_have",
-       "text": "Pursuing a bachelor’s, master’s, or Ph.",
+       "text": "Pursuing a bachelor\u2019s, master\u2019s, or Ph.",
        "skill_normalized": null,
        "source_span_start": 1884,
        "source_span_end": 1923
@@ -28490,7 +28723,7 @@
       {
        "id": "a8cba0ab-579d-4da9-b329-a0b0ba5d01ac",
        "category": "responsibility",
-       "text": "Enhance the reliability, performance, and maintainability of Gemini’s systems through thoughtful refactoring and continuous improvement projects.",
+       "text": "Enhance the reliability, performance, and maintainability of Gemini\u2019s systems through thoughtful refactoring and continuous improvement projects.",
        "skill_normalized": null,
        "source_span_start": 3181,
        "source_span_end": 3326
@@ -28506,7 +28739,7 @@
       {
        "id": "29c4e4d7-f8ec-406b-8dd8-7b946fb728f7",
        "category": "must_have",
-       "text": "Currently pursuing a degree in Computer Science, Computer Engineering, or a related field (Bachelor’s, Associate’s, or Master’s).",
+       "text": "Currently pursuing a degree in Computer Science, Computer Engineering, or a related field (Bachelor\u2019s, Associate\u2019s, or Master\u2019s).",
        "skill_normalized": null,
        "source_span_start": 3505,
        "source_span_end": 3634
@@ -28579,7 +28812,7 @@
       {
        "id": "e4c1c18c-ed98-4cf0-ba3c-3459ede08190",
        "category": "must_have",
-       "text": "We’re looking for a Security Engineer to build the security foundation for Juicebox from first principles.",
+       "text": "We\u2019re looking for a Security Engineer to build the security foundation for Juicebox from first principles.",
        "skill_normalized": null,
        "source_span_start": 832,
        "source_span_end": 938
@@ -28595,7 +28828,7 @@
       {
        "id": "a7eb8e81-3205-42bf-a05d-189b034fb8a7",
        "category": "must_have",
-       "text": "You’ll operate across identity, cloud infrastructure, application security, observability, and internal platform systems.",
+       "text": "You\u2019ll operate across identity, cloud infrastructure, application security, observability, and internal platform systems.",
        "skill_normalized": null,
        "source_span_start": 1130,
        "source_span_end": 1251
@@ -28659,7 +28892,7 @@
       {
        "id": "4f50c540-ad58-4453-beee-068d16aeaba2",
        "category": "must_have",
-       "text": "You’re comfortable working without heavy PM overhead;",
+       "text": "You\u2019re comfortable working without heavy PM overhead;",
        "skill_normalized": null,
        "source_span_start": 1771,
        "source_span_end": 1824
@@ -28795,7 +29028,7 @@
       {
        "id": "b8ed4d15-fc6b-42f8-802c-e7901200074d",
        "category": "nice_to_have",
-       "text": "Bonus Points If You…",
+       "text": "Bonus Points If You\u2026",
        "skill_normalized": null,
        "source_span_start": 3190,
        "source_span_end": 3210
@@ -29328,7 +29561,7 @@
       {
        "id": "f0aebc79-eb7d-4f84-bb48-d5647d7180da",
        "category": "nice_to_have",
-       "text": "<li>You enjoy working across new technologies and you’re excited&nbsp;",
+       "text": "<li>You enjoy working across new technologies and you\u2019re excited&nbsp;",
        "skill_normalized": "cassandra",
        "source_span_start": 3331,
        "source_span_end": 3401
@@ -29417,7 +29650,7 @@
       {
        "id": "63159fab-bd98-4df2-bf7b-ab8043f53ae7",
        "category": "must_have",
-       "text": "We typically look for 0-2 years’ experience, following a Bachelor’s degree or above in Comp Sci.",
+       "text": "We typically look for 0-2 years\u2019 experience, following a Bachelor\u2019s degree or above in Comp Sci.",
        "skill_normalized": "comp sci",
        "source_span_start": 2633,
        "source_span_end": 2729
@@ -29425,7 +29658,7 @@
       {
        "id": "83d49f59-d401-4d0d-a8b1-2985d20eb040",
        "category": "must_have",
-       "text": "Technical Fundamentals: A strong grasp of computer science basics—data structures, algorithms, and object-oriented programming.",
+       "text": "Technical Fundamentals: A strong grasp of computer science basics\u2014data structures, algorithms, and object-oriented programming.",
        "skill_normalized": "data structures",
        "source_span_start": 2733,
        "source_span_end": 2860
@@ -29465,7 +29698,7 @@
       {
        "id": "b85000d2-1c13-4574-88a8-fde72d32d74f",
        "category": "must_have",
-       "text": "However, we’re especially interested if you’ve had exposure to AWS, React, or NoSQL databases.",
+       "text": "However, we\u2019re especially interested if you\u2019ve had exposure to AWS, React, or NoSQL databases.",
        "skill_normalized": "aws",
        "source_span_start": 3467,
        "source_span_end": 3561
@@ -29928,7 +30161,7 @@
       {
        "id": "93f57c1d-3592-48bf-b51e-7ff44ee93fe9",
        "category": "education",
-       "text": "Applicants must be a recent graduate (within the last 12 months) of a Bachelor’s or a Master’s degree program in Computer Science or a related field",
+       "text": "Applicants must be a recent graduate (within the last 12 months) of a Bachelor\u2019s or a Master\u2019s degree program in Computer Science or a related field",
        "skill_normalized": null,
        "source_span_start": 3888,
        "source_span_end": 4036
@@ -29985,7 +30218,7 @@
       {
        "id": "8b4ae6a8-cf01-4374-a7f7-c8f998e1628b",
        "category": "responsibility",
-       "text": "Help identify and solve performance, reliability, and scalability challenges in critical services supporting Datadog’s growing customer base",
+       "text": "Help identify and solve performance, reliability, and scalability challenges in critical services supporting Datadog\u2019s growing customer base",
        "skill_normalized": "performance",
        "source_span_start": 1208,
        "source_span_end": 1348
@@ -30727,7 +30960,7 @@
       {
        "id": "f4d3d00f-2185-4664-adc0-56b3cb4ae678",
        "category": "responsibility",
-       "text": "Iterating quickly with on-site quantitative researchers on research processes to improve the P&L of the desk’s quantitative trading strategies",
+       "text": "Iterating quickly with on-site quantitative researchers on research processes to improve the P&L of the desk\u2019s quantitative trading strategies",
        "skill_normalized": null,
        "source_span_start": 1536,
        "source_span_end": 1678
@@ -30751,7 +30984,7 @@
       {
        "id": "072f6ed8-0927-4a51-b5f4-1c60a989b85f",
        "category": "must_have",
-       "text": "Final-year bachelor's or master’s student in computer science, engineering, applied mathematics, or a related field",
+       "text": "Final-year bachelor's or master\u2019s student in computer science, engineering, applied mathematics, or a related field",
        "skill_normalized": "computer science",
        "source_span_start": 1871,
        "source_span_end": 1986
@@ -31042,7 +31275,7 @@
       {
        "id": "477adc74-40a3-4fc6-8d0c-38e2a9212cd6",
        "category": "must_have",
-       "text": "Currently in your penultimate year of study (or second-to-last year of an integrated Master’s / MEng), on track to complete a Bachelor’s or integrated Master’s degree in Computer Science, Mathematics, Software Engineering, Physics, or Data Science, with expected graduation no earlier than Summer 2028.",
+       "text": "Currently in your penultimate year of study (or second-to-last year of an integrated Master\u2019s / MEng), on track to complete a Bachelor\u2019s or integrated Master\u2019s degree in Computer Science, Mathematics, Software Engineering, Physics, or Data Science, with expected graduation no earlier than Summer 2028.",
        "skill_normalized": null,
        "source_span_start": 5044,
        "source_span_end": 5346
@@ -31075,7 +31308,7 @@
       {
        "id": "682fd30a-ae23-49b8-b30e-0de1c5c17fc4",
        "category": "must_have",
-       "text": "0–2 years of professional software engineering experience, or a strong internship/project background",
+       "text": "0\u20132 years of professional software engineering experience, or a strong internship/project background",
        "skill_normalized": "python",
        "source_span_start": 2725,
        "source_span_end": 2825
@@ -31132,7 +31365,7 @@
       {
        "id": "8f52c923-99a7-46cb-8daf-0a9d0d179170",
        "category": "must_have",
-       "text": "As a Software Engineering Intern, you’ll help build the systems and features that power autonomous drone operations at scale.",
+       "text": "As a Software Engineering Intern, you\u2019ll help build the systems and features that power autonomous drone operations at scale.",
        "skill_normalized": null,
        "source_span_start": 1047,
        "source_span_end": 1172
@@ -31140,7 +31373,7 @@
       {
        "id": "33f92ed2-f7b0-4c1b-b92b-dd136d1b0b21",
        "category": "must_have",
-       "text": "You’ll work across the stack, from backend services in Python and Go to frontend experiences in TypeScript and React, and you’ll own meaningful pieces of work from idea to shipped feature.",
+       "text": "You\u2019ll work across the stack, from backend services in Python and Go to frontend experiences in TypeScript and React, and you\u2019ll own meaningful pieces of work from idea to shipped feature.",
        "skill_normalized": null,
        "source_span_start": 1173,
        "source_span_end": 1361
@@ -31148,7 +31381,7 @@
       {
        "id": "48344d46-ecb2-4ea0-bb6f-3e0dc8f3a670",
        "category": "must_have",
-       "text": "Our team works on a wide range of challenges and we go where we’re needed:",
+       "text": "Our team works on a wide range of challenges and we go where we\u2019re needed:",
        "skill_normalized": null,
        "source_span_start": 1362,
        "source_span_end": 1436
@@ -31196,7 +31429,7 @@
       {
        "id": "9d6d4a62-8b5d-4cca-a13f-d57d367ce0e1",
        "category": "must_have",
-       "text": "The ideal candidate is a junior, senior, or master’s student with hands-on experience developing complex web applications, but above all, we’re looking for a highly curious and resourceful candidate, capable of using tools and AI at their disposal to accelerate their understanding and productivity.",
+       "text": "The ideal candidate is a junior, senior, or master\u2019s student with hands-on experience developing complex web applications, but above all, we\u2019re looking for a highly curious and resourceful candidate, capable of using tools and AI at their disposal to accelerate their understanding and productivity.",
        "skill_normalized": null,
        "source_span_start": 1980,
        "source_span_end": 2279
@@ -31720,7 +31953,7 @@
       {
        "id": "a258897d-67c8-411b-b113-e59947935956",
        "category": "must_have",
-       "text": "Must be enrolled in a bachelor’s degree or graduate program",
+       "text": "Must be enrolled in a bachelor\u2019s degree or graduate program",
        "skill_normalized": null,
        "source_span_start": 1366,
        "source_span_end": 1425
@@ -31912,7 +32145,7 @@
       {
        "id": "581f275e-9087-4f3c-b63c-26d546e5e687",
        "category": "must_have",
-       "text": "§ 1157, or (iv) Asylee under 8 U.",
+       "text": "\u00a7 1157, or (iv) Asylee under 8 U.",
        "skill_normalized": null,
        "source_span_start": 6307,
        "source_span_end": 6340
@@ -31936,7 +32169,7 @@
       {
        "id": "e67a867c-19a0-4f43-8834-0e7e0e7f2252",
        "category": "must_have",
-       "text": "§ 1158, or be eligible to obtain the required authorizations from the U.",
+       "text": "\u00a7 1158, or be eligible to obtain the required authorizations from the U.",
        "skill_normalized": null,
        "source_span_start": 6345,
        "source_span_end": 6417
@@ -32114,7 +32347,7 @@
       {
        "id": "28265644-ffd2-4a81-b59a-4b6af861ba1b",
        "category": "education",
-       "text": "A bachelor’s or master’s degree in Computer Science or a related discipline, graduating between Fall 2026 and Summer 2027",
+       "text": "A bachelor\u2019s or master\u2019s degree in Computer Science or a related discipline, graduating between Fall 2026 and Summer 2027",
        "skill_normalized": null,
        "source_span_start": 1877,
        "source_span_end": 1998
@@ -32460,7 +32693,7 @@
       {
        "id": "84457c5d-ce8d-4310-9e94-200edc00ee5b",
        "category": "responsibility",
-       "text": "Learn to develop software in C, C++, or other selected languages for Garmin communication and navigation products in accordance with Garmin’s software development methodology with guidance",
+       "text": "Learn to develop software in C, C++, or other selected languages for Garmin communication and navigation products in accordance with Garmin\u2019s software development methodology with guidance",
        "skill_normalized": "c",
        "source_span_start": 522,
        "source_span_end": 710
@@ -32516,7 +32749,7 @@
       {
        "id": "b32414e2-a861-4cbe-ac27-925b6783d4fc",
        "category": "must_have",
-       "text": "Must possess relevant experience and/or training in a high-level language such as C, C++, C# or Java relevant to Garmin’s business needs",
+       "text": "Must possess relevant experience and/or training in a high-level language such as C, C++, C# or Java relevant to Garmin\u2019s business needs",
        "skill_normalized": "c",
        "source_span_start": 1523,
        "source_span_end": 1659
@@ -32524,7 +32757,7 @@
       {
        "id": "1aa25a23-3fb6-4259-b5b8-6f6b1b79bdbe",
        "category": "must_have",
-       "text": "Must possess relevant experience and/or training in data structures or object-oriented design methodology relevant to Garmin’s business needs",
+       "text": "Must possess relevant experience and/or training in data structures or object-oriented design methodology relevant to Garmin\u2019s business needs",
        "skill_normalized": null,
        "source_span_start": 1663,
        "source_span_end": 1804
@@ -32702,7 +32935,7 @@
       {
        "id": "adddd4dd-c3c8-40e8-abdb-23cd8b8aa46d",
        "category": "responsibility",
-       "text": "Develop next-generation, ML-powered systems that enhance the capabilities of the ML driver and accelerate the rapid scaling of Waymo’s business",
+       "text": "Develop next-generation, ML-powered systems that enhance the capabilities of the ML driver and accelerate the rapid scaling of Waymo\u2019s business",
        "skill_normalized": null,
        "source_span_start": 2199,
        "source_span_end": 2342
@@ -33475,7 +33708,7 @@
       {
        "id": "5988978e-7dc1-4f01-aded-887d85c17b36",
        "category": "must_have",
-       "text": "Strong written and verbal communication — you will work directly with government stakeholders and must be able to explain technical concepts to non-technical audiences",
+       "text": "Strong written and verbal communication \u2014 you will work directly with government stakeholders and must be able to explain technical concepts to non-technical audiences",
        "skill_normalized": null,
        "source_span_start": 2439,
        "source_span_end": 2606
@@ -33499,7 +33732,7 @@
       {
        "id": "9f7e2063-0708-42c1-918d-988b343edf6a",
        "category": "nice_to_have",
-       "text": "Hands-on experience with LLMs, evaluations, or agentic systems — whether from internships, research, or personal projects",
+       "text": "Hands-on experience with LLMs, evaluations, or agentic systems \u2014 whether from internships, research, or personal projects",
        "skill_normalized": null,
        "source_span_start": 2723,
        "source_span_end": 2844
@@ -33604,7 +33837,7 @@
       {
        "id": "2b6a4608-a3f2-49c7-aaaf-172ca20af176",
        "category": "must_have",
-       "text": "Pursuing a bachelor’s degree in Computer Science, Software Engineering or",
+       "text": "Pursuing a bachelor\u2019s degree in Computer Science, Software Engineering or",
        "skill_normalized": null,
        "source_span_start": 1175,
        "source_span_end": 1248
@@ -34276,7 +34509,7 @@
       {
        "id": "e20454f7-dacb-4efd-a4ce-dd85b61cb72d",
        "category": "responsibility",
-       "text": "As a software engineer you’ll play a key role in engineering decisions, working closely with the founders and focus on questions like:",
+       "text": "As a software engineer you\u2019ll play a key role in engineering decisions, working closely with the founders and focus on questions like:",
        "skill_normalized": "next",
        "source_span_start": 832,
        "source_span_end": 966
@@ -34308,7 +34541,7 @@
       {
        "id": "60fb192e-96fb-43dd-8313-861ed5b413aa",
        "category": "responsibility",
-       "text": "You will design, build, and ship product features from end to end — many of which will be built on LLMs.",
+       "text": "You will design, build, and ship product features from end to end \u2014 many of which will be built on LLMs.",
        "skill_normalized": "llm",
        "source_span_start": 1181,
        "source_span_end": 1285
@@ -34381,7 +34614,7 @@
       {
        "id": "bd1f9a60-e866-4403-bfde-fd2187d8a28f",
        "category": "education",
-       "text": "<li>Must be enrolled in a bachelor’s degree or graduate program</li>",
+       "text": "<li>Must be enrolled in a bachelor\u2019s degree or graduate program</li>",
        "skill_normalized": null,
        "source_span_start": 1806,
        "source_span_end": 1874
@@ -34510,7 +34743,7 @@
       {
        "id": "bf001254-a2c4-45c6-b596-80fd60389c78",
        "category": "must_have",
-       "text": "Currently enrolled as a 2nd or 3rd year student at a leading Grande École, or recently graduated",
+       "text": "Currently enrolled as a 2nd or 3rd year student at a leading Grande \u00c9cole, or recently graduated",
        "skill_normalized": null,
        "source_span_start": 3979,
        "source_span_end": 4075
@@ -34783,7 +35016,7 @@
       {
        "id": "b1eba389-64bb-43f3-81cd-ce7485ce7e80",
        "category": "responsibility",
-       "text": "standard business hours are typically 9:00 AM – 6:00 PM.",
+       "text": "standard business hours are typically 9:00 AM \u2013 6:00 PM.",
        "skill_normalized": "cloudflare",
        "source_span_start": 5321,
        "source_span_end": 5377
@@ -34945,7 +35178,7 @@
       {
        "id": "471f33ee-0c6b-48b0-9d95-175f41d7f48a",
        "category": "responsibility",
-       "text": "You’ll spend your internship:",
+       "text": "You\u2019ll spend your internship:",
        "skill_normalized": null,
        "source_span_start": 2149,
        "source_span_end": 2178
@@ -34993,7 +35226,7 @@
       {
        "id": "004c6884-2082-4793-b2b8-990d2edfccde",
        "category": "must_have",
-       "text": "What you’ll be using:",
+       "text": "What you\u2019ll be using:",
        "skill_normalized": null,
        "source_span_start": 2619,
        "source_span_end": 2640
@@ -35009,7 +35242,7 @@
       {
        "id": "5c8c4619-6a9b-48c1-b74b-ad3f142eab39",
        "category": "must_have",
-       "text": "Go to write our application code (there’s an excellent interactive Go tutorial here)",
+       "text": "Go to write our application code (there\u2019s an excellent interactive Go tutorial here)",
        "skill_normalized": "cassandra",
        "source_span_start": 2702,
        "source_span_end": 2786
@@ -35073,7 +35306,7 @@
       {
        "id": "d3cbab46-153f-4862-a6a5-7d4a424b05a6",
        "category": "must_have",
-       "text": "🤩 We’d love to hear from you if…",
+       "text": "\ud83e\udd29 We\u2019d love to hear from you if\u2026",
        "skill_normalized": "swift",
        "source_span_start": 3129,
        "source_span_end": 3161
@@ -35202,7 +35435,7 @@
       {
        "id": "40a842d5-cc44-4043-80a8-a3110964dbe1",
        "category": "must_have",
-       "text": "Pursuing a bachelor’s degree in IT, Computer Science or a related field with two semesters of programming experience.",
+       "text": "Pursuing a bachelor\u2019s degree in IT, Computer Science or a related field with two semesters of programming experience.",
        "skill_normalized": null,
        "source_span_start": 943,
        "source_span_end": 1060
@@ -35356,7 +35589,7 @@
       {
        "id": "d2bd4f36-b691-4797-b0c8-c10348da8b0d",
        "category": "responsibility",
-       "text": "You will work across the billing stack — usage metering pipelines, subscription and entitlement systems, payment integrations, and the ledger layer — to make billing accurate, scalable, and transparent.",
+       "text": "You will work across the billing stack \u2014 usage metering pipelines, subscription and entitlement systems, payment integrations, and the ledger layer \u2014 to make billing accurate, scalable, and transparent.",
        "skill_normalized": "billing stack",
        "source_span_start": 991,
        "source_span_end": 1193
@@ -35380,7 +35613,7 @@
       {
        "id": "ddbd83f0-52b0-4fa6-b45f-e0297e71578f",
        "category": "responsibility",
-       "text": "What you’ll do",
+       "text": "What you\u2019ll do",
        "skill_normalized": "role",
        "source_span_start": 1324,
        "source_span_end": 1338
@@ -35396,7 +35629,7 @@
       {
        "id": "03678052-ba31-4e4d-a570-d2a252524fd4",
        "category": "responsibility",
-       "text": "Evolve our ledger system that serves as the source of truth for customer balances, credits, overages, and adjustments — with the correctness guarantees that financial systems require.",
+       "text": "Evolve our ledger system that serves as the source of truth for customer balances, credits, overages, and adjustments \u2014 with the correctness guarantees that financial systems require.",
        "skill_normalized": "ledger system",
        "source_span_start": 1579,
        "source_span_end": 1762
@@ -35420,7 +35653,7 @@
       {
        "id": "dfe69313-3d94-45cc-a5b3-e7ee390d5bc8",
        "category": "responsibility",
-       "text": "Improve observability across the billing pipeline — metering lag, reconciliation discrepancies, invoice accuracy — so the team can quickly detect and debug billing regressions.",
+       "text": "Improve observability across the billing pipeline \u2014 metering lag, reconciliation discrepancies, invoice accuracy \u2014 so the team can quickly detect and debug billing regressions.",
        "skill_normalized": "observability",
        "source_span_start": 2124,
        "source_span_end": 2300
@@ -35476,7 +35709,7 @@
       {
        "id": "872e2252-404f-4eb9-8302-ab8e7192d23b",
        "category": "responsibility",
-       "text": "Revenue accuracy is part of the job, but the goal is to build systems with enough correctness and observability that billing is boring — not to manually reconcile every edge case.",
+       "text": "Revenue accuracy is part of the job, but the goal is to build systems with enough correctness and observability that billing is boring \u2014 not to manually reconcile every edge case.",
        "skill_normalized": "revenue accuracy",
        "source_span_start": 2894,
        "source_span_end": 3073
@@ -35492,7 +35725,7 @@
       {
        "id": "650b79a2-1ba7-4d50-9b21-74d30f39f12d",
        "category": "must_have",
-       "text": "You’ve shipped a usage-based billing system in production and have opinions on metering architecture, idempotency, and exactly-once semantics.",
+       "text": "You\u2019ve shipped a usage-based billing system in production and have opinions on metering architecture, idempotency, and exactly-once semantics.",
        "skill_normalized": "usage based billing system",
        "source_span_start": 3099,
        "source_span_end": 3241
@@ -35500,7 +35733,7 @@
       {
        "id": "513ef837-38b8-4b5d-8abf-b02bb9536ef6",
        "category": "must_have",
-       "text": "You’ve integrated deeply with Stripe, understand its data model, and have dealt with erroring webhooks.",
+       "text": "You\u2019ve integrated deeply with Stripe, understand its data model, and have dealt with erroring webhooks.",
        "skill_normalized": "stripe integration",
        "source_span_start": 3246,
        "source_span_end": 3349
@@ -35508,7 +35741,7 @@
       {
        "id": "cec6ec34-7c95-418d-82ae-67ac45b2d068",
        "category": "must_have",
-       "text": "You’ve built or maintained a financial ledger and understand why it’s required.",
+       "text": "You\u2019ve built or maintained a financial ledger and understand why it\u2019s required.",
        "skill_normalized": "financial ledger",
        "source_span_start": 3354,
        "source_span_end": 3433
@@ -35516,7 +35749,7 @@
       {
        "id": "e504b84d-c4dd-45a4-ac85-bd9c6667f54f",
        "category": "nice_to_have",
-       "text": "You care about correctness and making sure customer’s don’t have to manually review their invoices.",
+       "text": "You care about correctness and making sure customer\u2019s don\u2019t have to manually review their invoices.",
        "skill_normalized": "correctness",
        "source_span_start": 3438,
        "source_span_end": 3537
@@ -35581,7 +35814,7 @@
       {
        "id": "86586e15-7500-420c-b7c1-07ff722982e0",
        "category": "must_have",
-       "text": "You’ve worked in multi-tenant or high-scale environments",
+       "text": "You\u2019ve worked in multi-tenant or high-scale environments",
        "skill_normalized": "multi-tenant",
        "source_span_start": 3534,
        "source_span_end": 3590
@@ -35597,7 +35830,7 @@
       {
        "id": "9dc705db-424c-47ef-9e4a-5fa0a372bb93",
        "category": "must_have",
-       "text": "You’ve designed or secured isolation mechanisms in multi-tenant systems",
+       "text": "You\u2019ve designed or secured isolation mechanisms in multi-tenant systems",
        "skill_normalized": "isolation",
        "source_span_start": 3724,
        "source_span_end": 3795
@@ -35815,7 +36048,7 @@
       {
        "id": "5d87a855-c0a6-4dd0-ac38-c0830275c881",
        "category": "responsibility",
-       "text": "Build detection coverage for our growing AI surface — agent and connector activity, misuse and prompt injection, company data moving through AI tools — much of it detection work without an established playbook yet",
+       "text": "Build detection coverage for our growing AI surface \u2014 agent and connector activity, misuse and prompt injection, company data moving through AI tools \u2014 much of it detection work without an established playbook yet",
        "skill_normalized": "ai",
        "source_span_start": 2551,
        "source_span_end": 2764
@@ -35839,7 +36072,7 @@
       {
        "id": "433d4f39-3138-42a1-98d5-eea86434dd20",
        "category": "responsibility",
-       "text": "Support incident response — triage, investigation, and containment — and help keep our response playbooks current as we learn from each one",
+       "text": "Support incident response \u2014 triage, investigation, and containment \u2014 and help keep our response playbooks current as we learn from each one",
        "skill_normalized": "incident response",
        "source_span_start": 3115,
        "source_span_end": 3254
@@ -35871,7 +36104,7 @@
       {
        "id": "a4baa7d7-feb9-423d-b16c-7306ca3915f1",
        "category": "must_have",
-       "text": "Exposure to incident response — alert triage, investigation, or containment work",
+       "text": "Exposure to incident response \u2014 alert triage, investigation, or containment work",
        "skill_normalized": "incident response",
        "source_span_start": 3663,
        "source_span_end": 3743
@@ -35895,7 +36128,7 @@
       {
        "id": "1bf7aa0f-0d73-499d-8ac5-067e1406e244",
        "category": "nice_to_have",
-       "text": "Awareness of the security questions AI systems raise — agent and connector permissions, prompt injection, non-human identity, data leaving through AI tools — or the drive to get up to speed quickly",
+       "text": "Awareness of the security questions AI systems raise \u2014 agent and connector permissions, prompt injection, non-human identity, data leaving through AI tools \u2014 or the drive to get up to speed quickly",
        "skill_normalized": "ai security",
        "source_span_start": 3990,
        "source_span_end": 4187
@@ -36145,7 +36378,7 @@
       {
        "id": "bdd1a97b-adc8-49a1-9e67-2b8fd20f8c6a",
        "category": "must_have",
-       "text": "Currently pursuing a Bachelor’s or Master’s degree in Computer Science, Software Engineering, or a related technical field (i.e. Mathematics, Physics).",
+       "text": "Currently pursuing a Bachelor\u2019s or Master\u2019s degree in Computer Science, Software Engineering, or a related technical field (i.e. Mathematics, Physics).",
        "skill_normalized": "python",
        "source_span_start": 1841,
        "source_span_end": 1992
@@ -36177,7 +36410,7 @@
       {
        "id": "fad81084-f78b-4c3c-a2a1-a51610007ffe",
        "category": "must_have",
-       "text": "Genuine passion for Patreon’s mission and supporting the creator economy.",
+       "text": "Genuine passion for Patreon\u2019s mission and supporting the creator economy.",
        "skill_normalized": "python",
        "source_span_start": 2226,
        "source_span_end": 2299
@@ -36210,7 +36443,7 @@
       {
        "id": "0e323832-65c2-4e12-8a25-1f32b840521f",
        "category": "responsibility",
-       "text": "As a Software Engineering Intern, you’ll own a meaningful project that contributes directly to Juicebox’s product or engineering infrastructure.",
+       "text": "As a Software Engineering Intern, you\u2019ll own a meaningful project that contributes directly to Juicebox\u2019s product or engineering infrastructure.",
        "skill_normalized": null,
        "source_span_start": 948,
        "source_span_end": 1092
@@ -36218,7 +36451,7 @@
       {
        "id": "0e3fcc43-cebe-44d8-99f8-655ec35fcccb",
        "category": "responsibility",
-       "text": "You won’t be working on a hypothetical intern assignment: you’ll build alongside our engineers, ship real work, and see how customers use what you create.",
+       "text": "You won\u2019t be working on a hypothetical intern assignment: you\u2019ll build alongside our engineers, ship real work, and see how customers use what you create.",
        "skill_normalized": null,
        "source_span_start": 1093,
        "source_span_end": 1247
@@ -36306,7 +36539,7 @@
       {
        "id": "3c6d3d00-59ab-4fc1-822b-e863cd6f5748",
        "category": "nice_to_have",
-       "text": "You don’t need experience with every part of our stack, but you should be excited to learn quickly by building.",
+       "text": "You don\u2019t need experience with every part of our stack, but you should be excited to learn quickly by building.",
        "skill_normalized": null,
        "source_span_start": 2046,
        "source_span_end": 2157
@@ -36314,7 +36547,7 @@
       {
        "id": "30e1e208-0ce4-4ae1-8c35-0c718ddd0560",
        "category": "education",
-       "text": "You are currently pursuing a degree in computer science, engineering, or a related technical field—or have developed equivalent skills through your own experience.",
+       "text": "You are currently pursuing a degree in computer science, engineering, or a related technical field\u2014or have developed equivalent skills through your own experience.",
        "skill_normalized": null,
        "source_span_start": 2845,
        "source_span_end": 3008
@@ -36322,7 +36555,7 @@
       {
        "id": "271b5f00-0606-41a2-9592-f5056bbbb6e2",
        "category": "must_have",
-       "text": "You’ve built something from scratch, whether through a class, personal project, research, internship, startup, or open-source contribution.",
+       "text": "You\u2019ve built something from scratch, whether through a class, personal project, research, internship, startup, or open-source contribution.",
        "skill_normalized": null,
        "source_span_start": 3012,
        "source_span_end": 3151
@@ -36346,7 +36579,7 @@
       {
        "id": "a128b4ad-3c81-470a-b79e-fe50822c4e9f",
        "category": "nice_to_have",
-       "text": "You care about the people using what you build—not just whether the code works.",
+       "text": "You care about the people using what you build\u2014not just whether the code works.",
        "skill_normalized": null,
        "source_span_start": 3308,
        "source_span_end": 3387
@@ -36378,7 +36611,7 @@
       {
        "id": "ff4ee941-2dd7-4168-9d24-00bff14fff73",
        "category": "nice_to_have",
-       "text": "We care more about your curiosity, technical foundation, pace of learning, and the quality of what you’ve built.",
+       "text": "We care more about your curiosity, technical foundation, pace of learning, and the quality of what you\u2019ve built.",
        "skill_normalized": null,
        "source_span_start": 3642,
        "source_span_end": 3754
@@ -36556,7 +36789,7 @@
       {
        "id": "8af58609-f278-4ec4-892f-6b44c674fc53",
        "category": "nice_to_have",
-       "text": "It’s a bonus if you have:",
+       "text": "It\u2019s a bonus if you have:",
        "skill_normalized": "weka",
        "source_span_start": 2450,
        "source_span_end": 2475
@@ -36887,7 +37120,7 @@
       {
        "id": "106df58b-8094-4dc8-8cb2-e5405016017a",
        "category": "must_have",
-       "text": "Must be currently enrolled in a bachelor’s degree program such as Computer Engineering, Computer Science, Electrical or Electronics Engineering and scheduled to graduate in the Spring of 2028 or sooner.",
+       "text": "Must be currently enrolled in a bachelor\u2019s degree program such as Computer Engineering, Computer Science, Electrical or Electronics Engineering and scheduled to graduate in the Spring of 2028 or sooner.",
        "skill_normalized": "computer science",
        "source_span_start": 2190,
        "source_span_end": 2392
@@ -37121,7 +37354,7 @@
       {
        "id": "44879344-a0be-4ce4-ad0e-4385191a4788",
        "category": "responsibility",
-       "text": "<br><br><strong>What We Look For</strong><br>· You have mastered taking a simple problem or business scenario into a solution that interacts with multiple software components, and executing on it by writing clear, easily understood, well tested and extensible code.",
+       "text": "<br><br><strong>What We Look For</strong><br>\u00b7 You have mastered taking a simple problem or business scenario into a solution that interacts with multiple software components, and executing on it by writing clear, easily understood, well tested and extensible code.",
        "skill_normalized": null,
        "source_span_start": 1776,
        "source_span_end": 2041
@@ -37129,7 +37362,7 @@
       {
        "id": "9d024948-84de-49f8-96e0-2468f8548527",
        "category": "responsibility",
-       "text": "<br>· You are comfortable navigating a large code base, debugging others' code, and providing feedback to other engineers through code reviews.",
+       "text": "<br>\u00b7 You are comfortable navigating a large code base, debugging others' code, and providing feedback to other engineers through code reviews.",
        "skill_normalized": null,
        "source_span_start": 2042,
        "source_span_end": 2185
@@ -37137,7 +37370,7 @@
       {
        "id": "aee29999-fae3-4693-84d9-015d15c744ee",
        "category": "responsibility",
-       "text": "<br>· Your experience demonstrates that you take ownership of your growth, proactively seeking feedback from your team, your manager, and your stakeholders.",
+       "text": "<br>\u00b7 Your experience demonstrates that you take ownership of your growth, proactively seeking feedback from your team, your manager, and your stakeholders.",
        "skill_normalized": null,
        "source_span_start": 2186,
        "source_span_end": 2342
@@ -37145,7 +37378,7 @@
       {
        "id": "20cef130-7fb4-4d48-9d35-9c10168810ae",
        "category": "responsibility",
-       "text": "<br>· You have strong verbal and written communication skills that support effective collaboration with our global engineering team.",
+       "text": "<br>\u00b7 You have strong verbal and written communication skills that support effective collaboration with our global engineering team.",
        "skill_normalized": null,
        "source_span_start": 2343,
        "source_span_end": 2475
@@ -37153,7 +37386,7 @@
       {
        "id": "b2caa4b4-b3a5-4b40-ab5d-c706453a0f1c",
        "category": "must_have",
-       "text": "<br>· This position requires either equivalent practical experience or a Bachelor’s degree in a related field.",
+       "text": "<br>\u00b7 This position requires either equivalent practical experience or a Bachelor\u2019s degree in a related field.",
        "skill_normalized": null,
        "source_span_start": 2476,
        "source_span_end": 2586
@@ -37186,7 +37419,7 @@
       {
        "id": "4638c733-d0bd-4418-841d-05a53779ccea",
        "category": "must_have",
-       "text": "\">Currently enrolled in or will receive a Bachelor’s or higher in Computer Science, Mathematics, or related technical discipline with an expected graduation date between winter 2027 – summer 2028 (or equivalent experience)</li>",
+       "text": "\">Currently enrolled in or will receive a Bachelor\u2019s or higher in Computer Science, Mathematics, or related technical discipline with an expected graduation date between winter 2027 \u2013 summer 2028 (or equivalent experience)</li>",
        "skill_normalized": "computer science",
        "source_span_start": 3309,
        "source_span_end": 3536
@@ -37219,7 +37452,7 @@
       {
        "id": "e5ab4f6a-6428-4b40-9b63-82bf44153da9",
        "category": "responsibility",
-       "text": "Architect scalable, stateful systems for automated limit management to optimize Ramp’s charge card portfolio.",
+       "text": "Architect scalable, stateful systems for automated limit management to optimize Ramp\u2019s charge card portfolio.",
        "skill_normalized": "distributed systems",
        "source_span_start": 1873,
        "source_span_end": 1982
@@ -37235,7 +37468,7 @@
       {
        "id": "df421b08-b3ad-42e8-8bf4-e3cd4ae49ef9",
        "category": "responsibility",
-       "text": "Develop high-volume, low-latency risk controls to support Ramp’s expansion into new products, customer segments, and geographies.",
+       "text": "Develop high-volume, low-latency risk controls to support Ramp\u2019s expansion into new products, customer segments, and geographies.",
        "skill_normalized": "risk controls",
        "source_span_start": 2125,
        "source_span_end": 2254
@@ -37414,7 +37647,7 @@
       {
        "id": "42c86d92-50ba-4044-bc32-197a0af9d98b",
        "category": "responsibility",
-       "text": "Leverage Dataiku’s LLM Mesh and accelerate customer adoption, helping shape Dataiku’s strategy for agentic AI in the enterprise",
+       "text": "Leverage Dataiku\u2019s LLM Mesh and accelerate customer adoption, helping shape Dataiku\u2019s strategy for agentic AI in the enterprise",
        "skill_normalized": "llm",
        "source_span_start": 3300,
        "source_span_end": 3427
@@ -37656,7 +37889,7 @@
       {
        "id": "47c37ee7-952a-47f3-ab29-a014c4dc7170",
        "category": "nice_to_have",
-       "text": "<li>Experience as a researcher — through internships, full-time roles, or at a lab</li>",
+       "text": "<li>Experience as a researcher \u2014 through internships, full-time roles, or at a lab</li>",
        "skill_normalized": null,
        "source_span_start": 3611,
        "source_span_end": 3698
@@ -37890,7 +38123,7 @@
       {
        "id": "8357519b-5285-452d-b35c-400b3690d27a",
        "category": "must_have",
-       "text": "Demonstrates the ability to responsibly use generative AI tools and copilots (e.g., LibreChat, Gemini, Glean) in daily workflows, continuously learn as tools evolve, and apply human‑in‑the‑loop practices to deliver business‑ready outputs and drive measurable improvements in efficiency, cost, and quality.",
+       "text": "Demonstrates the ability to responsibly use generative AI tools and copilots (e.g., LibreChat, Gemini, Glean) in daily workflows, continuously learn as tools evolve, and apply human\u2011in\u2011the\u2011loop practices to deliver business\u2011ready outputs and drive measurable improvements in efficiency, cost, and quality.",
        "skill_normalized": "generative ai",
        "source_span_start": 4136,
        "source_span_end": 4441
@@ -37964,7 +38197,7 @@
       {
        "id": "6283745c-037b-4e92-beeb-49677a203744",
        "category": "education",
-       "text": "Education: Currently pursuing a Bachelor’s or Master’s degree in Computer Science or Computer Engineering with a strong academic record.",
+       "text": "Education: Currently pursuing a Bachelor\u2019s or Master\u2019s degree in Computer Science or Computer Engineering with a strong academic record.",
        "skill_normalized": null,
        "source_span_start": 2754,
        "source_span_end": 2890
@@ -38077,7 +38310,7 @@
       {
        "id": "20c89607-502b-4e04-b4a1-d71d5fce734f",
        "category": "education",
-       "text": "Bachelor’s or Master’s degree in computer science, electrical engineering, mechanical engineering, or equivalent experience",
+       "text": "Bachelor\u2019s or Master\u2019s degree in computer science, electrical engineering, mechanical engineering, or equivalent experience",
        "skill_normalized": null,
        "source_span_start": 1394,
        "source_span_end": 1517
@@ -38263,7 +38496,7 @@
       {
        "id": "5ef36962-b610-44d9-bedc-a5e77cbde2d1",
        "category": "nice_to_have",
-       "text": "<li>To be a curious person who can’t help but to nerd out on anything from the latest code frameworks</li>",
+       "text": "<li>To be a curious person who can\u2019t help but to nerd out on anything from the latest code frameworks</li>",
        "skill_normalized": null,
        "source_span_start": 1230,
        "source_span_end": 1336
@@ -38697,7 +38930,7 @@
       {
        "id": "c9ae6272-fc39-4c97-95ce-14c2b6a7e6c1",
        "category": "must_have",
-       "text": "§ 1157, or (iv) Asylee under 8 U.",
+       "text": "\u00a7 1157, or (iv) Asylee under 8 U.",
        "skill_normalized": null,
        "source_span_start": 5734,
        "source_span_end": 5767
@@ -38721,7 +38954,7 @@
       {
        "id": "b163960d-baf3-4954-84fa-6a3735c87b97",
        "category": "must_have",
-       "text": "§ 1158, or be eligible to obtain the required authorizations from the U.",
+       "text": "\u00a7 1158, or be eligible to obtain the required authorizations from the U.",
        "skill_normalized": null,
        "source_span_start": 5772,
        "source_span_end": 5844
@@ -38866,7 +39099,7 @@
       {
        "id": "8af5e144-588f-48f6-9f3f-c9c02c4111af",
        "category": "nice_to_have",
-       "text": "Familiarity with GCP, AWS, or Azure’s database and AI integration strategies.",
+       "text": "Familiarity with GCP, AWS, or Azure\u2019s database and AI integration strategies.",
        "skill_normalized": "gcp",
        "source_span_start": 3749,
        "source_span_end": 3826
@@ -38907,7 +39140,7 @@
       {
        "id": "e6287aaf-6c31-4844-90f6-3c460dcc44e1",
        "category": "must_have",
-       "text": "Bachelor’s, Master’s, or Doctoral degree in Data Science, Computer Science, Statistics, or a related field.",
+       "text": "Bachelor\u2019s, Master\u2019s, or Doctoral degree in Data Science, Computer Science, Statistics, or a related field.",
        "skill_normalized": "data science",
        "source_span_start": 1192,
        "source_span_end": 1299
@@ -39246,7 +39479,7 @@
       {
        "id": "3852d454-c64c-46cb-9ce3-6e5d6afaee19",
        "category": "must_have",
-       "text": "Current enrollment in a degree-seeking program (associate’s, bachelor's, master's, MBA, PhD, or the equivalent) with an expected graduation date after the internship ends",
+       "text": "Current enrollment in a degree-seeking program (associate\u2019s, bachelor's, master's, MBA, PhD, or the equivalent) with an expected graduation date after the internship ends",
        "skill_normalized": null,
        "source_span_start": 2996,
        "source_span_end": 3166
@@ -39286,7 +39519,7 @@
       {
        "id": "40f87798-47c5-4964-957b-8e0e0110626c",
        "category": "nice_to_have",
-       "text": "Security domain knowledge is a plus but not required — we'll build that as part of the internship.",
+       "text": "Security domain knowledge is a plus but not required \u2014 we'll build that as part of the internship.",
        "skill_normalized": null,
        "source_span_start": 3709,
        "source_span_end": 3807
@@ -39335,7 +39568,7 @@
       {
        "id": "9c3b8290-daf3-48d7-a065-32901b388257",
        "category": "responsibility",
-       "text": "Design and develop solutions to prevent or mitigate security vulnerabilities across Figma’s products, services and infrastructure",
+       "text": "Design and develop solutions to prevent or mitigate security vulnerabilities across Figma\u2019s products, services and infrastructure",
        "skill_normalized": null,
        "source_span_start": 1358,
        "source_span_end": 1487
@@ -39818,7 +40051,7 @@
       {
        "id": "6cd12646-6b49-4bbb-87f6-bc8efaf3ed8b",
        "category": "education",
-       "text": "Current enrollment in a degree-seeking program (associate’s, bachelor's, master's, MBA, PhD, or the equivalent) with an expected graduation date after the internship ends",
+       "text": "Current enrollment in a degree-seeking program (associate\u2019s, bachelor's, master's, MBA, PhD, or the equivalent) with an expected graduation date after the internship ends",
        "skill_normalized": null,
        "source_span_start": 2322,
        "source_span_end": 2492
@@ -40020,7 +40253,7 @@
       {
        "id": "fcc3394d-fb83-4e5f-ae44-081391d74fbb",
        "category": "responsibility",
-       "text": "You’ll work in small teams with minimal supervision and own end-to-end execution of high stakes projects.",
+       "text": "You\u2019ll work in small teams with minimal supervision and own end-to-end execution of high stakes projects.",
        "skill_normalized": null,
        "source_span_start": 1302,
        "source_span_end": 1407
@@ -40530,7 +40763,7 @@
       {
        "id": "279811c4-0fed-46e9-abd1-6daf003d3202",
        "category": "must_have",
-       "text": "Must be pursuing a bachelor’s or master’s degree in Aerospace Engineering, Computer Science, Electrical Engineering, or a related field.",
+       "text": "Must be pursuing a bachelor\u2019s or master\u2019s degree in Aerospace Engineering, Computer Science, Electrical Engineering, or a related field.",
        "skill_normalized": null,
        "source_span_start": 1906,
        "source_span_end": 2042
@@ -40659,7 +40892,7 @@
       {
        "id": "faf7f55c-aa00-437f-aa2f-7fb84cd96568",
        "category": "must_have",
-       "text": "Every intern is paired with a manager and a mentor, meeting with both of them regularly, and works on production-impacting projects from day one — whether that's a customer-facing feature, an internal tool, or original security research.",
+       "text": "Every intern is paired with a manager and a mentor, meeting with both of them regularly, and works on production-impacting projects from day one \u2014 whether that's a customer-facing feature, an internal tool, or original security research.",
        "skill_normalized": null,
        "source_span_start": 105,
        "source_span_end": 342
@@ -40691,7 +40924,7 @@
       {
        "id": "f06682bf-a5b1-40a0-8032-a9bfa2ccc28a",
        "category": "must_have",
-       "text": "<p>Censys is small enough that intern work ships to production and reaches real customers — not a shelved capstone project.",
+       "text": "<p>Censys is small enough that intern work ships to production and reaches real customers \u2014 not a shelved capstone project.",
        "skill_normalized": null,
        "source_span_start": 587,
        "source_span_end": 710
@@ -41084,7 +41317,7 @@
       {
        "id": "24dd27cd-3796-4153-ac0c-77850004c249",
        "category": "nice_to_have",
-       "text": "<li>Hands-on experience with LLMs, evaluations, or agentic systems — whether from coursework, research, or personal projects</li>",
+       "text": "<li>Hands-on experience with LLMs, evaluations, or agentic systems \u2014 whether from coursework, research, or personal projects</li>",
        "skill_normalized": null,
        "source_span_start": 2714,
        "source_span_end": 2843
@@ -41246,7 +41479,7 @@
       {
        "id": "835b5914-f3e5-4b73-9fac-938f3b55696d",
        "category": "must_have",
-       "text": "In the process of receiving a Bachelor’s or Master's degree in Computer Science, Computer Engineering, or a related field.",
+       "text": "In the process of receiving a Bachelor\u2019s or Master's degree in Computer Science, Computer Engineering, or a related field.",
        "skill_normalized": null,
        "source_span_start": 640,
        "source_span_end": 762
@@ -42115,7 +42348,7 @@
       {
        "id": "a59eb969-179c-4c87-9dcc-23f2893a287c",
        "category": "must_have",
-       "text": "\\- You’re a current, enrolled student pursuing a Bachelor’s or Master’s degree in a technical field such as Computer Science, Engineering, Math, or Statistics, with an expected graduation date between December 2027 and Spring/Summer 2028.",
+       "text": "\\- You\u2019re a current, enrolled student pursuing a Bachelor\u2019s or Master\u2019s degree in a technical field such as Computer Science, Engineering, Math, or Statistics, with an expected graduation date between December 2027 and Spring/Summer 2028.",
        "skill_normalized": null,
        "source_span_start": 1405,
        "source_span_end": 1643
@@ -42123,7 +42356,7 @@
       {
        "id": "90c14022-65ee-44cc-a6da-cb77a1801417",
        "category": "nice_to_have",
-       "text": "Bonus points if you’ve completed at least one of these courses: Distributed Systems, Web Development, Mobile Development, Network or Application Security, Machine Learning, or AI.",
+       "text": "Bonus points if you\u2019ve completed at least one of these courses: Distributed Systems, Web Development, Mobile Development, Network or Application Security, Machine Learning, or AI.",
        "skill_normalized": null,
        "source_span_start": 1881,
        "source_span_end": 2060
@@ -42171,7 +42404,7 @@
       {
        "id": "af034838-2495-4362-9cbc-a2edf8fbf97b",
        "category": "responsibility",
-       "text": "\\- Build good judgment about AI: validating its output, spotting when it’s wrong or overconfident, and handling privacy and security responsibly",
+       "text": "\\- Build good judgment about AI: validating its output, spotting when it\u2019s wrong or overconfident, and handling privacy and security responsibly",
        "skill_normalized": null,
        "source_span_start": 3480,
        "source_span_end": 3624
@@ -42461,7 +42694,7 @@
       {
        "id": "04860052-dd05-4906-b205-e5719653285e",
        "category": "must_have",
-       "text": "Currently pursuing a Bachelor’s degree in Computer Science or a related field",
+       "text": "Currently pursuing a Bachelor\u2019s degree in Computer Science or a related field",
        "skill_normalized": null,
        "source_span_start": 2491,
        "source_span_end": 2568
@@ -42615,7 +42848,7 @@
       {
        "id": "c2156a36-5f25-4b36-b7fb-a604aa0389f2",
        "category": "must_have",
-       "text": "Graduated with a bachelor’s degree from an accredited college or university",
+       "text": "Graduated with a bachelor\u2019s degree from an accredited college or university",
        "skill_normalized": null,
        "source_span_start": 2682,
        "source_span_end": 2757
@@ -42623,7 +42856,7 @@
       {
        "id": "363530d4-ecce-4478-b5ee-21a2130a5872",
        "category": "must_have",
-       "text": "Currently enrolled in an MBA program for an MBA internship OR a Master’s program for a Master’s internship OR a PharmD program for a PharmD internship OR Ph.",
+       "text": "Currently enrolled in an MBA program for an MBA internship OR a Master\u2019s program for a Master\u2019s internship OR a PharmD program for a PharmD internship OR Ph.",
        "skill_normalized": null,
        "source_span_start": 2761,
        "source_span_end": 2918
@@ -42639,7 +42872,7 @@
       {
        "id": "59528c9b-e43c-43c8-a791-894933012e04",
        "category": "nice_to_have",
-       "text": "In the process of completing the first year of a Master’s program with concentration in Information Technology, Computer Science (e.g., CS, CPE, SE), Engineering, Business, or related field",
+       "text": "In the process of completing the first year of a Master\u2019s program with concentration in Information Technology, Computer Science (e.g., CS, CPE, SE), Engineering, Business, or related field",
        "skill_normalized": null,
        "source_span_start": 3122,
        "source_span_end": 3311
@@ -42784,7 +43017,7 @@
       {
        "id": "080d4257-53d8-4e14-9162-51c2e424c4fc",
        "category": "nice_to_have",
-       "text": "0→1 product-building experience",
+       "text": "0\u21921 product-building experience",
        "skill_normalized": "product building",
        "source_span_start": 2054,
        "source_span_end": 2085
@@ -43237,7 +43470,7 @@
       {
        "id": "f7634ecc-e938-4ed0-a408-5eeeb9093c0f",
        "category": "responsibility",
-       "text": "You will “own” your work (passionately).",
+       "text": "You will \u201cown\u201d your work (passionately).",
        "skill_normalized": null,
        "source_span_start": 1277,
        "source_span_end": 1317
@@ -43423,7 +43656,7 @@
       {
        "id": "e40dde4e-fa64-464f-94ab-d1abee336b6f",
        "category": "responsibility",
-       "text": "you’ll be building things!",
+       "text": "you\u2019ll be building things!",
        "skill_normalized": null,
        "source_span_start": 4976,
        "source_span_end": 5002
@@ -43699,7 +43932,7 @@
       {
        "id": "fc26334e-0108-48e9-bcd3-0bfb4bf6593a",
        "category": "responsibility",
-       "text": "Iterating quickly with on-site quantitative researchers on research processes to improve the P&L of the desk’s quantitative trading strategies",
+       "text": "Iterating quickly with on-site quantitative researchers on research processes to improve the P&L of the desk\u2019s quantitative trading strategies",
        "skill_normalized": null,
        "source_span_start": 1536,
        "source_span_end": 1678
@@ -43723,7 +43956,7 @@
       {
        "id": "51485085-6b58-4242-a500-ecd3c8fe3355",
        "category": "education",
-       "text": "Final-year bachelor's or master’s student in computer science, engineering, applied mathematics, or a related field",
+       "text": "Final-year bachelor's or master\u2019s student in computer science, engineering, applied mathematics, or a related field",
        "skill_normalized": null,
        "source_span_start": 1871,
        "source_span_end": 1986
@@ -43877,7 +44110,7 @@
       {
        "id": "8fe15747-07de-4b69-b37d-a68807b170c0",
        "category": "must_have",
-       "text": "Applicants must be a recent graduate (within the last 12 months) of a Bachelor’s or a Master’s degree program in Computer Science or a related field",
+       "text": "Applicants must be a recent graduate (within the last 12 months) of a Bachelor\u2019s or a Master\u2019s degree program in Computer Science or a related field",
        "skill_normalized": "computer science",
        "source_span_start": 3888,
        "source_span_end": 4036
@@ -43934,7 +44167,7 @@
       {
        "id": "5020bbbb-0fb0-4cf5-835a-07fc8f7be851",
        "category": "responsibility",
-       "text": "We need to support real-time communication and webhooks when they don’t exist (e.g., using web-sockets).",
+       "text": "We need to support real-time communication and webhooks when they don\u2019t exist (e.g., using web-sockets).",
        "skill_normalized": "websockets",
        "source_span_start": 4731,
        "source_span_end": 4835
@@ -43942,7 +44175,7 @@
       {
        "id": "b90769a4-a1d6-44b0-a662-a31960bbc14e",
        "category": "responsibility",
-       "text": "Scale & speed: we’re handling millions of API requests per day, and growing daily.",
+       "text": "Scale & speed: we\u2019re handling millions of API requests per day, and growing daily.",
        "skill_normalized": null,
        "source_span_start": 4840,
        "source_span_end": 4922
@@ -44161,7 +44394,7 @@
       {
        "id": "2240a65e-9459-4ca3-8391-14c1f33c0876",
        "category": "nice_to_have",
-       "text": "<li>Hands-on experience with LLMs, evaluations, or agentic systems — whether from coursework, research, or personal projects</li>",
+       "text": "<li>Hands-on experience with LLMs, evaluations, or agentic systems \u2014 whether from coursework, research, or personal projects</li>",
        "skill_normalized": "llms",
        "source_span_start": 2714,
        "source_span_end": 2843
@@ -44202,7 +44435,7 @@
       {
        "id": "83a8dcaa-c848-4a66-badf-e19ac652b047",
        "category": "responsibility",
-       "text": "You won’t be in a typical “keep the lights on” SRE role.",
+       "text": "You won\u2019t be in a typical \u201ckeep the lights on\u201d SRE role.",
        "skill_normalized": "kubernetes",
        "source_span_start": 4040,
        "source_span_end": 4096
@@ -44435,7 +44668,7 @@
       {
        "id": "8a330feb-c947-49e1-b442-995b7d00e7d8",
        "category": "must_have",
-       "text": "0–2 years of professional software engineering experience, or a strong internship/project background",
+       "text": "0\u20132 years of professional software engineering experience, or a strong internship/project background",
        "skill_normalized": null,
        "source_span_start": 2725,
        "source_span_end": 2825
@@ -44516,7 +44749,7 @@
       {
        "id": "99a89da4-937b-477c-9e95-5b6d7b7c04dc",
        "category": "must_have",
-       "text": "As a PhD Intern, Security Engineer you will work on an impactful project to improve the security of Figma’s product, platform, or infrastructure, working closely with a mentor and teammates while applying your research background to drive real-world impact.",
+       "text": "As a PhD Intern, Security Engineer you will work on an impactful project to improve the security of Figma\u2019s product, platform, or infrastructure, working closely with a mentor and teammates while applying your research background to drive real-world impact.",
        "skill_normalized": null,
        "source_span_start": 592,
        "source_span_end": 849
@@ -44540,7 +44773,7 @@
       {
        "id": "66cd306c-d552-4ae1-81b0-1f73089c5f25",
        "category": "responsibility",
-       "text": "What you’ll do at Figma:",
+       "text": "What you\u2019ll do at Figma:",
        "skill_normalized": null,
        "source_span_start": 1256,
        "source_span_end": 1280
@@ -44556,7 +44789,7 @@
       {
        "id": "f3ad3d74-81a3-4b34-bc2d-80cd09032961",
        "category": "responsibility",
-       "text": "Design and develop solutions to prevent or mitigate security vulnerabilities across Figma’s products, services and infrastructure",
+       "text": "Design and develop solutions to prevent or mitigate security vulnerabilities across Figma\u2019s products, services and infrastructure",
        "skill_normalized": null,
        "source_span_start": 1358,
        "source_span_end": 1487
@@ -44580,7 +44813,7 @@
       {
        "id": "70ff454c-6550-4e92-99d4-f4689e109c6d",
        "category": "nice_to_have",
-       "text": "We’d love to hear from you if you have:",
+       "text": "We\u2019d love to hear from you if you have:",
        "skill_normalized": null,
        "source_span_start": 1869,
        "source_span_end": 1908
@@ -44628,7 +44861,7 @@
       {
        "id": "9c388977-7274-4353-8fae-671449873d1c",
        "category": "nice_to_have",
-       "text": "While it’s not required, it’s an added plus if you also have:",
+       "text": "While it\u2019s not required, it\u2019s an added plus if you also have:",
        "skill_normalized": null,
        "source_span_start": 2579,
        "source_span_end": 2640
@@ -44911,7 +45144,7 @@
       {
        "id": "d3b2f138-2068-405d-abc8-d276c68375e0",
        "category": "responsibility",
-       "text": "We’re looking for an Infrastructure Security Engineer to design and secure the core systems that power our platform.",
+       "text": "We\u2019re looking for an Infrastructure Security Engineer to design and secure the core systems that power our platform.",
        "skill_normalized": "infrastructure security",
        "source_span_start": 1091,
        "source_span_end": 1207
@@ -44927,7 +45160,7 @@
       {
        "id": "36fa3b83-d17e-4bc6-a3bd-fadc88817fad",
        "category": "responsibility",
-       "text": "You’ll work closely with engineering teams to define secure primitives and ensure our platform is resilient, scalable, and trustworthy by design.",
+       "text": "You\u2019ll work closely with engineering teams to define secure primitives and ensure our platform is resilient, scalable, and trustworthy by design.",
        "skill_normalized": "cloud-native environment",
        "source_span_start": 1405,
        "source_span_end": 1550
@@ -45023,7 +45256,7 @@
       {
        "id": "d1b10ea0-bc05-424b-a0a3-b60df5ff5368",
        "category": "must_have",
-       "text": "You’ve worked in multi-tenant or high-scale environments",
+       "text": "You\u2019ve worked in multi-tenant or high-scale environments",
        "skill_normalized": "high-scale environments",
        "source_span_start": 3534,
        "source_span_end": 3590
@@ -45039,7 +45272,7 @@
       {
        "id": "d6d7de02-ff93-4b35-8ff3-f3ac03ada122",
        "category": "must_have",
-       "text": "You’ve designed or secured isolation mechanisms in multi-tenant systems",
+       "text": "You\u2019ve designed or secured isolation mechanisms in multi-tenant systems",
        "skill_normalized": "isolation mechanisms",
        "source_span_start": 3724,
        "source_span_end": 3795
@@ -45152,7 +45385,7 @@
       {
        "id": "594c228e-d2f2-4ec4-bb48-b54f1e62e2b4",
        "category": "must_have",
-       "text": "Exposure to incident response — alert triage, investigation, or containment work",
+       "text": "Exposure to incident response \u2014 alert triage, investigation, or containment work",
        "skill_normalized": "incident response",
        "source_span_start": 3663,
        "source_span_end": 3743
@@ -45176,7 +45409,7 @@
       {
        "id": "da009f3c-68b5-4e2b-bd90-a07763bab8a3",
        "category": "nice_to_have",
-       "text": "An interest in security engineering as a craft — you want to build things that are reliable, well-documented, and easy for others to maintain",
+       "text": "An interest in security engineering as a craft \u2014 you want to build things that are reliable, well-documented, and easy for others to maintain",
        "skill_normalized": "security engineering",
        "source_span_start": 4290,
        "source_span_end": 4431
@@ -45192,7 +45425,7 @@
       {
        "id": "b9a74d71-165d-479e-8088-a387d145a373",
        "category": "nice_to_have",
-       "text": "Strong written communication skills — you can write a clear runbook and explain a security concept to a non-technical colleague",
+       "text": "Strong written communication skills \u2014 you can write a clear runbook and explain a security concept to a non-technical colleague",
        "skill_normalized": "communication",
        "source_span_start": 4520,
        "source_span_end": 4647
@@ -45241,7 +45474,7 @@
       {
        "id": "0459a611-11da-4064-acee-aff9efcfedb1",
        "category": "responsibility",
-       "text": "<li>Contribute to evolving our agentic architecture — making our AI agents more self-sufficient and performant.",
+       "text": "<li>Contribute to evolving our agentic architecture \u2014 making our AI agents more self-sufficient and performant.",
        "skill_normalized": "architecture",
        "source_span_start": 2806,
        "source_span_end": 2917
@@ -45265,7 +45498,7 @@
       {
        "id": "9203de34-2adc-40fb-9d9d-cd1adfa8f9dc",
        "category": "responsibility",
-       "text": "<li>Stay abreast of emerging AI trends and technologies, identifying and leveraging opportunities for their application within Klaviyo’s ecosystem.",
+       "text": "<li>Stay abreast of emerging AI trends and technologies, identifying and leveraging opportunities for their application within Klaviyo\u2019s ecosystem.",
        "skill_normalized": "ai",
        "source_span_start": 3117,
        "source_span_end": 3264
@@ -45547,7 +45780,7 @@
       {
        "id": "5b9cb9fd-7be3-4155-9be0-9584495a8680",
        "category": "education",
-       "text": "A bachelor’s or master’s degree in Computer Science or a related discipline, graduating between Fall 2026 and Summer 2027",
+       "text": "A bachelor\u2019s or master\u2019s degree in Computer Science or a related discipline, graduating between Fall 2026 and Summer 2027",
        "skill_normalized": null,
        "source_span_start": 1877,
        "source_span_end": 1998
@@ -45651,7 +45884,7 @@
       {
        "id": "e20cedfa-da16-4a8b-bc74-ff8c9e44d134",
        "category": "nice_to_have",
-       "text": "Why You’ll Love It Here",
+       "text": "Why You\u2019ll Love It Here",
        "skill_normalized": null,
        "source_span_start": 3066,
        "source_span_end": 3089
@@ -45854,7 +46087,7 @@
       {
        "id": "922b4e4f-de0b-4b29-850d-853f6aac6193",
        "category": "responsibility",
-       "text": "Iterating quickly with on-site quantitative researchers on research processes to improve the P&L of the desk’s quantitative trading strategies",
+       "text": "Iterating quickly with on-site quantitative researchers on research processes to improve the P&L of the desk\u2019s quantitative trading strategies",
        "skill_normalized": null,
        "source_span_start": 1536,
        "source_span_end": 1678
@@ -45878,7 +46111,7 @@
       {
        "id": "5320d9ac-84d9-4d89-8664-9e1a493ce6c4",
        "category": "education",
-       "text": "Final-year bachelor's or master’s student in computer science, engineering, applied mathematics, or a related field",
+       "text": "Final-year bachelor's or master\u2019s student in computer science, engineering, applied mathematics, or a related field",
        "skill_normalized": null,
        "source_span_start": 1871,
        "source_span_end": 1986
@@ -46024,7 +46257,7 @@
       {
        "id": "836090c2-2d17-4faf-bf8d-92487fe6a96b",
        "category": "must_have",
-       "text": "Applicants must be a recent graduate (within the last 12 months) of a Bachelor’s or a Master’s degree program in Computer Science or a related field",
+       "text": "Applicants must be a recent graduate (within the last 12 months) of a Bachelor\u2019s or a Master\u2019s degree program in Computer Science or a related field",
        "skill_normalized": "computer science",
        "source_span_start": 3888,
        "source_span_end": 4036
@@ -46312,7 +46545,7 @@
       {
        "id": "b14a1d4d-a616-4f57-bca0-72131ec1fe10",
        "category": "responsibility",
-       "text": "Please review Sigma’s Candidate Privacy Notice for more details.",
+       "text": "Please review Sigma\u2019s Candidate Privacy Notice for more details.",
        "skill_normalized": null,
        "source_span_start": 7140,
        "source_span_end": 7204
@@ -46328,7 +46561,7 @@
       {
        "id": "c408cc4b-f929-4ddf-9e8b-595decf6ea59",
        "category": "responsibility",
-       "text": "Sigma’s use of AI",
+       "text": "Sigma\u2019s use of AI",
        "skill_normalized": null,
        "source_span_start": 7373,
        "source_span_end": 7390
@@ -46449,7 +46682,7 @@
       {
        "id": "ea155572-b4cd-411a-8ea9-bc42b2dd6766",
        "category": "responsibility",
-       "text": "On-prem: we’re connecting with many types of on-prem systems (SQL-based, DLL-based, API-based), many built 20-40 years ago.",
+       "text": "On-prem: we\u2019re connecting with many types of on-prem systems (SQL-based, DLL-based, API-based), many built 20-40 years ago.",
        "skill_normalized": null,
        "source_span_start": 4443,
        "source_span_end": 4566
@@ -46457,7 +46690,7 @@
       {
        "id": "263ee516-abdf-4492-87f5-c7deeaffde6d",
        "category": "responsibility",
-       "text": "We need to support real-time communication and webhooks when they don’t exist (e.g., using web-sockets).",
+       "text": "We need to support real-time communication and webhooks when they don\u2019t exist (e.g., using web-sockets).",
        "skill_normalized": "websocket",
        "source_span_start": 4731,
        "source_span_end": 4835
@@ -46465,7 +46698,7 @@
       {
        "id": "b1793ac6-53db-47dd-a855-f8e8e8c045b2",
        "category": "responsibility",
-       "text": "Scale & speed: we’re handling millions of API requests per day, and growing daily.",
+       "text": "Scale & speed: we\u2019re handling millions of API requests per day, and growing daily.",
        "skill_normalized": null,
        "source_span_start": 4840,
        "source_span_end": 4922
@@ -46756,7 +46989,7 @@
       {
        "id": "dbd9f1d3-f2f7-4601-b9dd-c9f40431cf10",
        "category": "nice_to_have",
-       "text": "<li>Hands-on experience with LLMs, evaluations, or agentic systems — whether from coursework, research, or personal projects</li>",
+       "text": "<li>Hands-on experience with LLMs, evaluations, or agentic systems \u2014 whether from coursework, research, or personal projects</li>",
        "skill_normalized": null,
        "source_span_start": 2714,
        "source_span_end": 2843
@@ -46805,7 +47038,7 @@
       {
        "id": "7639a444-157e-4988-9ed5-d55f5e413215",
        "category": "responsibility",
-       "text": "You won’t be in a typical “keep the lights on” SRE role.",
+       "text": "You won\u2019t be in a typical \u201ckeep the lights on\u201d SRE role.",
        "skill_normalized": "kubernetes",
        "source_span_start": 4040,
        "source_span_end": 4096
@@ -47142,7 +47375,7 @@
       {
        "id": "30db88cc-0353-441e-b9c3-fafbdce45c1a",
        "category": "must_have",
-       "text": "0–2 years of professional software engineering experience, or a strong internship/project background",
+       "text": "0\u20132 years of professional software engineering experience, or a strong internship/project background",
        "skill_normalized": "python",
        "source_span_start": 2725,
        "source_span_end": 2825
@@ -47207,7 +47440,7 @@
       {
        "id": "5780ed4f-4828-488c-b3b8-98552e1d2dd6",
        "category": "must_have",
-       "text": "As a PhD Intern, Security Engineer you will work on an impactful project to improve the security of Figma’s product, platform, or infrastructure, working closely with a mentor and teammates while applying your research background to drive real-world impact.",
+       "text": "As a PhD Intern, Security Engineer you will work on an impactful project to improve the security of Figma\u2019s product, platform, or infrastructure, working closely with a mentor and teammates while applying your research background to drive real-world impact.",
        "skill_normalized": null,
        "source_span_start": 592,
        "source_span_end": 849
@@ -47231,7 +47464,7 @@
       {
        "id": "ea22ece6-d001-43b6-969e-693e584f9e15",
        "category": "responsibility",
-       "text": "What you’ll do at Figma:",
+       "text": "What you\u2019ll do at Figma:",
        "skill_normalized": null,
        "source_span_start": 1256,
        "source_span_end": 1280
@@ -47247,7 +47480,7 @@
       {
        "id": "e72bf814-f22a-49ce-8439-39a04ce7343c",
        "category": "responsibility",
-       "text": "Design and develop solutions to prevent or mitigate security vulnerabilities across Figma’s products, services and infrastructure",
+       "text": "Design and develop solutions to prevent or mitigate security vulnerabilities across Figma\u2019s products, services and infrastructure",
        "skill_normalized": null,
        "source_span_start": 1358,
        "source_span_end": 1487
@@ -47271,7 +47504,7 @@
       {
        "id": "c86d3aa8-2954-4342-bbf4-793542f796b4",
        "category": "nice_to_have",
-       "text": "We’d love to hear from you if you have:",
+       "text": "We\u2019d love to hear from you if you have:",
        "skill_normalized": null,
        "source_span_start": 1869,
        "source_span_end": 1908
@@ -47319,7 +47552,7 @@
       {
        "id": "31711a11-093b-4437-ae99-21ae0c30b29b",
        "category": "nice_to_have",
-       "text": "While it’s not required, it’s an added plus if you also have:",
+       "text": "While it\u2019s not required, it\u2019s an added plus if you also have:",
        "skill_normalized": null,
        "source_span_start": 2579,
        "source_span_end": 2640
@@ -47626,7 +47859,7 @@
       {
        "id": "febbd66c-f2fa-4b6b-bf14-bb2d4e31ddad",
        "category": "must_have",
-       "text": "Must be pursuing a bachelor’s or master’s degree in Aerospace Engineering, Computer Science, Electrical Engineering, or a related field.",
+       "text": "Must be pursuing a bachelor\u2019s or master\u2019s degree in Aerospace Engineering, Computer Science, Electrical Engineering, or a related field.",
        "skill_normalized": "aerospace engineering",
        "source_span_start": 1906,
        "source_span_end": 2042
@@ -47811,7 +48044,7 @@
       {
        "id": "b6cbe629-fca7-427a-a448-f6f1791e01c8",
        "category": "must_have",
-       "text": "You’ve worked in multi-tenant or high-scale environments",
+       "text": "You\u2019ve worked in multi-tenant or high-scale environments",
        "skill_normalized": "multi-tenant",
        "source_span_start": 3534,
        "source_span_end": 3590
@@ -47827,7 +48060,7 @@
       {
        "id": "eac0a1a5-32d5-448e-a995-d2321b982ea6",
        "category": "must_have",
-       "text": "You’ve designed or secured isolation mechanisms in multi-tenant systems",
+       "text": "You\u2019ve designed or secured isolation mechanisms in multi-tenant systems",
        "skill_normalized": "isolation",
        "source_span_start": 3724,
        "source_span_end": 3795
@@ -47940,7 +48173,7 @@
       {
        "id": "fbc7d52a-57d9-42f9-ba47-a732a83937e9",
        "category": "must_have",
-       "text": "Exposure to incident response — alert triage, investigation, or containment work",
+       "text": "Exposure to incident response \u2014 alert triage, investigation, or containment work",
        "skill_normalized": "incident response",
        "source_span_start": 3663,
        "source_span_end": 3743
@@ -47964,7 +48197,7 @@
       {
        "id": "b677ec28-060c-4f21-8d45-8018d397f23d",
        "category": "nice_to_have",
-       "text": "An interest in security engineering as a craft — you want to build things that are reliable, well-documented, and easy for others to maintain",
+       "text": "An interest in security engineering as a craft \u2014 you want to build things that are reliable, well-documented, and easy for others to maintain",
        "skill_normalized": "security engineering",
        "source_span_start": 4290,
        "source_span_end": 4431
@@ -47980,7 +48213,7 @@
       {
        "id": "8a7ca380-b693-4264-a9fa-ea8a53ffc82d",
        "category": "nice_to_have",
-       "text": "Strong written communication skills — you can write a clear runbook and explain a security concept to a non-technical colleague",
+       "text": "Strong written communication skills \u2014 you can write a clear runbook and explain a security concept to a non-technical colleague",
        "skill_normalized": "communication",
        "source_span_start": 4520,
        "source_span_end": 4647
@@ -48343,7 +48576,7 @@
       {
        "id": "e84fdb82-f70b-46aa-b91a-2273a0bfc8d1",
        "category": "education",
-       "text": "A bachelor’s or master’s degree in Computer Science or a related discipline, graduating between Fall 2026 and Summer 2027",
+       "text": "A bachelor\u2019s or master\u2019s degree in Computer Science or a related discipline, graduating between Fall 2026 and Summer 2027",
        "skill_normalized": null,
        "source_span_start": 1877,
        "source_span_end": 1998
@@ -48447,7 +48680,7 @@
       {
        "id": "2ab71200-8e02-4242-b048-f9e7636e799e",
        "category": "responsibility",
-       "text": "Why You’ll Love It Here",
+       "text": "Why You\u2019ll Love It Here",
        "skill_normalized": null,
        "source_span_start": 3066,
        "source_span_end": 3089
@@ -48672,6 +48905,220 @@
   "180db006-720f-434f-ac40-aa47c0058412": "r50-e1",
   "9015af5d-ac0b-4463-b857-951eeb62bfd9": "r50-e2",
   "a3be84da-a288-4ffb-9af5-8e4bce1e4f3f": "r50-e3",
-  "28d04e70-45b1-4cf1-a2db-080cc5676272": "r50-e4"
+  "28d04e70-45b1-4cf1-a2db-080cc5676272": "r50-e4",
+  "f46f90c8-8037-400e-b4ec-45c3bb1d9c0c": "r01-e1",
+  "81c42dec-e793-4215-83ca-4b807a7d7be3": "r01-e2",
+  "61170765-115e-4626-941f-9c06d6473a32": "r01-e3",
+  "bfa347c0-5d42-49b4-9630-9f8d6ca7bdb4": "r01-e4",
+  "9369a74d-7da0-415f-ab8e-766013afa165": "r01-e5",
+  "62f016ce-d0a2-455a-9e51-664e5fd4af46": "r02-e1",
+  "67dab4d2-b401-411e-abed-be5647d45141": "r02-e2",
+  "b5f70bfe-4331-4801-b8c8-11dcae509e83": "r02-e3",
+  "869f0b0b-48e7-49c6-9b12-12c95aa28ee6": "r02-e4",
+  "616b4180-0dee-4a5c-987e-7c1819d1d65b": "r03-e1",
+  "3e4ba788-eddd-461b-9c28-43c94639e832": "r03-e2",
+  "08855ccf-505b-4765-847b-5be6e5dbe86c": "r03-e3",
+  "7c1c1830-64a3-4609-88c7-a29e913594dc": "r03-e4",
+  "0f713c7b-2b51-401b-b991-f5c62ef4f368": "r03-e5",
+  "a607759c-999d-4c8d-9441-6ee380ae6ec8": "r04-e1",
+  "1c2b1cfe-a35e-4b2e-8a74-ab12cdc7a4a6": "r04-e2",
+  "bfd09535-f652-4e7d-92c3-2ad92d8bff0e": "r04-e3",
+  "dd88bbb4-68d7-462b-89b9-b9fb91e8f43d": "r04-e4",
+  "4d548528-4152-43f5-878a-3cce335c03bc": "r05-e1",
+  "23cafc22-4f7d-47d3-8fcd-8d542fad1ff4": "r05-e2",
+  "0fa9bd12-dd29-431b-bae3-8538464a9145": "r05-e3",
+  "e7bb949c-a4da-4461-923c-899a87faad7c": "r05-e4",
+  "b598cc1c-1dbd-41f5-9c5c-402d7e43ef69": "r05-e5",
+  "a15ecc12-bca2-4b0b-8322-71d18af62472": "r06-e1",
+  "1d9addf1-033c-4466-8e8a-7f9a89204bff": "r06-e2",
+  "a9390934-248d-4102-9fb4-800a7a741027": "r06-e3",
+  "3d7465cb-0e22-46bc-bdf2-488c36088f29": "r06-e4",
+  "ad199ded-8f9e-4d4c-9da9-8ab45192ae41": "r06-e5",
+  "19bc3aaf-662a-4328-ac3a-ce9a3d0adc83": "r07-e1",
+  "9665e327-9e08-47fa-bafb-7cc5d5420ac9": "r07-e2",
+  "d4df7642-06d8-4b28-9c08-9cc54f36c877": "r07-e3",
+  "f7ca6d76-0b61-41b9-9c9d-567a1fe4f625": "r07-e4",
+  "3aca9774-0235-45d9-8435-7904540720d4": "r08-e1",
+  "dda0deb0-2527-488c-9cf9-69a678c8915f": "r08-e2",
+  "ac99bb65-04e7-4630-b27a-aba00be51ea5": "r08-e3",
+  "73b59e41-4b3f-4a74-955a-cd24aeb531c7": "r08-e4",
+  "cff16445-0cf0-42c9-ad70-5b1807324589": "r08-e5",
+  "a4387488-7bd6-4902-b6f8-0addbbba1c82": "r09-e1",
+  "bc09e2f4-fb6a-4a68-934d-35b7012d299f": "r09-e2",
+  "4df164b8-7e73-4b2a-9654-1b14ee4da7c5": "r09-e3",
+  "8cf90f82-69f6-4ced-ba87-14b0bc1cf5e8": "r09-e4",
+  "fdf16fd2-e964-4c05-b1ab-e81846a03cd6": "r09-e5",
+  "f485eb87-f957-4bdc-9e55-0f3f50410246": "r09-e6",
+  "b8ae8876-0ffc-457a-8273-c0672105aa20": "r10-e1",
+  "aac41820-47a1-46c5-aca9-129713685f96": "r10-e2",
+  "0ce51343-1f30-4a82-aef7-bdc9cef4f4e1": "r10-e3",
+  "bf97559a-2744-4cf7-8bc7-442bf08ad089": "r10-e4",
+  "92cd133f-54de-4d4e-b8fc-e531e949f3f2": "r10-e5",
+  "f5865002-e41c-491a-ab5d-55f1e99301d3": "r11-e1",
+  "99eeb94d-009e-42e2-8361-50908dac154c": "r11-e2",
+  "e539a06f-66f5-4cb3-b35d-294439c8f905": "r11-e3",
+  "851ffb74-cd41-4b83-aeb0-f071bf467b77": "r11-e4",
+  "b65c1a16-2be2-4d65-a47d-e49f8b26bf5f": "r12-e1",
+  "a1302c9a-a7d0-4c50-90a4-c61d12744d91": "r12-e2",
+  "14305a5a-43fc-4fd8-9e68-23640367b6b0": "r12-e3",
+  "75602499-6b0c-458a-a4b5-12d9c953df1f": "r12-e4",
+  "354d1630-f99b-482c-952f-b0ae97c24013": "r12-e5",
+  "16e9513c-17ce-4819-8a98-a6db9e20903b": "r13-e1",
+  "6cbcc2c4-5efa-45e3-a30c-df6a618f8ed9": "r13-e2",
+  "0e0fbb1c-a697-4dc8-96d5-98def3c5add6": "r13-e3",
+  "686ad75b-8add-4859-b4d3-7d518be1a0ee": "r13-e4",
+  "07ee4bb4-d606-46b1-9130-50a757447634": "r14-e1",
+  "0599fbd3-63e9-4b84-a6cc-5d9a58ce611b": "r14-e2",
+  "bbbefd45-5bdc-4889-b7be-89c30a40bbc3": "r14-e3",
+  "d9cfe540-0a77-4441-a426-f20bbdfe6c50": "r14-e4",
+  "0a51d820-c5e1-428c-aa52-2668fa6ec84c": "r14-e5",
+  "e5f58fdc-e235-451b-a626-9381c1032f66": "r15-e1",
+  "4d0a7787-aba8-4b05-8512-c18f82934892": "r15-e2",
+  "ed5dc96c-297e-45e3-af92-f206f97ac63f": "r15-e3",
+  "257ba186-fd1b-43eb-8ccd-7a5aa568f59e": "r15-e4",
+  "d2794730-35b7-4fb4-8587-bb3784600d69": "r16-e1",
+  "b5bdd407-79cd-4835-b437-374a940fee5a": "r16-e2",
+  "2919f71d-9e37-4555-8322-c73500087e2f": "r16-e3",
+  "562b95bd-5fb7-491e-8ed9-ebea64ea3318": "r16-e4",
+  "40fb367a-f20f-4c10-8eab-93c6d2331045": "r17-e1",
+  "d709d532-0c1b-41d5-9675-0e6342906f00": "r17-e2",
+  "93f9e728-771e-4051-b8e3-d8d8bef70a40": "r17-e3",
+  "adba036a-c125-4c37-9457-43c281d0481b": "r17-e4",
+  "f0f15d2b-452d-4ea2-8549-f4635f8bfbc6": "r18-e1",
+  "68161978-c834-45d4-95ba-312591ba05f5": "r18-e2",
+  "b4fab5fd-289a-4c38-b2e2-93c5d02b7a56": "r18-e3",
+  "ce463e5a-614c-4cb5-a946-552098b950d8": "r18-e4",
+  "38042098-3c98-4da7-b5ba-744c3b662545": "r18-e5",
+  "1ae07831-db0c-42e1-9f18-43fa1a4b4cb4": "r19-e1",
+  "4336ace3-fc25-4bc0-8193-9ada2ac7b6d5": "r19-e2",
+  "4c12d518-ad66-44a6-9be0-ab1a11690910": "r19-e3",
+  "75cede89-c421-49f5-9f31-e6f3f1895cf1": "r19-e4",
+  "b476822d-98a4-42d6-89a3-830d61c6e9af": "r20-e1",
+  "e44e57d0-0523-4f8f-8e7d-585a179b01d7": "r20-e2",
+  "df3455d3-467a-4a7c-982a-3eff9ba03f7c": "r20-e3",
+  "e124a1b8-85db-42b9-a716-fb07915ade8c": "r20-e4",
+  "77028244-a227-4e53-b542-9a18ef1f990e": "r20-e5",
+  "4b59b7ee-d610-4277-9dd8-10a94d0d3c48": "r21-e1",
+  "dab24f8f-09a5-4209-9c37-9c72dc765b6f": "r21-e2",
+  "cc786549-a796-4b0a-b79b-362315d3a084": "r21-e3",
+  "67b82c15-6d26-456c-99ae-f2b561903645": "r21-e4",
+  "b3625f4d-8ee7-4556-8aaa-44869a937a4e": "r22-e1",
+  "78378e69-c99d-4583-baed-5c588ab8b3ac": "r22-e2",
+  "1813b70f-db74-41dc-8d8a-05d6ab7b71fe": "r22-e3",
+  "0fc95ccd-7c62-4ed6-b117-3f6a1623f2ff": "r22-e4",
+  "03739782-26f1-4d6e-9a59-0a770d7c1bca": "r23-e1",
+  "4d121ae7-6001-436e-a590-3c4d207bb52a": "r23-e2",
+  "aacc1906-3276-46b1-9cd6-03c1b68a5a6e": "r23-e3",
+  "27288b42-f4fe-4843-9d1a-4d770f4eee88": "r23-e4",
+  "af77a591-d43c-407a-ba3c-f6986b9293ce": "r24-e1",
+  "30e072a9-c85f-480c-8b13-247b53b9a707": "r24-e2",
+  "a99cd1bc-b5b6-4777-bc04-db5d6dafaa27": "r24-e3",
+  "b7fab314-44fa-45ee-968c-8dab30f0653a": "r24-e4",
+  "12e1871b-b1af-4669-b487-b6b1ec987652": "r24-e5",
+  "4e93dac3-3643-486a-97c0-501d1134e000": "r25-e1",
+  "e2c777ec-ae0c-4f36-a1ca-79e3ad140627": "r25-e2",
+  "a85aee78-2464-4f70-a8a0-cd11d5ea1585": "r25-e3",
+  "203cc56c-4049-440a-82b6-0be691cbbe1f": "r25-e4",
+  "652bda4f-26e5-4719-9077-79c6e7565dd8": "r25-e5",
+  "2991952d-33d4-4042-9457-4428f12acd2f": "r26-e1",
+  "ca84cabe-e290-4946-8a32-3226b84a5197": "r26-e2",
+  "aece9e1c-1be3-4634-ad08-5969fab2bb47": "r26-e3",
+  "e2fa88ff-bf97-46b8-90f1-4f69569834ac": "r26-e4",
+  "7916c743-d5b3-4f65-87a0-59a2e034259a": "r27-e1",
+  "d99a2ad9-3de1-456e-adb9-e81c18150ae8": "r27-e2",
+  "fa1e94a1-e2b3-4b1e-be6c-c0a276280957": "r27-e3",
+  "b5d8130b-a124-4059-81cf-7c9353281657": "r27-e4",
+  "e2e5be3b-b0d9-4dd7-ae2e-6b2ffb12db33": "r28-e1",
+  "95e8b9f9-9208-4977-b976-edf4b3e6ec2b": "r28-e2",
+  "aa960bc5-e918-47f1-90e2-533a5888a42b": "r28-e3",
+  "571f000d-04d4-431c-96b4-b14f44b7c4f3": "r28-e4",
+  "ec0b5717-5815-4782-a2f6-566682c1a089": "r29-e1",
+  "f082607f-5a4f-49b5-844d-e3c0c246e18b": "r29-e2",
+  "b583f237-443d-46b9-af27-c73d3d07b6cd": "r29-e3",
+  "6cfc6344-f981-43ae-8db0-b99c250310d7": "r29-e4",
+  "7db3c0ce-0fe4-4ccd-b39e-b3889eee2c49": "r30-e1",
+  "d776e250-31c3-4bee-8a37-f0d778fc74b8": "r30-e2",
+  "10dda51e-9e15-4f66-a65a-88c103340206": "r30-e3",
+  "75fd4d8a-9494-4910-ab7c-ff4942696da3": "r30-e4",
+  "0e91d82c-151c-4588-abdf-046c4400bfc1": "r31-e1",
+  "2d063cff-3ba3-4a93-8e83-66195ed44614": "r31-e2",
+  "018f025d-ca6a-41d7-9bdd-03facced56ac": "r31-e3",
+  "6325cde9-79fb-4c18-9836-43157ab5dba8": "r31-e4",
+  "62594780-6a28-44e4-bbf2-80b61a17d586": "r32-e1",
+  "a14ad1dc-18ef-4889-ab5c-91c34bedf490": "r32-e2",
+  "30b12ff2-7cc9-45e7-8eb6-b6237fea3660": "r32-e3",
+  "b8f75942-ae25-4b1e-9fbd-754a666beab4": "r32-e4",
+  "416336a3-ddab-465c-8659-34bba33abb20": "r33-e1",
+  "aa906503-e711-4526-8fa3-65b47fa016fb": "r33-e2",
+  "cbac8765-89f9-4600-b28f-7fe12ec8949e": "r33-e3",
+  "012bf533-1a03-476c-9217-c0c54af8085c": "r33-e4",
+  "4142e8de-fe71-45cd-b7be-cc93953bb6a7": "r34-e1",
+  "f83661cf-38b4-4dd9-b803-a026d7881601": "r34-e2",
+  "ccdbf16d-906f-4c63-ae89-a411642eab1c": "r34-e3",
+  "3cdfe05f-75f4-451c-993a-a01b83afbf22": "r34-e4",
+  "53035429-2832-4993-bcab-ef213025ba76": "r35-e1",
+  "c2370a5d-9901-45b3-a4cd-aef7167141fc": "r35-e2",
+  "e8295050-c7fa-406d-8575-17558c1ca90c": "r35-e3",
+  "8d7c062f-747c-4dac-a3f3-0cae06338a44": "r35-e4",
+  "a5d74612-8a12-4dd9-9efe-719f4df07edf": "r36-e1",
+  "9b73708b-bb26-464d-9fbe-f52789eb6870": "r36-e2",
+  "31782ad3-f728-40fb-9333-403d345b94dc": "r36-e3",
+  "83b4521d-0442-4bf0-8571-e2ab085c2af5": "r36-e4",
+  "f8ae902c-eb3a-47a6-ba5b-214ef82d26e2": "r37-e1",
+  "5a29267d-0b7c-43e1-a92f-eb9967845693": "r37-e2",
+  "a9048906-4a43-4d83-ae7e-bf3ac000b623": "r37-e3",
+  "41fab192-e30e-40e5-9972-230e5dd59ad7": "r37-e4",
+  "51c65d73-4983-40be-9617-e5cf9055ce9d": "r38-e1",
+  "b17bba88-2435-4ae0-bcd9-906301f193ea": "r38-e2",
+  "c1358b06-4e86-43a1-a18e-57f22ac0d91c": "r38-e3",
+  "bc375cfe-caa1-4019-98b6-189a419bef9b": "r38-e4",
+  "d42684f1-a155-4d27-91b6-c07357370d43": "r39-e1",
+  "442d98d8-2cf0-4f8e-a108-0948059f13ff": "r39-e2",
+  "e1bbccbd-02a3-4569-a9d7-39cab6c903ad": "r39-e3",
+  "68fa223b-affd-4e06-841d-75c411b80198": "r39-e4",
+  "fece412b-4724-440a-bba8-af53b6b235bd": "r40-e1",
+  "1c1a9f8e-78a9-4bad-9396-5c6b18ab7c99": "r40-e2",
+  "4a2783e4-aa5d-4738-9370-532508165826": "r40-e3",
+  "b8d55e4c-eba4-47ca-beed-11941630298a": "r40-e4",
+  "0b1890cb-063f-44e1-ac2d-b624368fa839": "r41-e1",
+  "d38df071-db58-42d4-8f02-f734c2125aaf": "r41-e2",
+  "7a563026-f912-4754-b6f3-a75bda9f3b3c": "r41-e3",
+  "b16b4dd1-f659-4cb7-8a3b-f86642873bee": "r41-e4",
+  "9b413e49-a60b-419a-97c6-e2da467a03d2": "r42-e1",
+  "1a1ac138-533a-4670-8e59-fcb9146b028d": "r42-e2",
+  "4421f430-87b5-4e82-8d32-f2838cebad0b": "r42-e3",
+  "050a629d-c642-4add-942f-1aa68025f083": "r42-e4",
+  "555d9951-433d-493b-9e32-a720e72469ae": "r43-e1",
+  "9d53e556-a92d-44cf-80e9-36152b6c5b1f": "r43-e2",
+  "cf9ae904-0efc-456e-8f35-b5aa1bab7e33": "r43-e3",
+  "2c24656f-a219-43f1-92d2-46e1113c913e": "r43-e4",
+  "2fba0fe3-e07d-4257-859a-12a8fc1f0338": "r44-e1",
+  "24a6d635-b7d2-479e-b89b-7c27d2f09b26": "r44-e2",
+  "06d7e84b-6871-49f5-8489-41f14113bcb4": "r44-e3",
+  "50fc990a-1ee8-49db-9101-73e13e76d83a": "r44-e4",
+  "cbbee04f-7087-4769-97d4-0a7985766d1a": "r45-e1",
+  "65b1e00f-3c88-4bdb-98e7-466e11fda857": "r45-e2",
+  "6120cd76-8378-494d-baba-24380db9faf4": "r45-e3",
+  "8379f088-774d-4fbb-ae40-44438ed0f595": "r45-e4",
+  "547e5f29-6a53-4bf2-913f-bfa79127f80a": "r46-e1",
+  "7da52669-ca85-4bca-b2f8-cc1de91a374a": "r46-e2",
+  "d248edaa-c125-40e1-994d-3f89aab97b73": "r46-e3",
+  "e45e8741-cfd4-48bc-96a6-03a677312494": "r46-e4",
+  "2a20be5c-9766-41da-add7-e0ea0af2a1d7": "r47-e1",
+  "da7c8b2f-3bc5-4154-a3f7-a90bae7d3ee9": "r47-e2",
+  "bb3726d9-8000-4953-81db-f4e461c0ca06": "r47-e3",
+  "00e11f26-3344-4ed9-9580-a4e74a852122": "r47-e4",
+  "3a749cf7-2e0c-4341-ac5a-d6fbd3879726": "r48-e1",
+  "0c8be5f8-376b-4843-a3db-97ab303480aa": "r48-e2",
+  "c4fb6de5-2e14-4f3d-b283-bb53e0ade2af": "r48-e3",
+  "d9db7bca-4504-4abb-b2bc-6bb92ced210c": "r48-e4",
+  "122089ff-3c7b-4fe7-bf15-30e946a59909": "r49-e1",
+  "b10f2d91-a18a-4263-ba10-4b46be47da33": "r49-e2",
+  "77d0cb0e-07bf-4c37-b9eb-95a571af291e": "r49-e3",
+  "d4d99d97-e96f-47ec-b734-71386b0c7621": "r49-e4",
+  "9a6f5847-8c54-47b4-a7aa-308021496875": "r50-e1",
+  "0c1f5751-cdd5-4f55-a03e-d0bc634cffa5": "r50-e2",
+  "5390f7d7-6420-404e-b6d5-8830e0e95223": "r50-e3",
+  "3513e765-4038-4984-b3d1-62abce2988d1": "r50-e4"
  }
 }

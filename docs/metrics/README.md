@@ -79,7 +79,7 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 
 ## Large-Scale Development Evaluation
 
-- `2026-11-01-large-scale-eval-v1.md` records the 302-JD / 50-resume / 148-pair
+- `2026-11-01-large-scale-eval-v1.md` records the 302-JD / 50-resume / 149-pair
   real-pipeline run (ADR-047): parser quality against model-made labels, matcher
   success by requirement count, over- and under-claim, retrieval recall, CV import
   segmentation, fake-provider scale numbers and provider periods.

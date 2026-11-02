@@ -28,7 +28,7 @@ The LLM provider changed during the run, at the author's request. The scorer sep
 |---|---|---|
 | until 2026-11-02 02:14 | Groq free tier, direct | 91 first parse attempts |
 | 02:14–03:49 | OpenRouter, upstream chosen per request | 211 first parse attempts, the 20 first repeat parses |
-| from 03:49 | OpenRouter with Allowed Providers = Groq only | **all 148 analyses**, the 20 second repeat parses |
+| from 03:49 | OpenRouter with Allowed Providers = Groq only | **all 149 analyses**, the 20 second repeat parses, the re-run of pair `r09-jd-06627db35f` |
 
 On OpenRouter without pinning, four identical parser requests went to four different upstreams (DekaLLM,
 Darkbloom, AkashML, Parasail), with output lengths from 200 to 832 tokens (`provider_probes.md`). That is why the analyses waited for the
@@ -45,21 +45,21 @@ Source: `score.json` → `parser`. Scored on the 302 primary jobs; the 40 repeat
 | First attempt succeeded | 271/302 = 89.7% (85.8–92.7) |
 | … Groq free tier period | 67/91 = 73.6% (63.8–81.6) |
 | … OpenRouter mixed period | 204/211 = 96.7% (93.3–98.4) |
-| Succeeded after the driver's retries | 293/302 = 97.0% (94.4–98.4) |
+| Succeeded after the driver's retries | 294/302 = 97.4% (94.9–98.7) |
 | Failed runs by code (all attempts) | `PARSER_FAILED` 133, `PARSER_OUTPUT_INVALID` 8 |
 | Requirements per successful parse | p50 10, p95 26, max 46 |
-| Latency of successful parses | p50 3.59 s, p95 11.94 s (n = 293) |
+| Latency of successful parses | p50 3.55 s, p95 11.94 s (n = 294) |
 
-Against the adjudicated parser labels (293 JDs with a successful parse, 4,969 labeled requirements, exact text match):
+Against the adjudicated parser labels (294 JDs with a successful parse, 4,992 labeled requirements, exact text match):
 
 | Metric | Result |
 |---|---|
-| Precision | 2,865/3,410 = 84.0% (82.8–85.2) |
-| Recall | 2,865/4,969 = 57.7% (56.3–59.0) |
-| F1 | 0.684 |
-| Category correct on matched requirements | 83.2% (81.8–84.5) |
-| Normalized skill exactly equal | 56.5% (54.7–58.4) |
-| Recall: education / nice_to_have / must_have / responsibility | 75.7% / 80.5% / 60.6% / 44.0% |
+| Precision | 2,888/3,435 = 84.1% (82.8–85.3) |
+| Recall | 2,888/4,992 = 57.9% (56.5–59.2) |
+| F1 | 0.685 |
+| Category correct on matched requirements | 83.3% (81.9–84.7) |
+| Normalized skill exactly equal | 56.7% (54.9–58.5) |
+| Recall: education / nice_to_have / must_have / responsibility | 75.8% / 80.6% / 60.8% / 44.2% |
 
 What the failures were (from direct probes of the exact product payload, `provider_probes.md`):
 
@@ -82,14 +82,14 @@ What the failures were (from direct probes of the exact product payload, `provid
 Even on one upstream at the parser's temperature of 0.1 (`groq_requirement_parser.py`), fewer than half of the
 re-parsed JDs gave the same requirement set.
 
-## Matcher (148 pairs, Groq-pinned period only)
+## Matcher (149 pairs, Groq-pinned period only)
 
-Source: `score.json` → `matcher`. One analysis per pair, no retries were needed for rate limits (0/148 rate-limited).
+Source: `score.json` → `matcher`. One analysis per pair, no retries were needed for rate limits (0/149 rate-limited).
 
 | Metric | Result |
 |---|---|
-| Analyses succeeded | 59/148 = 39.9% |
-| `MATCHER_OUTPUT_INVALID_CONTRACT` | 60 |
+| Analyses succeeded | 59/149 = 39.6% |
+| `MATCHER_OUTPUT_INVALID_CONTRACT` | 61 |
 | `MATCHER_PROVIDER_FAILED` | 28 |
 | `MATCHER_OUTPUT_INVALID_SCHEMA` | 1 |
 | Latency of successful analyses | p50 6.6 s, p95 14.8 s |
@@ -103,7 +103,7 @@ Source: `score.json` → `matcher`. One analysis per pair, no retries were neede
 | 6–10 | 23/40 = 57.5% (42.2–71.5) |
 | 11–15 | 7/34 = 20.6% (10.4–36.8) |
 | 16–20 | 0/24 = 0% (0–13.8) |
-| 21+ | 0/19 = 0% (0–16.8) |
+| 21+ | 0/20 = 0% (0–16.1) |
 
 The matcher sends all requirements in one call with an 800-token output cap
 (`GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS`). At 16 or more requirements no analysis succeeded. The parser's median is
@@ -202,8 +202,18 @@ Claude's reading of the rubric.
 
 ## Sensitivity: excluding the 7 JDs flagged in review
 
-Source: `score_excluding_reviewed_jds.json`. Parser F1 0.682 (vs 0.684); matcher success 56/144; over-claim
+Source: `score_excluding_reviewed_jds.json`. Parser F1 0.683 (vs 0.685); matcher success 56/145; over-claim
 6/320 = 1.9%; under-claim 44/320 = 13.8%. No conclusion changes.
+
+## Re-run of pair r09-jd-06627db35f
+
+Its first parse run was left in `running` when the host went to sleep, and the driver only retries failed runs, so
+it was never resubmitted before the first evaluation database was deleted. It was then re-run on a rebuilt stack
+(fresh database, same code, all 214 experiences re-embedded, same pinned OpenRouter→Groq route): the parse
+succeeded with 25 requirements, matcher labels round M3 were committed first (`evals/large_scale_v1/labels/matcher/m3/`,
+agreement 0.72, κ 0.588, 7 blinded disputes), and the analysis failed `MATCHER_OUTPUT_INVALID_CONTRACT`, consistent
+with the 21+ bucket. Its rows are merged into `results_real_run.json` (`rerun_on_rebuilt_stack: true`) and
+`driver_state.jsonl`; the stranded `running` run is kept as the first parse attempt.
 
 ## Not measured
 
@@ -211,13 +221,9 @@ Source: `score_excluding_reviewed_jds.json`. Parser F1 0.682 (vs 0.684); matcher
 - Which OpenRouter upstream served each parse in the mixed period: not recorded.
 - Human-labeled ground truth: not available; an author spot-check is still open.
 - Matcher quality on large JDs: not measurable, because no analysis with 16 or more requirements succeeded.
-- 2 of the 150 pairs have no analysis, so the matcher sample is 148 pairs:
-  - `r29-jd-e0e4f3984c`: its parse failed `PARSER_OUTPUT_INVALID` on every attempt, so there were no requirements
-    to match. This is a measured parser failure, not a gap in the run.
-  - `r09-jd-06627db35f`: its parse run was left in `running` (`evidence_guarantee_check.txt`) after the host went to
-    sleep mid-run. The driver only retried failed runs, so it was never resubmitted before the evaluation database
-    was deleted. Completing it now would need a rebuilt stack, new embeddings and a fresh, separately labeled pair,
-    so it is left out and reported here.
+- 1 of the 150 pairs has no analysis, so the matcher sample is 149 pairs. `r29-jd-e0e4f3984c`'s parse failed
+  `PARSER_OUTPUT_INVALID` on every attempt, so there were no requirements to match. This is a measured parser
+  failure, not a gap in the run.
 
 ## Files
 

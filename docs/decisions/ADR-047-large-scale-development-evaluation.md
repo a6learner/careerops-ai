@@ -29,7 +29,7 @@ The 2026-10-31 walkthrough (n = 3 JDs, 1 CV) found parser rejections (fixed by A
   - The tooling lives in `scripts/large_eval/`.
 - **Providers:** model `openai/gpt-oss-20b` and Gemini `gemini-embedding-2`.
   - Started on the Groq free tier. After the author's change, LLM calls went to OpenRouter through the same OpenAI-compatible adapter (`CAREEROPS_LLM_BASE_URL`, key from `OPENROUTER_API_KEY`).
-  - OpenRouter first routed each request to a random upstream, so the author pinned Allowed Providers to Groq. All 148 scored analyses ran in that pinned period. Analyses from earlier periods are archived and excluded from scoring.
+  - OpenRouter first routed each request to a random upstream, so the author pinned Allowed Providers to Groq. All 149 scored analyses ran in that pinned period. Analyses from earlier periods are archived and excluded from scoring.
   - The scorer reports parser results by provider period.
   - The driver paces requests, checkpoints every step, retries quota failures with a new idempotency key, records the first attempt and every retry, and stops retrying a key after 20 attempts.
 - **Matcher label rounds:** M1 (68 pairs) and M2 (80 pairs), each committed before any analysis of those pairs. M2 disputes were adjudicated blind (hash-ordered options, rationales hidden).
