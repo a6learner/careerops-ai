@@ -211,8 +211,13 @@ Source: `score_excluding_reviewed_jds.json`. Parser F1 0.682 (vs 0.684); matcher
 - Which OpenRouter upstream served each parse in the mixed period: not recorded.
 - Human-labeled ground truth: not available; an author spot-check is still open.
 - Matcher quality on large JDs: not measurable, because no analysis with 16 or more requirements succeeded.
-- One parse run was left in `running` (`evidence_guarantee_check.txt`) after the host went to sleep mid-run and was
-  never finished; it is excluded.
+- 2 of the 150 pairs have no analysis, so the matcher sample is 148 pairs:
+  - `r29-jd-e0e4f3984c`: its parse failed `PARSER_OUTPUT_INVALID` on every attempt, so there were no requirements
+    to match. This is a measured parser failure, not a gap in the run.
+  - `r09-jd-06627db35f`: its parse run was left in `running` (`evidence_guarantee_check.txt`) after the host went to
+    sleep mid-run. The driver only retried failed runs, so it was never resubmitted before the evaluation database
+    was deleted. Completing it now would need a rebuilt stack, new embeddings and a fresh, separately labeled pair,
+    so it is left out and reported here.
 
 ## Files
 
