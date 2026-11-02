@@ -18,3 +18,9 @@ parse|succeeded|332
 failed|MATCHER_OUTPUT_INVALID_CONTRACT|1
 -- evidence_matches rows (any verdict):
 0
+
+-- Re-run stack for pair r29-jd-e0e4f3984c (fresh database), run 2026-11-02T05:12:42Z
+-- analysis runs: status | error_code | count
+failed|MATCHER_OUTPUT_INVALID_CONTRACT|1
+-- evidence_matches rows (any verdict):
+0

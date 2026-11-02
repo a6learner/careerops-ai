@@ -42,12 +42,12 @@
    }
   },
   "final_success_after_rate_limit_retries": {
-   "k": 287,
+   "k": 288,
    "n": 295,
-   "rate": 0.9729,
+   "rate": 0.9763,
    "ci95": [
-    0.9474,
-    0.9862
+    0.9518,
+    0.9885
    ]
   },
   "failed_run_error_codes": {
@@ -55,7 +55,7 @@
    "PARSER_OUTPUT_INVALID": 8
   },
   "requirements_per_successful_parse": {
-   "n": 287,
+   "n": 288,
    "p50": 11.0,
    "p95": 26.0,
    "min": 1.0,
@@ -63,106 +63,106 @@
    "mean": 11.9
   },
   "latency_ms_successful": {
-   "n": 287,
-   "p50": 3608.0,
+   "n": 288,
+   "p50": 3586.0,
    "p95": 11940.0,
    "min": 740.0,
    "max": 30225.0,
-   "mean": 4584.3
+   "mean": 4574.0
   },
   "input_tokens_per_run": {
-   "n": 288,
+   "n": 289,
    "p50": 2041.0,
    "p95": 4250.0,
    "min": 553.0,
    "max": 10585.0,
-   "mean": 2276.3
+   "mean": 2273.1
   },
   "output_tokens_per_run": {
-   "n": 288,
+   "n": 289,
    "p50": 440.0,
    "p95": 964.0,
    "min": 30.0,
    "max": 1500.0,
-   "mean": 479.6
+   "mean": 479.2
   },
   "against_labels": {
-   "jds_scored": 287,
-   "labeled_requirements": 4923,
-   "predicted_requirements": 3372,
-   "text_matches": 2833,
+   "jds_scored": 288,
+   "labeled_requirements": 4943,
+   "predicted_requirements": 3384,
+   "text_matches": 2845,
    "precision": {
-    "k": 2833,
-    "n": 3372,
-    "rate": 0.8402,
+    "k": 2845,
+    "n": 3384,
+    "rate": 0.8407,
     "ci95": [
-     0.8274,
-     0.8521
+     0.828,
+     0.8527
     ]
    },
    "recall": {
-    "k": 2833,
-    "n": 4923,
-    "rate": 0.5755,
+    "k": 2845,
+    "n": 4943,
+    "rate": 0.5756,
     "ci95": [
-     0.5616,
-     0.5892
+     0.5617,
+     0.5893
     ]
    },
-   "f1": 0.6831,
+   "f1": 0.6833,
    "category_accuracy_on_matches": {
-    "k": 2353,
-    "n": 2833,
-    "rate": 0.8306,
+    "k": 2365,
+    "n": 2845,
+    "rate": 0.8313,
     "ci95": [
-     0.8163,
-     0.8439
+     0.8171,
+     0.8446
     ]
    },
    "skill_exact_accuracy_on_matches": {
-    "k": 1602,
-    "n": 2833,
-    "rate": 0.5655,
+    "k": 1611,
+    "n": 2845,
+    "rate": 0.5663,
     "ci95": [
-     0.5471,
-     0.5836
+     0.548,
+     0.5844
     ]
    },
    "recall_by_label_category": {
     "education": {
-     "k": 235,
-     "n": 310,
-     "rate": 0.7581,
+     "k": 236,
+     "n": 311,
+     "rate": 0.7588,
      "ci95": [
-      0.7074,
-      0.8024
+      0.7083,
+      0.803
      ]
     },
     "must_have": {
-     "k": 1139,
-     "n": 1887,
-     "rate": 0.6036,
+     "k": 1145,
+     "n": 1893,
+     "rate": 0.6049,
      "ci95": [
-      0.5813,
-      0.6254
+      0.5826,
+      0.6266
      ]
     },
     "nice_to_have": {
-     "k": 575,
-     "n": 717,
-     "rate": 0.802,
+     "k": 580,
+     "n": 722,
+     "rate": 0.8033,
      "ci95": [
-      0.7712,
-      0.8295
+      0.7728,
+      0.8307
      ]
     },
     "responsibility": {
      "k": 884,
-     "n": 2009,
-     "rate": 0.44,
+     "n": 2017,
+     "rate": 0.4383,
      "ci95": [
-      0.4184,
-      0.4618
+      0.4168,
+      0.46
      ]
     }
    }
@@ -227,23 +227,23 @@
   }
  },
  "matcher": {
-  "pairs_analysed": 145,
+  "pairs_analysed": 146,
   "first_attempt_status": {
    "succeeded": 56,
-   "failed": 89
+   "failed": 90
   },
   "first_attempt_error_codes": {
-   "MATCHER_OUTPUT_INVALID_CONTRACT": 60,
+   "MATCHER_OUTPUT_INVALID_CONTRACT": 61,
    "MATCHER_PROVIDER_FAILED": 28,
    "MATCHER_OUTPUT_INVALID_SCHEMA": 1
   },
   "first_attempt_rate_limited": {
    "k": 0,
-   "n": 145,
+   "n": 146,
    "rate": 0.0,
    "ci95": [
     0.0,
-    0.0258
+    0.0256
    ]
   },
   "success_by_requirement_count_excluding_rate_limits": {
@@ -258,11 +258,11 @@
    },
    "11-15": {
     "k": 7,
-    "n": 34,
-    "rate": 0.2059,
+    "n": 35,
+    "rate": 0.2,
     "ci95": [
-     0.1035,
-     0.368
+     0.1004,
+     0.3589
     ]
    },
    "16-20": {

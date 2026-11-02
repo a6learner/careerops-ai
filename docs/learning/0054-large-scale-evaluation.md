@@ -4,7 +4,7 @@
 
 - A development dataset in `evals/large_scale_v1/`: 302 real public job descriptions, 50 fictional resumes
   (214 experiences) and 150 resume × JD pairs.
-- Model-made labels: parser labels for all 302 JDs and matcher labels for 149 pairs, each from two independent
+- Model-made labels: parser labels for all 302 JDs and matcher labels for all 150 pairs, each from two independent
   labelers plus adjudication, committed before the scored runs.
 - A harness in `scripts/large_eval/`: a resumable driver that goes through the real API and worker, an exporter,
   a scorer with Wilson intervals, a retrieval check and a fake-provider scale test.
@@ -17,11 +17,11 @@ say how often they happen. Interview claims need rates with sample sizes, not an
 
 ## What It Found
 
-- The matcher's one-call design breaks on larger jobs: 29/31 analyses succeeded at 1–5 requirements, 7/34 at
+- The matcher's one-call design breaks on larger jobs: 29/31 analyses succeeded at 1–5 requirements, 7/35 at
   11–15 and 0/44 at 16 or more. The median parsed job has 10 requirements.
 - Where the matcher succeeded it was conservative: over-claim 1.8%, under-claim 13.1%, and it found none of the
   33 labeled partial matches. All 13 stored positive claims had a cited experience, a quote and `quote_valid = true`.
-- The parser keeps grounding but misses requirements: precision 84.1%, recall 57.9%, and only 44.2% recall on
+- The parser keeps grounding but misses requirements: precision 84.1%, recall 57.9%, and only 44.0% recall on
   responsibility lines. Two parses of the same JD on the same host gave the same requirement set only 8 of 19 times.
 - `MATCHER_PROVIDER_FAILED` mostly meant "Groq's schema check rejected the model output", not an outage.
 - DOCX CV import produced one draft per CV; Markdown split all 214 experiences correctly.
@@ -64,7 +64,7 @@ say how often they happen. Interview claims need rates with sample sizes, not an
 ## Knowledge Check
 
 1. Why were the M2 matcher labels committed before any M2 analysis ran, and what would go wrong otherwise?
-2. The matcher succeeded on 59 of 149 pairs. Why can't its 1.8% over-claim rate be read as the rate for all jobs?
+2. The matcher succeeded on 59 of 150 pairs. Why can't its 1.8% over-claim rate be read as the rate for all jobs?
 3. A request returns HTTP 200 but the run fails with `MATCHER_PROVIDER_FAILED`. Walk through how that happened.
 4. Why did the analyses wait for the OpenRouter provider pin, while the parses already run were kept?
 5. Repeat parses on the same host gave identical requirement sets 8 of 19 times. What does that mean for caching

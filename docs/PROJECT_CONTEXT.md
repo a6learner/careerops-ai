@@ -87,7 +87,7 @@ direction) is not chosen yet. See `docs/interview/project-walkthrough.md` and
 
 On 2026-11-01 a large-scale development evaluation (ADR-047, branch
 `claude/large-scale-eval`) measured these problems on 302 real job descriptions,
-50 synthetic resumes and 149 analysed pairs, with model-made labels. It confirmed
+50 synthetic resumes and 150 analysed pairs, with model-made labels. It confirmed
 that the one-call matcher fails as requirement counts grow (0/44 at 16 or more),
 that it under-claims but does not over-claim, and that parser recall (57.9%) and
 DOCX CV import are weak. See `docs/metrics/2026-11-01-large-scale-eval-v1.md`.
