@@ -5,6 +5,10 @@ from uuid import UUID, uuid4
 import pytest
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import delete, func, select
+from tests.integration.test_analysis_runs_postgres import (
+    AllowingRateLimiter,
+    RecordingDispatcher,
+)
 
 from careerops.adapters.fake_evidence_matcher import FakeEvidenceMatcher
 from careerops.api.analysis_runs import get_analysis_rate_limiter, get_analysis_run_dispatcher
@@ -31,10 +35,6 @@ from careerops.repositories.analysis_results import AnalysisResultRepository
 from careerops.repositories.analysis_runs import AnalysisRunRepository
 from careerops.services.analysis_results import AnalysisResultService
 from careerops.services.analysis_run_execution import AnalysisRunExecutionService
-from tests.integration.test_analysis_runs_postgres import (
-    AllowingRateLimiter,
-    RecordingDispatcher,
-)
 
 REQUIREMENT_COUNT = 13
 
