@@ -42105,7 +42105,7 @@
   "run_timeout_seconds": 300.0,
   "token_refresh_seconds": 1200.0,
   "request_timeout_seconds": 30.0,
-  "jds_file": "C:\\Users\\wjw\\AppData\\Local\\Temp\\claude\\D--pdd-project-careerops-ai\\5640328d-1571-4bc3-97c4-47229bbc3094\\scratchpad\\scale\\jds.json"
+  "jds_file": "<local scratchpad>/scale/jds.json"
  },
  "parse": {
   "counts_by_status": {
