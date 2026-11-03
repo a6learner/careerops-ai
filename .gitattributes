@@ -3,3 +3,8 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 *.ps1 text eol=crlf
+
+# Frozen evidence: the approved holdout manifest (ADR-029) pins these files'
+# SHA-256 over their original CRLF bytes, so they must be stored byte-for-byte.
+docs/metrics/2026-10-05-groq-evidence-matcher-development-prompt-v4.json -text
+docs/metrics/2026-10-05-groq-evidence-matcher-development-prompt-v4-coverage-v2-gates-v4.json -text
