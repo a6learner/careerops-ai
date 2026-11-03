@@ -114,7 +114,8 @@ That fit comes from `results_real_run.json` in
       It fails the same way on the unchanged code.
 - Real-provider development check
   (`docs/metrics/2026-11-02-matcher-batching-dev.md`): same 150 pairs, the
-  original parse runs replayed, OpenRouter pinned to Groq.
+  original parse runs replayed, OpenRouter with Allowed Providers = Groq (sampled
+  probes 3/3 before and after; provider of each request not recorded).
   - Success: 107/150, against 59/150 with one call. At 16 or more
     requirements: 21/44, against 0/44.
   - Remaining failures are mostly `finish_reason=length` in individual
@@ -136,7 +137,8 @@ author's call. Over-claiming could be reduced by filtering heading-like
 requirements in the parser or by tightening matcher validation.
 
 Follow-up: ADR-050 adds the parser heading filter. With it, over-claiming in
-the full batch-6 run fell from 39/1,098 to 24/1,022. On 50 pairs scored on the
+the full run was 24/1,022, against 39/1,098 without it (separate runs, different
+successful sets). On 50 pairs scored on the
 same requirements, over-claims were 5 (original single call), 8 (batch 6) and
 3 (batch 6 with the filter); see `docs/metrics/2026-11-03-heading-filter-dev.md`.
 The cap question above is still open.

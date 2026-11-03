@@ -15,11 +15,11 @@ held-out quality.
 |---|---|
 | Code | branch `claude/matcher-reliability`; ADR-048 (`a0f840f`), ADR-049 (`0d679a8`, `0ab9f57`), logging fix `6f49592` |
 | Matcher | `openai/gpt-oss-20b`, `evidence-matcher-prompt-v4`, output cap 800 tokens, one attempt per call |
-| Route | OpenRouter with Allowed Providers = Groq. Probes before and after the runs: 3/3 and 3/3 requests served by Groq (`route_probe_before.json`, `route_probe_after.json`) |
-| Embeddings | Gemini `gemini-embedding-2`; all 214 experiences embedded before any analysis |
+| Route | OpenRouter. The author's account setting Allowed Providers = Groq (set during large_scale_v1) is not itself recorded in an artifact. Sampled probes before and after: 3/3 and 3/3 served by Groq (`route_probe_*.json`). The serving provider of each evaluation request was not recorded |
+| Embeddings | Gemini `gemini-embedding-2`; 214 experiences. A database check showed all 214 embedding runs succeeded before analyses were submitted, but that console output was not saved |
 | Parse runs | **Replayed, not re-parsed.** For each of the 150 pairs, the exact parse run the large_scale_v1 analysis used, with the same parse-run and requirement IDs (`scripts/large_eval/replay_parses.py`). The matcher change is therefore not mixed with parser nondeterminism, and the committed labels apply unchanged |
 | Labels | union of `evals/large_scale_v1/labels/matcher/m{1,2,3,4}/final/` |
-| Stack | isolated compose project `careerops-batcheval`, API and one worker (1 process × 4 threads), deleted after the run |
+| Stack | isolated compose project `careerops-batcheval`, API and one worker (1 process × 4 threads); environment in `stack_env.sh.txt` (the key is read from `.env` at runtime). Deleted after the run; teardown output not saved |
 
 Re-scoring the original large_scale_v1 export with this label union reproduces its `score.json`
 matcher section exactly. That confirms the scoring setup.
@@ -43,7 +43,7 @@ pairs are batch6's failures (`order_failed43.json`). The host machine restarted 
 43 pairs had finished. The other 9 ran after a restart on the same database. The one run left in
 `running` was never recorded by the driver, so no arm counts it.
 
-## Result 1: batching fixes most large-job failures
+## Result 1: with batching, most large jobs completed
 
 Source: `score_batch6.json` and `compare_batch6_vs_large_scale_v1.json`. Success is the first
 attempt, excluding rate limits (large_scale_v1 had none; batch6 had one, retried and then succeeded).
@@ -57,7 +57,11 @@ attempt, excluding rate limits (large_scale_v1 had none; batch6 had one, retried
 | 21+ | 0/20 | 9/20 = 45.0% (25.8–65.8) |
 | All | 59/150 | 106/150 first attempt; 107/150 after the rate-limit retry |
 
-Pair by pair: 52 went fail → ok, 5 went ok → fail, 54 stayed ok and 39 stayed failed.
+Pair by pair: 52 went fail → ok, 5 went ok → fail, 54 stayed ok and 39 stayed failed. These are
+separate stochastic runs on different days. The failed pairs were not re-run under the old single-call
+behavior, so this does not isolate batching as the only cause. The size of the shift at 16 or more
+requirements (0/44 to 21/44), together with the token arithmetic in ADR-049, makes batching the likely
+main factor.
 
 Failures in batch6, first attempt: 42 `MATCHER_OUTPUT_INVALID_SCHEMA`, 1 `MATCHER_PROVIDER_FAILED`,
 1 rate-limited. There were no `MATCHER_OUTPUT_INVALID_CONTRACT` failures; large_scale_v1 had 62.
@@ -70,7 +74,7 @@ ADR-048's diagnostics show what the schema failures were. Counts are from the wo
 - Output tokens per successful batch6 run: p50 823, p95 2,078. Input tokens: p50 4,362, p95 9,888.
   Latency: p50 12.5 s, p95 28.8 s (n = 107).
 
-## Result 2: over-claiming on the same pairs moved within run-to-run variation
+## Result 2: over-claiming on the same pairs
 
 On the 54 pairs that succeeded in both runs (`compare_batch6_vs_large_scale_v1.json`, 296 labeled
 requirements):
@@ -95,8 +99,9 @@ requirements):
 | batch6_repeat | 8/228 | 7/197 | 195/228 |
 
 The same single-call setup moved from 4 to 7 between days, and batch6 moved from 10 to 8 between two
-runs. Batching may add a few over-claims, but on this sample the difference is within run-to-run
-variation. In every arm, 1 to 3 of the over-claims are on heading-like text that the parser stored
+runs. The batch-6 counts are a few higher than the single-call counts. The differences are similar in
+size to the changes seen between repeat runs of one setup, but with only two runs per setup no
+run-to-run distribution was estimated, so a small batching effect cannot be ruled out. In every arm, 1 to 3 of the over-claims are on heading-like text that the parser stored
 as a requirement (`overclaims_on_common_pairs` in the same file).
 
 ## Result 3: the remaining failures are large jobs, and rescuing them shows more over-claiming
@@ -111,9 +116,9 @@ The 43 batch6 failures were run three more ways (`arms_failed_pairs.json`, `scor
 | batch3 | 36/43 | 48/572 = 8.4% (6.4–11.0) | 34/426 = 8.0% | 451/572 |
 
 On the 13 pairs that succeeded in all three arms (205 requirements), over-claims were 8, 11 and 14.
-So neither a higher cap nor smaller batches clearly changes over-claiming on the same pairs. The
-higher rates come from the pairs only they rescue: the largest and hardest jobs, where the model needed
-long outputs. In the cap1600 arm, 8 of the 52 over-claims are on the adversarial resumes, and one
+These counts are themselves above the 2–4% seen on smaller jobs, and the pairs only cap1600 or batch3
+rescued have higher rates still: 41/426 for cap1600 and 34/367 for batch3. Large, hard jobs over-claim
+more in every arm, and most of all where the model needed long outputs. In the cap1600 arm, 8 of the 52 over-claims are on the adversarial resumes, and one
 unproven claim ("Improved checkout performance by 300 percent.") was cited for 3 requirements.
 
 Cost of the alternatives, from the same score files:

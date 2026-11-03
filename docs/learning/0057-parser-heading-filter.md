@@ -34,9 +34,9 @@ time; a rule in a prompt is only a request.
 - **Label check.** Against 5,164 adjudicated parser labels, the rule removes one
   real requirement, a lead-in line.
 - **Real-provider check.** Same 150 pairs, replayed parses without headings.
-  Over-claiming went from 39/1,098 to 24/1,022 overall. On the same 259
-  requirements of 50 common pairs, over-claims were 5, 8 and 3 for the original,
-  batch-6 and batch-6-with-filter runs.
+  Over-claiming was 24/1,022, against 39/1,098 in the earlier unfiltered run
+  (separate runs). On the same 259 requirements of 50 common pairs, over-claims
+  were 5, 8 and 3 for the original, batch-6 and batch-6-with-filter runs.
 
 ## What The Author Must Understand
 

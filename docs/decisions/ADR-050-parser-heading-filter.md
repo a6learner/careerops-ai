@@ -12,7 +12,8 @@ yet reviewed this ADR.
 The ADR-049 real-provider check
 (`docs/metrics/2026-11-02-matcher-batching-dev.md`) showed more over-claiming once
 batching let large jobs succeed.
-- Same-day controls placed most of the change within run-to-run variation.
+- Same-day controls showed changes of similar size between repeat runs of one
+  setup.
 - But in every arm, some gap-to-positive claims were on text that is not a
   requirement at all: "Requirements:", "Experience:", "FRONTEND PROGRAMMER
   INTERN", "`<h3>What You'll Need</h3>`", "As a core member of the team, you
@@ -58,8 +59,9 @@ batching let large jobs succeed.
 - **Fewer candidates.** The rule removes 2,134 of 20,744 source candidates in
   large_scale_v1, so parser prompts are shorter.
 - **Jobs with only headings.** Two analysed pairs had only heading
-  requirements, so a real `parse-v4` parse would choose different lines for
-  them. The development check could not replay them and left them out.
+  requirements. What a real `parse-v4` parse would do for them (pick other
+  lines, return none, or fail) was not measured. The development check could
+  not replay them and left them out.
 - **Not measured.** How a real `parse-v4` parse selects among the remaining
   candidates; parser recall has not been re-scored with a fresh parse.
 

@@ -44,9 +44,10 @@ tokens.
 
 - **Success.** 107/150 analyses succeeded, against 59/150 with one call. Jobs
   with 16 or more requirements: 21/44, against 0/44.
-- **Over-claiming on the same pairs.** It moved within run-to-run variation:
-  two single-call runs gave 4 and 7 over-claims, and two batch-6 runs gave 10
-  and 8.
+- **Over-claiming on the same pairs.** Two single-call runs gave 4 and 7
+  over-claims, and two batch-6 runs gave 10 and 8. The gap is similar in size
+  to the change between repeat runs, but a small batching effect cannot be
+  ruled out.
 - **Remaining failures.** They are mostly single batches that hit the 800-token
   cap. Rescuing them with a larger cap or smaller batches works, but those
   large jobs then show about 8% over-claiming. The default stays where it is

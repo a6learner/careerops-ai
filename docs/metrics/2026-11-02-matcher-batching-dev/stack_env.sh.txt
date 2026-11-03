@@ -1,0 +1,13 @@
+# Real-provider batching eval stack (compose project careerops-batcheval). Never echo keys.
+export CAREEROPS_DATABASE_URL="postgresql+asyncpg://careerops:careerops@127.0.0.1:15452/careerops"
+export CAREEROPS_REDIS_URL="redis://127.0.0.1:16352/0"
+export CAREEROPS_LLM_PROVIDER=groq
+export CAREEROPS_EVIDENCE_MATCHER_PROVIDER=groq
+export CAREEROPS_RUN_REAL_MATCHER_WORKER=1
+export CAREEROPS_EMBEDDING_PROVIDER=gemini
+export CAREEROPS_RUN_EMBEDDING_INTEGRATION=1
+export CAREEROPS_ANALYSIS_RATE_LIMIT=1000
+export CAREEROPS_LLM_BASE_URL=https://openrouter.ai/api/v1
+export CAREEROPS_LLM_MODEL=openai/gpt-oss-20b
+CAREEROPS_LLM_API_KEY="$(grep -E '^OPENROUTER_API_KEY=' /d/pdd/project/careerops-ai/.env | head -1 | cut -d= -f2- | tr -d '\r"')"
+export CAREEROPS_LLM_API_KEY
