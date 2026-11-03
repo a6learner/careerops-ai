@@ -1,0 +1,18 @@
+-- Evidence guarantee check on the careerops-batcheval database, 2026-11-03T04:46Z, before teardown
+-- positive matches by batch segment:
+       batch        | positive_matches | lacking_evidence 
+--------------------+------------------+------------------
+ matcher-batch-1000 |               11 |                0
+ matcher-batch-3    |              108 |                0
+ matcher-batch-6    |              252 |                0
+(3 rows)
+
+-- all matches by verdict:
+        verdict        | quote_valid | count 
+-----------------------+-------------+-------
+ insufficient_evidence | f           |   220
+ matched               | t           |   284
+ missing               | f           |  2440
+ partial               | t           |    87
+(4 rows)
+

@@ -257,6 +257,11 @@ resumes, 150 analysed pairs; model-made labels; development set, not a holdout;
 - **The one-call matcher breaks as requirements grow.** Analyses succeeded 29/31 at
   1–5 requirements, 23/40 at 6–10, 7/35 at 11–15 and 0/44 at 16 or more. The median
   parsed job has 11 requirements. This confirms the contract failures seen above.
+  Followed up by ADR-049 (batches of at most 6 per call). On the same pairs and
+  parse runs, 107/150 succeeded and jobs with 16 or more requirements went from
+  0/44 to 21/44 (`docs/metrics/2026-11-02-matcher-batching-dev.md`). The large
+  jobs it now completes show about 8% over-claiming when rescued further, so
+  their quality is now measurable and is the next open problem.
 - **`MATCHER_PROVIDER_FAILED` mostly hides contract failures.** Groq's server-side
   schema check rejected the model output; the adapter reports that as a provider error.
   Fixed afterwards in ADR-048: these now fail as `MATCHER_OUTPUT_INVALID_SCHEMA`, and

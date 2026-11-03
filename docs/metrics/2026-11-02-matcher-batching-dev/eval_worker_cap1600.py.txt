@@ -1,0 +1,6 @@
+"""Eval-only worker module: same actors, matcher output cap raised to 1600 tokens."""
+import careerops.adapters.evidence_matcher_factory as factory
+
+factory.GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS = 1600
+
+from careerops.workers.tasks import *  # noqa: E402,F403

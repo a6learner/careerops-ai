@@ -38,6 +38,23 @@ tokens.
   requirements from batches of 6, 6 and 1 are stored in one completion.
 - All gates pass (ADR-049).
 
+## What The Real-Provider Check Showed
+
+`docs/metrics/2026-11-02-matcher-batching-dev.md`:
+
+- **Success.** 107/150 analyses succeeded, against 59/150 with one call. Jobs
+  with 16 or more requirements: 21/44, against 0/44.
+- **Over-claiming on the same pairs.** It moved within run-to-run variation:
+  two single-call runs gave 4 and 7 over-claims, and two batch-6 runs gave 10
+  and 8.
+- **Remaining failures.** They are mostly single batches that hit the 800-token
+  cap. Rescuing them with a larger cap or smaller batches works, but those
+  large jobs then show about 8% over-claiming. The default stays where it is
+  until the author decides.
+- **Lesson.** A quality metric measured only on the runs that succeed can look
+  better than the system is. Once batching let large jobs succeed, their
+  over-claiming became visible.
+
 ## What The Author Must Understand
 
 - **Atomicity is kept by deferring persistence, not by a transaction per batch.**
@@ -64,3 +81,6 @@ tokens.
 4. Why were batches not run in parallel, given that it would cut latency?
 5. Where does the 6-requirement batch size come from, and what evidence would
    make you change it?
+6. Why was the old single-call behavior re-run on the same day, instead of
+   comparing batch 6 directly with the large_scale_v1 numbers?
+7. A 1,600-token cap rescues 39 of 43 failed jobs. Why was it not adopted?

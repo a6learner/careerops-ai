@@ -1,0 +1,48 @@
+{
+ "note": "Counts from the UTF-8 worker logs of each worker session; logs are not tied to individual runs.",
+ "worker_batch6_full_then_single_then_batch6_repeat": {
+  "worker_logs": [
+   "worker_20261102.log"
+  ],
+  "output_rejections_by_diagnostic": {
+   "provider_rejected_output:finish_reason=length": 38,
+   "provider_rejected_output:finish_reason=error": 8,
+   "loc=matches.2.missing.requirement_id;type=uuid_parsing": 1,
+   "loc=matches.1.partial.evidence.experience_id;type=uuid_parsing": 1,
+   "loc=matches.1.missing.requirement_id;type=uuid_parsing": 1
+  },
+  "openrouter_http_status": {
+   "200": 439,
+   "429": 2
+  }
+ },
+ "worker_cap1600_eval": {
+  "worker_logs": [
+   "worker_cap1600_20261102.log",
+   "worker_cap1600_20261102b.log"
+  ],
+  "output_rejections_by_diagnostic": {
+   "provider_rejected_output:finish_reason=error": 2,
+   "loc=matches.5.matched.evidence.experience_id;type=uuid_parsing": 1,
+   "loc=matches.1.partial.evidence.experience_id;type=uuid_parsing": 1
+  },
+  "openrouter_http_status": {
+   "200": 136
+  }
+ },
+ "worker_product_cap800_control_then_batch3": {
+  "worker_logs": [
+   "worker_cap800ctl_20261102.log"
+  ],
+  "output_rejections_by_diagnostic": {
+   "provider_rejected_output:finish_reason=length": 25,
+   "provider_rejected_output:finish_reason=error": 9,
+   "loc=matches.5.matched.evidence.experience_id;type=uuid_parsing": 1,
+   "loc=matches.2.missing.requirement_id;type=uuid_parsing": 1
+  },
+  "openrouter_http_status": {
+   "200": 325,
+   "429": 1
+  }
+ }
+}

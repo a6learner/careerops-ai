@@ -4,8 +4,8 @@
 
 Accepted by the author on 2026-11-01 (stage 2 of the matcher-reliability plan;
 whole-run failure chosen over partial results). Implemented and verified locally
-with fake providers. Re-measurement against a real provider is recorded
-separately.
+with fake providers. Measured against a real provider on the development set on
+2026-11-02 (see Verification). The output-cap question at the end is open.
 
 ## Context
 
@@ -112,4 +112,25 @@ That fit comes from `results_real_run.json` in
     - `test_dashboard_summary_cache_invalidation_and_archived_scope` was
       deselected because async Redis connections time out inside this sandbox.
       It fails the same way on the unchanged code.
-- Real-provider success rates: see the stage 3 record.
+- Real-provider development check
+  (`docs/metrics/2026-11-02-matcher-batching-dev.md`): same 150 pairs, the
+  original parse runs replayed, OpenRouter pinned to Groq.
+  - Success: 107/150, against 59/150 with one call. At 16 or more
+    requirements: 21/44, against 0/44.
+  - Remaining failures are mostly `finish_reason=length` in individual
+    batches.
+  - Over-claiming on the 48 pairs that succeeded in every arm: 4 and 7 for
+    two single-call runs, 10 and 8 for two batch-6 runs. That is within
+    run-to-run variation.
+  - Every stored positive kept a validated quote.
+
+## Open decision (author)
+
+The remaining large-job failures can be rescued by a 1,600-token cap (39 of 43
+failed pairs) or by batches of 3 (36 of 43). A plain re-run rescues 14 of 43.
+On the rescued large jobs, about 8% of labeled requirements are over-claimed:
+52/631 with cap 1,600 and 48/572 with batch 3. The product default therefore
+stays at batch 6 with the 800 cap: a failed run is safer than an over-claimed
+one. Changing this, or reducing over-claiming on large jobs first, is the
+author's call. Over-claiming could be reduced by filtering heading-like
+requirements in the parser or by tightening matcher validation.

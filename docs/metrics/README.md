@@ -86,6 +86,11 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-11-01-large-scale-eval-v1/` holds the scorer outputs, exported database
   rows, driver checkpoint, retrieval reports, log counts and the evidence-guarantee
   SQL check.
+- `2026-11-02-matcher-batching-dev.md` re-runs the 150 pairs with batched matching
+  (ADR-049) on replayed parse runs: success by requirement count, same-day
+  single-call and repeat controls for over-claiming, and the cap-1600 and
+  batch-3 alternatives. Development check, not a holdout. Files are in
+  `2026-11-02-matcher-batching-dev/`.
 
 ## Current Matcher Evidence
 
