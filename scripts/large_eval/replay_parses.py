@@ -26,6 +26,7 @@ from typing import Any
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
+from careerops.adapters.groq_requirement_parser import is_section_heading
 from scripts.large_eval.drive_pipeline import State
 
 LABEL_ROUNDS = ("m1", "m2", "m3", "m4")
@@ -51,6 +52,7 @@ async def replay(
     state: State,
     pairs: list[dict[str, Any]],
     parse_runs: dict[str, dict[str, Any]],
+    drop_headings: bool,
 ) -> int:
     engine = create_async_engine(database_url)
     inserted = 0
@@ -67,6 +69,23 @@ async def replay(
                 expected_ids = {req["requirement_id"] for req in pair["requirements"]}
                 if {req["id"] for req in original["requirements"]} != expected_ids:
                     raise ValueError(f"{pair['pair_id']}: parse run differs from labeled set")
+                kept = [
+                    requirement
+                    for requirement in original["requirements"]
+                    if not (drop_headings and is_section_heading(requirement["text"]))
+                ]
+                if not kept:
+                    state.put(
+                        result_key,
+                        {
+                            "job_key": f"job:{pair['pair_id']}",
+                            "final": {"status": "skipped", "error_code": "REPLAY_ONLY_HEADINGS"},
+                            "attempts": [],
+                            "replayed_from": original["id"],
+                            "headings_dropped": len(original["requirements"]),
+                        },
+                    )
+                    continue
                 row = (
                     await connection.execute(
                         text(
@@ -103,7 +122,7 @@ async def replay(
                         "output_tokens": original["output_tokens"],
                     },
                 )
-                for requirement in original["requirements"]:
+                for requirement in kept:
                     await connection.execute(
                         text(
                             "INSERT INTO job_requirements (id, job_id, parse_run_id, category, "
@@ -128,7 +147,8 @@ async def replay(
                         "final": {"id": original["id"], "status": "succeeded", "error_code": None},
                         "attempts": [],
                         "replayed_from": original["id"],
-                        "requirement_count": len(original["requirements"]),
+                        "requirement_count": len(kept),
+                        "headings_dropped": len(original["requirements"]) - len(kept),
                     },
                 )
                 inserted += 1
@@ -143,12 +163,21 @@ def main() -> None:
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--results", type=Path, required=True)
     parser.add_argument("--requirements-out", type=Path, required=True)
+    parser.add_argument(
+        "--drop-headings",
+        action="store_true",
+        help="leave out requirements that parse-v4 would never offer (is_section_heading)",
+    )
     args = parser.parse_args()
     pairs = load_pair_requirements(args.dataset)
     args.requirements_out.write_text(json.dumps(pairs, indent=1) + "\n", encoding="utf-8")
     state = State.load(args.state)
     parse_runs = original_parse_runs(args.results)
-    inserted = asyncio.run(replay(os.environ["CAREEROPS_DATABASE_URL"], state, pairs, parse_runs))
+    inserted = asyncio.run(
+        replay(
+            os.environ["CAREEROPS_DATABASE_URL"], state, pairs, parse_runs, args.drop_headings
+        )
+    )
     print(json.dumps({"pairs": len(pairs), "parse_runs_inserted": inserted}))
 
 

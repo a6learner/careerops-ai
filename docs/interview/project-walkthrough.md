@@ -261,7 +261,11 @@ resumes, 150 analysed pairs; model-made labels; development set, not a holdout;
   parse runs, 107/150 succeeded and jobs with 16 or more requirements went from
   0/44 to 21/44 (`docs/metrics/2026-11-02-matcher-batching-dev.md`). The large
   jobs it now completes show about 8% over-claiming when rescued further, so
-  their quality is now measurable and is the next open problem.
+  their quality is now measurable and is the next open problem. ADR-050 then
+  stopped the parser from offering section headings to the model. Over-claiming
+  fell from 39/1,098 to 24/1,022, and on 50 common pairs it was 3 over-claims,
+  against 5 for the original single call
+  (`docs/metrics/2026-11-03-heading-filter-dev.md`).
 - **`MATCHER_PROVIDER_FAILED` mostly hides contract failures.** Groq's server-side
   schema check rejected the model output; the adapter reports that as a provider error.
   Fixed afterwards in ADR-048: these now fail as `MATCHER_OUTPUT_INVALID_SCHEMA`, and

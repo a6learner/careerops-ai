@@ -1,0 +1,7 @@
+-- Evidence guarantee check on the careerops-batcheval database (heading-filter run), 2026-11-03T05:30Z, before teardown
+      batch      | positive_matches | lacking_evidence 
+-----------------+------------------+------------------
+                 |                2 |                0
+ matcher-batch-6 |               80 |                0
+(2 rows)
+

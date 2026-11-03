@@ -205,7 +205,9 @@ To run Groq locally, copy the example to the ignored `.env`, set
 key. Automated tests remain fake or mock-backed unless the live-test flag is
 explicitly enabled.
 
-The Groq parser (`parse-v3`, ADR-046) merges a sentence the model returns once per
+The Groq parser (`parse-v4`, ADR-046 and ADR-050) never offers section headings
+(lines ending in a colon, known section titles, all-caps titles, HTML headings) to
+the model, and merges a sentence the model returns once per
 listed skill into one requirement and keeps the first skill. A rejected parse
 logs `requirement_parser_output_rejected` with a `failure_reason` and stores
 provider token counts on the failed run.

@@ -47,6 +47,8 @@ def overclaim_breakdown(
         pair_id = key.removeprefix("job:")
         predicted = {match["requirement_id"]: match for match in run["matches"]}
         for entry in labels[pair_id].labels:
+            if entry.requirement_id not in predicted:
+                continue
             got = COVERAGE[predicted[entry.requirement_id]["verdict"]]
             expected = COVERAGE[entry.verdict]
             if (expected, got) not in OVERCLAIM:
@@ -60,6 +62,18 @@ def overclaim_breakdown(
     }
 
 
+def restrict_to_shared_requirements(arms: dict[str, dict[str, Any]], keys: list[str]) -> None:
+    for key in keys:
+        runs = [latest_success(arm[key]) for arm in arms.values()]
+        shared = set.intersection(
+            *({match["requirement_id"] for match in run["matches"]} for run in runs if run)
+        )
+        for arm in arms.values():
+            job = arm[key]
+            for run in job["analysis_runs"]:
+                run["matches"] = [m for m in run["matches"] if m["requirement_id"] in shared]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=Path, required=True)
@@ -68,6 +82,11 @@ def main() -> None:
     parser.add_argument("--order", type=Path, required=True)
     parser.add_argument("--arm", action="append", required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--shared-requirements-only",
+        action="store_true",
+        help="score only requirements that every arm analysed (e.g. after a parser filter)",
+    )
     args = parser.parse_args()
 
     arms: dict[str, dict[str, Any]] = {}
@@ -81,7 +100,13 @@ def main() -> None:
         for key in order
         if all(key in runs and latest_success(runs[key]) is not None for runs in arms.values())
     ]
-    report: dict[str, Any] = {"order": str(args.order), "pairs_succeeded_in_all_arms": len(keys)}
+    if args.shared_requirements_only:
+        restrict_to_shared_requirements(arms, keys)
+    report: dict[str, Any] = {
+        "order": str(args.order),
+        "pairs_succeeded_in_all_arms": len(keys),
+        "shared_requirements_only": args.shared_requirements_only,
+    }
     for name, runs in arms.items():
         succeeded = sum(key in runs and latest_success(runs[key]) is not None for key in order)
         subset = {key: runs[key] for key in keys}

@@ -89,7 +89,7 @@ class GroqRequirementParser:
         return self._model
 
     async def parse(self, input_text: str) -> ParserOutput:
-        candidates = extract_source_candidates(input_text)
+        candidates = selectable_candidates(extract_source_candidates(input_text))
         if not candidates:
             raise ParserOutputValidationError(ParserOutputFailureReason.NO_CANDIDATES)
         response = await self._request(candidates)
@@ -230,6 +230,57 @@ def extract_source_candidates(input_text: str) -> tuple[SourceCandidate, ...]:
         index += 1
     append_candidate(candidates, input_text, start, len(input_text))
     return tuple(candidates)
+
+
+_HTML_TAG = re.compile(r"<[^>]+>")
+_HTML_HEADING = re.compile(r"^\s*<h[1-6][^>]*>.*</h[1-6]>\s*$", re.IGNORECASE | re.DOTALL)
+_SECTION_TITLES = frozenset(
+    {
+        "about the role",
+        "about you",
+        "basic qualifications",
+        "benefits",
+        "education",
+        "experience",
+        "minimum qualifications",
+        "nice to have",
+        "nice to haves",
+        "preferred qualifications",
+        "qualifications",
+        "requirements",
+        "responsibilities",
+        "what you'll do",
+        "what you'll need",
+        "what you will do",
+        "who you are",
+    }
+)
+
+
+def selectable_candidates(
+    candidates: tuple[SourceCandidate, ...],
+) -> tuple[SourceCandidate, ...]:
+    """Drop section headings but keep the original candidate IDs and spans."""
+    return tuple(candidate for candidate in candidates if not is_section_heading(candidate.text))
+
+
+def is_section_heading(text: str) -> bool:
+    if _HTML_HEADING.match(text):
+        return True
+    plain = " ".join(_HTML_TAG.sub(" ", text).split())
+    if not plain or plain.endswith(":"):
+        return True
+    title = plain.rstrip(".!").replace("’", "'").casefold()
+    if title in _SECTION_TITLES:
+        return True
+    words = plain.split()
+    letters = [char for char in plain if char.isalpha()]
+    return (
+        2 <= len(words) <= 6
+        and "," not in plain
+        and bool(letters)
+        and all(char.isupper() for char in letters)
+    )
 
 
 def append_candidate(

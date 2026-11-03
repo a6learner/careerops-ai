@@ -134,3 +134,9 @@ stays at batch 6 with the 800 cap: a failed run is safer than an over-claimed
 one. Changing this, or reducing over-claiming on large jobs first, is the
 author's call. Over-claiming could be reduced by filtering heading-like
 requirements in the parser or by tightening matcher validation.
+
+Follow-up: ADR-050 adds the parser heading filter. With it, over-claiming in
+the full batch-6 run fell from 39/1,098 to 24/1,022. On 50 pairs scored on the
+same requirements, over-claims were 5 (original single call), 8 (batch 6) and
+3 (batch 6 with the filter); see `docs/metrics/2026-11-03-heading-filter-dev.md`.
+The cap question above is still open.

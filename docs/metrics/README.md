@@ -91,6 +91,10 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   single-call and repeat controls for over-claiming, and the cap-1600 and
   batch-3 alternatives. Development check, not a holdout. Files are in
   `2026-11-02-matcher-batching-dev/`.
+- `2026-11-03-heading-filter-dev.md` repeats that run with the parse-v4 heading
+  filter (ADR-050): label check of the rule, over- and under-claiming overall and
+  like-for-like against batch 6 and the original single call. Development check,
+  not a holdout. Files are in `2026-11-03-heading-filter-dev/`.
 
 ## Current Matcher Evidence
 
