@@ -37,10 +37,17 @@ def verdicts(run: dict[str, Any]) -> dict[str, str]:
     return {match["requirement_id"]: match["verdict"] for match in run["matches"]}
 
 
+LONG_OUTPUT_PER_BATCH = 800
+
+
 def compare(
-    labels: dict[str, Any], first: dict[str, Any], second: dict[str, Any]
+    labels: dict[str, Any],
+    first: dict[str, Any],
+    second: dict[str, Any],
+    batch_size: int,
 ) -> dict[str, Any]:
     counts: Counter[str] = Counter()
+    by_length: dict[str, Counter[str]] = {"short": Counter(), "long": Counter()}
     rescued: Counter[str] = Counter()
     for key, job in second.items():
         run_b = latest_success(job)
@@ -49,6 +56,8 @@ def compare(
         run_a = latest_success(first[key]) if key in first else None
         got_b = verdicts(run_b)
         got_a = verdicts(run_a) if run_a is not None else {}
+        per_batch = (run_b["output_tokens"] or 0) / math.ceil(len(got_b) / batch_size)
+        length = by_length["long" if per_batch > LONG_OUTPUT_PER_BATCH else "short"]
         for entry in labels[key.removeprefix("job:")].labels:
             if entry.requirement_id not in got_b:
                 continue
@@ -63,12 +72,13 @@ def compare(
             over_a = (expected, COVERAGE[got_a[entry.requirement_id]]) in OVERCLAIM
             exact_a = expected == COVERAGE[got_a[entry.requirement_id]]
             exact_b = expected == COVERAGE[got_b[entry.requirement_id]]
-            counts["requirements"] += 1
-            counts["same_verdict"] += got_a[entry.requirement_id] == got_b[entry.requirement_id]
-            counts["overclaim_only_first"] += over_a and not over_b
-            counts["overclaim_only_second"] += over_b and not over_a
-            counts["exact_only_first"] += exact_a and not exact_b
-            counts["exact_only_second"] += exact_b and not exact_a
+            for tally in (counts, length):
+                tally["requirements"] += 1
+                tally["same_verdict"] += got_a[entry.requirement_id] == got_b[entry.requirement_id]
+                tally["overclaim_only_first"] += over_a and not over_b
+                tally["overclaim_only_second"] += over_b and not over_a
+                tally["exact_only_first"] += exact_a and not exact_b
+                tally["exact_only_second"] += exact_b and not exact_a
     return {
         "shared_pairs": {
             **dict(counts),
@@ -78,6 +88,13 @@ def compare(
             "exact_mcnemar_exact_p": round(
                 mcnemar_exact_p(counts["exact_only_first"], counts["exact_only_second"]), 3
             ),
+        },
+        "shared_pairs_by_second_run_output": {
+            "definition": (
+                "second run's output tokens / ceil(requirements / batch_size); "
+                f"long if above {LONG_OUTPUT_PER_BATCH}"
+            ),
+            **{name: dict(tally) for name, tally in by_length.items()},
         },
         "pairs_only_second_completed": {
             "requirements": rescued["requirements"],
@@ -92,6 +109,7 @@ def main() -> None:
     parser.add_argument("--matcher-labels", type=Path, required=True)
     parser.add_argument("--requirements", type=Path, required=True)
     parser.add_argument("--compare", action="append", required=True)
+    parser.add_argument("--batch-size", type=int, default=6)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
@@ -101,7 +119,7 @@ def main() -> None:
     for spec in args.compare:
         name, runs = spec.split("=", 1)
         first, second = (load_pairs(*map(Path, side.split(",", 1))) for side in runs.split("|"))
-        report[name] = compare(labels, first, second)
+        report[name] = compare(labels, first, second, args.batch_size)
     args.out.write_text(json.dumps(report, indent=1) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=1))
 

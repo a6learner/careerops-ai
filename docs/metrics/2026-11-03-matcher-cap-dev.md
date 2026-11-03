@@ -57,7 +57,10 @@ Against the labels, over all of its 138 successful analyses (1,547 labeled requi
 
 ## Where the extra over-claiming comes from
 
-The overall rate is higher than the cap-800 run's 2.3% because more hard jobs complete.
+The overall rate is higher than the cap-800 run's 2.3%. Of the 76 over-claims, 47 are on pairs only the
+cap-2,000 run completed and 29 on pairs both runs completed. The shared pairs also moved, from 23 to
+29. These are separate stochastic runs, so the split describes where the over-claims are, not a
+proven cause.
 `paired_check.json` (`scripts/large_eval/paired_matcher_check.py`) splits it:
 
 - **Pairs only the cap-2,000 run completed:** 47/588 requirements over-claimed = 8.0% (6.1–10.5). This
@@ -72,11 +75,18 @@ The overall rate is higher than the cap-800 run's 2.3% because more hard jobs co
 - **Same-configuration control:** two batch-6 runs from 2026-11-02 split 4/3 on both measures (281
   requirements, p = 1.0).
 
-On pairs both runs completed, a 2,000 cap cannot change any batch whose answer fits in 800 tokens. It
-can change a batch that, in this run, reasoned past 800 tokens and still finished. That is a possible
-source of real difference, but a rough split by average output per batch places most of the difference
-in short-output runs. The shared-pair differences are not statistically significant. The cap-2,000 run
-is a little worse on them, but within what separate runs on different stacks can show.
+The cap only takes effect on calls that reach 800 tokens. Below that, the two runs differ by sampling;
+even the same-configuration control agreed on only 255 of 281 verdicts. A batch that reasoned past 800
+tokens and still finished is the one place the cap itself can make a difference.
+
+`paired_check.json` → `shared_pairs_by_second_run_output` splits the shared requirements by the
+cap-2,000 run's output tokens per batch (total ÷ ceil(requirements ÷ 6); long if above 800):
+- Short runs, 942 requirements: over-claim discordance 10/14 and exact-coverage discordance 25/13.
+- Long runs, 17 requirements: 0/2 and 1/1.
+
+So most of the shared-pair difference is in runs where the cap is unlikely to have been reached. It is
+not statistically significant. The cap-2,000 run is a little worse on these pairs, within what
+separate runs on different stacks can show, but a small real effect cannot be ruled out.
 
 Three-way comparison (`arms_original_cap800_cap2000_shared.json`; 51 pairs that succeeded in all three,
 265 requirements):
@@ -92,15 +102,29 @@ Three-way comparison (`arms_original_cap800_cap2000_shared.json`; 51 pairs that 
 
 Before the database was deleted, a SQL check found 190 positive matches, all from the cap-2,000 run.
 None lacked an experience, a version, a non-blank quote or `quote_valid = true`
-(`evidence_guarantee_check.txt`).
+(`evidence_guarantee_check.txt`, which also records the query; the database was deleted afterwards,
+so the result cannot be recomputed).
 
 ## Interpretation
 
-- **Reliability.** Truncation is gone and 93% of analysable pairs complete, including 15 of 18 jobs
+- **Reliability.** No truncation was observed in this run, and 93% of analysable pairs completed, including 15 of 18 jobs
   with 21 or more requirements.
 - **Cost.** About 8% of labeled requirements are over-claimed on the hard jobs that now complete.
   Every positive still cites a validated quote; the labels judge those quotes too weak. This is the
   trade-off the author accepted for ADR-051, with reducing it as the next stage.
+
+## Audit
+
+A read-only Codex audit (`codex_audit_2026-11-03.md`) reproduced every scorer and comparison output
+from the raw artifacts and found no numerical errors. It flagged six gaps:
+- causal wording about where the extra over-claims come from and about the cap;
+- an unsaved length split;
+- the evidence-check query not recorded;
+- "truncation is gone" stated as a general fact;
+- gate results with no saved output.
+
+All six were fixed. The length split is now in `paired_check.json`, the query in
+`evidence_guarantee_check.txt` and the gate output in `gates.txt`.
 
 ## Not measured
 
@@ -114,7 +138,8 @@ None lacked an experience, a version, a non-blank quote or `quote_valid = true`
 - Data and scores: `results_cap2000.json`, `driver_state_cap2000.jsonl`, `score_cap2000.json`.
 - Comparisons: `paired_check.json`, `arms_cap800_vs_cap2000_shared.json`,
   `arms_original_cap800_cap2000_shared.json`.
-- Logs and checks: `worker_log_counts.json`, `evidence_guarantee_check.txt`,
+- Audit: `codex_audit_2026-11-03.md`.
+- Logs and checks: `worker_log_counts.json`, `evidence_guarantee_check.txt`, `gates.txt`,
   `embedding_status_before_analyses.txt`, `teardown.txt`.
 - Configuration and probes: `stack_env.sh.txt`, `code_commit.txt`, `route_probe_before.json`,
   `route_probe_after.json`.

@@ -34,8 +34,9 @@ correctness. In development data, a 1,600 cap rescued 39 of 43 failed jobs.
 ## What The Author Must Understand
 
 - **Why a flat raise and not a retry.** A token cap only stops generation. Any
-  answer shorter than 800 tokens is the same under a 2,000 cap, so raising the cap
-  changes only the calls that would have been cut off.
+  answer shorter than 800 tokens is not affected by a 2,000 cap, so raising the
+  cap only changes calls that would have been cut off. Two separate runs still
+  differ by sampling.
 - **Why the cap is versioned.** It changes what a run can produce, so it belongs
   to the run's identity, like the batch size (ADR-049).
 - **What this does not fix.** Hard large jobs over-claim at about 8% whether they

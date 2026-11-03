@@ -52,7 +52,7 @@ there is a matcher-quality problem, separate from the cap.
 ## Alternatives considered
 
 - **Retry a truncated batch with a larger cap.** The cap only stops generation,
-  so any answer that fits in 800 tokens is identical under a 2,000 cap. Retrying
+  so a call whose answer fits in 800 tokens is unaffected by a 2,000 cap. Retrying
   gives the same results plus a wasted first call and extra latency.
 - **Smaller batches.** They rescued fewer jobs, roughly doubled input tokens
   because the instructions repeat per call, and had higher latency.
@@ -82,7 +82,8 @@ there is a matcher-quality problem, separate from the cap.
 - `tests/test_evidence_matcher_factory.py`: a run with `matcher-cap-2000` builds
   a matcher with cap 2,000, a legacy run gets 800, and an invalid segment is
   misconfigured.
-- Gates on 2026-11-03:
+- Gates on 2026-11-03 (output saved in
+  `docs/metrics/2026-11-03-matcher-cap-dev/gates.txt`):
   - `ruff check .`, `mypy --strict src` and `lint-imports` clean.
   - Unit tests: 496 passed.
   - Integration on a clean database: 26 passed, 1 skipped, 2 deselected.
@@ -92,3 +93,5 @@ there is a matcher-quality problem, separate from the cap.
   - Pairs only the 2,000 cap completed over-claimed 47/588 (8.0%).
   - On 100 pairs both completed, over-claims were 23 against 29 (paired p = 0.33).
   - All 190 stored positives kept a validated quote.
+  - Audit: `docs/metrics/2026-11-03-matcher-cap-dev/codex_audit_2026-11-03.md`;
+    it found no numerical errors and 6 wording or artifact gaps, all fixed.

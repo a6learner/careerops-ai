@@ -4,3 +4,11 @@
  matcher-cap-2000 |              190 |                0
 (1 row)
 
+
+-- Query that produced the table above (added 2026-11-03 after the audit; the database was already deleted,
+-- so the text is recorded from the command that was run, not re-executed):
+-- select split_part(r.prompt_version,':',9) as cap, count(*) as positive_matches,
+--        count(*) filter (where m.experience_id is null or m.experience_version is null
+--                         or m.quote is null or btrim(m.quote) = '' or not m.quote_valid) as lacking_evidence
+-- from evidence_matches m join analysis_runs r on r.id = m.analysis_run_id
+-- where m.verdict in ('matched','partial') group by 1;

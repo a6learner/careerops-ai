@@ -10,6 +10,25 @@
    "overclaim_mcnemar_exact_p": 0.327,
    "exact_mcnemar_exact_p": 0.081
   },
+  "shared_pairs_by_second_run_output": {
+   "definition": "second run's output tokens / ceil(requirements / batch_size); long if above 800",
+   "short": {
+    "requirements": 942,
+    "same_verdict": 817,
+    "overclaim_only_first": 10,
+    "overclaim_only_second": 14,
+    "exact_only_first": 25,
+    "exact_only_second": 13
+   },
+   "long": {
+    "requirements": 17,
+    "same_verdict": 14,
+    "overclaim_only_first": 0,
+    "overclaim_only_second": 2,
+    "exact_only_first": 1,
+    "exact_only_second": 1
+   }
+  },
   "pairs_only_second_completed": {
    "requirements": 588,
    "overclaim_rate": {
@@ -33,6 +52,18 @@
    "exact_only_second": 3,
    "overclaim_mcnemar_exact_p": 1.0,
    "exact_mcnemar_exact_p": 1.0
+  },
+  "shared_pairs_by_second_run_output": {
+   "definition": "second run's output tokens / ceil(requirements / batch_size); long if above 800",
+   "short": {
+    "requirements": 281,
+    "same_verdict": 255,
+    "overclaim_only_first": 4,
+    "overclaim_only_second": 3,
+    "exact_only_first": 4,
+    "exact_only_second": 3
+   },
+   "long": {}
   },
   "pairs_only_second_completed": {
    "requirements": 0,
