@@ -1,0 +1,318 @@
+[
+ {
+  "pair_id": "r25-jd-0b79ce35f2",
+  "requirement_id": "c60dc6d6-671d-40d4-959f-de56a7baa945",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "The internship was shadowing plus a log-parsing script; no product was developed or launched."
+ },
+ {
+  "pair_id": "r27-jd-549191bf37",
+  "requirement_id": "58c92d65-1cc5-4a41-89f4-f23f0939750a",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience mentions supporting API releases or helping customers integrate validation workflows."
+ },
+ {
+  "pair_id": "r27-jd-549191bf37",
+  "requirement_id": "17b17068-86f3-4122-b396-123d93d1be05",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience explicitly shows project management; a technical outcome is not management evidence."
+ },
+ {
+  "pair_id": "r28-jd-e4e3392511",
+  "requirement_id": "0a385866-cc28-4527-b59a-01b0710d1182",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "The Django task serves clinic data conversion, not internal tooling for developer workflows."
+ },
+ {
+  "pair_id": "r28-jd-e4e3392511",
+  "requirement_id": "01ecb2d0-975f-4e45-9faa-ed7461f1e7f9",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Writing request tests is not CI/CD, testing infrastructure, or release-process work."
+ },
+ {
+  "pair_id": "r28-jd-e4e3392511",
+  "requirement_id": "8e824332-8c75-4852-b240-ffedb23dbbea",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience states a degree in progress, and an intern title does not establish the education requirement."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "0a968e3e-6307-4dab-a12c-cd9511bc9a88",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r31-e3",
+    "source_ref": "description",
+    "quote": "benchmarked CPU inference on a field laptop"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Inference performance benchmarking is shown, but owning model quality for production inference offerings is not."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "8e78f3a1-5d11-439f-927c-047104fb6f19",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No AI-driven measurement system at scale or customer-facing quality artifacts are described."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "8c0fe9f8-8f5a-4954-919d-b58d2193d75e",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience mentions AI agents, custom eval suites, or trajectory mining."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "afdff49f-52a8-4c7e-b16b-f04966433341",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience mentions eval suites with AI agents in the loop."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "13e9cbdc-a510-4a1e-8dbb-ae723c4f1dbf",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience describes curating eval mixes for model releases."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "2e9ad2df-427f-48aa-9cec-7e0b5f2e0022",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "The review tool shows predictions for labeling, not synthesized quality and performance data."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "ee390396-a4a7-4985-a57b-455e79097021",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r31-e4",
+    "source_ref": "description",
+    "quote": "cross-validation, leakage, precision-recall tradeoffs"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Teaching cross-validation and precision-recall tradeoffs is explicit statistics background."
+ },
+ {
+  "pair_id": "r31-jd-3555033404",
+  "requirement_id": "7d601548-51d8-42e7-8021-ac17ff3236f3",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience says AI assisted in building or shipping the work."
+ },
+ {
+  "pair_id": "r32-jd-84f7ae9902",
+  "requirement_id": "ee0f3754-74f7-47b0-a037-eff9fcb96fa8",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r32-e1",
+    "source_ref": "description",
+    "quote": "Built a RAG pipeline for 9k internal troubleshooting pages"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Building an ingestion pipeline is shown, but scaling, best practices, and self-service access are not."
+ },
+ {
+  "pair_id": "r32-jd-84f7ae9902",
+  "requirement_id": "ed0eea26-f2e0-4334-a182-b4a214a4f9b2",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r32-e1",
+    "source_ref": "description",
+    "quote": "Built a RAG pipeline for 9k internal troubleshooting pages"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "A document ingestion pipeline is shown, but end-to-end ownership with reliability and scalability is not."
+ },
+ {
+  "pair_id": "r35-jd-b0e8c68f29",
+  "requirement_id": "c0db7b11-8002-4f59-8e77-143999314cd7",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r35-e3",
+    "source_ref": "description",
+    "quote": "plotted food pantry availability with Next.js and Leaflet using a Supabase database"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "The Next.js project shows Next but not React explicitly, and no single experience proves both."
+ },
+ {
+  "pair_id": "r36-jd-ae26b28e91",
+  "requirement_id": "be6dd328-317b-48b8-a0e9-31796fdd68e1",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Problem-solving and attention to detail are soft skills with no explicit evidence statement."
+ },
+ {
+  "pair_id": "r38-jd-fe30ff7862",
+  "requirement_id": "3a705f5f-6d92-4256-89d0-064c8b95f849",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Personality traits such as creativity and drive are not explicitly evidenced."
+ },
+ {
+  "pair_id": "r40-jd-8eedad8687",
+  "requirement_id": "25a559e5-41c7-4619-8709-e2a1d402cfa1",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience mentions back-end development or years of experience."
+ },
+ {
+  "pair_id": "r43-jd-01d7e0ebc3",
+  "requirement_id": "58acafcc-dc46-41b4-b2e0-f0ab6d6232a2",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r43-e1",
+    "source_ref": "description",
+    "quote": "Created Python ingestion scripts"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Python is an object-oriented language and the examples are non-exhaustive, so Python coding proves it."
+ },
+ {
+  "pair_id": "r44-jd-6f1e385a7b",
+  "requirement_id": "c27312e9-04a3-4c60-9840-b37a7a471603",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r44-e2",
+    "source_ref": "description",
+    "quote": "Implemented background downloads"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Building a product feature is shown, but shipping and iterating toward milestones is not stated."
+ },
+ {
+  "pair_id": "r44-jd-6f1e385a7b",
+  "requirement_id": "b2b95994-e48c-47b0-a05c-f1c119be3fa8",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r44-e2",
+    "source_ref": "description",
+    "quote": "Swift concurrency actors protecting shared state"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Concurrency shows some systems fundamentals, but data structures and algorithms are not mentioned."
+ },
+ {
+  "pair_id": "r44-jd-6f1e385a7b",
+  "requirement_id": "e8e66ccd-ea14-4cdd-9160-21c9f816d370",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r44-e1",
+    "source_ref": "description",
+    "quote": "async URLSession requests"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Synchronizing data through network API requests satisfies exposure to APIs, one of the listed alternatives."
+ },
+ {
+  "pair_id": "r44-jd-6f1e385a7b",
+  "requirement_id": "5acc74a2-6738-43b9-8956-d90611653288",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience states the team was a startup or fast-paced."
+ },
+ {
+  "pair_id": "r46-jd-137bc8ddcc",
+  "requirement_id": "be35c590-86e6-4d75-a3a3-51fd8e387376",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r46-e2",
+    "source_ref": "description",
+    "quote": "Wrote JUnit cases for empty structures, duplicate values, and removal from each boundary position"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Tested coursework code shows quality coding, but software engineering experience on important projects is not shown."
+ },
+ {
+  "pair_id": "r46-jd-137bc8ddcc",
+  "requirement_id": "10b01a4b-d86b-4407-9f09-de4dc076d719",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience explicitly shows applying knowledge to real-world complex problems."
+ },
+ {
+  "pair_id": "r46-jd-137bc8ddcc",
+  "requirement_id": "7e05b821-b861-4507-9747-dc73d9067765",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "A study group is not project team meetings for scoping and driving work."
+ },
+ {
+  "pair_id": "r46-jd-137bc8ddcc",
+  "requirement_id": "1bea57d4-9582-4fa4-902a-ae1291023cf2",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "A listed Communication skill alone is not explicit communication evidence, and cross-functional work is absent."
+ },
+ {
+  "pair_id": "r46-jd-137bc8ddcc",
+  "requirement_id": "abdf86db-89c6-4eb0-84a2-385bcb6a14ce",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Passion to learn engineering skills is not explicitly evidenced; the study group covers math."
+ },
+ {
+  "pair_id": "r50-jd-5b55c12fc5",
+  "requirement_id": "27bb277d-015e-45ad-9e42-63defca1973e",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience shows owning a project or shipping a product with cross-functional teams."
+ },
+ {
+  "pair_id": "r50-jd-5b55c12fc5",
+  "requirement_id": "7749bec9-81ac-4202-8f78-541eceb48c03",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Implementing assigned screens does not explicitly show turning product or business ideas into solutions."
+ }
+]

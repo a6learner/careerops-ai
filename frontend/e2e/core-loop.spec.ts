@@ -50,6 +50,7 @@ test("completes the fake-provider core loop through the same-origin frontend", a
   await pauseForNarration(25_000);
 
   await page.getByRole("link", { name: "Jobs" }).first().click();
+  await page.getByRole("button", { name: /Discover public jobs/ }).click();
   await page.getByLabel("Keywords").fill(searchQuery);
   await page.getByLabel("Location").fill("Los Angeles");
   await page.getByLabel("Published within days").fill("14");
@@ -70,7 +71,10 @@ test("completes the fake-provider core loop through the same-origin frontend", a
   await page.getByRole("button", { name: "Save draft" }).click();
   await expect(confirmJob).toBeEnabled();
   await confirmJob.click();
-  await expect(page.getByRole("heading", { name: jobTitle })).toBeVisible();
+  const savedColumnCard = page.getByRole("region", { name: "Saved jobs" }).getByRole("link", { name: new RegExp(jobTitle) });
+  await expect(savedColumnCard).toBeVisible();
+  await savedColumnCard.click();
+  await expect(page.getByRole("heading", { name: jobTitle, level: 1 })).toBeVisible();
   await pauseForNarration(25_000);
 
   await page.getByRole("button", { name: "Parse description" }).click();
@@ -89,14 +93,17 @@ test("completes the fake-provider core loop through the same-origin frontend", a
   await expect(page.getByText("Action item created.")).toBeVisible();
 
   await page.getByLabel("Update status").selectOption("applied");
-  await page.getByRole("button", { name: "Update" }).click();
+  await expect(page.getByText("Moved to Applied")).toBeVisible();
   await page.reload();
   await expect(page.getByLabel("Update status")).toHaveValue("applied");
+  // The latest parse and analysis runs are restored from the API after a reload.
+  await expect(page.getByText("Kubernetes experience is required").last()).toBeVisible();
+  await expect(page.locator("blockquote").filter({ hasText: "Python" })).toBeVisible();
   await pauseForNarration(20_000);
 
   await page.getByRole("link", { name: "Action Items" }).first().click();
-  const sourcedTask = page.locator('input[value^="Address gap:"]');
-  await expect(sourcedTask).toBeVisible();
+  const sourcedTask = page.getByLabel("Action item title");
+  await expect(sourcedTask).toHaveValue(/^Address gap:/);
   await expect(page.getByText("From analysis gap")).toBeVisible();
   await page.getByLabel("Status").last().selectOption("done");
   await page.getByRole("button", { name: "Save" }).click();
@@ -105,10 +112,9 @@ test("completes the fake-provider core loop through the same-origin frontend", a
   await pauseForNarration(20_000);
 
   await page.getByRole("link", { name: "Dashboard" }).first().click();
-  await expect(page.getByText("Applied", { exact: true }).locator("..").getByText("1"))
-    .toBeVisible();
+  await expect(page.getByRole("img", { name: /Applied 1,/ })).toBeVisible();
   await expect(
-    page.getByText("Completed tasks").locator("xpath=../..").getByText("1", { exact: true }),
+    page.getByText("Completed tasks").locator("..").getByText("1", { exact: true }),
   ).toBeVisible();
   await pauseForNarration(20_000);
 

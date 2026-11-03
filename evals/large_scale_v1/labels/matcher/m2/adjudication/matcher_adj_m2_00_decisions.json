@@ -1,0 +1,295 @@
+[
+ {
+  "pair_id": "r08-jd-252787b3f3",
+  "requirement_id": "bebdf285-6556-42f1-8a61-e7e6ecb0632d",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r08-e4",
+    "source_ref": "description",
+    "quote": "Ran a pretrained embedding model on a public product catalog and built a nearest neighbor search with FAISS"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Builds an ML search component on a pretrained embedding model, but integration with the latest and most powerful models is not shown."
+ },
+ {
+  "pair_id": "r08-jd-252787b3f3",
+  "requirement_id": "96108c6c-7c47-4de6-a35c-7ae5271e0d22",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r08-e4",
+    "source_ref": "title",
+    "quote": "Using LLM Embeddings for Product Search"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Uses LLM embeddings as a building block for a search tool, but the stated enthusiasm is not evidenced."
+ },
+ {
+  "pair_id": "r25-jd-26eec39d7f",
+  "requirement_id": "9306fcc2-54ab-49d1-96d0-364bdbc3f7f3",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience mentions identity, authentication or authorization systems."
+ },
+ {
+  "pair_id": "r25-jd-26eec39d7f",
+  "requirement_id": "40d7f114-34bb-42b3-981d-cea8d5b9b85f",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "explicit_non_implementation",
+  "rationale": "AI work is only shadowing or presenting while teammates wrote the LLM code, with explicit non-implementation."
+ },
+ {
+  "pair_id": "r28-jd-67f6401181",
+  "requirement_id": "c1c2d1ea-12c2-40f8-bfef-1373921ae346",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Nightly sandbox CSV conversion is not real-time observability data processing in production."
+ },
+ {
+  "pair_id": "r28-jd-67f6401181",
+  "requirement_id": "bfd16cc2-4f29-468c-910b-dc83ba35992e",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience explicitly mentions distributed systems or cloud-native services."
+ },
+ {
+  "pair_id": "r28-jd-67f6401181",
+  "requirement_id": "4be36b25-6321-414d-8445-f0d76f457e36",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience describes solving performance, reliability or scalability problems in critical services."
+ },
+ {
+  "pair_id": "r28-jd-67f6401181",
+  "requirement_id": "dd8e80ad-9675-4ff6-98f1-82fe67e84b0e",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience states owning a project through deployment."
+ },
+ {
+  "pair_id": "r28-jd-67f6401181",
+  "requirement_id": "d51871fa-e984-4f5a-9f8b-1907af8226e3",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Kubernetes, distributed systems and cloud-native infrastructure are not explicitly mentioned."
+ },
+ {
+  "pair_id": "r28-jd-67f6401181",
+  "requirement_id": "1a81bcf6-8160-4b13-87a2-f9174b13f85c",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience states a degree program; a job title does not prove the education requirement."
+ },
+ {
+  "pair_id": "r30-jd-7c4109d0ff",
+  "requirement_id": "6b6122d4-2bd1-4e4a-a121-f6afcbef3d0d",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience explicitly describes considering end users or proposing product improvements."
+ },
+ {
+  "pair_id": "r30-jd-7c4109d0ff",
+  "requirement_id": "adddb22e-48d2-4442-a9cf-8f32cb74171d",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "SQL and relational table design are not explicitly mentioned; writing segments to ClickHouse does not state SQL use."
+ },
+ {
+  "pair_id": "r31-jd-fcc9086401",
+  "requirement_id": "c3d0b8f1-3a9d-4467-82c0-0340bf5d1550",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Normalization tests for model code are not systems guaranteeing data quality, governance or availability."
+ },
+ {
+  "pair_id": "r31-jd-fcc9086401",
+  "requirement_id": "bfbf61c6-0cf9-4193-9ac0-c52a9a74d64c",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience states a degree; a research assistant title does not prove it."
+ },
+ {
+  "pair_id": "r33-jd-4a1cc83d6b",
+  "requirement_id": "9352d0c3-0862-4e1b-a940-41e406af058e",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No cost data analysis appears, and presentation to a non-technical audience is not shown."
+ },
+ {
+  "pair_id": "r33-jd-4a1cc83d6b",
+  "requirement_id": "cfaaf8e3-74b0-451d-9672-df7634269b95",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "The FinOps or cloud cost context that qualifies the data experience is absent."
+ },
+ {
+  "pair_id": "r36-jd-2e52971de3",
+  "requirement_id": "813e3c65-8586-4979-8925-e07915232e69",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience explicitly mentions SQL querying, joining or aggregating."
+ },
+ {
+  "pair_id": "r37-jd-d0188c4304",
+  "requirement_id": "3693bd02-05a2-491a-9f2c-1a4f5d6679ee",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Generic analytical-skill requirement lacks explicit evidence of analytical skill or interest."
+ },
+ {
+  "pair_id": "r37-jd-d0188c4304",
+  "requirement_id": "a016ce33-700d-4ed7-85a4-94c1ac3aae2a",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Moderating usability sessions with participants is not collaboration with teammates."
+ },
+ {
+  "pair_id": "r39-jd-c805777b28",
+  "requirement_id": "1e256ee1-e55c-4dc2-9946-0621aac070f1",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Linux is not mentioned and all cluster work is test or workshop, not production."
+ },
+ {
+  "pair_id": "r39-jd-c805777b28",
+  "requirement_id": "3d368b79-fe56-4527-ae58-ad5418d8154d",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r39-e3",
+    "source_ref": "description",
+    "quote": "Built a C++ prototype that replicated fixed-size blocks across three processes using a primary-backup protocol"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "A replicated distributed storage prototype shows design, but deployment of mission-critical systems is not shown."
+ },
+ {
+  "pair_id": "r39-jd-c805777b28",
+  "requirement_id": "5be155b0-b810-433b-84f6-0df7a5695fc2",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r39-e4",
+    "source_ref": "description",
+    "quote": "Ran hands-on sessions"
+   },
+   {
+    "exp_key": "r39-e4",
+    "source_ref": "description",
+    "quote": "Prepared compact incident cards"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Educating peers via hands-on sessions is shown, but learning from peers and critical thinking are not explicit."
+ },
+ {
+  "pair_id": "r41-jd-35b32f63ea",
+  "requirement_id": "43b59460-214f-4c70-bbce-934715381871",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience states a degree; an intern title does not prove the education requirement."
+ },
+ {
+  "pair_id": "r43-jd-89939ce9b9",
+  "requirement_id": "c80cf7ce-248a-49d5-8c22-646129da57a5",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "No experience describes owning a project while checking in with team members."
+ },
+ {
+  "pair_id": "r43-jd-89939ce9b9",
+  "requirement_id": "a09aef97-8ac6-4c52-af7b-a0f277ff1dca",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r43-e3",
+    "source_ref": "description",
+    "quote": "checked a stratified sample before delivery"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Checking a stratified sample before delivery is explicit quality testing for reliable output."
+ },
+ {
+  "pair_id": "r43-jd-89939ce9b9",
+  "requirement_id": "c2b0884c-dcfd-4eeb-bd97-9b505cfb158e",
+  "verdict": "partial",
+  "evidence": [
+   {
+    "exp_key": "r43-e2",
+    "source_ref": "description",
+    "quote": "linked each measure to its approved SQL file"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "SQL use is shown but data modeling fundamentals are not proven in the same experience."
+ },
+ {
+  "pair_id": "r43-jd-89939ce9b9",
+  "requirement_id": "345a8454-b08c-4b32-8832-4ecd862776e6",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r43-e3",
+    "source_ref": "description",
+    "quote": "Normalized 80k open library catalog records"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Normalizing 80k real open library records is hands-on work on a sizable real-world data problem."
+ },
+ {
+  "pair_id": "r45-jd-ba5272986f",
+  "requirement_id": "b8258b40-dbc2-4e7d-ac97-96d545f83c3d",
+  "verdict": "missing",
+  "evidence": [],
+  "gap_reason_code": "required_technology_absent",
+  "rationale": "Tutoring basic Java classes and collections does not explicitly establish strong CS fundamentals."
+ },
+ {
+  "pair_id": "r45-jd-ba5272986f",
+  "requirement_id": "2ded106b-5c41-45f7-848d-00e9f6e1e0fb",
+  "verdict": "matched",
+  "evidence": [
+   {
+    "exp_key": "r45-e1",
+    "source_ref": "description",
+    "quote": "tracking university shuttle arrivals"
+   }
+  ],
+  "gap_reason_code": null,
+  "rationale": "Building a university shuttle tracking app satisfies the transportation alternative."
+ },
+ {
+  "pair_id": "r48-jd-140189c247",
+  "requirement_id": "9f5b7003-ab0d-4dff-aac9-e24f21d1bb6c",
+  "verdict": "insufficient_evidence",
+  "evidence": [],
+  "gap_reason_code": "explicit_non_implementation",
+  "rationale": "Terraform is mentioned only in an explicit statement that the work did not use it."
+ }
+]

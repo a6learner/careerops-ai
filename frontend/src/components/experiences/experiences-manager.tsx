@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Pencil, Plus, Trash2 } from "lucide-react";
+import { LayoutGrid, Library, Pencil, Plus, Trash2, X } from "lucide-react";
 import { useState } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
@@ -9,14 +9,28 @@ import { ExperienceForm, type ExperienceInput } from "@/components/experiences/e
 import { CvImportPanel } from "@/components/experiences/cv-import-panel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { StatusBadge } from "@/components/ui/status-badge";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
+import { Skeleton } from "@/components/ui/skeleton";
+import { StatusBadge, type TagColor } from "@/components/ui/status-badge";
+import { useToast } from "@/components/ui/toast";
 import { apiRequest } from "@/lib/api/client";
-import type { Experience, ExperienceList } from "@/lib/api/types";
+import type { Experience, ExperienceKind, ExperienceList } from "@/lib/api/types";
 
 const queryKey = ["experiences"] as const;
+const MAX_VISIBLE_SKILLS = 6;
+
+const KIND_COLORS: Record<ExperienceKind, TagColor> = {
+  project: "blue",
+  work: "green",
+  research: "purple",
+  course: "yellow",
+  other: "gray",
+};
 
 export function ExperiencesManager() {
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [showCreate, setShowCreate] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -32,8 +46,9 @@ export function ExperiencesManager() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(input),
       }),
-    onSuccess: async () => {
+    onSuccess: async (experience) => {
       setShowCreate(false);
+      toast({ tone: "success", title: "Experience added", description: experience.title });
       await queryClient.invalidateQueries({ queryKey });
     },
   });
@@ -44,8 +59,9 @@ export function ExperiencesManager() {
         headers: { "content-type": "application/json", "if-match": String(experience.version) },
         body: JSON.stringify(input),
       }),
-    onSuccess: async () => {
+    onSuccess: async (experience) => {
       setEditingId(null);
+      toast({ tone: "success", title: "Changes saved", description: `${experience.title} · v${experience.version}` });
       await queryClient.invalidateQueries({ queryKey });
     },
   });
@@ -53,6 +69,7 @@ export function ExperiencesManager() {
     mutationFn: (id: string) => apiRequest<void>(`/api/v1/experiences/${id}`, { method: "DELETE" }),
     onSuccess: async () => {
       setDeletingId(null);
+      toast({ tone: "success", title: "Experience deleted" });
       await queryClient.invalidateQueries({ queryKey });
     },
   });
@@ -65,77 +82,83 @@ export function ExperiencesManager() {
     void experiences.refetch();
   }
 
+  const items = experiences.data?.items ?? [];
+
   return (
     <div>
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="text-sm font-semibold text-[var(--brand)]">Evidence library</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">Experiences</h1>
-          <p className="mt-2 text-sm text-[var(--muted)]">Keep claims grounded in work you can explain.</p>
+      <PageHeader
+        icon="📚"
+        title="Experiences"
+        description="Your evidence library. Analysis can only cite text that exists here, so keep claims grounded in work you can explain."
+      />
+
+      <CvImportPanel />
+
+      <div className="mt-8 flex items-center justify-between gap-3 border-b pb-1.5">
+        <div className="-mb-[8px] flex items-center gap-1.5 border-b-2 border-foreground pb-1.5 text-sm font-medium">
+          <LayoutGrid className="size-4" aria-hidden="true" />
+          Gallery
+          {items.length > 0 ? <span className="font-normal text-faint">{items.length}</span> : null}
         </div>
-        <Button onClick={() => setShowCreate((visible) => !visible)}>
-          <Plus className="size-4" aria-hidden="true" />
+        <Button size="sm" variant={showCreate ? "secondary" : "primary"} onClick={() => setShowCreate((visible) => !visible)}>
+          {showCreate ? <X className="size-3.5" aria-hidden="true" /> : <Plus className="size-3.5" aria-hidden="true" />}
           {showCreate ? "Close form" : "Add experience"}
         </Button>
       </div>
 
       {showCreate ? (
-        <Card className="mt-6 p-5 sm:p-6">
-          <h2 className="mb-5 text-lg font-semibold">New experience</h2>
+        <Card className="mt-4 p-5 shadow-raised">
+          <h2 className="mb-4 text-base font-semibold">New experience</h2>
           <ExperienceForm isSubmitting={create.isPending} onSubmit={(input) => create.mutate(input)} onCancel={() => setShowCreate(false)} />
         </Card>
       ) : null}
 
-      <CvImportPanel />
+      {mutationError ? <div className="mt-4"><ApiFeedback error={mutationError} onRetry={clearMutationError} /></div> : null}
+      {experiences.error ? <div className="mt-4"><ApiFeedback error={experiences.error} onRetry={() => void experiences.refetch()} /></div> : null}
 
-      {mutationError ? <div className="mt-6"><ApiFeedback error={mutationError} onRetry={clearMutationError} /></div> : null}
-      {experiences.isPending ? <Card className="mt-6 p-6 text-sm text-[var(--muted)]">Loading experiences…</Card> : null}
-      {experiences.error ? <div className="mt-6"><ApiFeedback error={experiences.error} onRetry={() => void experiences.refetch()} /></div> : null}
+      {experiences.isPending ? <GallerySkeleton /> : null}
 
       {experiences.data?.items.length === 0 ? (
-        <Card className="mt-6 border-dashed p-8 text-center">
-          <p className="font-semibold">Your evidence library is empty.</p>
-          <p className="mt-2 text-sm text-[var(--muted)]">Add a project, role, course, or research experience to begin.</p>
-        </Card>
+        <EmptyState
+          className="mt-4"
+          icon={Library}
+          title="Your evidence library is empty."
+          description="Add a project, role, course or research experience, or import a CV above."
+        />
       ) : null}
 
-      <div className="mt-6 space-y-4">
-        {experiences.data?.items.map((experience) => (
-          <Card key={experience.id} className="p-5 sm:p-6">
-            {editingId === experience.id ? (
-              <ExperienceForm
-                experience={experience}
-                isSubmitting={update.isPending}
-                onSubmit={(input) => update.mutate({ experience, input })}
-                onCancel={() => setEditingId(null)}
-              />
+      {items.length > 0 ? (
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {items.map((experience) =>
+            editingId === experience.id ? (
+              <Card key={experience.id} className="p-5 shadow-raised sm:col-span-2 xl:col-span-3">
+                <ExperienceForm
+                  experience={experience}
+                  isSubmitting={update.isPending}
+                  onSubmit={(input) => update.mutate({ experience, input })}
+                  onCancel={() => setEditingId(null)}
+                />
+              </Card>
             ) : (
-              <ExperienceView
+              <ExperienceCard
+                key={experience.id}
                 experience={experience}
                 confirmingDelete={deletingId === experience.id}
-                isDeleting={remove.isPending}
+                isDeleting={remove.isPending && remove.variables === experience.id}
                 onEdit={() => { setEditingId(experience.id); setDeletingId(null); }}
                 onDelete={() => setDeletingId(experience.id)}
                 onCancelDelete={() => setDeletingId(null)}
                 onConfirmDelete={() => remove.mutate(experience.id)}
               />
-            )}
-          </Card>
-        ))}
-      </div>
+            ),
+          )}
+        </div>
+      ) : null}
     </div>
   );
 }
 
-function ExperienceView({
-  experience,
-  confirmingDelete,
-  isDeleting,
-  onEdit,
-  onDelete,
-  onCancelDelete,
-  onConfirmDelete,
-}: {
+type ExperienceCardProps = {
   experience: Experience;
   confirmingDelete: boolean;
   isDeleting: boolean;
@@ -143,33 +166,68 @@ function ExperienceView({
   onDelete: () => void;
   onCancelDelete: () => void;
   onConfirmDelete: () => void;
-}) {
+};
+
+function ExperienceCard({
+  experience,
+  confirmingDelete,
+  isDeleting,
+  onEdit,
+  onDelete,
+  onCancelDelete,
+  onConfirmDelete,
+}: ExperienceCardProps) {
+  const hiddenSkills = experience.skills.length - MAX_VISIBLE_SKILLS;
   return (
-    <div>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <div className="flex flex-wrap items-center gap-2">
-            <h2 className="text-lg font-semibold">{experience.title}</h2>
-            <StatusBadge tone="brand">{experience.kind}</StatusBadge>
+    <article
+      id={`experience-${experience.id}`}
+      className="group flex scroll-mt-20 flex-col rounded-md bg-surface shadow-card transition-shadow target:ring-2 target:ring-brand/50"
+    >
+      <div className="flex-1 p-3.5">
+        <div className="flex items-start justify-between gap-2">
+          <StatusBadge tone={KIND_COLORS[experience.kind]}>{experience.kind}</StatusBadge>
+          <span className="text-xs text-faint">v{experience.version}</span>
+        </div>
+        <h2 className="mt-2 text-[15px] font-semibold leading-snug">{experience.title}</h2>
+        <p className="mt-1.5 line-clamp-4 whitespace-pre-wrap text-sm leading-6 text-muted">{experience.description}</p>
+        {experience.outcome ? (
+          <p className="mt-2 border-l-[3px] border-foreground/80 pl-2.5 text-[13px] leading-5">{experience.outcome}</p>
+        ) : null}
+        {experience.skills.length ? (
+          <div className="mt-3 flex flex-wrap gap-1">
+            {experience.skills.slice(0, MAX_VISIBLE_SKILLS).map((skill) => <StatusBadge key={skill}>{skill}</StatusBadge>)}
+            {hiddenSkills > 0 ? <span className="px-1 text-xs leading-5 text-faint">+{hiddenSkills}</span> : null}
           </div>
-          <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-700">{experience.description}</p>
-        </div>
-        <div className="flex gap-2">
-          <Button size="sm" variant="secondary" onClick={onEdit}><Pencil className="size-3.5" /> Edit</Button>
-          <Button size="sm" variant="ghost" onClick={onDelete}><Trash2 className="size-3.5" /> Delete</Button>
-        </div>
+        ) : null}
       </div>
-      {experience.skills.length ? (
-        <div className="mt-4 flex flex-wrap gap-2">{experience.skills.map((skill) => <StatusBadge key={skill}>{skill}</StatusBadge>)}</div>
-      ) : null}
-      {experience.outcome ? <p className="mt-4 border-l-2 border-indigo-200 pl-3 text-sm text-slate-600">{experience.outcome}</p> : null}
       {confirmingDelete ? (
-        <div className="mt-5 flex flex-wrap items-center gap-3 rounded-lg bg-rose-50 p-3 text-sm">
-          <span className="font-medium text-rose-800">Delete this experience?</span>
-          <Button size="sm" variant="danger" disabled={isDeleting} onClick={onConfirmDelete}>{isDeleting ? "Deleting…" : "Confirm delete"}</Button>
+        <div className="flex flex-wrap items-center gap-2 border-t bg-danger-soft px-3.5 py-2.5 text-sm">
+          <span className="mr-auto font-medium text-[var(--tag-red-fg)]">Delete this experience?</span>
           <Button size="sm" variant="ghost" onClick={onCancelDelete}>Cancel</Button>
+          <Button size="sm" variant="danger" disabled={isDeleting} onClick={onConfirmDelete}>{isDeleting ? "Deleting…" : "Confirm delete"}</Button>
         </div>
-      ) : null}
+      ) : (
+        <div className="flex gap-1 border-t px-2 py-1.5">
+          <Button size="sm" variant="ghost" onClick={onEdit}><Pencil className="size-3.5" aria-hidden="true" />Edit</Button>
+          <Button size="sm" variant="ghost" onClick={onDelete}><Trash2 className="size-3.5" aria-hidden="true" />Delete</Button>
+        </div>
+      )}
+    </article>
+  );
+}
+
+function GallerySkeleton() {
+  return (
+    <div role="status" aria-live="polite" className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <span className="sr-only">Loading experiences…</span>
+      {Array.from({ length: 3 }, (_, index) => (
+        <div key={index} className="rounded-md p-3.5 shadow-card">
+          <Skeleton className="h-4 w-16" />
+          <Skeleton className="mt-3 h-4 w-3/4" />
+          <Skeleton className="mt-3 h-3 w-full" />
+          <Skeleton className="mt-2 h-3 w-5/6" />
+        </div>
+      ))}
     </div>
   );
 }

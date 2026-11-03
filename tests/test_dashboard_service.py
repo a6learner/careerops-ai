@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta, timezone
 from uuid import UUID, uuid4
 
 import pytest
@@ -6,10 +6,15 @@ import pytest
 from careerops.domain.dashboard import (
     ActionItemStatusCounts,
     DashboardCounts,
+    DashboardFocusItems,
     DashboardSummary,
     JobStatusCounts,
 )
-from careerops.services.dashboard import DashboardService
+from careerops.services.dashboard import (
+    DASHBOARD_FOCUS_LIMIT,
+    DashboardFocusService,
+    DashboardService,
+)
 
 
 def make_counts() -> DashboardCounts:
@@ -93,3 +98,26 @@ async def test_cache_hit_skips_postgres_and_preserves_generated_at() -> None:
     assert summary is cached
     assert reader.calls == 0
     assert cache.set_calls == []
+
+
+class RecordingFocusReader:
+    def __init__(self) -> None:
+        self.calls: list[tuple[UUID, date, int]] = []
+
+    async def get_focus_items(self, user_id: UUID, today: date, limit: int) -> DashboardFocusItems:
+        self.calls.append((user_id, today, limit))
+        return DashboardFocusItems(upcoming_deadlines=(), recent_jobs=(), open_action_items=())
+
+
+@pytest.mark.asyncio
+async def test_focus_uses_utc_date_and_bounded_limit() -> None:
+    user_id = uuid4()
+    # 23:30 at UTC-5 is already the next calendar day in UTC.
+    local_evening = datetime(2026, 10, 28, 23, 30, tzinfo=timezone(timedelta(hours=-5)))
+    reader = RecordingFocusReader()
+
+    focus = await DashboardFocusService(reader, clock=lambda: local_evening).get_focus(user_id)
+
+    assert focus.today == date(2026, 10, 29)
+    assert focus.generated_at == local_evening
+    assert reader.calls == [(user_id, date(2026, 10, 29), DASHBOARD_FOCUS_LIMIT)]

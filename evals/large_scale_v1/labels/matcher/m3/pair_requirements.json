@@ -1,0 +1,160 @@
+[
+ {
+  "pair_id": "r09-jd-06627db35f",
+  "resume_id": "r09",
+  "jd_id": "jd-06627db35f",
+  "parse_run_id": "11e2133a-4ec6-461c-b8fb-39b51add2a41",
+  "requirements": [
+   {
+    "requirement_id": "33b788d2-5c50-4fff-8d7c-117ceab13c2e",
+    "category": "responsibility",
+    "text": "Rather than focusing solely on model training, you will also be responsible for developing practical, end-to-end ML solutions.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "18198133-c514-470c-a393-6cb939c322be",
+    "category": "responsibility",
+    "text": "This includes but is not limited to generating and refining features, testing hypotheses, averaging signals, and translating research ideas into production-grade systems, all while collaborating cross-functionally to turn customer needs into measurable product improvements.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "0f32f31a-4448-474d-ba79-e9ce51416aeb",
+    "category": "responsibility",
+    "text": "What you will do",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "3ac46d13-6cdc-47d9-be65-0d339e7cbbab",
+    "category": "responsibility",
+    "text": "Partner with Product Manager, Tech Lead and engineering stakeholders to align technical deliverables to roadmap milestones and ensure successful GA launches across supported environments.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "c492f73e-0f42-48e6-89be-44fc602a927f",
+    "category": "responsibility",
+    "text": "Own the full ML lifecycle for Misdirected Email, including data wrangling, feature engineering, model training and evaluation, deployment, and monitoring.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "eed14a65-240b-4d88-9235-4bda25dbcd3a",
+    "category": "responsibility",
+    "text": "Deliver iterative improvements with measurable reliability and customer impact.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "6a53b7f7-770a-41de-b10b-bdc3583ecd54",
+    "category": "responsibility",
+    "text": "Run rigorous experiments and evaluations (offline metrics, online A/B testing, post-launch monitoring), set thresholds, and conduct targeted error analysis to prevent regressions.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "a2d836d7-757f-420f-9cfb-9505cca39fa0",
+    "category": "responsibility",
+    "text": "Communicate effectively across time zones, maintain high-quality technical documentation, and contribute to shared team knowledge.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "f85c7722-479d-4c37-835f-d3d746bd9958",
+    "category": "responsibility",
+    "text": "Participate in shared on-call rotation for owned components, with responsibilities focused on detection efficacy and realtime scoring systems.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "9002442a-d482-4457-9a65-d41330390f6b",
+    "category": "responsibility",
+    "text": "Priorities include resolving efficacy-related alerts, investigating high-visibility false positives, and addressing reported false positives/false negatives from customers or internal teams.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "1fe34439-86ad-4227-a948-799784cbd0e1",
+    "category": "must_have",
+    "text": "Must Haves",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "a611fce8-b7ed-413d-8191-947e35163ce3",
+    "category": "education",
+    "text": "BS degree in Computer Science, Machine Learning, Artificial Intelligence, Information Systems, or a related engineering or quantitative field.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "a7ac6dc1-23e9-4189-8d0c-e6f192a45bf8",
+    "category": "must_have",
+    "text": "1+ years building and operating applied ML features in production systems.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "4a81cebb-be42-4f83-a5d1-1acd884643af",
+    "category": "must_have",
+    "text": "Proven experience contributing to end-to-end ML systems, including data wrangling (text and structured), feature engineering, model selection, training, evaluation, and production deployment with monitoring.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "f8954baa-35b8-4084-8256-1e8513539e40",
+    "category": "must_have",
+    "text": "Demonstrated ability to implement and reason about algorithms, develop features, average and combine signals, and apply numerical computing effectively.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "775bb88f-d190-4c8c-91a6-09b97b9c1e5d",
+    "category": "must_have",
+    "text": "Demonstrated ability to interrogate production data, identify behavioral or trend shifts, and launch targeted experiments to improve model efficacy.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "78dddb8f-da96-4ead-b3ee-c473cd9cd899",
+    "category": "must_have",
+    "text": "Understanding of online vs offline pipelines, data tables and labeling workflows to effectively leverage tooling to support safe, scalable model deployments.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "0788599e-06fb-430f-8f21-86d6f66c5684",
+    "category": "must_have",
+    "text": "Experience running offline metrics, online A/B tests, setting thresholds, and monitoring drift and performance, with guardrails and rollback strategies to ensure reliable iteration.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "7d220d7f-e560-470b-bade-562028f4e4db",
+    "category": "must_have",
+    "text": "Strong written and asynchronous communication skills.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "88d3b074-7e85-4833-94d3-bd91226f1754",
+    "category": "must_have",
+    "text": "Effective working independently and across distributed, cross-functional teams.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "11f821e7-8dc1-45fb-b834-e70be309627e",
+    "category": "nice_to_have",
+    "text": "Experience with our stack: Python, Go, AWS, Spark, Databricks",
+    "skill_normalized": "python"
+   },
+   {
+    "requirement_id": "89f776c4-a75b-46c9-815e-98ae0f442d13",
+    "category": "nice_to_have",
+    "text": "Experience in email security/DLP or misdirected email prevention domains and customer-focused ML deployments.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "c435e62a-ee5e-4f71-8df0-c99a01206fcb",
+    "category": "nice_to_have",
+    "text": "Experience writing detectors/rules to complement ML models for safe launches and rapid iteration.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "5b37251f-52f0-4388-a03e-1487aa68229b",
+    "category": "nice_to_have",
+    "text": "Experience with operationalising research into reliable, customer-facing systems, with emphasis on scalability, performance, and detection accuracy in real-world environments.",
+    "skill_normalized": null
+   },
+   {
+    "requirement_id": "6459b3eb-e07b-48a2-ae99-ca7b9cf9c2b2",
+    "category": "nice_to_have",
+    "text": "Prior experience contributing to a small team or project to deliver a feature or component from scratch.",
+    "skill_normalized": null
+   }
+  ]
+ }
+]

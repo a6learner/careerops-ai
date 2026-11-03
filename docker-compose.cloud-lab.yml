@@ -1,0 +1,107 @@
+name: careerops-cloud-lab
+
+x-log: &log
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+x-backend-env: &backend-env
+  CAREEROPS_ENV: production
+  CAREEROPS_DATABASE_URL: postgresql+asyncpg://careerops:${LAB_DATABASE_PASSWORD:?run cloud_lab.sh init}@postgres:5432/careerops
+  CAREEROPS_REDIS_URL: redis://redis:6379/0
+  CAREEROPS_JWT_SECRET: ${LAB_JWT_SECRET:?run cloud_lab.sh init}
+  CAREEROPS_LLM_PROVIDER: fake
+  CAREEROPS_EMBEDDING_PROVIDER: fake
+  CAREEROPS_EVIDENCE_MATCHER_PROVIDER: fake
+  CAREEROPS_LLM_API_KEY: ""
+  CAREEROPS_GEMINI_API_KEY: ""
+  CAREEROPS_RUN_REAL_MATCHER_WORKER: "0"
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: careerops
+      POSTGRES_USER: careerops
+      POSTGRES_PASSWORD: ${LAB_DATABASE_PASSWORD:?run cloud_lab.sh init}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U careerops -d careerops"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+    logging: *log
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    logging: *log
+
+  migrate:
+    image: careerops-cloud-lab-api:${LAB_RELEASE:?run cloud_lab.sh init}
+    build:
+      context: .
+      target: api
+    environment: *backend-env
+    command: ["alembic", "upgrade", "head"]
+    healthcheck:
+      disable: true
+    logging: *log
+
+  api:
+    image: careerops-cloud-lab-api:${LAB_RELEASE:?run cloud_lab.sh init}
+    build:
+      context: .
+      target: api
+    environment: *backend-env
+    ports:
+      - "127.0.0.1:18010:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 30
+      start_period: 10s
+    restart: unless-stopped
+    logging: *log
+
+  worker:
+    image: careerops-cloud-lab-worker:${LAB_RELEASE:?run cloud_lab.sh init}
+    build:
+      context: .
+      target: worker
+    environment: *backend-env
+    command: ["dramatiq", "careerops.workers.tasks", "--processes", "1", "--threads", "2"]
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+    logging: *log
+
+  frontend:
+    image: careerops-cloud-lab-frontend:${LAB_RELEASE:?run cloud_lab.sh init}
+    build:
+      context: ./frontend
+    environment:
+      CAREEROPS_API_BASE_URL: http://api:8000
+      CAREEROPS_FRONTEND_ORIGIN: http://127.0.0.1:13010
+    ports:
+      - "127.0.0.1:13010:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/readyz').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 4s
+      retries: 30
+      start_period: 10s
+    restart: unless-stopped
+    logging: *log
+
+volumes:
+  postgres-data:

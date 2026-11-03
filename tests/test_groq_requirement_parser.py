@@ -6,8 +6,13 @@ import pytest
 from careerops.adapters.groq_requirement_parser import (
     GroqRequirementParser,
     extract_source_candidates,
+    is_section_heading,
 )
-from careerops.domain.errors import ParserOutputValidationError, RequirementParserError
+from careerops.domain.errors import (
+    ParserOutputFailureReason,
+    ParserOutputValidationError,
+    RequirementParserError,
+)
 from careerops.domain.parse_runs import RequirementCategory
 
 
@@ -49,6 +54,29 @@ def test_source_candidates_preserve_bullets_and_unicode_spans() -> None:
         "Responsibilities:",
         "Build APIs.",
         "你需要熟悉 Python。",
+    ]
+    for candidate in candidates:
+        assert input_text[candidate.source_span_start : candidate.source_span_end] == candidate.text
+
+
+def test_source_candidates_do_not_split_decimals_or_abbreviations() -> None:
+    input_text = (
+        "You maintain a GPA of 3.5 or higher and know Java.\n"
+        "Experience with streaming platforms (e.g. Kafka) is preferred. Use REST, etc.\n"
+        "Protocols (TCP/IP, UDP, DNS, etc.)\n"
+        "...\n"
+        "Done! Next?"
+    )
+
+    candidates = extract_source_candidates(input_text)
+
+    assert [item.text for item in candidates] == [
+        "You maintain a GPA of 3.5 or higher and know Java.",
+        "Experience with streaming platforms (e.g. Kafka) is preferred.",
+        "Use REST, etc.",
+        "Protocols (TCP/IP, UDP, DNS, etc.)",
+        "Done!",
+        "Next?",
     ]
     for candidate in candidates:
         assert input_text[candidate.source_span_start : candidate.source_span_end] == candidate.text
@@ -167,8 +195,57 @@ async def test_groq_parser_rejects_unknown_candidate_id() -> None:
             '"skill_normalized":"java"}]}',
         )
 
-    with pytest.raises(ParserOutputValidationError):
+    with pytest.raises(ParserOutputValidationError) as exc_info:
         await make_parser(httpx.MockTransport(handle)).parse("Python required.")
+
+    assert exc_info.value.reason is ParserOutputFailureReason.UNKNOWN_CANDIDATE
+    assert exc_info.value.input_tokens == 42
+    assert exc_info.value.output_tokens == 17
+
+
+@pytest.mark.asyncio
+async def test_groq_parser_reports_invalid_schema_with_token_usage() -> None:
+    def handle(request: httpx.Request) -> httpx.Response:
+        return successful_response(request, '{"requirements":[{"category":"must_have"')
+
+    with pytest.raises(ParserOutputValidationError) as exc_info:
+        await make_parser(httpx.MockTransport(handle)).parse("Python required.")
+
+    assert exc_info.value.reason is ParserOutputFailureReason.INVALID_SCHEMA
+    assert exc_info.value.input_tokens == 42
+
+
+@pytest.mark.asyncio
+async def test_groq_parser_merges_one_sentence_returned_once_per_skill() -> None:
+    def handle(request: httpx.Request) -> httpx.Response:
+        return successful_response(
+            request,
+            json.dumps(
+                {
+                    "requirements": [
+                        {"category": "must_have", "candidate_id": 0, "skill_normalized": "  "},
+                        {"category": "nice_to_have", "candidate_id": 0, "skill_normalized": "java"},
+                        {"category": "must_have", "candidate_id": 0, "skill_normalized": "python"},
+                        {"category": "nice_to_have", "candidate_id": 1, "skill_normalized": None},
+                    ]
+                }
+            ),
+        )
+
+    output = await make_parser(httpx.MockTransport(handle)).parse(
+        "Strong understanding of Java, Python, or C++. SQL is a plus."
+    )
+
+    assert [
+        (item.category, item.skill_normalized, item.text) for item in output.requirements
+    ] == [
+        (
+            RequirementCategory.MUST_HAVE,
+            "java",
+            "Strong understanding of Java, Python, or C++.",
+        ),
+        (RequirementCategory.NICE_TO_HAVE, None, "SQL is a plus."),
+    ]
 
 
 @pytest.mark.asyncio
@@ -188,3 +265,78 @@ async def test_groq_parser_uses_distinct_spans_for_repeated_text() -> None:
     )
 
     assert [item.source_span_start for item in output.requirements] == [0, 17]
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Requirements",
+        "Qualifications:",
+        "What You’ll Do:",
+        "As a core member of the team, you will:",
+        "FRONTEND PROGRAMMER INTERN",
+        "<h3><strong>What You'll Need</strong></h3>",
+        "<p></p>",
+    ],
+)
+def test_section_headings_are_recognized(text: str) -> None:
+    assert is_section_heading(text)
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Python required.",
+        "SQL",
+        "AWS, GCP, or Azure",
+        "Experience with Kubernetes",
+        "Requirements: 2+ years of Go",
+        "<li>Working knowledge of SQL</li>",
+        "BS/MS in Computer Science or a related field",
+    ],
+)
+def test_requirement_lines_are_not_headings(text: str) -> None:
+    assert not is_section_heading(text)
+
+
+@pytest.mark.asyncio
+async def test_groq_parser_never_offers_headings_and_keeps_candidate_ids() -> None:
+    text = "Requirements:\nPython experience required.\nNICE TO HAVE\nPreferred Redis."
+
+    def handle(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        supplied = json.loads(body["messages"][1]["content"])["candidates"]
+        assert [(item["candidate_id"], item["text"]) for item in supplied] == [
+            (1, "Python experience required."),
+            (3, "Preferred Redis."),
+        ]
+        return successful_response(
+            request,
+            json.dumps(
+                {
+                    "requirements": [
+                        {"category": "must_have", "candidate_id": 1, "skill_normalized": "python"},
+                        {"category": "nice_to_have", "candidate_id": 3, "skill_normalized": None},
+                    ]
+                }
+            ),
+        )
+
+    output = await make_parser(httpx.MockTransport(handle)).parse(text)
+
+    assert [requirement.text for requirement in output.requirements] == [
+        "Python experience required.",
+        "Preferred Redis.",
+    ]
+    assert output.requirements[0].source_span_start == text.index("Python")
+
+
+@pytest.mark.asyncio
+async def test_groq_parser_reports_no_candidates_when_only_headings() -> None:
+    def handle(request: httpx.Request) -> httpx.Response:
+        raise AssertionError("no provider call expected")
+
+    with pytest.raises(ParserOutputValidationError) as captured:
+        await make_parser(httpx.MockTransport(handle)).parse("Requirements:\nRESPONSIBILITIES")
+
+    assert captured.value.reason is ParserOutputFailureReason.NO_CANDIDATES

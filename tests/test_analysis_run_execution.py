@@ -145,7 +145,12 @@ class InvalidMatcher:
             )
         else:
             matches = (duplicate, duplicate)
-        return EvidenceMatcherOutput(model_name=self.model_name, matches=matches)
+        return EvidenceMatcherOutput(
+            model_name=self.model_name,
+            matches=matches,
+            input_tokens=200,
+            output_tokens=800,
+        )
 
 
 class ProviderFailureMatcher:
@@ -476,20 +481,50 @@ async def test_execution_fails_when_experience_library_changed() -> None:
     assert store.commits == 2
 
 
-@pytest.mark.parametrize("mode", ["omitted", "duplicate", "extra"])
+@pytest.mark.parametrize(
+    ("mode", "diagnostic"),
+    [
+        (
+            "omitted",
+            "expected=1;returned=0;missing=1;unknown=0;duplicates=0;invalid_shape=0",
+        ),
+        (
+            "duplicate",
+            "expected=1;returned=2;missing=0;unknown=0;duplicates=1;invalid_shape=0",
+        ),
+        (
+            "extra",
+            "expected=1;returned=2;missing=0;unknown=1;duplicates=0;invalid_shape=0",
+        ),
+    ],
+)
 @pytest.mark.asyncio
-async def test_execution_rejects_inexact_requirement_coverage(mode: str) -> None:
+async def test_execution_rejects_inexact_requirement_coverage(
+    mode: str,
+    diagnostic: str,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
     store, results = make_execution_dependencies()
 
-    executed = await AnalysisRunExecutionService(
-        store,
-        AnalysisResultService(results),
-        InvalidMatcher(mode),
-    ).execute(store.work_item.id)
+    with caplog.at_level(logging.WARNING):
+        executed = await AnalysisRunExecutionService(
+            store,
+            AnalysisResultService(results),
+            InvalidMatcher(mode),
+        ).execute(store.work_item.id)
 
     assert executed
     assert store.failed_with is AnalysisRunErrorCode.MATCHER_OUTPUT_INVALID_CONTRACT
+    assert store.failed_input_tokens == 200
+    assert store.failed_output_tokens == 800
     assert not results.committed
+    rejected = [
+        record
+        for record in caplog.records
+        if record.getMessage() == "evidence_matcher_output_rejected"
+    ]
+    assert len(rejected) == 1
+    assert rejected[0].diagnostic == diagnostic
 
 
 @pytest.mark.parametrize(

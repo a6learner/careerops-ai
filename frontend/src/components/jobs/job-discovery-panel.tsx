@@ -1,21 +1,24 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ExternalLink, Search } from "lucide-react";
+import { ChevronDown, ExternalLink, Search } from "lucide-react";
 import { type FormEvent, useState } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { apiRequest } from "@/lib/api/client";
+import { describeRunError } from "@/lib/run-errors";
 import type { Job, JobDiscoveryRun, JobDraft } from "@/lib/api/types";
 
 export function JobDiscoveryPanel() {
   const queryClient = useQueryClient();
   const [runId, setRunId] = useState<string | null>(null);
   const [draftId, setDraftId] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const search = useMutation({
     mutationFn: (input: SearchInput) =>
       apiRequest<JobDiscoveryRun>("/api/v1/job-discovery-runs", {
@@ -72,54 +75,67 @@ export function JobDiscoveryPanel() {
   const error = search.error ?? run.error ?? createDraft.error ?? draft.error ?? updateDraft.error ?? confirm.error;
 
   return (
-    <Card className="mt-6 p-5 sm:p-6">
-      <div>
-        <h2 className="font-semibold">Discover public jobs</h2>
-        <p className="mt-1 text-sm text-[var(--muted)]">
-          Search runs through a worker adapter. Results are drafts until you confirm them.
-        </p>
-      </div>
-      <SearchForm isPending={search.isPending} onSubmit={(input) => search.mutate(input)} />
-      {error ? <div className="mt-4"><ApiFeedback error={error} /></div> : null}
-      {run.data ? (
-        <div className="mt-5 space-y-3">
-          <div className="flex items-center gap-3 text-sm">
-            <StatusBadge>{run.data.status}</StatusBadge>
-            <span>{run.data.provider_name}</span>
-            {run.data.error_code ? <span className="text-rose-700">{run.data.error_code}</span> : null}
-          </div>
-          {run.data.results.map((result) => (
-            <div key={result.id} className="rounded-lg border p-4">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <p className="text-sm text-[var(--muted)]">{result.company}</p>
-                  <h3 className="font-semibold">{result.title}</h3>
-                </div>
-                <Button size="sm" variant="secondary" onClick={() => createDraft.mutate(result.id)}>
-                  Review draft
-                </Button>
+    <Card className="mt-8">
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((open) => !open)}
+        className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors hover:bg-hover"
+      >
+        <span className="grid size-8 shrink-0 place-items-center text-xl" aria-hidden="true">
+          🔭
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold">Discover public jobs</span>
+          <span className="block text-xs text-muted">Search runs through a worker adapter. Results are drafts until you confirm them.</span>
+        </span>
+        <ChevronDown className={`size-4 text-muted transition ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+      </button>
+      {isOpen ? (
+        <div className="border-t px-4 pb-4 pt-4">
+          <SearchForm isPending={search.isPending} onSubmit={(input) => search.mutate(input)} />
+          {error ? <div className="mt-4"><ApiFeedback error={error} /></div> : null}
+          {run.data ? (
+            <div className="mt-5 space-y-3">
+              <div className="flex items-center gap-3 text-sm">
+                <StatusBadge tone={run.data.status === "failed" ? "danger" : run.data.status === "succeeded" ? "success" : "brand"}>{run.data.status}</StatusBadge>
+                <span>{run.data.provider_name}</span>
+                {run.data.error_code ? <span className="text-danger">{describeRunError(run.data.error_code)} <span className="font-mono text-[11px] text-muted">({run.data.error_code})</span></span> : null}
               </div>
-              <p className="mt-2 text-sm text-slate-600">{result.summary}</p>
-              <p className="mt-2 text-xs text-[var(--muted)]">
-                Observed {new Date(result.observed_at).toLocaleString()}
-                {result.raw_description ? " · Full description supplied" : " · Description required"}
-              </p>
-              <a className="mt-2 inline-flex items-center gap-1 text-xs text-[var(--brand)]" href={result.source_url} target="_blank" rel="noreferrer">
-                Source <ExternalLink className="size-3" />
-              </a>
+              {run.data.results.map((result) => (
+                <div key={result.id} className="rounded-lg border p-4">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p className="text-sm text-muted">{result.company}</p>
+                      <h3 className="font-semibold">{result.title}</h3>
+                    </div>
+                    <Button size="sm" variant="secondary" onClick={() => createDraft.mutate(result.id)}>
+                      Review draft
+                    </Button>
+                  </div>
+                  <p className="mt-2 text-sm text-muted">{result.summary}</p>
+                  <p className="mt-2 text-xs text-muted">
+                    Observed {new Date(result.observed_at).toLocaleString()}
+                    {result.raw_description ? " · Full description supplied" : " · Description required"}
+                  </p>
+                  <a className="mt-2 inline-flex items-center gap-1 text-xs text-brand" href={result.source_url} target="_blank" rel="noreferrer">
+                    Source <ExternalLink className="size-3" />
+                  </a>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : null}
+          {draft.data ? (
+            <JobDraftEditor
+              key={`${draft.data.id}-${draft.data.version}`}
+              draft={draft.data}
+              isSaving={updateDraft.isPending}
+              isConfirming={confirm.isPending}
+              onSave={(input) => updateDraft.mutate(input)}
+              onConfirm={() => confirm.mutate(draft.data.id)}
+            />
+          ) : null}
         </div>
-      ) : null}
-      {draft.data ? (
-        <JobDraftEditor
-          key={`${draft.data.id}-${draft.data.version}`}
-          draft={draft.data}
-          isSaving={updateDraft.isPending}
-          isConfirming={confirm.isPending}
-          onSave={(input) => updateDraft.mutate(input)}
-          onConfirm={() => confirm.mutate(draft.data.id)}
-        />
       ) : null}
     </Card>
   );
@@ -166,8 +182,8 @@ function JobDraftEditor({ draft, isSaving, isConfirming, onSave, onConfirm }: {
 }) {
   if (draft.status !== "pending") {
     return (
-      <div className="mt-5 rounded-lg border border-indigo-200 p-4 text-sm">
-        <strong>{draft.title}</strong> — {draft.status}
+      <div className="mt-5 flex items-center gap-2 rounded-md bg-surface-subtle px-3 py-2.5 text-sm">
+        <strong className="font-medium">{draft.title}</strong><StatusBadge tone={draft.status === "confirmed" ? "green" : "gray"}>{draft.status}</StatusBadge>
       </div>
     );
   }
@@ -183,14 +199,14 @@ function JobDraftEditor({ draft, isSaving, isConfirming, onSave, onConfirm }: {
     });
   }
   return (
-    <div className="mt-5 rounded-lg border border-indigo-200 p-4">
+    <div className="mt-5 rounded-md p-4 shadow-card">
       <h3 className="font-semibold">Review job draft</h3>
       <form className="mt-3 space-y-3" onSubmit={submit}>
-        <label className="block space-y-1 text-sm"><span>Company</span><Input name="company" defaultValue={draft.company} required /></label>
-        <label className="block space-y-1 text-sm"><span>Role</span><Input name="title" defaultValue={draft.title} required /></label>
-        <label className="block space-y-1 text-sm"><span>Location</span><Input name="location" defaultValue={draft.location ?? ""} /></label>
-        <label className="block space-y-1 text-sm"><span>Job description</span><textarea name="raw_description" defaultValue={draft.raw_description ?? ""} required rows={7} className="w-full rounded-lg border px-3 py-2 text-sm" /></label>
-        {!draft.raw_description ? <p className="text-sm text-amber-700">Paste the complete job description. It will not be generated from the summary.</p> : null}
+        <label className="block space-y-1.5 text-[13px] text-muted"><span>Company</span><Input name="company" defaultValue={draft.company} required /></label>
+        <label className="block space-y-1.5 text-[13px] text-muted"><span>Role</span><Input name="title" defaultValue={draft.title} required /></label>
+        <label className="block space-y-1.5 text-[13px] text-muted"><span>Location</span><Input name="location" defaultValue={draft.location ?? ""} /></label>
+        <label className="block space-y-1.5 text-[13px] text-muted"><span>Job description</span><Textarea name="raw_description" defaultValue={draft.raw_description ?? ""} required rows={7} className="text-foreground" /></label>
+        {!draft.raw_description ? <p className="text-sm text-warning">Paste the complete job description. It will not be generated from the summary.</p> : null}
         <Button size="sm" variant="secondary" disabled={isSaving}>{isSaving ? "Saving…" : "Save draft"}</Button>
       </form>
       <div className="mt-3 border-t pt-3">

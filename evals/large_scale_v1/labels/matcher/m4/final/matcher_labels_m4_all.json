@@ -1,0 +1,141 @@
+[
+ {
+  "pair_id": "r29-jd-e0e4f3984c",
+  "labeler": "adjudicated",
+  "labels": [
+   {
+    "requirement_id": "4f35c782-6282-4671-bb0c-083dc32ca656",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience states degree enrollment, and the rubric allows education requirements to be matched only by an experience stating it; generic project work is not explicitly stated to be degree-equivalent."
+   },
+   {
+    "requirement_id": "a64958f8-0a92-425b-a29f-9236a742da04",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r29-e4",
+      "source_ref": "description",
+      "quote": "Implemented hash tables, AVL trees, and priority queues in C# without collection-library equivalents. Benchmarked lookup behavior on randomized inputs and explained collision strategies in a written analysis."
+     },
+     {
+      "exp_key": "r29-e3",
+      "source_ref": "description",
+      "quote": "Built a .NET Minimal API for tracking forty shared tools"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "e74042ac-3116-477d-afd3-37f9bd534a34",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r29-e1",
+      "source_ref": "description",
+      "quote": "Implemented ASP.NET Core endpoints for reserving seats at six small venues"
+     },
+     {
+      "exp_key": "r29-e2",
+      "source_ref": "description",
+      "quote": "Wrote a C# worker"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "60e34f91-017a-4a15-ab47-e83da2af7176",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "1549f634-1fee-45f7-94b5-385fd3037e88",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: Curiosity and excitement are soft traits with no explicit statement in any experience; technical work alone does not explicitly evidence them."
+   },
+   {
+    "requirement_id": "a346e63d-1bb9-4df8-8471-e0a4202d8ece",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience explicitly mentions taking ownership, moving quickly, or independent learning; building an API does not state these traits."
+   },
+   {
+    "requirement_id": "6c413b19-c786-49c0-8cc0-8139bc231930",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "aba9a585-995d-460b-91ad-6145eaaa6f29",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r29-e1",
+      "source_ref": "title",
+      "quote": "Engineering Intern, Harbor Ticketing"
+     },
+     {
+      "exp_key": "r29-e1",
+      "source_ref": "description",
+      "quote": "Implemented ASP.NET Core endpoints"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "0694a3cb-8866-4386-bd5f-008d72275d6b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: The experiences are backend APIs and a notification worker; none explicitly describes a full-stack application, developer tool, or infrastructure project."
+   },
+   {
+    "requirement_id": "48f27dfd-5789-473c-a70d-0c2c2691c91e",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r29-e3",
+      "source_ref": "description",
+      "quote": "Built a .NET Minimal API for tracking forty shared tools, with SQLite persistence and Swagger documentation."
+     },
+     {
+      "exp_key": "r29-e3",
+      "source_ref": "outcome",
+      "quote": "Eight residents used the service for a month and recorded 73 loans."
+     },
+     {
+      "exp_key": "r29-e3",
+      "source_ref": "title",
+      "quote": "Dorm Tool Lending API"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "ae85823d-2fc6-4a11-b146-775221f165ed",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience mentions cloud, Linux, containers, or distributed systems; a RabbitMQ consumer does not explicitly establish distributed-systems experience under the no-inference rule."
+   },
+   {
+    "requirement_id": "86381a30-ca3f-4945-9045-56259d04679d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   }
+  ]
+ }
+]

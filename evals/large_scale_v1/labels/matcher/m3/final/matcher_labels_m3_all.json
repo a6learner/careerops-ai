@@ -1,0 +1,294 @@
+[
+ {
+  "pair_id": "r09-jd-06627db35f",
+  "labeler": "adjudicated",
+  "labels": [
+   {
+    "requirement_id": "33b788d2-5c50-4fff-8d7c-117ceab13c2e",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers on an ARM Cortex-M board."
+     },
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "18198133-c514-470c-a393-6cb939c322be",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience shows translating research into production systems, hypothesis testing on features, or cross-functional work on customer needs; a course classifier on a microcontroller is not production-grade research translation."
+   },
+   {
+    "requirement_id": "0f32f31a-4448-474d-ba79-e9ce51416aeb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "3ac46d13-6cdc-47d9-be65-0d339e7cbbab",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience mentions partnering with product managers or tech leads, roadmap milestones, or GA launches; splitting hackathon work with a teammate is not that."
+   },
+   {
+    "requirement_id": "c492f73e-0f42-48e6-89be-44fc602a927f",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers on an ARM Cortex-M board."
+     },
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "eed14a65-240b-4d88-9235-4bda25dbcd3a",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "6a53b7f7-770a-41de-b10b-bdc3583ecd54",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e1",
+      "source_ref": "description",
+      "quote": "Wrote a regression test suite of fixed note examples that runs against a recorded fake provider in CI."
+     },
+     {
+      "exp_key": "r09-e1",
+      "source_ref": "outcome",
+      "quote": "Schema failure rate became visible on a weekly dashboard"
+     },
+     {
+      "exp_key": "r09-e2",
+      "source_ref": "description",
+      "quote": "computes exact-match and rubric-based scores"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "a2d836d7-757f-420f-9cfb-9505cca39fa0",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e6",
+      "source_ref": "description",
+      "quote": "Wrote lab handouts on debugging with print statements and the Python debugger."
+     },
+     {
+      "exp_key": "r09-e6",
+      "source_ref": "description",
+      "quote": "Wrote lab handouts"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "f85c7722-479d-4c37-835f-d3d746bd9958",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "9002442a-d482-4457-9a65-d41330390f6b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "1fe34439-86ad-4227-a948-799784cbd0e1",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "a611fce8-b7ed-413d-8191-947e35163ce3",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "a7ac6dc1-23e9-4189-8d0c-e6f192a45bf8",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "4a81cebb-be42-4f83-a5d1-1acd884643af",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers on an ARM Cortex-M board."
+     },
+     {
+      "exp_key": "r09-e4",
+      "source_ref": "description",
+      "quote": "Collected accelerometer data, trained a tiny classifier and deployed it with TensorFlow Lite for Microcontrollers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "f8954baa-35b8-4084-8256-1e8513539e40",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e3",
+      "source_ref": "description",
+      "quote": "Implemented logistic regression, softmax regression and a two-layer neural network with backpropagation in NumPy. Verified gradients with finite differences."
+     },
+     {
+      "exp_key": "r09-e3",
+      "source_ref": "description",
+      "quote": "Implemented logistic regression, softmax regression and a two-layer neural network with backpropagation in NumPy"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "775bb88f-d190-4c8c-91a6-09b97b9c1e5d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience describes analyzing production data for trend shifts or launching experiments to improve a model; the synthetic-data note concerns privacy, not this capability."
+   },
+   {
+    "requirement_id": "78dddb8f-da96-4ead-b3ee-c473cd9cd899",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: Nothing mentions online vs offline pipelines or labeling workflows, and storing tool outputs in SQLite does not show understanding of data tables for model deployment."
+   },
+   {
+    "requirement_id": "0788599e-06fb-430f-8f21-86d6f66c5684",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e2",
+      "source_ref": "description",
+      "quote": "computes exact-match and rubric-based scores"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "7d220d7f-e560-470b-bade-562028f4e4db",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e6",
+      "source_ref": "description",
+      "quote": "Wrote lab handouts on debugging with print statements and the Python debugger."
+     },
+     {
+      "exp_key": "r09-e6",
+      "source_ref": "description",
+      "quote": "Wrote lab handouts"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "88d3b074-7e85-4833-94d3-bd91226f1754",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: Soft-skill requirement needs explicit evidence; a teammate building a hackathon frontend does not show distributed cross-functional teamwork, and independent work is not stated."
+   },
+   {
+    "requirement_id": "11f821e7-8dc1-45fb-b834-e70be309627e",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e1",
+      "source_ref": "skill:0",
+      "quote": "Python"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "89f776c4-a75b-46c9-815e-98ae0f442d13",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "agreed"
+   },
+   {
+    "requirement_id": "c435e62a-ee5e-4f71-8df0-c99a01206fcb",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r09-e1",
+      "source_ref": "description",
+      "quote": "validates the output with Pydantic and rejects records that fail"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "adjudicated: Programmatic validation rules that reject bad LLM outputs complement a model, but use for safe launches and rapid iteration is not shown."
+   },
+   {
+    "requirement_id": "5b37251f-52f0-4388-a03e-1487aa68229b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "adjudicated: No experience shows operationalising research into customer-facing systems with scalability, performance or detection accuracy; the microcontroller classifier was a course project."
+   },
+   {
+    "requirement_id": "6459b3eb-e07b-48a2-ae99-ca7b9cf9c2b2",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r09-e5",
+      "source_ref": "description",
+      "quote": "Built a web app in a weekend that summarizes meeting transcripts using an LLM API and extracts action items. I wrote the backend in Flask and the prompt chain; a teammate built the frontend."
+     },
+     {
+      "exp_key": "r09-e5",
+      "source_ref": "description",
+      "quote": "I wrote the backend in Flask and the prompt chain; a teammate built the frontend"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "agreed"
+   }
+  ]
+ }
+]

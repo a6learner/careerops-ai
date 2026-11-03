@@ -1,0 +1,3937 @@
+[
+  {
+    "jd_id": "jd-042119b79f",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 10,
+        "text": "Due to government program requirements, candidates must be authorized to work in the United States.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 12,
+        "text": "Own a scoped full-stack project from design through deployment under the guidance of experienced engineers.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Build user-facing features in React and TypeScript that support real operational workflows.",
+        "category": "responsibility",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 14,
+        "text": "Develop backend APIs and services in Python that ingest, transform, and serve structured and unstructured data.",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Design data models and schemas, and write the logic that parses, associates, and validates data from multiple sources.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Use version control, code review, testing, and structured debugging to produce maintainable code.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Collaborate with engineers, product managers, and Forward Deployment Engineers to understand how customers use the product, with the option to travel to a customer site during the summer.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Present your project, results, and recommended next steps at the end of the internship.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Currently pursuing a bachelor’s or master’s degree in computer science, software engineering, or a related technical discipline, with an expected graduation date between December 2027 and May 2028.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Ability to work onsite in New York, Monday through Friday, for the full Summer 2027 internship.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Foundational programming experience in Python and JavaScript or TypeScript, including object-oriented or functional programming concepts.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 30,
+        "text": "Experience building a web application end to end (frontend and backend) through coursework, projects, research, hackathons, or a prior internship.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Working familiarity with Git or similar version control systems.",
+        "category": "must_have",
+        "skill_normalized": "git"
+      },
+      {
+        "candidate_id": 32,
+        "text": "Understanding of relational databases and REST APIs.",
+        "category": "must_have",
+        "skill_normalized": "rest api"
+      },
+      {
+        "candidate_id": 33,
+        "text": "Strong written and verbal communication skills, including the ability to document technical work, explain tradeoffs, and collaborate on ambiguous problems.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Ability to independently close knowledge gaps, stay organized, and learn from feedback.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Experience with React and TypeScript in a real project.",
+        "category": "nice_to_have",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 37,
+        "text": "Experience designing data schemas or working with messy, real-world datasets.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Exposure to cloud infrastructure, preferably GCP, and to containers such as Docker.",
+        "category": "nice_to_have",
+        "skill_normalized": "gcp"
+      },
+      {
+        "candidate_id": 39,
+        "text": "Exposure to integrating LLM or other AI APIs into an application.",
+        "category": "nice_to_have",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 40,
+        "text": "Interest in 3D, visualization, or spatial data.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 41,
+        "text": "Interest in industrial, defense, or infrastructure applications where reliability matters.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-0a7fddceeb",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 36,
+        "text": "Leverage multimodal large models to explore few-shot and zero-shot strategies for content safety scenarios, and build moderation models with strong generalization capabilities.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "Participate in reinforcement learning–based data mining, and help design Chain-of-Thought (CoT) annotation frameworks to improve the model’s understanding of complex risks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Build risk ranking and recall systems to enhance coverage and accuracy in identifying high-risk content.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 39,
+        "text": "Collaborate with product and policy teams to drive real-world deployment and performance optimization of moderation algorithms.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 42,
+        "text": "Currently pursuing a Master degree with a background in computer science, machine learning, or similar fields;",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Solid foundation in machine learning and deep learning;",
+        "category": "must_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 44,
+        "text": "familiarity with multimodal modeling;",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 45,
+        "text": "hands-on experience with large model projects is a plus.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 46,
+        "text": "Interest in content safety, with an understanding of the challenges in risk identification within moderation workflows.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 47,
+        "text": "Proficient in end-to-end algorithm development, including data processing, modeling, and evaluation;",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 48,
+        "text": "experience with PyTorch or TensorFlow is required.",
+        "category": "must_have",
+        "skill_normalized": "pytorch"
+      },
+      {
+        "candidate_id": 50,
+        "text": "Strong learning ability, clear communication, and a strong sense of teamwork and responsibility.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-1299301886",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 13,
+        "text": "Develop and deploy large-scale machine learning systems that drive significant business value across various domains.",
+        "category": "responsibility",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 14,
+        "text": "Engage in the end-to-end process of designing, training, improving, and launching machine learning models.",
+        "category": "responsibility",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Write production-scale ML models that will be deployed to help Stripe enable economic infrastructure access for a diverse range of businesses globally.",
+        "category": "responsibility",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 16,
+        "text": "Collaborate across teams to incorporate feedback and proactively seek solutions to challenges.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Rapidly learn new technologies and approaches, demonstrating a strong ability to ask insightful questions and communicate the status of your work effectively.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "A deep understanding of computer science, obtained through the pursuit of a Master's degree in Computer Science, Machine Learning, or a closely related field, with the expectation of graduating in winter 2027 or spring/summer 2028.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Practical experience with programming and machine learning, evidenced by projects, classwork, or research.",
+        "category": "must_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 22,
+        "text": "Familiarity with languages such as Python, Scala, Spark and libraries such as Pandas, NumPy, and Scikit-learn.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 23,
+        "text": "Expertise in areas of machine learning such as supervised and unsupervised learning techniques, ML operations, and possibly experience in Large Language Models or Reinforcement Learning.",
+        "category": "must_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 24,
+        "text": "Demonstrated ability to work on collaborative projects, with experience in receiving and applying feedback from various stakeholders.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "A proactive approach to learning unfamiliar systems and a demonstrated ability to understand complex systems independently.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Intent to return to the degree-program after the completion of the internship/co-op.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Two years of university education or equivalent experience, with in-depth knowledge in specific domains of machine learning.",
+        "category": "nice_to_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 30,
+        "text": "Published and presented peer-reviewed articles in top-tier venues.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Experience in writing high-quality pull requests, maintaining good test coverage, and completing projects with minimal defects.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Familiarity with navigating new codebases and managing work across different programming languages.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Excellent written communication skills to clearly articulate your work to both team members and wider Stripe audiences.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-15675d7d86",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 13,
+        "text": "Demonstrate a strong level of curiosity and a passion for learning.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Establish trust with customers and cross-functional teams through clear and thorough communication.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Take initiative and show resourcefulness in getting tasks completed.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Work effectively within teams, collaborating with managers and peers.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Employ an analytical mindset to approach problems and derive solutions.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Exhibit a desire to acquire new skills and grow in your role.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Develop the skills to build scalable, fast, robust, and user-friendly SaaS solutions.",
+        "category": "responsibility",
+        "skill_normalized": "saas"
+      },
+      {
+        "candidate_id": 21,
+        "text": "Gain familiarity with containerization technologies and explore full-stack development.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Learn to implement new functionality based on provided requirements and specifications.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Collaborate closely with engineers, tech operations, and product managers to enhance your learning experience.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Understand Agile methodologies by participating in daily stand-up meetings, prioritizing tasks, and delivering value to our customers with urgency.",
+        "category": "responsibility",
+        "skill_normalized": "agile"
+      },
+      {
+        "candidate_id": 26,
+        "text": "Assist in designing distributed, low-latency services for ingesting, processing, and aggregating data.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Collaborate on integrating leading SaaS platforms like Slack, Salesforce, and Tableau.",
+        "category": "responsibility",
+        "skill_normalized": "saas"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Support the creation of analytics tools that identify trends and sentiments in free-form text data using natural language processing and machine learning.",
+        "category": "responsibility",
+        "skill_normalized": "natural language processing"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Contribute to building widgets for visualizing data in dashboards and reports.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Work with customers to understand and meet their unique requirements within the Qualtrics Platform.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Bachelor’s degree in Computer Science or related field.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Experience in a software engineering role.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Familiarity with modern programming languages (Java, PHP, Scala).",
+        "category": "must_have",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 35,
+        "text": "Understanding of web-related technologies including HTML/CSS and JavaScript.",
+        "category": "must_have",
+        "skill_normalized": "html/css"
+      },
+      {
+        "candidate_id": 36,
+        "text": "Exposure to JavaScript frameworks such as Angular or Node.",
+        "category": "must_have",
+        "skill_normalized": "javascript"
+      },
+      {
+        "candidate_id": 37,
+        "text": "js.",
+        "category": "must_have",
+        "skill_normalized": "js"
+      },
+      {
+        "candidate_id": 38,
+        "text": "Knowledge of database/data storage technologies (SQL/MySQL).",
+        "category": "must_have",
+        "skill_normalized": "sql"
+      },
+      {
+        "candidate_id": 39,
+        "text": "Must be legally authorized to work in job location without Qualtrics sponsorship now or in the future",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-1d931cf5fa",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 4,
+        "text": "As an FDSE, you will be part of a small, agile pod and will directly embed with business teams.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 5,
+        "text": "You will work side‑by‑side with operators, asset managers, and customer‑facing colleagues to rapidly identify opportunities, design solutions, and deliver real value.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 7,
+        "text": "You will relentlessly prototype, test, launch, and scale new ideas—often moving from concept to production in the matter of weeks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 10,
+        "text": "Inquisitive engineers who care just as much about why we’re building it as how it should be built.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 11,
+        "text": "Those who dare to reimagine how work can be done.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 12,
+        "text": "Proven programming expertise across languages such as Python, Java, C++, and TypeScript/JavaScript, with hands-on experience developing alongside AI agents (e.g., Claude Code).",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 13,
+        "text": "Backgrounds in Computer Science, Mathematics, Software Engineering, Physics, or Data Science are especially relevant.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Strong technical problem-solving skills, including practical experience with data structures, storage systems, cloud infrastructure, front-end frameworks, and related technologies.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Demonstrated ability to collaborate effectively with both technical and non-technical stakeholders, thriving in fast-paced environments with evolving goals and iterative user feedback.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Self-directed and adaptable learner, capable of working independently and making sound decisions with minimal oversight.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-232dc238a2",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 24,
+        "text": "Demonstrate accountability and quality in your work while receiving support and guidance from your mentor, manager, and peers",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Execute scoped technical tasks end-to-end to help build the future of Pinterest",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Deliver code that is well-documented, tested, and operable",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Leverage AI tools in your daily engineering workflow to accelerate delivery—brainstorming approaches, writing and refining code, and producing clear documentation",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Communicate ideas and perspectives with candor as you grow professionally through learning and development opportunities",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Collaborate with your team and contribute to real projects that impact Pinterest",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Currently enrolled in a degree or education program working toward a Bachelor’s or Master’s in Computer Science or a related technical field",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "On track to graduate by June 2029",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Ability to demonstrate an understanding of computer science fundamentals, including data structures and algorithms",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "Familiarity using AI as a learning, productivity, and engineering tool, and as an iterative coding partner, to accelerate engineering work while exercising strong judgment around accuracy, security, and when to ask for help",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 36,
+        "text": "Experience with one or more programming languages such as Python, Java, JavaScript/TypeScript, Go, or C++, and familiarity with relevant frameworks, tools, or technologies such as React or similar.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 38,
+        "text": "Non-academic coding experience (e.g., hackathons, code challenges, personal projects, GitHub, open source, volunteer coding experience, conference participation, etc.)",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 39,
+        "text": "Passion for Pinterest, comfort with ambiguity, and a growth mindset with a willingness to continuously learn",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 55,
+        "text": "For this role, applicants must be currently legally authorized to work in the United States on a full-time basis.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-28c0a107f8",
+    "labeler": "codex",
+    "requirements": []
+  },
+  {
+    "jd_id": "jd-2e0a38d357",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 38,
+        "text": "\">Research and prototype new efficient speculative decoding algorithms and draft model architectures</span></li>",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 41,
+        "text": "\">Train, fine-tune and distill draft models, and design rigorous experiments to validate hypotheses.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 45,
+        "text": "\">Implement optimized version for serving engines to show efficacy in real world workloads</span></li>",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 48,
+        "text": "\">Communicate the plans, progress, and results of projects to the broader team</span></li>",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 51,
+        "text": "\">Share findings through technical write-ups and blog posts, and help bring successful ideas into production</span></li>",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 58,
+        "text": "\">Currently pursuing a Master's or Ph.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 59,
+        "text": "D.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 60,
+        "text": "degree in Computer Science, Electrical Engineering, or a related field</span></li>",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 63,
+        "text": "\">Strong knowledge of Machine Learning and Deep Learning fundamentals</span></li>",
+        "category": "must_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 66,
+        "text": "\">Hands-on experience training or fine-tuning large models with distributed training frameworks (e.g., Megatron-LM, FSDP)</span></li>",
+        "category": "must_have",
+        "skill_normalized": "megatron-lm"
+      },
+      {
+        "candidate_id": 69,
+        "text": "\">Familiarity with modern model architectures, such as Mixture-of-Experts and hybrid attention</span></li>",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 76,
+        "text": "\">Prior research experience in speculative decoding, efficient inference, or efficient machine learning</span></li>",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 79,
+        "text": "\">Publications at leading conferences in machine learning or systems (e.g., NeurIPS, ICML, ICLR, MLSys)</span></li>",
+        "category": "nice_to_have",
+        "skill_normalized": "neurips"
+      },
+      {
+        "candidate_id": 82,
+        "text": "\">Experience with knowledge distillation, post-training, or reinforcement learning</span></li>",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 85,
+        "text": "\">Familiarity with LLM serving engines (e.g., vLLM, SGLang, TensorRT-LLM)</span></li>",
+        "category": "nice_to_have",
+        "skill_normalized": "vllm"
+      },
+      {
+        "candidate_id": 88,
+        "text": "\">Contributions to open-source machine learning projects</span></li>",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-32f17573a4",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 8,
+        "text": "AI/ML Development: Design and implement features powered by Large Language Models (LLMs), Generative AI, and machine learning models, integrating them into our core applications.",
+        "category": "responsibility",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 9,
+        "text": "Agent & Workflow Orchestration: Build and optimize conversational agents, Retrieval-Augmented Generation (RAG) pipelines, and prompt engineering workflows.",
+        "category": "responsibility",
+        "skill_normalized": "rag"
+      },
+      {
+        "candidate_id": 10,
+        "text": "Model Integration & Evaluation: Work with model APIs and open-source models, and help evaluate quality, latency, and cost trade-offs across approaches.",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 11,
+        "text": "Full-Stack Integration: Develop efficient, secure, real-time services that surface AI capabilities to end users;",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 12,
+        "text": "peer-review code and document solutions in an agile environment.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Collaboration: Communicate proactively with teammates across AI research, infrastructure, security, and QA to continuously improve processes and engineering quality.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Education: Currently pursuing a Bachelor's or higher in Computer Science, Artificial Intelligence, Machine Learning, Data Science, or a related quantitative field.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "AI & LLM Foundations: Hands-on experience or academic projects with LLM APIs (Anthropic, OpenAI, Hugging Face, Ollama);",
+        "category": "must_have",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 17,
+        "text": "familiarity with RAG architectures and prompt engineering;",
+        "category": "must_have",
+        "skill_normalized": "rag"
+      },
+      {
+        "candidate_id": 18,
+        "text": "understanding of vector databases (e.g., pgvector, Pinecone, Chroma, Milvus).",
+        "category": "must_have",
+        "skill_normalized": "pgvector"
+      },
+      {
+        "candidate_id": 19,
+        "text": "Programming: Strong Python skills for data/AI work;",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 20,
+        "text": "solid foundation in data structures and algorithms.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Data: Comfortable with SQL and working with relational (PostgreSQL, MySQL) and/or NoSQL databases.",
+        "category": "must_have",
+        "skill_normalized": "sql"
+      },
+      {
+        "candidate_id": 22,
+        "text": "Mindset: Excellent problem-solving with a strong mathematical/logical foundation;",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "self-motivated, curious, and eager to master emerging AI tools quickly;",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 24,
+        "text": "capable technical writer able to document AI architectures and data flows.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Experience with AI orchestration frameworks (LangChain, LlamaIndex, or Spring AI).",
+        "category": "nice_to_have",
+        "skill_normalized": "langchain"
+      },
+      {
+        "candidate_id": 27,
+        "text": "ML/data science libraries (PyTorch, TensorFlow, scikit-learn, pandas).",
+        "category": "nice_to_have",
+        "skill_normalized": "pytorch"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Full-stack exposure: JavaScript/TypeScript with React or Next.",
+        "category": "nice_to_have",
+        "skill_normalized": "javascript/typescript"
+      },
+      {
+        "candidate_id": 29,
+        "text": "js for AI chat interfaces and dashboards;",
+        "category": "nice_to_have",
+        "skill_normalized": "js"
+      },
+      {
+        "candidate_id": 30,
+        "text": "real-time streaming (WebSockets, Server-Sent Events);",
+        "category": "nice_to_have",
+        "skill_normalized": "websockets"
+      },
+      {
+        "candidate_id": 31,
+        "text": "or Java/Spring Boot backend services.",
+        "category": "nice_to_have",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 32,
+        "text": "DevOps: Git, CI/CD (GitHub Actions, Jenkins), Docker, and a cloud platform (AWS, Azure, or GCP).",
+        "category": "nice_to_have",
+        "skill_normalized": "git"
+      },
+      {
+        "candidate_id": 33,
+        "text": "Basic Unix/Linux familiarity.",
+        "category": "nice_to_have",
+        "skill_normalized": "unix/linux"
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-37085a77c7",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 20,
+        "text": "Start building and pushing code in your first week and ship impactful features in your first few months.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Build and support production services with high call rates on the Back-End and develop rich user interfaces on the Front-End.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Target high availability for consumer and enterprise customers.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Learn how to build infrastructure as code (IaC).",
+        "category": "responsibility",
+        "skill_normalized": "iac"
+      },
+      {
+        "candidate_id": 24,
+        "text": "Collaborate widely with internal teams such as Core, Growth, Enterprise, Trust, and Data to deliver delightful product offerings to our customers.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Contribute to an engineering culture with a strong emphasis on documentation, testing, and user experience.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Evaluate the systems and technology in place today while proposing systems and architecture that can scale for the future.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Have the opportunity to mentor new hires.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Brings at least three years of experience in Full-Stack development.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Displays excellent software engineering fundamentals, including knowledge of algorithms and data structures.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Is ready to tackle infrastructure challenges when needed.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Knows modern web client development and testing tools.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Has experience building, deploying, and debugging production systems at scale.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Demonstrates perseverance when faced with tough technical issues.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "Cares about the end-user experience and strives to ensure high quality.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Has a demonstrated ability to work independently with minimal guidance, proactively manages tasks and priorities across multiple projects, analyzes and executes work efficiently, collaborates effectively with cross-functional teams, and thrives in fast-paced, results-driven environments",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-39bf878d27",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 13,
+        "text": "As a Software Engineering Intern, you’ll help build the systems and features that power autonomous drone operations at scale.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "You’ll work across the stack, from backend services in Python and Go to frontend experiences in TypeScript and React, and you’ll own meaningful pieces of work from idea to shipped feature.",
+        "category": "responsibility",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 16,
+        "text": "Building customer-facing features in the Skydio Cloud web app, such as fleet health monitoring, media asset management, and device management",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Designing and extending the APIs and data models that connect drones, docks, and the data they produce",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 18,
+        "text": "Visualizing rich spatial data through maps and 3D views",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Improving the reliability, performance, and observability of the systems behind it all",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Building a system that allows product teams to manage feature flags and roll out functionality to customers, including both the backend service and the admin interface.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Developing a new view in the web app that surfaces real-time fleet status and health for customers operating many drones and docks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Building tools for browsing, filtering, and managing photo and video assets captured by drones.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Developing a test framework that allows developers to simulate vehicle states and test how the application behaves end to end.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Profiling backend and frontend performance and optimizing how data is loaded and displayed to users.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "The ideal candidate is a junior, senior, or master’s student with hands-on experience developing complex web applications, but above all, we’re looking for a highly curious and resourceful candidate, capable of using tools and AI at their disposal to accelerate their understanding and productivity.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Solid computer science fundamentals.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Meaningful project and/or internship experience building complex web applications, ideally touching both frontend and backend.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Proficiency with Python, Golang, and/or JavaScript/TypeScript.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 32,
+        "text": "Experience with a modern frontend framework such as React.",
+        "category": "must_have",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 33,
+        "text": "Familiarity with RESTful or GraphQL APIs and relational databases (e.g. PostgreSQL, MySQL).",
+        "category": "must_have",
+        "skill_normalized": "restful"
+      },
+      {
+        "candidate_id": 34,
+        "text": "Enjoys taking a feature from concept through design, implementation, testing, and deployment.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Experience with cloud services (e.g. AWS, GCP, Azure) or containerized deployments (e.g. Docker, Kubernetes).",
+        "category": "nice_to_have",
+        "skill_normalized": "aws"
+      },
+      {
+        "candidate_id": 37,
+        "text": "Experience with geospatial data, mapping, or visualization tools such as Mapbox, Cesium, PostGIS, or ThreeJS.",
+        "category": "nice_to_have",
+        "skill_normalized": "mapbox"
+      },
+      {
+        "candidate_id": 38,
+        "text": "Experience integrating frontend applications with real-time data systems.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-3ee2b2b85c",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 22,
+        "text": "Own and pursue a research agenda to improve model capability on long-horizon legal reasoning and agentic workflows.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Design and run post-training experiments across SFT and RL, building on leading open-weight models.",
+        "category": "responsibility",
+        "skill_normalized": "sft"
+      },
+      {
+        "candidate_id": 24,
+        "text": "Develop reward functions and verifiers for semi-verifiable tasks, including rubrics, learned preference models, and expert preference data, and study where they break.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Run and debug training at scale, addressing divergence, reward hacking, and instability.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Build and use rigorous evals to track improvements and decide what ships.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Design, implement, test, and debug code across our research stack.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Hands-on experience post-training LLMs with SFT and RL, including preference optimization, and direct ownership of training runs and results.",
+        "category": "must_have",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 30,
+        "text": "Deep ML fundamentals and experience getting distributed training runs working reliably.",
+        "category": "must_have",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 31,
+        "text": "Strong engineering skills in Python, with production-quality code and end-to-end system ownership.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 32,
+        "text": "Research experience in RL for language models or reward modeling, with the ability to move quickly from experiments to shipped improvements.",
+        "category": "must_have",
+        "skill_normalized": "rl"
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-444fca021a",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 22,
+        "text": "Develop secure, well-tested, performant features and improvements using Ruby on Rails and GraphQL, among other technologies.",
+        "category": "responsibility",
+        "skill_normalized": "ruby on rails"
+      },
+      {
+        "candidate_id": 23,
+        "text": "Work through complex requirements and legacy constraints to deliver clear solutions while protecting the reliability of this critical system.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Design and maintain backend services, APIs, data models, and business logic that support intuitive source code workflows.",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 25,
+        "text": "Collaborate across functions and teams, both asynchronously and synchronously, and involve domain experts when their input will improve the outcome.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Use AI agents for well-scoped work when they can speed up delivery without sacrificing quality, and critically review their output.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 27,
+        "text": "Write maintainable code that follows GitLab's standards and contribute to constructive code reviews.",
+        "category": "responsibility",
+        "skill_normalized": "gitlab"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Help strengthen reliability by monitoring production health metrics, participating in Tier 2 on-call, troubleshooting incidents, contributing to root cause analysis, and improving observability and resiliency.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Share knowledge through code review, technical documentation, and everyday collaboration while learning from others.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Professional experience building backend web applications, services, or application programming interfaces, with experience using Ruby and GraphQL.",
+        "category": "must_have",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 32,
+        "text": "An understanding of relational databases, structured query language, data modeling, caching, background processing, and backend performance practices.",
+        "category": "must_have",
+        "skill_normalized": "sql"
+      },
+      {
+        "candidate_id": 33,
+        "text": "Experience with full-stack development to build and maintain user-facing workflows and their underlying systems.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Experience writing backend unit and integration tests, with familiarity with the testing pyramid, Git, and collaborative code review processes.",
+        "category": "must_have",
+        "skill_normalized": "git"
+      },
+      {
+        "candidate_id": 35,
+        "text": "Clear written and spoken English communication skills, including sharing useful status updates in a remote, asynchronous environment.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "The ability to manage assigned priorities, work through ambiguity, take ownership of your work, and seek guidance when needed.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "Experience using AI coding agents to speed up software development while critically reviewing their output.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 38,
+        "text": "Bonus: you’ve built agents or agent-based workflows that run in production, not just prototypes.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-4a1cc83d6b",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 9,
+        "text": "Find and ship savings across AWS and GCP: Analyze billing, usage, and cost trends to identify opportunities, rightsizing, storage lifecycle policies, data transfer, and spot/auto-scaling.",
+        "category": "responsibility",
+        "skill_normalized": "aws"
+      },
+      {
+        "candidate_id": 10,
+        "text": "Take ideas from identification through to a realized dollar figure, not just a recommendation.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 11,
+        "text": "Build and maintain the FinOps data pipeline: Design and run the BigQuery/dbt models that turn raw billing and usage data (CUR, Storage Lens) into reconciled, trustworthy mart tables, the foundation everything else in FinOps is built on.",
+        "category": "responsibility",
+        "skill_normalized": "bigquery"
+      },
+      {
+        "candidate_id": 12,
+        "text": "Build cost-vs-revenue and customer segmentation models: Model unit economics and margin by product line and customer segment, and extend coverage as new products and segments come online.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Apply data science to cost and usage data: Build forecasting models, detect anomalies statistically rather than by threshold alone, and quantify savings opportunities (e.g. storage lifecycle, request-cost patterns) with rigor a spreadsheet can't match.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Build and maintain cost attribution: Tagging policies, cost allocation, and chargeback/showback so engineering teams can see and own their own spend.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "This is foundational work other savings work depends on.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Automate cost governance: Build automated cost reporting, anomaly detection, and alerting.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Write the scripts and infrastructure-as-code (Python, Terraform, Lambda) that enforce cost policy rather than relying on manual review.",
+        "category": "responsibility",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 18,
+        "text": "Partner with engineering on architecture decisions: Bring cost into the room early, cost-efficiencies are cheaper to get right at design than to retrofit.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Work with Finance on forecasting and reporting: Support budget tracking and financial KPIs;",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "build dashboards and self-serve analytics engineering and finance can both read.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Have strong AWS expertise and working GCP knowledge, including pricing models, billing structures, and cost optimization mechanics.",
+        "category": "must_have",
+        "skill_normalized": "aws"
+      },
+      {
+        "candidate_id": 23,
+        "text": "Have data engineering depth: dbt, BigQuery (or an equivalent modern warehouse), SQL at scale, and data modeling for analytics (dimensional modeling, incremental models, testing).",
+        "category": "must_have",
+        "skill_normalized": "dbt"
+      },
+      {
+        "candidate_id": 24,
+        "text": "Have data science fundamentals: statistical forecasting, anomaly detection, and experimentation, and know when a rigorous model beats a rule of thumb.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Have automation and scripting skills: Python, Terraform/ pulumi, Lambda, or Bash.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 26,
+        "text": "Are comfortable with cost/billing tooling: AWS Cost Explorer, Cost & Usage Reports, GCP Billing Reports, and BI/dashboarding (we use Hex).",
+        "category": "must_have",
+        "skill_normalized": "aws cost explorer"
+      },
+      {
+        "candidate_id": 27,
+        "text": "Have experience with, or are comfortable picking up, Linear and Notion as the system of record for tracking and documenting FinOps work.",
+        "category": "must_have",
+        "skill_normalized": "linear"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Experience with a dedicated cloud cost management platform (e.g. CloudZero, Vantage, or similar) is a plus, not required.",
+        "category": "nice_to_have",
+        "skill_normalized": "cloudzero"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Can analyze cost data and present it clearly to both technical and non-technical audiences.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Have prior experience spanning data analytics, data engineering, or data science in a FinOps, cloud cost management, or cloud governance context.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Are energized by doing the unglamorous, high-leverage work (the schlep) that unblocks other teams, and by working cross-functionally without positional authority.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-5531cb84d2",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 11,
+        "text": "Build product features and platform systems across the stack",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 12,
+        "text": "Develop backend services and APIs that power financial workflows and analytics",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 13,
+        "text": "Implement AI-powered workflows for document processing and data extraction",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 14,
+        "text": "Design intuitive product experiences that simplify complex financial data",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Work closely with product and engineering to ship high-impact features quickly",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "AI-powered ingestion of invoices, deductions, and retailer reports",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 18,
+        "text": "Scaling systems that ingest financial data from multiple retailer sources",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Building analytics and forecasting tools for CPG brands",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Designing product experiences that turn financial data into actionable insights",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "2+ years of software engineering experience",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Strong programming fundamentals and backend development skills",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Ability to build and ship production software",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Interest in solving complex operational and data problems",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Experience working with AI/ML-powered systems",
+        "category": "nice_to_have",
+        "skill_normalized": "ai/ml"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Experience with data pipelines or analytics systems",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Strong communication skills and comfort collaborating across teams",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Interest in early-stage startups and high-ownership environments",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "CS degree or equivalent experience",
+        "category": "education",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-592e3ee832",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 11,
+        "text": "This opening is strictly for University of Maine Orono students and will start in May 2027.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Develop and/or modify software modules to meet specifications",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Assure software program integrity through review and testing",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Prepare and/or modify program and system documentation",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Research and incorporate new technologies into the software design",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Pursuing a bachelor’s degree in Computer Science, Software Engineering or",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Exposure to current languages such as C#, Python, JavaScript / TypeScript, and SQL.",
+        "category": "must_have",
+        "skill_normalized": "c#"
+      },
+      {
+        "candidate_id": 20,
+        "text": "Excellent problem solving and analytical skills.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Excellent oral and written communication skills.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Ability to work effectively with a software development team on technical and business issues.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Ability to conduct independent research and present recommendations based upon findings",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-5f93b2b3be",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 40,
+        "text": "Build features end-to-end—from design through deployment—building front-end (React/Angular/Vue) and back-end (REST/GraphQL, microservices) solutions",
+        "category": "responsibility",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 42,
+        "text": "Contribute to scalable system design: evaluate architectural trade-offs, define data models and API contracts, and choose the right cloud-native and persistence strategies for your project",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 44,
+        "text": "Write comprehensive tests, uphold coding standards, and review code—including AI-generated code—for security, performance, and maintainability.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 45,
+        "text": "Develop, maintain, and execute automated test suites to validate software functionality, catch defects early.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 47,
+        "text": "Maintain CI/CD pipelines and infrastructure-as-code, monitor systems in production, and participate in incident response including AI-integrated components.",
+        "category": "responsibility",
+        "skill_normalized": "ci/cd"
+      },
+      {
+        "candidate_id": 49,
+        "text": "Partner with product managers, designers, and platform teams to scope and deliver features, writing clear specs and communicating trade-offs to technical and non-technical audiences.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 54,
+        "text": "Currently pursuing a Master’s degree in Computer Science, or related field;",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 55,
+        "text": "with a graduation date no earlier than May 2028",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 56,
+        "text": "Must be available to work full-time hours, for a 12- week period, either May – August or June – September in 2027",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 57,
+        "text": "Experience in leveraging or critically thinking about how to integrate AI into work processes, decision-making, or problem-solving.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 58,
+        "text": "This may include using AI-powered tools, automating workflows, analyzing AI-driven insights, or exploring AI's potential impact on the function or industry.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 59,
+        "text": "Full-stack development skills: Hands on experience through coursework, research, projects, or internships with front-end frameworks (React/Angular/Vue), back-end languages (Node.",
+        "category": "must_have",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 60,
+        "text": "js, Python, Java, Go), databases, REST/GraphQL APIs, and cloud platforms (AWS/Azure/GCP), plus comfort adopting emerging AI/ML tools.",
+        "category": "must_have",
+        "skill_normalized": "js"
+      },
+      {
+        "candidate_id": 62,
+        "text": "Systems thinking: Understanding of trade-offs between consistency, availability, and performance, and working knowledge of distributed system patterns and API/database design.",
+        "category": "nice_to_have",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 63,
+        "text": "Working knowledge of software engineering fundamentals: Prior experience writing clean, secure, well-tested code and examples of treating code review as a quality practice.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 64,
+        "text": "AI fluency: Effectively incorporates AI coding assistants (Copilot, Cursor, Codeium, etc) and LLM APIs (OpenAI, Anthropic, open-weight models) to build features, and applies sound judgment when reviewing AI-generated code for correctness and security.",
+        "category": "nice_to_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 65,
+        "text": "Technical communication: Demonstrated ability to translate ambiguous requirements into clear technical plans and communicate trade-offs to technical and non-technical stakeholders alike.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-63a0350a69",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 16,
+        "text": "<li>Must be enrolled in a bachelor’s degree or graduate program</li>",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "<li>3+ months of software programming or development experience</li>",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "<li>Software coding experience in one or more of the following: C, C++, C#, Java, JavaScript, Python&nbsp;",
+        "category": "must_have",
+        "skill_normalized": "c"
+      },
+      {
+        "candidate_id": 23,
+        "text": "<li>GPA of 3.5 or above&nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "<li>6+ months experience developing and deploying software that has been used on real-world applications and projects &nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "<li>Strong fundamental knowledge of computer architecture and networks &nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "<li>Experience with software documentation, creating system diagrams, and enumerating software requirements&nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "<li>Strong skills in debugging, performance optimization and unit testing&nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "<li>Strong interpersonal skills (examples: leading a student organization or working successfully in teams)&nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "<li>Ability to work effectively in a dynamic environment with changing needs and requirements&nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "<li>Ability to work independently and in a team, take initiative, and communicate effectively&nbsp;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 42,
+        "text": "<li><span lang=\"EN-US\" data-contrast=\"auto\">Able to work full time, onsite for a minimum of 12 consecutive weeks beginning in May or June 2027</span></li>",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-6becf25faa",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 9,
+        "text": "Participate in full stack application design and development.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 10,
+        "text": "Collaborate in an Agile Scrum team to develop software using technologies like Java, Angular, C#, .",
+        "category": "responsibility",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 11,
+        "text": "NET and SQL.",
+        "category": "responsibility",
+        "skill_normalized": "net"
+      },
+      {
+        "candidate_id": 12,
+        "text": "Troubleshoot and resolve software-related issues and use unit testing, Git and AI coding assistants to maintain code quality.",
+        "category": "responsibility",
+        "skill_normalized": "git"
+      },
+      {
+        "candidate_id": 13,
+        "text": "Work with business analysts to gather requirements.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "This full-time, 12-week internship is open to Junior-status college students only.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Pursuing a bachelor’s degree in IT, Computer Science or a related field with two semesters of programming experience.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Strong collaboration and communication skills.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-772e9e3dc4",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 12,
+        "text": "Design, deploy, and support WAN infrastructure across data centers, network PoPs, and cloud connectivity environments.",
+        "category": "responsibility",
+        "skill_normalized": "wan"
+      },
+      {
+        "candidate_id": 13,
+        "text": "Own the end-to-end activation and turn-up of network circuits, working directly with fiber carriers and cloud service providers to establish and validate connectivity.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Troubleshoot complex network issues across physical, Layer 2, and Layer 3 infrastructure, including optical signal problems, FEC errors, routing issues, and connectivity failures.",
+        "category": "responsibility",
+        "skill_normalized": "fec"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Diagnose and isolate network failures across carrier, cloud provider, and internal infrastructure boundaries, driving issues through resolution.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Contribute to physical network infrastructure design, including port mappings, fiber and cable layouts, optical distribution frames (ODFs), and connectivity planning.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Monitor network health, circuit utilization, and performance to proactively identify capacity constraints and reliability risks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Build automation and tooling to streamline network provisioning, deployment validation, troubleshooting, and operational workflows.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Collaborate with network engineering, data center infrastructure, and external service providers to support the expansion of OpenAI's global backbone.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Participate in an on-call rotation to maintain the reliability and availability of critical network infrastructure.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Have hands-on experience deploying, activating, and troubleshooting WAN circuits with telecommunications carriers, fiber providers, or cloud service providers.",
+        "category": "must_have",
+        "skill_normalized": "wan"
+      },
+      {
+        "candidate_id": 23,
+        "text": "Have a strong understanding of networking fundamentals, including optical networking, Ethernet, TCP/IP, BGP, and Layer 2/3 connectivity.",
+        "category": "must_have",
+        "skill_normalized": "tcp/ip"
+      },
+      {
+        "candidate_id": 24,
+        "text": "Are comfortable debugging network issues across multiple layers, from physical fiber connectivity and optical errors to routing and traffic forwarding.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Have experience working with data center networking, carrier infrastructure, cloud interconnects, or large-scale WAN environments.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Understand physical network infrastructure concepts such as fiber cabling, port mappings, optical distribution frames, and network equipment connectivity.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Can independently investigate ambiguous connectivity problems, isolate root causes, and work across internal and external teams to restore service.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Have experience with scripting or automation tools and are motivated to reduce manual work through repeatable, scalable processes.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Enjoy working directly with infrastructure and take pride in owning technical problems from initial deployment through operational resolution.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Thrive in a fast-moving environment where infrastructure requirements evolve rapidly and engineering decisions have a direct impact on global scale.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Experience building or operating large-scale backbone networks, hyperscale data center networks, or cloud provider interconnect infrastructure.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Familiarity with optical transport technologies, network telemetry, and advanced troubleshooting of physical network links.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Experience automating network operations using Python, Go, or infrastructure automation frameworks.",
+        "category": "nice_to_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 35,
+        "text": "Experience deploying new network PoPs or supporting large-scale network expansion projects.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Experience collaborating with carriers, colocation providers, and cloud networking teams on complex connectivity deployments.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-7c4109d0ff",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 12,
+        "text": "Build product features in React and TypeScript on the frontend and/or Python on the backend, including APIs, data models, and services.",
+        "category": "responsibility",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 13,
+        "text": "Take problems from a rough starting point to shipped: figure out what's actually being asked, dig into the data and code, propose an approach, and build it.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Build the tools that make AI agents understandable and controllable for the people using them: seeing what an agent is doing, reviewing its work, and stepping in when needed.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Work with data from systems like SAP, Salesforce, and Oracle, including their complex data models and real-world edge cases.",
+        "category": "responsibility",
+        "skill_normalized": "sap"
+      },
+      {
+        "candidate_id": 16,
+        "text": "Partner with product and design to question assumptions, shape solutions, get feedback early, and iterate.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Strong product sense.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "You think about the people using what you build and have ideas about how to make it better, whether you're working on the frontend or the backend.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Experience building software, through class projects, side projects, or a previous internship.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Any language is fine.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "You learn quickly and can make progress on a problem without being told exactly what to do.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "We care far more about how fast you're growing than where you're starting.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Some comfort with data, like SQL and how tables relate to each other, and a willingness to learn whatever a feature needs, from the database to the UI.",
+        "category": "must_have",
+        "skill_normalized": "sql"
+      },
+      {
+        "candidate_id": 25,
+        "text": "You explain your thinking clearly and ask questions early.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Proactively ask for help when blocked and communicate openly about challenges.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "You've built something with LLMs or agents.",
+        "category": "nice_to_have",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Familiarity with React, TypeScript, or Python, which make up most of our stack.",
+        "category": "nice_to_have",
+        "skill_normalized": "react"
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-84f7ae9902",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 32,
+        "text": "You will build and scale our data pipelines, establish best practices, ensure data quality, and enable self-service data access across teams.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Own and streamline data pipelines from ingestion to delivery, ensuring they are reliable, scalable, and efficient.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Implement and maintain dbt best practices, data standards, and quality controls.",
+        "category": "responsibility",
+        "skill_normalized": "dbt"
+      },
+      {
+        "candidate_id": 35,
+        "text": "Build self-service tooling and write clear documentation to empower cross-functional teams (Engineering, Revenue Operations, Growth, and others) to independently meet their data needs.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Create AI agents to serve data questions for others",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 38,
+        "text": "Demonstrated experience formalising and scaling data pipelines, ideally as one of the first or early data engineers on a growing team.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 39,
+        "text": "Expert knowledge of dbt (required).",
+        "category": "must_have",
+        "skill_normalized": "dbt"
+      },
+      {
+        "candidate_id": 40,
+        "text": "Proficiency with tools across the modern data stack (Python, SQL, BI tools).",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 41,
+        "text": "Strong infra fundamentals (Terraform or other infrastructure as code, GCP or other cloud providers)",
+        "category": "must_have",
+        "skill_normalized": "terraform"
+      },
+      {
+        "candidate_id": 42,
+        "text": "Structured thinking;",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "ability to simplify complex, messy data into clear structures.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 44,
+        "text": "Strong ability to understand varied stakeholder requirements and build generalised solutions.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-89939ce9b9",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 7,
+        "text": "Own your project, while checking in with other team members throughout the day with questions and updates",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 8,
+        "text": "You leave the code in a better state than when you found it (progressive refactor)",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 9,
+        "text": "You value reliability, ensured by testing",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 10,
+        "text": "Participate in code reviews to ensure code quality and distribute knowledge",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 11,
+        "text": "Continuous integration and deployment",
+        "category": "responsibility",
+        "skill_normalized": "continuous integration"
+      },
+      {
+        "candidate_id": 12,
+        "text": "Go home knowing that your work today is meaningfully improving the lives of every Lyft driver and every Lyft passenger!",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Currently pursuing a Bachelor's or Master's degree in Computer Science, Data Science or related major from a university in Canada (required), with a graduation date between December 2027 and Summer 2028 (required).",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "For any candidates who are master's students who worked between their bachelor's and master's programs: candidates should also have less than 2 years of relevant full-time work experience",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Available during Summer 2027 for an internship in Toronto",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Strong knowledge of CS fundamentals",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Knowledge of SQL and data modeling fundamentals",
+        "category": "must_have",
+        "skill_normalized": "sql"
+      },
+      {
+        "candidate_id": 19,
+        "text": "Experience working with databases",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Excellent communication skills",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Interest in solving large scale data problems in a real world scenario",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Passion for community, sustainability, and/or transportation",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-903c2ef43d",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 17,
+        "text": "As an intern, you will be working with more senior software engineers every day on a potential future feature of our product.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "With guidance and support, you will be able to code, debug, optimize, and document your work while learning how to deliver qualitative work.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Improve the tooling available for data scientists to train unsupervised (clustering) models in Dataiku",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "If time allows, extend further to optimize the training and inference of those types of models",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Build an intelligent “vibe coding” assistant that interprets a user’s intent and aesthetic preferences to automatically generate functional web app code",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Prototype and refine techniques that translate natural-language descriptions into usable web components, accelerating web app development for users without deep front-end expertise",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Improve management of AI models accessible on already-deployed software to unlock new capabilities without upgrading",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Leverage Dataiku’s LLM Mesh and accelerate customer adoption, helping shape Dataiku’s strategy for agentic AI in the enterprise",
+        "category": "responsibility",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 31,
+        "text": "Develop and integrate more low-setup code completion features into Dataiku's embedded code editors",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "As a time-permitting extension, investigate and potentially implement more AI-powered code generation capabilities to further enhance the coding experience",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 34,
+        "text": "Significantly enhance the search and filtering capabilities for Dataiku's complex data pipelines by introducing advanced operators",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "Implement this powerful search feature by defining a formal query grammar, building an Abstract Syntax Tree (AST) to parse user input, and developing a user-friendly interface with live autocompletion and intelligent error feedback",
+        "category": "responsibility",
+        "skill_normalized": "ast"
+      },
+      {
+        "candidate_id": 37,
+        "text": "Actively contribute to the internationalization of the Dataiku platform by allowing faster translation of new and existing software components into various languages beyond English",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Improve and optimize the entire internationalization workflow by implementing technical solutions such as lazy loading for resources, automating translations with LLMs, and developing tools for automated error detection",
+        "category": "responsibility",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 40,
+        "text": "Develop a versatile, all-in-one file processing tool within Dataiku to perform a wide range of transformations and filtering on unstructured data, such as resizing images, converting documents (e.g., DOCX to PDF), and more",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 41,
+        "text": "Streamline data preparation workflows by embedding these file manipulation capabilities directly into Dataiku pipelines, improving user efficiency and reducing the need for external tools",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Develop and implement a new geospatial transformation tool within the Dataiku platform to compute the convex hull of sets of geometric shapes (points and polygons)",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 44,
+        "text": "Enhance Dataiku's capabilities by enabling customers to geo-group their data, unlocking advanced spatial analytics for use cases in fields like retail and logistics",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 46,
+        "text": "Contribute to the launchpad SaaS portal of Dataiku, building full-stack features and leveraging Kubernetes to deliver scalable, secure instance management for companies",
+        "category": "responsibility",
+        "skill_normalized": "saas"
+      },
+      {
+        "candidate_id": 47,
+        "text": "Improve platform reliability and developer confidence by implementing safe rollouts (feature flags), deep observability (tracing, metrics, dashboards), and broader automated test coverage",
+        "category": "responsibility",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-963e9c1260",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 16,
+        "text": "Distributed Training Infrastructure: Build and own the systems that run large-scale training jobs reliably across GPU clusters.",
+        "category": "responsibility",
+        "skill_normalized": "gpu"
+      },
+      {
+        "candidate_id": 17,
+        "text": "This includes job launchers, checkpointing and recovery, fault tolerance, and the monitoring that keeps researchers informed and unblocked.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Scaling Agent Rollouts: Own the infrastructure that runs hundreds of thousands of concurrent coding agent rollouts in VM sandboxes, from high-fidelity environment design to the distributed systems that hold up at our largest RL training scales.",
+        "category": "responsibility",
+        "skill_normalized": "vm"
+      },
+      {
+        "candidate_id": 19,
+        "text": "Performance Optimization: Profile and improve training throughput end to end.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Identify bottlenecks across data loading, communication overhead, memory utilization, and compute efficiency.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Implement solutions that meaningfully improve step time and MFU at scale.",
+        "category": "responsibility",
+        "skill_normalized": "mfu"
+      },
+      {
+        "candidate_id": 22,
+        "text": "Experiment Orchestration and Tooling: Design and maintain the systems researchers use to launch, track, and analyze experiments.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Reduce friction in the research loop so that more time is spent on ideas and less on waiting.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Data Pipeline Engineering: Build high-throughput, reliable data pipelines for training and evaluation.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Ensure data quality, reproducibility, and efficiency at the scale our training runs demand.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Debugging and Reliability: Diagnose and resolve training failures across GPUs, networking, numerics, and data.",
+        "category": "responsibility",
+        "skill_normalized": "gpu"
+      },
+      {
+        "candidate_id": 27,
+        "text": "Maintain detailed understanding of failure modes and build systems that fail gracefully and recover fast.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Parallelism and Systems Research: Implement and optimize parallelism strategies: data, tensor, pipeline, and sequence parallelism.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Understand the tradeoffs deeply and apply them to get the most out of available hardware.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Scaling Infrastructure Ahead of Research: Anticipate what the research team will need next and build it before it becomes a constraint.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "The best infrastructure engineers here are proactive, not reactive.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Deep experience building and operating distributed training systems for large models;",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "comfortable owning infrastructure end to end from the cluster level down to the training loop",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "Strong systems engineering fundamentals: distributed systems, networking, storage, and the ability to reason about performance across the full hardware-software stack",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Proficiency in Python and C++;",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 37,
+        "text": "experience with PyTorch or equivalent deep learning frameworks at a systems level, not just API usage",
+        "category": "must_have",
+        "skill_normalized": "pytorch"
+      },
+      {
+        "candidate_id": 38,
+        "text": "Hands-on experience with GPU performance profiling, memory optimization, and compute efficiency;",
+        "category": "must_have",
+        "skill_normalized": "gpu"
+      },
+      {
+        "candidate_id": 39,
+        "text": "able to diagnose why a training run is underperforming and fix it",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 40,
+        "text": "Experience implementing or optimizing parallelism strategies (data, tensor, pipeline, sequence) for large model training",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 41,
+        "text": "Track record of building tooling and abstractions that meaningfully accelerate research workflows",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 42,
+        "text": "Strong debugging instincts across complex, distributed systems where failures are non-deterministic and hard to reproduce",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Enough ML knowledge to engage substantively with researchers: understand what they are training, why the architecture choices matter, and what the infrastructure needs to support",
+        "category": "must_have",
+        "skill_normalized": "ml"
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-a30c4f42c0",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 20,
+        "text": "Design and build security infrastructure for Starshield, including cryptographic services and other security-critical services",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Develop security features for Starshield systems, including our router, dish, gateways, and satellites",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Design security into factory processes and provide network services in support of this",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "Maintain existing production systems and improve security posture via both direct implementation and recommendations to other teams",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Build prototypes and help identify, design, and test security improvements",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Bachelor's degree in computer science or another STEM discipline",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Experience with one or more software development languages (i.e. Python, C++, Golang)",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Experience designing and implementing security solutions for operating systems, distributed systems, or other enterprise/large-scale infrastructure",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Graduating in the class of 2026 or 2027",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Experience contributing security improvements to complex systems",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Experience working with special purpose security hardware such as trusted platform modules (TPMs) and hardware security modules (HSMs)",
+        "category": "nice_to_have",
+        "skill_normalized": "tpm"
+      },
+      {
+        "candidate_id": 33,
+        "text": "Fundamental understanding of network protocols;",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "including the TCP/IP stack as well as UDP based protocols",
+        "category": "nice_to_have",
+        "skill_normalized": "tcp/ip"
+      },
+      {
+        "candidate_id": 35,
+        "text": "Experienced in navigating large, complex, interactive systems",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "Flexibility, communicating clearly, and establishing and maintaining productive working relationships with other engineering teams",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "Excellent communication skills, both written and verbal",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Ability to work both independently and in a team",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 39,
+        "text": "Demonstrated ability to deal with ambiguity and to learn new technologies quickly",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 40,
+        "text": "Advanced degree in a technical or engineering discipline",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 41,
+        "text": "Active Top Secret, Top Secret SCI, or DOE Level Q clearance",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Must be willing to work extended hours and weekends as needed",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 44,
+        "text": "This position requires successfully obtaining and maintaining a Top Secret Security Clearance as a condition of employment.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-acc62d82b2",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 14,
+        "text": "Work on real problems and ship your code.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Work at one of our highly rated brands, enjoying the best of both worlds between a large company (stability) and a small startup (growth potential and impact)",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Opportunity to own and tackle sophisticated problems",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Work with highly accomplished teammates and craft your own path to achieving your career goals",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Currently working towards a BS or MS in Computer Science or Computer Engineering",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Anticipated graduation date between December 2027 and June 2028",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Strong coding knowledge (preferably Java, Python, C++, Javascript and/or other languages)",
+        "category": "must_have",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 30,
+        "text": "Ability to optimally articulate technical challenges and solutions",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "Ability and interest to work at all levels of the software stack",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Hands-on experience using AI tools to build software, with judgment to evaluate and refine AI-generated output",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 33,
+        "text": "Experience coding on Unix OS platform strongly preferred",
+        "category": "nice_to_have",
+        "skill_normalized": "unix"
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-b800c7d735",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 26,
+        "text": "<li>Design and build backend systems that support scaling our AI solutions for 200K+ customers.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 28,
+        "text": "<li>Develop robust, reliable and scalable services to serve AI models in production environments.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 30,
+        "text": "<li>Contribute to evolving our agentic architecture — making our AI agents more self-sufficient and performant.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 32,
+        "text": "<li>Contribute to a culture of ownership, experimentation, and customer-centric product thinking.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "<li>Engage with internal stakeholders to understand their needs and resolve blockers.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "<li>Stay abreast of emerging AI trends and technologies, identifying and leveraging opportunities for their application within Klaviyo’s ecosystem.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 38,
+        "text": "<li>Work with the team on project planning and defining achievements, identifying dependencies, and meeting business goals.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 44,
+        "text": "<p><strong>Pursuing an advanced degree in Computer Science, Artificial Intelligence, Machine Learning, or a related field, Graduating in December 2027 or May/June 2028</strong></p>",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 46,
+        "text": "<li>Previous internship experience in AI, machine learning, or related fields, with a strong interest in building and deploying AI projects.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 48,
+        "text": "<li>Have hands-on experience building and deploying generative AI and agentic AI applications into production.",
+        "category": "must_have",
+        "skill_normalized": "generative ai"
+      },
+      {
+        "candidate_id": 50,
+        "text": "<li>Demonstrate practical experience with key components of agentic architectures, including orchestration, evaluation, retrieval-augmented generation (RAG), and safety guardrails.",
+        "category": "must_have",
+        "skill_normalized": "rag"
+      },
+      {
+        "candidate_id": 52,
+        "text": "<li>Proficient in Python and modern backend frameworks (FastAPI, Django preferred).",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 54,
+        "text": "<li>Experience creating human and automated evals to ensure high AI model quality.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 56,
+        "text": "<li>Able to thrive in a fast-moving, startup-like environment.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 63,
+        "text": "<li>Trained ML models in the past and deployed them in production systems to generate impact to businesses</li>",
+        "category": "nice_to_have",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 64,
+        "text": "<li>Experience in reinforcement learning</li>",
+        "category": "nice_to_have",
+        "skill_normalized": "reinforcement learning"
+      },
+      {
+        "candidate_id": 65,
+        "text": "<li>Experience with large-scale data processing tools including Spark.",
+        "category": "nice_to_have",
+        "skill_normalized": "spark"
+      },
+      {
+        "candidate_id": 67,
+        "text": "<li>Experience building large scale backend systems</li>",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-be8f2f9cb1",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 25,
+        "text": "Design and build next-generation agent harnesses optimized for streaming speech, turn-taking, interruptions, overlapping speech, and continuous interaction",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Research and train multimodal and full-duplex models that jointly understand audio, reason, and generate speech",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Improve speech recognition, voice activity detection, endpointing, and speech generation across diverse speakers, environments, domains, and languages",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Build evaluations and use production calls to ship measurable improvements in accuracy, latency, naturalness, and task outcomes",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Optimize end-to-end inference for responsiveness, throughput, stability, and cost, partnering with Voice Platform and Infrastructure teams to deploy at scale",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "2+ years of experience in speech, audio ML, multimodal ML, or production machine learning",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Experience developing or adapting autoregressive, diffusion, flow-matching, or codec-based speech models",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Hands-on experience with streaming agent systems, low-latency inference, production model serving, and evaluation on real-world audio",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Fluency in Python and a modern deep-learning framework such as PyTorch, with strong foundations in machine learning and signal processing",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 35,
+        "text": "A track record of taking research ideas from prototype to reliable, measurable production impact",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "Familiarity with speech-to-speech or full-duplex models",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Experience with telephony, multilingual speech, noisy-channel robustness, speaker adaptation, or expressive speech generation",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-c7332b6227",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 12,
+        "text": "Robot Behavior & Learning: Research methods for learning, adapting, and generating robot behaviors from demonstrations, interaction, experience, and real-world data, enabling robots to perform long-horizon tasks in dynamic and unstructured environments.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Active Perception & Embodied Reasoning: Develop methods that enable robots to actively reason about what to inspect, where to observe, and what actions to take next based on task objectives, observations, uncertainty, and environmental context.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Human-Robot Interaction: Develop approaches for intuitive human-robot collaboration, including natural task specification, interactive robot behaviors, human-in-the-loop reasoning, and adaptation to user intent and feedback.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Embodied AI Models: Investigate and adapt foundation models, including vision-language models, vision-language-action models, and world models, for reasoning, planning, interaction, and decision-making on physical robots.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 16,
+        "text": "Real-Robot Experimentation: Implement and evaluate research algorithms on robotic platforms operating in realistic, unstructured environments, and use deployment data to iteratively improve the underlying methods.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Research & Publication: Conduct cutting-edge research in embodied AI and robotics, design rigorous experiments and evaluations, and contribute to publications at leading robotics and AI conferences and journals.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 19,
+        "text": "Currently pursuing or recently completed a PhD in Robotics, Computer Science, Aerospace, Electrical Engineering, Mechanical Engineering, or a related field.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Strong research foundation in one or more areas such as robot learning, planning and decision-making, embodied AI, perception, active perception, or human-robot interaction.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 21,
+        "text": "Familiarity with state-of-the-art research in embodied AI and robotics.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 22,
+        "text": "Strong programming skills in Python and/or C++.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 23,
+        "text": "Experience with modern machine learning frameworks.",
+        "category": "must_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 24,
+        "text": "Experience developing and evaluating algorithms for robotic or embodied systems.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Strong analytical and problem-solving skills, with the ability to formulate research questions and design rigorous experiments.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Strong written and verbal communication skills and the ability to collaborate across research and engineering teams.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Hands-on robotics experience, including testing and deploying autonomous systems on physical robots.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Experience with ROS or ROS2 and real robotic systems.",
+        "category": "nice_to_have",
+        "skill_normalized": "ros"
+      },
+      {
+        "candidate_id": 30,
+        "text": "Publications at leading AI and robotics venues such as CoRL, ICRA, IROS, RSS, NeurIPS, CVPR, or similar.",
+        "category": "nice_to_have",
+        "skill_normalized": "corl"
+      },
+      {
+        "candidate_id": 31,
+        "text": "Research experience in robot behavior and learning, such as imitation learning, reinforcement learning, learning from demonstrations, or learning from interaction and real-world experience.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Research experience in active perception or active inspection, including task-driven perception, information-gathering behaviors, viewpoint selection, or reasoning under uncertainty.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Experience in human-robot interaction, language-conditioned robotics, shared autonomy, or interactive robot learningExperience fine-tuning or deploying large multimodal models, particularly vision-language, vision-language-action, open-vocabulary, or related foundation models.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-ce17b18eb3",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 10,
+        "text": "Build backend services and APIs for the Earnings Dashboard and other payments features that help Hosts grow their income and drive Airbnb revenue.",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 11,
+        "text": "Translate product, compliance and regulatory requirements into clean, well-tested code.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 12,
+        "text": "Build the data and services behind Host performance metrics, recommendations and reports, and keep them accurate and fast for Hosts of every size.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Implement experimentation, logging and metrics so Product and Data Science can test changes and measure their impact on Hosts and the business.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Partner with Product, Design, Data Science, Finance, Legal and other engineering teams to deliver projects that grow the business.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Use data to find gaps in conversion, Host engagement and reliability, and drive fixes and improvements.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Participate in code reviews, technical design discussions and operational improvements across the team.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Architect and implement complex features, focusing on data-driven decision making and performance optimizations.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Collaborate with other engineers and cross-functional partners across the organization to understand and prioritize technical requirements.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Proactively grow knowledge of leading edge practices and trends.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Help define and improve coding standards, development processes and best practices.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 23,
+        "text": "2+ years of experience in a hands-on software engineering role in backend/full-stack development.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Bachelor’s and/or Master’s degree, preferably in CS, or equivalent experience.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Exposure to Java, and experience building services in a distributed microservice environment",
+        "category": "must_have",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 26,
+        "text": "Fluency in frontend web technologies (e.g. HTML, CSS, React and Graphql etc)",
+        "category": "must_have",
+        "skill_normalized": "html"
+      },
+      {
+        "candidate_id": 27,
+        "text": "Demonstrated expertise in backend systems within large-scale service-oriented architectures.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Passionate about efficiency, availability, technical quality and system quality.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 29,
+        "text": "Excellent communication and collaboration skills and the ability to work well within engineering organization and cross functions.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-d38866737f",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 27,
+        "text": "Work directly with Chalk’s co-founders to productionize our first iteration",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 28,
+        "text": "Write TypeScript, Python, Go, and React",
+        "category": "responsibility",
+        "skill_normalized": "typescript"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Expose the functionality of our core platform to data scientist and machine learning end-users in their home environments",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Iterate rapidly to improve Chalk’s platform in response to customer needs",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "4+ years experience of professional software engineering experience",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Working knowledge of computer science fundamentals.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "We’re not looking for experience from drilling leet code – we need folks who are comfortable building and maintaining real systems",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "A record of developing sophisticated user-facing applications that are pleasant to use",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 36,
+        "text": "An eye for high-quality UX",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "Track record of learning new concepts quickly",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Ability to work autonomously & to make pragmatic tradeoffs with an eye towards business outcomes",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 39,
+        "text": "Strong communication skills",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 40,
+        "text": "Bachelor's degree in Computer Science or equivalent",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 42,
+        "text": "Experience implementing data infrastructure",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Experience working with developer tools",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 44,
+        "text": "Experience with applied machine learning or data analytics",
+        "category": "nice_to_have",
+        "skill_normalized": "machine learning"
+      },
+      {
+        "candidate_id": 45,
+        "text": "Experience with Go",
+        "category": "nice_to_have",
+        "skill_normalized": "go"
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-d93ec67563",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 6,
+        "text": "Your role will be the same as any Quadrillion full-time engineer's: shipping real product changes, fixing customer bugs, and building new features.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 11,
+        "text": "Build effective systems for agent orchestration.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 12,
+        "text": "You'll engineer the core system that drives Qualia, improving its ability to reason over long horizons, run parallel experiments, and manage its knowledge.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Scale environments for agent experiments and training.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Help us build the sandboxed compute where agents run complex, high-performance experiments, and scale it to tens of thousands of concurrent deployments.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Expand what agents can do and where they run.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Build and deploy the tools and integrations that connect Qualia to customers' data sources and external systems.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Strong full-stack or backend engineering experience, especially with Python",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 19,
+        "text": "Comfort working in unfamiliar codebases",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 20,
+        "text": "Ability to move quickly in a zero-to-one environment",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "We're hiring a strong intern with significant engineering chops in either Python or React.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 23,
+        "text": "We prefer sophomores and juniors but are open to frosh.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "You must be a current undergraduate at a US or Canadian university.",
+        "category": "education",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-e035ec53fb",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 23,
+        "text": "As a Software Engineer I on the Factory Platform team, you will build applications that directly support design and manufacturing engineers across the company.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "You'll work on projects like automating the analysis of telemetry data streaming from test stands, building tools to streamline supply chain and production planning processes, and creating dashboards that give engineers real-time visibility into manufacturing operations.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "You will participate in the full software development lifecycle, from understanding user requirements to designing, implementing, testing, and deploying solutions.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "You'll work across the stack—building responsive front-ends, scalable back-ends, and data pipelines that connect systems together.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "You'll follow agile development practices, write quality code that is continuously integrated and deployed, and iterate based on feedback from the engineers and operators who use your tools every day.",
+        "category": "responsibility",
+        "skill_normalized": "agile"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Bachelor's degree or higher in Computer Science or a related engineering field (Computer, Software, Electrical, Aerospace)",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 30,
+        "text": "Strong computer science foundations: data structures, algorithms, systems, and clean, testable code",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 31,
+        "text": "1+ years of professional software development experience (including internships, co-ops, or substantial academic/personal projects you have shipped)",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 32,
+        "text": "Experience building web applications with modern frameworks and languages",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 33,
+        "text": "Comfortable working across the full stack—front-end, back-end, and data layers",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 34,
+        "text": "Eager to learn new technologies and tools to solve real problems",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 35,
+        "text": "Excited to work directly with engineers and operators on the factory floor to understand their needs and iterate on solutions",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 37,
+        "text": "Candidates should have completed their degree requirements and be available to begin full-time employment within 30–60 days of applying.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 40,
+        "text": "Experience with React or other modern front-end frameworks",
+        "category": "nice_to_have",
+        "skill_normalized": "react"
+      },
+      {
+        "candidate_id": 41,
+        "text": "Familiarity with data engineering tools and working with large datasets",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 42,
+        "text": "Exposure to manufacturing, hardware, test and measurement systems, or other physical-world domains",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Experience building dashboards, data visualizations, or analytics tools",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 44,
+        "text": "Contributions to open-source projects or experience shipping software products end-to-end",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-e5f116cfa7",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 12,
+        "text": "Research post-training techniques for foundation models.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Explore fine-tuning, alignment, reinforcement learning, and feedback-driven learning approaches.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 14,
+        "text": "Develop experiments to improve model performance on utility-specific tasks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 15,
+        "text": "Evaluate model behavior, accuracy, and domain adaptation.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Support creation of datasets and training pipelines.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Analyze tradeoffs between performance, cost, and operational value.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Collaborate with AI researchers and software engineers.",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 19,
+        "text": "Present experimental findings and recommendations.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Currently pursuing a Bachelor's, Master's, or PhD in Computer Science, Data Science, AI/ML, or related discipline.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 22,
+        "text": "Experience with Python and machine learning frameworks.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 23,
+        "text": "Understanding of supervised learning and deep learning fundamentals.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "Experience conducting research or model development projects.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Strong analytical and problem-solving skills.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 27,
+        "text": "Experience with LLM fine-tuning and model alignment.",
+        "category": "nice_to_have",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Knowledge of reinforcement learning and preference optimization techniques.",
+        "category": "nice_to_have",
+        "skill_normalized": "reinforcement learning"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Experience with PyTorch, Hugging Face, or similar frameworks.",
+        "category": "nice_to_have",
+        "skill_normalized": "pytorch"
+      },
+      {
+        "candidate_id": 30,
+        "text": "Familiarity with generative AI technologies.",
+        "category": "nice_to_have",
+        "skill_normalized": "generative ai"
+      },
+      {
+        "candidate_id": 31,
+        "text": "Interest in energy systems and critical infrastructure applications.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 53,
+        "text": "GE Vernova will only employ those who are legally authorized to work in the United States for this opening.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-ea79374f05",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 37,
+        "text": "Conduct frontier research on reliable long-horizon agents for complex, multi-step software engineering and operations tasks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 38,
+        "text": "Advance agent capabilities in areas such as hierarchical planning and reasoning, memory and context management, tool use, environment interaction, and multi-agent coordination.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 39,
+        "text": "Co-design agents and models through post-training, reinforcement learning, learning from execution feedback, search, and test-time scaling to improve performance on real-world tasks.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 40,
+        "text": "Build scalable agent infrastructure for orchestration, evaluation, observability, and reliable execution across large codebases, engineering toolchains, and distributed production environments.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 41,
+        "text": "Apply and validate new methods in representative workflows such as cross-repository software changes, testing and verification, large-scale migrations, deployment, and incident diagnosis and remediation.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 42,
+        "text": "Translate research into production systems, define rigorous evaluation methodologies, and measure impact through task success, software quality, engineering efficiency, and system performance.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 43,
+        "text": "Collaborate with researchers, infrastructure teams, developer-platform teams, and product engineers to deploy solutions at scale and produce publishable research and broader scientific insights where appropriate.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 46,
+        "text": "Currently pursuing an Undergraduate/ Master's in Computer Science or a related field, with relevant work in machine learning, natural language processing, software engineering, distributed systems, programming languages, or a related area.",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 47,
+        "text": "Demonstrated research or engineering experience in AI agents or closely related areas such as large language model reasoning, reinforcement learning, program synthesis, or AI for code.",
+        "category": "must_have",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 48,
+        "text": "Strong understanding of one or more relevant areas, including agent planning and reasoning, model post-training, reinforcement learning, memory and context systems, tool learning, multi-agent systems, or agent evaluation.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 49,
+        "text": "Strong programming and systems-building ability in at least one language such as Python, C++, Go, or Java, with the ability to turn research ideas into robust implementations.",
+        "category": "must_have",
+        "skill_normalized": "python"
+      },
+      {
+        "candidate_id": 50,
+        "text": "Ability to formulate ambiguous real-world problems, design rigorous experiments and evaluations, analyze results, and iterate from evidence.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 51,
+        "text": "Strong communication and collaboration skills, with the ability to work across research, infrastructure, platform, and product teams.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 53,
+        "text": "Evidence of research excellence through influential publications, open-source work, deployed systems, or other significant contributions.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 54,
+        "text": "Relevant venues include NeurIPS, ICML, ICLR, ACL, MLSys, OSDI, SOSP, NSDI, ICSE, and FSE.",
+        "category": "nice_to_have",
+        "skill_normalized": "neurips"
+      },
+      {
+        "candidate_id": 55,
+        "text": "Experience building or deploying LLM agents, AI developer tools, or agent platforms in complex or large-scale environments.",
+        "category": "nice_to_have",
+        "skill_normalized": "llm"
+      },
+      {
+        "candidate_id": 56,
+        "text": "Hands-on experience with model post-training, reinforcement learning, execution-feedback loops, tool-using agents, distributed agent runtimes, or scalable evaluation systems.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 57,
+        "text": "Experience working with large codebases, distributed systems, CI/CD and testing infrastructure, developer platforms, or production operations.",
+        "category": "nice_to_have",
+        "skill_normalized": "ci/cd"
+      },
+      {
+        "candidate_id": 58,
+        "text": "A track record of translating research into measurable production impact.",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-fabef260c2",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 6,
+        "text": "Study the frontier: Track frontier work in traditional ML, LLMs, multimodal models, retrieval, and agentic systems—then distill it into ideas we can ship.",
+        "category": "responsibility",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 7,
+        "text": "Identify high‑ROI projects: Partner with GTM and ops teams to spot bottlenecks in products;",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 8,
+        "text": "define ML projects that unlock significant leverage for customers.",
+        "category": "responsibility",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 9,
+        "text": "Build targeted models: Own the full cycle—data curation, training, evaluation, and deployment—delivering systems that solve real customer pain points.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 10,
+        "text": "Productionize solutions: Integrate models into our real-time platform via robust APIs and streaming pipelines, ensuring model performance and guardrails from day one.",
+        "category": "responsibility",
+        "skill_normalized": "api"
+      },
+      {
+        "candidate_id": 11,
+        "text": "Self‑direct & ship: Operate like a founder—set technical roadmap, validate quickly, and iterate based on real-world results.",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 13,
+        "text": "Deep ML experience: Extensive work with cutting-edge ML techniques;",
+        "category": "must_have",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 14,
+        "text": "fluent in PyTorch or JAX and modern serving frameworks.",
+        "category": "must_have",
+        "skill_normalized": "pytorch"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Research‑to‑revenue record: Proof you’ve taken novel ML concepts from paper → prod with measurable $$ impact or user growth.",
+        "category": "must_have",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 16,
+        "text": "Full‑stack pragmatism: Comfortable with ETL, feature stores, cloud-native infrastructure, and A/B experimentation.",
+        "category": "must_have",
+        "skill_normalized": "etl"
+      },
+      {
+        "candidate_id": 17,
+        "text": "Data engineering skills: Experience working with complex, real-world data streams and building reliable training pipelines.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 18,
+        "text": "Product intuition: Ability to understand customer workflows and translate business needs into technical solutions.",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Ownership model: You default to action, uphold a high craftsmanship bar, and treat failure modes as learning‑rate multipliers.",
+        "category": "must_have",
+        "skill_normalized": null
+      }
+    ]
+  },
+  {
+    "jd_id": "jd-ffbe164c1a",
+    "labeler": "codex",
+    "requirements": [
+      {
+        "candidate_id": 14,
+        "text": "Respond and mitigate emerging threats and attacks at our network edge by leveraging WAF rules, bot vendors, and other CDN-native technologies",
+        "category": "responsibility",
+        "skill_normalized": "waf"
+      },
+      {
+        "candidate_id": 15,
+        "text": "Help build out infrastructure that gives us better inventory of our network edge security posture",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 16,
+        "text": "Build out and maintain a near-real time streaming analytics data pipeline and application",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 17,
+        "text": "Contribute to the evolution of our labeling and ML model development.",
+        "category": "responsibility",
+        "skill_normalized": "ml"
+      },
+      {
+        "candidate_id": 18,
+        "text": "Help manage and maintain our systems across build, deploy, and production monitoring,",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 19,
+        "text": "Be flexible with respect to computer languages as we use Java, Kotlin, Python, TypeScript, PySpark and others as needed or appropriate",
+        "category": "responsibility",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 20,
+        "text": "Evaluate and build integrations with vendor systems that may be used in addition to in-house solutions",
+        "category": "responsibility",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 21,
+        "text": "Develop and implement AI-driven capabilities to automatically classify and mitigate abusive traffic patterns",
+        "category": "responsibility",
+        "skill_normalized": "ai"
+      },
+      {
+        "candidate_id": 22,
+        "text": "Significant experience with bot/fraud identification and mitigation systems is a strong plus",
+        "category": "nice_to_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 24,
+        "text": "5+ years of software or security engineering experience developing scalable production software incorporating testing, evaluation, and monitoring",
+        "category": "must_have",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 25,
+        "text": "Bachelor's degree in Computer Science or equivalent practical experience",
+        "category": "education",
+        "skill_normalized": null
+      },
+      {
+        "candidate_id": 26,
+        "text": "Proficient in Java, Kotlin, Typescript, and Python",
+        "category": "must_have",
+        "skill_normalized": "java"
+      },
+      {
+        "candidate_id": 27,
+        "text": "Proficient in data analysis using SQL and Spark",
+        "category": "must_have",
+        "skill_normalized": "sql"
+      },
+      {
+        "candidate_id": 28,
+        "text": "Experience implementing and maintaining applications in both a CDN (Cloudflare and Fastly) and Amazon Web Services (AWS) ecosystems",
+        "category": "must_have",
+        "skill_normalized": "cdn"
+      },
+      {
+        "candidate_id": 29,
+        "text": "Familiarity with Snowflake, Databricks, and Datadog are a strong plus",
+        "category": "nice_to_have",
+        "skill_normalized": "snowflake"
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+-- Teardown, 2026-11-03T07:11:53Z
+ Container careerops-batcheval-redis-1 Stopping 
+ Container careerops-batcheval-postgres-1 Stopping 
+ Container careerops-batcheval-redis-1 Stopped 
+ Container careerops-batcheval-redis-1 Removing 
+ Container careerops-batcheval-redis-1 Removed 
+ Container careerops-batcheval-postgres-1 Stopped 
+ Container careerops-batcheval-postgres-1 Removing 
+ Container careerops-batcheval-postgres-1 Removed 
+ Volume careerops-batcheval_postgres-data Removing 
+ Network careerops-batcheval_default Removing 
+ Volume careerops-batcheval_postgres-data Removed 
+ Network careerops-batcheval_default Removed 
+-- Remaining API/worker/driver processes for this repo:
+4
+-- careerops-batcheval containers left:
+0
+-- Correction: the '4' above counted the checking shell/PowerShell processes, whose own command line matched the pattern.
+-- Re-check by process name (python|dramatiq|uvicorn), 2026-11-03T07:12:07Z:
+0

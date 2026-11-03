@@ -1,0 +1,721 @@
+{
+ "pair_count_both": 68,
+ "missing_in_a": [],
+ "missing_in_b": [],
+ "requirement_count": 827,
+ "verdict_agreement": 0.8597339782345829,
+ "verdict_kappa": 0.5812895819966568,
+ "confusion_a_vs_b": {
+  "missing->missing": 620,
+  "missing->partial": 44,
+  "partial->partial": 32,
+  "missing->insufficient_evidence": 13,
+  "matched->matched": 54,
+  "matched->partial": 20,
+  "matched->missing": 15,
+  "missing->matched": 19,
+  "partial->matched": 1,
+  "partial->missing": 2,
+  "insufficient_evidence->missing": 2,
+  "insufficient_evidence->insufficient_evidence": 5
+ },
+ "disagreement_count": 116,
+ "disagreements": [
+  {
+   "pair_id": "r01-jd-20374e729e",
+   "requirement_id": "bda922d7-4976-41af-a342-db5927b58466",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r01-jd-c664c50898",
+   "requirement_id": "eeb2b1e3-33ca-4cd0-8774-86f89b4bfe37",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r01-jd-c664c50898",
+   "requirement_id": "338ec105-8ed7-4fa8-a2b9-ebb85741aca8",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r01-jd-f3fa39296d",
+   "requirement_id": "ab42b9a5-46db-426e-b6b7-a26dfd4f8b13",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r01-jd-f3fa39296d",
+   "requirement_id": "46cacfe1-f794-4c08-a325-086db482f2ed",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r01-jd-f3fa39296d",
+   "requirement_id": "9587c377-ee30-4315-b5e3-c4ab0c328a60",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r02-jd-4045d11ef8",
+   "requirement_id": "a2643604-bda5-4b62-9d81-4ee7b4d26865",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r02-jd-4045d11ef8",
+   "requirement_id": "a5cd71cd-b51b-440d-81a7-2bf361fd0d1d",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r02-jd-4045d11ef8",
+   "requirement_id": "f404fc44-13e7-48e1-b2f7-f85978145276",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r02-jd-4045d11ef8",
+   "requirement_id": "d248b31d-c600-4a00-b92a-e5bcba88b064",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r02-jd-57493570bb",
+   "requirement_id": "90346d6a-8126-4ca6-ae00-f5d745008b5a",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r02-jd-57493570bb",
+   "requirement_id": "bc18de86-a86b-46fa-9e18-84b8b3f0eab7",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r02-jd-d38866737f",
+   "requirement_id": "a1cadd4e-8515-44b2-8b37-bd021aefd006",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r02-jd-d38866737f",
+   "requirement_id": "387fa296-64e7-4cda-9c39-e3a934681c3e",
+   "a": "partial",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r02-jd-d38866737f",
+   "requirement_id": "6a59c01b-4de7-4a59-9747-399f3abb8fb2",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r03-jd-6b61360868",
+   "requirement_id": "d841af91-0f62-436e-b1a3-1e4428100ac2",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r03-jd-8f9a54629e",
+   "requirement_id": "7b8f448d-43a2-4f25-bcb1-2552ed8cec58",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r03-jd-8f9a54629e",
+   "requirement_id": "f0e72f89-9e0b-40c6-91bc-edebf5ee3054",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r03-jd-8f9a54629e",
+   "requirement_id": "a09c8eb6-b717-4e40-911c-38d5f0850bc1",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r03-jd-8f9a54629e",
+   "requirement_id": "54f7f7cf-f4fc-4581-aab4-67bc5b6f9f48",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r04-jd-47ca6f2a23",
+   "requirement_id": "67526c34-9a2b-4953-8570-635299cc682b",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r04-jd-47ca6f2a23",
+   "requirement_id": "d7216a4c-a450-40ef-9b2d-2747a1b0beca",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r04-jd-cd2f824dad",
+   "requirement_id": "3574c928-9050-43b7-9ea9-0251aaba20be",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r04-jd-cd2f824dad",
+   "requirement_id": "c8284b04-5dce-4a03-8927-3933497e391d",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r04-jd-cd2f824dad",
+   "requirement_id": "db3ac8a0-e121-4049-969b-55c869513172",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r04-jd-cd2f824dad",
+   "requirement_id": "1e1c499a-c011-497e-9777-492a34a7c29c",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r04-jd-cd2f824dad",
+   "requirement_id": "3dc6c8e8-5786-44bf-973a-53ce4e637338",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r04-jd-cd2f824dad",
+   "requirement_id": "f4ad4206-4b5f-46a1-895a-0c05346ad429",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r05-jd-e035ec53fb",
+   "requirement_id": "abeecae1-0bc3-43d1-b423-739ada3ec97f",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r05-jd-e035ec53fb",
+   "requirement_id": "8c3c13be-2f2e-495c-8e03-4d96fba48c7a",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r05-jd-e64fe66641",
+   "requirement_id": "5fefc7e7-c38d-49f7-8ccf-29bcfa9893ef",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r05-jd-e64fe66641",
+   "requirement_id": "9af2a6c9-4f22-4ad6-a78d-c99860f88634",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r05-jd-e64fe66641",
+   "requirement_id": "b76cbbd9-ccc2-4e2e-8ab4-8c25bb003b48",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r05-jd-e64fe66641",
+   "requirement_id": "c98eaa03-49d4-4692-875b-165eb5a4f621",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r06-jd-ef530bcbc6",
+   "requirement_id": "46115f36-1d7d-4856-ab0b-a56f6f3eea43",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r07-jd-11ebcf2759",
+   "requirement_id": "5cde84a7-f8f1-48cf-bb9c-6769c2f0464a",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r07-jd-449ac9fcf0",
+   "requirement_id": "93873d45-cf4c-4072-a5b3-e4666b962cae",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r07-jd-449ac9fcf0",
+   "requirement_id": "9cb37e35-2039-4c7e-b5fd-477779d01219",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r07-jd-b5d3f87da5",
+   "requirement_id": "e8bcd88e-e9f4-4486-bf0b-ce4d9673f0bf",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r08-jd-be8f2f9cb1",
+   "requirement_id": "96e24617-eec6-462f-a5d1-911d79a8f32e",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r08-jd-be8f2f9cb1",
+   "requirement_id": "1953ece0-f914-4610-aa95-35667065db0c",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r08-jd-be8f2f9cb1",
+   "requirement_id": "7ea997e5-139a-45e6-8597-f7e009324099",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r08-jd-dfbda7987d",
+   "requirement_id": "50dd9573-ac0f-4048-98bc-a0eb37bd22a6",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r08-jd-dfbda7987d",
+   "requirement_id": "c7a230b6-2bf2-4f80-aa4d-4b9f26a2a75c",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r09-jd-550beed089",
+   "requirement_id": "ea4678f0-2888-4ea6-856e-f1e591f8248d",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-05ce501113",
+   "requirement_id": "1c4596db-5f30-40e6-b482-f317603d6497",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r10-jd-05ce501113",
+   "requirement_id": "16c830aa-7ce5-4725-80fb-d40f3ab90cca",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-05ce501113",
+   "requirement_id": "8497072a-a969-42f7-900e-a94727d51993",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-05ce501113",
+   "requirement_id": "2de5281f-29a8-4d5d-b386-cbc0a911a719",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-05ce501113",
+   "requirement_id": "0d7632a1-94ec-42da-897b-5bea08501c8f",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-3c6702bc5f",
+   "requirement_id": "1a96ce91-ba29-48b9-8ff3-044423b13467",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r10-jd-3c6702bc5f",
+   "requirement_id": "7c1a7778-bc55-4e3e-ab51-97647a5e0829",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r10-jd-3c6702bc5f",
+   "requirement_id": "ffe134aa-4c4f-4d38-b623-c4ab154def53",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-454eaefb59",
+   "requirement_id": "cba24a0f-a790-4aee-9a03-99227ba1aadc",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-454eaefb59",
+   "requirement_id": "dc088506-7f26-43dd-b93e-626c7119ad13",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-454eaefb59",
+   "requirement_id": "692059b3-65da-4eb0-8e03-399798287392",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r10-jd-454eaefb59",
+   "requirement_id": "c894b995-e92d-418c-90ac-7a249faf002d",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r10-jd-454eaefb59",
+   "requirement_id": "9fa04435-2b63-470c-95d8-26dac36d6583",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r10-jd-454eaefb59",
+   "requirement_id": "bb513370-958c-4393-8c65-1969c653a1f3",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r11-jd-1b09715445",
+   "requirement_id": "ccc3a580-7533-4740-83c6-507b24d59e31",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r11-jd-1b09715445",
+   "requirement_id": "7ab3ae45-7699-4318-8358-91b766e8431a",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r11-jd-ff8e29373c",
+   "requirement_id": "d3f8f2a3-350a-4891-87dd-f225ff52efaf",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r12-jd-d467bf8bcc",
+   "requirement_id": "572cedf2-f4d8-4c56-87d3-404ebbb5ab30",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r13-jd-ab26468257",
+   "requirement_id": "b2366824-925e-4486-aea3-6fcd9a210a40",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r14-jd-d2672ccb19",
+   "requirement_id": "6370a396-7f14-4a49-bed1-ac09d2c5c025",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r14-jd-d2672ccb19",
+   "requirement_id": "b143d03d-c314-4f25-a5b6-08debb8f3b87",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r15-jd-0cce175874",
+   "requirement_id": "76ef3da3-eda2-4bc5-aa90-cfcb7544cac7",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r15-jd-1299301886",
+   "requirement_id": "b93dd330-e875-4f7f-addc-bebe63cbfdb9",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r15-jd-1299301886",
+   "requirement_id": "dbd42c57-4594-45f9-801f-83c1b15d94db",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r15-jd-1299301886",
+   "requirement_id": "5237144b-fe83-49ce-a7e6-27dd070264e2",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r16-jd-a7f559d18c",
+   "requirement_id": "f7c24ece-0b20-40cd-b0f8-8b549cb857ea",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r16-jd-a7f559d18c",
+   "requirement_id": "e864dd86-f4f2-4a5e-ac6f-f152c276eaa7",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r16-jd-a7f559d18c",
+   "requirement_id": "f4003422-d749-4d8f-9e9d-2a5f214c5cfd",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r16-jd-a7f559d18c",
+   "requirement_id": "55ab7ed6-a0bd-4a7c-9054-10c320340f77",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r16-jd-a7f559d18c",
+   "requirement_id": "ce9a53e2-92fe-445e-891d-2ed1a91e5d19",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r17-jd-2c2092d392",
+   "requirement_id": "f23081df-cfe8-4a00-a33d-2f13b78e7374",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r17-jd-2c2092d392",
+   "requirement_id": "5a201b99-a6c2-403e-918c-0e65cc3827a8",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r17-jd-2c2092d392",
+   "requirement_id": "a341c91b-3175-49b3-860a-c8befaf5ff29",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "579ebb3a-2d0e-404f-9531-41f64947c075",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "c8d87014-d340-47d9-ad50-46a3ca0c2b01",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "13187acf-2e76-4f07-bda1-3c48e5c71462",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "aa76f5e4-378c-43e5-a7de-04fecbe8507b",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "5c22b364-1aa2-456e-9e2e-9d192c2fbd6c",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "71707a73-d5c5-4b74-89df-f071dfc65a2f",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "8b4fb90a-fdf7-4e4d-af99-f1ec4cf311d8",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r18-jd-37085a77c7",
+   "requirement_id": "1b4db102-fddd-4de8-b106-908bd69bbb3d",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r18-jd-8fbe301ede",
+   "requirement_id": "23f05c00-e00d-442b-9597-2713ec48f18e",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r18-jd-8fbe301ede",
+   "requirement_id": "e19c0c99-675a-4367-9615-b9b31c357585",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r19-jd-3ee2b2b85c",
+   "requirement_id": "ab71cc9f-ffd2-4ac2-b80f-71bc0245fecc",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r19-jd-774ae7a4ff",
+   "requirement_id": "3e86b215-5461-47ee-8e49-1d979d33436d",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r19-jd-774ae7a4ff",
+   "requirement_id": "c5d04012-375e-4cf6-bd9e-a3cd84f084cc",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r19-jd-774ae7a4ff",
+   "requirement_id": "3cedd980-4aa4-439d-98df-b1f04e80bf33",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r19-jd-774ae7a4ff",
+   "requirement_id": "9ad1f90f-495a-4f01-b481-3caa95bb5ac5",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r19-jd-774ae7a4ff",
+   "requirement_id": "5e26b4cf-3cbd-41ac-96bb-01bf365bd5cb",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r19-jd-884508de41",
+   "requirement_id": "168d1b28-a878-4b8b-bf2f-eac4f7300645",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r19-jd-884508de41",
+   "requirement_id": "6c81bf24-0db9-49a5-a3b5-14f283f11d6d",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r19-jd-884508de41",
+   "requirement_id": "a0a76859-bf47-4a54-b0fa-34bc51f1ccce",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r20-jd-2c1f9bc1aa",
+   "requirement_id": "76062464-d174-419e-9fa5-1defc367cf95",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r20-jd-d780cc1647",
+   "requirement_id": "28e49bf1-86ad-4c1a-a12d-2cd59d9f07ef",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r20-jd-d780cc1647",
+   "requirement_id": "941d496e-1a28-45eb-98d4-f9adf471b184",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r20-jd-d780cc1647",
+   "requirement_id": "00732aab-8bf7-4d19-9280-13f9487bc640",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r20-jd-d780cc1647",
+   "requirement_id": "34277447-a6ee-4276-aa8c-a8874df0da50",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r20-jd-d780cc1647",
+   "requirement_id": "8f761eaa-d994-4ff6-9236-de7c98a7bdbe",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r21-jd-381390c5e7",
+   "requirement_id": "b97a9a8b-6b0e-4bbd-9dd9-611d8426f021",
+   "a": "insufficient_evidence",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r21-jd-381390c5e7",
+   "requirement_id": "67804965-0a6f-4a32-a978-eb93d8cb807b",
+   "a": "insufficient_evidence",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r22-jd-8b58d16db8",
+   "requirement_id": "3d20e858-a7f0-487b-bbf3-8e9f4b2a1536",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r22-jd-e4e9d60027",
+   "requirement_id": "00623299-244b-4d07-bfb9-ba697cc72d3c",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r23-jd-4d2879d8d0",
+   "requirement_id": "e99bf4a8-8d5f-4fa8-af28-7bfa0da0edcc",
+   "a": "matched",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r23-jd-ce17b18eb3",
+   "requirement_id": "bfd46299-debc-4b5b-a2f7-c69ff342be71",
+   "a": "missing",
+   "b": "matched"
+  },
+  {
+   "pair_id": "r23-jd-ce17b18eb3",
+   "requirement_id": "e81a8782-dd6c-4c4b-89db-f1b027cf1b92",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r24-jd-af49729c9c",
+   "requirement_id": "a882bcad-b39c-4d5b-aa6d-5f0fbc6123e3",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r24-jd-af49729c9c",
+   "requirement_id": "78222ab4-c3e4-4f9b-bf21-dbc684f2ba62",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r24-jd-af49729c9c",
+   "requirement_id": "5a3f89fe-da5f-4deb-9235-e01d9f57424e",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r24-jd-af49729c9c",
+   "requirement_id": "30477628-d165-4f53-81c7-34bd8a88ac86",
+   "a": "missing",
+   "b": "insufficient_evidence"
+  },
+  {
+   "pair_id": "r26-jd-3ce2b24c3a",
+   "requirement_id": "599fdb0f-cf17-425f-aac6-cc6a10b3763a",
+   "a": "missing",
+   "b": "partial"
+  },
+  {
+   "pair_id": "r26-jd-3ce2b24c3a",
+   "requirement_id": "2444937f-03d1-49d4-a09c-29d339961779",
+   "a": "matched",
+   "b": "partial"
+  }
+ ]
+}

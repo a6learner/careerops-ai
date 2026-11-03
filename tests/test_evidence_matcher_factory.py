@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from careerops.adapters.evidence_matcher_factory import (
+    GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS,
     GROQ_EVIDENCE_MATCHER_MODEL,
     LIVE_MATCHER_ENV,
     ConfiguredEvidenceMatcherResolver,
@@ -154,3 +155,56 @@ def test_explicitly_enabled_approved_real_matcher_is_constructed(
     assert configured_evidence_matcher_model(settings) == GROQ_EVIDENCE_MATCHER_MODEL
     assert isinstance(matcher, GroqEvidenceMatcher)
     assert matcher.model_name == GROQ_EVIDENCE_MATCHER_MODEL
+
+
+def real_pipeline(cap_segment: str | None) -> str:
+    segments = [
+        "match-v2:weighted-rrf-v1:gemini-embedding-2",
+        "gemini-embedding-2-search-query-v1:gemini-embedding-2-search-document-v1",
+        MATCHER_SCHEMA_VERSION,
+        MATCHER_PROMPT_VERSION_V4,
+        "matcher-batch-6",
+    ]
+    if cap_segment is not None:
+        segments.append(cap_segment)
+    segments.append(GROQ_EVIDENCE_MATCHER_MODEL)
+    return ":".join(segments)
+
+
+@pytest.mark.parametrize(
+    ("cap_segment", "expected"),
+    [("matcher-cap-2000", 2000), (None, GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS)],
+)
+def test_real_matcher_uses_the_output_cap_recorded_on_the_run(
+    monkeypatch: pytest.MonkeyPatch,
+    cap_segment: str | None,
+    expected: int,
+) -> None:
+    monkeypatch.setenv(LIVE_MATCHER_ENV, "1")
+    resolver = ConfiguredEvidenceMatcherResolver(
+        Settings(_env_file=None, evidence_matcher_provider="groq", llm_api_key="test-key")
+    )
+
+    matcher = resolver.resolve_pipeline(GROQ_EVIDENCE_MATCHER_MODEL, real_pipeline(cap_segment))
+
+    assert isinstance(matcher, GroqEvidenceMatcher)
+    assert matcher.max_output_tokens == expected
+
+
+@pytest.mark.asyncio
+async def test_invalid_output_cap_segment_is_misconfigured(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv(LIVE_MATCHER_ENV, "1")
+    resolver = ConfiguredEvidenceMatcherResolver(
+        Settings(_env_file=None, evidence_matcher_provider="groq", llm_api_key="test-key")
+    )
+
+    matcher = resolver.resolve_pipeline(
+        GROQ_EVIDENCE_MATCHER_MODEL, real_pipeline("matcher-cap-0")
+    )
+
+    with pytest.raises(EvidenceMatcherError) as captured:
+        await matcher.match(empty_matcher_input())
+
+    assert captured.value.reason is EvidenceMatcherFailureReason.MISCONFIGURED

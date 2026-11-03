@@ -1,0 +1,11 @@
+{
+ "worker_log": "worker_noheadings_20261103.log (heading-filter run, one session)",
+ "output_rejections_by_diagnostic": {
+  "provider_rejected_output:finish_reason=length": 40,
+  "provider_rejected_output:finish_reason=error": 3,
+  "loc=matches.5.missing.requirement_id;type=uuid_parsing": 1
+ },
+ "openrouter_http_status": {
+  "200": 283
+ }
+}

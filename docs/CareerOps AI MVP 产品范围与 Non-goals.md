@@ -32,14 +32,14 @@ CareerOps AI 是一个**以后端为核心的职位要求匹配服务**。系统
 | 后端能力 | 项目中的具体落点 | 面试可讲的深度 |
 |---|---|---|
 | API 设计 | REST 资源建模、状态码语义、分页、错误契约、版本前缀 | 为什么分析是子资源而不是动词端点 |
-| 关系数据建模 | 9 张核心表、外键策略、唯一约束、软删除 | 为什么分析结果不可变而职位可变 |
+| 关系数据建模 | 9 张 MVP 核心表（扩展功能另增 7 张：CV 导入/草稿、职位发现、项目记录）、外键策略、唯一约束、软删除 | 为什么分析结果不可变而职位可变 |
 | 索引与查询优化 | 列表页复合索引、EXPLAIN 对比 | 为什么计划变化不等于已证明延迟改善 |
 | 事务 | 分析结果与证据行原子写入 | 为什么必须单事务提交，部分写入的后果 |
 | 并发控制 | 唯一部分索引防止重复分析、乐观锁更新 | 竞态条件如何复现和验证 |
 | 幂等性 | Idempotency-Key、任务去重键 | 用户双击提交和任务重投递如何处理 |
-| 异步任务 | 队列、状态机、重试、退避、超时、死信 | 为什么 LLM 调用不能放在请求线程 |
-| 缓存 | JD 解析结果缓存、列表查询缓存、缓存失效策略 | 缓存键设计与 stale 数据风险 |
-| 限流与配额 | 按用户的分析次数限流、令牌桶 | 如何防止成本失控和滥用 |
+| 异步任务 | 队列、状态机、重试、退避、超时、有界恢复（无死信队列） | 为什么 LLM 调用不能放在请求线程 |
+| 缓存 | 解析结果的 PostgreSQL 指纹复用、仪表盘 Redis 聚合缓存、缓存失效策略 | 缓存键设计与 stale 数据风险 |
+| 限流与配额 | 按用户的分析次数限流（Redis ZSET + Lua 滑动窗口，ADR-031） | 如何防止成本失控和滥用 |
 | 认证授权 | 密码哈希、JWT 或会话、对象级授权 | 越权访问如何测试 |
 | 可观测性 | 结构化日志、request_id、trace 贯穿异步任务、指标 | 一次失败分析如何端到端定位 |
 | 测试 | 单元、集成、契约、并发、授权、AI 回归 | 如何测试一个不确定输出的系统 |
@@ -213,23 +213,18 @@ CREATE INDEX idx_jobs_user_status_updated
   ON jobs (user_id, status, updated_at DESC)
   WHERE deleted_at IS NULL;
 
--- 防止同一输入的并发重复分析
-CREATE UNIQUE INDEX uq_analysis_active
-  ON analysis_runs (job_id, input_fingerprint)
-  WHERE status IN ('queued', 'running');
+-- 幂等键：同键并发提交收敛为同一个 run；不同键的同输入 run 不去重（ADR-015）
+CREATE UNIQUE INDEX uq_analysis_runs_user_job_idempotency
+  ON analysis_runs (user_id, job_id, idempotency_key);
 
--- 幂等键
-CREATE UNIQUE INDEX uq_analysis_idem
-  ON analysis_runs (user_id, idempotency_key);
-
--- 证据检索
-CREATE INDEX idx_evidence_run
+-- 证据检索：每个分析里每条要求最多一条证据
+CREATE UNIQUE INDEX uq_evidence_matches_run_requirement
   ON evidence_matches (analysis_run_id, requirement_id);
 
 -- 向量检索当前使用小规模精确 pgvector 距离查询；尚未建立 HNSW 索引
 ```
 
-第二个索引是**用数据库约束解决并发问题**的典型案例，比应用层加锁更可靠。这类实现细节远比“我用了 Redis”更能体现工程判断。
+幂等键唯一索引是**用数据库约束解决并发问题**的典型案例，比应用层加锁更可靠。早期设计中的“同输入活跃分析唯一索引”已在迁移 `202609120001` 中移除，原因见 ADR-015。这类实现细节远比“我用了 Redis”更能体现工程判断。
 
 ## API 契约
 
@@ -241,25 +236,29 @@ CREATE INDEX idx_evidence_run
 |---|---|---:|
 | POST /auth/register | 注册 | 201 |
 | POST /auth/login | 登录并签发令牌 | 200 |
-| GET /experiences | 分页列表 | 200 |
+| GET /experiences | 列表（当前未分页） | 200 |
 | POST /experiences | 创建 | 201 |
 | GET /experiences/{id} | 详情 | 200 |
 | PATCH /experiences/{id} | 更新，需 If-Match 版本 | 200 |
 | DELETE /experiences/{id} | 软删除 | 204 |
 | GET /jobs | 列表，支持 status、cursor、limit | 200 |
 | POST /jobs | 创建 | 201 |
-| GET /jobs/{id} | 详情，含最新解析与分析摘要 | 200 |
+| GET /jobs/{id} | 详情 | 200 |
 | PATCH /jobs/{id} | 更新 | 200 |
 | DELETE /jobs/{id} | 软删除 | 204 |
 | POST /jobs/{id}/parse-runs | 触发解析 | 202 |
+| GET /jobs/{id}/parse-runs/latest | 最新解析（ADR-045） | 200 |
 | GET /jobs/{id}/parse-runs/{run_id} | 解析状态与结果 | 200 |
 | POST /jobs/{id}/analysis-runs | 触发分析 | 202 |
-| GET /jobs/{id}/analysis-runs | 分析历史列表 | 200 |
-| GET /analysis-runs/{id} | 分析详情含证据 | 200 |
+| GET /jobs/{id}/analysis-runs/latest?parse_run_id= | 某次解析的最新分析（ADR-045） | 200 |
+| GET /jobs/{id}/analysis-runs/{run_id} | 分析详情含证据 | 200 |
 | GET /action-items | 任务列表 | 200 |
 | POST /action-items | 创建任务，可来自建议 | 201 |
 | PATCH /action-items/{id} | 更新状态 | 200 |
-| GET /dashboard/summary | 聚合数据 | 200 |
+| GET /dashboard/summary | 聚合数据（Redis 缓存） | 200 |
+| GET /dashboard/focus | 即将截止、最近更新、待办任务（不缓存，ADR-045） | 200 |
+
+扩展端点（认证 `GET /auth/me`、CV 导入、职位发现、项目记录）见 `docs/development.md` 的 API Surface。
 | GET /healthz | 存活检查 | 200 |
 | GET /readyz | PostgreSQL 与 Redis 依赖就绪检查 | 200 / 503 |
 
@@ -294,7 +293,8 @@ CREATE INDEX idx_evidence_run
 | 未认证 | 401 |
 | 越权访问他人资源 | 404（不泄露存在性） |
 | 版本冲突 | 409 |
-| 已有同输入分析在运行 | 409，返回既有 run_id |
+| 同一 Idempotency-Key 重放 | 202，返回既有 run |
+| 同一 Idempotency-Key 但输入不同 | 409 IDEMPOTENCY_KEY_CONFLICT |
 | 超出配额 | 429，含 Retry-After |
 | 上游模型不可用 | 503，任务保持可重试 |
 
@@ -333,7 +333,7 @@ queued --> running --> succeeded
 - **重试上限**：达到上限进入 `failed`，写入结构化 `error_code`。
 - **幂等执行**：任务体可能被投递多次，写入前检查终态，避免重复写入。
 - **原子提交**：结果与证据行同事务，禁止出现有分析无证据的中间态。
-- **worker 崩溃恢复**：running 超过阈值的任务由定时任务回收为 queued 或 failed。
+- **worker 崩溃恢复**：running 超过阈值的任务由有界单次恢复命令（`careerops.workers.recovery_cycle`，ADR-035）回收为 queued 或 failed；没有常驻调度器。
 - **成本保护**：单用户单窗口分析次数限流，超限直接拒绝入队。
 
 **worker 崩溃恢复**这一项尤其值得实现，因为它体现你理解“任务不是函数调用，而是分布式状态”。
@@ -388,7 +388,7 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 
 前端仅作为演示层，不投入过多时间。
 
-页面清单：登录注册、仪表盘、职位列表、职位详情与分析、经历库、任务列表。
+页面清单：登录注册、仪表盘、职位看板、职位详情（解析与分析）、经历库（含 CV 导入草稿）、任务看板、项目记录。
 
 前端必须正确处理的工程行为：
 
@@ -398,7 +398,7 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 - 429 限流提示剩余等待时间。
 - 空状态与错误状态。
 
-不做：设计系统、动画体系、复杂表单向导、拖拽、移动端专门优化。
+不做：动画体系、复杂表单向导、拖拽、移动端专门优化。原先的“不做设计系统”已于 2026-10-29 由 ADR-044 取代：前端使用一套小型本地视觉系统。
 
 ## P0 功能与验收标准
 
@@ -531,13 +531,15 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 ## P1（MVP 稳定后）
 
 - OAuth 登录
-- 简历 PDF 解析生成经历草稿
+- 简历 PDF 解析生成经历草稿（已完成，范围更广：PDF/DOCX/DOC/ODT/RTF/TXT/MD，ADR-040）
 - 全文搜索（PostgreSQL tsvector）
 - 截止日期提醒
 - 提示词与模型 A/B 对比面板
 - CSV 导出
 - 读写分离或连接池调优实验
 - 更细粒度成本面板
+
+以上未标注“已完成”的条目截至 2026-10-29 均未实现。已交付但不在此清单中的扩展：辅助职位发现（仅 fake provider）、项目记录与本地 MCP（`668669d`）、一次私有云实验（`ebcc99d`）、前端视觉系统与职位详情页（ADR-044、ADR-045）。
 
 第 7 个有效开发周仍未打通核心闭环时，全部 P1 自动延后。
 
@@ -612,21 +614,21 @@ AI 在本项目中被当作**输出不可信的第三方服务**，工程重点�
 
 - [ ] 核心闭环线上可用
 - [ ] 全部 P0 验收通过
-- [ ] 越权测试矩阵通过
-- [ ] 并发重复分析被阻止且有测试证明
-- [ ] 乐观锁冲突返回 409 且有测试
+- [x] 越权测试矩阵通过（跨用户集成测试；见 `docs/P0_EVIDENCE_AND_LIMITATIONS.md`）
+- [ ] 同一幂等键的并发提交收敛为单一 run 且有测试证明（设计已按 ADR-015 调整；待逐项核对证据后勾选）
+- [x] 乐观锁冲突返回 409 且有测试（`tests/integration/test_experiences_postgres.py`）
 - [ ] 幂等键防重复模型调用且有测试
-- [ ] worker 崩溃回收可演示
+- [x] worker 崩溃回收可演示（`docs/metrics/2026-10-06-worker-recovery-cycle-drill.md`）
 - [ ] 事务原子性测试通过
-- [ ] 三层证据校验全部生效，含 CHECK 约束验证
+- [x] 三层证据校验全部生效，含 CHECK 约束验证（`tests/integration/test_evidence_integrity_postgres.py`）
 - [ ] 缓存命中率与失效逻辑有数据
-- [ ] 限流返回 429 且有测试
+- [x] 限流返回 429 且有测试（`docs/metrics/2026-10-06-analysis-admission-rate-limit-test-record.md`）
 - [x] Analysis run_id + attempt 贯穿 API、worker 与 recovery；初次 request_id 贯穿队列
 - [x] 迁移可从空库执行并演示一次受支持的一步回滚
 - [x] 主要读取端点 P50/P95 与 5,000 Job 游标证据已保存
 - [ ] AI 评估集与评估输出已入库
-- [ ] CI 全绿且离线可运行
-- [x] README、架构图、ADR、Demo 脚本完成
+- [ ] CI 全绿且离线可运行（已推送并配置，但仓库中没有保存 GitHub 运行结果）
+- [x] README 与 `docs/development.md`（架构、API 摘要）、ADR、Demo 脚本完成
 - [ ] 简历数字均可追溯到保存的输出
 
 ## 当前决策

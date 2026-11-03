@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-28",
+  "timezone": "America/Los_Angeles",
+  "scope": "local synthetic deployment preparation; no cloud resources",
+  "baseline_head": "975120761ae0a1adfa3577247daf638ca5b72a69",
+  "backend": {
+    "tests": 443,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "integration_deselected": 26,
+  "playwright": {
+    "passed": 2,
+    "failed": 0
+  },
+  "mypy_source_files": 145,
+  "ruff": "passed",
+  "import_contracts_kept": 2,
+  "migration_head": "202610270001",
+  "migration_drift": "none",
+  "backup": {
+    "table_count": 17,
+    "source_equals_restore": true,
+    "fingerprint_sha256": "82099d75f127611e395f97ee63890004c1425696fc0fba92efb9bf8cb0ffb322",
+    "nonempty_tables": 17
+  },
+  "queue_fault": {
+    "worker_stopped_submission": "queued",
+    "readiness_while_worker_stopped": 200,
+    "isolated_redis_queue_flushed": true,
+    "final_status": "succeeded",
+    "attempt": 1,
+    "requirements": 2,
+    "recovery_summary": {
+      "steps": [
+        {
+          "dispatch_failed": 0,
+          "dispatched": 1,
+          "error_type": null,
+          "name": "parse",
+          "reconciled": 0,
+          "requeued": 0
+        },
+        {
+          "dispatch_failed": 0,
+          "dispatched": 0,
+          "error_type": null,
+          "name": "analysis",
+          "reconciled": 0,
+          "requeued": 0
+        },
+        {
+          "dispatch_failed": 0,
+          "dispatched": 0,
+          "error_type": null,
+          "name": "embedding",
+          "reconciled": 0,
+          "requeued": 0
+        }
+      ]
+    }
+  },
+  "cleanup": {
+    "containers": 0,
+    "networks": 0,
+    "volumes": 0
+  },
+  "cloud_executed": false
+}

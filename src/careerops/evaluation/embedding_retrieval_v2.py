@@ -943,7 +943,7 @@ def relevant_count_at_k(
 
 
 def mean(values: list[float]) -> float:
-    return sum(values) / len(values) if values else 0.0
+    return math.fsum(values) / len(values) if values else 0.0
 
 
 def required(value: MetricValue | None) -> MetricValue:

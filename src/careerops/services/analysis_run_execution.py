@@ -1,5 +1,6 @@
 import logging
 from collections.abc import Callable
+from dataclasses import dataclass
 from math import isfinite
 from time import perf_counter
 from typing import Protocol
@@ -11,6 +12,7 @@ from careerops.domain.analysis_runs import (
     AnalysisRunErrorCode,
     AnalysisRunWorkItem,
     EvidenceMatcherOutput,
+    matcher_batch_size_from_pipeline,
     matcher_model_name_from_pipeline,
     matcher_prompt_version_from_pipeline,
 )
@@ -160,6 +162,7 @@ class AnalysisRunExecutionService:
             matcher_prompt_version = matcher_prompt_version_from_pipeline(
                 work_item.prompt_version
             )
+            batch_size = matcher_batch_size_from_pipeline(work_item.prompt_version)
         except ValueError:
             await self._fail(
                 analysis_run_id,
@@ -172,64 +175,35 @@ class AnalysisRunExecutionService:
             )
             return True
         try:
-            matcher_input = build_evidence_matcher_input(
+            matched = await match_in_batches(
+                matcher,
                 candidate_sets,
+                batch_size=batch_size,
                 prompt_version=matcher_prompt_version,
+                expected_model_name=work_item.model_name,
+                user_id=work_item.user_id,
+                analysis_input=analysis_input,
             )
-            output = await matcher.match(matcher_input)
-            if output.model_name != work_item.model_name:
-                raise MatcherOutputValidationError(
-                    MatcherOutputFailureReason.INVALID_CONTRACT
-                )
-            validated_matches = validate_matcher_output(
-                output,
-                candidate_sets,
-                work_item.user_id,
-                analysis_input,
-            )
-        except EvidenceMatcherError as exc:
-            await self._fail(
+        except MatcherBatchFailure as failure:
+            await self._fail_batch(
                 analysis_run_id,
-                work_item.attempt,
+                work_item,
                 matcher.model_name,
-                provider_error_code(exc.reason),
+                failure,
                 elapsed_milliseconds(started),
                 request_id=request_id,
                 dispatch_source=dispatch_source,
-            )
-            return True
-        except MatcherOutputValidationError as exc:
-            logger.warning(
-                "evidence_matcher_output_rejected",
-                extra={
-                    **analysis_run_log_fields(work_item, request_id, dispatch_source),
-                    "failure_reason": exc.reason.value,
-                    "diagnostic": exc.diagnostic,
-                    "response_sha256": exc.response_sha256,
-                    "response_size_bytes": exc.response_size_bytes,
-                },
-            )
-            await self._fail(
-                analysis_run_id,
-                work_item.attempt,
-                matcher.model_name,
-                output_error_code(exc.reason),
-                elapsed_milliseconds(started),
-                request_id=request_id,
-                dispatch_source=dispatch_source,
-                input_tokens=exc.input_tokens,
-                output_tokens=exc.output_tokens,
             )
             return True
         latency_ms = elapsed_milliseconds(started)
         completed = await self._results.complete(
             analysis_run_id,
             work_item.attempt,
-            validated_matches,
-            model_name=output.model_name,
+            matched.matches,
+            model_name=matched.model_name,
             latency_ms=latency_ms,
-            input_tokens=output.input_tokens,
-            output_tokens=output.output_tokens,
+            input_tokens=matched.input_tokens,
+            output_tokens=matched.output_tokens,
         )
         logger.log(
             logging.INFO if completed else logging.WARNING,
@@ -238,11 +212,52 @@ class AnalysisRunExecutionService:
                 **analysis_run_log_fields(work_item, request_id, dispatch_source),
                 "outcome": "succeeded" if completed else "stale_attempt",
                 "latency_ms": latency_ms,
-                "input_tokens": output.input_tokens,
-                "output_tokens": output.output_tokens,
+                "input_tokens": matched.input_tokens,
+                "output_tokens": matched.output_tokens,
+                "batch_count": matched.batch_count,
             },
         )
         return completed
+
+    async def _fail_batch(
+        self,
+        analysis_run_id: UUID,
+        work_item: AnalysisRunWorkItem,
+        model_name: str,
+        failure: "MatcherBatchFailure",
+        latency_ms: int,
+        *,
+        request_id: str,
+        dispatch_source: AnalysisDispatchSource,
+    ) -> bool:
+        cause = failure.cause
+        if isinstance(cause, EvidenceMatcherError):
+            error_code = provider_error_code(cause.reason)
+        else:
+            error_code = output_error_code(cause.reason)
+            logger.warning(
+                "evidence_matcher_output_rejected",
+                extra={
+                    **analysis_run_log_fields(work_item, request_id, dispatch_source),
+                    "failure_reason": cause.reason.value,
+                    "diagnostic": cause.diagnostic,
+                    "response_sha256": cause.response_sha256,
+                    "response_size_bytes": cause.response_size_bytes,
+                    "batch_index": failure.batch_index,
+                    "batch_count": failure.batch_count,
+                },
+            )
+        return await self._fail(
+            analysis_run_id,
+            work_item.attempt,
+            model_name,
+            error_code,
+            latency_ms,
+            request_id=request_id,
+            dispatch_source=dispatch_source,
+            input_tokens=failure.input_tokens,
+            output_tokens=failure.output_tokens,
+        )
 
     async def _fail(
         self,
@@ -313,6 +328,94 @@ def _fixed_matcher_factory(
     return lambda work_item: matcher
 
 
+@dataclass(frozen=True)
+class MatchedBatches:
+    matches: tuple[ValidatedEvidenceMatch, ...]
+    model_name: str
+    input_tokens: int | None
+    output_tokens: int | None
+    batch_count: int
+
+
+class MatcherBatchFailure(Exception):
+    def __init__(
+        self,
+        cause: EvidenceMatcherError | MatcherOutputValidationError,
+        *,
+        batch_index: int,
+        batch_count: int,
+        input_tokens: int | None,
+        output_tokens: int | None,
+    ) -> None:
+        super().__init__("Evidence matcher batch failed.")
+        self.cause = cause
+        self.batch_index = batch_index
+        self.batch_count = batch_count
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+
+
+def split_candidate_sets(
+    candidate_sets: tuple[RequirementCandidateSet, ...],
+    batch_size: int | None,
+) -> tuple[tuple[RequirementCandidateSet, ...], ...]:
+    if batch_size is None or len(candidate_sets) <= batch_size:
+        return (candidate_sets,)
+    return tuple(
+        candidate_sets[start : start + batch_size]
+        for start in range(0, len(candidate_sets), batch_size)
+    )
+
+
+async def match_in_batches(
+    matcher: EvidenceMatcher,
+    candidate_sets: tuple[RequirementCandidateSet, ...],
+    *,
+    batch_size: int | None,
+    prompt_version: str,
+    expected_model_name: str,
+    user_id: UUID,
+    analysis_input: AnalysisInput,
+) -> MatchedBatches:
+    batches = split_candidate_sets(candidate_sets, batch_size)
+    matches: list[ValidatedEvidenceMatch] = []
+    input_tokens: list[int | None] = []
+    output_tokens: list[int | None] = []
+    for batch_index, batch in enumerate(batches):
+        try:
+            output = await matcher.match(
+                build_evidence_matcher_input(batch, prompt_version=prompt_version)
+            )
+            input_tokens.append(output.input_tokens)
+            output_tokens.append(output.output_tokens)
+            if output.model_name != expected_model_name:
+                raise MatcherOutputValidationError(MatcherOutputFailureReason.INVALID_CONTRACT)
+            matches.extend(validate_matcher_output(output, batch, user_id, analysis_input))
+        except (EvidenceMatcherError, MatcherOutputValidationError) as exc:
+            if isinstance(exc, MatcherOutputValidationError) and len(input_tokens) == batch_index:
+                input_tokens.append(exc.input_tokens)
+                output_tokens.append(exc.output_tokens)
+            raise MatcherBatchFailure(
+                exc,
+                batch_index=batch_index,
+                batch_count=len(batches),
+                input_tokens=sum_known_tokens(input_tokens),
+                output_tokens=sum_known_tokens(output_tokens),
+            ) from exc
+    return MatchedBatches(
+        matches=tuple(matches),
+        model_name=expected_model_name,
+        input_tokens=sum_known_tokens(input_tokens),
+        output_tokens=sum_known_tokens(output_tokens),
+        batch_count=len(batches),
+    )
+
+
+def sum_known_tokens(values: list[int | None]) -> int | None:
+    known = [value for value in values if value is not None]
+    return sum(known) if known else None
+
+
 def validate_matcher_output(
     output: EvidenceMatcherOutput,
     candidate_sets: tuple[RequirementCandidateSet, ...],
@@ -333,7 +436,12 @@ def validate_matcher_output(
         )
         or any(not _proposal_shape_is_valid(match) for match in output.matches)
     ):
-        raise MatcherOutputValidationError(MatcherOutputFailureReason.INVALID_CONTRACT)
+        raise MatcherOutputValidationError(
+            MatcherOutputFailureReason.INVALID_CONTRACT,
+            diagnostic=contract_diagnostic(expected_ids, proposed_ids, output),
+            input_tokens=output.input_tokens,
+            output_tokens=output.output_tokens,
+        )
 
     proposals = {match.requirement_id: match for match in output.matches}
     experiences = {experience.id: experience for experience in analysis_input.experiences}
@@ -347,6 +455,21 @@ def validate_matcher_output(
             },
         )
         for candidate_set in candidate_sets
+    )
+
+
+def contract_diagnostic(
+    expected_ids: tuple[UUID, ...],
+    proposed_ids: tuple[UUID, ...],
+    output: EvidenceMatcherOutput,
+) -> str:
+    expected = set(expected_ids)
+    proposed = set(proposed_ids)
+    invalid_shapes = sum(not _proposal_shape_is_valid(match) for match in output.matches)
+    return (
+        f"expected={len(expected_ids)};returned={len(proposed_ids)};"
+        f"missing={len(expected - proposed)};unknown={len(proposed - expected)};"
+        f"duplicates={len(proposed_ids) - len(proposed)};invalid_shape={invalid_shapes}"
     )
 
 

@@ -38,6 +38,7 @@ describe("AnalysisRunPanel", () => {
   it("shows validated evidence and creates an action item from a gap", async () => {
     const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
       const url = String(input);
+      if (url.includes("/analysis-runs/latest")) return notFound();
       if (url.endsWith("/api/v1/experiences")) return Response.json({ items: [{ id: "exp-1", title: "API Project", kind: "project", description: "Built Python APIs", skills: ["Python"], outcome: null, version: 2, content_hash: "hash", created_at: "", updated_at: "" }] });
       if (url.endsWith("/api/v1/action-items")) return Response.json({ id: "item-id" }, { status: 201 });
       if (init?.method === "POST") return Response.json(succeeded, { status: 202 });
@@ -46,7 +47,7 @@ describe("AnalysisRunPanel", () => {
     const user = userEvent.setup();
     renderWithQuery(<AnalysisRunPanel job={job} parseRun={parseRun} />);
 
-    await user.click(screen.getByRole("button", { name: "Analyze evidence" }));
+    await user.click(await screen.findByRole("button", { name: "Analyze evidence" }));
     expect(await screen.findByText(/Built Python APIs/)).toBeInTheDocument();
     expect(screen.getByText(/No validated positive evidence/)).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Create action item" }));
@@ -63,16 +64,39 @@ describe("AnalysisRunPanel", () => {
 
   it("shows a durable analysis failure without evidence claims", async () => {
     const failed = { ...succeeded, status: "failed", error_code: "MATCHER_OUTPUT_INVALID_SCHEMA", matches: [] } satisfies AnalysisRun;
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(Response.json(failed, { status: 202 }));
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) =>
+      String(input).includes("/analysis-runs/latest") ? notFound() : Response.json(failed, { status: 202 }),
+    );
     const user = userEvent.setup();
     renderWithQuery(<AnalysisRunPanel job={job} parseRun={parseRun} />);
 
-    await user.click(screen.getByRole("button", { name: "Analyze evidence" }));
+    await user.click(await screen.findByRole("button", { name: "Analyze evidence" }));
 
     expect(await screen.findByText(/MATCHER_OUTPUT_INVALID_SCHEMA/)).toBeInTheDocument();
     expect(screen.queryByText("Built Python APIs")).not.toBeInTheDocument();
   });
+
+  it("restores the latest analysis for the displayed parse run", async () => {
+    vi.restoreAllMocks();
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.endsWith("/api/v1/experiences")) return Response.json({ items: [] });
+      return Response.json(succeeded);
+    });
+    renderWithQuery(<AnalysisRunPanel job={job} parseRun={parseRun} />);
+
+    expect(await screen.findByText(/Built Python APIs/)).toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledWith("/api/backend/api/v1/jobs/job-id/analysis-runs/latest?parse_run_id=parse-id", undefined);
+    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(false);
+  });
 });
+
+function notFound(): Response {
+  return Response.json(
+    { error: { code: "ANALYSIS_RUN_NOT_FOUND", message: "Analysis run was not found.", details: {}, request_id: "request-id" } },
+    { status: 404 },
+  );
+}
 
 function renderWithQuery(children: ReactNode) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false }, mutations: { retry: false } } });

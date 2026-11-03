@@ -1,0 +1,48 @@
+{
+ "pair_count_both": 1,
+ "missing_in_a": [],
+ "missing_in_b": [],
+ "requirement_count": 12,
+ "verdict_agreement": 0.5833333333333334,
+ "verdict_kappa": 0.393939393939394,
+ "confusion_a_vs_b": {
+  "matched->missing": 3,
+  "matched->matched": 3,
+  "partial->partial": 1,
+  "missing->missing": 3,
+  "partial->missing": 2
+ },
+ "disagreement_count": 5,
+ "disagreements": [
+  {
+   "pair_id": "r29-jd-e0e4f3984c",
+   "requirement_id": "4f35c782-6282-4671-bb0c-083dc32ca656",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r29-jd-e0e4f3984c",
+   "requirement_id": "1549f634-1fee-45f7-94b5-385fd3037e88",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r29-jd-e0e4f3984c",
+   "requirement_id": "a346e63d-1bb9-4df8-8471-e0a4202d8ece",
+   "a": "partial",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r29-jd-e0e4f3984c",
+   "requirement_id": "0694a3cb-8866-4386-bd5f-008d72275d6b",
+   "a": "matched",
+   "b": "missing"
+  },
+  {
+   "pair_id": "r29-jd-e0e4f3984c",
+   "requirement_id": "ae85823d-2fc6-4a11-b146-775221f165ed",
+   "a": "matched",
+   "b": "missing"
+  }
+ ]
+}

@@ -23,7 +23,7 @@ test("records and reviews project evidence without changing existing navigation"
   await expect(page.getByRole("button", { name: "Confirm record" })).toBeDisabled();
   await page.getByLabel("Your actual contribution").fill("I designed and tested the unique constraint.");
   await page.getByRole("button", { name: "Confirm record" }).click();
-  await expect(page.getByText("confirmed · v2")).toBeVisible();
+  await expect(page.getByText("v2", { exact: true })).toBeVisible();
   await page.reload();
   await page.getByRole("button", { name: "Recorded backend project", exact: true }).click();
   await page.getByLabel("Record status").selectOption("confirmed");
@@ -33,6 +33,7 @@ test("records and reviews project evidence without changing existing navigation"
   await page.getByText("Record details and sources").click();
   await expect(page.locator("blockquote")).toHaveText("uniqueness makes retry safe");
   await page.getByRole("button", { name: "Withdraw record" }).click();
+  await page.getByRole("button", { name: "Confirm withdraw" }).click();
   await expect(page.getByText("No records in this view.")).toBeVisible();
   await page.getByLabel("Record status").selectOption("withdrawn");
   await expect(page.getByText(/Withdrawn: keep for history/)).toBeVisible();

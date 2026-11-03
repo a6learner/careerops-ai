@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [ValidatePattern('^[a-z0-9][a-z0-9-]{0,40}$')]
-    [string]$RunId = ([DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')),
+    [string]$RunId = ([DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ').ToLowerInvariant()),
     [ValidateRange(1, 65535)]
     [int]$PostgresPort = 15411,
     [ValidateRange(1, 65535)]

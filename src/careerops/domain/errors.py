@@ -109,9 +109,25 @@ class RequirementParserError(Exception):
         super().__init__("Requirement parser failed.")
 
 
+class ParserOutputFailureReason(StrEnum):
+    NO_CANDIDATES = "no_candidates"
+    INVALID_SCHEMA = "invalid_schema"
+    UNKNOWN_CANDIDATE = "unknown_candidate"
+    UNGROUNDED_OUTPUT = "ungrounded_output"
+
+
 class ParserOutputValidationError(Exception):
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        reason: ParserOutputFailureReason = ParserOutputFailureReason.UNGROUNDED_OUTPUT,
+        *,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
+    ) -> None:
         super().__init__("Requirement parser returned invalid output.")
+        self.reason = reason
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
 
 
 class AnalysisRunNotFoundError(Exception):

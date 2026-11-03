@@ -16,9 +16,9 @@ export default async function WorkspaceLayout({ children }: { children: ReactNod
     return (
       <main className="grid min-h-screen place-items-center px-5">
         <Card className="max-w-lg p-7">
-          <p className="text-sm font-semibold text-[var(--danger)]">Service unavailable</p>
+          <p className="text-sm font-semibold text-danger">Service unavailable</p>
           <h1 className="mt-2 text-2xl font-semibold">CareerOps cannot reach its API.</h1>
-          <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+          <p className="mt-3 text-sm leading-6 text-muted">
             Your session has not been cleared. Start the local API and refresh this page.
           </p>
         </Card>

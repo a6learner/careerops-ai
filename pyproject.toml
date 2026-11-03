@@ -44,7 +44,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 addopts = "-q"
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 testpaths = ["tests"]
 markers = [
     "integration: tests that require local infrastructure such as PostgreSQL",

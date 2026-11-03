@@ -1,0 +1,432 @@
+{
+ "dataset": "evals\\large_scale_v1",
+ "analysis_runs_dropped_not_in_state": 347,
+ "parser": {
+  "jobs_with_parse": 150,
+  "first_attempt_success": {
+   "k": 150,
+   "n": 150,
+   "rate": 1.0,
+   "ci95": [
+    0.975,
+    1.0
+   ]
+  },
+  "first_attempt_success_by_provider_period": {
+   "openrouter_groq_pinned": {
+    "k": 150,
+    "n": 150,
+    "rate": 1.0,
+    "ci95": [
+     0.975,
+     1.0
+    ]
+   }
+  },
+  "final_success_after_rate_limit_retries": {
+   "k": 150,
+   "n": 150,
+   "rate": 1.0,
+   "ci95": [
+    0.975,
+    1.0
+   ]
+  },
+  "failed_run_error_codes": {},
+  "requirements_per_successful_parse": {
+   "n": 150,
+   "p50": 11.0,
+   "p95": 26.0,
+   "min": 1.0,
+   "max": 46.0,
+   "mean": 12.0
+  },
+  "latency_ms_successful": {
+   "n": 150,
+   "p50": 1911.0,
+   "p95": 13248.0,
+   "min": 740.0,
+   "max": 30225.0,
+   "mean": 3819.8
+  },
+  "input_tokens_per_run": {
+   "n": 150,
+   "p50": 2060.0,
+   "p95": 4250.0,
+   "min": 445.0,
+   "max": 10585.0,
+   "mean": 2313.0
+  },
+  "output_tokens_per_run": {
+   "n": 150,
+   "p50": 455.0,
+   "p95": 1054.0,
+   "min": 82.0,
+   "max": 1500.0,
+   "mean": 493.0
+  },
+  "determinism": {
+   "original_vs_first_repeat": {
+    "jds_with_two_successful_parses": 0,
+    "text_set_jaccard": {
+     "n": 0
+    },
+    "abs_requirement_count_difference": {
+     "n": 0
+    },
+    "identical_text_sets": {
+     "k": 0,
+     "n": 0,
+     "rate": null,
+     "ci95": null
+    }
+   },
+   "repeat_vs_repeat2_same_host": {
+    "jds_with_two_successful_parses": 0,
+    "text_set_jaccard": {
+     "n": 0
+    },
+    "abs_requirement_count_difference": {
+     "n": 0
+    },
+    "identical_text_sets": {
+     "k": 0,
+     "n": 0,
+     "rate": null,
+     "ci95": null
+    }
+   }
+  }
+ },
+ "matcher": {
+  "pairs_analysed": 43,
+  "first_attempt_status": {
+   "succeeded": 13,
+   "failed": 30
+  },
+  "first_attempt_error_codes": {
+   "MATCHER_OUTPUT_INVALID_SCHEMA": 29,
+   "MATCHER_PROVIDER_RATE_LIMITED": 1
+  },
+  "first_attempt_rate_limited": {
+   "k": 1,
+   "n": 43,
+   "rate": 0.0233,
+   "ci95": [
+    0.0041,
+    0.1206
+   ]
+  },
+  "success_by_requirement_count_excluding_rate_limits": {
+   "1-5": {
+    "k": 2,
+    "n": 2,
+    "rate": 1.0,
+    "ci95": [
+     0.3424,
+     1.0
+    ]
+   },
+   "11-15": {
+    "k": 4,
+    "n": 11,
+    "rate": 0.3636,
+    "ci95": [
+     0.1517,
+     0.6462
+    ]
+   },
+   "16-20": {
+    "k": 3,
+    "n": 11,
+    "rate": 0.2727,
+    "ci95": [
+     0.0975,
+     0.5657
+    ]
+   },
+   "21+": {
+    "k": 3,
+    "n": 11,
+    "rate": 0.2727,
+    "ci95": [
+     0.0975,
+     0.5657
+    ]
+   },
+   "6-10": {
+    "k": 1,
+    "n": 7,
+    "rate": 0.1429,
+    "ci95": [
+     0.0257,
+     0.5131
+    ]
+   }
+  },
+  "validator_downgrades_total": 1,
+  "latency_ms_successful": {
+   "n": 14,
+   "p50": 13940.0,
+   "p95": 33788.0,
+   "min": 1388.0,
+   "max": 33788.0,
+   "mean": 15091.6
+  },
+  "input_tokens_successful": {
+   "n": 14,
+   "p50": 6477.0,
+   "p95": 15124.0,
+   "min": 928.0,
+   "max": 15124.0,
+   "mean": 7023.2
+  },
+  "output_tokens_successful": {
+   "n": 14,
+   "p50": 1442.0,
+   "p95": 3763.0,
+   "min": 78.0,
+   "max": 3763.0,
+   "mean": 1586.6
+  },
+  "against_labels": {
+   "requirements_scored": 221,
+   "four_class_confusion_label_to_predicted": {
+    "insufficient_evidence->insufficient_evidence": 2,
+    "insufficient_evidence->missing": 3,
+    "matched->matched": 16,
+    "matched->missing": 3,
+    "missing->insufficient_evidence": 12,
+    "missing->matched": 5,
+    "missing->missing": 159,
+    "missing->partial": 3,
+    "partial->insufficient_evidence": 4,
+    "partial->missing": 11,
+    "partial->partial": 3
+   },
+   "coverage_exact": {
+    "k": 195,
+    "n": 221,
+    "rate": 0.8824,
+    "ci95": [
+     0.8332,
+     0.9184
+    ]
+   },
+   "recall_by_coverage_class": {
+    "full": {
+     "k": 16,
+     "n": 19,
+     "rate": 0.8421,
+     "ci95": [
+      0.6243,
+      0.9448
+     ]
+    },
+    "partial": {
+     "k": 3,
+     "n": 18,
+     "rate": 0.1667,
+     "ci95": [
+      0.0584,
+      0.3922
+     ]
+    },
+    "gap": {
+     "k": 176,
+     "n": 184,
+     "rate": 0.9565,
+     "ci95": [
+      0.9166,
+      0.9778
+     ]
+    }
+   },
+   "overclaim_rate": {
+    "k": 8,
+    "n": 221,
+    "rate": 0.0362,
+    "ci95": [
+     0.0185,
+     0.0698
+    ]
+   },
+   "underclaim_rate": {
+    "k": 18,
+    "n": 221,
+    "rate": 0.0814,
+    "ci95": [
+     0.0521,
+     0.1251
+    ]
+   },
+   "gap_to_positive_rate": {
+    "k": 8,
+    "n": 184,
+    "rate": 0.0435,
+    "ci95": [
+     0.0222,
+     0.0834
+    ]
+   },
+   "positive_citations_pointing_at_labeled_evidence_experience": {
+    "k": 19,
+    "n": 27,
+    "rate": 0.7037,
+    "ci95": [
+     0.5152,
+     0.8415
+    ]
+   },
+   "by_resume_stratum": {
+    "ai_ml": {
+     "requirements": 78,
+     "overclaim": {
+      "k": 4,
+      "n": 78,
+      "rate": 0.0513,
+      "ci95": [
+       0.0201,
+       0.1246
+      ]
+     },
+     "underclaim": {
+      "k": 8,
+      "n": 78,
+      "rate": 0.1026,
+      "ci95": [
+       0.0529,
+       0.1895
+      ]
+     }
+    },
+    "backend": {
+     "requirements": 71,
+     "overclaim": {
+      "k": 3,
+      "n": 71,
+      "rate": 0.0423,
+      "ci95": [
+       0.0145,
+       0.117
+      ]
+     },
+     "underclaim": {
+      "k": 6,
+      "n": 71,
+      "rate": 0.0845,
+      "ci95": [
+       0.0393,
+       0.1724
+      ]
+     }
+    },
+    "data": {
+     "requirements": 1,
+     "overclaim": {
+      "k": 0,
+      "n": 1,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.7935
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 1,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.7935
+      ]
+     }
+    },
+    "fullstack_frontend": {
+     "requirements": 16,
+     "overclaim": {
+      "k": 0,
+      "n": 16,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1936
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 16,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1936
+      ]
+     }
+    },
+    "mobile_other": {
+     "requirements": 16,
+     "overclaim": {
+      "k": 0,
+      "n": 16,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1936
+      ]
+     },
+     "underclaim": {
+      "k": 2,
+      "n": 16,
+      "rate": 0.125,
+      "ci95": [
+       0.035,
+       0.3602
+      ]
+     }
+    },
+    "sparse_novice": {
+     "requirements": 1,
+     "overclaim": {
+      "k": 0,
+      "n": 1,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.7935
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 1,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.7935
+      ]
+     }
+    },
+    "systems_infra": {
+     "requirements": 38,
+     "overclaim": {
+      "k": 1,
+      "n": 38,
+      "rate": 0.0263,
+      "ci95": [
+       0.0047,
+       0.135
+      ]
+     },
+     "underclaim": {
+      "k": 2,
+      "n": 38,
+      "rate": 0.0526,
+      "ci95": [
+       0.0146,
+       0.1729
+      ]
+     }
+    }
+   }
+  }
+ }
+}

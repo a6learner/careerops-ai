@@ -1,0 +1,5 @@
+# columns: stage|status|error_code|count|p50_total_s|p95_total_s|max_total_s|p50_exec_s|p95_exec_s|wall_s
+# total = finished_at - created_at (includes queue wait); exec = finished_at - started_at
+# parse count 7550 = 7500 jobs + 50 idempotency probe runs
+analysis|succeeded||7500|759.11|1334.14|1385.17|1.192|3.501|1501
+parse|succeeded||7550|0.27|1.44|1.78|0.024|0.046|146

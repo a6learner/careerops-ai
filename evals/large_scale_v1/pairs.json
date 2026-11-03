@@ -1,0 +1,1058 @@
+{
+  "pairs": [
+    {
+      "pair_id": "r01-jd-20374e729e",
+      "resume_id": "r01",
+      "jd_id": "jd-20374e729e",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r01-jd-c664c50898",
+      "resume_id": "r01",
+      "jd_id": "jd-c664c50898",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r01-jd-f3fa39296d",
+      "resume_id": "r01",
+      "jd_id": "jd-f3fa39296d",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r02-jd-4045d11ef8",
+      "resume_id": "r02",
+      "jd_id": "jd-4045d11ef8",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r02-jd-57493570bb",
+      "resume_id": "r02",
+      "jd_id": "jd-57493570bb",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r02-jd-d38866737f",
+      "resume_id": "r02",
+      "jd_id": "jd-d38866737f",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r03-jd-6b61360868",
+      "resume_id": "r03",
+      "jd_id": "jd-6b61360868",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r03-jd-8f9a54629e",
+      "resume_id": "r03",
+      "jd_id": "jd-8f9a54629e",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r03-jd-d239ee1f92",
+      "resume_id": "r03",
+      "jd_id": "jd-d239ee1f92",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r04-jd-47ca6f2a23",
+      "resume_id": "r04",
+      "jd_id": "jd-47ca6f2a23",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r04-jd-56bc05acda",
+      "resume_id": "r04",
+      "jd_id": "jd-56bc05acda",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r04-jd-cd2f824dad",
+      "resume_id": "r04",
+      "jd_id": "jd-cd2f824dad",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r05-jd-32f396e5a8",
+      "resume_id": "r05",
+      "jd_id": "jd-32f396e5a8",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r05-jd-e035ec53fb",
+      "resume_id": "r05",
+      "jd_id": "jd-e035ec53fb",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r05-jd-e64fe66641",
+      "resume_id": "r05",
+      "jd_id": "jd-e64fe66641",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r06-jd-2a2fdc3def",
+      "resume_id": "r06",
+      "jd_id": "jd-2a2fdc3def",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r06-jd-915994263b",
+      "resume_id": "r06",
+      "jd_id": "jd-915994263b",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r06-jd-ef530bcbc6",
+      "resume_id": "r06",
+      "jd_id": "jd-ef530bcbc6",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r07-jd-11ebcf2759",
+      "resume_id": "r07",
+      "jd_id": "jd-11ebcf2759",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r07-jd-449ac9fcf0",
+      "resume_id": "r07",
+      "jd_id": "jd-449ac9fcf0",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r07-jd-b5d3f87da5",
+      "resume_id": "r07",
+      "jd_id": "jd-b5d3f87da5",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r08-jd-252787b3f3",
+      "resume_id": "r08",
+      "jd_id": "jd-252787b3f3",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r08-jd-be8f2f9cb1",
+      "resume_id": "r08",
+      "jd_id": "jd-be8f2f9cb1",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r08-jd-dfbda7987d",
+      "resume_id": "r08",
+      "jd_id": "jd-dfbda7987d",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r09-jd-06627db35f",
+      "resume_id": "r09",
+      "jd_id": "jd-06627db35f",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r09-jd-550beed089",
+      "resume_id": "r09",
+      "jd_id": "jd-550beed089",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r09-jd-a764d41c1f",
+      "resume_id": "r09",
+      "jd_id": "jd-a764d41c1f",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r10-jd-05ce501113",
+      "resume_id": "r10",
+      "jd_id": "jd-05ce501113",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r10-jd-3c6702bc5f",
+      "resume_id": "r10",
+      "jd_id": "jd-3c6702bc5f",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r10-jd-454eaefb59",
+      "resume_id": "r10",
+      "jd_id": "jd-454eaefb59",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r11-jd-1b09715445",
+      "resume_id": "r11",
+      "jd_id": "jd-1b09715445",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r11-jd-3121834c33",
+      "resume_id": "r11",
+      "jd_id": "jd-3121834c33",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r11-jd-ff8e29373c",
+      "resume_id": "r11",
+      "jd_id": "jd-ff8e29373c",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r12-jd-279a1d0ab1",
+      "resume_id": "r12",
+      "jd_id": "jd-279a1d0ab1",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r12-jd-d467bf8bcc",
+      "resume_id": "r12",
+      "jd_id": "jd-d467bf8bcc",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r12-jd-e182b2eb9b",
+      "resume_id": "r12",
+      "jd_id": "jd-e182b2eb9b",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r13-jd-3ded297450",
+      "resume_id": "r13",
+      "jd_id": "jd-3ded297450",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r13-jd-5e0f86b11d",
+      "resume_id": "r13",
+      "jd_id": "jd-5e0f86b11d",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r13-jd-ab26468257",
+      "resume_id": "r13",
+      "jd_id": "jd-ab26468257",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r14-jd-639fc9ce63",
+      "resume_id": "r14",
+      "jd_id": "jd-639fc9ce63",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r14-jd-837c588ca9",
+      "resume_id": "r14",
+      "jd_id": "jd-837c588ca9",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r14-jd-d2672ccb19",
+      "resume_id": "r14",
+      "jd_id": "jd-d2672ccb19",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r15-jd-0cce175874",
+      "resume_id": "r15",
+      "jd_id": "jd-0cce175874",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r15-jd-1299301886",
+      "resume_id": "r15",
+      "jd_id": "jd-1299301886",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r15-jd-42871702a5",
+      "resume_id": "r15",
+      "jd_id": "jd-42871702a5",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r16-jd-4cc927c2f3",
+      "resume_id": "r16",
+      "jd_id": "jd-4cc927c2f3",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r16-jd-5f93b2b3be",
+      "resume_id": "r16",
+      "jd_id": "jd-5f93b2b3be",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r16-jd-a7f559d18c",
+      "resume_id": "r16",
+      "jd_id": "jd-a7f559d18c",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r17-jd-167a3d63c0",
+      "resume_id": "r17",
+      "jd_id": "jd-167a3d63c0",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r17-jd-2c2092d392",
+      "resume_id": "r17",
+      "jd_id": "jd-2c2092d392",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r17-jd-396ec1c4b3",
+      "resume_id": "r17",
+      "jd_id": "jd-396ec1c4b3",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r18-jd-37085a77c7",
+      "resume_id": "r18",
+      "jd_id": "jd-37085a77c7",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r18-jd-8fbe301ede",
+      "resume_id": "r18",
+      "jd_id": "jd-8fbe301ede",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r18-jd-f6b95a4622",
+      "resume_id": "r18",
+      "jd_id": "jd-f6b95a4622",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r19-jd-3ee2b2b85c",
+      "resume_id": "r19",
+      "jd_id": "jd-3ee2b2b85c",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r19-jd-774ae7a4ff",
+      "resume_id": "r19",
+      "jd_id": "jd-774ae7a4ff",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r19-jd-884508de41",
+      "resume_id": "r19",
+      "jd_id": "jd-884508de41",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r20-jd-04e1e64396",
+      "resume_id": "r20",
+      "jd_id": "jd-04e1e64396",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r20-jd-2c1f9bc1aa",
+      "resume_id": "r20",
+      "jd_id": "jd-2c1f9bc1aa",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r20-jd-d780cc1647",
+      "resume_id": "r20",
+      "jd_id": "jd-d780cc1647",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r21-jd-381390c5e7",
+      "resume_id": "r21",
+      "jd_id": "jd-381390c5e7",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r21-jd-e9c48cb295",
+      "resume_id": "r21",
+      "jd_id": "jd-e9c48cb295",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r21-jd-f04a257aa7",
+      "resume_id": "r21",
+      "jd_id": "jd-f04a257aa7",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r22-jd-8b58d16db8",
+      "resume_id": "r22",
+      "jd_id": "jd-8b58d16db8",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r22-jd-e4e9d60027",
+      "resume_id": "r22",
+      "jd_id": "jd-e4e9d60027",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r22-jd-e651f71095",
+      "resume_id": "r22",
+      "jd_id": "jd-e651f71095",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r23-jd-4d2879d8d0",
+      "resume_id": "r23",
+      "jd_id": "jd-4d2879d8d0",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r23-jd-c7332b6227",
+      "resume_id": "r23",
+      "jd_id": "jd-c7332b6227",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r23-jd-ce17b18eb3",
+      "resume_id": "r23",
+      "jd_id": "jd-ce17b18eb3",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r24-jd-af49729c9c",
+      "resume_id": "r24",
+      "jd_id": "jd-af49729c9c",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r24-jd-dac7015334",
+      "resume_id": "r24",
+      "jd_id": "jd-dac7015334",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r24-jd-ffbe164c1a",
+      "resume_id": "r24",
+      "jd_id": "jd-ffbe164c1a",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r25-jd-0b79ce35f2",
+      "resume_id": "r25",
+      "jd_id": "jd-0b79ce35f2",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r25-jd-26634804aa",
+      "resume_id": "r25",
+      "jd_id": "jd-26634804aa",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r25-jd-26eec39d7f",
+      "resume_id": "r25",
+      "jd_id": "jd-26eec39d7f",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r26-jd-33b938bfe2",
+      "resume_id": "r26",
+      "jd_id": "jd-33b938bfe2",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r26-jd-3ce2b24c3a",
+      "resume_id": "r26",
+      "jd_id": "jd-3ce2b24c3a",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r26-jd-57d5918692",
+      "resume_id": "r26",
+      "jd_id": "jd-57d5918692",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r27-jd-549191bf37",
+      "resume_id": "r27",
+      "jd_id": "jd-549191bf37",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r27-jd-73c450c9e7",
+      "resume_id": "r27",
+      "jd_id": "jd-73c450c9e7",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r27-jd-82987f2806",
+      "resume_id": "r27",
+      "jd_id": "jd-82987f2806",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r28-jd-67f6401181",
+      "resume_id": "r28",
+      "jd_id": "jd-67f6401181",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r28-jd-c5f2cbaf0a",
+      "resume_id": "r28",
+      "jd_id": "jd-c5f2cbaf0a",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r28-jd-e4e3392511",
+      "resume_id": "r28",
+      "jd_id": "jd-e4e3392511",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r29-jd-27f44ecf86",
+      "resume_id": "r29",
+      "jd_id": "jd-27f44ecf86",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r29-jd-6095f3ea91",
+      "resume_id": "r29",
+      "jd_id": "jd-6095f3ea91",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r29-jd-e0e4f3984c",
+      "resume_id": "r29",
+      "jd_id": "jd-e0e4f3984c",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r30-jd-0241aeb1fc",
+      "resume_id": "r30",
+      "jd_id": "jd-0241aeb1fc",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r30-jd-7c4109d0ff",
+      "resume_id": "r30",
+      "jd_id": "jd-7c4109d0ff",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r30-jd-e365ae8f58",
+      "resume_id": "r30",
+      "jd_id": "jd-e365ae8f58",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r31-jd-3555033404",
+      "resume_id": "r31",
+      "jd_id": "jd-3555033404",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r31-jd-444fca021a",
+      "resume_id": "r31",
+      "jd_id": "jd-444fca021a",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r31-jd-fcc9086401",
+      "resume_id": "r31",
+      "jd_id": "jd-fcc9086401",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r32-jd-8432236910",
+      "resume_id": "r32",
+      "jd_id": "jd-8432236910",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r32-jd-84f7ae9902",
+      "resume_id": "r32",
+      "jd_id": "jd-84f7ae9902",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r32-jd-fabef260c2",
+      "resume_id": "r32",
+      "jd_id": "jd-fabef260c2",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r33-jd-343f2f2b12",
+      "resume_id": "r33",
+      "jd_id": "jd-343f2f2b12",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r33-jd-4a1cc83d6b",
+      "resume_id": "r33",
+      "jd_id": "jd-4a1cc83d6b",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r33-jd-de49e83fbb",
+      "resume_id": "r33",
+      "jd_id": "jd-de49e83fbb",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r34-jd-3741f0a423",
+      "resume_id": "r34",
+      "jd_id": "jd-3741f0a423",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r34-jd-6be3656f30",
+      "resume_id": "r34",
+      "jd_id": "jd-6be3656f30",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r34-jd-88fa2cc5f2",
+      "resume_id": "r34",
+      "jd_id": "jd-88fa2cc5f2",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r35-jd-92541b372d",
+      "resume_id": "r35",
+      "jd_id": "jd-92541b372d",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r35-jd-b0e8c68f29",
+      "resume_id": "r35",
+      "jd_id": "jd-b0e8c68f29",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r35-jd-bfe4b028cf",
+      "resume_id": "r35",
+      "jd_id": "jd-bfe4b028cf",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r36-jd-2e52971de3",
+      "resume_id": "r36",
+      "jd_id": "jd-2e52971de3",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r36-jd-62e309dd9f",
+      "resume_id": "r36",
+      "jd_id": "jd-62e309dd9f",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r36-jd-ae26b28e91",
+      "resume_id": "r36",
+      "jd_id": "jd-ae26b28e91",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r37-jd-89418ba2f0",
+      "resume_id": "r37",
+      "jd_id": "jd-89418ba2f0",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r37-jd-bee5954510",
+      "resume_id": "r37",
+      "jd_id": "jd-bee5954510",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r37-jd-d0188c4304",
+      "resume_id": "r37",
+      "jd_id": "jd-d0188c4304",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r38-jd-311d9a6c3a",
+      "resume_id": "r38",
+      "jd_id": "jd-311d9a6c3a",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r38-jd-40d4c87450",
+      "resume_id": "r38",
+      "jd_id": "jd-40d4c87450",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r38-jd-fe30ff7862",
+      "resume_id": "r38",
+      "jd_id": "jd-fe30ff7862",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r39-jd-9f58abd578",
+      "resume_id": "r39",
+      "jd_id": "jd-9f58abd578",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r39-jd-c805777b28",
+      "resume_id": "r39",
+      "jd_id": "jd-c805777b28",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r39-jd-f9aa195aed",
+      "resume_id": "r39",
+      "jd_id": "jd-f9aa195aed",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r40-jd-5ca616e65a",
+      "resume_id": "r40",
+      "jd_id": "jd-5ca616e65a",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r40-jd-8eedad8687",
+      "resume_id": "r40",
+      "jd_id": "jd-8eedad8687",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r40-jd-e9ffaf60b6",
+      "resume_id": "r40",
+      "jd_id": "jd-e9ffaf60b6",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r41-jd-25ab77c358",
+      "resume_id": "r41",
+      "jd_id": "jd-25ab77c358",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r41-jd-35b32f63ea",
+      "resume_id": "r41",
+      "jd_id": "jd-35b32f63ea",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r41-jd-798d1d93b7",
+      "resume_id": "r41",
+      "jd_id": "jd-798d1d93b7",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r42-jd-0703562bb9",
+      "resume_id": "r42",
+      "jd_id": "jd-0703562bb9",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r42-jd-3e3323d504",
+      "resume_id": "r42",
+      "jd_id": "jd-3e3323d504",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r42-jd-481e46598b",
+      "resume_id": "r42",
+      "jd_id": "jd-481e46598b",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r43-jd-01d7e0ebc3",
+      "resume_id": "r43",
+      "jd_id": "jd-01d7e0ebc3",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r43-jd-2e0a38d357",
+      "resume_id": "r43",
+      "jd_id": "jd-2e0a38d357",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r43-jd-89939ce9b9",
+      "resume_id": "r43",
+      "jd_id": "jd-89939ce9b9",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r44-jd-0909643285",
+      "resume_id": "r44",
+      "jd_id": "jd-0909643285",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r44-jd-6f1e385a7b",
+      "resume_id": "r44",
+      "jd_id": "jd-6f1e385a7b",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r44-jd-7ffd50acdd",
+      "resume_id": "r44",
+      "jd_id": "jd-7ffd50acdd",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r45-jd-ba5272986f",
+      "resume_id": "r45",
+      "jd_id": "jd-ba5272986f",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r45-jd-e86abe6ff1",
+      "resume_id": "r45",
+      "jd_id": "jd-e86abe6ff1",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r45-jd-fb6911e97f",
+      "resume_id": "r45",
+      "jd_id": "jd-fb6911e97f",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r46-jd-137bc8ddcc",
+      "resume_id": "r46",
+      "jd_id": "jd-137bc8ddcc",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r46-jd-93bb9b0936",
+      "resume_id": "r46",
+      "jd_id": "jd-93bb9b0936",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r46-jd-b07140f599",
+      "resume_id": "r46",
+      "jd_id": "jd-b07140f599",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r47-jd-851e800585",
+      "resume_id": "r47",
+      "jd_id": "jd-851e800585",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r47-jd-ccd54fc393",
+      "resume_id": "r47",
+      "jd_id": "jd-ccd54fc393",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r47-jd-da045977f9",
+      "resume_id": "r47",
+      "jd_id": "jd-da045977f9",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r48-jd-140189c247",
+      "resume_id": "r48",
+      "jd_id": "jd-140189c247",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r48-jd-40b0f217a3",
+      "resume_id": "r48",
+      "jd_id": "jd-40b0f217a3",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r48-jd-b9e9ef4168",
+      "resume_id": "r48",
+      "jd_id": "jd-b9e9ef4168",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r49-jd-1f8710e6de",
+      "resume_id": "r49",
+      "jd_id": "jd-1f8710e6de",
+      "designed_fit": "high"
+    },
+    {
+      "pair_id": "r49-jd-41924dff4c",
+      "resume_id": "r49",
+      "jd_id": "jd-41924dff4c",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r49-jd-acb6ba7599",
+      "resume_id": "r49",
+      "jd_id": "jd-acb6ba7599",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r50-jd-5b55c12fc5",
+      "resume_id": "r50",
+      "jd_id": "jd-5b55c12fc5",
+      "designed_fit": "low"
+    },
+    {
+      "pair_id": "r50-jd-8c85cee901",
+      "resume_id": "r50",
+      "jd_id": "jd-8c85cee901",
+      "designed_fit": "medium"
+    },
+    {
+      "pair_id": "r50-jd-ecdfcad00f",
+      "resume_id": "r50",
+      "jd_id": "jd-ecdfcad00f",
+      "designed_fit": "high"
+    }
+  ],
+  "parser_only_jd_ids": [
+    "jd-01896ea3aa",
+    "jd-022348a7d2",
+    "jd-025ea9deaf",
+    "jd-042119b79f",
+    "jd-048cd4c58d",
+    "jd-0a79c9443f",
+    "jd-0a7fddceeb",
+    "jd-0c427a657e",
+    "jd-0d25d595f1",
+    "jd-0e940dc9e4",
+    "jd-0f3b9e743f",
+    "jd-13803da6ba",
+    "jd-13a78c5d0d",
+    "jd-13b226ea7f",
+    "jd-1475625714",
+    "jd-14ca7d8e72",
+    "jd-15675d7d86",
+    "jd-175c16d4f8",
+    "jd-189eb1e540",
+    "jd-1b0ac5b6eb",
+    "jd-1b6a610511",
+    "jd-1be4e42fcd",
+    "jd-1d931cf5fa",
+    "jd-1dcd03e8cb",
+    "jd-1de9a3bf45",
+    "jd-1e3e9747cf",
+    "jd-2197a66b6d",
+    "jd-22a5a547b6",
+    "jd-232dc238a2",
+    "jd-23ac1779a4",
+    "jd-28c0a107f8",
+    "jd-2ab0c1f84b",
+    "jd-2ad439980c",
+    "jd-2cfc1f6e6d",
+    "jd-2dc4620cdc",
+    "jd-2e5e69761c",
+    "jd-300675fc40",
+    "jd-3277526724",
+    "jd-329b8e5cc4",
+    "jd-32f17573a4",
+    "jd-33067435f8",
+    "jd-348dab907e",
+    "jd-3708c31dd4",
+    "jd-37567c4b7d",
+    "jd-38a8961055",
+    "jd-394c6e6acf",
+    "jd-39bf878d27",
+    "jd-3b24b77af3",
+    "jd-3cb22d5577",
+    "jd-3e15dd6da0",
+    "jd-438871e519",
+    "jd-43a2bbca7e",
+    "jd-45d51e91e2",
+    "jd-4787e81bf4",
+    "jd-487a856db4",
+    "jd-4da151e1e4",
+    "jd-4e3f6657f9",
+    "jd-4e7ef5494e",
+    "jd-5531cb84d2",
+    "jd-55a45641b2",
+    "jd-580d563fbd",
+    "jd-5822ab3336",
+    "jd-591b059806",
+    "jd-592e3ee832",
+    "jd-59c3116405",
+    "jd-5c5db9eabc",
+    "jd-5e00b287bb",
+    "jd-5f62749ed8",
+    "jd-613e68b514",
+    "jd-6235847f96",
+    "jd-632aa5716f",
+    "jd-638fd20f55",
+    "jd-63a0350a69",
+    "jd-673b7e1c8f",
+    "jd-67835005ac",
+    "jd-67d0f95e4a",
+    "jd-687e8d8ccb",
+    "jd-6becf25faa",
+    "jd-6bf0d9b19b",
+    "jd-6eaf240730",
+    "jd-703dea4b11",
+    "jd-71316f502c",
+    "jd-74e81c003c",
+    "jd-772e9e3dc4",
+    "jd-77509af86a",
+    "jd-77b7e6f212",
+    "jd-7898e93a98",
+    "jd-79b62fa654",
+    "jd-7aefb978a1",
+    "jd-7e976ee122",
+    "jd-7f60e5f671",
+    "jd-7f832d166a",
+    "jd-8641bbc609",
+    "jd-86c2d6ee29",
+    "jd-8889d19c43",
+    "jd-8a7833e50e",
+    "jd-8b4c413398",
+    "jd-903c2ef43d",
+    "jd-9277499526",
+    "jd-9445688df1",
+    "jd-94e9130c78",
+    "jd-96268431ff",
+    "jd-963e9c1260",
+    "jd-9c49b24787",
+    "jd-9e50772f61",
+    "jd-9e618ea4a8",
+    "jd-a002dad76f",
+    "jd-a2075d143e",
+    "jd-a217603de0",
+    "jd-a30c4f42c0",
+    "jd-a74420cbd6",
+    "jd-abc03b9438",
+    "jd-ac295c9a90",
+    "jd-acc62d82b2",
+    "jd-ad55f6b548",
+    "jd-b2efedb7be",
+    "jd-b800c7d735",
+    "jd-b86ed670a4",
+    "jd-b90fec80e6",
+    "jd-b9b0ff71da",
+    "jd-bb6b54b549",
+    "jd-bd9f677a08",
+    "jd-c3b3b93b13",
+    "jd-c5ff9ae17c",
+    "jd-c62300341c",
+    "jd-c8c86e968c",
+    "jd-cc1971c86c",
+    "jd-cdc412e3ed",
+    "jd-ce019e9955",
+    "jd-cf76b3264b",
+    "jd-d024e2a5e4",
+    "jd-d0e3ba1294",
+    "jd-d2cc46b93d",
+    "jd-d463f0ebda",
+    "jd-d4de6185d6",
+    "jd-d5541dc4a6",
+    "jd-d596ed0df9",
+    "jd-d6da327021",
+    "jd-d93ec67563",
+    "jd-db5dfbb92d",
+    "jd-dc051e3291",
+    "jd-dc5b58fc1b",
+    "jd-e1210ae658",
+    "jd-e56de1158b",
+    "jd-e5f116cfa7",
+    "jd-e6327c2354",
+    "jd-e755c574a0",
+    "jd-ea79374f05",
+    "jd-ebf276c3ad",
+    "jd-fc074d1ae8",
+    "jd-fe432154cb",
+    "jd-ffbccc8edb"
+  ]
+}

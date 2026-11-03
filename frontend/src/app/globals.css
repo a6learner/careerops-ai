@@ -1,45 +1,132 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f6f8;
-  --foreground: #172033;
+  --background: #ffffff;
+  --foreground: #37352f;
   --surface: #ffffff;
-  --surface-subtle: #f8fafc;
-  --border: #dfe4ea;
-  --muted: #667085;
-  --brand: #5557d9;
-  --brand-strong: #4143b8;
-  --brand-soft: #eeefff;
-  --danger: #c9344a;
-  --danger-soft: #fff0f2;
-  --success: #137a5a;
-  --success-soft: #eaf8f2;
+  --surface-subtle: #f7f7f5;
+  --hover: rgb(55 53 47 / 0.06);
+  --border: #ebebea;
+  --border-strong: #dcdcda;
+  --muted: #787774;
+  --faint: #a5a4a0;
+  --brand: #2383e2;
+  --brand-strong: #0b6bcb;
+  --brand-soft: #e7f1fb;
+  --danger: #d44c47;
+  --danger-strong: #b93a35;
+  --danger-soft: #fdebec;
+  --success: #448361;
+  --success-soft: #edf3ec;
+  --warning: #cb7b37;
+  --warning-soft: #fbecdd;
+  --info: #337ea9;
+  --info-soft: #e7f3f8;
+  --sidebar: #f8f8f7;
+  --sidebar-elevated: rgb(55 53 47 / 0.06);
+  --sidebar-border: #ededec;
+  --sidebar-foreground: #37352f;
+  --sidebar-muted: #6f6e69;
+  --tag-gray-bg: #e3e2e0;
+  --tag-gray-fg: #32302c;
+  --tag-brown-bg: #eee0da;
+  --tag-brown-fg: #442a1e;
+  --tag-orange-bg: #fadec9;
+  --tag-orange-fg: #49290e;
+  --tag-yellow-bg: #fdecc8;
+  --tag-yellow-fg: #402c1b;
+  --tag-green-bg: #dbeddb;
+  --tag-green-fg: #1c3829;
+  --tag-blue-bg: #d3e5ef;
+  --tag-blue-fg: #183347;
+  --tag-purple-bg: #e8deee;
+  --tag-purple-fg: #412454;
+  --tag-pink-bg: #f5e0e9;
+  --tag-pink-fg: #4c2337;
+  --tag-red-bg: #ffe2dd;
+  --tag-red-fg: #5d1715;
 }
 
-* {
-  border-color: var(--border);
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-hover: var(--hover);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-danger: var(--danger);
+  --color-danger-strong: var(--danger-strong);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-elevated: var(--sidebar-elevated);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --shadow-card: rgb(15 15 15 / 0.05) 0 0 0 1px, rgb(15 15 15 / 0.04) 0 2px 4px;
+  --shadow-raised: rgb(15 15 15 / 0.05) 0 0 0 1px, rgb(15 15 15 / 0.1) 0 3px 6px, rgb(15 15 15 / 0.2) 0 9px 24px;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-toast-in: toast-in 180ms ease-out;
+
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
 }
 
-html {
-  background: var(--background);
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11";
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgb(35 131 226 / 0.28);
+  }
 }
 
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top right, rgb(85 87 217 / 8%), transparent 28rem),
-    var(--background);
-  color: var(--foreground);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-::selection {
-  background: #dfe0ff;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

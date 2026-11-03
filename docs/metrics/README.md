@@ -77,6 +77,29 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
 - `2026-10-03-local-hybrid-retrieval-test-record.md` records the offline and local
   PostgreSQL verification for production-path hybrid retrieval integration.
 
+## Large-Scale Development Evaluation
+
+- `2026-11-01-large-scale-eval-v1.md` records the 302-JD / 50-resume / 150-pair
+  real-pipeline run (ADR-047): parser quality against model-made labels, matcher
+  success by requirement count, over- and under-claim, retrieval recall, CV import
+  segmentation, fake-provider scale numbers and provider periods.
+- `2026-11-01-large-scale-eval-v1/` holds the scorer outputs, exported database
+  rows, driver checkpoint, retrieval reports, log counts and the evidence-guarantee
+  SQL check.
+- `2026-11-02-matcher-batching-dev.md` re-runs the 150 pairs with batched matching
+  (ADR-049) on replayed parse runs: success by requirement count, same-day
+  single-call and repeat controls for over-claiming, and the cap-1600 and
+  batch-3 alternatives. Development check, not a holdout. Files are in
+  `2026-11-02-matcher-batching-dev/`.
+- `2026-11-03-heading-filter-dev.md` repeats that run with the parse-v4 heading
+  filter (ADR-050): label check of the rule, over- and under-claiming overall and
+  like-for-like against batch 6 and the original single call. Development check,
+  not a holdout. Files are in `2026-11-03-heading-filter-dev/`.
+- `2026-11-03-matcher-cap-dev.md` measures the 2,000-token matcher cap (ADR-051):
+  138/148 analyses succeeded with no truncation, over-claiming on newly completed
+  hard jobs, and a paired same-pair comparison with the 800 cap. Development check,
+  not a holdout. Files are in `2026-11-03-matcher-cap-dev/`.
+
 ## Current Matcher Evidence
 
 - `2026-10-04-fake-evidence-matcher-development.md` explains the author-approved

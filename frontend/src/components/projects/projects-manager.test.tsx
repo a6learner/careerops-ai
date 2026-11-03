@@ -39,7 +39,8 @@ describe("ProjectsManager", () => {
     expect(confirm).toBeDisabled();
     await user.type(screen.getByLabelText("Your actual contribution"), "I designed the constraint.");
     await user.click(confirm);
-    await screen.findByText("confirmed · v2");
+    await screen.findByText("confirmed");
+    expect(screen.getByText("v2")).toBeInTheDocument();
     expect(fetchMock).toHaveBeenCalledWith(
       "/api/backend/api/v1/projects/project-1/checkpoints/record-1/review",
       expect.objectContaining({ method: "PATCH", headers: { "content-type": "application/json", "if-match": "1" },
@@ -58,6 +59,7 @@ describe("ProjectsManager", () => {
       return Response.json({ items: String(input).includes("checkpoints") ? [] : [project], next_cursor: null });
     });
     const user = userEvent.setup(); mount();
+    await user.click(await screen.findByRole("button", { name: "New project" }));
     await user.type(screen.getByLabelText("Project name"), "Evidence project");
     await user.type(screen.getByLabelText("Project goal"), "Keep real decisions");
     await user.click(screen.getByRole("button", { name: "Create project" }));
@@ -79,5 +81,26 @@ describe("ProjectsManager", () => {
     expect(screen.queryByRole("button", { name: "Withdraw record" })).not.toBeInTheDocument();
     await user.click(screen.getByText("Record details and sources"));
     expect(screen.getByText("unique keys", { selector: "blockquote" })).toBeInTheDocument();
+  });
+
+  it("asks for confirmation before withdrawing a record", async () => {
+    vi.restoreAllMocks();
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
+      if (init?.method === "PATCH") return Response.json({ ...record, status: "withdrawn", version: 2 });
+      return Response.json({ items: String(input).includes("checkpoints") ? [record] : [project], next_cursor: null });
+    });
+    const user = userEvent.setup(); mount();
+    await user.click(await screen.findByRole("button", { name: project.name }));
+    await user.click(await screen.findByRole("button", { name: "Withdraw record" }));
+
+    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PATCH")).toBe(false);
+    await user.click(screen.getByRole("button", { name: "Cancel" }));
+    await user.click(screen.getByRole("button", { name: "Withdraw record" }));
+    await user.click(screen.getByRole("button", { name: "Confirm withdraw" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith(
+      "/api/backend/api/v1/projects/project-1/checkpoints/record-1/review",
+      expect.objectContaining({ method: "PATCH", body: JSON.stringify({ status: "withdrawn", contribution_note: "" }) }),
+    ));
   });
 });

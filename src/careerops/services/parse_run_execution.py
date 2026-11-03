@@ -1,3 +1,4 @@
+import logging
 from time import perf_counter
 from typing import Protocol
 from uuid import UUID
@@ -9,6 +10,8 @@ from careerops.domain.parse_runs import (
     ParseRunErrorCode,
     ParseRunWorkItem,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class RequirementParser(Protocol):
@@ -37,6 +40,9 @@ class ParseRunExecutionStore(Protocol):
         model_name: str,
         error_code: ParseRunErrorCode,
         latency_ms: int,
+        *,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
     ) -> bool: ...
 
     async def commit(self) -> None: ...
@@ -54,6 +60,7 @@ class ParseRunExecutionService:
         await self._store.commit()
 
         started = perf_counter()
+        output: ParserOutput | None = None
         try:
             output = await self._parser.parse(work_item.input_text)
             validate_parser_output(work_item.input_text, output)
@@ -64,11 +71,26 @@ class ParseRunExecutionService:
                 elapsed_milliseconds(started),
             )
             return True
-        except ParserOutputValidationError:
+        except ParserOutputValidationError as exc:
+            input_tokens = exc.input_tokens if output is None else output.input_tokens
+            output_tokens = exc.output_tokens if output is None else output.output_tokens
+            logger.warning(
+                "requirement_parser_output_rejected",
+                extra={
+                    "run_type": "parse",
+                    "run_id": str(parse_run_id),
+                    "model_name": self._parser.model_name,
+                    "failure_reason": exc.reason.value,
+                    "input_tokens": input_tokens,
+                    "output_tokens": output_tokens,
+                },
+            )
             await self._fail(
                 parse_run_id,
                 ParseRunErrorCode.PARSER_OUTPUT_INVALID,
                 elapsed_milliseconds(started),
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
             )
             return True
 
@@ -89,12 +111,17 @@ class ParseRunExecutionService:
         parse_run_id: UUID,
         error_code: ParseRunErrorCode,
         latency_ms: int,
+        *,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
     ) -> None:
         failed = await self._store.fail_parse_run(
             parse_run_id,
             self._parser.model_name,
             error_code,
             latency_ms,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
         )
         if failed:
             await self._store.commit()

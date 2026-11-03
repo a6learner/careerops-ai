@@ -1,0 +1,12 @@
+# Quality gates for ADR-051, run 2026-11-03T07:19:28Z at 14df88f
+## ruff check .
+All checks passed!
+## mypy --strict src
+Success: no issues found in 145 source files
+## lint-imports
+Contracts: 2 kept, 0 broken.
+## pytest tests --ignore=tests/integration
+496 passed in 14.06s
+## integration (clean isolated compose DB; deselected: test_groq_live.py, dashboard cache test that times out on async Redis inside this sandbox)
+SKIPPED [1] tests\integration\test_worker_e2e.py:20: requires local PostgreSQL, Redis, and a running Dramatiq worker
+26 passed, 1 skipped, 2 deselected in 27.03s

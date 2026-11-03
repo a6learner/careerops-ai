@@ -1,0 +1,12 @@
+{
+ "worker_log": "worker_cap2000_20261103.log (one session)",
+ "output_rejections_by_diagnostic": {
+  "loc=matches.1.missing.requirement_id;type=uuid_parsing": 1,
+  "provider_rejected_output:finish_reason=error": 7,
+  "expected=6;returned=3;missing=3;unknown=0;duplicates=0;invalid_shape=0": 1,
+  "loc=matches.3.matched.requirement_id;type=uuid_parsing": 1
+ },
+ "openrouter_http_status": {
+  "200": 346
+ }
+}

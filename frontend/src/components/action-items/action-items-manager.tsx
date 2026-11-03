@@ -1,14 +1,21 @@
 "use client";
 
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { CheckSquare2, Plus } from "lucide-react";
+import { CheckSquare2, Columns3, LoaderCircle, Plus, X } from "lucide-react";
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 
 import { ApiFeedback } from "@/components/api-feedback";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { StatusBadge } from "@/components/ui/status-badge";
+import { PageHeader } from "@/components/ui/page-header";
+import { Select } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
+import { StatusBadge, type TagColor } from "@/components/ui/status-badge";
+import { useToast } from "@/components/ui/toast";
 import { apiRequest } from "@/lib/api/client";
 import {
   ACTION_ITEM_STATUSES,
@@ -18,18 +25,19 @@ import {
   type JobList,
 } from "@/lib/api/types";
 
+const BOARD_PAGE_SIZE = 100;
+const STATUS_COLORS: Record<ActionItemStatus, TagColor> = { todo: "gray", doing: "blue", done: "green" };
+
 export function ActionItemsManager() {
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [showCreate, setShowCreate] = useState(false);
-  const [filter, setFilter] = useState<ActionItemStatus | "all">("all");
   const [pendingSubmission, setPendingSubmission] = useState<{ key: string; fingerprint: string } | null>(null);
-  const queryKey = ["action-items", filter] as const;
   const items = useInfiniteQuery({
-    queryKey,
+    queryKey: ["action-items", "board"],
     initialPageParam: null as string | null,
     queryFn: ({ pageParam }) => {
-      const params = new URLSearchParams({ limit: "20" });
-      if (filter !== "all") params.set("status", filter);
+      const params = new URLSearchParams({ limit: String(BOARD_PAGE_SIZE) });
       if (pageParam) params.set("cursor", pageParam);
       return apiRequest<ActionItemList>(`/api/v1/action-items?${params.toString()}`);
     },
@@ -46,20 +54,12 @@ export function ActionItemsManager() {
         headers: { "content-type": "application/json", "idempotency-key": key },
         body: JSON.stringify({ job_id: jobId, title, source_evidence_match_id: null }),
       }),
-    onSuccess: async () => {
+    onSuccess: async (item) => {
       setPendingSubmission(null);
       setShowCreate(false);
+      toast({ tone: "success", title: "Action item created", description: item.title });
       await invalidateActionData(queryClient);
     },
-  });
-  const update = useMutation({
-    mutationFn: ({ item, title, status }: { item: ActionItem; title: string; status: ActionItemStatus }) =>
-      apiRequest<ActionItem>(`/api/v1/action-items/${item.id}`, {
-        method: "PATCH",
-        headers: { "content-type": "application/json", "if-match": String(item.version) },
-        body: JSON.stringify({ title, status }),
-      }),
-    onSuccess: async () => invalidateActionData(queryClient),
   });
 
   const allItems = items.data?.pages.flatMap((page) => page.items) ?? [];
@@ -78,29 +78,36 @@ export function ActionItemsManager() {
 
   return (
     <div>
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="text-sm font-semibold text-[var(--brand)]">Preparation work</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">Action Items</h1>
-          <p className="mt-2 text-sm text-[var(--muted)]">Turn evidence gaps into concrete work and track completion.</p>
+      <PageHeader
+        icon="✅"
+        title="Action Items"
+        description="Turn evidence gaps into concrete preparation work and track it to done."
+      />
+
+      <div className="mt-8 flex items-center justify-between gap-3 border-b pb-1.5">
+        <div className="-mb-[8px] flex items-center gap-1.5 border-b-2 border-foreground pb-1.5 text-sm font-medium">
+          <Columns3 className="size-4" aria-hidden="true" />
+          Board
+          {allItems.length > 0 ? <span className="font-normal text-faint">{allItems.length}{items.hasNextPage ? "+" : ""}</span> : null}
         </div>
-        <Button onClick={() => setShowCreate((visible) => !visible)}><Plus className="size-4" />{showCreate ? "Close form" : "Add action item"}</Button>
+        <Button size="sm" variant={showCreate ? "secondary" : "primary"} onClick={() => setShowCreate((visible) => !visible)}>
+          {showCreate ? <X className="size-3.5" aria-hidden="true" /> : <Plus className="size-3.5" aria-hidden="true" />}
+          {showCreate ? "Close form" : "Add action item"}
+        </Button>
       </div>
 
       {showCreate ? (
-        <Card className="mt-6 p-5 sm:p-6">
+        <Card className="mt-4 p-5 shadow-raised">
           <form className="grid gap-4 sm:grid-cols-[minmax(180px,0.8fr)_1.2fr_auto] sm:items-end" onSubmit={submitCreate}>
-            <div className="space-y-2">
-              <label className="text-sm font-medium" htmlFor="action-job">Job</label>
-              <select id="action-job" name="job_id" required className="h-11 w-full rounded-lg border bg-white px-3 text-sm outline-none focus:border-[var(--brand)]">
+            <Field label="Job" htmlFor="action-job">
+              <Select id="action-job" name="job_id" required>
                 <option value="">Choose a job</option>
                 {jobs.data?.items.map((job) => <option key={job.id} value={job.id}>{job.company} — {job.title}</option>)}
-              </select>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium" htmlFor="action-title">Task</label>
+              </Select>
+            </Field>
+            <Field label="Task" htmlFor="action-title">
               <Input id="action-title" name="title" maxLength={200} required placeholder="Practice explaining the caching trade-off" />
-            </div>
+            </Field>
             <Button disabled={create.isPending || jobs.isPending}>{create.isPending ? "Creating…" : "Create"}</Button>
           </form>
           {jobs.error ? <div className="mt-4"><ApiFeedback error={jobs.error} onRetry={() => void jobs.refetch()} /></div> : null}
@@ -108,50 +115,128 @@ export function ActionItemsManager() {
         </Card>
       ) : null}
 
-      <div className="mt-6 flex items-center gap-3">
-        <label className="text-sm font-medium" htmlFor="action-filter">Status</label>
-        <select id="action-filter" value={filter} onChange={(event) => setFilter(event.target.value as ActionItemStatus | "all")} className="h-10 rounded-lg border bg-white px-3 text-sm outline-none focus:border-[var(--brand)]">
-          <option value="all">All statuses</option>
-          {ACTION_ITEM_STATUSES.map((status) => <option key={status} value={status}>{statusLabel(status)}</option>)}
-        </select>
+      <div className="mt-4">
+        {items.isPending ? <BoardSkeleton /> : null}
+        {items.error ? <ApiFeedback error={items.error} onRetry={() => void items.refetch()} /> : null}
+        {!items.isPending && !items.error && allItems.length === 0 ? (
+          <EmptyState icon={CheckSquare2} title="No action items in this view." description="Create one manually or from an analysis gap on a job page." />
+        ) : null}
+        {allItems.length > 0 ? (
+          <div className="overflow-x-auto pb-4">
+            <div className="grid min-w-[720px] grid-cols-3 gap-3">
+              {ACTION_ITEM_STATUSES.map((status) => {
+                const column = allItems.filter((item) => item.status === status);
+                return (
+                  <section key={status} aria-label={`${statusLabel(status)} action items`}>
+                    <div className="flex items-center gap-2 px-1 pb-2">
+                      <StatusBadge tone={STATUS_COLORS[status]} dot>{statusLabel(status)}</StatusBadge>
+                      <span className="text-sm text-faint">{column.length}</span>
+                    </div>
+                    <div className="space-y-2">
+                      {column.map((item) => (
+                        <ActionItemCard key={`${item.id}:${item.version}`} item={item} jobName={jobNames.get(item.job_id)} />
+                      ))}
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
       </div>
-
-      {update.error ? <div className="mt-6"><ApiFeedback error={update.error} onRetry={() => { update.reset(); void items.refetch(); }} /></div> : null}
-      {items.isPending ? <Card className="mt-6 p-6 text-sm text-[var(--muted)]">Loading action items…</Card> : null}
-      {items.error ? <div className="mt-6"><ApiFeedback error={items.error} onRetry={() => void items.refetch()} /></div> : null}
-      {!items.isPending && !items.error && allItems.length === 0 ? (
-        <Card className="mt-6 border-dashed p-8 text-center"><CheckSquare2 className="mx-auto size-7 text-slate-400" /><p className="mt-3 font-semibold">No action items in this view.</p><p className="mt-2 text-sm text-[var(--muted)]">Create one manually or from an Analysis gap.</p></Card>
+      {items.hasNextPage ? (
+        <div className="mt-2">
+          <Button size="sm" variant="secondary" disabled={items.isFetchingNextPage} onClick={() => void items.fetchNextPage()}>
+            {items.isFetchingNextPage ? "Loading…" : "Load more"}
+          </Button>
+        </div>
       ) : null}
-
-      <div className="mt-6 space-y-3">
-        {allItems.map((item) => <ActionItemRow key={`${item.id}:${item.version}`} item={item} jobName={jobNames.get(item.job_id)} isUpdating={update.isPending} onUpdate={(title, status) => update.mutate({ item, title, status })} />)}
-      </div>
-      {items.hasNextPage ? <div className="mt-6 text-center"><Button variant="secondary" disabled={items.isFetchingNextPage} onClick={() => void items.fetchNextPage()}>{items.isFetchingNextPage ? "Loading…" : "Load more"}</Button></div> : null}
     </div>
   );
 }
 
-function ActionItemRow({ item, jobName, isUpdating, onUpdate }: { item: ActionItem; jobName?: string; isUpdating: boolean; onUpdate: (title: string, status: ActionItemStatus) => void }) {
+function ActionItemCard({ item, jobName }: { item: ActionItem; jobName?: string }) {
+  const queryClient = useQueryClient();
+  const toast = useToast();
   const [title, setTitle] = useState(item.title);
   const [status, setStatus] = useState<ActionItemStatus>(item.status);
+  const update = useMutation({
+    mutationFn: () =>
+      apiRequest<ActionItem>(`/api/v1/action-items/${item.id}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json", "if-match": String(item.version) },
+        body: JSON.stringify({ title: title.trim(), status }),
+      }),
+    onSuccess: async (updated) => {
+      toast({ tone: "success", title: updated.status === "done" ? "Marked done" : "Action item saved", description: updated.title });
+      await invalidateActionData(queryClient);
+    },
+  });
   const changed = title.trim() !== item.title || status !== item.status;
+
   return (
-    <Card className="p-4 sm:p-5">
-      <div className="grid gap-4 lg:grid-cols-[1fr_160px_auto] lg:items-end">
-        <div className="space-y-2">
-          <div className="flex flex-wrap items-center gap-2"><span className="text-xs font-medium text-[var(--muted)]">{jobName ?? "Archived or unavailable job"}</span>{item.job_is_archived ? <StatusBadge tone="danger">Archived job</StatusBadge> : null}{item.source_evidence_match_id ? <StatusBadge tone="brand">From analysis gap</StatusBadge> : null}</div>
-          <label className="sr-only" htmlFor={`action-title-${item.id}`}>Action item title</label>
-          <Input id={`action-title-${item.id}`} value={title} maxLength={200} onChange={(event) => setTitle(event.target.value)} />
-        </div>
-        <div className="space-y-2">
-          <label className="text-xs font-medium text-[var(--muted)]" htmlFor={`action-status-${item.id}`}>Status</label>
-          <select id={`action-status-${item.id}`} value={status} onChange={(event) => setStatus(event.target.value as ActionItemStatus)} className="h-11 w-full rounded-lg border bg-white px-3 text-sm outline-none focus:border-[var(--brand)]">
-            {ACTION_ITEM_STATUSES.map((value) => <option key={value} value={value}>{statusLabel(value)}</option>)}
-          </select>
-        </div>
-        <Button variant="secondary" disabled={!changed || !title.trim() || isUpdating} onClick={() => onUpdate(title.trim(), status)}>Save</Button>
+    <article className="rounded-md bg-surface p-2.5 shadow-card">
+      <label className="sr-only" htmlFor={`action-title-${item.id}`}>Action item title</label>
+      <textarea
+        id={`action-title-${item.id}`}
+        value={title}
+        maxLength={200}
+        rows={1}
+        onChange={(event) => setTitle(event.target.value)}
+        className="w-full resize-none rounded px-1 py-0.5 [field-sizing:content] text-sm font-medium leading-5 outline-none transition-colors hover:bg-hover focus:bg-hover"
+      />
+      <div className="mt-1 px-1">
+        {item.job_is_archived ? (
+          <span className="text-xs text-muted">{jobName ?? "Archived or unavailable job"}</span>
+        ) : (
+          <Link href={`/jobs/${item.job_id}`} className="text-xs text-muted underline decoration-border-strong underline-offset-2 hover:text-foreground">
+            {jobName ?? "Open job"}
+          </Link>
+        )}
       </div>
-    </Card>
+      {item.job_is_archived || item.source_evidence_match_id ? (
+        <div className="mt-1.5 flex flex-wrap gap-1 px-1">
+          {item.job_is_archived ? <StatusBadge tone="red">Archived job</StatusBadge> : null}
+          {item.source_evidence_match_id ? <StatusBadge tone="orange">From analysis gap</StatusBadge> : null}
+        </div>
+      ) : null}
+      <div className="mt-2 flex items-center gap-1.5">
+        <label className="sr-only" htmlFor={`action-status-${item.id}`}>Status</label>
+        <select
+          id={`action-status-${item.id}`}
+          value={status}
+          onChange={(event) => setStatus(event.target.value as ActionItemStatus)}
+          className="h-6 cursor-pointer rounded px-1 text-xs text-muted outline-none transition-colors hover:bg-hover focus-visible:ring-2 focus-visible:ring-brand/40"
+        >
+          {ACTION_ITEM_STATUSES.map((value) => <option key={value} value={value}>{statusLabel(value)}</option>)}
+        </select>
+        {changed ? (
+          <Button size="sm" className="ml-auto h-6 px-2 text-xs" disabled={!title.trim() || update.isPending} onClick={() => update.mutate()}>
+            {update.isPending ? <LoaderCircle className="size-3 animate-spin" aria-hidden="true" /> : null}
+            Save
+          </Button>
+        ) : null}
+      </div>
+      {update.error ? (
+        <div className="mt-2">
+          <ApiFeedback error={update.error} onRetry={() => { update.reset(); void invalidateActionData(queryClient); }} />
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+function BoardSkeleton() {
+  return (
+    <div role="status" aria-live="polite" className="grid grid-cols-3 gap-3">
+      <span className="sr-only">Loading action items…</span>
+      {ACTION_ITEM_STATUSES.map((status) => (
+        <div key={status} className="space-y-2">
+          <Skeleton className="h-5 w-16" />
+          <div className="rounded-md p-2.5 shadow-card"><Skeleton className="h-4 w-3/4" /><Skeleton className="mt-2 h-3 w-1/2" /></div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -162,6 +247,6 @@ async function invalidateActionData(queryClient: ReturnType<typeof useQueryClien
   ]);
 }
 
-function statusLabel(value: string): string {
-  return value.charAt(0).toUpperCase() + value.slice(1);
+function statusLabel(value: ActionItemStatus): string {
+  return value === "todo" ? "To do" : value.charAt(0).toUpperCase() + value.slice(1);
 }

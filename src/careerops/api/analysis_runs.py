@@ -64,6 +64,20 @@ async def submit_analysis_run(
     return to_response(run)
 
 
+@router.get("/latest", response_model=AnalysisRunResponse)
+async def get_latest_analysis_run(
+    job_id: UUID,
+    parse_run_id: UUID,
+    current_user: Annotated[UserAccount, Depends(get_current_user)],
+    session: Annotated[AsyncSession, Depends(get_session)],
+    dispatcher: Annotated[AnalysisRunDispatcher, Depends(get_analysis_run_dispatcher)],
+    rate_limiter: Annotated[AnalysisRateLimiter, Depends(get_analysis_rate_limiter)],
+) -> AnalysisRunResponse:
+    service = build_analysis_run_service(session, dispatcher, rate_limiter)
+    run = await service.get_latest_analysis_run(current_user.id, job_id, parse_run_id)
+    return to_response(run)
+
+
 @router.get("/{analysis_run_id}", response_model=AnalysisRunResponse)
 async def get_analysis_run(
     job_id: UUID,

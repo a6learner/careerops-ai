@@ -21,6 +21,8 @@ _STRUCTURED_FIELDS = (
     "diagnostic",
     "response_sha256",
     "response_size_bytes",
+    "batch_index",
+    "batch_count",
     "error_type",
     "requeued",
     "dispatched",

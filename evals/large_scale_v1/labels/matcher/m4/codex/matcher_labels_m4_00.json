@@ -1,0 +1,166 @@
+[
+  {
+    "pair_id": "r29-jd-e0e4f3984c",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "4f35c782-6282-4671-bb0c-083dc32ca656",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e1",
+            "source_ref": "description",
+            "quote": "Implemented ASP.NET Core endpoints for reserving seats at six small venues, using Entity Framework Core transactions against SQL Server."
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The requirement permits equivalent hands-on experience instead of a degree, and the engineering internship explicitly proves hands-on software engineering with production-oriented endpoints, transactions, and SQL Server."
+      },
+      {
+        "requirement_id": "a64958f8-0a92-425b-a29f-9236a742da04",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e4",
+            "source_ref": "description",
+            "quote": "Implemented hash tables, AVL trees, and priority queues in C# without collection-library equivalents. Benchmarked lookup behavior on randomized inputs and explained collision strategies in a written analysis."
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The data-structures portfolio is a software project that directly demonstrates programming fundamentals through manual implementations, benchmarking, and analysis."
+      },
+      {
+        "requirement_id": "e74042ac-3116-477d-afd3-37f9bd534a34",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r29-e1",
+            "source_ref": "description",
+            "quote": "Implemented ASP.NET Core endpoints for reserving seats at six small venues"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The internship proves comfort writing application code, but none of the experiences explicitly says the candidate learned new languages, frameworks, or tools."
+      },
+      {
+        "requirement_id": "60e34f91-017a-4a15-ab47-e83da2af7176",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "No title, description, skill, or outcome across the four experiences mentions AI coding tools, coding agents, or their use in a development workflow."
+      },
+      {
+        "requirement_id": "1549f634-1fee-45f7-94b5-385fd3037e88",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r29-e1",
+            "source_ref": "description",
+            "quote": "Added xUnit tests for expired holds and simultaneous checkout requests."
+          },
+          {
+            "exp_key": "r29-e1",
+            "source_ref": "outcome",
+            "quote": "The revised hold path prevented overselling in the team's 500-request load test."
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The internship proves successful work on a challenging concurrency and overselling problem, but no experience explicitly establishes curiosity about systems or excitement as an attitude."
+      },
+      {
+        "requirement_id": "a346e63d-1bb9-4df8-8471-e0a4202d8ece",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r29-e3",
+            "source_ref": "description",
+            "quote": "Built a .NET Minimal API for tracking forty shared tools, with SQLite persistence and Swagger documentation."
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Building the dorm tool-lending API demonstrates ownership of a concrete project, but the experience does not explicitly prove moving quickly or learning independently."
+      },
+      {
+        "requirement_id": "6c413b19-c786-49c0-8cc0-8139bc231930",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "None of the four experiences states the candidate's location or ability to work in person from the Toronto office."
+      },
+      {
+        "requirement_id": "aba9a585-995d-460b-91ad-6145eaaa6f29",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e1",
+            "source_ref": "title",
+            "quote": "Engineering Intern, Harbor Ticketing"
+          },
+          {
+            "exp_key": "r29-e1",
+            "source_ref": "description",
+            "quote": "Implemented ASP.NET Core endpoints"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The Harbor Ticketing role is explicitly an engineering internship and its description documents software-engineering implementation work."
+      },
+      {
+        "requirement_id": "0694a3cb-8866-4386-bd5f-008d72275d6b",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e2",
+            "source_ref": "description",
+            "quote": "Wrote a C# worker that consumed RabbitMQ messages after ticket purchases and rendered venue-specific confirmation templates. Configured dead-letter queues for invalid payloads and added correlation identifiers to Serilog entries."
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Because the alternatives are disjunctive, the RabbitMQ notification worker with dead-letter handling and correlated logging fully proves experience building an infrastructure component."
+      },
+      {
+        "requirement_id": "48f27dfd-5789-473c-a70d-0c2c2691c91e",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e3",
+            "source_ref": "description",
+            "quote": "Built a .NET Minimal API for tracking forty shared tools, with SQLite persistence and Swagger documentation."
+          },
+          {
+            "exp_key": "r29-e3",
+            "source_ref": "outcome",
+            "quote": "Eight residents used the service for a month and recorded 73 loans."
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The dorm tool-lending API is an explicitly identified project with real resident usage, satisfying the personal-project alternative without requiring an open-source contribution."
+      },
+      {
+        "requirement_id": "ae85823d-2fc6-4a11-b146-775221f165ed",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e2",
+            "source_ref": "description",
+            "quote": "consumed RabbitMQ messages after ticket purchases"
+          },
+          {
+            "exp_key": "r29-e2",
+            "source_ref": "skill:3",
+            "quote": "Message Queues"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The requirement is disjunctive, and the RabbitMQ message-driven worker explicitly demonstrates distributed-systems experience even though cloud, Linux, and containers are not listed."
+      },
+      {
+        "requirement_id": "86381a30-ca3f-4945-9045-56259d04679d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "None of the four experiences mentions an LLM, generative-AI model, AI agent, or building software with either technology."
+      }
+    ]
+  }
+]

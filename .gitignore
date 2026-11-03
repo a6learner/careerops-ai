@@ -1,5 +1,6 @@
 # Local secrets and machine-specific environment overrides.
 .env
+.cloud-lab/
 .env.*
 !.env.example
 .venv/

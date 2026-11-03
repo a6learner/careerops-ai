@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-28",
+  "timezone": "America/Los_Angeles",
+  "scope": "private remote synthetic lab, fake backend providers",
+  "cloud_executed": true,
+  "instance_alias": "careerops-cloud-lab",
+  "region": "us-west-2",
+  "os": "Ubuntu 24.04.4 LTS noble x86_64",
+  "docker_server": "29.9.2",
+  "compose": "5.6.1",
+  "release_tag_utc": "20261029015411",
+  "archive_sha256": "7b2081f81fe83f95d2e2783d866ac434b2ea62cbc3814eab5dde5f77c1fa7252",
+  "archive_entries": 312,
+  "images": {
+    "api": "sha256:19b88e6373a3f35b61e5c04b41b9c68633fc71b395cfdfd6f7be9e2ba4b35417",
+    "worker": "sha256:026964e4e96ad7b5125f27a1e92ea6fbecab514fc068847cc88d90f3e756d0b1",
+    "frontend": "sha256:b5b743726542c8d7957f00867e660765fcd2a9f1b2796b69d56bb6c0de55eead"
+  },
+  "migration_head": "202610270001",
+  "migration_drift": false,
+  "readiness": {
+    "api": "ready",
+    "frontend": "ready"
+  },
+  "network": {
+    "api_bind": "127.0.0.1:18010",
+    "frontend_bind": "127.0.0.1:13010",
+    "postgres_host_published": false,
+    "redis_host_published": false,
+    "public_https_tested": false,
+    "aws_firewall_audited": false
+  },
+  "browser_tests": {
+    "target": "cloud via SSH local forward",
+    "passed": 2,
+    "failed": 0
+  },
+  "queue": {
+    "worker_stopped_submission": "queued",
+    "readiness_while_worker_stopped": "ready",
+    "lab_redis_flushed": true,
+    "parse_recovery_dispatched": 1,
+    "dispatch_failures": 0,
+    "final_status": "succeeded",
+    "attempt": 1,
+    "requirements": 2
+  },
+  "backup": {
+    "format": "pg_dump custom",
+    "tables": 17,
+    "all_table_counts_and_contents_match": true,
+    "fingerprint_sha256": "6a7a4fb376f394d371137f5736192f4bef962ab4b2d4999be32dec313bc007ec",
+    "dump_sha256": "b1ebb524cacc8430e4c1573f7ad68dde0c25d18d6b0261a3706ff3686e2b47e2",
+    "local_download_checksum_matches": true,
+    "scratch_database_removed": true
+  },
+  "frontend_production_dependency_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "private_key_contents_inspected_or_copied": false,
+  "real_model_calls_enabled": false,
+  "personal_database_uploaded": false,
+  "current_state": "author reports Lightsail instance deleted; SSH tunnel exited",
+  "cloud_resource_deletion": "author-reported instance deletion; not independently AWS-API verified",
+  "final_billing": "not verified",
+  "application_teardown": {
+    "containers_remaining": 0,
+    "networks_remaining": 0,
+    "database_volumes_remaining": 0,
+    "checked_at_utc": "2026-10-29T03:26:11Z",
+    "retention_request_arrived_after_teardown_dispatched": true
+  },
+  "retained": {
+    "remote_project_files": true,
+    "remote_release_images": true,
+    "remote_verification_dump": true,
+    "local_backup_checksum_matches": true,
+    "post_verification_user_changes_backed_up": "not established"
+  },
+  "vm_stop": "not performed by assistant",
+  "snapshot_creation": "not performed",
+  "ssh_tunnel": {
+    "state": "exited",
+    "exit_code": 1,
+    "reason": "remote host closed connection"
+  },
+  "residual_cloud_resources": "not independently verified"
+}

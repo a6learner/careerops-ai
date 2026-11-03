@@ -1,0 +1,2463 @@
+[
+  {
+    "pair_id": "r08-jd-252787b3f3",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "94ad475f-fbff-4f52-841c-caff4cb1df73",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Machine Learning Intern, Tidepool Media (streaming startup); Model Serving Side Project; Statistical Learning Capstone; Using LLM Embeddings for Product Search; Peer Mentor, Data Science Program) do not explicitly prove this requirement: You will be responsible for the core orchestration, routing, and planning systems."
+      },
+      {
+        "requirement_id": "bebdf285-6556-42f1-8a61-e7e6ecb0632d",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r08-e4",
+            "source_ref": "description",
+            "quote": "Ran a pretrained embedding model"
+          },
+          {
+            "exp_key": "r08-e4",
+            "source_ref": "description",
+            "quote": "built a nearest neighbor search with FAISS"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The project integrates a current pretrained AI model into a product-search component."
+      },
+      {
+        "requirement_id": "246e1e94-7dd9-43ee-b50b-8f5ae453b216",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Machine Learning Intern, Tidepool Media (streaming startup); Model Serving Side Project; Statistical Learning Capstone; Using LLM Embeddings for Product Search; Peer Mentor, Data Science Program) do not explicitly prove this requirement: Qualifications"
+      },
+      {
+        "requirement_id": "b0e92e9c-a961-41c7-a7bc-09c767514981",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Machine Learning Intern, Tidepool Media (streaming startup); Model Serving Side Project; Statistical Learning Capstone; Using LLM Embeddings for Product Search; Peer Mentor, Data Science Program) do not explicitly prove this requirement: Significant experience with Productivity apps and platforms, and how AI interacts with those."
+      },
+      {
+        "requirement_id": "d894b7aa-4649-4052-9e24-44cbc00482cf",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Machine Learning Intern, Tidepool Media (streaming startup); Model Serving Side Project; Statistical Learning Capstone; Using LLM Embeddings for Product Search; Peer Mentor, Data Science Program) do not explicitly prove this requirement: Experience exploring or building with agents, skills, and AI workflows."
+      },
+      {
+        "requirement_id": "96108c6c-7c47-4de6-a35c-7ae5271e0d22",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Machine Learning Intern, Tidepool Media (streaming startup); Model Serving Side Project; Statistical Learning Capstone; Using LLM Embeddings for Product Search; Peer Mentor, Data Science Program) do not explicitly prove this requirement: Genuinely excited about what is possible with LLMs today, using them not just as APIs, but as building blocks for intelligent tools and products."
+      },
+      {
+        "requirement_id": "98cc2d5f-fa2a-4b44-b2fd-17a3e4e9792f",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r08-e1",
+            "source_ref": "description",
+            "quote": "trained a gradient boosted ranking model with LightGBM"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Machine-learning experience is explicit, but understanding of LLM operation and evolution is not."
+      },
+      {
+        "requirement_id": "5f04d5a7-86b8-4051-b3cd-6d114ae0e024",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Machine Learning Intern, Tidepool Media (streaming startup); Model Serving Side Project; Statistical Learning Capstone; Using LLM Embeddings for Product Search; Peer Mentor, Data Science Program) do not explicitly prove this requirement: Demonstrated interest in the fast-moving AI landscape and follows new models, techniques, and frameworks as they emerge."
+      }
+    ]
+  },
+  {
+    "pair_id": "r25-jd-0b79ce35f2",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "47a09eff-b5a6-4b17-aab5-fb02767ff279",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Platform Intern, Orrin Labs (AI startup); Distributed Training Framework; Cloud Computing Course; Systems Programming Course; LLM Chatbot Hackathon) do not explicitly prove this requirement: Build best in class product experiences across our Command web platform (React) and mobile applications (React Native)"
+      },
+      {
+        "requirement_id": "0e2b852d-a17f-4bbb-b2ac-baa529e956d4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Platform Intern, Orrin Labs (AI startup); Distributed Training Framework; Cloud Computing Course; Systems Programming Course; LLM Chatbot Hackathon) do not explicitly prove this requirement: Actively pursuing a Bachelor's or Master's degree in Computer Science or similar technical field of study and graduating by June 2028"
+      },
+      {
+        "requirement_id": "c60dc6d6-671d-40d4-959f-de56a7baa945",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r25-e1",
+            "source_ref": "description",
+            "quote": "Wrote a Python script that parses training job logs"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Internship development is shown, but launching a product is not."
+      },
+      {
+        "requirement_id": "acfd02da-c044-4277-8c21-1387ac5b000d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Platform Intern, Orrin Labs (AI startup); Distributed Training Framework; Cloud Computing Course; Systems Programming Course; LLM Chatbot Hackathon) do not explicitly prove this requirement: Experience building reusable components, utilizing CSS pre-processors and building pixel perfect user interfaces"
+      },
+      {
+        "requirement_id": "8ec6414b-0e57-4f89-98ac-53fc07880f36",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Platform Intern, Orrin Labs (AI startup); Distributed Training Framework; Cloud Computing Course; Systems Programming Course; LLM Chatbot Hackathon) do not explicitly prove this requirement: Proficient understanding of JavaScript or TypeScript, including contexts, prototypes/classes and closures"
+      },
+      {
+        "requirement_id": "331dc70a-fe64-4bea-a3fe-08bd48afee6b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Platform Intern, Orrin Labs (AI startup); Distributed Training Framework; Cloud Computing Course; Systems Programming Course; LLM Chatbot Hackathon) do not explicitly prove this requirement: Experience working with a modern web framework such as Angular."
+      },
+      {
+        "requirement_id": "b2a4b7f2-6d0a-4f3e-be65-605a1a9be88a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Platform Intern, Orrin Labs (AI startup); Distributed Training Framework; Cloud Computing Course; Systems Programming Course; LLM Chatbot Hackathon) do not explicitly prove this requirement: js, React or Vue"
+      }
+    ]
+  },
+  {
+    "pair_id": "r26-jd-57d5918692",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "344eb54c-ca12-4b05-8c55-f3d88e60cf72",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: We’re looking for a hands-on IT Infrastructure Engineer to help scale Sierra’s internal systems during a critical period of growth."
+      },
+      {
+        "requirement_id": "fee34d03-49c1-467c-a271-adc9f1054541",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: You’ll be the second member of our IT Engineering team, partnering closely with our IT Lead, GRC Lead, and Platform Engineering team to build and operate the systems that support our company day-to-day."
+      },
+      {
+        "requirement_id": "e4027793-cf04-49ca-a39b-ca978fc152bb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: This is an engineering-first role."
+      },
+      {
+        "requirement_id": "42631775-a9c7-4857-a9a3-918fc033ebe3",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e4",
+            "source_ref": "description",
+            "quote": "Implemented a Python FastAPI service"
+          },
+          {
+            "exp_key": "r26-e4",
+            "source_ref": "description",
+            "quote": "exercised concurrent sign-ups through pytest workers"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The candidate builds a well-designed automated system in code and tests it."
+      },
+      {
+        "requirement_id": "64c2df6f-a740-4510-af6a-71d845dbc1a4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: We build internal tools, ship integrations, and operate CI/CD-style workflows to manage identity, security, and infrastructure at scale."
+      },
+      {
+        "requirement_id": "a1151c7e-9482-4d51-878c-c5d93dc5c024",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: This is a foundational role with significant ownership."
+      },
+      {
+        "requirement_id": "3481a0fd-e406-473b-994f-2a3b3439d91e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: You’ll help design and implement core infrastructure, strengthen security controls, and improve how we operate internally."
+      },
+      {
+        "requirement_id": "10ea8c06-3cc0-414b-bdf4-ed27998fdf9b",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "outcome",
+            "quote": "Cut the operations team's daily reconciliation review from about forty minutes to twelve"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The reconciliation system automates high-leverage work, but scalable documentation is not in the same experience."
+      },
+      {
+        "requirement_id": "e15b8773-409c-4838-85f2-80bb87946007",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: What you'll do"
+      },
+      {
+        "requirement_id": "55223708-6edd-4d64-ab2a-dd0faeea167e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: In your first few months, you’ll focus on:"
+      },
+      {
+        "requirement_id": "4be2fac2-7c96-4e5e-bd01-abf9bf61d1af",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Iterating on and improving internal tools that power IT and security workflows"
+      },
+      {
+        "requirement_id": "2a59f113-dc79-4e70-bf07-115a5f040b36",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Deploying a DLP solution and integrating it into automated enforcement pipelines"
+      },
+      {
+        "requirement_id": "70a6f336-27e9-4a69-92cd-67b7aabb826f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Building API-driven integrations between internal systems and our compliance automation platform"
+      },
+      {
+        "requirement_id": "35a87906-d0a6-44b3-a6f0-de4782211a20",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: More broadly, you will:"
+      },
+      {
+        "requirement_id": "eb9a7c7d-0986-4e50-9c57-cee652bdd01c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Design and scale internal infrastructure using code and infrastructure-as-code practices"
+      },
+      {
+        "requirement_id": "f4851f56-8667-4666-9f52-ef2c84f88617",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "description",
+            "quote": "Built a Java Spring Boot endpoint"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A maintained backend service is explicitly built."
+      },
+      {
+        "requirement_id": "322015f3-8d43-48ec-b002-f4a82d2b148a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Improve and develop automation pipelines for provisioning, access management, and security controls"
+      },
+      {
+        "requirement_id": "17202cae-f60a-403c-b532-13f0b1467048",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "description",
+            "quote": "Added idempotency keys and Testcontainers integration cases"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The system is treated as tested software, but continuous improvement/versioning is only partly shown."
+      },
+      {
+        "requirement_id": "f4ac5e54-6bb4-4c08-a06e-7a893fdf8f7a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Partner with Platform Engineering and Security to implement scalable, programmatic solutions"
+      },
+      {
+        "requirement_id": "ee245026-a3ac-4d90-90ed-5aae8b378753",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e2",
+            "source_ref": "description",
+            "quote": "documented rate-limit responses"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The candidate explicitly creates durable API documentation."
+      },
+      {
+        "requirement_id": "6c027f50-d3af-42b1-b259-d0cd61481232",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: What you’ll bring"
+      },
+      {
+        "requirement_id": "65948bbe-f6b6-40c5-a925-1c58d3c12e4c",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "outcome",
+            "quote": "Cut the operations team's daily reconciliation review from about forty minutes to twelve"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The built reconciliation endpoint replaces substantial manual review."
+      },
+      {
+        "requirement_id": "cf953f1e-1bdd-4e47-bf4a-1090c73f22e1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Have strong experience with identity platforms (Okta, Google Workspace, SSO, MFA, SCIM, OIDC)"
+      },
+      {
+        "requirement_id": "1d80765e-fb92-4b6f-8904-657c16a512de",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Have deployed or managed DLP or related security solutions (e.g., ZTNA, Cloudflare)"
+      },
+      {
+        "requirement_id": "a6d2aaab-adca-4ba7-ac9b-7a1338f14114",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Have extensive experience with IaC (Terraform)"
+      },
+      {
+        "requirement_id": "193d5fc0-48d4-4ff3-9c17-48024d81b44a",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "description",
+            "quote": "reconciled card settlement files"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The Java endpoint automates a recurring reconciliation workflow."
+      },
+      {
+        "requirement_id": "cc479bb6-c5f0-42a2-918e-4a75d6f40bf1",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e2",
+            "source_ref": "description",
+            "quote": "Created a Kotlin REST service"
+          },
+          {
+            "exp_key": "r26-e2",
+            "source_ref": "description",
+            "quote": "generate a small Android client"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The service integrates a generated client through an API."
+      },
+      {
+        "requirement_id": "07079b73-77c3-4743-b41a-88f31dd4294d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Are comfortable working with CI/CD concepts and automation pipelines"
+      },
+      {
+        "requirement_id": "efde80a2-5f31-4ade-9fcd-c6cf93761974",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Are fluent in using and administering modern AI tooling"
+      },
+      {
+        "requirement_id": "00e3f68d-51df-4d42-8f4b-a8de47ea8a6e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Understand SaaS lifecycle management and compliance requirements"
+      },
+      {
+        "requirement_id": "e54de4b5-1207-4c62-b73f-038d4ce36fde",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e2",
+            "source_ref": "description",
+            "quote": "documented rate-limit responses"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Clear system documentation is explicit."
+      },
+      {
+        "requirement_id": "516c7b78-b86a-43c9-bdff-5810f00bc2fa",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Are comfortable operating independently in a fast-moving environment"
+      },
+      {
+        "requirement_id": "8e2991c6-99b8-4638-9b9e-ad9404ae18c5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Even better..."
+      },
+      {
+        "requirement_id": "d10c7f8d-89d6-4e5f-83df-116b65995f09",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r26-e1",
+            "source_ref": "title",
+            "quote": "Backend Engineering Intern"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A product-oriented software-engineering internship is explicit."
+      },
+      {
+        "requirement_id": "fb1cc338-893b-4256-8138-b7c10a0f61d9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Experience building internal platforms or developer tooling"
+      },
+      {
+        "requirement_id": "e1dabbdb-dca8-44b3-94ff-e3b025ff039a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Familiarity with security tooling such as CASB, EDR, or MDM"
+      },
+      {
+        "requirement_id": "9438d27f-4819-41ff-83f7-6e5eabd2799a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Experience with access audits, data residency, or compliance controls"
+      },
+      {
+        "requirement_id": "da8fe7b0-3f5b-4f93-9e71-aec8e04e70ea",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Backend Engineering Intern, LatticePay; Campus Dining Queue API; Teaching Assistant, Database Systems; Event Registration Service) do not explicitly prove this requirement: Experience deploying systems using AWS and infrastructure-as-code"
+      }
+    ]
+  },
+  {
+    "pair_id": "r28-jd-67f6401181",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "7bc31dcb-63d8-4359-a146-554c7935d8a6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Willow Health Systems; Consent Audit API; Medication Reminder Backend; Secure Coding Lab Assistant) do not explicitly prove this requirement: Software Engineering Intern (Summer) | Datadog CareersDatadog named a Leader in the Gartner® Magic Quadrant™ for Observability Platforms Leader in the Gartner® Magic Quadrant™"
+      },
+      {
+        "requirement_id": "caf9ec33-2714-4934-99e1-9181614279c3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Willow Health Systems; Consent Audit API; Medication Reminder Backend; Secure Coding Lab Assistant) do not explicitly prove this requirement: Software Engineering Intern (Summer)"
+      },
+      {
+        "requirement_id": "633daf76-3f5d-4c00-9ca3-5e1ff1cc9f47",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Willow Health Systems; Consent Audit API; Medication Reminder Backend; Secure Coding Lab Assistant) do not explicitly prove this requirement: What You’ll Do:"
+      },
+      {
+        "requirement_id": "c1c2d1ea-12c2-40f8-bfef-1373921ae346",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r28-e1",
+            "source_ref": "outcome",
+            "quote": "Processed 1.4 million synthetic observation rows"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Large-scale data processing is shown, but production real-time observability processing is not."
+      },
+      {
+        "requirement_id": "bfd16cc2-4f29-468c-910b-dc83ba35992e",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r28-e3",
+            "source_ref": "description",
+            "quote": "Created a Flask API that scheduled reminder jobs with Celery and Redis"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A distributed backend service is built, but developer-platform and cloud-native scope is not fully shown."
+      },
+      {
+        "requirement_id": "4be36b25-6321-414d-8445-f0d76f457e36",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r28-e3",
+            "source_ref": "outcome",
+            "quote": "Delivered reminders within the expected one-minute window for 96 of 100 simulated schedules"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A measured reliability result exists, but production scale and customer-critical operation are absent."
+      },
+      {
+        "requirement_id": "dd8e80ad-9675-4ff6-98f1-82fe67e84b0e",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r28-e1",
+            "source_ref": "description",
+            "quote": "Built a Python Django task"
+          },
+          {
+            "exp_key": "r28-e1",
+            "source_ref": "outcome",
+            "quote": "acceptance testing with reproducible error reports"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Design-through-testing delivery is shown, but actual deployment is not explicit."
+      },
+      {
+        "requirement_id": "d51871fa-e984-4f5a-9f8b-1907af8226e3",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r28-e3",
+            "source_ref": "description",
+            "quote": "Celery and Redis"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Hands-on distributed-service technology is explicit."
+      },
+      {
+        "requirement_id": "1a81bcf6-8160-4b13-87a2-f9174b13f85c",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r28-e1",
+            "source_ref": "title",
+            "quote": "Software Intern"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The software internship supplies equivalent practical experience."
+      },
+      {
+        "requirement_id": "1b1b2f7b-7ba8-4b73-8bbd-49c66ce68873",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Willow Health Systems; Consent Audit API; Medication Reminder Backend; Secure Coding Lab Assistant) do not explicitly prove this requirement: Have experience using AI coding tools or a strong interest in learning how to use them effectively, while exploring how AI can improve engineering practices and products"
+      }
+    ]
+  },
+  {
+    "pair_id": "r29-jd-6095f3ea91",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "503f8769-f1ac-4e1f-9de1-30957177c432",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Perplexity is looking for a Search Machine Learning Engineer Intern to help build the next generation of advanced search technologies, with a focus on retrieval and ranking."
+      },
+      {
+        "requirement_id": "b1ea6525-afd0-477e-a731-fad86dcb8e7a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You will work closely with experienced engineers to improve search quality, experiment with new models, and ship features that directly impact how users search and discover information."
+      },
+      {
+        "requirement_id": "9d53b839-0c1f-4cb5-abfe-db93eb20bf6f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Internship program: 12 - 24 weeks, full-time, part-time, in-person in the Belgrade office."
+      },
+      {
+        "requirement_id": "10103ce8-a3f0-4791-9f01-6e959550f37d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Responsibilities:"
+      },
+      {
+        "requirement_id": "1455a4d5-1af3-4a96-897b-8d6e66b92230",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Contribute to experiments that improve search quality through better models, data usage, and evaluation tools, under the guidance of senior engineers."
+      },
+      {
+        "requirement_id": "6b1cbcc7-64d0-45d0-a288-f1a537072677",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Design and implement components of the search platform and model stack, including retrieval, ranking, and classification models."
+      },
+      {
+        "requirement_id": "4af4d83b-b7a3-4786-a04e-af3732e0c7f6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Train evaluating models (including LLM-based approaches) for retrieval, ranking, and classification tasks."
+      },
+      {
+        "requirement_id": "77a85e4f-6d6d-4c4d-a397-95336fa520f2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Support deployment and monitoring of search and ranking models in a scalable and performant way."
+      },
+      {
+        "requirement_id": "78914c01-b331-450e-8e59-eca1d577bee5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Help build and iterate on RAG pipelines for grounding and answer generation."
+      },
+      {
+        "requirement_id": "c017b49f-7045-491d-80f9-3c7c73b6d3f9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Collaborate with Data, AI, Infrastructure and Product teams to deliver improvements quickly and learn best practices in production ML."
+      },
+      {
+        "requirement_id": "fa948ba2-5ced-4fed-9e37-abd13c29b8c5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Qualifications:"
+      },
+      {
+        "requirement_id": "509635e3-cfd4-4dff-b953-80ce73d514ea",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Strong foundation in machine learning and statistics, with coursework or projects related to information retrieval, ranking, or recommender systems."
+      },
+      {
+        "requirement_id": "ce48748c-5df8-4d6b-965a-49433e5a98d3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Experience with Python and common ML frameworks (e.g. PyTorch, TensorFlow, JAX) through academic, open source, or personal projects."
+      },
+      {
+        "requirement_id": "ecbffed4-d5e2-41c4-9a9d-4061adc10acb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Familiarity with evaluating model quality using offline metrics and/or A/B testing is a plus, but not required."
+      },
+      {
+        "requirement_id": "6e36e789-24ed-49a7-b35f-2f5cb721981d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Previous experience (internships, research, or significant projects) working on search, recommendation, or NLP is a plus, but not required."
+      },
+      {
+        "requirement_id": "57a54de1-c923-4531-ac91-bf1f144a7123",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Self-driven and curious, with a strong sense of ownership, willingness to learn, and comfort working in a fast-paced environment"
+      },
+      {
+        "requirement_id": "ceadb9d8-a100-456e-aa6d-1ff641970b14",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: Experience with Rust will be a plus"
+      },
+      {
+        "requirement_id": "e41bcf3f-ac71-441c-bc66-7eccac5bbf88",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: What we're looking for:"
+      },
+      {
+        "requirement_id": "0f2644b8-3e93-4242-9771-0c3f746689e9",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r29-e3",
+            "source_ref": "description",
+            "quote": "Built a .NET Minimal API for tracking forty shared tools"
+          },
+          {
+            "exp_key": "r29-e3",
+            "source_ref": "outcome",
+            "quote": "Eight residents used the service for a month"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The candidate initiated, finished, and delivered a non-class API used by residents."
+      },
+      {
+        "requirement_id": "144edf91-e151-4d2b-abb0-dcdedcd83edf",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You’re currently enrolled at a Serbian university: Bachelor’s, Master’s, or PhD program or you’re self-taught with a strong passion for software engineering and technology."
+      },
+      {
+        "requirement_id": "81b5a41e-e4a8-4317-aded-610a62d4ec8f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You’re curious, persistent, and self-driven: you take ownership, work through challenges, and follow through on what you start."
+      },
+      {
+        "requirement_id": "cd80bd65-d2dd-48ec-b939-284b9892b1e0",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You’re eager to learn and improve: you’re willing to put in the work, develop your skills, and get better every week."
+      },
+      {
+        "requirement_id": "1f6f355a-2f64-46fe-aa79-a6893b24bf1f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You’re comfortable working in English: in a collaborative, professional environment."
+      },
+      {
+        "requirement_id": "b2b98812-b89e-4abb-9342-011c177f5288",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You thrive in a high-performance environment: you’re comfortable with high standards, direct feedback, and a fast pace."
+      },
+      {
+        "requirement_id": "9385b5d6-2aae-4d05-9785-df57bd03c4d3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Engineering Intern, Harbor Ticketing; Box Office Notification Worker; Dorm Tool Lending API; Data Structures Portfolio) do not explicitly prove this requirement: You’re willing to challenge and be challenged: You’re comfortable asking questions, sharing your perspective, and pushing back constructively when it matters."
+      }
+    ]
+  },
+  {
+    "pair_id": "r31-jd-444fca021a",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "2e43cb62-c6c9-4a21-92e9-866123e63c00",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: What you’ll do"
+      },
+      {
+        "requirement_id": "3d70b68f-7079-4914-96f3-8a56b2475c4d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Develop secure, well-tested, performant features and improvements using Ruby on Rails and GraphQL, among other technologies."
+      },
+      {
+        "requirement_id": "60fc1f3d-889a-47b8-b737-8e98e37c35c6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Design and maintain backend services, APIs, data models, and business logic that support intuitive source code workflows."
+      },
+      {
+        "requirement_id": "87da50d7-9f2a-4f4a-bfdd-200f883cd39d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Help strengthen reliability by monitoring production health metrics, participating in Tier 2 on-call, troubleshooting incidents, contributing to root cause analysis, and improving observability and resiliency."
+      },
+      {
+        "requirement_id": "1aaf3bfa-ee75-4b26-af16-605b342ce8ae",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Professional experience building backend web applications, services, or application programming interfaces, with experience using Ruby and GraphQL."
+      },
+      {
+        "requirement_id": "ea45da7a-56e0-4c3b-82fc-dec325f01e70",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: An understanding of relational databases, structured query language, data modeling, caching, background processing, and backend performance practices."
+      },
+      {
+        "requirement_id": "b003ee23-2661-44ae-8e42-e7c84951bbe9",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r31-e2",
+            "source_ref": "description",
+            "quote": "Built a Streamlit interface that showed model predictions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A user-facing workflow over an ML system is built, but full-stack maintenance is not fully demonstrated."
+      },
+      {
+        "requirement_id": "429c9c5a-a8e6-4b75-8659-9c30f72c0d1d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Experience writing backend unit and integration tests, with familiarity with the testing pyramid, Git, and collaborative code review processes."
+      },
+      {
+        "requirement_id": "18090312-61e0-4621-84a9-7b620c7748e9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Experience using AI coding agents to speed up software development while critically reviewing their output."
+      },
+      {
+        "requirement_id": "6d9005db-0040-486e-b86f-e4a3da752895",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Research Assistant, Alpine Ecology Lab; Wildlife Review Tool; Inference Packaging; Machine Learning Peer Mentor) do not explicitly prove this requirement: Bonus: you’ve built agents or agent-based workflows that run in production, not just prototypes."
+      }
+    ]
+  },
+  {
+    "pair_id": "r32-jd-fabef260c2",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "7e130e63-aad4-46f7-914a-c80a000ec740",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r32-e1",
+            "source_ref": "title",
+            "quote": "Applied AI Intern"
+          },
+          {
+            "exp_key": "r32-e1",
+            "source_ref": "description",
+            "quote": "Built a RAG pipeline"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The applied-AI internship directly executes a targeted ML project for a business support function."
+      }
+    ]
+  },
+  {
+    "pair_id": "r34-jd-3741f0a423",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "ee4ecebb-ad12-45ce-a9b7-818c0d32351f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Engineering Fellow, Vox Harbor; GPU Training Pipeline; Audio Redaction Prototype; Deep Learning Course Assistant) do not explicitly prove this requirement: Requirements"
+      },
+      {
+        "requirement_id": "310037ab-fdfa-444d-81ed-c7a80537d603",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r34-e3",
+            "source_ref": "skill:0",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Python is proved, but SQL, LLM APIs, and agent orchestration are absent."
+      },
+      {
+        "requirement_id": "8ee2ee50-30c0-4715-b06b-aac19c1d4e5b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Engineering Fellow, Vox Harbor; GPU Training Pipeline; Audio Redaction Prototype; Deep Learning Course Assistant) do not explicitly prove this requirement: You've shipped production systems that other people relied on, starting from a vague problem"
+      },
+      {
+        "requirement_id": "a90bfe66-5903-4cb7-b8af-4af6ad998012",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Engineering Fellow, Vox Harbor; GPU Training Pipeline; Audio Redaction Prototype; Deep Learning Course Assistant) do not explicitly prove this requirement: You've built with LLMs beyond a demo and know how to evaluate them and where they fail"
+      },
+      {
+        "requirement_id": "a1742115-bf4d-4cc9-adaf-8c8c97866c94",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r34-e1",
+            "source_ref": "outcome",
+            "quote": "Reduced word error rate from 18.4% to 15.9%"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The project measures whether model work improved the held-out result."
+      },
+      {
+        "requirement_id": "9ee3a509-beca-411a-b9b9-fdebd591aa5c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (ML Engineering Fellow, Vox Harbor; GPU Training Pipeline; Audio Redaction Prototype; Deep Learning Course Assistant) do not explicitly prove this requirement: Bonus: experience with GTM data or marketing systems."
+      }
+    ]
+  },
+  {
+    "pair_id": "r35-jd-b0e8c68f29",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "c0db7b11-8002-4f59-8e77-143999314cd7",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r35-e3",
+            "source_ref": "skill:0",
+            "quote": "Next.js"
+          },
+          {
+            "exp_key": "r35-e3",
+            "source_ref": "description",
+            "quote": "using a Supabase database"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The Next.js project implements a complete user-facing feature backed by data."
+      },
+      {
+        "requirement_id": "f8035ff8-aef0-4cc8-a8da-a6f8c7f6c3c4",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r35-e3",
+            "source_ref": "skill:0",
+            "quote": "Next.js"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Next.js is used, but a backend service or API contribution is not explicit."
+      },
+      {
+        "requirement_id": "c4d79f34-3103-4c35-8e56-4076890953c5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Frontend Intern, Civic Lantern; Permit Status API; Community Fridge Map; Design Systems Practicum) do not explicitly prove this requirement: Learn and apply development practices for production infrastructure including AWS, Kubernetes, containers, and CI/CD pipelines"
+      },
+      {
+        "requirement_id": "14b26073-b6d3-4de9-a21f-9296ebc2bb8f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Frontend Intern, Civic Lantern; Permit Status API; Community Fridge Map; Design Systems Practicum) do not explicitly prove this requirement: Learn and apply AI-assisted software development workflows throughout the software development lifecycle"
+      },
+      {
+        "requirement_id": "086d4438-39a1-42a2-9845-e0255feb02ec",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Frontend Intern, Civic Lantern; Permit Status API; Community Fridge Map; Design Systems Practicum) do not explicitly prove this requirement: What we're looking for"
+      }
+    ]
+  },
+  {
+    "pair_id": "r36-jd-ae26b28e91",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "9c7fcb38-2ba9-4d1a-87a1-eb8657c11d7b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Full-Stack Intern, Parcel & Pine; Inventory Import Workflow; Neighborhood Workshop Scheduler; Web Applications Team Lead) do not explicitly prove this requirement: Currently pursuing a bachelor’s or master’s degree in Computer Science, Engineering, or a related technical field, with an expected graduation date in 2027."
+      },
+      {
+        "requirement_id": "e80f462e-b900-4dfc-aa65-d27c5235f035",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Full-Stack Intern, Parcel & Pine; Inventory Import Workflow; Neighborhood Workshop Scheduler; Web Applications Team Lead) do not explicitly prove this requirement: Experience with one or more relevant programming languages, such as Python or Go, through coursework, research, internships, or personal projects."
+      },
+      {
+        "requirement_id": "2dfeb804-d512-48c1-a58a-be5766aca5af",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r36-e3",
+            "source_ref": "description",
+            "quote": "server routes backed by Prisma and PostgreSQL"
+          },
+          {
+            "exp_key": "r36-e3",
+            "source_ref": "description",
+            "quote": "Cypress coverage"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Testing and system construction are shown, but algorithms and data structures are not."
+      },
+      {
+        "requirement_id": "be6dd328-317b-48b8-a0e9-31796fdd68e1",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r36-e2",
+            "source_ref": "outcome",
+            "quote": "isolating 37 malformed records for correction"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The import workflow demonstrates problem solving and attention to malformed edge cases."
+      },
+      {
+        "requirement_id": "4b9f4c8e-7959-4bae-912d-746638918f1e",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r36-e4",
+            "source_ref": "description",
+            "quote": "Broke features into GitHub issues, reviewed pull requests, and ran brief demos"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Written coordination and verbal demos are both explicit."
+      },
+      {
+        "requirement_id": "ef042a8e-3fb1-471e-86e8-d9b6f5e4981c",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r36-e4",
+            "source_ref": "description",
+            "quote": "Coordinated four classmates"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Collaboration is explicit, but rapid learning is not independently proved."
+      },
+      {
+        "requirement_id": "9de43f1d-100c-4f26-bece-c5337ba65a13",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r36-e1",
+            "source_ref": "outcome",
+            "quote": "Store leads prepared weekly transfer requests in roughly half their previous spreadsheet time"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The product directly improves a customer workflow with a measured result."
+      },
+      {
+        "requirement_id": "348efa22-61fe-4700-957a-507efdb24128",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r36-e2",
+            "source_ref": "description",
+            "quote": "Implemented a Laravel queue job"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Backend-service experience is explicit."
+      }
+    ]
+  },
+  {
+    "pair_id": "r38-jd-311d9a6c3a",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "17f4a80a-665f-43a3-9c5e-8ce456ac6e56",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Delivery and release"
+      },
+      {
+        "requirement_id": "20bfcde0-f2cf-43c4-8344-9ac48dca257b",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "description",
+            "quote": "policy checks in GitHub Actions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "CI validation is shown, but commit-to-production release pipelines are not."
+      },
+      {
+        "requirement_id": "aa4fa1bc-9ca4-4e2e-a918-86721060e7f2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Make shipping safe and continuous, with staged rollouts and fast rollback, so no one has to test in production."
+      },
+      {
+        "requirement_id": "23ecc8fe-1939-4cba-837d-83225ba4c147",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Simulation and test"
+      },
+      {
+        "requirement_id": "c9f94ed7-ff07-4e37-aae5-8695714f4132",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Build simulated ground stations and lab test benches running real hardware, so every release is tested against realistic conditions before it reaches a live site."
+      },
+      {
+        "requirement_id": "a8a10558-4b40-4816-b577-0a492feccd53",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Build tools that replay real recorded data through the system to catch problems early."
+      },
+      {
+        "requirement_id": "ed903980-7b42-43e3-ac31-8e25958a7b05",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Ground station operations"
+      },
+      {
+        "requirement_id": "eaf7930c-da4c-4e39-859f-319068d635c6",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "outcome",
+            "quote": "Provisioned a separate twenty-worker staging pool"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Infrastructure provisioning is automated, but remote ground-site configuration is absent."
+      },
+      {
+        "requirement_id": "04c6ee30-3acb-4e44-a357-26fb56378516",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "description",
+            "quote": "300 containerized build workers"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Software monitors a sizable worker fleet, but deployment beside antennas and global operations are absent."
+      },
+      {
+        "requirement_id": "818aa270-0325-4597-9c52-61728541a399",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Observability"
+      },
+      {
+        "requirement_id": "2dac13c3-da4a-408a-b3c7-804633a0abb8",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "description",
+            "quote": "exposed normalized Prometheus metrics"
+          },
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "description",
+            "quote": "Added alerts"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Monitoring and alerting are proved, but logging is not."
+      },
+      {
+        "requirement_id": "3abcdd8c-f48b-47ed-9c28-260cd3019ed9",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "outcome",
+            "quote": "identified a cache-volume inode leak before it stopped the shared build pool"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Raw system counters become actionable alerts before customer impact."
+      },
+      {
+        "requirement_id": "492fd056-ffc2-4a9a-99eb-e9f430549f93",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Internal platform and tools"
+      },
+      {
+        "requirement_id": "6d13848e-fb4b-4d3b-b4d7-c10413b61adb",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "description",
+            "quote": "Wrote a Go exporter"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "An internal backend tool is built, but a daily web interface is absent."
+      },
+      {
+        "requirement_id": "d6b6c4dd-0233-497c-8507-35b124554d38",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Talk directly with the people who use what you build, and turn their feedback into improvements."
+      },
+      {
+        "requirement_id": "9bc8a19d-bf48-4510-a861-b8ac653e19f5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Infrastructure and security"
+      },
+      {
+        "requirement_id": "cbf46682-10c4-4bf0-9832-bbb7ea4c93fb",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "description",
+            "quote": "Maintained Terraform modules"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Cloud infrastructure is explicitly defined as code."
+      },
+      {
+        "requirement_id": "0ce76c2a-715e-4b7b-a7b9-fa140984baf1",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "description",
+            "quote": "least-privilege IAM roles"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Identity and least-privilege access are shown, but secrets management and platform defaults are not."
+      },
+      {
+        "requirement_id": "57043993-908a-4f95-8cf2-250a49ef4e79",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Basic Qualifications"
+      },
+      {
+        "requirement_id": "302cc14e-5c22-4678-8502-ac635ae882c9",
+        "verdict": "insufficient_evidence",
+        "evidence": [],
+        "gap_reason_code": "metric_not_proven",
+        "rationale": "An internship is explicit, but the exact zero-to-two-year experience bound is not stated."
+      },
+      {
+        "requirement_id": "121c1677-ae2e-466e-a77a-feabb35fa11e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: It doesn't have to be a full-time role."
+      },
+      {
+        "requirement_id": "828f7347-b78c-4fdb-9098-c58f52d39295",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "title",
+            "quote": "Site Reliability Intern"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A professional internship is explicitly within the accepted experience category."
+      },
+      {
+        "requirement_id": "9859d47b-5250-4309-aa4c-3efc0157c79b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Bachelor's degree in computer science, computer engineering, electrical engineering, math, or a related field."
+      },
+      {
+        "requirement_id": "3359abe1-2fbf-4226-bfd0-f28055481787",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: This is a soft requirement: if you didn't pursue a degree, tell us what you did instead."
+      },
+      {
+        "requirement_id": "a4d56987-3f3d-4a1f-81c5-116dc6f1cbca",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "description",
+            "quote": "Wrote a Go exporter"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Real Go software was written in an internship beyond coursework."
+      },
+      {
+        "requirement_id": "c100e6e5-446a-4695-a31a-6e662127a061",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "outcome",
+            "quote": "before it stopped the shared build pool"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Other engineers relied on the shipped exporter and alerts."
+      },
+      {
+        "requirement_id": "82e413a1-7d3a-4c46-a9a0-c321b3f016a8",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e3",
+            "source_ref": "description",
+            "quote": "Added consistency checks for orphaned blocks"
+          },
+          {
+            "exp_key": "r38-e3",
+            "source_ref": "description",
+            "quote": "exercised recovery after forced process termination"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The file-system project solves non-obvious consistency and recovery failures."
+      },
+      {
+        "requirement_id": "2dde4946-438f-499f-b3dd-65e8808c3d81",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: We don't expect you to have everything below."
+      },
+      {
+        "requirement_id": "e2bb01db-08c0-4e35-b536-ae97c0f084d2",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "description",
+            "quote": "Maintained Terraform modules"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Maintaining reviewed infrastructure modules demonstrates depth and ownership."
+      },
+      {
+        "requirement_id": "724685f5-cf0b-42d9-b941-05059711ba37",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "skill:0",
+            "quote": "Go"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Go proficiency is explicit, but opinions about language-job fit are not."
+      },
+      {
+        "requirement_id": "d93c1426-4011-4c8e-85be-c7ecb24e90cb",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Full stack: has built a backend API and a frontend that uses it (such as a React app on a REST API)."
+      },
+      {
+        "requirement_id": "46edf857-7b33-4182-b8ad-812b213b2788",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "skill:0",
+            "quote": "Terraform"
+          },
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "skill:1",
+            "quote": "AWS EC2"
+          },
+          {
+            "exp_key": "r38-e2",
+            "source_ref": "skill:3",
+            "quote": "GitHub Actions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The experience explicitly covers infrastructure as code, cloud, and CI."
+      },
+      {
+        "requirement_id": "5d5fb7df-a9d7-4463-ab55-128bc1556353",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e4",
+            "source_ref": "skill:0",
+            "quote": "tcpdump"
+          },
+          {
+            "exp_key": "r38-e4",
+            "source_ref": "skill:1",
+            "quote": "Linux Traffic Control"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Hands-on Linux networking work is explicit."
+      },
+      {
+        "requirement_id": "dc450a58-3f43-4904-be52-603a2d65fbb2",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e1",
+            "source_ref": "description",
+            "quote": "Wrote a Go exporter"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The exporter is a tool used by operators of the shared build pool."
+      },
+      {
+        "requirement_id": "4d3736da-90a5-45c0-9dd9-8991474dec9c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: Hardware and space: projects involving hardware, embedded systems, RF, robotics, or space, such as a CubeSat, rocketry, or robotics team."
+      },
+      {
+        "requirement_id": "27f871c2-4242-4029-8f2b-07958a266ec8",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r38-e3",
+            "source_ref": "title",
+            "quote": "Userspace File System"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A substantial systems project outside the internship demonstrates self-directed drive."
+      },
+      {
+        "requirement_id": "03753f27-19b2-4e81-8d14-1d37c8d7d942",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Site Reliability Intern, Relay Harbor; Build Worker Provisioning; Userspace File System; Network Measurement Lab) do not explicitly prove this requirement: AI tools: comfort with AI coding tools (such as Claude Code, Codex, or Cursor)."
+      }
+    ]
+  },
+  {
+    "pair_id": "r39-jd-c805777b28",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "f924b232-9ecd-4622-b6a9-f24c694e5a4e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Infrastructure Intern, Quorum Archive; Storage Reliability Tests; Replicated Block Store; Cluster Operations Workshop Lead) do not explicitly prove this requirement: This role could be a fit if you have:"
+      },
+      {
+        "requirement_id": "772c486d-d81e-4467-ae86-2bb7f884fa23",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Infrastructure Intern, Quorum Archive; Storage Reliability Tests; Replicated Block Store; Cluster Operations Workshop Lead) do not explicitly prove this requirement: A BS or MS in Computer Science or an Engineering field"
+      },
+      {
+        "requirement_id": "1e256ee1-e55c-4dc2-9946-0621aac070f1",
+        "verdict": "insufficient_evidence",
+        "evidence": [],
+        "gap_reason_code": "metric_not_proven",
+        "rationale": "Kubernetes troubleshooting is shown in test and teaching settings, not production Linux operation."
+      },
+      {
+        "requirement_id": "d8ad8f55-0b83-4b66-b9f3-d5e7b9e91058",
+        "verdict": "insufficient_evidence",
+        "evidence": [],
+        "gap_reason_code": "metric_not_proven",
+        "rationale": "Reliable software projects exist, but two-plus years of production-grade development are not proved."
+      },
+      {
+        "requirement_id": "92693b2b-097a-4efb-aa34-981243d5e2c8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Infrastructure Intern, Quorum Archive; Storage Reliability Tests; Replicated Block Store; Cluster Operations Workshop Lead) do not explicitly prove this requirement: Proficiency with at least one automation technology such as Terraform, Chef, or Puppet"
+      },
+      {
+        "requirement_id": "3d368b79-fe56-4527-ae58-ad5418d8154d",
+        "verdict": "insufficient_evidence",
+        "evidence": [],
+        "gap_reason_code": "explicit_non_implementation",
+        "rationale": "A distributed block-store prototype exists, but it was not deployed as a mission-critical system."
+      },
+      {
+        "requirement_id": "5be155b0-b810-433b-84f6-0df7a5695fc2",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r39-e4",
+            "source_ref": "description",
+            "quote": "Ran hands-on sessions"
+          },
+          {
+            "exp_key": "r39-e4",
+            "source_ref": "description",
+            "quote": "Prepared compact incident cards"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Teaching and communication are explicit, but critical-thinking evidence is not all in the same experience."
+      }
+    ]
+  },
+  {
+    "pair_id": "r40-jd-e9ffaf60b6",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "97af08c5-51fb-4ee8-ba6a-7236f5af7c99",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: As a Site Reliability Engineer in IaaS, you will help build the next generation of Algolia’s production infrastructure."
+      },
+      {
+        "requirement_id": "f30d1e87-e9c3-4df4-96ce-98b2b89c0a2a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: You will contribute to the cloud baseline and reliable lifecycle capabilities that enable teams to operate and migrate workloads safely on a cloud-native platform."
+      },
+      {
+        "requirement_id": "495f38de-e29b-4b83-8512-9d9f5eefdb0f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: You will work across cloud foundations, Kubernetes, automation, reliability, and large-scale production operations."
+      },
+      {
+        "requirement_id": "38eb4568-6352-494b-bc07-a8bcb6e5b6d8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: As a P3 engineer, you will be a hands-on contributor."
+      },
+      {
+        "requirement_id": "8a0b9009-d487-46a4-89f7-589dc4270c47",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: You will build, operate, and improve production infrastructure while developing deep expertise in cloud, Kubernetes, reliability, and automation."
+      },
+      {
+        "requirement_id": "73ff3e4b-0315-48ad-9d72-b78743f813d1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Build and improve Cloud Baseline capabilities, including identity and access, networking, security, resource inventory, tagging, and auditability."
+      },
+      {
+        "requirement_id": "231b7596-f3ba-43a4-a986-e0de436a1ea2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Develop and maintain infrastructure as code and automation for cloud environments and Kubernetes infrastructure."
+      },
+      {
+        "requirement_id": "493b91e0-8211-4f37-a7e5-a6bf5cb6df11",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Contribute to reliable, repeatable cloud and cluster lifecycle operations."
+      },
+      {
+        "requirement_id": "d8c4517a-6b0e-439e-a3bf-0e470ca81777",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Help build self-service capabilities, reusable modules, and clear documentation that make the safe path the easy path for platform consumers."
+      },
+      {
+        "requirement_id": "783edba1-824c-413e-8b0a-3c833488bdd2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Reduce manual work and configuration drift through automation, testing, GitOps practices, and standardisation."
+      },
+      {
+        "requirement_id": "f8c3e19a-f810-432f-ac56-cfb0a5370ae3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Use automation and AI-assisted engineering tools where appropriate to improve infrastructure analysis, documentation, and safe, repeatable changes."
+      },
+      {
+        "requirement_id": "85ee7432-3cba-4c06-a56f-33d41b854e23",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Improve observability, monitoring, alerting, capacity management, and operational documentation."
+      },
+      {
+        "requirement_id": "54d928cb-8584-4ae0-bcd1-f00e6d2624df",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Investigate production issues, participate in the on-call rotation, and turn lessons learned into lasting improvements."
+      },
+      {
+        "requirement_id": "5faaf6ed-c5bd-4877-8650-222c7b5f6784",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Work with Infrastructure, Security, FinOps, and engineering teams to deliver reliable, secure, and cost-aware platform capabilities."
+      },
+      {
+        "requirement_id": "67c8526e-5424-46eb-bb03-2fb6b8a2b32f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Hands-on production knowledge of AWS or GCP."
+      },
+      {
+        "requirement_id": "330c0375-b38a-4a4f-a60b-0a134203dc0d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Practical Kubernetes knowledge and an interest in operating it in production."
+      },
+      {
+        "requirement_id": "29aad42b-c95b-4db2-abff-16821f6e65d9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Familiarity with infrastructure as code, ideally Terraform."
+      },
+      {
+        "requirement_id": "adabca9d-b365-409b-a548-9d6d8bf035f5",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r40-e2",
+            "source_ref": "skill:0",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Python scripting is explicit."
+      },
+      {
+        "requirement_id": "719fbd90-837c-455a-a660-8be91162a5d8",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r40-e3",
+            "source_ref": "skill:2",
+            "quote": "Linux"
+          },
+          {
+            "exp_key": "r40-e3",
+            "source_ref": "skill:1",
+            "quote": "TCP"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The TCP proxy directly proves Linux and networking fundamentals."
+      },
+      {
+        "requirement_id": "472f16b4-4461-400d-9218-32163436e2b0",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r40-e2",
+            "source_ref": "description",
+            "quote": "Built a Python serial test harness"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Automation and reliability testing are shown, but production-problem ownership is not."
+      },
+      {
+        "requirement_id": "c4274d74-2563-4ee9-80a8-dd72eb24f707",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Comfort adopting AI-assisted engineering tools, with sound judgement for critical production systems."
+      },
+      {
+        "requirement_id": "8ede71ad-9f49-4cfb-b23b-cec5008f92c2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: The ability to communicate clearly and work effectively with a distributed team."
+      },
+      {
+        "requirement_id": "72b7bfb3-84c6-4e04-81b2-9d9901da2ba3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Excellent spoken and written English skills."
+      },
+      {
+        "requirement_id": "6ca09347-c64b-4a49-a9f0-4c6a3a62c132",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Familiarity with more than one public cloud provider."
+      },
+      {
+        "requirement_id": "e4e7ea04-cf78-4b1b-ba7a-7cd5598499bf",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Knowledge of GitOps or policy-as-code tooling, such as Argo CD, Helm, OPA, or Kyverno."
+      },
+      {
+        "requirement_id": "9d95ef94-6c06-4c8f-8720-9c085cac6b7f",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Firmware Intern, Mossline Sensors; Device Test Fixture; Miniature TCP Proxy; Raspberry Pi Weather Station) do not explicitly prove this requirement: Experience with cloud migration, platform engineering, or large-scale infrastructure transformation."
+      }
+    ]
+  },
+  {
+    "pair_id": "r42-jd-0703562bb9",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "246ce6a8-1fd0-45a6-a743-ba7d27de5e8c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Platform Co-op, Aerolith Transit; Fleet Data Backfill; Transit Delay Analysis; Parallel Computing Assistant) do not explicitly prove this requirement: Work with a team to build features for the Databricks platform"
+      },
+      {
+        "requirement_id": "d2d0de3a-5c4f-4da3-bbd2-95a2b432f96a",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r42-e1",
+            "source_ref": "description",
+            "quote": "Developed a Spark Structured Streaming job"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Design and code are proved, but end-to-end feedback management is not explicit."
+      },
+      {
+        "requirement_id": "68abbf0e-2fda-41b3-bdd1-be395294a662",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r42-e1",
+            "source_ref": "outcome",
+            "quote": "Processed a replay of 90 million telemetry messages without unbounded state growth"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Scale and quality are measured, but security is not shown."
+      },
+      {
+        "requirement_id": "af2d9839-c537-4bf6-8a39-2ce8f40fecd8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Platform Co-op, Aerolith Transit; Fleet Data Backfill; Transit Delay Analysis; Parallel Computing Assistant) do not explicitly prove this requirement: You will graduate between fall 2027 and summer 2028 with a degree in Computer Science, Engineering, or related subject"
+      },
+      {
+        "requirement_id": "6dc390f3-e069-4926-86e5-ddf0cc520b13",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r42-e3",
+            "source_ref": "skill:2",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Python implementation skill is explicit."
+      },
+      {
+        "requirement_id": "5bd1c808-f414-41af-a728-ab9e7da9522e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Platform Co-op, Aerolith Transit; Fleet Data Backfill; Transit Delay Analysis; Parallel Computing Assistant) do not explicitly prove this requirement: You have good knowledge of algorithms, data structures, and OOP principles"
+      },
+      {
+        "requirement_id": "70f99274-e850-4b5b-b0f9-ce164e449999",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r42-e3",
+            "source_ref": "outcome",
+            "quote": "Presented findings for 14 high-volume routes to the student transportation committee"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Collaborative problem communication is shown, but excitement for ambiguity is not explicit."
+      }
+    ]
+  },
+  {
+    "pair_id": "r43-jd-2e0a38d357",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "619a326e-81ab-4052-bec4-72e2517a4af5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Research and prototype new efficient speculative decoding algorithms and draft model architectures</span></li>"
+      },
+      {
+        "requirement_id": "e36bc224-42ec-463e-a487-3e40e2d533e8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Train, fine-tune and distill draft models, and design rigorous experiments to validate hypotheses."
+      },
+      {
+        "requirement_id": "83690078-3379-42fb-8c83-b218f46e2579",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Implement optimized version for serving engines to show efficacy in real world workloads</span></li>"
+      },
+      {
+        "requirement_id": "cdb4ff8f-6698-4ff8-9263-45ea64e02ef8",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r43-e2",
+            "source_ref": "description",
+            "quote": "Documented the source table, transformation query, owner, and refresh cadence"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Project results and ownership are communicated, but ongoing plans and progress to a broad team are not fully shown."
+      },
+      {
+        "requirement_id": "7ef5c43c-4164-4945-9b33-35419332a64e",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r43-e4",
+            "source_ref": "description",
+            "quote": "Produced a data-card proposal"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A technical write-up is produced, but blogging and productionization are absent."
+      },
+      {
+        "requirement_id": "afca3c59-2b4a-4512-9f68-0fb367e8c33c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Currently pursuing a Master's or Ph."
+      },
+      {
+        "requirement_id": "aa355337-61d1-4709-a000-2522c865b62c",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Strong knowledge of Machine Learning and Deep Learning fundamentals</span></li>"
+      },
+      {
+        "requirement_id": "e6905c4c-43b0-4744-8c37-8a22dd661c14",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Hands-on experience training or fine-tuning large models with distributed training frameworks (e.g., Megatron-LM, FSDP)</span></li>"
+      },
+      {
+        "requirement_id": "9eb1a9cb-a18e-4a5e-bdc0-4693f7b29555",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Familiarity with modern model architectures, such as Mixture-of-Experts and hybrid attention</span></li>"
+      },
+      {
+        "requirement_id": "8ff38bd5-e3b2-46ba-8387-87abaf13d4ce",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Prior research experience in speculative decoding, efficient inference, or efficient machine learning</span></li>"
+      },
+      {
+        "requirement_id": "04216209-ee11-4a10-9239-10bec889c412",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Publications at leading conferences in machine learning or systems (e.g., NeurIPS, ICML, ICLR, MLSys)</span></li>"
+      },
+      {
+        "requirement_id": "6122f488-9515-4e74-9690-ec32654262f2",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Experience with knowledge distillation, post-training, or reinforcement learning</span></li>"
+      },
+      {
+        "requirement_id": "ed3e9c1e-39c5-49d8-995c-2995f3507276",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Familiarity with LLM serving engines (e.g., vLLM, SGLang, TensorRT-LLM)</span></li>"
+      },
+      {
+        "requirement_id": "721336a6-a02c-4cd9-b047-149eb2b1d7b0",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Data Intern, River County Services; Reporting Lineage Catalog; Library Collection Cleanup; Data Ethics Case Study) do not explicitly prove this requirement: \">Contributions to open-source machine learning projects</span></li>"
+      }
+    ]
+  },
+  {
+    "pair_id": "r44-jd-7ffd50acdd",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "2deec459-b31d-4575-9e6b-0af19a495d1d",
+        "verdict": "insufficient_evidence",
+        "evidence": [],
+        "gap_reason_code": "metric_not_proven",
+        "rationale": "A software internship and projects are shown, but two-plus years are not proved."
+      },
+      {
+        "requirement_id": "a866d5d9-1e18-4322-9f61-786346fdae46",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (iOS Engineering Intern, Trailnote; Map Download Feature; Campus Accessibility Navigator; Mobile Studio Reviewer) do not explicitly prove this requirement: Expertise in backend development using languages such as Go, Python, or Java, with a solid grasp of cloud-native architectures."
+      },
+      {
+        "requirement_id": "bb237367-dba0-46ea-9365-b951ed958b16",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r44-e1",
+            "source_ref": "skill:2",
+            "quote": "Core Data"
+          },
+          {
+            "exp_key": "r44-e4",
+            "source_ref": "description",
+            "quote": "state ownership, memory cycles, and testable view models"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Data modeling and engineering fundamentals are shown, but broad system design is not."
+      },
+      {
+        "requirement_id": "00971ee4-281f-498d-8dcb-ad53067e8d3d",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r44-e2",
+            "source_ref": "description",
+            "quote": "cancellation, disk-space errors, and app relaunch recovery"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Failure-mode care is explicit, but money, idempotency, and reconciliation are not."
+      },
+      {
+        "requirement_id": "de5c1322-ed80-4f9a-b70a-256d315c4a33",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (iOS Engineering Intern, Trailnote; Map Download Feature; Campus Accessibility Navigator; Mobile Studio Reviewer) do not explicitly prove this requirement: Strong ownership mindset, with a track record of delivering high-quality projects end to end in cross-functional environments and raising team-wide technical standards."
+      },
+      {
+        "requirement_id": "9ef3b5c1-6f0a-441a-a357-eb22df20b353",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r44-e3",
+            "source_ref": "outcome",
+            "quote": "Five mobility-services volunteers completed the route-finding tasks"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Stakeholder usability evidence exists, but alignment and tradeoff leadership are not fully proved."
+      },
+      {
+        "requirement_id": "c42e1728-96e3-435d-b8d9-700c7a668444",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (iOS Engineering Intern, Trailnote; Map Download Feature; Campus Accessibility Navigator; Mobile Studio Reviewer) do not explicitly prove this requirement: Interest in blockchain fundamentals—EVM, smart contracts, wallets, on-chain settlement—or a strong appetite to go deep quickly."
+      }
+    ]
+  },
+  {
+    "pair_id": "r46-jd-137bc8ddcc",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "be35c590-86e6-4d75-a3a3-51fd8e387376",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r46-e1",
+            "source_ref": "description",
+            "quote": "Wrote a Python command-line program"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The candidate applies software engineering to a real personal-data task with explicit error reporting."
+      },
+      {
+        "requirement_id": "10b01a4b-d86b-4407-9f09-de4dc076d719",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r46-e1",
+            "source_ref": "description",
+            "quote": "reported rows with missing amounts"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Critical handling of invalid data is shown, but the problem is not clearly complex."
+      },
+      {
+        "requirement_id": "7e05b821-b861-4507-9747-dc73d9067765",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r46-e3",
+            "source_ref": "description",
+            "quote": "Organized a weekly four-person study group"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Active team participation and coordination are shown, but project scoping and delivery are not."
+      },
+      {
+        "requirement_id": "15502a75-a9af-406e-a2d1-79065c1ccae4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Learn about the business, our clients’ needs, and the impact of your team and related projects"
+      },
+      {
+        "requirement_id": "62938948-98e5-4a23-be66-8183095c7539",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Attend Meet & Greets with various executives and teams to gain a holistic view of what it takes to run a company like Rippling"
+      },
+      {
+        "requirement_id": "6017a94a-b529-4e74-9d14-352317f05ae6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Foster relationships with your intern cohort and teams through both exclusive internship social events and company/office-wide events"
+      },
+      {
+        "requirement_id": "27d1b6d7-c937-4c89-9e22-ceec2d3c10f4",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Previous internship/Co-op experience in software engineering, specifically in the backend with Python and the frontend using JavaScript and HTML/CSS"
+      },
+      {
+        "requirement_id": "3b4d7764-ef85-4f28-a7e4-8b6927b5f2d8",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Currently enrolled in a Bachelor’s or Master's degree in computer science or in a related field with a graduation date after the completion of the internship"
+      },
+      {
+        "requirement_id": "1bea57d4-9582-4fa4-902a-ae1291023cf2",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r46-e3",
+            "source_ref": "skill:2",
+            "quote": "Communication"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Communication is explicit, but cross-functional departmental work is not."
+      },
+      {
+        "requirement_id": "788fd236-db92-44a1-aad8-558ce1632a87",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Solid frontend programming skills with an emphasis on backend experience and knowledge"
+      },
+      {
+        "requirement_id": "3e72223b-19ce-4bf8-820f-ac1fd10a2a15",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Personal Expense Categorizer; Data Structures Coursework; Discrete Mathematics Study Facilitator; Introductory Programming Lab) do not explicitly prove this requirement: Ability to adapt and ask action-oriented questions to progress"
+      },
+      {
+        "requirement_id": "abdf86db-89c6-4eb0-84a2-385bcb6a14ce",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r46-e3",
+            "source_ref": "description",
+            "quote": "maintained a shared set of corrected practice solutions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "The candidate repeatedly develops technical knowledge and helps peers learn."
+      }
+    ]
+  },
+  {
+    "pair_id": "r47-jd-ccd54fc393",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "cbcc8f0d-8f01-4cad-91d4-cd3ddd6d2451",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: Required"
+      },
+      {
+        "requirement_id": "0f343852-fe2d-4eb4-a49d-bdaa13dba4e6",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: 3+ years of applied AI / ML, with systems you've taken to production (not just prototypes)"
+      },
+      {
+        "requirement_id": "df70520a-9f8a-4120-8a8c-9a32b5c842f3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: Depth in at least one, and working fluency across several, of: time-series / forecasting and statistical modeling;"
+      },
+      {
+        "requirement_id": "70c21877-e663-407b-8e48-2cc4e58c50e3",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: LLM and agentic systems;"
+      },
+      {
+        "requirement_id": "6cf9f527-31f0-46c5-8d55-bd22e4d04110",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: large-scale messy-data engineering"
+      },
+      {
+        "requirement_id": "8627b189-4492-4340-affe-0f10b7a9bf19",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: You build evaluation and monitoring as a matter of course — and know which metric to trust, and how to avoid leakage and train/serve skew"
+      },
+      {
+        "requirement_id": "8712d7ed-c9e8-4927-a2a0-453f45a71a60",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: Strong product sense: you turn AI capability into real outcomes, and know when a simpler approach wins"
+      },
+      {
+        "requirement_id": "40fdb294-bdaa-496c-9a5e-eb8ac853ab47",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Club Meeting Page; Web Foundations Coursework; Computing Fundamentals Portfolio; Library Technology Volunteer) do not explicitly prove this requirement: Masters degree in STEM"
+      }
+    ]
+  },
+  {
+    "pair_id": "r48-jd-b9e9ef4168",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "58500c59-eac0-4a6b-aee0-55e65e7f68f5",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Marble Ledger; Invoice Search Prototype; Cloud Learning Notes; Performance Claim Experiment) do not explicitly prove this requirement: Netic's Full-Stack Software Engineers working on the product team build the features that put AI in the hands of real businesses."
+      },
+      {
+        "requirement_id": "f14d0558-ffc8-4e5b-815d-a2c3400e7d18",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Marble Ledger; Invoice Search Prototype; Cloud Learning Notes; Performance Claim Experiment) do not explicitly prove this requirement: Build agentic products: Design, code, and ship full-stack features for Netic's AI platform."
+      },
+      {
+        "requirement_id": "a89130e6-bc35-4e07-bd37-a16b8002d272",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r48-e1",
+            "source_ref": "description",
+            "quote": "Built two Python FastAPI endpoints"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "API and data-model delivery are shown, but frontend, production launch, and iteration are absent."
+      },
+      {
+        "requirement_id": "fbbf7026-29fb-4a1b-8007-b7a3cd153a40",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r48-e1",
+            "source_ref": "description",
+            "quote": "Wrote pytest cases for invalid transitions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Build and test quality are proved, but production monitoring is absent."
+      },
+      {
+        "requirement_id": "f97a0c0d-01a2-4550-906e-e3c70048d890",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Marble Ledger; Invoice Search Prototype; Cloud Learning Notes; Performance Claim Experiment) do not explicitly prove this requirement: Proven product builder: Ability to deliver user‑facing software at scale;"
+      },
+      {
+        "requirement_id": "21cf2e77-41df-403b-ad15-c129f5a427e5",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r48-e1",
+            "source_ref": "skill:0",
+            "quote": "Python"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Python is proved, but React and TypeScript are not."
+      },
+      {
+        "requirement_id": "31c9de3a-8c55-4664-abbe-4a48c750f3be",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r48-e1",
+            "source_ref": "skill:2",
+            "quote": "PostgreSQL"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Database experience is explicit, but cloud infrastructure is explicitly not used."
+      },
+      {
+        "requirement_id": "692905fd-5294-4f9e-a140-0bb5cb21e28b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Software Intern, Marble Ledger; Invoice Search Prototype; Cloud Learning Notes; Performance Claim Experiment) do not explicitly prove this requirement: AI experience (nice‑to‑have): Hands‑on with LLM APIs, embeddings, or RAG patterns—or hunger to learn fast."
+      }
+    ]
+  },
+  {
+    "pair_id": "r50-jd-5b55c12fc5",
+    "labeler": "codex",
+    "labels": [
+      {
+        "requirement_id": "bff34f64-54f0-415a-9a48-574be72062af",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Our ideal candidate has strong JavaScript fundamentals, an eye for great user experiences, and enjoys turning customer needs into thoughtful engineering solutions."
+      },
+      {
+        "requirement_id": "8ef9c0fe-7fb1-49da-a132-09ff826fc5f7",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r50-e1",
+            "source_ref": "description",
+            "quote": "Implemented Kotlin Compose screens"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A mobile interface is built, but performance, visual quality, and complex business needs are not all established."
+      },
+      {
+        "requirement_id": "27bb277d-015e-45ad-9e42-63defca1973e",
+        "verdict": "partial",
+        "evidence": [
+          {
+            "exp_key": "r50-e1",
+            "source_ref": "outcome",
+            "quote": "Thirty internal testers retained their favorite sessions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A feature was shipped to testers, but cross-functional ownership is not explicit."
+      },
+      {
+        "requirement_id": "ca7e6249-a73b-45a6-8711-d245d9a6961b",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Work closely with product, design, and business teams to turn customer feedback into product improvements"
+      },
+      {
+        "requirement_id": "b0526b3a-1d63-4cd4-a398-48fd00f3051e",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Contribute to the tools, systems, and engineering practices that help Ramp scale"
+      },
+      {
+        "requirement_id": "139f296d-6b6a-4ce5-b050-c6bfef0a313d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Currently pursuing a B."
+      },
+      {
+        "requirement_id": "6942e666-d7b6-4c80-86f2-de3f79acf6b5",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r50-e1",
+            "source_ref": "skill:0",
+            "quote": "Kotlin"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "Kotlin is an explicitly used programming language."
+      },
+      {
+        "requirement_id": "e54adfe2-1ba2-481a-9da5-b7d46c03f5c6",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r50-e1",
+            "source_ref": "outcome",
+            "quote": "Thirty internal testers retained their favorite sessions"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A high-quality feature was shipped and used by internal testers."
+      },
+      {
+        "requirement_id": "7749bec9-81ac-4202-8f78-541eceb48c03",
+        "verdict": "matched",
+        "evidence": [
+          {
+            "exp_key": "r50-e1",
+            "source_ref": "description",
+            "quote": "Implemented Kotlin Compose screens for browsing event schedules"
+          }
+        ],
+        "gap_reason_code": null,
+        "rationale": "A product need was implemented as an engineering feature."
+      },
+      {
+        "requirement_id": "b2a71192-141d-4f4a-9e5b-03aac7b4698d",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Desire to learn quickly, take ownership, and work in a fast-paced environment"
+      },
+      {
+        "requirement_id": "2ea386dd-87c6-402a-967f-0ed1bbed4ed9",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Experience with React"
+      },
+      {
+        "requirement_id": "311338da-40cb-4732-a1e9-c60e898bf58a",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Familiarity with or interest in TypeScript and modern frontend development"
+      },
+      {
+        "requirement_id": "1e507482-180d-4edc-ae30-7f03eeb0bff1",
+        "verdict": "missing",
+        "evidence": [],
+        "gap_reason_code": "required_technology_absent",
+        "rationale": "The experiences (Mobile Development Intern, Sprig Events; Campus Safety Map; Security Exploration; Battery Optimization Report) do not explicitly prove this requirement: Interest in fintech, AI, or building products at scale"
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+"""Eval-only API launcher: stamps new analysis runs with a chosen matcher batch segment.
+
+The worker reads the batch size from each run's pipeline version, so this changes only what new runs
+request. Product code and defaults are untouched.
+"""
+import sys
+
+import uvicorn
+
+import careerops.domain.analysis_runs as analysis_runs
+
+analysis_runs.MATCHER_BATCHING_VERSION = f"{analysis_runs.MATCHER_BATCH_PREFIX}{int(sys.argv[1])}"
+from careerops.main import create_app  # noqa: E402
+
+uvicorn.run(create_app(), host="127.0.0.1", port=8011)

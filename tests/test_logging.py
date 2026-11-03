@@ -35,3 +35,16 @@ def test_json_log_formatter_emits_valid_allowlisted_fields() -> None:
     assert payload["redis_ready"] is True
     assert "raw_output" not in payload
     assert "timestamp" in payload
+
+
+def test_json_log_formatter_keeps_matcher_batch_position() -> None:
+    record = logging.LogRecord(
+        "careerops.test", logging.WARNING, __file__, 1, "rejected", None, None
+    )
+    record.batch_index = 1
+    record.batch_count = 3
+
+    payload = json.loads(JsonLogFormatter().format(record))
+
+    assert payload["batch_index"] == 1
+    assert payload["batch_count"] == 3

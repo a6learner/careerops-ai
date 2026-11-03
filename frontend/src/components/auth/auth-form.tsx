@@ -71,23 +71,17 @@ export function AuthForm({ mode, initialMessage }: AuthFormProps) {
 
   return (
     <div>
-      <div className="mb-8 lg:hidden">
-        <p className="text-sm font-semibold text-[var(--brand)]">CareerOps AI</p>
-      </div>
-      <p className="text-sm font-semibold text-[var(--brand)]">
-        {isRegister ? "Create your workspace" : "Welcome back"}
-      </p>
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight">
+      <h2 className="text-[26px] font-bold leading-tight tracking-tight">
         {isRegister ? "Start with real evidence" : "Sign in to CareerOps"}
       </h2>
-      <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+      <p className="mt-1.5 text-[15px] leading-6 text-muted">
         {isRegister
           ? "Build your experience library, analyze target roles, and turn gaps into action."
           : "Continue managing your experience evidence and application workflow."}
       </p>
 
       {initialMessage ? (
-        <div className="mt-6 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm text-indigo-800">
+        <div className="mt-6 rounded-md bg-brand-soft px-3.5 py-2.5 text-sm text-[var(--tag-blue-fg)]">
           {initialMessage}
         </div>
       ) : null}
@@ -95,15 +89,15 @@ export function AuthForm({ mode, initialMessage }: AuthFormProps) {
       {error ? (
         <div
           role="alert"
-          className="mt-6 rounded-lg border border-rose-200 bg-[var(--danger-soft)] px-4 py-3 text-sm leading-6 text-[var(--danger)]"
+          className="mt-6 rounded-md bg-danger-soft px-3.5 py-2.5 text-sm leading-6 text-danger"
         >
           {error}
         </div>
       ) : null}
 
-      <form className="mt-7 space-y-5" onSubmit={submit}>
-        <div className="space-y-2">
-          <label className="text-sm font-medium" htmlFor={`${mode}-email`}>
+      <form className="mt-7 space-y-4" onSubmit={submit}>
+        <div className="space-y-1.5">
+          <label className="text-xs text-muted" htmlFor={`${mode}-email`}>
             Email address
           </label>
           <Input
@@ -116,8 +110,8 @@ export function AuthForm({ mode, initialMessage }: AuthFormProps) {
             placeholder="you@example.com"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium" htmlFor={`${mode}-password`}>
+        <div className="space-y-1.5">
+          <label className="text-xs text-muted" htmlFor={`${mode}-password`}>
             Password
           </label>
           <Input
@@ -132,7 +126,7 @@ export function AuthForm({ mode, initialMessage }: AuthFormProps) {
             placeholder={isRegister ? "At least 8 characters" : "Enter your password"}
           />
         </div>
-        <Button className="w-full" size="lg" disabled={isSubmitting}>
+        <Button className="mt-1 w-full" size="lg" disabled={isSubmitting}>
           {isSubmitting ? (
             <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
           ) : (
@@ -148,11 +142,11 @@ export function AuthForm({ mode, initialMessage }: AuthFormProps) {
         </Button>
       </form>
 
-      <p className="mt-7 text-center text-sm text-[var(--muted)]">
+      <p className="mt-6 text-sm text-muted">
         {isRegister ? "Already have an account?" : "New to CareerOps?"}{" "}
         <Link
           href={isRegister ? "/login" : "/register"}
-          className="font-semibold text-[var(--brand)] hover:text-[var(--brand-strong)]"
+          className="text-foreground underline decoration-border-strong underline-offset-2 hover:decoration-foreground"
         >
           {isRegister ? "Sign in" : "Create an account"}
         </Link>

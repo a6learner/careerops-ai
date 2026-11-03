@@ -1,9 +1,14 @@
+import logging
 from uuid import UUID, uuid4
 
 import pytest
 
 from careerops.adapters.fake_requirement_parser import FakeRequirementParser
-from careerops.domain.errors import RequirementParserError
+from careerops.domain.errors import (
+    ParserOutputFailureReason,
+    ParserOutputValidationError,
+    RequirementParserError,
+)
 from careerops.domain.parse_runs import (
     ParsedRequirement,
     ParserOutput,
@@ -22,6 +27,7 @@ class InMemoryExecutionStore:
         self.completed_requirements: tuple[ParsedRequirement, ...] = ()
         self.failed_with: ParseRunErrorCode | None = None
         self.failed_model_name: str | None = None
+        self.failed_tokens: tuple[int | None, int | None] | None = None
 
     async def claim_parse_run(self, parse_run_id: UUID) -> ParseRunWorkItem | None:
         if self.claimed or parse_run_id != self.work_item.id:
@@ -49,11 +55,15 @@ class InMemoryExecutionStore:
         model_name: str,
         error_code: ParseRunErrorCode,
         latency_ms: int,
+        *,
+        input_tokens: int | None = None,
+        output_tokens: int | None = None,
     ) -> bool:
         if parse_run_id != self.work_item.id:
             return False
         self.failed_model_name = model_name
         self.failed_with = error_code
+        self.failed_tokens = (input_tokens, output_tokens)
         return True
 
     async def commit(self) -> None:
@@ -69,6 +79,17 @@ class FailingParser:
         raise RequirementParserError()
 
 
+class RejectedOutputParser:
+    @property
+    def model_name(self) -> str:
+        return "rejected-parser"
+
+    async def parse(self, input_text: str) -> ParserOutput:
+        raise ParserOutputValidationError(
+            ParserOutputFailureReason.UNKNOWN_CANDIDATE, input_tokens=120, output_tokens=30
+        )
+
+
 class InvalidParser:
     @property
     def model_name(self) -> str:
@@ -77,6 +98,8 @@ class InvalidParser:
     async def parse(self, input_text: str) -> ParserOutput:
         return ParserOutput(
             model_name="invalid-parser",
+            input_tokens=11,
+            output_tokens=5,
             requirements=(
                 ParsedRequirement(
                     category=RequirementCategory.MUST_HAVE,
@@ -124,4 +147,24 @@ async def test_execution_rejects_output_not_grounded_in_input() -> None:
 
     assert executed
     assert store.failed_with == ParseRunErrorCode.PARSER_OUTPUT_INVALID
+    assert store.failed_tokens == (11, 5)
     assert store.commits == 2
+
+
+@pytest.mark.asyncio
+async def test_execution_records_rejected_output_reason_and_token_usage(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    store = InMemoryExecutionStore("Python experience required.")
+
+    with caplog.at_level(logging.WARNING):
+        executed = await ParseRunExecutionService(store, RejectedOutputParser()).execute(
+            store.work_item.id
+        )
+
+    assert executed
+    assert store.failed_with == ParseRunErrorCode.PARSER_OUTPUT_INVALID
+    assert store.failed_tokens == (120, 30)
+    rejected = [r for r in caplog.records if r.getMessage() == "requirement_parser_output_rejected"]
+    assert len(rejected) == 1
+    assert rejected[0].__dict__["failure_reason"] == "unknown_candidate"

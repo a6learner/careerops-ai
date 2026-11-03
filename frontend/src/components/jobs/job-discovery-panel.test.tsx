@@ -41,6 +41,7 @@ describe("JobDiscoveryPanel", () => {
     const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
     render(<QueryClientProvider client={client}><JobDiscoveryPanel /></QueryClientProvider>);
 
+    await user.click(screen.getByRole("button", { name: /Discover public jobs/ }));
     await user.type(screen.getByLabelText("Keywords"), "Backend Engineer");
     await user.type(screen.getByLabelText("Location"), "Los Angeles");
     await user.type(screen.getByLabelText("Published within days"), "14");

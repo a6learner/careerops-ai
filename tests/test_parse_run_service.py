@@ -70,6 +70,15 @@ class InMemoryParseRunStore:
             return self.existing
         return None
 
+    async def get_latest_parse_run(self, user_id: UUID, job_id: UUID) -> ParseRunRecord | None:
+        if (
+            self.existing is not None
+            and self.existing.user_id == user_id
+            and self.existing.job_id == job_id
+        ):
+            return self.existing
+        return None
+
     async def create_or_get_queued_parse_run(
         self,
         user_id: UUID,
@@ -293,3 +302,39 @@ async def test_get_parse_run_raises_not_found_for_missing_run() -> None:
 
     with pytest.raises(ParseRunNotFoundError):
         await service.get_parse_run(job.user_id, job.id, uuid4())
+
+
+@pytest.mark.asyncio
+async def test_get_latest_parse_run_returns_owned_jobs_latest_run() -> None:
+    job = make_job()
+    store = InMemoryParseRunStore()
+    service = ParseRunService(InMemoryJobReader(job), store, RecordingDispatcher())
+    submitted = await service.submit_parse_run(job.user_id, job.id, "parse-key")
+
+    latest = await service.get_latest_parse_run(job.user_id, job.id)
+
+    assert latest == submitted
+
+
+@pytest.mark.asyncio
+async def test_get_latest_parse_run_raises_not_found_before_first_run() -> None:
+    job = make_job()
+    service = ParseRunService(
+        InMemoryJobReader(job),
+        InMemoryParseRunStore(),
+        RecordingDispatcher(),
+    )
+
+    with pytest.raises(ParseRunNotFoundError):
+        await service.get_latest_parse_run(job.user_id, job.id)
+
+
+@pytest.mark.asyncio
+async def test_get_latest_parse_run_hides_other_users_job() -> None:
+    job = make_job()
+    store = InMemoryParseRunStore()
+    service = ParseRunService(InMemoryJobReader(job), store, RecordingDispatcher())
+    await service.submit_parse_run(job.user_id, job.id, "parse-key")
+
+    with pytest.raises(JobNotFoundError):
+        await service.get_latest_parse_run(uuid4(), job.id)

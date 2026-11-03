@@ -5,7 +5,8 @@
 Accepted for the initial project/checkpoint API and review UI slice, 2026-10-27,
 under the author's instruction to begin design and incremental upgrades while
 preserving existing features. Implementation is subject to author review.
-The MCP dependency/auth handoff and host integration remain proposed.
+The MCP dependency/auth handoff and host integration were later implemented
+under ADR-042 (stdio MCP server, CLI and DPAPI-protected local state).
 
 ## Context
 

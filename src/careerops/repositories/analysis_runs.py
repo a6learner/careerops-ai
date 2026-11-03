@@ -60,6 +60,25 @@ class AnalysisRunRepository:
         run = result.scalar_one_or_none()
         return None if run is None else await self._to_record(run)
 
+    async def get_latest_analysis_run(
+        self,
+        user_id: UUID,
+        job_id: UUID,
+        parse_run_id: UUID,
+    ) -> AnalysisRunRecord | None:
+        result = await self._session.execute(
+            select(AnalysisRun)
+            .where(
+                AnalysisRun.user_id == user_id,
+                AnalysisRun.job_id == job_id,
+                AnalysisRun.parse_run_id == parse_run_id,
+            )
+            .order_by(AnalysisRun.created_at.desc(), AnalysisRun.id.desc())
+            .limit(1)
+        )
+        run = result.scalar_one_or_none()
+        return None if run is None else await self._to_record(run)
+
     async def create_or_get_queued_analysis_run(
         self,
         user_id: UUID,

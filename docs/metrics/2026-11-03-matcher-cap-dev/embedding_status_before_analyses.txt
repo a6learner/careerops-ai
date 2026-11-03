@@ -1,0 +1,11 @@
+-- Embedding runs before any analysis was submitted, 2026-11-03T06:36:20Z
+  status   | count 
+-----------+-------
+ succeeded |   214
+(1 row)
+
+ analysis_runs_so_far 
+----------------------
+                    0
+(1 row)
+

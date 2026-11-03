@@ -171,6 +171,10 @@ This performs `base -> head -> 202609190001 -> head`, verifies data preservation
 and lifecycle-constraint restoration, and cleans up its own volume. It never
 downgrades the development database.
 
+The script was written when the head was `202610060001` and still asserts that
+head. The current head is `202610270001`, so running it now fails its head check.
+Re-target it before reuse; the 2026-10-10 record covers the old boundary only.
+
 `CAREEROPS_ENV=production` refuses the checked-in development JWT secret. A real
 deployment must inject a separate `CAREEROPS_JWT_SECRET`; do not place it in the
 repository or image. Platform-neutral release and rollback checks are documented
@@ -201,6 +205,18 @@ To run Groq locally, copy the example to the ignored `.env`, set
 key. Automated tests remain fake or mock-backed unless the live-test flag is
 explicitly enabled.
 
+The Groq parser (`parse-v4`, ADR-046 and ADR-050) never offers section headings
+(lines ending in a colon, known section titles, all-caps titles, HTML headings) to
+the model, and merges a sentence the model returns once per
+listed skill into one requirement and keeps the first skill. A rejected parse
+logs `requirement_parser_output_rejected` with a `failure_reason` and stores
+provider token counts on the failed run.
+
+On Windows, use `127.0.0.1` rather than `localhost` in `CAREEROPS_DATABASE_URL`
+and `CAREEROPS_REDIS_URL` for host-run processes and integration tests. `localhost`
+may try IPv6 first and exceed the 0.2 s Redis socket timeout, which makes
+`/readyz` report Redis as unavailable.
+
 Evidence matching is configured independently from requirement parsing. Setting
 `CAREEROPS_EVIDENCE_MATCHER_PROVIDER=groq` in the API process binds newly
 submitted Analysis Runs to the frozen Groq matcher. It does not make a network
@@ -216,9 +232,11 @@ The key may be loaded from the ignored `.env`, but putting the live gate there
 does not authorize execution because the resolver reads it directly from the
 worker process environment. Stop other unauthorized Analysis workers before
 processing Groq-bound jobs; otherwise they will correctly claim and fail those
-jobs as disabled. Each real matcher execution makes one HTTP attempt. A timeout,
-429, 5xx, invalid JSON, invalid schema, or invalid contract becomes a durable
-failure; there is no fake fallback or claimed process-wide TPM smoothing.
+jobs as disabled. Each real matcher execution sends its requirements in batches of
+at most six (ADR-049) and makes one HTTP attempt per batch, with an output cap of
+2,000 tokens recorded on the run (ADR-051; runs created earlier keep 800). A timeout,
+429, 5xx, invalid JSON, invalid schema, or invalid contract in any batch becomes a durable
+failure of the whole run; there is no fake fallback or claimed process-wide TPM smoothing.
 
 New Analysis Runs are admitted through a per-user Redis sliding window before a
 durable row or queue message is created. The default allows five new runs per
@@ -589,11 +607,8 @@ Using the explicit `.venv` paths keeps project dependencies out of the global Py
 
 ## API Surface
 
-Project journal endpoints use the same authentication boundary:
-`/api/v1/projects`, `/api/v1/projects/{project_id}/checkpoints`, individual
-checkpoint reads and checkpoint `/review`. Full request schemas are available
-in the running API's `/docs`. Local MCP/CLI setup is described in
-[the agent guide](product/project-agent-local-usage.md).
+Full request schemas are available in the running API's `/docs`. Local
+MCP/CLI setup is described in [the agent guide](product/project-agent-local-usage.md).
 
 - `GET /healthz` checks whether the API process is alive.
 - `GET /readyz` checks PostgreSQL and Redis concurrently. It returns `200` with
@@ -602,7 +617,7 @@ in the running API's `/docs`. Local MCP/CLI setup is described in
 - `POST /api/v1/auth/register` creates a user with a hashed password.
 - `POST /api/v1/auth/login` verifies credentials and returns a bearer access token.
 - `GET /api/v1/auth/me` returns the current user for a valid bearer access token.
-- `GET /api/v1/experiences` lists the current user's active experiences.
+- `GET /api/v1/experiences` lists the current user's active experiences (not paginated).
 - `POST /api/v1/experiences` creates an experience owned by the current user.
 - `GET /api/v1/experiences/{id}` returns one owned active experience.
 - `PATCH /api/v1/experiences/{id}` updates one owned active experience with `If-Match` optimistic locking.
@@ -613,16 +628,27 @@ in the running API's `/docs`. Local MCP/CLI setup is described in
 - `PATCH /api/v1/jobs/{id}` updates one owned active job with `If-Match` optimistic locking.
 - `DELETE /api/v1/jobs/{id}` soft-deletes one owned active job.
 - `POST /api/v1/jobs/{id}/parse-runs` creates or reuses a queued idempotent parse run for one owned active job; a key can be replayed only while that job's parse input is unchanged.
+- `GET /api/v1/jobs/{id}/parse-runs/latest` returns the newest parse run for one owned job, or `404 PARSE_RUN_NOT_FOUND` before the first run (ADR-045).
 - `GET /api/v1/jobs/{id}/parse-runs/{run_id}` returns one owned parse run with structured requirements.
 - `POST /api/v1/jobs/{id}/analysis-runs` creates or reuses a queued idempotent Analysis Run for an explicit successful Parse Run and the current active experience-library fingerprint; only new runs consume the per-user admission window.
+- `GET /api/v1/jobs/{id}/analysis-runs/latest?parse_run_id=...` returns the newest Analysis Run for that job and Parse Run, or `404 ANALYSIS_RUN_NOT_FOUND` (ADR-045).
 - `GET /api/v1/jobs/{id}/analysis-runs/{run_id}` returns one owned Analysis Run with validated evidence matches and explicit gaps.
 - `GET /api/v1/action-items` lists owned tasks with optional Job/status filters and cursor pagination, including archived-Job state.
 - `POST /api/v1/action-items` idempotently creates a manual task or one linked to an actionable Evidence Match.
 - `PATCH /api/v1/action-items/{id}` updates title or status with `If-Match` optimistic locking, including after its Job is archived.
 - `GET /api/v1/dashboard/summary` returns the current user's active Job and Action Item status totals, cached in Redis with PostgreSQL fallback.
+- `GET /api/v1/dashboard/focus` returns up to five upcoming deadlines (UTC date), recently updated jobs and open action items; it is not cached (ADR-045).
+- `POST /api/v1/cv-imports` uploads a CV for worker extraction; `GET /api/v1/cv-imports/{id}` returns its status and Experience drafts.
+- `PATCH /api/v1/experience-drafts/{id}` edits a draft with `If-Match`; `POST .../confirm` turns it into an Experience and `POST .../reject` discards it.
+- `POST /api/v1/job-discovery-runs` starts a fake-provider search; `GET /api/v1/job-discovery-runs/{id}` returns results with source and observation time.
+- `POST /api/v1/job-discovery-results/{id}/draft` creates a Job draft; `GET`/`PATCH /api/v1/job-drafts/{id}` read and edit it; `POST /api/v1/job-drafts/{id}/confirm` turns it into a Job.
+- `POST`/`GET /api/v1/projects` create and list projects; `GET /api/v1/projects/{id}` reads one.
+- `POST`/`GET /api/v1/projects/{id}/checkpoints` create and list stage records (status filter and text search `q`); `GET .../checkpoints/{checkpoint_id}` reads one; `PATCH .../checkpoints/{checkpoint_id}/review` confirms or withdraws it with `If-Match`.
 
 The backend MVP core loop reaches the Dashboard summary. Local Analysis Runs use
-exact hybrid retrieval and either the default deterministic fake matcher or the
+exact hybrid retrieval (with the default fake embeddings, vector scores almost
+never pass the 0.65 threshold, so retrieval is effectively lexical) and either the
+default deterministic fake matcher or the
 explicitly authorized frozen Groq matcher inside the worker, while preserving
 lexical fallback, object-level authorization, evidence validation, and atomic
 result writes.
@@ -632,4 +658,4 @@ result writes.
 - Python is used with strict typing discipline because the project targets backend systems plus LLM governance, not a language showcase.
 - PostgreSQL is the only source of truth. Redis may be cleared and rebuilt.
 - Dramatiq is the worker queue because its Redis integration is small and direct for this project size. PostgreSQL remains the durable task source and can rebuild queued delivery.
-- Database constraints will enforce core invariants, especially the rule that positive evidence matches cannot be stored without real evidence.
+- Database constraints enforce core invariants. A positive evidence match cannot be stored without a cited Experience, version, non-blank quote and `quote_valid = true`. The substring, ownership, candidate and version checks that set `quote_valid` run in application code (`domain/evidence_matching.py`).

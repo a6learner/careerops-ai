@@ -27,3 +27,15 @@ export async function apiRequest<T>(path: string, init?: RequestInit): Promise<T
 
   return (await response.json()) as T;
 }
+
+// Resolves to null only for the named not-found code, so an unowned parent (JOB_NOT_FOUND) still surfaces.
+export async function apiRequestOrNull<T>(path: string, absentCode: string): Promise<T | null> {
+  try {
+    return await apiRequest<T>(path);
+  } catch (error) {
+    if (error instanceof ApiRequestError && error.status === 404 && error.detail.code === absentCode) {
+      return null;
+    }
+    throw error;
+  }
+}

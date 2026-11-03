@@ -96,5 +96,14 @@ What future condition would justify reopening this decision?
 - `ADR-038-local-full-stack-acceptance.md`: frontend container topology, canonical public origin, fake-only isolated Compose acceptance, and browser-driven verification.
 - `ADR-039-refresh-token-deferral.md`: explicit MVP refresh-token deferral and the resulting bounded-session limitation.
 - `ADR-040-cv-import-and-assisted-job-discovery.md`: worker-backed document normalization, review-only drafts, and fake-first job discovery with source and freshness preservation.
-- `ADR-041-project-evidence-agent.md`: initial project/checkpoint API, immutable source snapshots, idempotent review and ownership constraints; MCP/Skill integration remains proposed.
+- `ADR-041-project-evidence-agent.md`: initial project/checkpoint API, immutable source snapshots, idempotent review and ownership constraints; the MCP/Skill integration it proposed was later implemented under ADR-042.
 - `ADR-042-local-agent-client-and-mcp-boundary.md`: protected local client, same-key recovery and repository Skill; the author approved the optional MCP SDK after the initial automatic-review rejection.
+- `ADR-043-temporary-cloud-lab.md`: one-off private, fake-provider, single-host cloud exercise reached through an SSH tunnel; not public deployment or P1-14 acceptance.
+- `ADR-044-frontend-visual-system.md`: locally owned Notion-inspired visual system, shared UI primitives, board/gallery/detail page structure; supersedes only the MVP "no design system" exclusion.
+- `ADR-045-latest-run-and-dashboard-focus-reads.md`: owner-scoped latest Parse/Analysis Run lookup and an uncached dashboard focus read, with no migration.
+- `ADR-046-parser-contract-hardening.md`: parse-v3 merges repeated candidate IDs, keeps decimals and abbreviations inside one candidate, and records failure reasons and tokens; amends ADR-012's duplicate-ID rule.
+- `ADR-047-large-scale-development-evaluation.md`: 302-JD / 50-resume development set with model labels from two labelers plus adjudication, real-pipeline runs through the API and worker, and mid-run provider change to OpenRouter pinned to Groq; not a holdout.
+- `ADR-048-matcher-failure-diagnostics.md`: provider-side schema rejections and aborted generations become `MATCHER_OUTPUT_INVALID_SCHEMA`; contract failures keep token counts and log a coverage diagnostic; no new codes or migration.
+- `ADR-049-batched-evidence-matching.md`: the worker sends requirements in sequential batches of at most six with per-batch validation, whole-run failure, single-transaction persistence and a `matcher-batch-6` pipeline segment; legacy runs keep one call.
+- `ADR-050-parser-heading-filter.md`: parse-v4 never offers section headings to the model (lead-ins ending in a colon, section titles, all-caps titles, HTML headings); candidate IDs and spans unchanged.
+- `ADR-051-matcher-output-cap.md`: matcher output cap raised from 800 to 2,000 tokens, recorded on each run as a `matcher-cap-2000` pipeline segment; legacy runs keep 800.

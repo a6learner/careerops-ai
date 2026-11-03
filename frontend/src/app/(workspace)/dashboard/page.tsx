@@ -1,29 +1,33 @@
-import { ArrowRight, BriefcaseBusiness, ClipboardCheck, Library } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, ClipboardCheck, FolderGit2, Library } from "lucide-react";
 import Link from "next/link";
 
+import { DashboardFocus } from "@/components/dashboard/dashboard-focus";
 import { DashboardSummary } from "@/components/dashboard/dashboard-summary";
-import { Card } from "@/components/ui/card";
+import { PageHeader } from "@/components/ui/page-header";
 
 const steps = [
   {
     title: "Build your evidence library",
-    description: "Capture projects, work, research, and coursework you can defend in an interview.",
+    description: "Capture projects, work, research and coursework you can defend in an interview.",
     href: "/experiences",
-    label: "Experiences",
     icon: Library,
   },
   {
     title: "Add a target role",
-    description: "Save the job description before parsing requirements or starting analysis.",
+    description: "Save the job description, then parse requirements and run analysis.",
     href: "/jobs",
-    label: "Jobs",
     icon: BriefcaseBusiness,
+  },
+  {
+    title: "Record project stages",
+    description: "Keep decisions, failures and source excerpts while the work is fresh.",
+    href: "/projects",
+    icon: FolderGit2,
   },
   {
     title: "Turn gaps into work",
     description: "Track preparation tasks linked to explicit evidence gaps.",
     href: "/action-items",
-    label: "Action Items",
     icon: ClipboardCheck,
   },
 ];
@@ -31,40 +35,39 @@ const steps = [
 export default function DashboardPage() {
   return (
     <div>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Your evidence workspace</h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]">
-            Move from real experience evidence to job requirements, grounded analysis, and focused
-            preparation tasks.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        icon="🧭"
+        title="Your evidence workspace"
+        description="Move from real experience evidence to job requirements, grounded analysis and focused preparation tasks."
+      />
 
       <DashboardSummary />
 
-      <div className="mt-8 grid gap-4 lg:grid-cols-3">
-        {steps.map(({ title, description, href, label, icon: Icon }, index) => (
-          <Card key={href} className="group p-5 transition hover:-translate-y-0.5 hover:shadow-md">
-            <div className="flex items-center justify-between">
-              <span className="grid size-10 place-items-center rounded-xl bg-[var(--brand-soft)] text-[var(--brand)]">
-                <Icon className="size-5" aria-hidden="true" />
-              </span>
-              <span className="text-xs font-semibold text-slate-400">0{index + 1}</span>
-            </div>
-            <h2 className="mt-5 font-semibold">{title}</h2>
-            <p className="mt-2 min-h-12 text-sm leading-6 text-[var(--muted)]">{description}</p>
-            <Link
-              href={href}
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)]"
-            >
-              Open {label}
-              <ArrowRight className="size-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
-            </Link>
-          </Card>
-        ))}
-      </div>
+      <DashboardFocus />
 
+      <section className="mt-10" aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading" className="border-b pb-2 text-lg font-semibold">Workflow</h2>
+        <ol className="mt-2">
+          {steps.map(({ title, description, href, icon: Icon }, index) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="group flex items-start gap-3 rounded-md px-2 py-2.5 transition-colors hover:bg-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+              >
+                <Icon className="mt-0.5 size-[18px] shrink-0 text-faint" strokeWidth={1.75} aria-hidden="true" />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-medium">
+                    <span className="mr-1.5 text-faint">{index + 1}.</span>
+                    {title}
+                  </span>
+                  <span className="block text-[13px] leading-5 text-muted">{description}</span>
+                </span>
+                <ArrowUpRight className="mt-0.5 size-4 text-faint opacity-0 transition group-hover:opacity-100" aria-hidden="true" />
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,2155 @@
+[
+ {
+  "pair_id": "r11-jd-3121834c33",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "addcad79-8e50-4910-b46e-69491c943bac",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Posting-duration notice; not a candidate qualification shown in experiences."
+   },
+   {
+    "requirement_id": "10dbcf61-07ef-48f8-b5de-0d2bab25c6d2",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "EEO statement; nothing in experiences addresses it."
+   },
+   {
+    "requirement_id": "909644aa-5931-43b2-a333-290b7048566a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "EEO statement; nothing in experiences addresses it."
+   },
+   {
+    "requirement_id": "1bdabaf5-9005-41c6-8380-bbb2400a3daf",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Accommodation notice; nothing in experiences addresses it."
+   }
+  ]
+ },
+ {
+  "pair_id": "r25-jd-26634804aa",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "79f2a005-89f6-4eba-a0fa-928cef48ab8a",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r25-e1",
+      "source_ref": "description",
+      "quote": "Wrote a Python script"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Python shown; React, TypeScript and Go not shown (Go only watched videos)."
+   },
+   {
+    "requirement_id": "69115ab6-ab17-42d6-b343-4ce64df2a91b",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "explicit_non_implementation",
+    "rationale": "Retrieval/prompt code was written by teammates, not the candidate."
+   },
+   {
+    "requirement_id": "d4a533c0-83a3-4594-a2b2-025f65f8a716",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Spark, Iceberg, DuckDB, Redshift, DBT, Postgres or Mongo."
+   },
+   {
+    "requirement_id": "a8695632-6afd-4901-97c3-56b5853a41ac",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r25-e3",
+      "source_ref": "description",
+      "quote": "Deployed a sample web app to AWS Elastic Beanstalk"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "AWS shown; Kubernetes only discussed, Terraform not covered, Helm absent."
+   },
+   {
+    "requirement_id": "6494816c-b0a1-4420-9e12-3a958beb4a46",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a degree."
+   },
+   {
+    "requirement_id": "e4d1e69f-f9f0-4e1d-80c1-db00c6cd4705",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "explicit_non_implementation",
+    "rationale": "Candidate did slides/demo; teammates built the LLM code."
+   },
+   {
+    "requirement_id": "5696bd6b-030c-43ae-a9af-e24e824d9c58",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r25-e4",
+      "source_ref": "description",
+      "quote": "Wrote small C programs for file I/O, process creation with fork and exec, and a simple shell supporting pipes"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Hands-on C programming including a shell."
+   },
+   {
+    "requirement_id": "e8425b5a-6ef7-406f-a701-19a226bc022a",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "explicit_non_implementation",
+    "rationale": "RAG code written by teammates; accuracy claim unverified."
+   },
+   {
+    "requirement_id": "ac723f14-c560-4749-a75f-9689262a03df",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No data engineering tools."
+   },
+   {
+    "requirement_id": "a91b3d97-e74a-4d40-b56b-b9ad4d551a10",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No manufacturing, hardware or robotics domain."
+   },
+   {
+    "requirement_id": "9f37a973-6f23-4470-a223-798491eba1b0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No open-source contribution or published research stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r27-jd-549191bf37",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "d7817ab1-5726-41f1-afcc-d0a221659603",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r27-e2",
+      "source_ref": "description",
+      "quote": "Added gRPC methods to an internal Go gateway"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Backend API work only; UI, auth, real-time collaboration and visualization not shown."
+   },
+   {
+    "requirement_id": "7e26cfe6-bb21-45de-b18a-ab5222235dc3",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No frontend or visualization interface work."
+   },
+   {
+    "requirement_id": "e51f7698-1629-4e77-b5f2-8e2d192479f3",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r27-e2",
+      "source_ref": "description",
+      "quote": "Added gRPC methods to an internal Go gateway"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Backend API shown; not in the same experience as a cloud/containerized environment."
+   },
+   {
+    "requirement_id": "e6933850-2c4a-4129-85db-b353769fd6c9",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r27-e2",
+      "source_ref": "description",
+      "quote": "traced downstream calls with OpenTelemetry spans in Grafana Tempo"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Monitoring tools used; analysis from user feedback and performance optimization not shown."
+   },
+   {
+    "requirement_id": "02666dae-1d3f-4e87-8c1b-5eb73e5edb8a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No code review participation stated."
+   },
+   {
+    "requirement_id": "4a4d1c65-3e22-4e33-869e-7a00e0c1cae9",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No hardware validation collaboration."
+   },
+   {
+    "requirement_id": "25221109-c309-41b1-a13d-72708163ee59",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No documentation or reference implementation maintenance stated."
+   },
+   {
+    "requirement_id": "58c92d65-1cc5-4a41-89f4-f23f0939750a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No platform API release or customer integration support."
+   },
+   {
+    "requirement_id": "dccfb68f-97c3-409d-8ca2-fbc705ed9d42",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a Master's program."
+   },
+   {
+    "requirement_id": "b06f6626-d138-4671-81f9-15f8137e4e36",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "GPA not stated."
+   },
+   {
+    "requirement_id": "56844f00-6078-497c-a898-28ed925a961c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Language fluency not stated in experiences."
+   },
+   {
+    "requirement_id": "aa2acb0b-25ee-43f3-8612-5b5898cb11ea",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r27-e1",
+      "source_ref": "title",
+      "quote": "Software Engineering Co-op"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Prior co-op experience."
+   },
+   {
+    "requirement_id": "38adb378-e9fa-47e7-aa14-c77289f45bb6",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No leadership stated."
+   },
+   {
+    "requirement_id": "cf26e709-f9b8-4a66-ba11-cb5f5c44d771",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI tool usage or interest stated."
+   },
+   {
+    "requirement_id": "17b17068-86f3-4122-b396-123d93d1be05",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No project management stated."
+   },
+   {
+    "requirement_id": "b8feef62-7d53-4432-9d86-3a6a93905c97",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Navigating ambiguity not stated."
+   },
+   {
+    "requirement_id": "ad287ff5-0d97-4ac2-b5eb-55ab27b90305",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No explicit communication evidence."
+   },
+   {
+    "requirement_id": "215372d9-ea3e-463d-8f01-be0079f254b0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No planning/organizational evidence."
+   },
+   {
+    "requirement_id": "8fceebab-6a21-4539-a441-b11d51a6fdce",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r27-e1",
+      "source_ref": "description",
+      "quote": "ingested roughly 2k webhook events per minute from three carriers"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Streaming event ingestion published to NATS."
+   },
+   {
+    "requirement_id": "1b4f6c04-92dc-467a-ad7d-ca286cc4f0f3",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r27-e3",
+      "source_ref": "description",
+      "quote": "Packaged two Go workers as minimal Docker images"
+     },
+     {
+      "exp_key": "r27-e2",
+      "source_ref": "description",
+      "quote": "Added gRPC methods to an internal Go gateway"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Any listed item suffices; containers and APIs shown."
+   }
+  ]
+ },
+ {
+  "pair_id": "r28-jd-c5f2cbaf0a",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "591de2d3-7f2b-4954-b24b-1645dba38e4c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a Master's program."
+   },
+   {
+    "requirement_id": "dec58bd5-f3cf-4599-974b-acd27a578036",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a Master's program."
+   },
+   {
+    "requirement_id": "94f037a6-9523-41e3-8d4a-81383cf40661",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Course of study not stated."
+   },
+   {
+    "requirement_id": "06c6ae3e-16f9-4532-9335-1b191f3cfd03",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI/ML algorithm development."
+   },
+   {
+    "requirement_id": "81709573-cca1-4684-8663-399c1301e69e",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "Python work shown but six-month duration not stated."
+   },
+   {
+    "requirement_id": "52a8b80e-7b81-4d80-9a69-fde41fc2db0f",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI/ML deployment on cloud."
+   },
+   {
+    "requirement_id": "76f93e8f-efd2-48ee-8fad-40f246f8eb00",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI/ML training or inference optimization."
+   },
+   {
+    "requirement_id": "72b262b7-a97c-4a9d-aaf3-fee5abf0fad5",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI/ML domain work."
+   },
+   {
+    "requirement_id": "9c5112e8-03d5-4848-8d36-deff674af952",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No agentic framework."
+   },
+   {
+    "requirement_id": "27fdce98-baee-421b-9a8e-07a1b085e011",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Header line; no qualification shown."
+   },
+   {
+    "requirement_id": "1c02cb81-2d8e-4bb4-bcb0-9475996a4c55",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI product work with research scientists."
+   },
+   {
+    "requirement_id": "5f5bb001-9ff7-41c5-ae49-bdbfe8dbcd99",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI systems work."
+   },
+   {
+    "requirement_id": "f3ceedf3-b73e-4d66-a227-629958a0b428",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI infrastructure work."
+   },
+   {
+    "requirement_id": "8b9ca32b-63b2-4c8b-bceb-7612dd9678e8",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Ultraclusters, PyTorch or agentic frameworks."
+   },
+   {
+    "requirement_id": "30c8b0f0-f075-47ef-8962-09fd0aa69c77",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Claude Code or Windsurf use."
+   },
+   {
+    "requirement_id": "9393d7cc-c6a6-4cff-8e3b-dca288dd7617",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No agentic workflows."
+   },
+   {
+    "requirement_id": "bf56a381-8a58-4407-817d-aeca5089411a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Header line; no qualification shown."
+   },
+   {
+    "requirement_id": "11765c83-d8d4-4294-99d0-fd541a0d6c68",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Disposition not explicitly evidenced."
+   },
+   {
+    "requirement_id": "79896cb9-b1fa-4bfe-beaa-9db57ec53d58",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not evidenced."
+   },
+   {
+    "requirement_id": "65400098-8511-45a5-9f4a-470324baa90c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No research-paper implementation."
+   },
+   {
+    "requirement_id": "80a503ff-612d-43dd-ac3d-7fdb9e97bf98",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No agentic or multimodal work."
+   },
+   {
+    "requirement_id": "3bf61a06-eacb-473e-9464-3e18769c549a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced."
+   },
+   {
+    "requirement_id": "cd2cb88c-6ce2-47ed-b87f-d37d9d856b88",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced."
+   },
+   {
+    "requirement_id": "a449805d-853d-4016-bc85-23eea32d1eb3",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Generic trait without explicit evidence."
+   },
+   {
+    "requirement_id": "e8c1f882-7bc0-44a7-ac7d-ba8af4bc9a45",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No hardware or AI expertise shown."
+   },
+   {
+    "requirement_id": "49b57ebd-188c-4525-9b89-8cd1441d2173",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced."
+   },
+   {
+    "requirement_id": "68579530-0b74-4109-baf9-02d175f582c1",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI workflow work."
+   }
+  ]
+ },
+ {
+  "pair_id": "r30-jd-7c4109d0ff",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "ef8fc47f-8ffe-4449-ae76-170234341939",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Header line; no qualification shown."
+   },
+   {
+    "requirement_id": "275b1102-f353-469b-b557-f77a3a40317f",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Product sense not explicitly evidenced."
+   },
+   {
+    "requirement_id": "6b6122d4-2bd1-4e4a-a121-f6afcbef3d0d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "User-focused product thinking not stated."
+   },
+   {
+    "requirement_id": "d5aa9937-9388-4433-8d0b-8593a78c3ca5",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r30-e1",
+      "source_ref": "description",
+      "quote": "Built an asynchronous Rust ingestion service"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Built software in an internship."
+   },
+   {
+    "requirement_id": "1333b8d6-2afd-4863-b517-ebaa3ebebb59",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r30-e1",
+      "source_ref": "description",
+      "quote": "Built an asynchronous Rust ingestion service"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Programs in Rust."
+   },
+   {
+    "requirement_id": "cc492fa4-f33b-4315-9caa-07d5a6784315",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced."
+   },
+   {
+    "requirement_id": "63309061-bb60-482d-8abb-4b283d2b33ae",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not evidenced."
+   },
+   {
+    "requirement_id": "adddb22e-48d2-4442-a9cf-8f32cb74171d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "SQL and relational tables not explicitly mentioned."
+   },
+   {
+    "requirement_id": "440b1523-e156-4f4e-b98a-7eb9a19fc02f",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No LLM or agent work."
+   },
+   {
+    "requirement_id": "d0fde468-3545-482e-8a0c-811826a2e617",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No React, TypeScript or Python."
+   },
+   {
+    "requirement_id": "8dc294c2-9a3d-4926-aead-9fee81a646bb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Location not stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r31-jd-fcc9086401",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "55f19c41-0ced-4d36-86c0-1e7192e877a6",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r31-e2",
+      "source_ref": "description",
+      "quote": "Exported reviewer corrections to Parquet so the lab could assemble the next labeling batch"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Built a small data tool end to end; scaling for growing analytical needs not shown."
+   },
+   {
+    "requirement_id": "42431175-bd2a-4520-a44d-20fba7097934",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Databricks or cloud data engineering."
+   },
+   {
+    "requirement_id": "f67bd598-2e48-4e81-a81e-bed5d2f0bf81",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r31-e2",
+      "source_ref": "description",
+      "quote": "Built a Streamlit interface that showed model predictions"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Model-assisted review tool built; acceleration of Data/GTM workflows not stated."
+   },
+   {
+    "requirement_id": "e263f6b8-5bad-4112-a13a-d827352c4e91",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No cross-team relationship building stated."
+   },
+   {
+    "requirement_id": "c3d0b8f1-3a9d-4467-82c0-0340bf5d1550",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No data quality/governance systems."
+   },
+   {
+    "requirement_id": "70612fc5-6b11-42cc-9b95-14856a74dcab",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "Engineering work shown but 3+ years not stated."
+   },
+   {
+    "requirement_id": "bfbf61c6-0cf9-4193-9ac0-c52a9a74d64c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a degree."
+   },
+   {
+    "requirement_id": "da689055-b0e1-4dc6-af55-c3fc99ff14df",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Databricks, Spark or Airflow."
+   },
+   {
+    "requirement_id": "3bc6a7d5-d246-4c8b-bee8-367417dfc510",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r31-e1",
+      "source_ref": "skill:0",
+      "quote": "Python"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Python shown; SQL not shown."
+   },
+   {
+    "requirement_id": "eb9733c2-e4d4-4695-8066-9500050acc2b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Curiosity about AI productivity tools not explicitly stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r33-jd-343f2f2b12",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "93949a91-6798-4fdb-8f3f-f65bf5340e1e",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No shipping or production verification stated."
+   },
+   {
+    "requirement_id": "4e48c774-2e6d-4417-99ea-e90e00cc2415",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No deployment or monitoring stated."
+   },
+   {
+    "requirement_id": "5e5d7385-8974-47b3-ac6a-72c8e34c5e83",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r33-e2",
+      "source_ref": "description",
+      "quote": "Presented confidence intervals and sample-size warnings to the process engineer"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Presented work to one engineer; organization-wide presentation not shown."
+   },
+   {
+    "requirement_id": "f1e55eac-15ce-4568-b0a6-c0bed4081400",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r33-e1",
+      "source_ref": "skill:0",
+      "quote": "Python"
+     },
+     {
+      "exp_key": "r33-e3",
+      "source_ref": "skill:3",
+      "quote": "Python"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Python listed with data science work."
+   },
+   {
+    "requirement_id": "ed1a34fd-ea9d-4eee-b97f-04c5cda3216b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No frontend experience."
+   },
+   {
+    "requirement_id": "a56a9c2c-7e42-4676-8f38-ca72bd9ae618",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No object-oriented programming stated."
+   },
+   {
+    "requirement_id": "70207783-2c8d-4fe9-bc1c-1215bcc83751",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No deployment or testing frameworks."
+   },
+   {
+    "requirement_id": "94aad001-b5a9-4d2e-abed-cd2b00936210",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No API development."
+   },
+   {
+    "requirement_id": "172df344-bf95-464b-bbe5-9c2fa3b1ec87",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AWS or PaaS."
+   }
+  ]
+ },
+ {
+  "pair_id": "r34-jd-6be3656f30",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "fd9608a9-54ff-4972-8913-2057fff19588",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r34-e2",
+      "source_ref": "description",
+      "quote": "so preempted runs could resume from the latest epoch"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Failure handling on Kubernetes jobs; large-scale production throughput and concurrency not shown."
+   },
+   {
+    "requirement_id": "b8af4a5c-b6f2-46cf-b1a0-62d45c62f088",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No caching, consistency, queueing or dependency resilience design."
+   },
+   {
+    "requirement_id": "24951685-86c2-461c-bb0b-3312b74bf7d2",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No latency/tail performance analysis."
+   },
+   {
+    "requirement_id": "c81a1f44-43bd-49ba-b5c7-81d205427dda",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Shared platform for other teams not stated."
+   },
+   {
+    "requirement_id": "cb5038c8-8b06-434d-a770-f22e823456ef",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No explicit communication/collaboration evidence."
+   },
+   {
+    "requirement_id": "004e11bb-f4ba-4205-a98b-b4b7be527262",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No golden-path tooling."
+   },
+   {
+    "requirement_id": "a17e0d65-f321-4a0c-9d76-f4342cfff0f5",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "None of the listed reliability techniques shown."
+   },
+   {
+    "requirement_id": "18acf278-87bc-4218-badb-65d2d865358a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No progressive delivery or rollout gates."
+   },
+   {
+    "requirement_id": "02d939ce-01d3-45ff-bdfb-9425d189e576",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No API or contract design."
+   },
+   {
+    "requirement_id": "428ce8ac-9f10-4222-b5fa-bb943a6869a8",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No multi-team enabling impact stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r35-jd-bfe4b028cf",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "5540d951-5f76-40bf-a83c-18ecdc5129da",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a graduate program."
+   },
+   {
+    "requirement_id": "6ceeec5c-3cfa-4bde-955a-32a5a8997ae1",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No LLM work."
+   },
+   {
+    "requirement_id": "b7b2906d-d6e6-4821-91a9-e1bae12b4f93",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No RAG, embeddings, tool calling or AI human-in-the-loop systems."
+   },
+   {
+    "requirement_id": "5508ede9-0e1a-445a-ae7d-a1aee5595cf0",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r35-e2",
+      "source_ref": "description",
+      "quote": "Added Express routes that joined application milestones from PostgreSQL"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Relational database and API work shown; Python and ETL concepts not shown."
+   },
+   {
+    "requirement_id": "6c680b63-08f4-4fe9-94b2-fba5e5be997f",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r35-e4",
+      "source_ref": "description",
+      "quote": "documented supported states with examples for other student teams"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Clear written communication shown; self-directed learning and curiosity not explicit."
+   },
+   {
+    "requirement_id": "03344b34-9da9-4758-bda0-a4cc4c606c0a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No cloud data environment, Git or ML stated."
+   },
+   {
+    "requirement_id": "03de1baf-010b-49ae-9620-8f45a74bcc6c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Availability not stated."
+   },
+   {
+    "requirement_id": "fbabe77a-f679-42dd-ae7c-5a2fe14f9d4a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a Master's program."
+   },
+   {
+    "requirement_id": "df4a562d-928d-4710-bd0a-bab1484f4b58",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Work authorization not stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r37-jd-89418ba2f0",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "e2d53258-eea0-4319-a8b3-e872cd8015c2",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Enrollment not stated in experiences."
+   },
+   {
+    "requirement_id": "83c2c736-8614-4f76-94d5-c5e2a990b4c0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Work authorization not stated."
+   },
+   {
+    "requirement_id": "5cacdbd7-818f-4b04-a85b-46d0b12c2bef",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "In-person location availability not stated."
+   },
+   {
+    "requirement_id": "ecbd0958-4dbf-47e8-b489-df2919da8954",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r37-e1",
+      "source_ref": "description",
+      "quote": "Created Angular dashboards for field supervisors"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Built production SPA dashboards with performance attention during an internship."
+   },
+   {
+    "requirement_id": "50f4ae75-8946-40ae-9a23-8c16949d3e7f",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r37-e2",
+      "source_ref": "description",
+      "quote": "Added C# ASP.NET Core endpoints"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Backend work shown; large-scale multi-customer scaling and security not shown."
+   },
+   {
+    "requirement_id": "e563f6eb-5bab-4860-b0bd-94ab2206c4fc",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No unit tests or documentation work stated."
+   },
+   {
+    "requirement_id": "c5270b5a-243a-4113-882f-68709ba4d129",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a degree program."
+   },
+   {
+    "requirement_id": "2c90e3eb-d92b-4457-8176-d91324d07e7f",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r37-e2",
+      "source_ref": "description",
+      "quote": "Added C# ASP.NET Core endpoints"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Modern language shown; operating systems and algorithms not shown."
+   }
+  ]
+ },
+ {
+  "pair_id": "r38-jd-40d4c87450",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "615ff654-3655-477a-87ce-1a54fad3a325",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No AI software engineering work."
+   }
+  ]
+ },
+ {
+  "pair_id": "r39-jd-f9aa195aed",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "a0fe58f0-223b-4fd1-a10a-71f8b0dae901",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r39-e1",
+      "source_ref": "description",
+      "quote": "Implemented a Python Kubernetes operator"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Added backend capability; automated instrumentation/monitoring not shown."
+   },
+   {
+    "requirement_id": "fef6f40a-84a4-4e19-9346-e2dabf1e599f",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r39-e2",
+      "source_ref": "outcome",
+      "quote": "Reproduced an intermittent upload corruption bug"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Contributed to stability by reproducing a bug; the fix itself was not the candidate's."
+   },
+   {
+    "requirement_id": "6a7eeeb9-038b-44d0-aed4-3f4154bd4680",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No on-call operational triage."
+   },
+   {
+    "requirement_id": "c9b2602f-8396-46d5-8850-1864eeb8ecd9",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r39-e2",
+      "source_ref": "outcome",
+      "quote": "Reproduced an intermittent upload corruption bug and supplied the trace used for its fix"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Fault-injection tests surfaced a reliability defect."
+   },
+   {
+    "requirement_id": "6a479225-5f7c-47ed-be02-f2ed972b0ed0",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "metric_not_proven",
+    "rationale": "Backend components built but 2-6 years not stated."
+   },
+   {
+    "requirement_id": "0aa3358e-67a8-415f-a668-ad50bcebf67c",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r39-e3",
+      "source_ref": "description",
+      "quote": "replicated fixed-size blocks across three processes using a primary-backup protocol"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Distributed systems shown; functional programming not shown."
+   },
+   {
+    "requirement_id": "dc681f41-82ab-480d-bd6a-8311a2014afc",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No SQL or online data store work."
+   },
+   {
+    "requirement_id": "4d048fb6-229f-44ec-a1b1-89f4d063ebb1",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r39-e2",
+      "source_ref": "description",
+      "quote": "Created pytest scenarios"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Automated testing shown; agile, TDD and CI not shown."
+   },
+   {
+    "requirement_id": "9f1962be-cbdd-42ff-b9f3-ec0fa2e88777",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced."
+   },
+   {
+    "requirement_id": "896c0d7b-f58c-4b47-8134-005673c0fff8",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Spark or ORM."
+   },
+   {
+    "requirement_id": "6b36efc0-4ce7-4bf7-b32e-e2972572b6a1",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No dependency injection framework."
+   },
+   {
+    "requirement_id": "bd5572e1-e087-45b8-93e2-692c3b3923d0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a degree."
+   }
+  ]
+ },
+ {
+  "pair_id": "r41-jd-25ab77c358",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "22779db5-092d-4197-854a-f8bee0cc3a5d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Degree and graduation year not stated."
+   },
+   {
+    "requirement_id": "7604b1bb-9e26-41dc-b109-f02f3ff5ef22",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Python, Go or TypeScript not explicitly stated."
+   },
+   {
+    "requirement_id": "ee472a2f-6162-45da-89d9-4aa64845ce7a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No data structures, algorithms or systems work."
+   },
+   {
+    "requirement_id": "a0d2ca92-723f-47ab-bec4-286b98469e27",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r41-e1",
+      "source_ref": "description",
+      "quote": "loaded daily order, refund, and fulfillment extracts from S3 into Snowflake staging tables"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Cloud storage and SQL warehouse shown; API work not shown."
+   },
+   {
+    "requirement_id": "681171c8-c3ce-4d39-98b4-95f1307e4fd9",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Interest in AI and startups not stated."
+   },
+   {
+    "requirement_id": "7d02f956-8093-4086-b97f-ad122f5d775b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "San Francisco in-person availability not stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r42-jd-3e3323d504",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "0381922d-8103-4d02-a77a-702d76403f1d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No machine learning engineering work."
+   }
+  ]
+ },
+ {
+  "pair_id": "r43-jd-89939ce9b9",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "2f1565e7-405f-417b-9788-e54a5805645c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Header line; no qualification shown."
+   },
+   {
+    "requirement_id": "c80cf7ce-248a-49d5-8c22-646129da57a5",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Project ownership with team check-ins not stated."
+   },
+   {
+    "requirement_id": "2988d6b6-54dc-44e5-8df0-d39f114f7393",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No refactoring stated."
+   },
+   {
+    "requirement_id": "a09aef97-8ac6-4c52-af7b-a0f277ff1dca",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No software testing stated."
+   },
+   {
+    "requirement_id": "b49bed62-d1be-4294-a6c3-d45584b19a3f",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No code review participation."
+   },
+   {
+    "requirement_id": "6471d70a-76cc-4744-9135-50f59508b270",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No CI/CD."
+   },
+   {
+    "requirement_id": "1884dab1-3500-4a43-843b-c1ab7e0e12c5",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Degree and graduation date not stated."
+   },
+   {
+    "requirement_id": "fc0f5429-7646-4518-b032-5f2bbf8d3dfc",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Work-experience duration not stated."
+   },
+   {
+    "requirement_id": "3886804f-d161-4959-bc37-929bce8290d2",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Toronto availability not stated."
+   },
+   {
+    "requirement_id": "f696f3b7-490d-49ed-8a10-7a27ee87d43e",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "CS fundamentals not shown."
+   },
+   {
+    "requirement_id": "c2b0884c-dcfd-4eeb-bd97-9b505cfb158e",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r43-e2",
+      "source_ref": "description",
+      "quote": "linked each measure to its approved SQL file"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "SQL work shown; data modeling fundamentals not shown."
+   },
+   {
+    "requirement_id": "49a4ac23-e75b-48dc-a206-ee5d8a84118b",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r43-e1",
+      "source_ref": "description",
+      "quote": "loaded validated records into a PostgreSQL reporting schema"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Loaded data into PostgreSQL."
+   },
+   {
+    "requirement_id": "bfddee58-ae84-4151-bdce-aaf700b4e1ef",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r43-e2",
+      "source_ref": "description",
+      "quote": "Documented the source table, transformation query, owner, and refresh cadence for 47 public dashboard measures"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Explicit written documentation for analysts."
+   },
+   {
+    "requirement_id": "345a8454-b08c-4b32-8832-4ecd862776e6",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Interest in large-scale data problems not stated."
+   },
+   {
+    "requirement_id": "5d588071-ccdc-483e-ac44-1535d67c327b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Passion for community, sustainability or transportation not stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r45-jd-ba5272986f",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "4f43e7ef-9cc4-4f47-92a9-7204358d6ec0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Project ownership with team check-ins not stated."
+   },
+   {
+    "requirement_id": "7af113ed-fc34-4251-a76d-9944638daeb4",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No refactoring stated."
+   },
+   {
+    "requirement_id": "63e4bf8b-928c-40b8-86e1-f069b1e12a3b",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r45-e2",
+      "source_ref": "description",
+      "quote": "Added Espresso tests"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "UI tests shown; unit, integration and load tests not shown."
+   },
+   {
+    "requirement_id": "74c10611-cf9e-4c61-a58c-25c23165b2bc",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No code review participation."
+   },
+   {
+    "requirement_id": "e01b2af7-48d4-401e-ba21-ae2e5b3abc5a",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r45-e2",
+      "source_ref": "outcome",
+      "quote": "All preference flows passed on three emulator API levels in CI"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "CI shown; continuous deployment not shown."
+   },
+   {
+    "requirement_id": "fd71f4a0-72fc-4d41-911b-e81356eedaa8",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Degree and university not stated."
+   },
+   {
+    "requirement_id": "b8258b40-dbc2-4e7d-ac97-96d545f83c3d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "CS fundamentals not explicitly shown."
+   },
+   {
+    "requirement_id": "70cb1eda-0997-46c1-af09-49852f4ac3e5",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r45-e2",
+      "source_ref": "description",
+      "quote": "Added Espresso tests"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "One test type shown; unit and integration testing not shown."
+   },
+   {
+    "requirement_id": "5f8179bc-91ff-4e90-80c4-0cb97984071b",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r45-e4",
+      "source_ref": "description",
+      "quote": "Debugged examples at the whiteboard and asked students to explain failing cases"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Explicit tutoring communication."
+   },
+   {
+    "requirement_id": "2ded106b-5c41-45f7-848d-00e9f6e1e0fb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Passion not stated."
+   },
+   {
+    "requirement_id": "5d553679-e95e-4933-a014-1de4eff0cfcd",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Startup environment not stated."
+   },
+   {
+    "requirement_id": "6f3a23d3-8cde-4064-9397-5cf39649ec2e",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r45-e1",
+      "source_ref": "description",
+      "quote": "tracking university shuttle arrivals at 34 stops"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Live shuttle-arrival tracking app with network-interruption handling."
+   },
+   {
+    "requirement_id": "352af00a-bf29-4cf3-b87c-20fd2f74f692",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No open-source contributions."
+   },
+   {
+    "requirement_id": "e39bfd77-8fd4-4d61-885d-2aa0da9fe660",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r45-e1",
+      "source_ref": "description",
+      "quote": "cached the last successful response in Room"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Used the Room database."
+   },
+   {
+    "requirement_id": "3f81a7a7-9f9b-4cbe-9fd4-d4b2b98af32e",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r45-e1",
+      "source_ref": "description",
+      "quote": "tracking university shuttle arrivals at 34 stops"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Live shuttle-arrival tracking app with network-interruption handling."
+   },
+   {
+    "requirement_id": "2c24ec14-04a1-4441-baac-1c6d1847adaa",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r45-e1",
+      "source_ref": "description",
+      "quote": "Developed Kotlin Jetpack Compose views"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Android mobile development."
+   },
+   {
+    "requirement_id": "2fccb035-a79f-4904-8b51-68d388e59498",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Degree and university not stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r46-jd-93bb9b0936",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "6dd99bde-a3e7-4747-99e3-9496eb75d716",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r46-e1",
+      "source_ref": "description",
+      "quote": "Wrote a Python command-line program"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Python shown; PyTorch not shown."
+   },
+   {
+    "requirement_id": "06c40b52-29df-4afe-ad03-a91eba698e6c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "None of the listed domains shown."
+   },
+   {
+    "requirement_id": "4685fafe-f421-4429-88b3-1ef1860b91d0",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r46-e2",
+      "source_ref": "description",
+      "quote": "Wrote JUnit cases for empty structures, duplicate values, and removal from each boundary position"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Tested coursework code; well-architected engineering foundation not shown."
+   },
+   {
+    "requirement_id": "060c7413-06a9-41f2-b2fe-527f3bd6b687",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No FAA Part 107."
+   }
+  ]
+ },
+ {
+  "pair_id": "r47-jd-da045977f9",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "532c7e9c-eacb-4f11-8329-6437fe19362d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No ground-station or edge systems work."
+   },
+   {
+    "requirement_id": "34cfa40e-e6b2-4ae7-a55b-4f25bb04157c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No control systems, embedded or RF work."
+   },
+   {
+    "requirement_id": "2d3bcca6-845a-4ec5-a8d1-685f8e9655dc",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No high-bandwidth data movement."
+   },
+   {
+    "requirement_id": "5766c4e7-3b31-4bcb-997a-c37b82b79e0c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No data pipelines."
+   },
+   {
+    "requirement_id": "2f61771b-dda3-40f3-b2c1-466fb3a18698",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No low-latency data distribution or networking."
+   },
+   {
+    "requirement_id": "930b37df-9ab8-415b-af01-b4e76f7bee02",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No cloud orchestration or distributed systems."
+   },
+   {
+    "requirement_id": "a684d7cb-1749-4244-ac02-64aa7b3be97d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No distributed systems design."
+   },
+   {
+    "requirement_id": "d6172d08-b862-45fa-8b89-80a2c5c42526",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No inter-service communication work."
+   },
+   {
+    "requirement_id": "c7ea3b84-aa2e-4fa0-98f8-fd6767020c63",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r47-e1",
+      "source_ref": "description",
+      "quote": "Created a three-page website for a campus board-game club using semantic HTML and hand-written CSS"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Front-end shown; API and database development not shown."
+   },
+   {
+    "requirement_id": "aa9b7aca-b1a6-4e4c-88bf-722c3d1041e7",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No API development."
+   },
+   {
+    "requirement_id": "7f18bbd3-b21c-4777-be07-b7915e7290d1",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r47-e1",
+      "source_ref": "description",
+      "quote": "Created a three-page website for a campus board-game club using semantic HTML and hand-written CSS"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Built a front-end site with a JavaScript filter used by the club."
+   },
+   {
+    "requirement_id": "c400c405-48c7-4056-9bec-e85fa2f07637",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No data backend or ETL."
+   },
+   {
+    "requirement_id": "a1edc3f7-bbe4-42bf-8c31-581b7c6d2742",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No monitoring or alerting."
+   },
+   {
+    "requirement_id": "4433d7f2-e7e1-4931-b142-edc0efe7ebc0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No monitoring or alerting."
+   },
+   {
+    "requirement_id": "c6d4f60f-95fe-4d2f-9103-5a2ff749b49a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No uptime tooling."
+   },
+   {
+    "requirement_id": "10ec4afc-ea5f-4ecd-a2b7-b00cad296a71",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No telemetry work."
+   },
+   {
+    "requirement_id": "02935d40-fad6-4c10-921d-4383b4e80893",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No telemetry analytics."
+   },
+   {
+    "requirement_id": "bf9c35ab-89a4-47da-915c-fd2515330d89",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No real-time customer notification work."
+   },
+   {
+    "requirement_id": "a32e93b4-c394-4cd3-8c70-f5b08fc6a539",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No infrastructure, security or pipelines."
+   },
+   {
+    "requirement_id": "abbdfeed-42a8-4c11-b29d-cd080887b4fb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No deployment pipeline work."
+   },
+   {
+    "requirement_id": "9c96f0de-75c0-4b54-b8a7-0590a6855e88",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No continuous deployment infrastructure."
+   },
+   {
+    "requirement_id": "dd6d03a1-d747-44e2-96fe-066c8cd2bd3d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Fragment; no qualification shown."
+   },
+   {
+    "requirement_id": "0718ad4b-865e-4196-ba94-bfa0f0d37ecb",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No production-line software."
+   },
+   {
+    "requirement_id": "98d68ec1-3240-49ef-8731-b7cbaddb073f",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No production-line software."
+   },
+   {
+    "requirement_id": "1db0f8f4-d0b6-4b9d-8fb7-37962186710d",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No automated testing."
+   },
+   {
+    "requirement_id": "586d0bfc-9b52-4863-8f1e-a16b51e4253b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No hardware engineering collaboration."
+   },
+   {
+    "requirement_id": "25ad93fb-4f8c-43db-b92b-b58fdca33e21",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No simulation software."
+   },
+   {
+    "requirement_id": "34608d6b-a2e6-4b90-abb3-5aee4ff52f2e",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No simulations."
+   },
+   {
+    "requirement_id": "f12a2363-6169-4dc8-9d52-33f4817d4e7c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No simulation tools."
+   },
+   {
+    "requirement_id": "42584109-db82-4567-952e-811fc78001e2",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No network orchestration software."
+   },
+   {
+    "requirement_id": "37b9f9b3-0fdd-49d8-9bb4-94d804b96cbf",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r47-e1",
+      "source_ref": "description",
+      "quote": "Created a three-page website for a campus board-game club"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Out-of-class project counts; 0 years accepted."
+   },
+   {
+    "requirement_id": "de3a60aa-c70f-453a-a3df-e15083911752",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a degree."
+   },
+   {
+    "requirement_id": "a8327d5c-8f23-4303-8f6e-0c6f80b2b8c4",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Header line; no qualification shown."
+   },
+   {
+    "requirement_id": "67052ae1-29d5-49b1-9460-583da16861db",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Rust, Go, Haskell or C/C++."
+   },
+   {
+    "requirement_id": "0ae59577-455b-4ffa-a453-1b5f75d6f91b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No distributed/HPC language work."
+   },
+   {
+    "requirement_id": "3b300a75-e07f-424d-8bde-498276a3632e",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Problem-solving strength not explicitly evidenced."
+   },
+   {
+    "requirement_id": "7d4ec50a-3230-4c0e-abb5-272f337e30dc",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r47-e4",
+      "source_ref": "description",
+      "quote": "Wrote a one-page plain-language guide for selecting duplex printing"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Written communication shown; collaboration not shown."
+   },
+   {
+    "requirement_id": "6f23c656-932b-4e4c-a54e-0623b6cf8158",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Fast-paced environment not stated."
+   },
+   {
+    "requirement_id": "a1bb4129-11c7-476d-a827-a28622114bcf",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "4ac85d1d-7508-4930-bfce-d9d324a7bc15",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "fda1198c-8524-4eec-843b-a6fa646a495e",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "7eed586f-1adc-4a4e-8c5b-aba99cd89c00",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "0e576815-5c17-47f6-a31d-456e8e778ed6",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "f2920482-29ac-4537-93c8-972cd25da081",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "50aaedce-434e-453e-afa1-0f55638efbb6",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   },
+   {
+    "requirement_id": "37ad7a99-3580-4ede-82f5-812926c3d048",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Citizenship/ITAR status not stated."
+   }
+  ]
+ },
+ {
+  "pair_id": "r49-jd-1f8710e6de",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "e42434f0-9d64-46a5-afdd-bbe313f44193",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No performant or scalable systems built."
+   },
+   {
+    "requirement_id": "b5c1f3e5-4c21-4fc7-a6a5-1316f4127af0",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No design-through-launch ownership stated."
+   },
+   {
+    "requirement_id": "159403cd-778d-4b9b-9a68-1a5eea49261b",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r49-e1",
+      "source_ref": "description",
+      "quote": "Wrote SQL queries in BigQuery that joined weekly sales, inventory, and promotion tables for 18 stores"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Solved a data problem, one of the listed areas."
+   },
+   {
+    "requirement_id": "082cd9fa-5062-42e6-bbe0-fa3e016877d3",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r49-e1",
+      "source_ref": "outcome",
+      "quote": "Replaced a manual Monday spreadsheet merge for the category manager"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Delivered for a business user; working with product teams on customer needs not stated."
+   },
+   {
+    "requirement_id": "f776d242-09da-4366-bfed-4a53679be3b6",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No engineering tools work."
+   },
+   {
+    "requirement_id": "58ac805d-87ea-4a6d-81eb-57ef2f86e20a",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Degree not stated."
+   },
+   {
+    "requirement_id": "143441c7-74f0-4111-bbc1-ed472641d1d8",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "CS fundamentals not shown."
+   },
+   {
+    "requirement_id": "5a03e285-7465-4e65-9129-4670c5e0170f",
+    "verdict": "matched",
+    "evidence": [
+     {
+      "exp_key": "r49-e1",
+      "source_ref": "description",
+      "quote": "Published Looker Studio views"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Shipped analytics views that replaced a manual process."
+   },
+   {
+    "requirement_id": "c3425f71-c07c-4261-95d4-d191882cb773",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced."
+   },
+   {
+    "requirement_id": "58662438-8edb-4338-9c66-29cfc6653da6",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Not explicitly evidenced; study plan is future intent only."
+   },
+   {
+    "requirement_id": "87215588-3dc7-465a-b319-21c85447ae2a",
+    "verdict": "partial",
+    "evidence": [
+     {
+      "exp_key": "r49-e4",
+      "source_ref": "skill:1",
+      "quote": "Python"
+     }
+    ],
+    "gap_reason_code": null,
+    "rationale": "Python with pandas shown; backend development not shown in the same experience."
+   },
+   {
+    "requirement_id": "463b2dc5-aa4e-4871-a74f-b1825e548943",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "None of Flask, PostgreSQL, Temporal, Elixir or AWS mentioned."
+   }
+  ]
+ },
+ {
+  "pair_id": "r50-jd-8c85cee901",
+  "labeler": "claude",
+  "labels": [
+   {
+    "requirement_id": "7a0ca909-e0a2-41bf-89c3-a610e6a5f072",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No deployment architecture work."
+   },
+   {
+    "requirement_id": "19540a66-31a5-4b8d-b7a2-b7d216f34bbc",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No infrastructure lifecycle work."
+   },
+   {
+    "requirement_id": "38180150-a914-4187-91f8-1c79bd814934",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No runbooks or automation tooling."
+   },
+   {
+    "requirement_id": "73a542ec-4fc7-479f-898d-c13f12fcf445",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No platform deployability work."
+   },
+   {
+    "requirement_id": "1e970d58-cfd4-4ce8-93f4-2f264b40d884",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No work with customer security/DevOps teams."
+   },
+   {
+    "requirement_id": "eb059ee0-eace-4c92-8f8c-0ed7b27e505b",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No sales/pre-sales collaboration."
+   },
+   {
+    "requirement_id": "99cc9650-0e48-43a7-821a-751db2b251ae",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "Header line; no qualification shown."
+   },
+   {
+    "requirement_id": "3c614bce-ab2d-40ff-863d-c1b595a2bc7c",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No infrastructure roles or years."
+   },
+   {
+    "requirement_id": "924698df-97f4-41db-90fe-a640f12c3310",
+    "verdict": "insufficient_evidence",
+    "evidence": [],
+    "gap_reason_code": "explicit_non_implementation",
+    "rationale": "AWS mentioned but the internship explicitly did not configure it; Terraform and orchestration absent."
+   },
+   {
+    "requirement_id": "6d7797b0-3728-4fc4-96f6-e4a9345d2854",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No experience states a degree."
+   },
+   {
+    "requirement_id": "b588e6fd-0913-48b2-be1f-c720b97a33b1",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No Go, GraphQL or LLM infrastructure."
+   },
+   {
+    "requirement_id": "699ad894-3065-4337-a293-d8c4d5b34ec8",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No early-stage deployment operations."
+   },
+   {
+    "requirement_id": "df0ee3a0-5b46-4b66-87ee-7b50da0b2e03",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No observability tools."
+   },
+   {
+    "requirement_id": "ea368c98-93e5-460e-ba80-18535d9fa888",
+    "verdict": "missing",
+    "evidence": [],
+    "gap_reason_code": "required_technology_absent",
+    "rationale": "No CI/CD or deployment automation."
+   }
+  ]
+ }
+]

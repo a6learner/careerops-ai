@@ -1,0 +1,25 @@
+{
+ "note": "Counts from the worker logs (UTF-16 Tee output). worker_real.log covers only the last Groq-period stack session; earlier sessions were overwritten. Status lines appear both JSON-escaped and plain.",
+ "worker_real.log": {
+  "http_status_by_host": {
+   "api.groq.com 200": 82,
+   "api.groq.com 400": 19,
+   "api.groq.com 413": 13,
+   "api.groq.com 429": 210,
+   "generativelanguage.googleapis.com 200": 388,
+   "generativelanguage.googleapis.com 429": 202
+  },
+  "hybrid_rrf_events": 174,
+  "hybrid_lexical_fallback_events": 0,
+  "hybrid_vector_ineligible_events": 0
+ },
+ "worker_real_openrouter.log": {
+  "http_status_by_host": {
+   "generativelanguage.googleapis.com 200": 1867,
+   "openrouter.ai 200": 417
+  },
+  "hybrid_rrf_events": 1867,
+  "hybrid_lexical_fallback_events": 0,
+  "hybrid_vector_ineligible_events": 0
+ }
+}

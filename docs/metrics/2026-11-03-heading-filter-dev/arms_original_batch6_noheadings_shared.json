@@ -1,0 +1,831 @@
+{
+ "order": "docs\\metrics\\2026-11-02-matcher-batching-dev\\order_analysis.json",
+ "pairs_succeeded_in_all_arms": 50,
+ "shared_requirements_only": true,
+ "original": {
+  "pairs_in_order_succeeded": 59,
+  "labels_on_common_pairs": {
+   "requirements_scored": 259,
+   "four_class_confusion_label_to_predicted": {
+    "insufficient_evidence->insufficient_evidence": 1,
+    "insufficient_evidence->missing": 5,
+    "insufficient_evidence->partial": 1,
+    "matched->insufficient_evidence": 1,
+    "matched->matched": 4,
+    "matched->missing": 9,
+    "matched->partial": 1,
+    "missing->insufficient_evidence": 13,
+    "missing->missing": 198,
+    "partial->insufficient_evidence": 1,
+    "partial->matched": 4,
+    "partial->missing": 21
+   },
+   "coverage_exact": {
+    "k": 221,
+    "n": 259,
+    "rate": 0.8533,
+    "ci95": [
+     0.805,
+     0.8912
+    ]
+   },
+   "recall_by_coverage_class": {
+    "full": {
+     "k": 4,
+     "n": 15,
+     "rate": 0.2667,
+     "ci95": [
+      0.109,
+      0.5195
+     ]
+    },
+    "partial": {
+     "k": 0,
+     "n": 26,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.1287
+     ]
+    },
+    "gap": {
+     "k": 217,
+     "n": 218,
+     "rate": 0.9954,
+     "ci95": [
+      0.9745,
+      0.9992
+     ]
+    }
+   },
+   "overclaim_rate": {
+    "k": 5,
+    "n": 259,
+    "rate": 0.0193,
+    "ci95": [
+     0.0083,
+     0.0444
+    ]
+   },
+   "underclaim_rate": {
+    "k": 33,
+    "n": 259,
+    "rate": 0.1274,
+    "ci95": [
+     0.0922,
+     0.1735
+    ]
+   },
+   "gap_to_positive_rate": {
+    "k": 1,
+    "n": 218,
+    "rate": 0.0046,
+    "ci95": [
+     0.0008,
+     0.0255
+    ]
+   },
+   "positive_citations_pointing_at_labeled_evidence_experience": {
+    "k": 6,
+    "n": 10,
+    "rate": 0.6,
+    "ci95": [
+     0.3127,
+     0.8318
+    ]
+   },
+   "by_resume_stratum": {
+    "adversarial": {
+     "requirements": 15,
+     "overclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     }
+    },
+    "ai_ml": {
+     "requirements": 47,
+     "overclaim": {
+      "k": 0,
+      "n": 47,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0756
+      ]
+     },
+     "underclaim": {
+      "k": 7,
+      "n": 47,
+      "rate": 0.1489,
+      "ci95": [
+       0.0741,
+       0.2769
+      ]
+     }
+    },
+    "backend": {
+     "requirements": 17,
+     "overclaim": {
+      "k": 1,
+      "n": 17,
+      "rate": 0.0588,
+      "ci95": [
+       0.0105,
+       0.2698
+      ]
+     },
+     "underclaim": {
+      "k": 1,
+      "n": 17,
+      "rate": 0.0588,
+      "ci95": [
+       0.0105,
+       0.2698
+      ]
+     }
+    },
+    "data": {
+     "requirements": 34,
+     "overclaim": {
+      "k": 1,
+      "n": 34,
+      "rate": 0.0294,
+      "ci95": [
+       0.0052,
+       0.1492
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 34,
+      "rate": 0.0882,
+      "ci95": [
+       0.0305,
+       0.2296
+      ]
+     }
+    },
+    "fullstack_frontend": {
+     "requirements": 48,
+     "overclaim": {
+      "k": 1,
+      "n": 48,
+      "rate": 0.0208,
+      "ci95": [
+       0.0037,
+       0.109
+      ]
+     },
+     "underclaim": {
+      "k": 10,
+      "n": 48,
+      "rate": 0.2083,
+      "ci95": [
+       0.1173,
+       0.3426
+      ]
+     }
+    },
+    "mobile_other": {
+     "requirements": 18,
+     "overclaim": {
+      "k": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1759
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+       0.0584,
+       0.3922
+      ]
+     }
+    },
+    "sparse_novice": {
+     "requirements": 55,
+     "overclaim": {
+      "k": 2,
+      "n": 55,
+      "rate": 0.0364,
+      "ci95": [
+       0.01,
+       0.1232
+      ]
+     },
+     "underclaim": {
+      "k": 6,
+      "n": 55,
+      "rate": 0.1091,
+      "ci95": [
+       0.051,
+       0.2183
+      ]
+     }
+    },
+    "systems_infra": {
+     "requirements": 25,
+     "overclaim": {
+      "k": 0,
+      "n": 25,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1332
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 25,
+      "rate": 0.12,
+      "ci95": [
+       0.0417,
+       0.2996
+      ]
+     }
+    }
+   }
+  },
+  "overclaims_on_common_pairs": {
+   "by_kind": {
+    "gap->partial": 1,
+    "partial->full": 4
+   },
+   "by_resume_stratum": {
+    "backend": 1,
+    "data": 1,
+    "fullstack_frontend": 1,
+    "sparse_novice": 2
+   }
+  }
+ },
+ "batch6": {
+  "pairs_in_order_succeeded": 107,
+  "labels_on_common_pairs": {
+   "requirements_scored": 259,
+   "four_class_confusion_label_to_predicted": {
+    "insufficient_evidence->missing": 6,
+    "insufficient_evidence->partial": 1,
+    "matched->insufficient_evidence": 1,
+    "matched->matched": 6,
+    "matched->missing": 8,
+    "missing->insufficient_evidence": 10,
+    "missing->matched": 3,
+    "missing->missing": 197,
+    "missing->partial": 1,
+    "partial->insufficient_evidence": 4,
+    "partial->matched": 3,
+    "partial->missing": 19
+   },
+   "coverage_exact": {
+    "k": 219,
+    "n": 259,
+    "rate": 0.8456,
+    "ci95": [
+     0.7965,
+     0.8845
+    ]
+   },
+   "recall_by_coverage_class": {
+    "full": {
+     "k": 6,
+     "n": 15,
+     "rate": 0.4,
+     "ci95": [
+      0.1982,
+      0.6425
+     ]
+    },
+    "partial": {
+     "k": 0,
+     "n": 26,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.1287
+     ]
+    },
+    "gap": {
+     "k": 213,
+     "n": 218,
+     "rate": 0.9771,
+     "ci95": [
+      0.9474,
+      0.9902
+     ]
+    }
+   },
+   "overclaim_rate": {
+    "k": 8,
+    "n": 259,
+    "rate": 0.0309,
+    "ci95": [
+     0.0157,
+     0.0598
+    ]
+   },
+   "underclaim_rate": {
+    "k": 32,
+    "n": 259,
+    "rate": 0.1236,
+    "ci95": [
+     0.0889,
+     0.1692
+    ]
+   },
+   "gap_to_positive_rate": {
+    "k": 5,
+    "n": 218,
+    "rate": 0.0229,
+    "ci95": [
+     0.0098,
+     0.0526
+    ]
+   },
+   "positive_citations_pointing_at_labeled_evidence_experience": {
+    "k": 8,
+    "n": 14,
+    "rate": 0.5714,
+    "ci95": [
+     0.3259,
+     0.7862
+    ]
+   },
+   "by_resume_stratum": {
+    "adversarial": {
+     "requirements": 15,
+     "overclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     }
+    },
+    "ai_ml": {
+     "requirements": 47,
+     "overclaim": {
+      "k": 0,
+      "n": 47,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0756
+      ]
+     },
+     "underclaim": {
+      "k": 6,
+      "n": 47,
+      "rate": 0.1277,
+      "ci95": [
+       0.0598,
+       0.2517
+      ]
+     }
+    },
+    "backend": {
+     "requirements": 17,
+     "overclaim": {
+      "k": 1,
+      "n": 17,
+      "rate": 0.0588,
+      "ci95": [
+       0.0105,
+       0.2698
+      ]
+     },
+     "underclaim": {
+      "k": 1,
+      "n": 17,
+      "rate": 0.0588,
+      "ci95": [
+       0.0105,
+       0.2698
+      ]
+     }
+    },
+    "data": {
+     "requirements": 34,
+     "overclaim": {
+      "k": 1,
+      "n": 34,
+      "rate": 0.0294,
+      "ci95": [
+       0.0052,
+       0.1492
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 34,
+      "rate": 0.0882,
+      "ci95": [
+       0.0305,
+       0.2296
+      ]
+     }
+    },
+    "fullstack_frontend": {
+     "requirements": 48,
+     "overclaim": {
+      "k": 0,
+      "n": 48,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0741
+      ]
+     },
+     "underclaim": {
+      "k": 11,
+      "n": 48,
+      "rate": 0.2292,
+      "ci95": [
+       0.1331,
+       0.3654
+      ]
+     }
+    },
+    "mobile_other": {
+     "requirements": 18,
+     "overclaim": {
+      "k": 1,
+      "n": 18,
+      "rate": 0.0556,
+      "ci95": [
+       0.0099,
+       0.2576
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+       0.0584,
+       0.3922
+      ]
+     }
+    },
+    "sparse_novice": {
+     "requirements": 55,
+     "overclaim": {
+      "k": 5,
+      "n": 55,
+      "rate": 0.0909,
+      "ci95": [
+       0.0395,
+       0.1958
+      ]
+     },
+     "underclaim": {
+      "k": 6,
+      "n": 55,
+      "rate": 0.1091,
+      "ci95": [
+       0.051,
+       0.2183
+      ]
+     }
+    },
+    "systems_infra": {
+     "requirements": 25,
+     "overclaim": {
+      "k": 0,
+      "n": 25,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1332
+      ]
+     },
+     "underclaim": {
+      "k": 2,
+      "n": 25,
+      "rate": 0.08,
+      "ci95": [
+       0.0222,
+       0.2497
+      ]
+     }
+    }
+   }
+  },
+  "overclaims_on_common_pairs": {
+   "by_kind": {
+    "gap->full": 3,
+    "gap->partial": 2,
+    "partial->full": 3
+   },
+   "by_resume_stratum": {
+    "backend": 1,
+    "data": 1,
+    "mobile_other": 1,
+    "sparse_novice": 5
+   }
+  }
+ },
+ "batch6_noheadings": {
+  "pairs_in_order_succeeded": 104,
+  "labels_on_common_pairs": {
+   "requirements_scored": 259,
+   "four_class_confusion_label_to_predicted": {
+    "insufficient_evidence->insufficient_evidence": 1,
+    "insufficient_evidence->missing": 6,
+    "matched->matched": 7,
+    "matched->missing": 8,
+    "missing->insufficient_evidence": 11,
+    "missing->missing": 199,
+    "missing->partial": 1,
+    "partial->insufficient_evidence": 2,
+    "partial->matched": 2,
+    "partial->missing": 18,
+    "partial->partial": 4
+   },
+   "coverage_exact": {
+    "k": 228,
+    "n": 259,
+    "rate": 0.8803,
+    "ci95": [
+     0.8351,
+     0.9144
+    ]
+   },
+   "recall_by_coverage_class": {
+    "full": {
+     "k": 7,
+     "n": 15,
+     "rate": 0.4667,
+     "ci95": [
+      0.2481,
+      0.6988
+     ]
+    },
+    "partial": {
+     "k": 4,
+     "n": 26,
+     "rate": 0.1538,
+     "ci95": [
+      0.0615,
+      0.3353
+     ]
+    },
+    "gap": {
+     "k": 217,
+     "n": 218,
+     "rate": 0.9954,
+     "ci95": [
+      0.9745,
+      0.9992
+     ]
+    }
+   },
+   "overclaim_rate": {
+    "k": 3,
+    "n": 259,
+    "rate": 0.0116,
+    "ci95": [
+     0.0039,
+     0.0335
+    ]
+   },
+   "underclaim_rate": {
+    "k": 28,
+    "n": 259,
+    "rate": 0.1081,
+    "ci95": [
+     0.0759,
+     0.1518
+    ]
+   },
+   "gap_to_positive_rate": {
+    "k": 1,
+    "n": 218,
+    "rate": 0.0046,
+    "ci95": [
+     0.0008,
+     0.0255
+    ]
+   },
+   "positive_citations_pointing_at_labeled_evidence_experience": {
+    "k": 9,
+    "n": 14,
+    "rate": 0.6429,
+    "ci95": [
+     0.3876,
+     0.8366
+    ]
+   },
+   "by_resume_stratum": {
+    "adversarial": {
+     "requirements": 15,
+     "overclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     },
+     "underclaim": {
+      "k": 0,
+      "n": 15,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.2039
+      ]
+     }
+    },
+    "ai_ml": {
+     "requirements": 47,
+     "overclaim": {
+      "k": 0,
+      "n": 47,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0756
+      ]
+     },
+     "underclaim": {
+      "k": 4,
+      "n": 47,
+      "rate": 0.0851,
+      "ci95": [
+       0.0336,
+       0.1993
+      ]
+     }
+    },
+    "backend": {
+     "requirements": 17,
+     "overclaim": {
+      "k": 0,
+      "n": 17,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1843
+      ]
+     },
+     "underclaim": {
+      "k": 1,
+      "n": 17,
+      "rate": 0.0588,
+      "ci95": [
+       0.0105,
+       0.2698
+      ]
+     }
+    },
+    "data": {
+     "requirements": 34,
+     "overclaim": {
+      "k": 1,
+      "n": 34,
+      "rate": 0.0294,
+      "ci95": [
+       0.0052,
+       0.1492
+      ]
+     },
+     "underclaim": {
+      "k": 3,
+      "n": 34,
+      "rate": 0.0882,
+      "ci95": [
+       0.0305,
+       0.2296
+      ]
+     }
+    },
+    "fullstack_frontend": {
+     "requirements": 48,
+     "overclaim": {
+      "k": 0,
+      "n": 48,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0741
+      ]
+     },
+     "underclaim": {
+      "k": 11,
+      "n": 48,
+      "rate": 0.2292,
+      "ci95": [
+       0.1331,
+       0.3654
+      ]
+     }
+    },
+    "mobile_other": {
+     "requirements": 18,
+     "overclaim": {
+      "k": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1759
+      ]
+     },
+     "underclaim": {
+      "k": 2,
+      "n": 18,
+      "rate": 0.1111,
+      "ci95": [
+       0.031,
+       0.328
+      ]
+     }
+    },
+    "sparse_novice": {
+     "requirements": 55,
+     "overclaim": {
+      "k": 2,
+      "n": 55,
+      "rate": 0.0364,
+      "ci95": [
+       0.01,
+       0.1232
+      ]
+     },
+     "underclaim": {
+      "k": 5,
+      "n": 55,
+      "rate": 0.0909,
+      "ci95": [
+       0.0395,
+       0.1958
+      ]
+     }
+    },
+    "systems_infra": {
+     "requirements": 25,
+     "overclaim": {
+      "k": 0,
+      "n": 25,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1332
+      ]
+     },
+     "underclaim": {
+      "k": 2,
+      "n": 25,
+      "rate": 0.08,
+      "ci95": [
+       0.0222,
+       0.2497
+      ]
+     }
+    }
+   }
+  },
+  "overclaims_on_common_pairs": {
+   "by_kind": {
+    "gap->partial": 1,
+    "partial->full": 2
+   },
+   "by_resume_stratum": {
+    "data": 1,
+    "sparse_novice": 2
+   }
+  }
+ }
+}

@@ -1,0 +1,26 @@
+"""Check which upstream OpenRouter uses for openai/gpt-oss-20b. Never prints the key."""
+import json, sys, datetime
+from pathlib import Path
+import httpx
+
+env = dict(
+    line.split("=", 1) for line in Path(".env").read_text(encoding="utf-8").splitlines()
+    if "=" in line and not line.lstrip().startswith("#")
+)
+key = env["OPENROUTER_API_KEY"].strip().strip('"')
+results = []
+for i in range(3):
+    r = httpx.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        headers={"Authorization": f"Bearer {key}"},
+        json={"model": "openai/gpt-oss-20b", "messages": [{"role": "user", "content": "Reply with OK."}],
+              "max_completion_tokens": 64, "reasoning_effort": "low"},
+        timeout=60,
+    )
+    body = r.json()
+    results.append({"http_status": r.status_code, "provider": body.get("provider"),
+                    "model": body.get("model"),
+                    "finish_reason": (body.get("choices") or [{}])[0].get("finish_reason")})
+out = {"probed_at_utc": datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds"), "requests": results}
+Path(sys.argv[1]).write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
+print(json.dumps(out))

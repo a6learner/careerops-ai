@@ -20,11 +20,13 @@ class GroqRequestError(Exception):
         *,
         attempts: int,
         status_code: int | None = None,
+        provider_error_code: str | None = None,
     ) -> None:
         super().__init__(reason.value)
         self.reason = reason
         self.attempts = attempts
         self.status_code = status_code
+        self.provider_error_code = provider_error_code
 
 
 class GroqChatTransport:
@@ -98,6 +100,7 @@ class GroqChatTransport:
                         reason,
                         attempts=attempt,
                         status_code=response.status_code,
+                        provider_error_code=provider_error_code(response),
                     )
                 await self._sleep(
                     self._retry_delay(attempt, response.headers.get("Retry-After"))
@@ -111,6 +114,20 @@ class GroqChatTransport:
             except ValueError:
                 pass
         return min(self._retry_base_delay_seconds * (2.0 ** (attempt - 1)), 5.0)
+
+
+def provider_error_code(response: httpx.Response) -> str | None:
+    try:
+        body: object = response.json()
+    except ValueError:
+        return None
+    if not isinstance(body, dict):
+        return None
+    error = body.get("error")
+    if not isinstance(error, dict):
+        return None
+    code = error.get("code")
+    return code if isinstance(code, str) else None
 
 
 def classify_groq_status(status_code: int) -> GroqRequestFailureReason:
