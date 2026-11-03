@@ -33,13 +33,15 @@ you review the sources and your contribution before confirming them.
 
 ## Interface
 
-![Job page with parsed requirements, evidence quotes and gaps](docs/design/2026-10-28-redesign-preview/desktop-job-detail.png)
+![Job page with parsed requirements, evidence quotes and gaps](docs/design/2026-11-03-readme-preview/desktop-job-detail.png)
 
 Jobs and Action Items are boards, Experiences is a gallery, and each job has its
 own page. Screenshots of every page at desktop and phone width are in
-[`docs/design/2026-10-28-redesign-preview/`](docs/design/2026-10-28-redesign-preview/).
-They use synthetic data and the deterministic fake providers. The visual system
-is described in [ADR-044](docs/decisions/ADR-044-frontend-visual-system.md).
+[`docs/design/2026-11-03-readme-preview/`](docs/design/2026-11-03-readme-preview/).
+They were captured on 2026-11-03 from the `Run locally` stack below, with
+synthetic data and the deterministic fake providers, using
+`frontend/scripts/capture-preview.mjs`. The visual system is described in
+[ADR-044](docs/decisions/ADR-044-frontend-visual-system.md).
 
 ## Demo
 
@@ -50,11 +52,15 @@ This local flow was exercised with real Codex sessions and a synthetic project:
 3. **Recall:** A fresh Codex session retrieves the confirmed record and produces
    a cited project review, resume candidate bullet and STAR draft.
 
-![Project journal showing a reviewed checkpoint](docs/metrics/2026-10-27-project-agent-demo-confirmed.png)
+![Project journal showing a confirmed checkpoint with its source excerpt](docs/design/2026-11-03-readme-preview/desktop-projects.png)
 
-The screenshot shows the actual local app with synthetic data, before the
-2026-10-29 visual redesign. The generated
-material keeps that label and does not present it as a real personal achievement.
+The screenshot shows the current Projects page with a confirmed synthetic
+record. It was saved through the same API the MCP tools use, not by the
+2026-10-27 Codex session; that session's own screenshot, from before the
+visual redesign, is kept at
+[`docs/metrics/2026-10-27-project-agent-demo-confirmed.png`](docs/metrics/2026-10-27-project-agent-demo-confirmed.png).
+The generated material keeps the synthetic label and does not present it as a
+real personal achievement.
 See the [demo walkthrough](docs/learning/0050-project-agent-demo.md) and
 [fresh-session output](docs/metrics/2026-10-27-project-agent-host-recall-output.md).
 
