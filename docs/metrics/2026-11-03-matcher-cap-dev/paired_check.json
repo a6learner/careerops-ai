@@ -1,0 +1,47 @@
+{
+ "cap800_vs_cap2000": {
+  "shared_pairs": {
+   "requirements": 959,
+   "same_verdict": 831,
+   "overclaim_only_first": 10,
+   "overclaim_only_second": 16,
+   "exact_only_first": 26,
+   "exact_only_second": 14,
+   "overclaim_mcnemar_exact_p": 0.327,
+   "exact_mcnemar_exact_p": 0.081
+  },
+  "pairs_only_second_completed": {
+   "requirements": 588,
+   "overclaim_rate": {
+    "k": 47,
+    "n": 588,
+    "rate": 0.0799,
+    "ci95": [
+     0.0606,
+     0.1047
+    ]
+   }
+  }
+ },
+ "batch6_vs_batch6_repeat_same_config": {
+  "shared_pairs": {
+   "requirements": 281,
+   "same_verdict": 255,
+   "overclaim_only_first": 4,
+   "overclaim_only_second": 3,
+   "exact_only_first": 4,
+   "exact_only_second": 3,
+   "overclaim_mcnemar_exact_p": 1.0,
+   "exact_mcnemar_exact_p": 1.0
+  },
+  "pairs_only_second_completed": {
+   "requirements": 0,
+   "overclaim_rate": {
+    "k": 0,
+    "n": 0,
+    "rate": null,
+    "ci95": null
+   }
+  }
+ }
+}

@@ -265,7 +265,11 @@ resumes, 150 analysed pairs; model-made labels; development set, not a holdout;
   stopped the parser from offering section headings to the model. Over-claiming
   was 24/1,022 against 39/1,098 in separate runs, and on 50 common pairs it was 3 over-claims,
   against 5 for the original single call
-  (`docs/metrics/2026-11-03-heading-filter-dev.md`).
+  (`docs/metrics/2026-11-03-heading-filter-dev.md`). ADR-051 then raised the
+  matcher output cap from 800 to 2,000 tokens. 138/148 analysable pairs succeeded
+  with no truncation, and the hard jobs that now complete over-claim on 8.0% of
+  labeled requirements, which is the next problem to fix
+  (`docs/metrics/2026-11-03-matcher-cap-dev.md`).
 - **`MATCHER_PROVIDER_FAILED` mostly hides contract failures.** Groq's server-side
   schema check rejected the model output; the adapter reports that as a provider error.
   Fixed afterwards in ADR-048: these now fail as `MATCHER_OUTPUT_INVALID_SCHEMA`, and

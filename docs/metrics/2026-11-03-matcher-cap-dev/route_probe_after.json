@@ -1,0 +1,23 @@
+{
+ "probed_at_utc": "2026-11-03T07:11:46+00:00",
+ "requests": [
+  {
+   "http_status": 200,
+   "provider": "Groq",
+   "model": "openai/gpt-oss-20b",
+   "finish_reason": "stop"
+  },
+  {
+   "http_status": 200,
+   "provider": "Groq",
+   "model": "openai/gpt-oss-20b",
+   "finish_reason": "stop"
+  },
+  {
+   "http_status": 200,
+   "provider": "Groq",
+   "model": "openai/gpt-oss-20b",
+   "finish_reason": "stop"
+  }
+ ]
+}

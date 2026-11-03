@@ -1,0 +1,458 @@
+{
+ "dataset": "evals\\large_scale_v1",
+ "analysis_runs_dropped_not_in_state": 0,
+ "parser": {
+  "jobs_with_parse": 148,
+  "first_attempt_success": {
+   "k": 148,
+   "n": 148,
+   "rate": 1.0,
+   "ci95": [
+    0.9747,
+    1.0
+   ]
+  },
+  "first_attempt_success_by_provider_period": {
+   "openrouter_groq_pinned": {
+    "k": 148,
+    "n": 148,
+    "rate": 1.0,
+    "ci95": [
+     0.9747,
+     1.0
+    ]
+   }
+  },
+  "final_success_after_rate_limit_retries": {
+   "k": 148,
+   "n": 148,
+   "rate": 1.0,
+   "ci95": [
+    0.9747,
+    1.0
+   ]
+  },
+  "failed_run_error_codes": {},
+  "requirements_per_successful_parse": {
+   "n": 148,
+   "p50": 11.0,
+   "p95": 24.0,
+   "min": 1.0,
+   "max": 45.0,
+   "mean": 11.7
+  },
+  "latency_ms_successful": {
+   "n": 148,
+   "p50": 1911.0,
+   "p95": 13248.0,
+   "min": 740.0,
+   "max": 30225.0,
+   "mean": 3844.4
+  },
+  "input_tokens_per_run": {
+   "n": 148,
+   "p50": 2060.0,
+   "p95": 4250.0,
+   "min": 445.0,
+   "max": 10585.0,
+   "mean": 2311.8
+  },
+  "output_tokens_per_run": {
+   "n": 148,
+   "p50": 455.0,
+   "p95": 1035.0,
+   "min": 82.0,
+   "max": 1500.0,
+   "mean": 487.8
+  },
+  "determinism": {
+   "original_vs_first_repeat": {
+    "jds_with_two_successful_parses": 0,
+    "text_set_jaccard": {
+     "n": 0
+    },
+    "abs_requirement_count_difference": {
+     "n": 0
+    },
+    "identical_text_sets": {
+     "k": 0,
+     "n": 0,
+     "rate": null,
+     "ci95": null
+    }
+   },
+   "repeat_vs_repeat2_same_host": {
+    "jds_with_two_successful_parses": 0,
+    "text_set_jaccard": {
+     "n": 0
+    },
+    "abs_requirement_count_difference": {
+     "n": 0
+    },
+    "identical_text_sets": {
+     "k": 0,
+     "n": 0,
+     "rate": null,
+     "ci95": null
+    }
+   }
+  }
+ },
+ "matcher": {
+  "pairs_analysed": 148,
+  "first_attempt_status": {
+   "failed": 10,
+   "succeeded": 138
+  },
+  "first_attempt_error_codes": {
+   "MATCHER_OUTPUT_INVALID_SCHEMA": 9,
+   "MATCHER_OUTPUT_INVALID_CONTRACT": 1
+  },
+  "first_attempt_rate_limited": {
+   "k": 0,
+   "n": 148,
+   "rate": 0.0,
+   "ci95": [
+    0.0,
+    0.0253
+   ]
+  },
+  "success_by_requirement_count_excluding_rate_limits": {
+   "1-5": {
+    "k": 30,
+    "n": 31,
+    "rate": 0.9677,
+    "ci95": [
+     0.8381,
+     0.9943
+    ]
+   },
+   "11-15": {
+    "k": 34,
+    "n": 36,
+    "rate": 0.9444,
+    "ci95": [
+     0.8186,
+     0.9846
+    ]
+   },
+   "16-20": {
+    "k": 22,
+    "n": 24,
+    "rate": 0.9167,
+    "ci95": [
+     0.7415,
+     0.9768
+    ]
+   },
+   "21+": {
+    "k": 15,
+    "n": 18,
+    "rate": 0.8333,
+    "ci95": [
+     0.6078,
+     0.9416
+    ]
+   },
+   "6-10": {
+    "k": 37,
+    "n": 39,
+    "rate": 0.9487,
+    "ci95": [
+     0.8311,
+     0.9858
+    ]
+   }
+  },
+  "validator_downgrades_total": 10,
+  "latency_ms_successful": {
+   "n": 138,
+   "p50": 10737.0,
+   "p95": 23742.0,
+   "min": 1278.0,
+   "max": 41524.0,
+   "mean": 11570.5
+  },
+  "input_tokens_successful": {
+   "n": 138,
+   "p50": 4593.0,
+   "p95": 10008.0,
+   "min": 919.0,
+   "max": 15402.0,
+   "mean": 5043.1
+  },
+  "output_tokens_successful": {
+   "n": 138,
+   "p50": 1067.0,
+   "p95": 2582.0,
+   "min": 78.0,
+   "max": 4946.0,
+   "mean": 1177.4
+  },
+  "against_labels": {
+   "requirements_scored": 1547,
+   "four_class_confusion_label_to_predicted": {
+    "insufficient_evidence->insufficient_evidence": 4,
+    "insufficient_evidence->matched": 3,
+    "insufficient_evidence->missing": 26,
+    "insufficient_evidence->partial": 3,
+    "matched->insufficient_evidence": 13,
+    "matched->matched": 76,
+    "matched->missing": 50,
+    "matched->partial": 11,
+    "missing->insufficient_evidence": 81,
+    "missing->matched": 25,
+    "missing->missing": 1045,
+    "missing->partial": 19,
+    "partial->insufficient_evidence": 19,
+    "partial->matched": 26,
+    "partial->missing": 119,
+    "partial->partial": 27
+   },
+   "coverage_exact": {
+    "k": 1259,
+    "n": 1547,
+    "rate": 0.8138,
+    "ci95": [
+     0.7937,
+     0.8324
+    ]
+   },
+   "recall_by_coverage_class": {
+    "full": {
+     "k": 76,
+     "n": 150,
+     "rate": 0.5067,
+     "ci95": [
+      0.4275,
+      0.5855
+     ]
+    },
+    "partial": {
+     "k": 27,
+     "n": 191,
+     "rate": 0.1414,
+     "ci95": [
+      0.099,
+      0.1979
+     ]
+    },
+    "gap": {
+     "k": 1156,
+     "n": 1206,
+     "rate": 0.9585,
+     "ci95": [
+      0.9458,
+      0.9684
+     ]
+    }
+   },
+   "overclaim_rate": {
+    "k": 76,
+    "n": 1547,
+    "rate": 0.0491,
+    "ci95": [
+     0.0394,
+     0.0611
+    ]
+   },
+   "underclaim_rate": {
+    "k": 212,
+    "n": 1547,
+    "rate": 0.137,
+    "ci95": [
+     0.1208,
+     0.1551
+    ]
+   },
+   "gap_to_positive_rate": {
+    "k": 50,
+    "n": 1206,
+    "rate": 0.0415,
+    "ci95": [
+     0.0316,
+     0.0542
+    ]
+   },
+   "positive_citations_pointing_at_labeled_evidence_experience": {
+    "k": 119,
+    "n": 190,
+    "rate": 0.6263,
+    "ci95": [
+     0.5557,
+     0.692
+    ]
+   },
+   "by_resume_stratum": {
+    "adversarial": {
+     "requirements": 174,
+     "overclaim": {
+      "k": 10,
+      "n": 174,
+      "rate": 0.0575,
+      "ci95": [
+       0.0315,
+       0.1025
+      ]
+     },
+     "underclaim": {
+      "k": 10,
+      "n": 174,
+      "rate": 0.0575,
+      "ci95": [
+       0.0315,
+       0.1025
+      ]
+     }
+    },
+    "ai_ml": {
+     "requirements": 280,
+     "overclaim": {
+      "k": 12,
+      "n": 280,
+      "rate": 0.0429,
+      "ci95": [
+       0.0247,
+       0.0734
+      ]
+     },
+     "underclaim": {
+      "k": 38,
+      "n": 280,
+      "rate": 0.1357,
+      "ci95": [
+       0.1005,
+       0.1808
+      ]
+     }
+    },
+    "backend": {
+     "requirements": 326,
+     "overclaim": {
+      "k": 22,
+      "n": 326,
+      "rate": 0.0675,
+      "ci95": [
+       0.045,
+       0.1001
+      ]
+     },
+     "underclaim": {
+      "k": 47,
+      "n": 326,
+      "rate": 0.1442,
+      "ci95": [
+       0.1102,
+       0.1865
+      ]
+     }
+    },
+    "data": {
+     "requirements": 131,
+     "overclaim": {
+      "k": 5,
+      "n": 131,
+      "rate": 0.0382,
+      "ci95": [
+       0.0164,
+       0.0862
+      ]
+     },
+     "underclaim": {
+      "k": 21,
+      "n": 131,
+      "rate": 0.1603,
+      "ci95": [
+       0.1073,
+       0.2327
+      ]
+     }
+    },
+    "fullstack_frontend": {
+     "requirements": 160,
+     "overclaim": {
+      "k": 5,
+      "n": 160,
+      "rate": 0.0312,
+      "ci95": [
+       0.0134,
+       0.0711
+      ]
+     },
+     "underclaim": {
+      "k": 28,
+      "n": 160,
+      "rate": 0.175,
+      "ci95": [
+       0.1239,
+       0.2413
+      ]
+     }
+    },
+    "mobile_other": {
+     "requirements": 166,
+     "overclaim": {
+      "k": 9,
+      "n": 166,
+      "rate": 0.0542,
+      "ci95": [
+       0.0288,
+       0.0998
+      ]
+     },
+     "underclaim": {
+      "k": 36,
+      "n": 166,
+      "rate": 0.2169,
+      "ci95": [
+       0.161,
+       0.2856
+      ]
+     }
+    },
+    "sparse_novice": {
+     "requirements": 119,
+     "overclaim": {
+      "k": 2,
+      "n": 119,
+      "rate": 0.0168,
+      "ci95": [
+       0.0046,
+       0.0592
+      ]
+     },
+     "underclaim": {
+      "k": 7,
+      "n": 119,
+      "rate": 0.0588,
+      "ci95": [
+       0.0288,
+       0.1165
+      ]
+     }
+    },
+    "systems_infra": {
+     "requirements": 191,
+     "overclaim": {
+      "k": 11,
+      "n": 191,
+      "rate": 0.0576,
+      "ci95": [
+       0.0325,
+       0.1002
+      ]
+     },
+     "underclaim": {
+      "k": 25,
+      "n": 191,
+      "rate": 0.1309,
+      "ci95": [
+       0.0903,
+       0.1861
+      ]
+     }
+    }
+   }
+  }
+ }
+}

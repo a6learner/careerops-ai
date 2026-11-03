@@ -87,3 +87,8 @@ there is a matcher-quality problem, separate from the cap.
   - Unit tests: 496 passed.
   - Integration on a clean database: 26 passed, 1 skipped, 2 deselected.
 - Real-provider development check: `docs/metrics/2026-11-03-matcher-cap-dev.md`.
+  - 138/148 analysable pairs succeeded, against 104 at the 800 cap.
+  - No `finish_reason=length` failures remained.
+  - Pairs only the 2,000 cap completed over-claimed 47/588 (8.0%).
+  - On 100 pairs both completed, over-claims were 23 against 29 (paired p = 0.33).
+  - All 190 stored positives kept a validated quote.

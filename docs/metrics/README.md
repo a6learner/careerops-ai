@@ -95,6 +95,10 @@ Do not overwrite old results when comparing performance. Add a new dated artifac
   filter (ADR-050): label check of the rule, over- and under-claiming overall and
   like-for-like against batch 6 and the original single call. Development check,
   not a holdout. Files are in `2026-11-03-heading-filter-dev/`.
+- `2026-11-03-matcher-cap-dev.md` measures the 2,000-token matcher cap (ADR-051):
+  138/148 analyses succeeded with no truncation, over-claiming on newly completed
+  hard jobs, and a paired same-pair comparison with the 800 cap. Development check,
+  not a holdout. Files are in `2026-11-03-matcher-cap-dev/`.
 
 ## Current Matcher Evidence
 
