@@ -141,4 +141,5 @@ the full run was 24/1,022, against 39/1,098 without it (separate runs, different
 successful sets). On 50 pairs scored on the
 same requirements, over-claims were 5 (original single call), 8 (batch 6) and
 3 (batch 6 with the filter); see `docs/metrics/2026-11-03-heading-filter-dev.md`.
-The cap question above is still open.
+The cap question was resolved by ADR-051 (cap 2,000, author decision
+2026-11-03); reducing over-claiming on hard jobs is the next stage.

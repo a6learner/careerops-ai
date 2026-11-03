@@ -6,6 +6,7 @@ from careerops.core.config import Settings
 from careerops.domain.analysis_runs import (
     FAKE_ANALYSIS_MODEL_NAME,
     EvidenceMatcherOutput,
+    matcher_output_cap_from_pipeline,
     matcher_prompt_version_from_pipeline,
 )
 from careerops.domain.errors import EvidenceMatcherError, EvidenceMatcherFailureReason
@@ -17,6 +18,7 @@ from careerops.services.analysis_run_execution import EvidenceMatcher
 
 LIVE_MATCHER_ENV = "CAREEROPS_RUN_REAL_MATCHER_WORKER"
 GROQ_EVIDENCE_MATCHER_MODEL = "openai/gpt-oss-20b"
+# Cap for runs created before ADR-051; newer runs carry their cap in the pipeline version.
 GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS = 800
 
 
@@ -40,7 +42,13 @@ class ConfiguredEvidenceMatcherResolver:
     def __init__(self, settings: Settings) -> None:
         self._settings = settings
 
-    def resolve(self, model_name: str, prompt_version: str) -> EvidenceMatcher:
+    def resolve(
+        self,
+        model_name: str,
+        prompt_version: str,
+        *,
+        max_output_tokens: int = GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS,
+    ) -> EvidenceMatcher:
         if model_name == FAKE_ANALYSIS_MODEL_NAME:
             return FakeEvidenceMatcher()
         if (
@@ -68,18 +76,23 @@ class ConfiguredEvidenceMatcherResolver:
             timeout_seconds=self._settings.llm_timeout_seconds,
             max_attempts=1,
             retry_base_delay_seconds=self._settings.llm_retry_base_delay_seconds,
-            max_output_tokens=GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS,
+            max_output_tokens=max_output_tokens,
         )
 
     def resolve_pipeline(self, model_name: str, pipeline_version: str) -> EvidenceMatcher:
         try:
             prompt_version = matcher_prompt_version_from_pipeline(pipeline_version)
+            output_cap = matcher_output_cap_from_pipeline(pipeline_version)
         except ValueError:
             return UnavailableEvidenceMatcher(
                 model_name,
                 EvidenceMatcherFailureReason.MISCONFIGURED,
             )
-        return self.resolve(model_name, prompt_version)
+        return self.resolve(
+            model_name,
+            prompt_version,
+            max_output_tokens=output_cap or GROQ_EVIDENCE_MATCHER_MAX_OUTPUT_TOKENS,
+        )
 
 
 def configured_evidence_matcher_model(settings: Settings) -> str:

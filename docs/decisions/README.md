@@ -106,3 +106,4 @@ What future condition would justify reopening this decision?
 - `ADR-048-matcher-failure-diagnostics.md`: provider-side schema rejections and aborted generations become `MATCHER_OUTPUT_INVALID_SCHEMA`; contract failures keep token counts and log a coverage diagnostic; no new codes or migration.
 - `ADR-049-batched-evidence-matching.md`: the worker sends requirements in sequential batches of at most six with per-batch validation, whole-run failure, single-transaction persistence and a `matcher-batch-6` pipeline segment; legacy runs keep one call.
 - `ADR-050-parser-heading-filter.md`: parse-v4 never offers section headings to the model (lead-ins ending in a colon, section titles, all-caps titles, HTML headings); candidate IDs and spans unchanged.
+- `ADR-051-matcher-output-cap.md`: matcher output cap raised from 800 to 2,000 tokens, recorded on each run as a `matcher-cap-2000` pipeline segment; legacy runs keep 800.

@@ -233,7 +233,8 @@ does not authorize execution because the resolver reads it directly from the
 worker process environment. Stop other unauthorized Analysis workers before
 processing Groq-bound jobs; otherwise they will correctly claim and fail those
 jobs as disabled. Each real matcher execution sends its requirements in batches of
-at most six (ADR-049) and makes one HTTP attempt per batch. A timeout,
+at most six (ADR-049) and makes one HTTP attempt per batch, with an output cap of
+2,000 tokens recorded on the run (ADR-051; runs created earlier keep 800). A timeout,
 429, 5xx, invalid JSON, invalid schema, or invalid contract in any batch becomes a durable
 failure of the whole run; there is no fake fallback or claimed process-wide TPM smoothing.
 

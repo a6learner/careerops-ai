@@ -16,6 +16,8 @@ from careerops.domain.analysis_runs import (
     AnalysisRunWorkItem,
     EvidenceMatcherOutput,
     matcher_batch_size_from_pipeline,
+    matcher_model_name_from_pipeline,
+    matcher_output_cap_from_pipeline,
 )
 from careerops.domain.errors import EvidenceMatcherError, EvidenceMatcherFailureReason
 from careerops.domain.evidence_matching import EvidenceMatcherInput, EvidenceVerdict
@@ -128,6 +130,34 @@ def test_pipelines_created_before_batching_keep_single_call() -> None:
 def test_invalid_batch_segments_are_rejected(segment: str) -> None:
     with pytest.raises(ValueError):
         matcher_batch_size_from_pipeline(f"match-v2:{segment}:model")
+
+
+def test_new_pipelines_record_the_output_cap_before_the_model() -> None:
+    segments = ANALYSIS_PROMPT_VERSION.split(":")
+
+    assert segments[-3:] == [
+        MATCHER_BATCHING_VERSION,
+        "matcher-cap-2000",
+        FAKE_ANALYSIS_MODEL_NAME,
+    ]
+    assert matcher_output_cap_from_pipeline(ANALYSIS_PROMPT_VERSION) == 2000
+    assert matcher_model_name_from_pipeline(ANALYSIS_PROMPT_VERSION) == FAKE_ANALYSIS_MODEL_NAME
+
+
+def test_pipelines_created_before_the_cap_change_have_no_cap() -> None:
+    legacy = ANALYSIS_PROMPT_VERSION.replace(":matcher-cap-2000", "")
+
+    assert matcher_output_cap_from_pipeline(legacy) is None
+    assert matcher_batch_size_from_pipeline(legacy) == MATCHER_BATCH_SIZE
+
+
+@pytest.mark.parametrize(
+    "segment",
+    ["matcher-cap-0", "matcher-cap-x", "matcher-cap-2000:matcher-cap-2000"],
+)
+def test_invalid_cap_segments_are_rejected(segment: str) -> None:
+    with pytest.raises(ValueError):
+        matcher_output_cap_from_pipeline(f"match-v2:{segment}:model")
 
 
 @pytest.mark.parametrize(

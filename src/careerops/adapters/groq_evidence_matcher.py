@@ -118,6 +118,10 @@ class GroqEvidenceMatcher:
         return self._model
 
     @property
+    def max_output_tokens(self) -> int:
+        return self._max_output_tokens
+
+    @property
     def request_attempt_count(self) -> int:
         return self._chat.request_attempt_count
 

@@ -22,6 +22,9 @@ FAKE_ANALYSIS_MODEL_NAME = "local-fake-evidence-matcher"
 MATCHER_BATCH_SIZE = 6
 MATCHER_BATCH_PREFIX = "matcher-batch-"
 MATCHER_BATCHING_VERSION = f"{MATCHER_BATCH_PREFIX}{MATCHER_BATCH_SIZE}"
+MATCHER_OUTPUT_CAP = 2000
+MATCHER_CAP_PREFIX = "matcher-cap-"
+MATCHER_CAP_VERSION = f"{MATCHER_CAP_PREFIX}{MATCHER_OUTPUT_CAP}"
 
 
 def matcher_pipeline_version(space: EmbeddingSpace, matcher_model_name: str) -> str:
@@ -31,6 +34,7 @@ def matcher_pipeline_version(space: EmbeddingSpace, matcher_model_name: str) -> 
             MATCHER_SCHEMA_VERSION,
             MATCHER_PROMPT_VERSION,
             MATCHER_BATCHING_VERSION,
+            MATCHER_CAP_VERSION,
             matcher_model_name,
         )
     )
@@ -56,19 +60,26 @@ def matcher_prompt_version_from_pipeline(pipeline_version: str) -> str:
 
 def matcher_batch_size_from_pipeline(pipeline_version: str) -> int | None:
     """Return None for runs created before batching; they keep the single-call behavior."""
+    return _positive_segment(pipeline_version, MATCHER_BATCH_PREFIX)
+
+
+def matcher_output_cap_from_pipeline(pipeline_version: str) -> int | None:
+    """Return None for runs created before ADR-051; they keep the original 800-token cap."""
+    return _positive_segment(pipeline_version, MATCHER_CAP_PREFIX)
+
+
+def _positive_segment(pipeline_version: str, prefix: str) -> int | None:
     segments = [
-        segment
-        for segment in pipeline_version.split(":")
-        if segment.startswith(MATCHER_BATCH_PREFIX)
+        segment for segment in pipeline_version.split(":") if segment.startswith(prefix)
     ]
     if not segments:
         return None
     if len(segments) != 1:
-        raise ValueError("Analysis pipeline has more than one matcher batch size.")
-    size_text = segments[0].removeprefix(MATCHER_BATCH_PREFIX)
-    if not size_text.isdigit() or int(size_text) < 1:
-        raise ValueError("Analysis pipeline has an invalid matcher batch size.")
-    return int(size_text)
+        raise ValueError(f"Analysis pipeline has more than one {prefix} segment.")
+    value = segments[0].removeprefix(prefix)
+    if not value.isdigit() or int(value) < 1:
+        raise ValueError(f"Analysis pipeline has an invalid {prefix} segment.")
+    return int(value)
 
 
 def matcher_model_name_from_pipeline(pipeline_version: str) -> str:
